@@ -2,23 +2,36 @@ import { ReactNode, useState } from "react";
 import clsx from "clsx";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import AccordionCover from "./AccordionCover";
-import getAccordionStyleFromType from "./getAccordionStyleFromType";
+import getAccordionStyleFromVariant from "./getAccordionStyleFromType";
 
 function Accordion({
   title,
   description,
   defaultOpen = false,
-  onChange,
   icon,
-  style = "rounded",
+  onChange,
+  variant = "rounded",
   children,
 }: {
+  /** The main text of the Accordion shown in bold */
   title: string;
+
+  /** Text under the title */
   description?: string;
+
+  /** Whether the Accordion is open initially */
   defaultOpen: boolean;
-  onChange?: (open: boolean) => void;
+
+  /** Icon to display to the left */
   icon?: ReactNode | IconDefinition;
-  style: "rounded" | "minimalist";
+
+  /** Callback when the Accordion is clicked with the new open state */
+  onChange?: (open: boolean) => void;
+
+  /** The Accordion UI style */
+  variant?: "rounded" | "minimalist";
+
+  /** The Accordion contents */
   children: ReactNode;
 }) {
   const [open, setOpen] = useState<boolean>(defaultOpen);
@@ -31,7 +44,7 @@ function Accordion({
   };
 
   const { parentClass, coverClass, contentClass } =
-    getAccordionStyleFromType(style);
+    getAccordionStyleFromVariant(variant);
 
   return (
     <div key={title} role="listitem" className={parentClass}>
@@ -41,7 +54,7 @@ function Accordion({
         open={open}
         setOpen={onClickOpen}
         icon={icon}
-        isRounded={style === "rounded"}
+        isRounded={variant === "rounded"}
         coverClass={coverClass}
       ></AccordionCover>
       <dd className={clsx(contentClass, !open && "hidden")}>{children}</dd>

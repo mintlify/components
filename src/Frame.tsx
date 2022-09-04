@@ -5,23 +5,23 @@ let paddingMap = { none: "", md: "p-8" };
 export function Frame({
   as: Component = "div",
   style,
-  padding,
   className,
   containerClassName,
   html,
   children,
   hint,
+  padding = "md",
   lightOnly = false,
 }: {
   as: any;
   style: any;
-  padding: "none" | "md";
   p: string;
   className: string;
   containerClassName: string;
   html: any;
   children: any;
   hint: string;
+  padding: "none" | "md";
   lightOnly: boolean;
 }) {
   let paddingClassName = paddingMap[padding];

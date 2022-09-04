@@ -1,5 +1,5 @@
-export default function getAccordionStyleFromType(style: string) {
-  if (style === "minimalist") {
+export default function getAccordionStyleFromVariant(variant: string) {
+  if (variant === "minimalist") {
     // Minimal padding. Shows a border along the left when open.
     return {
       parentClass: "",

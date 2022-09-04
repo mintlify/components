@@ -1,5 +1,5 @@
 # Storybook Tests
-/stories
+/.storybook
 
 # Source code (we publish webpack's results not the source code itself)
 /src

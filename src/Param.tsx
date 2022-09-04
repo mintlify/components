@@ -2,22 +2,20 @@ import clsx from "clsx";
 
 export type ParamProps = {
   name: string;
-  children: any;
-  default?: string;
   type?: string;
+  default?: string;
   required?: boolean;
   hidden?: boolean;
-  placeholder?: any;
-  last?: boolean;
+  children: any;
 };
 
 export function Param({
   name,
-  children,
-  default: defaultValue,
   type,
+  default: defaultValue,
   required = false,
   hidden = false,
+  children,
 }: ParamProps) {
   if (hidden) {
     return null;

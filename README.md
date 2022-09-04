@@ -6,7 +6,7 @@ Mintlify uses Mintlify Components in customers' docs. We encourage you to use th
 
 # Designed for Next.js
 
-The project is designed for use in static side rendering where we don't have access to `document` or `window`. Thus, our webpack config has to use `mini-css-extract-plugin` instead of `style-loader`.
+The project is designed for use with static side rendering where we don't have access to `document` or `window`. Thus, our webpack config has to use `mini-css-extract-plugin` instead of `style-loader`.
 
 # Documentation
 
