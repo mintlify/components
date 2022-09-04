@@ -53,7 +53,7 @@ export function Button({
   children: ReactNode;
   className: string;
   reverse: boolean;
-}) {
+} & React.LinkHTMLAttributes<HTMLElement>) {
   let colorClasses = typeof color === "string" ? colors[color] : color;
   let darkColorClasses =
     typeof darkColor === "string" ? colorsDark[darkColor] || [] : darkColor;

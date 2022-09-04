@@ -10,17 +10,15 @@ The project is designed for use with static side rendering where we don't have a
 
 # Documentation
 
-Our [wiki](https://github.com/mintlify/components/wiki) contains most of the library's documentation.
+[Storybook](https://main--63134bd5ae01f2a7717a0e47.chromatic.com/) has interactive demos.
 
-[Mintlify's documentation platform also explains how to use documentation components.](https://www.mintlify.com/components/overview)
+The [repo wiki](https://github.com/mintlify/components/wiki) explains how to use the components and contribute to the repo.
+
+Go to [Mintlify.com](https://www.mintlify.com/components/overview) for how to use the components in Mintlify's documentation platform.
 
 # Long Term Vision
 
 The first version of this library only included documentation components. In the long run, Mintlify will include layout components you could use to build an entire site.
-
-## Contributing
-
-All pull requests are welcome. Component files are in the `src` folder.
 
 ## Community
 

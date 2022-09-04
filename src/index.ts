@@ -1,7 +1,6 @@
 import { Accordion, AccordionGroup } from "./Accordion";
 import { Button } from "./Button";
 import { Info, Warning, Note, Tip, Check } from "./Callouts";
-import { CodeGroup } from "./CodeGroup";
 import { Frame } from "./Frame";
 import { Param } from "./Param";
 import { UserDefinedIcon } from "./UserDefinedIcon";
@@ -18,7 +17,6 @@ export {
   Note,
   Tip,
   Check,
-  CodeGroup,
   Frame,
   Param,
   UserDefinedIcon,

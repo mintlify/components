@@ -3,9 +3,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Frame } from "../Frame";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Frame",
+  title: "Display/Frame",
   component: Frame,
 } as ComponentMeta<typeof Frame>;
 
@@ -15,10 +14,10 @@ const Template: ComponentStory<typeof Frame> = (args) => <Frame {...args} />;
 const TestContent = (
   <article style={{ lineHeight: "64px" }}>
     <div style={{ width: "50%", textAlign: "center", display: "inline-block" }}>
-      <p>First Half</p>
+      <p>Test Content</p>
     </div>
     <div style={{ width: "50%", textAlign: "center", display: "inline-block" }}>
-      <p>Second Half</p>
+      <p>Test Content</p>
     </div>
   </article>
 );

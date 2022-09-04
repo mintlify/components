@@ -4,9 +4,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Accordion } from "../Accordion";
 import { Param } from "../Param";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Accordion",
+  title: "Interactive/Accordion",
   component: Accordion,
 } as ComponentMeta<typeof Accordion>;
 
@@ -16,18 +15,29 @@ const Template: ComponentStory<typeof Accordion> = (args) => (
 );
 
 const TestText = (
-  <article style={{ lineHeight: "64px" }}>
-    <div style={{ width: "50%", textAlign: "center", display: "inline-block" }}>
-      <p className="text-slate-900 dark:text-slate-200">First Half</p>
-    </div>
-    <div style={{ width: "50%", textAlign: "center", display: "inline-block" }}>
-      <p className="text-slate-900 dark:text-slate-200">Second Half</p>
-    </div>
-    <p
-      style={{ width: "100%", textAlign: "center" }}
-      className="text-slate-900 dark:text-slate-200"
-    >
-      On its own line.
+  <article className="prose text-slate-900 dark:text-slate-200">
+    <h3>Test Header</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt
+      consectetur est vel viverra. Suspendisse in consequat lacus, eget
+      fermentum tortor. Nulla rutrum sollicitudin diam sit amet posuere. Sed
+      ullamcorper mauris non neque suscipit molestie at non velit. Praesent ut
+      egestas urna. Nam ultricies, neque non molestie varius, nisi sem sagittis
+      mauris, iaculis fringilla elit ipsum sed nunc. Vivamus id neque sit amet
+      mi finibus sollicitudin.
+    </p>
+    <h3>Second Test Header</h3>
+    <p>
+      Ut sagittis ipsum a elit cursus, ac molestie dui egestas. Aliquam tempus
+      felis in semper fermentum. Cras elementum blandit risus finibus
+      scelerisque. Nam blandit quis enim sit amet congue. Integer hendrerit,
+      enim quis scelerisque lobortis, sem diam venenatis diam, in condimentum
+      tellus dolor eget libero. Mauris gravida orci eget turpis vulputate, eget
+      imperdiet diam euismod. Aliquam sed ante molestie, viverra urna id, semper
+      nibh. Nullam erat purus, consequat nec diam in, consectetur malesuada
+      nibh. Sed viverra mollis justo ut tristique. Aenean fringilla, leo vitae
+      fermentum feugiat, nisl turpis scelerisque metus, eu dictum augue metus
+      sit amet nibh. Proin quis molestie leo, vitae facilisis justo.
     </p>
   </article>
 );
@@ -37,7 +47,7 @@ const TestParams = (
     <Param name="variable_name" type="query" required>
       Param description.
     </Param>
-    <Param name="variable_name_2" type="query" default="example_default">
+    <Param name="variable_name_2" type="query" defaultValue="example_default">
       Param description.
     </Param>
   </>

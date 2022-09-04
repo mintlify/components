@@ -3,7 +3,7 @@ import clsx from "clsx";
 export type ParamProps = {
   name: string;
   type?: string;
-  default?: string;
+  defaultValue?: string;
   required?: boolean;
   hidden?: boolean;
   children: any;
@@ -12,7 +12,7 @@ export type ParamProps = {
 export function Param({
   name,
   type,
-  default: defaultValue,
+  defaultValue,
   required = false,
   hidden = false,
   children,
