@@ -28,7 +28,7 @@ function AccordionItemCover({
     <button
       onClick={() => setOpen(!open)}
       className={clsx(
-        "flex flex-row items-center content-center w-full",
+        "not-prose flex flex-row items-center content-center w-full",
         isRounded && "rounded-t-xl",
         isRounded && !open && "rounded-b-xl",
         coverClass
