@@ -9,6 +9,7 @@ function AccordionItemCover({
   open,
   setOpen,
   icon,
+  iconColor,
   isRounded,
   coverClass,
 }: {
@@ -17,6 +18,7 @@ function AccordionItemCover({
   open: boolean;
   setOpen: (open: boolean) => any;
   icon?: ReactNode | IconDefinition;
+  iconColor?: string;
   isRounded: boolean;
   coverClass: string;
 }) {
@@ -35,7 +37,7 @@ function AccordionItemCover({
       aria-expanded={open}
     >
       <ToggleIcon open={open} />
-      <UserDefinedIcon icon={icon} />
+      <UserDefinedIcon icon={icon} color={iconColor} />
       <div className="leading-tight text-left">
         <p className="m-0 font-medium text-slate-900 dark:text-slate-200">
           {title}

@@ -38,6 +38,8 @@ let colorsDark = {
   ],
 };
 
+// We should refactor this class to support callbacks (ie. "onClick") instead of assuming
+// you want to pass in a link.
 export function Button({
   color = "gray",
   darkColor = color,

@@ -9,7 +9,6 @@ export default {
   component: Accordion,
 } as ComponentMeta<typeof Accordion>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Accordion> = (args) => (
   <Accordion {...args} />
 );

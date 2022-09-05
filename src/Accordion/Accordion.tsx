@@ -9,6 +9,7 @@ function Accordion({
   description,
   defaultOpen = false,
   icon,
+  iconColor,
   onChange,
   variant = "rounded",
   children,
@@ -24,6 +25,9 @@ function Accordion({
 
   /** Icon to display to the left */
   icon?: ReactNode | IconDefinition;
+
+  /** Icon's colour, will default to the text's colour if left undefined */
+  iconColor?: string;
 
   /** Callback when the Accordion is clicked with the new open state */
   onChange?: (open: boolean) => void;
@@ -54,6 +58,7 @@ function Accordion({
         open={open}
         setOpen={onClickOpen}
         icon={icon}
+        iconColor={iconColor}
         isRounded={variant === "rounded"}
         coverClass={coverClass}
       ></AccordionCover>
