@@ -10,7 +10,10 @@ export function Card({
   hoverHighlightColour,
   children,
 }: {
-  title: string;
+  /** Large title above children */
+  title?: string;
+
+  /** Icon to the top-left of the title */
   icon?: ReactNode | IconDefinition;
 
   /** Icon color, will default to the text colour if left undefined */
@@ -54,7 +57,16 @@ export function Card({
       >
         {title}
       </h2>
-      <p className="mt-1 text-slate-600 dark:text-slate-400">{children}</p>
+      <p
+        className={clsx(
+          "mt-1",
+          title
+            ? "text-slate-600 dark:text-slate-400"
+            : "text-slate-700 dark:text-slate-300"
+        )}
+      >
+        {children}
+      </p>
     </div>
   );
 
