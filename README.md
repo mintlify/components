@@ -4,17 +4,27 @@ Open-source library of UI components made with React and TailwindCSS. Checkout [
 
 Mintlify uses Mintlify Components in customers' docs. We encourage you to use them elsewhere on your site!
 
-# Designed for Next.js
-
-The project is designed for use with static side rendering where we don't have access to `document` or `window`. Thus, our webpack config has to use `mini-css-extract-plugin` instead of `style-loader`.
-
 # Documentation
+
+## Installation
+
+`npm install @mintlify/components`
+
+Import components like so:
+
+`import { Accordion, Card } from "@mintlify/components`
+
+## Using the Components
 
 [Storybook](https://main--63134bd5ae01f2a7717a0e47.chromatic.com/) has interactive demos.
 
 The [repo wiki](https://github.com/mintlify/components/wiki) explains how to use the components and contribute to the repo.
 
 Go to [Mintlify.com](https://www.mintlify.com/components/overview) for how to use the components in Mintlify's documentation platform.
+
+## Designed for Next.js
+
+The project is designed for use with static side rendering where we don't have access to `document` or `window`. Thus, our webpack config has to use `mini-css-extract-plugin` instead of `style-loader`.
 
 # Long Term Vision
 

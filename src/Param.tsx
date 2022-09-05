@@ -6,6 +6,10 @@ export type ParamProps = {
   defaultValue?: string;
   required?: boolean;
   hidden?: boolean;
+
+  /** Custom classes for the param variable name, can be used to customize its color */
+  nameClasses?: string;
+
   children: any;
 };
 
@@ -15,6 +19,7 @@ export function Param({
   defaultValue,
   required = false,
   hidden = false,
+  nameClasses,
   children,
 }: ParamProps) {
   if (hidden) {
@@ -29,7 +34,15 @@ export function Param({
     >
       <div className="flex font-mono text-sm">
         <div className="py-px flex-1 space-x-2 truncate">
-          <span className="px-1 py-px rounded-md font-medium bg-slate-50 text-primary dark:bg-slate-800 dark:text-primary-light border border-slate-200 dark:border-slate-700">
+          <span
+            className={clsx(
+              "px-1 py-px rounded-md font-medium bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700",
+              nameClasses,
+              (nameClasses && !nameClasses.includes("text-")) || !nameClasses
+                ? "dark:text-slate-200"
+                : undefined
+            )}
+          >
             {name}
           </span>
           {required && (

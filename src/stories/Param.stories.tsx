@@ -32,3 +32,12 @@ HasDefaultValue.args = {
   defaultValue: "123",
   children: "Param description.",
 };
+
+export const CustomColors = Template.bind({});
+CustomColors.args = {
+  name: "param_name",
+  type: "body",
+  defaultValue: "123",
+  nameClasses: "text-pink-700 dark:text-pink-300",
+  children: "Param description.",
+};

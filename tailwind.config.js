@@ -97,7 +97,6 @@ module.exports = {
             a: {
               fontWeight: theme("fontWeight.semibold"),
               textDecoration: "none",
-              borderBottom: `1px solid ${theme("colors.primary-light")}`,
             },
             "a:hover": {
               borderBottomWidth: "2px",
@@ -205,7 +204,6 @@ module.exports = {
             },
             a: {
               color: theme("colors.white"),
-              borderBottomColor: theme("colors.primary"),
             },
             strong: {
               color: theme("colors.slate.200"),
