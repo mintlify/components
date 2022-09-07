@@ -59,7 +59,7 @@ export function Frame({
         />
         <div
           className={clsx(
-            "relative rounded-xl overflow-auto",
+            "relative rounded-xl overflow-auto flex justify-center",
             paddingClassName,
             className
           )}
