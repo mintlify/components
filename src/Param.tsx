@@ -13,7 +13,11 @@ export type ParamProps = {
   children: any;
 };
 
-export function Param({
+export function Param(props: ParamProps) {
+  return <ParamField {...props} />
+}
+
+export function ParamField({
   name,
   type,
   defaultValue,
