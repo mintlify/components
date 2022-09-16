@@ -6,6 +6,7 @@ import { Info, Warning, Note, Tip, Check } from "./Callouts";
 import { Frame } from "./Frame";
 import { Param } from "./Param";
 import { UserDefinedIcon } from "./UserDefinedIcon";
+import { Tab, Tabs } from "./Tabs";
 
 // Import Tailwind
 import "./css/globals.css";
@@ -24,4 +25,6 @@ export {
   Frame,
   Param,
   UserDefinedIcon,
+  Tabs,
+  Tab,
 };
