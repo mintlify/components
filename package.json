@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Open-source library of UI components made with React and TailwindCSS.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

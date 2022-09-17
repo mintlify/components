@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from "clsx";
 
 function ExpandableCover({
   title,
@@ -16,16 +16,16 @@ function ExpandableCover({
   return (
     <button
       onClick={() => setOpen(!open)}
-      className={`flex flex-row items-center content-center w-full py-1 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 ${
-        !open ? 'rounded-b-xl' : ''
+      className={`not-prose flex flex-row items-center content-center w-full py-1 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 ${
+        !open ? "rounded-b-xl" : ""
       }`}
-      aria-controls={title + 'Children'}
+      aria-controls={title + "Children"}
       aria-expanded={open}
     >
       <ExpandableItemCoverIcon open={open} />
       <div className="ml-2 leading-tight text-left">
         <p className="m-0">
-          {open ? 'Hide' : 'Show'} {title}
+          {open ? "Hide" : "Show"} {title}
         </p>
         {description ? <p className="m-0">{description}</p> : null}
       </div>
@@ -37,7 +37,7 @@ function ExpandableItemCoverIcon({ open }: { open: boolean }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={clsx('h-3.5 w-3.5', open && 'rotate-90 -mt-1')}
+      className={clsx("h-3.5 w-3.5", open && "rotate-90 -mt-1")}
       viewBox="0 0 256 512"
       fill="currentColor"
     >
