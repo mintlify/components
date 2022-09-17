@@ -7,6 +7,7 @@ import { Frame } from "./Frame";
 import { Param } from "./Param";
 import { UserDefinedIcon } from "./UserDefinedIcon";
 import { Tab, Tabs } from "./Tabs";
+import { Expandable } from "./Expandable";
 
 // Import Tailwind
 import "./css/globals.css";
@@ -27,4 +28,5 @@ export {
   UserDefinedIcon,
   Tabs,
   Tab,
+  Expandable,
 };
