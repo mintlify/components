@@ -2,7 +2,7 @@ import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Accordion } from "../Accordion";
-import { Param } from "../Param";
+import { ParamField } from "../Param";
 
 export default {
   title: "Interactive/Accordion",
@@ -43,12 +43,16 @@ const TestText = (
 
 const TestParams = (
   <>
-    <Param name="variable_name" type="query" required>
+    <ParamField name="variable_name" type="query" required>
       Param description.
-    </Param>
-    <Param name="variable_name_2" type="query" defaultValue="example_default">
+    </ParamField>
+    <ParamField
+      name="variable_name_2"
+      type="query"
+      defaultValue="example_default"
+    >
       Param description.
-    </Param>
+    </ParamField>
   </>
 );
 

@@ -1,14 +1,16 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Param } from "../Param";
+import { ParamField } from "../Param";
 
 export default {
   title: "Display/Param",
-  component: Param,
-} as ComponentMeta<typeof Param>;
+  component: ParamField,
+} as ComponentMeta<typeof ParamField>;
 
-const Template: ComponentStory<typeof Param> = (args) => <Param {...args} />;
+const Template: ComponentStory<typeof ParamField> = (args) => (
+  <ParamField {...args} />
+);
 
 export const JustNameAndType = Template.bind({});
 JustNameAndType.args = {
