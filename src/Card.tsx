@@ -57,7 +57,7 @@ export function Card({
       >
         {title}
       </h2>
-      <p
+      <span
         className={clsx(
           "mt-1",
           title
@@ -66,7 +66,7 @@ export function Card({
         )}
       >
         {children}
-      </p>
+      </span>
     </div>
   );
 
