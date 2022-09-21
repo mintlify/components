@@ -37,8 +37,8 @@ export function ParamField({
       )}
     >
       <div className="flex font-mono text-sm">
-        <div className="py-px flex-1 space-x-2 truncate">
-          {name && (
+        {name && (
+          <div className="py-px flex-1 space-x-2 truncate">
             <span
               className={clsx(
                 "px-1 py-px rounded-md font-medium bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700",
@@ -50,16 +50,18 @@ export function ParamField({
             >
               {name}
             </span>
-          )}
-          {required && (
-            <span className="text-slate-500 dark:text-slate-300">Required</span>
-          )}
-          {defaultValue && (
-            <span className="text-slate-500 dark:text-slate-300">
-              Default: {defaultValue}
-            </span>
-          )}
-        </div>
+            {required && (
+              <span className="text-slate-500 dark:text-slate-300">
+                Required
+              </span>
+            )}
+            {defaultValue && (
+              <span className="text-slate-500 dark:text-slate-300">
+                Default: {defaultValue}
+              </span>
+            )}
+          </div>
+        )}
         {type && (
           <div className="text-slate-600 dark:text-slate-300">{type}</div>
         )}
