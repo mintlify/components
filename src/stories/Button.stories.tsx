@@ -15,3 +15,10 @@ Default.args = {
   href: "https://mintlify.com",
   children: "Button Text",
 };
+
+export const Indigo = Template.bind({});
+Indigo.args = {
+  href: "https://mintlify.com",
+  children: "Button Text",
+  color: "indigo",
+};

@@ -11,8 +11,6 @@ function ExpandableCover({
   open: boolean;
   setOpen: (open: boolean) => any;
 }) {
-  // We round the button itself so when a web browser in keyboard navigation mode highlights the button
-  // the highlight will follow the corners.
   return (
     <button
       onClick={() => setOpen(!open)}
