@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Open-source library of UI components made with React and TailwindCSS.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -42,7 +42,7 @@
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
     "@tailwindcss/typography": "^0.5.7",
-    "@types/react": "^18.0.18",
+    "@types/react": "^18.0.21",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.2.5",
     "chromatic": "^6.9.0",

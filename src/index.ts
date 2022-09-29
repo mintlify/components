@@ -7,6 +7,7 @@ import { Frame } from "./Frame";
 import { Param } from "./Param";
 import { UserDefinedIcon } from "./UserDefinedIcon";
 import { Tab, Tabs } from "./Tabs";
+import { Tooltip } from "./Tooltip";
 import { Expandable } from "./Expandable";
 
 // Import Tailwind
@@ -22,6 +23,7 @@ export {
   Warning,
   Note,
   Tip,
+  Tooltip,
   Check,
   Frame,
   Param,

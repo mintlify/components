@@ -41,20 +41,17 @@ let colorsDark = {
 // We should refactor this class to support callbacks (ie. "onClick") instead of assuming
 // you want to pass in a link.
 export function Button({
+  href,
   color = "gray",
   darkColor = color,
-  href,
-  children,
-  className = "",
   reverse = false,
-  ...props
+  children,
 }: {
-  color: ColorInterface;
-  darkColor: ColorInterface;
   href: string;
+  color?: ColorInterface;
+  darkColor?: ColorInterface;
+  reverse?: boolean;
   children: ReactNode;
-  className: string;
-  reverse: boolean;
 } & React.LinkHTMLAttributes<HTMLElement>) {
   let colorClasses = typeof color === "string" ? colors[color] : color;
   let darkColorClasses =
@@ -66,10 +63,8 @@ export function Button({
         "group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2",
         colorClasses[0],
         darkColorClasses[0],
-        className,
         reverse && "flex-row-reverse"
       )}
-      {...props}
       href={href}
     >
       {children}
