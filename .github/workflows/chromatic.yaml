@@ -16,6 +16,11 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: yarn
       - name: Publish to Chromatic
+        if: github.ref != 'refs/heads/main'
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Publish to Chromatic auto-accepting changes
         if: github.ref == 'refs/heads/main'
         uses: chromaui/action@v1
         with:
