@@ -46,7 +46,7 @@ function underlineWhenTextOnly(children: ReactNode) {
   }
 
   return (
-    <span className="underline decoration-dotted decoration-2 underline-offset-4 decoration-slate-400 dark:decoration-slate-600">
+    <span className="underline decoration-dotted decoration-2 underline-offset-4 decoration-slate-400 dark:decoration-slate-500">
       {children}
     </span>
   );
