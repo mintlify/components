@@ -46,7 +46,7 @@ function underlineWhenTextOnly(children: ReactNode) {
   }
 
   return (
-    <span className="border-b-2 border-dashed border-slate-400 hover:border-slate-500 dark:border-slate-600 dark:hover:border-slate-500">
+    <span className="underline decoration-dashed decoration-2 underline-offset-[6px] decoration-slate-300 hover:decoration-slate-500 dark:decoration-slate-700 dark:hover:decoration-slate-500">
       {children}
     </span>
   );
