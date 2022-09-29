@@ -46,7 +46,7 @@ function underlineWhenTextOnly(children: ReactNode) {
   }
 
   return (
-    <span className="border-b-2 border-dashed border-slate-400 dark:border-slate-600">
+    <span className="border-b-2 border-dashed border-slate-400 hover:border-slate-500 dark:border-slate-600 dark:hover:border-slate-500">
       {children}
     </span>
   );
