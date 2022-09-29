@@ -12,7 +12,7 @@ export function Tooltip({
   }
 
   return (
-    <span className="group z-10 flex absolute cursor-pointer">
+    <span className="group z-10 flex absolute">
       {underlineWhenTextOnly(children)}
       <div className="hidden group-hover:flex max-w-full min-w-fit whitespace-nowrap absolute bottom-full left-1/2 mb-1 pb-1 -translate-x-1/2">
         <div
@@ -46,7 +46,7 @@ function underlineWhenTextOnly(children: ReactNode) {
   }
 
   return (
-    <span className="underline decoration-dotted decoration-2 underline-offset-[6px] decoration-slate-300 hover:decoration-slate-500 dark:decoration-slate-700 dark:hover:decoration-slate-500">
+    <span className="underline decoration-dotted decoration-2 underline-offset-[6px] decoration-slate-400 dark:decoration-slate-600">
       {children}
     </span>
   );
