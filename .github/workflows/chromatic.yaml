@@ -13,8 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install dependencies
+        if: github.ref == 'refs/heads/main'
         run: yarn
       - name: Publish to Chromatic
+        if: github.ref == 'refs/heads/main'
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true
