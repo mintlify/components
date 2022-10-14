@@ -34,7 +34,7 @@ export function Card({
     setIsHover(false);
   };
 
-  const card = (
+  return (
     <div
       className={clsx(
         "not-prose group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden px-6 py-5 w-full",
@@ -69,6 +69,4 @@ export function Card({
       </span>
     </div>
   );
-
-  return card;
 }
