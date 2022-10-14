@@ -9,6 +9,7 @@ export function Card({
   iconColor,
   hoverHighlightColour,
   href,
+  onClick,
   children,
 }: {
   /** Large title above children */
@@ -25,6 +26,9 @@ export function Card({
 
   /** Link to make the entire card clickable */
   href?: string;
+
+  /** Function to trigger when the card is clicked */
+  onClick?: any;
 
   children: ReactNode;
 }) {
@@ -55,6 +59,7 @@ export function Card({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       href={href}
+      onClick={onClick}
     >
       <UserDefinedIcon icon={icon} size={6} color={iconColor} />
       <h2
