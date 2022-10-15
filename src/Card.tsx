@@ -48,7 +48,7 @@ export function Card({
   return (
     <Tag
       className={clsx(
-        "block not-prose group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden px-6 py-5 w-full",
+        "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden px-6 py-5 w-full",
         hoverHighlightColour && "cursor-pointer"
       )}
       style={
