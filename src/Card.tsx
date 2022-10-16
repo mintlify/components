@@ -59,7 +59,7 @@ export function Card({
       </h2>
       <span
         className={clsx(
-          "mt-1",
+          "mt-1 font-normal",
           title
             ? "text-slate-600 dark:text-slate-400"
             : "text-slate-700 dark:text-slate-300"
