@@ -8,6 +8,8 @@ export function Card({
   icon,
   iconColor,
   hoverHighlightColour,
+  href,
+  onClick,
   children,
 }: {
   /** Large title above children */
@@ -22,6 +24,12 @@ export function Card({
   /** Color to highlight the border with when hovering over the card. Will not highlight if excluded */
   hoverHighlightColour?: string;
 
+  /** Link to make the entire card clickable */
+  href?: string;
+
+  /** Function to trigger when the card is clicked */
+  onClick?: any;
+
   children: ReactNode;
 }) {
   // Highlight the card with a dynamic color
@@ -34,10 +42,13 @@ export function Card({
     setIsHover(false);
   };
 
-  const card = (
-    <div
+  // Use an <a> tag if we are linking to things
+  const Tag = href ? "a" : "div";
+
+  return (
+    <Tag
       className={clsx(
-        "not-prose group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden px-6 py-5 w-full",
+        "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden px-6 py-5 w-full",
         hoverHighlightColour && "cursor-pointer"
       )}
       style={
@@ -47,6 +58,8 @@ export function Card({
       }
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      href={href}
+      onClick={onClick}
     >
       <UserDefinedIcon icon={icon} size={6} color={iconColor} />
       <h2
@@ -67,8 +80,6 @@ export function Card({
       >
         {children}
       </span>
-    </div>
+    </Tag>
   );
-
-  return card;
 }
