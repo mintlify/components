@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import clsx from "clsx";
+import isAbsoluteUrl from "is-absolute-url";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { UserDefinedIcon } from "./UserDefinedIcon";
 
@@ -44,6 +45,10 @@ export function Card({
 
   // Use an <a> tag if we are linking to things
   const Tag = href ? "a" : "div";
+  const absoluteUrlAttributes =
+    href && isAbsoluteUrl(href)
+      ? { target: "_blank", ref: "noopener noreferrer" }
+      : {};
 
   return (
     <Tag
@@ -60,6 +65,7 @@ export function Card({
       onMouseLeave={handleMouseLeave}
       href={href}
       onClick={onClick}
+      {...absoluteUrlAttributes}
     >
       <UserDefinedIcon icon={icon} size={6} color={iconColor} />
       <h2

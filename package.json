@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "Open-source library of UI components made with React and TailwindCSS.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -71,6 +71,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.6.6",
     "assert": "^2.0.0",
-    "clsx": "^1.1.1"
+    "clsx": "^1.1.1",
+    "is-absolute-url": "^4.0.1"
   }
 }
