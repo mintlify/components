@@ -62,7 +62,7 @@ function Accordion({
         isRounded={variant === "rounded"}
         coverClass={coverClass}
       ></AccordionCover>
-      <dd className={clsx(contentClass, !open && "hidden")}>{children}</dd>
+      <div className={clsx(contentClass, !open && "hidden")}>{children}</div>
     </div>
   );
 }

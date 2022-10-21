@@ -32,7 +32,7 @@ function Expandable({
         open={open}
         setOpen={onClickOpen}
       />
-      <dd
+      <div
         id={title + "Children"}
         className={clsx(
           "mt-2 pt-1 mb-4 mx-[7px] px-4 border-l border-slate-100 dark:border-slate-800",
@@ -40,7 +40,7 @@ function Expandable({
         )}
       >
         {children}
-      </dd>
+      </div>
     </div>
   );
 }
