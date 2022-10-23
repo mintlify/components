@@ -1,6 +1,5 @@
 import { ReactNode, useState } from "react";
 import clsx from "clsx";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import AccordionCover from "./AccordionCover";
 import getAccordionStyleFromVariant from "./getAccordionStyleFromType";
 
@@ -9,6 +8,7 @@ function Accordion({
   description,
   defaultOpen = false,
   icon,
+  iconType,
   iconColor,
   onChange,
   variant = "rounded",
@@ -24,7 +24,10 @@ function Accordion({
   defaultOpen: boolean;
 
   /** Icon to display to the left */
-  icon?: ReactNode | IconDefinition;
+  icon?: ReactNode | string;
+
+  /** Icon type defined by Font Awesome */
+  iconType?: string;
 
   /** Icon's colour, will default to the text's colour if left undefined */
   iconColor?: string;
@@ -58,6 +61,7 @@ function Accordion({
         open={open}
         setOpen={onClickOpen}
         icon={icon}
+        iconType={iconType}
         iconColor={iconColor}
         isRounded={variant === "rounded"}
         coverClass={coverClass}

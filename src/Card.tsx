@@ -1,11 +1,11 @@
 import { ReactNode, useState } from "react";
 import clsx from "clsx";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { UserDefinedIcon } from "./UserDefinedIcon";
 
 export function Card({
   title,
   icon,
+  iconType,
   iconColor,
   hoverHighlightColour,
   href,
@@ -16,7 +16,10 @@ export function Card({
   title?: string;
 
   /** Icon to the top-left of the title */
-  icon?: ReactNode | IconDefinition;
+  icon?: ReactNode | string;
+
+  /** The type of the icon defined by Font Awesome. Defaults to 'regular' */
+  iconType?: string;
 
   /** Icon color, will default to the text colour if left undefined */
   iconColor?: string;
@@ -61,7 +64,7 @@ export function Card({
       href={href}
       onClick={onClick}
     >
-      <UserDefinedIcon icon={icon} size={6} color={iconColor} />
+      <UserDefinedIcon icon={icon} type={iconType} size={6} color={iconColor} />
       <h2
         className={clsx(
           "font-semibold text-base text-slate-800 dark:text-white",

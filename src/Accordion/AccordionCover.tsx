@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { UserDefinedIcon } from "../UserDefinedIcon";
 
 function AccordionItemCover({
@@ -9,6 +8,7 @@ function AccordionItemCover({
   open,
   setOpen,
   icon,
+  iconType,
   iconColor,
   isRounded,
   coverClass,
@@ -17,7 +17,8 @@ function AccordionItemCover({
   description?: string;
   open: boolean;
   setOpen: (open: boolean) => any;
-  icon?: ReactNode | IconDefinition;
+  icon?: ReactNode | string;
+  iconType?: string;
   iconColor?: string;
   isRounded: boolean;
   coverClass: string;
@@ -37,7 +38,7 @@ function AccordionItemCover({
       aria-expanded={open}
     >
       <ToggleIcon open={open} />
-      <UserDefinedIcon icon={icon} color={iconColor} />
+      <UserDefinedIcon icon={icon} type={iconType} color={iconColor} />
       <div className="leading-tight text-left">
         <p className="m-0 font-medium text-slate-900 dark:text-slate-200">
           {title}
