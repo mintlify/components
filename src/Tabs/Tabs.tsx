@@ -1,11 +1,4 @@
-import clsx from "clsx";
-import {
-  useState,
-  ReactNode,
-  ReactElement,
-  Children,
-  cloneElement,
-} from "react";
+import { useState, ReactElement, Children } from "react";
 import Tab from "./Tab";
 
 export default function Tabs({ children }: { children: ReactElement[] }) {
