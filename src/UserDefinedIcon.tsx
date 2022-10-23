@@ -4,36 +4,15 @@ import clsx from "clsx";
 // to get around just-in-time compiling not detecting it.
 export function UserDefinedIcon({
   icon,
-  type = "regular",
   size = 4,
   color,
 }: {
-  icon: React.ReactNode | string;
-  type?: string;
+  icon: React.ReactNode;
   size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 12;
   color?: string;
 }) {
   if (icon == null) {
     return null;
-  }
-
-  // Icon itself is an array with svg definition
-  if (typeof icon === "string") {
-    const iconType = isBrandsIcon(icon) ? "brands" : type;
-    return (
-      <svg
-        className={clsx(
-          `h-${size} w-${size}`,
-          !color && "bg-slate-800 dark:bg-slate-100"
-        )}
-        style={{
-          WebkitMaskImage: `url(https://deo472wkghxhm.cloudfront.net/${iconType}/${icon}.svg)`,
-          WebkitMaskRepeat: "no-repeat",
-          WebkitMaskPosition: "center",
-          backgroundColor: color,
-        }}
-      ></svg>
-    );
   }
 
   // There are likely aspect ratio issues with the way heights and widths are set here.

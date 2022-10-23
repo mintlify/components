@@ -5,8 +5,6 @@ import { UserDefinedIcon } from "./UserDefinedIcon";
 export function Card({
   title,
   icon,
-  iconType,
-  iconColor,
   hoverHighlightColour,
   href,
   onClick,
@@ -17,12 +15,6 @@ export function Card({
 
   /** Icon to the top-left of the title */
   icon?: ReactNode | string;
-
-  /** The type of the icon defined by Font Awesome. Defaults to 'regular' */
-  iconType?: string;
-
-  /** Icon color, will default to the text colour if left undefined */
-  iconColor?: string;
 
   /** Color to highlight the border with when hovering over the card. Will not highlight if excluded */
   hoverHighlightColour?: string;
@@ -64,7 +56,7 @@ export function Card({
       href={href}
       onClick={onClick}
     >
-      <UserDefinedIcon icon={icon} type={iconType} size={6} color={iconColor} />
+      <UserDefinedIcon icon={icon} size={6} />
       <h2
         className={clsx(
           "font-semibold text-base text-slate-800 dark:text-white",
