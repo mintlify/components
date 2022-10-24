@@ -5,7 +5,7 @@ import { UserDefinedIcon } from "./UserDefinedIcon";
 export function Card({
   title,
   icon,
-  hoverHighlightColour,
+  className,
   href,
   onClick,
   children,
@@ -16,8 +16,8 @@ export function Card({
   /** Icon to the top-left of the title */
   icon?: ReactNode | string;
 
-  /** Color to highlight the border with when hovering over the card. Will not highlight if excluded */
-  hoverHighlightColour?: string;
+  /** Additional classes */
+  className?: string;
 
   /** Link to make the entire card clickable */
   href?: string;
@@ -27,16 +27,6 @@ export function Card({
 
   children: ReactNode;
 }) {
-  // Highlight the card with a dynamic color
-  const [isHover, setIsHover] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHover(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHover(false);
-  };
-
   // Use an <a> tag if we are linking to things
   const Tag = href ? "a" : "div";
 
@@ -44,15 +34,9 @@ export function Card({
     <Tag
       className={clsx(
         "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden px-6 py-5 w-full",
-        href || hoverHighlightColour ? "cursor-pointer" : undefined
+        href && "cursor-pointer",
+        className
       )}
-      style={
-        hoverHighlightColour && isHover
-          ? { borderColor: hoverHighlightColour }
-          : undefined
-      }
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       href={href}
       onClick={onClick}
     >

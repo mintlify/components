@@ -10,12 +10,13 @@ export default {
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
-export const WithIconAndHover = Template.bind({});
-WithIconAndHover.args = {
+export const WithHover = Template.bind({});
+WithHover.args = {
   title: "Card Title",
-  icon: "book-open",
   iconType: "duotone",
   children: "Card text.",
+  href: "https://google.com",
+  className: "hover:border-slate-800 dark:hover:border-slate-200",
 };
 
 export const WithCustomIconAndHover = Template.bind({});
