@@ -41,7 +41,7 @@ export function PillSelect({
   return (
     <div className="relative">
       <Menu>
-        <Menu.Button className="text-xs text-slate-500 dark:text-slate-400 leading-5 font-semibold bg-slate-400/10 rounded-full py-1 px-3 flex items-center space-x-2 hover:bg-slate-400/20">
+        <Menu.Button className="text-xs text-slate-500 dark:text-slate-400 leading-5 font-semibold !bg-slate-400/10 rounded-full py-1 px-3 flex items-center space-x-2 hover:bg-slate-400/20">
           {selectedOption}
           <svg
             width="6"
