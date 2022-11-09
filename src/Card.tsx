@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
 import { UserDefinedIcon } from "./UserDefinedIcon";
+import isAbsoluteUrl from "is-absolute-url";
 
 export function Card({
   title,
@@ -30,6 +31,11 @@ export function Card({
   // Use an <a> tag if we are linking to things
   const Tag = href ? "a" : "div";
 
+  const openLinksInNewTab = isAbsoluteUrl(href ?? "");
+  const newTabProps = openLinksInNewTab
+    ? { target: "_blank", rel: "noreferrer" }
+    : {};
+
   return (
     <Tag
       className={clsx(
@@ -39,6 +45,7 @@ export function Card({
       )}
       href={href}
       onClick={onClick}
+      {...newTabProps}
     >
       <UserDefinedIcon icon={icon} size={6} />
       <h2
