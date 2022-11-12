@@ -8,7 +8,8 @@
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "strict": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "src/stories"]
