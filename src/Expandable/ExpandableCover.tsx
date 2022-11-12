@@ -14,7 +14,7 @@ function ExpandableCover({
   return (
     <button
       onClick={() => setOpen(!open)}
-      className={`not-prose mt-1 flex flex-row items-center content-center w-full py-1 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 ${
+      className={`not-prose mt-1.5 flex flex-row items-center content-center w-full py-1 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 ${
         !open ? "rounded-b-xl" : ""
       }`}
       aria-controls={title + "Children"}
@@ -35,7 +35,7 @@ function ExpandableItemCoverIcon({ open }: { open: boolean }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={clsx("h-3.5 w-3.5", open && "rotate-90 -mt-1")}
+      className={clsx("h-3 w-3", open && "rotate-90 -mt-1")}
       viewBox="0 0 256 512"
       fill="currentColor"
     >
