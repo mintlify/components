@@ -1,10 +1,12 @@
 import clsx from "clsx";
 
+// required and optional should be merged into a single prop that allows arbitrary text
 export type ParamProps = {
   name: string;
   type?: string;
   defaultValue?: string;
   required?: boolean;
+  optional?: boolean;
   hidden?: boolean;
 
   /** Custom classes for the param variable name, can be used to customize its color */
@@ -22,6 +24,7 @@ export function ParamField({
   type,
   defaultValue,
   required = false,
+  optional = false,
   hidden = false,
   nameClasses,
   children,
@@ -53,6 +56,11 @@ export function ParamField({
             {required && (
               <span className="text-slate-500 dark:text-slate-300">
                 Required
+              </span>
+            )}
+            {optional && (
+              <span className="text-slate-500 dark:text-slate-300">
+                Optional
               </span>
             )}
             {defaultValue && (

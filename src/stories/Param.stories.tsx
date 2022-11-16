@@ -27,6 +27,23 @@ IsRequired.args = {
   children: "Param description.",
 };
 
+export const IsOptional = Template.bind({});
+IsOptional.args = {
+  name: "param_name",
+  type: "body",
+  optional: true,
+  children: "Param description.",
+};
+
+export const IsBothRequiredAndOptional = Template.bind({});
+IsBothRequiredAndOptional.args = {
+  name: "param_name",
+  type: "body",
+  required: true,
+  optional: true,
+  children: "Param description.",
+};
+
 export const HasDefaultValue = Template.bind({});
 HasDefaultValue.args = {
   name: "param_name",
