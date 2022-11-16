@@ -25,6 +25,9 @@ const TestParamFields = (
     >
       Param description.
     </ParamField>
+    <ParamField name="variable_name_3" type="body" optional={true}>
+      Param description.
+    </ParamField>
   </>
 );
 
