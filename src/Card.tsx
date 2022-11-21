@@ -46,7 +46,11 @@ export function Card({
       onClick={onClick}
       {...newTabProps}
     >
-      {icon ? <div className="h-6 w-6">{icon}</div> : null}
+      {icon ? (
+        <div className="h-6 w-6 fill-slate-800 dark:fill-slate-100 text-slate-800 dark:text-slate-100">
+          {icon}
+        </div>
+      ) : null}
       <h2
         className={clsx(
           "font-semibold text-base text-slate-800 dark:text-white",
