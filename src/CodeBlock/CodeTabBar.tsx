@@ -2,18 +2,18 @@ import { ReactElement } from "react";
 
 export function CodeTabBar({
   filename,
-  accentColor,
+  fileNameColor,
   children,
 }: {
   filename: string;
-  accentColor?: string;
+  fileNameColor?: string;
   children?: ReactElement;
 }) {
   return (
     <div className="flex text-slate-400 text-xs leading-6">
       <div
         className="flex-none border-t border-b border-t-transparent px-4 py-1 flex items-center"
-        style={{ color: accentColor, borderBottomColor: accentColor }}
+        style={{ color: fileNameColor, borderBottomColor: fileNameColor }}
       >
         {filename}
       </div>

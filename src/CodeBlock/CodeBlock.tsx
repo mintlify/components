@@ -7,13 +7,18 @@ import { CopyToClipboardButton } from "./CopyToClipboardButton";
 
 export function CodeBlock({
   filename,
-  accentColor,
+  fileNameColor,
   copiedTooltipColor,
   children,
 }: {
   filename?: string;
-  accentColor?: string;
+
+  /** Color of the filename text and the border underneath it when the content is being shown */
+  fileNameColor?: string;
+
+  /** Background color for the tooltip saying Copied when you click the clipboard */
   copiedTooltipColor?: string;
+
   children?: any;
 }) {
   const [hydrated, setHydrated] = useState(false);
@@ -30,11 +35,11 @@ export function CodeBlock({
       )}
     >
       {filename ? (
-        <CodeTabBar filename={filename} accentColor={accentColor}>
+        <CodeTabBar filename={filename} fileNameColor={fileNameColor}>
           {hydrated ? (
             <CopyToClipboardButton
               textToCopy={getNodeText(children)}
-              copiedTooltipColor={copiedTooltipColor ?? accentColor}
+              copiedTooltipColor={copiedTooltipColor ?? fileNameColor}
             />
           ) : undefined}
         </CodeTabBar>
