@@ -2,6 +2,7 @@ import { Accordion, AccordionGroup } from "./Accordion";
 import { Button } from "./Button";
 import { Card } from "./Card";
 import { CardGroup } from "./CardGroup";
+import { CodeBlock } from "./CodeBlock";
 import { Info, Warning, Note, Tip, Check } from "./Callouts";
 import { Frame } from "./Frame";
 import { Param } from "./Param";
@@ -19,6 +20,7 @@ export {
   Button,
   Card,
   CardGroup,
+  CodeBlock,
   Check,
   Expandable,
   Frame,
