@@ -20,7 +20,7 @@ Add the following at the start of your `main.css` file:
 
 Import components like so:
 
-`import { Accordion, Card } from "@mintlify/components`
+`import { Accordion, Card } from "@mintlify/components"`
 
 # Documentation
 
