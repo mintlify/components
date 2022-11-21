@@ -7,5 +7,9 @@ export function CardGroup({
   children: ReactNode;
   cols?: 1 | 2 | 3 | 4;
 }) {
-  return <div className={`grid sm:grid-cols-${cols} gap-x-4`}>{children}</div>;
+  return (
+    <div className={`not-prose grid sm:grid-cols-${cols} gap-x-4`}>
+      {children}
+    </div>
+  );
 }

@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
-import { UserDefinedIcon } from "../UserDefinedIcon";
 
 function AccordionItemCover({
   title,
@@ -34,7 +33,7 @@ function AccordionItemCover({
       aria-expanded={open}
     >
       <ToggleIcon open={open} />
-      <UserDefinedIcon icon={icon} />
+      {icon ? <div className="h-4 w-4">{icon}</div> : null}
       <div className="leading-tight text-left">
         <p className="m-0 font-medium text-slate-900 dark:text-slate-200">
           {title}

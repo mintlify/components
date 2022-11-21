@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
-import { UserDefinedIcon } from "./UserDefinedIcon";
 import isAbsoluteUrl from "is-absolute-url";
 
 export function Card({
@@ -15,7 +14,7 @@ export function Card({
   title?: string;
 
   /** Icon to the top-left of the title */
-  icon?: ReactNode | string;
+  icon?: ReactNode;
 
   /** Additional classes */
   className?: string;
@@ -26,7 +25,7 @@ export function Card({
   /** Function to trigger when the card is clicked */
   onClick?: any;
 
-  children: ReactNode;
+  children?: ReactNode;
 }) {
   // Use an <a> tag if we are linking to things
   const Tag = href ? "a" : "div";
@@ -47,7 +46,7 @@ export function Card({
       onClick={onClick}
       {...newTabProps}
     >
-      <UserDefinedIcon icon={icon} size={6} />
+      {icon ? <div className="h-6 w-6">{icon}</div> : null}
       <h2
         className={clsx(
           "font-semibold text-base text-slate-800 dark:text-white",

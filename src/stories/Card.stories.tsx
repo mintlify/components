@@ -10,17 +10,17 @@ export default {
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
-export const WithHover = Template.bind({});
-WithHover.args = {
+export const WithCustomClasses = Template.bind({});
+WithCustomClasses.args = {
   title: "Card Title",
-  iconType: "duotone",
   children: "Card text.",
   href: "https://google.com",
-  className: "hover:border-slate-800 dark:hover:border-slate-200",
+  className:
+    "bg-red-100 border-red-200 hover:border-red-800 dark:border-red-600 dark:hover:border-red-400",
 };
 
-export const WithCustomIconAndHover = Template.bind({});
-WithCustomIconAndHover.args = {
+export const WithCustomIcon = Template.bind({});
+WithCustomIcon.args = {
   title: "Card Title",
   icon: (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -28,7 +28,6 @@ WithCustomIconAndHover.args = {
     </svg>
   ),
   iconColor: "#ff0000",
-  hoverHighlightColour: "#0000ff",
   children: "Card text.",
 };
 
@@ -40,6 +39,5 @@ NoTitle.args = {
     </svg>
   ),
   iconColor: "#ff0000",
-  hoverHighlightColour: "#0000ff",
   children: "The card text should be darker if there is no title.",
 };

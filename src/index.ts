@@ -6,7 +6,6 @@ import { Info, Warning, Note, Tip, Check } from "./Callouts";
 import { Frame } from "./Frame";
 import { Param } from "./Param";
 import { PillSelect } from "./PillSelect";
-import { UserDefinedIcon } from "./UserDefinedIcon";
 import { Tab, Tabs } from "./Tabs";
 import { Tooltip } from "./Tooltip";
 import { Expandable } from "./Expandable";
@@ -32,5 +31,4 @@ export {
   Tip,
   Tab,
   Tooltip,
-  UserDefinedIcon,
 };
