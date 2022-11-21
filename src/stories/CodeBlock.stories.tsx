@@ -22,7 +22,7 @@ WithFileName.args = {
 export const FileNameGreenAccents = Template.bind({});
 FileNameGreenAccents.args = {
   filename: "Example File Name",
-  accentColor: "#00ff00",
+  filenameColor: "#00ff00",
 };
 
 export const NoFileName = Template.bind({});
