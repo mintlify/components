@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
-import { UserDefinedIcon } from "./UserDefinedIcon";
 import isAbsoluteUrl from "is-absolute-url";
 
 export function Card({
@@ -15,7 +14,7 @@ export function Card({
   title?: string;
 
   /** Icon to the top-left of the title */
-  icon?: ReactNode | string;
+  icon?: ReactNode;
 
   /** Additional classes */
   className?: string;
@@ -26,10 +25,53 @@ export function Card({
   /** Function to trigger when the card is clicked */
   onClick?: any;
 
-  children: ReactNode;
+  children?: ReactNode;
 }) {
-  // Use an <a> tag if we are linking to things
-  const Tag = href ? "a" : "div";
+  return (
+    <div
+      className={clsx(
+        "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden w-full",
+        href && "cursor-pointer",
+        !href && "px-6 py-5", // Padding is set in OptionalLink when we have a link so the entire Card is clickable
+        className
+      )}
+      onClick={onClick}
+    >
+      <OptionalLink href={href}>
+        {icon ? <div className="h-6 w-6">{icon}</div> : null}
+        <h2
+          className={clsx(
+            "font-semibold text-base text-slate-800 dark:text-white",
+            icon !== null && icon !== undefined && "mt-4"
+          )}
+        >
+          {title}
+        </h2>
+        <span
+          className={clsx(
+            "mt-1 font-normal",
+            title
+              ? "text-slate-600 dark:text-slate-400"
+              : "text-slate-700 dark:text-slate-300"
+          )}
+        >
+          {children}
+        </span>
+      </OptionalLink>
+    </div>
+  );
+}
+
+function OptionalLink({
+  href,
+  children,
+}: {
+  href: string | undefined;
+  children: any;
+}) {
+  if (!href) {
+    return children;
+  }
 
   const openLinksInNewTab = isAbsoluteUrl(href ?? "");
   const newTabProps = openLinksInNewTab
@@ -37,35 +79,8 @@ export function Card({
     : {};
 
   return (
-    <Tag
-      className={clsx(
-        "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden px-6 py-5 w-full",
-        href && "cursor-pointer",
-        className
-      )}
-      href={href}
-      onClick={onClick}
-      {...newTabProps}
-    >
-      <UserDefinedIcon icon={icon} size={6} />
-      <h2
-        className={clsx(
-          "font-semibold text-base text-slate-800 dark:text-white",
-          icon !== null && icon !== undefined && "mt-4"
-        )}
-      >
-        {title}
-      </h2>
-      <span
-        className={clsx(
-          "mt-1 font-normal",
-          title
-            ? "text-slate-600 dark:text-slate-400"
-            : "text-slate-700 dark:text-slate-300"
-        )}
-      >
-        {children}
-      </span>
-    </Tag>
+    <a href={href} {...newTabProps} className="block px-6 py-5">
+      {children}
+    </a>
   );
 }
