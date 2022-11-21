@@ -214,6 +214,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("tailwind-children"),
     function ({ matchUtilities, theme }) {
       matchUtilities(
         {

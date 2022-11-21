@@ -9,11 +9,21 @@ export default {
 } as ComponentMeta<typeof CodeBlock>;
 
 const Template: ComponentStory<typeof CodeBlock> = (args) => (
-  <CodeBlock {...args} />
+  <CodeBlock {...args}>
+    <p>Example Code</p>
+  </CodeBlock>
 );
 
 export const WithFileName = Template.bind({});
 WithFileName.args = {
   filename: "Example File Name",
-  children: <p>Example Code</p>,
 };
+
+export const FileNameGreenAccents = Template.bind({});
+FileNameGreenAccents.args = {
+  filename: "Example File Name",
+  accentColor: "#00ff00",
+};
+
+export const NoFileName = Template.bind({});
+NoFileName.args = {};
