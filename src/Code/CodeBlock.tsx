@@ -71,7 +71,7 @@ function CodeTabBar({
   children?: ReactElement;
 }) {
   return (
-    <div className="flex text-slate-300 text-xs leading-6">
+    <div className="flex text-slate-400 text-xs leading-6">
       <div
         className="flex-none border-t border-b border-t-transparent px-4 py-1 flex items-center"
         style={{ color: filenameColor, borderBottomColor: filenameColor }}

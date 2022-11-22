@@ -131,7 +131,7 @@ function TabItem({
 
   return (
     <Tab
-      className="flex items-center relative overflow-hidden px-4 py-1 text-slate-300 outline-none"
+      className="flex items-center relative overflow-hidden px-4 py-1 text-slate-400 outline-none"
       style={{ color: isSelected ? selectedColor : "" }}
     >
       <span className="z-10">{children}</span>
