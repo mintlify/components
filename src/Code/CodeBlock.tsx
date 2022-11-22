@@ -39,7 +39,18 @@ export function CodeBlock({
           ) : undefined}
         </CodeTabBar>
       ) : null}
-      <div className="text-slate-50 p-5 ligatures-none min-w-full children:!my-0 children:!shadow-none children:!bg-transparent relative">
+      {!filename && hydrated && (
+        <div className="absolute top-5 right-5">
+          <CopyToClipboardButton
+            textToCopy={getNodeText(children)}
+            copiedTooltipColor={copiedTooltipColor ?? filenameColor}
+          />
+        </div>
+      )}
+      <div
+        className="code-in-gray-frame children:!my-0 children:!shadow-none children:!bg-transparent"
+        style={{ fontVariantLigatures: "none" }}
+      >
         {hydrated ? children : null}
       </div>
     </div>

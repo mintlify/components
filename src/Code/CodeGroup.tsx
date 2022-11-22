@@ -4,7 +4,17 @@ import { useEffect, useState } from "react";
 import { getNodeText } from "../utils/getNodeText";
 import { CopyToClipboardButton } from "./CopyToClipboardButton";
 
-export type CodeGroupProps = { children: any; isSmallText?: boolean };
+export type CodeGroupProps = {
+  children: any;
+
+  /** Color of the filename text and the border underneath it when the content is being shown */
+  selectedColor?: string;
+
+  /** Background color for the tooltip saying Copied when you click the clipboard */
+  copiedTooltipColor?: string;
+
+  isSmallText?: boolean;
+};
 
 /**
  * Group multiple code blocks into a tabbed UI.
@@ -13,7 +23,12 @@ export type CodeGroupProps = { children: any; isSmallText?: boolean };
  *
  * @param {CodeBlock[]} props.children
  */
-export function CodeGroup({ children, isSmallText }: CodeGroupProps) {
+export function CodeGroup({
+  children,
+  selectedColor,
+  copiedTooltipColor,
+  isSmallText,
+}: CodeGroupProps) {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [hydrated, setHydrated] = useState(false);
 
@@ -48,10 +63,10 @@ export function CodeGroup({ children, isSmallText }: CodeGroupProps) {
         <Tab.List className="flex">
           {children.map((child: any, tabIndex: number) => (
             <TabItem
-              key={child.props.filename + "TabItem"}
+              key={child.props.filename + "TabItem" + tabIndex}
               myIndex={tabIndex}
               selectedIndex={selectedIndex}
-              selectedColor={child.props.filenameColor}
+              selectedColor={selectedColor}
             >
               {child.props.filename}
             </TabItem>
@@ -66,10 +81,7 @@ export function CodeGroup({ children, isSmallText }: CodeGroupProps) {
           {hydrated ? (
             <CopyToClipboardButton
               textToCopy={getNodeText(selectedChild.props.children)}
-              copiedTooltipColor={
-                selectedChild.props.copiedTooltipColor ??
-                selectedChild.props.filenameColor
-              }
+              copiedTooltipColor={copiedTooltipColor ?? selectedColor}
             />
           ) : undefined}
         </div>
@@ -79,9 +91,10 @@ export function CodeGroup({ children, isSmallText }: CodeGroupProps) {
           <Tab.Panel
             key={child.props.filename}
             className={clsx(
-              "flex-none min-w-full text-slate-50 p-5 ligatures-none",
-              isSmallText ? "text-xs leading-5" : "text-sm leading-6"
+              "flex-none code-in-gray-frame",
+              isSmallText && "text-xs leading-5"
             )}
+            style={{ fontVariantLigatures: "none" }}
           >
             {hydrated && child.props.children}
           </Tab.Panel>
@@ -121,7 +134,7 @@ function TabItem({
       className="flex items-center relative z-10 overflow-hidden px-4 py-1 text-slate-400 outline-none"
       style={{ color: isSelected ? selectedColor : "" }}
     >
-      <span className="z-10">{children}</span>
+      <span>{children}</span>
 
       {/* Inactive tabs with optional edge caps */}
       {!isSelected && (
