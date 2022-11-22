@@ -59,7 +59,7 @@ export function CodeGroup({
       onChange={setSelectedIndex as any}
       className="not-prose gray-frame"
     >
-      <div className="flex text-slate-400 text-xs leading-6 rounded-tl-xl pt-2">
+      <div className="flex text-xs leading-6 rounded-tl-xl pt-2">
         <Tab.List className="flex">
           {children.map((child: any, tabIndex: number) => (
             <TabItem
@@ -131,10 +131,10 @@ function TabItem({
 
   return (
     <Tab
-      className="flex items-center relative z-10 overflow-hidden px-4 py-1 text-slate-400 outline-none"
+      className="flex items-center relative overflow-hidden px-4 py-1 text-slate-300 outline-none"
       style={{ color: isSelected ? selectedColor : "" }}
     >
-      <span>{children}</span>
+      <span className="z-10">{children}</span>
 
       {/* Inactive tabs with optional edge caps */}
       {!isSelected && (
