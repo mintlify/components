@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .gray-frame {
+    @apply bg-slate-800 rounded-xl shadow-lg dark:ring-1 dark:ring-white/10 dark:ring-inset;
+  }
+}

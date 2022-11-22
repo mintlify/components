@@ -1,11 +1,11 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { CardGroup } from "../CardGroup";
-import { Card } from "../Card";
+import { CardGroup } from "../../CardGroup";
+import { Card } from "../../Card";
 
 export default {
-  title: "Display/CardGroup",
+  title: "Display/Cards/CardGroup",
   component: CardGroup,
 } as ComponentMeta<typeof CardGroup>;
 

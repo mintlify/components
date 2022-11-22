@@ -1,10 +1,10 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { CodeBlock } from "../CodeBlock";
+import { CodeBlock } from "../../Code";
 
 export default {
-  title: "Interactive/CodeBlock",
+  title: "Interactive/Code/CodeBlock",
   component: CodeBlock,
 } as ComponentMeta<typeof CodeBlock>;
 

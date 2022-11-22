@@ -1,10 +1,10 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Card } from "../Card";
+import { Card } from "../../Card";
 
 export default {
-  title: "Display/Card",
+  title: "Display/Cards/Card",
   component: Card,
 } as ComponentMeta<typeof Card>;
 
