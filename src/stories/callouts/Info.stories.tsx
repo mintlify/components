@@ -28,6 +28,11 @@ WithCodeBlock.args = {
       adipiscing elit. Morbi aliquam sapien et leo suscipit, at elementum ex
       condimentum.
     </p>,
-    <CodeBlock>This is a code block.</CodeBlock>,
+    <CodeBlock>
+      <pre>
+        This is a code block. This is a code block. This is a code block. This
+        is a code block. This is a code block. This is a code block.
+      </pre>
+    </CodeBlock>,
   ],
 };
