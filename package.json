@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.1.47",
+  "version": "0.1.48",
   "description": "Open-source library of UI components made with React and TailwindCSS.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "prepublish": "npm run build",
+    "publish-package": "npm run build && npm publish --access public",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
