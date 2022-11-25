@@ -11,7 +11,7 @@ function CalloutTemplate({ children, icon, className }: CalloutProps) {
     <div className={`px-4 py-4 mb-4 rounded-xl ${className}`}>
       <div className="flex items-start space-x-3">
         <div className="mt-0.5 w-4">{icon}</div>
-        <div className="flex-1 font-medium text-sm prose dark:text-slate-50">
+        <div className="flex-1 font-medium text-sm prose overflow-x-auto dark:text-slate-50">
           {children}
         </div>
       </div>
