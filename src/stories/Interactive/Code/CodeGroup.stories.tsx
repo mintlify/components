@@ -1,8 +1,8 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Accordion } from "../../Accordion";
-import { CodeBlock, CodeGroup } from "../../Code";
+import { Accordion } from "../../../Accordion";
+import { CodeBlock, CodeGroup } from "../../../Code";
 
 export default {
   title: "Interactive/Code/CodeGroup",

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Info } from "../../Callouts";
-import { CodeBlock } from "../../Code";
+import { Info } from "../../../Callouts";
+import { CodeBlock } from "../../../Code";
 
 export default {
   title: "Display/Callouts/Info",

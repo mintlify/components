@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Warning } from "../../Callouts";
+import { Warning } from "../../../Callouts";
 
 export default {
   title: "Display/Callouts/Warning",

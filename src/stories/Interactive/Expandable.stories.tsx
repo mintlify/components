@@ -1,8 +1,8 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Expandable } from "../Expandable";
-import { ParamField } from "../Param";
+import { Expandable } from "../../Expandable";
+import { ParamField } from "../../Param";
 
 export default {
   title: "Interactive/Expandable",

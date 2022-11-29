@@ -1,8 +1,8 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Accordion } from "../Accordion";
-import { ParamField } from "../Param";
+import { Accordion } from "../../Accordion";
+import { ParamField } from "../../Param";
 
 export default {
   title: "Interactive/Accordion",
