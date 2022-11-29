@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (
-  <div className="ml-32 mt-32">
+  <div className="ml-16 mt-8">
     <Tooltip {...args} />
   </div>
 );
