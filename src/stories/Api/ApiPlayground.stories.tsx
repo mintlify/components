@@ -25,9 +25,15 @@ HeaderButNoResponse.args = {
       }}
     />
   ),
+  paramGroups: [],
+  paramValues: [],
+  isSendingRequest: false,
 };
 
 export const NoHeader = Template.bind({});
 NoHeader.args = {
   method: "PATCH",
+  paramGroups: [],
+  paramValues: [],
+  isSendingRequest: false,
 };
