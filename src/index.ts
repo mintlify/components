@@ -10,7 +10,7 @@ import { PillSelect } from "./PillSelect";
 import { Tab, Tabs } from "./Tabs";
 import { Tooltip } from "./Tooltip";
 import { Expandable } from "./Expandable";
-import { ApiPlayground } from "./Api";
+import { ApiPlayground, RequestMethodBubble, RequestPathHeader } from "./Api";
 
 // Import Tailwind
 import "./css/globals.css";
@@ -32,6 +32,8 @@ export {
   Note,
   Param,
   PillSelect,
+  RequestMethodBubble,
+  RequestPathHeader,
   Tabs,
   Tip,
   Tab,

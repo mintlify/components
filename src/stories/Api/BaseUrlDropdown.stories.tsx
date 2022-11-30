@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { BaseUrlDropdown } from "../../Api";
+import { BaseUrlDropdown } from "../../Api/BaseUrlDropdown";
 
 export default {
   title: "Api/BaseUrlDropdown",
