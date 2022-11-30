@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ParamField } from "../Param";
+import { ParamField } from "../../Param";
 
 export default {
   title: "Display/Param",

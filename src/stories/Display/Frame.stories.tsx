@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Frame } from "../Frame";
+import { Frame } from "../../Frame";
 
 export default {
   title: "Display/Frame",

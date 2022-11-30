@@ -1,14 +1,14 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Check } from "../../Callouts";
+import { Tip } from "../../../Callouts";
 
 export default {
-  title: "Display/Callouts/Check",
-  component: Check,
-} as ComponentMeta<typeof Check>;
+  title: "Display/Callouts/Tip",
+  component: Tip,
+} as ComponentMeta<typeof Tip>;
 
-const Template: ComponentStory<typeof Check> = (args) => <Check {...args} />;
+const Template: ComponentStory<typeof Tip> = (args) => <Tip {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

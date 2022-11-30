@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { PillSelect } from "../PillSelect";
+import { PillSelect } from "../../PillSelect";
 
 export default {
   title: "Interactive/PillSelect",

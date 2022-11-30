@@ -10,6 +10,7 @@ import { PillSelect } from "./PillSelect";
 import { Tab, Tabs } from "./Tabs";
 import { Tooltip } from "./Tooltip";
 import { Expandable } from "./Expandable";
+import { ApiPlayground } from "./Api";
 
 // Import Tailwind
 import "./css/globals.css";
@@ -17,6 +18,7 @@ import "./css/globals.css";
 export {
   Accordion,
   AccordionGroup,
+  ApiPlayground,
   Button,
   Card,
   CardGroup,
