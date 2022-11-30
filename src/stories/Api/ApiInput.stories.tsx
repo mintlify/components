@@ -9,24 +9,27 @@ export default {
   component: ApiInput,
 } as ComponentMeta<typeof ApiInput>;
 
-const Template: ComponentStory<typeof ApiInput> = (args) => (
-  <div className="max-w-md">
-    <ApiInput
-      param={args.param}
-      value={args.value}
-      onChangeParam={(
-        parentInputs: string[],
-        paramName: string,
-        value: ApiInputValue
-      ) => {
-        console.log(value);
-      }}
-      // Storybook automatically adds a blank function if we don't do this, and our code
-      // shows a garbage can when the delete function exists.
-      onDeleteArrayItem={undefined}
-    />
-  </div>
-);
+const Template: ComponentStory<typeof ApiInput> = (args) => {
+  const [value, setValue] = React.useState<any>(args.value);
+  return (
+    <div className="max-w-md">
+      <ApiInput
+        param={args.param}
+        value={value}
+        onChangeParam={(
+          parentInputs: string[],
+          paramName: string,
+          value: ApiInputValue
+        ) => {
+          setValue(value);
+        }}
+        // Storybook automatically adds a blank function if we don't do this, and our code
+        // shows a garbage can when the delete function exists.
+        onDeleteArrayItem={undefined}
+      />
+    </div>
+  );
+};
 
 export const TextInputWithPlaceholder = Template.bind({});
 TextInputWithPlaceholder.args = {

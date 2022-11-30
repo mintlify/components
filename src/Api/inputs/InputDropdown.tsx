@@ -1,20 +1,23 @@
 export const InputDropdown = ({
   options,
+  value,
   onInputChange,
 }: {
   options: string[];
+  value: string;
   onInputChange: (newValue: string) => void;
 }) => (
   <div className="relative">
     <select
       className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-500 cursor-pointer"
       onChange={(e) => onInputChange(e.target.value)}
+      // We use || instead of ?? because the default value passed to
+      // ApiPlayground is an empty string instead of undefined
+      value={value || "Select"}
     >
-      <option disabled selected>
-        Select
-      </option>
+      <option disabled>Select</option>
       {options.map((option) => (
-        <option>{option}</option>
+        <option key={option}>{option}</option>
       ))}
     </select>
     <DownArrowSvg />

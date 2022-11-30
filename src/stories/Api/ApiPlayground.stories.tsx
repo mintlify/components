@@ -2,15 +2,23 @@ import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { ApiPlayground, RequestPathHeader } from "../../Api";
+import { ApiInputValue } from "../../Api/types";
 
 export default {
   title: "Api/ApiPlayground",
   component: ApiPlayground,
 } as ComponentMeta<typeof ApiPlayground>;
 
-const Template: ComponentStory<typeof ApiPlayground> = (args) => (
-  <ApiPlayground {...args} />
-);
+const Template: ComponentStory<typeof ApiPlayground> = (args) => {
+  const [paramValues, setParamValues] = React.useState<
+    Record<string, Record<string, any>>
+  >(args.paramValues);
+
+  args.paramValues = paramValues;
+  args.onChangeParamValues = setParamValues;
+
+  return <ApiPlayground {...args} />;
+};
 
 const testParamGroups = [
   {

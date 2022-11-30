@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import set from "lodash.set";
 import { ReactNode, useState } from "react";
 import {
   getMethodBgColor,
@@ -14,7 +15,7 @@ export function ApiPlayground({
   paramGroups,
   paramValues,
   isSendingRequest,
-  onChangeParam,
+  onChangeParamValues,
   onSendRequest,
   header,
   response,
@@ -33,11 +34,8 @@ export function ApiPlayground({
   isSendingRequest: boolean;
 
   /** Callback when the user changes a parameter's value. */
-  onChangeParam: (
-    paramGroupName: string,
-    parentInputs: string[],
-    paramName: string,
-    paramValue: ApiInputValue
+  onChangeParamValues: (
+    paramValues: Record<string, Record<string, any>>
   ) => void;
 
   /** Callback when the user clicks the Send Request button. */
@@ -50,21 +48,21 @@ export function ApiPlayground({
    *  This component does not automatically syntax highlight code. */
   response?: ReactNode;
 }) {
-  // const onChangeParam = (
-  //   paramGroup: string,
-  //   param: string,
-  //   value: ApiInputValue,
-  //   path: string[]
-  // ) => {
-  //   const newParamGroup = {
-  //     ...inputData[paramGroup],
-  //     ...set(inputData[paramGroup], [...path, param], value),
-  //   };
-  //   setInputData({ ...inputData, [paramGroup]: newParamGroup });
-  // };
-
   const [currentActiveParamGroup, setCurrentActiveParamGroup] =
     useState<ParamGroup>(paramGroups[0]);
+
+  const setParamInObject = (
+    paramGroupName: string,
+    parentInputs: string[],
+    paramName: string,
+    value: ApiInputValue
+  ) => {
+    const newParamGroup = {
+      ...paramValues[paramGroupName],
+      ...set(paramValues[paramGroupName], [...parentInputs, paramName], value),
+    };
+    onChangeParamValues({ ...paramValues, [paramGroupName]: newParamGroup });
+  };
 
   return (
     <div className="mt-4 border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 rounded-md truncate">
@@ -106,7 +104,7 @@ export function ApiPlayground({
                   paramName: string,
                   paramValue: ApiInputValue
                 ) =>
-                  onChangeParam(
+                  setParamInObject(
                     currentActiveParamGroup.name,
                     parentInputs,
                     paramName,

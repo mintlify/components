@@ -4,12 +4,16 @@ import { ApiInputValue, Param } from "../types";
 import { AddArrayItemButton } from "./AddArrayItemButton";
 import { InputDropdown } from "./InputDropdown";
 
+/**
+ *  ApiInput provides a UI to receive inputs from the user for API calls.
+ *  The user is responsible for updating value when onChangeParam is called.
+ *  ApiInput doesn't store the value internally so components don't work
+ *  when the user doesn't track the state.
+ */
 export function ApiInput({
   param,
   value,
   onChangeParam,
-  onObjectPropertyChange,
-  onArrayItemChange,
   onDeleteArrayItem,
   parentInputs = [],
 }: {
@@ -20,8 +24,6 @@ export function ApiInput({
     paramName: string,
     value: ApiInputValue
   ) => void;
-  onObjectPropertyChange?: (value: any) => void;
-  onArrayItemChange?: (value: any) => void;
   onDeleteArrayItem?: () => void;
   parentInputs?: string[];
 }) {
@@ -48,20 +50,12 @@ export function ApiInput({
   const isArray = param.type === "array";
 
   const onInputChange = (value: any) => {
-    if (onObjectPropertyChange != null) {
-      onObjectPropertyChange(value);
-      return;
-    }
-    if (onArrayItemChange != null) {
-      onArrayItemChange(value);
-      return;
-    }
     onChangeParam(parentInputs, param.name, value);
   };
 
   const onObjectParentChange = (property: string, value: any) => {
     const newObj = { ...object, [property]: value };
-    setObject({ ...object, [property]: value });
+    setObject(newObj);
     onInputChange(newObj);
   };
 
@@ -95,6 +89,7 @@ export function ApiInput({
     InputField = (
       <InputDropdown
         options={["true", "false"]}
+        value={(value as boolean).toString()}
         onInputChange={(newValue: string) => onInputChange(newValue === "true")}
       />
     );
@@ -173,7 +168,11 @@ export function ApiInput({
     );
   } else if (param.enum) {
     InputField = (
-      <InputDropdown options={param.enum} onInputChange={onInputChange} />
+      <InputDropdown
+        options={param.enum}
+        value={value as string}
+        onInputChange={onInputChange}
+      />
     );
   } else {
     InputField = (
@@ -244,11 +243,12 @@ export function ApiInput({
               key={property.name}
               param={property}
               value={(value as any)[property.name]}
-              onChangeParam={onChangeParam}
+              onChangeParam={(
+                parentInputs: string[],
+                paramName: string,
+                paramValue: ApiInputValue
+              ) => onObjectParentChange(property.name, paramValue)}
               parentInputs={[...parentInputs, param.name]}
-              onObjectPropertyChange={(value: any) =>
-                onObjectParentChange(property.name, value)
-              }
             />
           ))}
         </div>
@@ -266,8 +266,11 @@ export function ApiInput({
               key={item.param.name + i}
               param={item.param}
               value={item.value}
-              onChangeParam={onChangeParam}
-              onArrayItemChange={(value: any) => onArrayParentChange(i, value)}
+              onChangeParam={(
+                parentInputs: string[],
+                paramName: string,
+                paramValue: ApiInputValue
+              ) => onArrayParentChange(i, paramValue)}
               onDeleteArrayItem={() =>
                 onUpdateArray(array.filter((_, j) => i !== j))
               }
