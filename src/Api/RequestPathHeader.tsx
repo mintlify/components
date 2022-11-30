@@ -16,10 +16,10 @@ export const RequestPathHeader = ({
   path: string;
 
   /** Array of baseUrls to select from. Dropdown is hidden when there are zero or one options. */
-  baseUrls: string[] | undefined;
+  baseUrls?: string[];
 
   /** What value of baseUrl the dropdown should show as selected before the user has changed the selection. */
-  defaultBaseUrl?: string | undefined;
+  defaultBaseUrl?: string;
 
   /** Callback when the user changes the baseUrl in the dropdown. */
   onBaseUrlChange: (baseUrl: string) => void;
