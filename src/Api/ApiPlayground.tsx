@@ -6,7 +6,7 @@ import {
   getMethodBorderColor,
   getMethodBgHoverColor,
 } from "../utils/apiPlaygroundColors";
-import { ApiInput } from "./ApiInput";
+import { ApiInput } from "./inputs/ApiInput";
 import { ApiInputValue, ParamGroup, RequestMethods } from "./types";
 
 export function ApiPlayground({

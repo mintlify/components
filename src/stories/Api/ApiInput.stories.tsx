@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ApiInput } from "../../Api/ApiInput";
+import { ApiInput } from "../../Api/inputs/ApiInput";
 import { ApiInputValue } from "../../Api/types";
 
 export default {
@@ -38,6 +38,25 @@ TextInputWithPlaceholder.args = {
   value: "",
 };
 
+export const BooleanInput = Template.bind({});
+BooleanInput.args = {
+  param: {
+    name: "Boolean Input",
+    type: "boolean",
+  },
+  value: true,
+};
+
+export const EnumInput = Template.bind({});
+EnumInput.args = {
+  param: {
+    name: "Enum Input",
+    type: "enum",
+    enum: ["Enum Option 1", "Enum Option 2", "Enum Option 3"],
+  },
+  value: "Enum Option 2",
+};
+
 export const ArrayInput = Template.bind({});
 ArrayInput.args = {
   param: {
@@ -64,4 +83,13 @@ ObjectInput.args = {
     "Example Property Name": 123,
     camelCasePropertyName: "Example string value",
   },
+};
+
+export const FileInput = Template.bind({});
+FileInput.args = {
+  param: {
+    name: "File Input",
+    type: "file",
+  },
+  value: "",
 };

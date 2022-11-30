@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { ApiInputValue, Param } from "./types";
+import { ApiInputValue, Param } from "../types";
+import { InputDropdown } from "./InputDropdown";
 
 const getArrayType = (type: string | undefined) => {
   if (!type || type === "array") {
@@ -10,6 +11,8 @@ const getArrayType = (type: string | undefined) => {
 };
 
 function AddArrayItemButton({ onClick }: { onClick: () => void }) {
+  // pointer-events-none on the plus sign SVG is needed to allow clicking the button underneath.
+  // Without it, you can't click on the button when hovering over the plus sign.
   return (
     <div className="relative">
       <button
@@ -19,7 +22,7 @@ function AddArrayItemButton({ onClick }: { onClick: () => void }) {
         Add Item
       </button>
       <svg
-        className="hidden sm:block absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400"
+        className="hidden sm:block absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400 pointer-events-none"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"
       >
@@ -62,7 +65,7 @@ export function ApiInput({
 
   let InputField;
 
-  // Todo: support multiple types
+  // TO DO: Support multiple types
   let lowerCaseParamType;
   if (typeof param.type === "string") {
     lowerCaseParamType = param.type?.toLowerCase();
@@ -117,28 +120,10 @@ export function ApiInput({
 
   if (lowerCaseParamType === "boolean") {
     InputField = (
-      <div className="relative">
-        <select
-          className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
-          onChange={(e) => {
-            const selection = e.target.value;
-            onInputChange(selection === "true");
-          }}
-        >
-          <option disabled selected>
-            Select
-          </option>
-          <option>true</option>
-          <option>false</option>
-        </select>
-        <svg
-          className="absolute right-2 top-[7px] h-3 fill-slate-600 dark:fill-slate-400"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 384 512"
-        >
-          <path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z" />
-        </svg>
-      </div>
+      <InputDropdown
+        options={["true", "false"]}
+        onInputChange={(newValue: string) => onInputChange(newValue === "true")}
+      />
     );
   } else if (
     lowerCaseParamType === "integer" ||
@@ -167,7 +152,7 @@ export function ApiInput({
           }}
         />
         <svg
-          className="absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400 bg-border-slate-700"
+          className="absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400 bg-border-slate-700 pointer-events-none"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
@@ -191,7 +176,7 @@ export function ApiInput({
         <span className="fill-slate-500 dark:fill-slate-400 group-hover:fill-slate-700 dark:group-hover:fill-slate-200">
           {isExpandedProperties ? (
             <svg
-              className="h-3 w-3"
+              className="h-3 w-3 pointer-events-none"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -199,7 +184,7 @@ export function ApiInput({
             </svg>
           ) : (
             <svg
-              className="h-3 w-3"
+              className="h-3 w-3 pointer-events-none"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -215,29 +200,7 @@ export function ApiInput({
     );
   } else if (param.enum) {
     InputField = (
-      <div className="relative">
-        <select
-          className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-500 cursor-pointer"
-          onChange={(e) => {
-            const selection = e.target.value;
-            onInputChange(selection);
-          }}
-        >
-          <option disabled selected>
-            Select
-          </option>
-          {param.enum.map((enumValue) => (
-            <option>{enumValue}</option>
-          ))}
-        </select>
-        <svg
-          className="absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 384 512"
-        >
-          <path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z" />
-        </svg>
-      </div>
+      <InputDropdown options={param.enum} onInputChange={onInputChange} />
     );
   } else {
     InputField = (
