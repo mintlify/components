@@ -263,7 +263,7 @@ export function ApiInput({
         >
           {array.map((item, i) => (
             <ApiInput
-              key={item.param.name + i}
+              key={`${item.param.name}${i}`}
               param={item.param}
               value={item.value}
               onChangeParam={(

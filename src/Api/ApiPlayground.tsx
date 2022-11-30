@@ -97,7 +97,7 @@ export function ApiPlayground({
                 key={`${param.name}${i}`}
                 param={param}
                 value={
-                  paramValues[currentActiveParamGroup.name][param.name] ?? ""
+                  paramValues[currentActiveParamGroup.name]?.[param.name] ?? ""
                 }
                 onChangeParam={(
                   parentInputs: string[],
