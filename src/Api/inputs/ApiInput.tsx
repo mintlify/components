@@ -110,7 +110,7 @@ export function ApiInput({
     InputField = (
       <button className="relative flex items-center px-2 w-full h-7 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 border-dashed hover:bg-slate-50 dark:hover:bg-slate-800">
         <input
-          className="z-10 absolute inset-0 opacity-0 cursor-pointer"
+          className="z-5 absolute inset-0 opacity-0 cursor-pointer"
           type="file"
           onChange={(event) => {
             if (event.target.files == null) {
@@ -126,13 +126,11 @@ export function ApiInput({
         >
           <path d="M105.4 182.6c12.5 12.49 32.76 12.5 45.25 .001L224 109.3V352c0 17.67 14.33 32 32 32c17.67 0 32-14.33 32-32V109.3l73.38 73.38c12.49 12.49 32.75 12.49 45.25-.001c12.49-12.49 12.49-32.75 0-45.25l-128-128C272.4 3.125 264.2 0 256 0S239.6 3.125 233.4 9.375L105.4 137.4C92.88 149.9 92.88 170.1 105.4 182.6zM480 352h-160c0 35.35-28.65 64-64 64s-64-28.65-64-64H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456z" />
         </svg>
-        {value != null && (value as any)[param.name] != null ? (
-          <span className="w-full truncate">
-            {(value as any)[param.name].name}
-          </span>
-        ) : (
-          "Choose file"
-        )}
+        <span className="w-full truncate text-left inline-block pointer-events-none">
+          {value != null && (value as any)[param.name] != null
+            ? (value as any)[param.name].name
+            : "Choose file"}
+        </span>
       </button>
     );
   } else if (isObject && !isArray) {

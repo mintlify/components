@@ -37,8 +37,8 @@ const testParamGroups = [
         name: "Object Input",
         type: "object",
         properties: [
-          { name: "Example Property Name" },
-          { name: "camelCasePropertyName" },
+          { name: "Example Property Name", type: "number" },
+          { name: "camelCasePropertyName", type: "string" },
         ],
       },
     ],
