@@ -4,7 +4,7 @@ export const InputDropdown = ({
   onInputChange,
 }: {
   options: string[];
-  value: string;
+  value: string | undefined;
   onInputChange: (newValue: string) => void;
 }) => (
   <div className="relative">

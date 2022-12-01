@@ -74,7 +74,13 @@ export function ApiInput({
   const onAddArrayItem = () => {
     const newArray = [
       ...array,
-      { param: { ...param, type: getArrayType(param.type) }, value: null },
+      {
+        param: {
+          ...param,
+          type: param.properties ? "object" : getArrayType(param.type),
+        },
+        value: param.properties ? {} : null,
+      },
     ];
     setArray(newArray);
     onInputChange(newArray.map((item) => item.value));
