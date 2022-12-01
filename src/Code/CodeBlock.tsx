@@ -40,7 +40,7 @@ export function CodeBlock({
         </CodeTabBar>
       ) : null}
       {!filename && hydrated && (
-        <div className="absolute top-5 right-5">
+        <div className="z-10 absolute top-5 right-5">
           <CopyToClipboardButton
             textToCopy={getNodeText(children)}
             copiedTooltipColor={copiedTooltipColor ?? filenameColor}
