@@ -1,5 +1,6 @@
-import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from "react";
+import { useState } from "react";
 
 import { ApiInput } from "../../Api/inputs/ApiInput";
 import { ApiInputValue } from "../../Api/types";
@@ -10,7 +11,7 @@ export default {
 } as ComponentMeta<typeof ApiInput>;
 
 const Template: ComponentStory<typeof ApiInput> = (args) => {
-  const [value, setValue] = React.useState<any>(args.value);
+  const [value, setValue] = useState<any>(args.value);
   return (
     <div className="max-w-md">
       <ApiInput

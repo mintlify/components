@@ -1,8 +1,8 @@
-import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from "react";
+import { useState } from "react";
 
 import { ApiPlayground, RequestPathHeader } from "../../Api";
-import { ApiInputValue } from "../../Api/types";
 
 export default {
   title: "Api/ApiPlayground",
@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof ApiPlayground>;
 
 const Template: ComponentStory<typeof ApiPlayground> = (args) => {
-  const [paramValues, setParamValues] = React.useState<
+  const [paramValues, setParamValues] = useState<
     Record<string, Record<string, any>>
   >(args.paramValues);
 

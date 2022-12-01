@@ -1,5 +1,6 @@
-import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from "react";
+import { useState } from "react";
 
 import { BaseUrlDropdown } from "../../Api/BaseUrlDropdown";
 
@@ -9,7 +10,7 @@ export default {
 } as ComponentMeta<typeof BaseUrlDropdown>;
 
 const Template: ComponentStory<typeof BaseUrlDropdown> = (args) => {
-  const [_, setSelectedBaseUrl] = React.useState(args.baseUrls[0] ?? "");
+  const [_, setSelectedBaseUrl] = useState(args.baseUrls[0] ?? "");
 
   // You can console.log(selectedBaseUrl) here to test the state is set correctly from onChange().
   // We don't pass the selected value to the component because we don't need it. The <select> tag

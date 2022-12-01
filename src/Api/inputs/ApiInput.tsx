@@ -89,7 +89,7 @@ export function ApiInput({
     InputField = (
       <InputDropdown
         options={["true", "false"]}
-        value={(value as boolean).toString()}
+        value={value != null ? (value as boolean).toString() : ""}
         onInputChange={(newValue: string) => onInputChange(newValue === "true")}
       />
     );
