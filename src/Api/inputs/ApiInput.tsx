@@ -1,40 +1,19 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { ApiInputValue, Param } from "./types";
+import { ApiInputValue, Param } from "../types";
+import { AddArrayItemButton } from "./AddArrayItemButton";
+import { InputDropdown } from "./InputDropdown";
 
-const getArrayType = (type: string | undefined) => {
-  if (!type || type === "array") {
-    return "";
-  }
-  return type.replace(/\[\]/g, "");
-};
-
-function AddArrayItemButton({ onClick }: { onClick: () => void }) {
-  return (
-    <div className="relative">
-      <button
-        className="w-full py-0.5 px-2 rounded text-left border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-500"
-        onClick={onClick}
-      >
-        Add Item
-      </button>
-      <svg
-        className="hidden sm:block absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 448 512"
-      >
-        <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-      </svg>
-    </div>
-  );
-}
-
+/**
+ *  ApiInput provides a UI to receive inputs from the user for API calls.
+ *  The user is responsible for updating value when onChangeParam is called.
+ *  ApiInput doesn't store the value internally so components don't work
+ *  when the user doesn't track the state.
+ */
 export function ApiInput({
   param,
   value,
   onChangeParam,
-  onObjectPropertyChange,
-  onArrayItemChange,
   onDeleteArrayItem,
   parentInputs = [],
 }: {
@@ -45,14 +24,13 @@ export function ApiInput({
     paramName: string,
     value: ApiInputValue
   ) => void;
-  onObjectPropertyChange?: (value: any) => void;
-  onArrayItemChange?: (value: any) => void;
   onDeleteArrayItem?: () => void;
   parentInputs?: string[];
 }) {
   const [isExpandedProperties, setIsExpandedProperties] = useState(
     Boolean(param.required) || param.type === "array"
   );
+
   const [object, setObject] = useState<Record<string, any>>(
     param.type === "object" ? (value as any) : {}
   );
@@ -62,7 +40,7 @@ export function ApiInput({
 
   let InputField;
 
-  // Todo: support multiple types
+  // TO DO: Support multiple types
   let lowerCaseParamType;
   if (typeof param.type === "string") {
     lowerCaseParamType = param.type?.toLowerCase();
@@ -72,20 +50,12 @@ export function ApiInput({
   const isArray = param.type === "array";
 
   const onInputChange = (value: any) => {
-    if (onObjectPropertyChange != null) {
-      onObjectPropertyChange(value);
-      return;
-    }
-    if (onArrayItemChange != null) {
-      onArrayItemChange(value);
-      return;
-    }
     onChangeParam(parentInputs, param.name, value);
   };
 
   const onObjectParentChange = (property: string, value: any) => {
     const newObj = { ...object, [property]: value };
-    setObject({ ...object, [property]: value });
+    setObject(newObj);
     onInputChange(newObj);
   };
 
@@ -117,28 +87,11 @@ export function ApiInput({
 
   if (lowerCaseParamType === "boolean") {
     InputField = (
-      <div className="relative">
-        <select
-          className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
-          onChange={(e) => {
-            const selection = e.target.value;
-            onInputChange(selection === "true");
-          }}
-        >
-          <option disabled selected>
-            Select
-          </option>
-          <option>true</option>
-          <option>false</option>
-        </select>
-        <svg
-          className="absolute right-2 top-[7px] h-3 fill-slate-600 dark:fill-slate-400"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 384 512"
-        >
-          <path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z" />
-        </svg>
-      </div>
+      <InputDropdown
+        options={["true", "false"]}
+        value={(value as boolean).toString()}
+        onInputChange={(newValue: string) => onInputChange(newValue === "true")}
+      />
     );
   } else if (
     lowerCaseParamType === "integer" ||
@@ -157,7 +110,7 @@ export function ApiInput({
     InputField = (
       <button className="relative flex items-center px-2 w-full h-7 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 border-dashed hover:bg-slate-50 dark:hover:bg-slate-800">
         <input
-          className="z-10 absolute inset-0 opacity-0 cursor-pointer"
+          className="z-5 absolute inset-0 opacity-0 cursor-pointer"
           type="file"
           onChange={(event) => {
             if (event.target.files == null) {
@@ -167,19 +120,17 @@ export function ApiInput({
           }}
         />
         <svg
-          className="absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400 bg-border-slate-700"
+          className="absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400 bg-border-slate-700 pointer-events-none"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
           <path d="M105.4 182.6c12.5 12.49 32.76 12.5 45.25 .001L224 109.3V352c0 17.67 14.33 32 32 32c17.67 0 32-14.33 32-32V109.3l73.38 73.38c12.49 12.49 32.75 12.49 45.25-.001c12.49-12.49 12.49-32.75 0-45.25l-128-128C272.4 3.125 264.2 0 256 0S239.6 3.125 233.4 9.375L105.4 137.4C92.88 149.9 92.88 170.1 105.4 182.6zM480 352h-160c0 35.35-28.65 64-64 64s-64-28.65-64-64H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456z" />
         </svg>
-        {value != null && (value as any)[param.name] != null ? (
-          <span className="w-full truncate">
-            {(value as any)[param.name].name}
-          </span>
-        ) : (
-          "Choose file"
-        )}
+        <span className="w-full truncate text-left inline-block pointer-events-none">
+          {value != null && (value as any)[param.name] != null
+            ? (value as any)[param.name].name
+            : "Choose file"}
+        </span>
       </button>
     );
   } else if (isObject && !isArray) {
@@ -191,7 +142,7 @@ export function ApiInput({
         <span className="fill-slate-500 dark:fill-slate-400 group-hover:fill-slate-700 dark:group-hover:fill-slate-200">
           {isExpandedProperties ? (
             <svg
-              className="h-3 w-3"
+              className="h-3 w-3 pointer-events-none"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -199,7 +150,7 @@ export function ApiInput({
             </svg>
           ) : (
             <svg
-              className="h-3 w-3"
+              className="h-3 w-3 pointer-events-none"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -215,29 +166,11 @@ export function ApiInput({
     );
   } else if (param.enum) {
     InputField = (
-      <div className="relative">
-        <select
-          className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-500 cursor-pointer"
-          onChange={(e) => {
-            const selection = e.target.value;
-            onInputChange(selection);
-          }}
-        >
-          <option disabled selected>
-            Select
-          </option>
-          {param.enum.map((enumValue) => (
-            <option>{enumValue}</option>
-          ))}
-        </select>
-        <svg
-          className="absolute right-2 top-[7px] h-3 fill-slate-500 dark:fill-slate-400"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 384 512"
-        >
-          <path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z" />
-        </svg>
-      </div>
+      <InputDropdown
+        options={param.enum}
+        value={value as string}
+        onInputChange={onInputChange}
+      />
     );
   } else {
     InputField = (
@@ -308,11 +241,12 @@ export function ApiInput({
               key={property.name}
               param={property}
               value={(value as any)[property.name]}
-              onChangeParam={onChangeParam}
+              onChangeParam={(
+                parentInputs: string[],
+                paramName: string,
+                paramValue: ApiInputValue
+              ) => onObjectParentChange(property.name, paramValue)}
               parentInputs={[...parentInputs, param.name]}
-              onObjectPropertyChange={(value: any) =>
-                onObjectParentChange(property.name, value)
-              }
             />
           ))}
         </div>
@@ -327,11 +261,14 @@ export function ApiInput({
         >
           {array.map((item, i) => (
             <ApiInput
-              key={item.param.name + i}
+              key={`${item.param.name}${i}`}
               param={item.param}
               value={item.value}
-              onChangeParam={onChangeParam}
-              onArrayItemChange={(value: any) => onArrayParentChange(i, value)}
+              onChangeParam={(
+                parentInputs: string[],
+                paramName: string,
+                paramValue: ApiInputValue
+              ) => onArrayParentChange(i, paramValue)}
               onDeleteArrayItem={() =>
                 onUpdateArray(array.filter((_, j) => i !== j))
               }
@@ -347,3 +284,10 @@ export function ApiInput({
     </div>
   );
 }
+
+const getArrayType = (type: string | undefined) => {
+  if (!type || type === "array") {
+    return "";
+  }
+  return type.replace(/\[\]/g, "");
+};

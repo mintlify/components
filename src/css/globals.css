@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Disable browser's default styling on select tags */
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 @layer components {
   .gray-frame {
     @apply bg-slate-800 rounded-xl shadow-lg dark:ring-1 dark:ring-white/10 dark:ring-inset relative;

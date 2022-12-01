@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ApiInput } from "../../Api/ApiInput";
+import { ApiInput } from "../../Api/inputs/ApiInput";
 import { ApiInputValue } from "../../Api/types";
 
 export default {
@@ -9,24 +9,27 @@ export default {
   component: ApiInput,
 } as ComponentMeta<typeof ApiInput>;
 
-const Template: ComponentStory<typeof ApiInput> = (args) => (
-  <div className="max-w-md">
-    <ApiInput
-      param={args.param}
-      value={args.value}
-      onChangeParam={(
-        parentInputs: string[],
-        paramName: string,
-        value: ApiInputValue
-      ) => {
-        console.log(value);
-      }}
-      // Storybook automatically adds a blank function if we don't do this, and our code
-      // shows a garbage can when the delete function exists.
-      onDeleteArrayItem={undefined}
-    />
-  </div>
-);
+const Template: ComponentStory<typeof ApiInput> = (args) => {
+  const [value, setValue] = React.useState<any>(args.value);
+  return (
+    <div className="max-w-md">
+      <ApiInput
+        param={args.param}
+        value={value}
+        onChangeParam={(
+          parentInputs: string[],
+          paramName: string,
+          value: ApiInputValue
+        ) => {
+          setValue(value);
+        }}
+        // Storybook automatically adds a blank function if we don't do this, and our code
+        // shows a garbage can when the delete function exists.
+        onDeleteArrayItem={undefined}
+      />
+    </div>
+  );
+};
 
 export const TextInputWithPlaceholder = Template.bind({});
 TextInputWithPlaceholder.args = {
@@ -36,6 +39,25 @@ TextInputWithPlaceholder.args = {
     placeholder: "Placeholder Value",
   },
   value: "",
+};
+
+export const BooleanInput = Template.bind({});
+BooleanInput.args = {
+  param: {
+    name: "Boolean Input",
+    type: "boolean",
+  },
+  value: true,
+};
+
+export const EnumInput = Template.bind({});
+EnumInput.args = {
+  param: {
+    name: "Enum Input",
+    type: "enum",
+    enum: ["Enum Option 1", "Enum Option 2", "Enum Option 3"],
+  },
+  value: "Enum Option 2",
 };
 
 export const ArrayInput = Template.bind({});
@@ -64,4 +86,13 @@ ObjectInput.args = {
     "Example Property Name": 123,
     camelCasePropertyName: "Example string value",
   },
+};
+
+export const FileInput = Template.bind({});
+FileInput.args = {
+  param: {
+    name: "File Input",
+    type: "file",
+  },
+  value: "",
 };
