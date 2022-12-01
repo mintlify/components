@@ -247,7 +247,7 @@ export function ApiInput({
             <ApiInput
               key={property.name}
               param={property}
-              value={(value as any)[property.name]}
+              value={((value as any) || {})[property.name]}
               onChangeParam={(
                 parentInputs: string[],
                 paramName: string,
