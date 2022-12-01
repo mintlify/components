@@ -59,7 +59,11 @@ export function ApiPlayground({
   ) => {
     const newParamGroup = {
       ...paramValues[paramGroupName],
-      ...set(paramValues[paramGroupName], [...parentInputs, paramName], value),
+      ...set(
+        paramValues[paramGroupName] ?? {},
+        [...parentInputs, paramName],
+        value
+      ),
     };
     onChangeParamValues({ ...paramValues, [paramGroupName]: newParamGroup });
   };
