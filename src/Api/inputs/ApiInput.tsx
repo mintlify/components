@@ -27,15 +27,19 @@ export function ApiInput({
   onDeleteArrayItem?: () => void;
   parentInputs?: string[];
 }) {
+  const isObject = param.type === "object" && param.properties != null;
+  const isArray = param.type === "array";
+
   const [isExpandedProperties, setIsExpandedProperties] = useState(
-    Boolean(param.required) || param.type === "array"
+    (Boolean(param.required) && isObject) ||
+      (isArray && Array.isArray(value) && value.length > 0)
   );
 
   const [object, setObject] = useState<Record<string, any>>(
-    param.type === "object" ? (value as any) : {}
+    isObject ? (value as any) : {}
   );
   const [array, setArray] = useState<{ param: Param; value: any }[]>(
-    param.type === "array" ? (value as any[]) : []
+    isArray ? (value as any[]) : []
   );
 
   let InputField;
@@ -45,9 +49,6 @@ export function ApiInput({
   if (typeof param.type === "string") {
     lowerCaseParamType = param.type?.toLowerCase();
   }
-
-  const isObject = param.properties != null;
-  const isArray = param.type === "array";
 
   const onInputChange = (value: any) => {
     onChangeParam(parentInputs, param.name, value);
