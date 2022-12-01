@@ -39,4 +39,6 @@ export type ApiInputValue =
   | string[]
   | number[]
   | boolean[]
-  | File[];
+  | File[]
+  | undefined
+  | null;

@@ -27,15 +27,19 @@ export function ApiInput({
   onDeleteArrayItem?: () => void;
   parentInputs?: string[];
 }) {
+  const isObject = param.type === "object" && param.properties != null;
+  const isArray = param.type === "array";
+
   const [isExpandedProperties, setIsExpandedProperties] = useState(
-    Boolean(param.required) || param.type === "array"
+    (Boolean(param.required) && isObject) ||
+      (isArray && Array.isArray(value) && value.length > 0)
   );
 
   const [object, setObject] = useState<Record<string, any>>(
-    param.type === "object" ? (value as any) : {}
+    isObject ? (value as any) : {}
   );
   const [array, setArray] = useState<{ param: Param; value: any }[]>(
-    param.type === "array" ? (value as any[]) : []
+    isArray ? (value as any[]) : []
   );
 
   let InputField;
@@ -45,9 +49,6 @@ export function ApiInput({
   if (typeof param.type === "string") {
     lowerCaseParamType = param.type?.toLowerCase();
   }
-
-  const isObject = param.properties != null;
-  const isArray = param.type === "array";
 
   const onInputChange = (value: any) => {
     onChangeParam(parentInputs, param.name, value);
@@ -73,7 +74,13 @@ export function ApiInput({
   const onAddArrayItem = () => {
     const newArray = [
       ...array,
-      { param: { ...param, type: getArrayType(param.type) }, value: null },
+      {
+        param: {
+          ...param,
+          type: param.properties ? "object" : getArrayType(param.type),
+        },
+        value: param.properties ? {} : null,
+      },
     ];
     setArray(newArray);
     onInputChange(newArray.map((item) => item.value));
@@ -240,7 +247,7 @@ export function ApiInput({
             <ApiInput
               key={property.name}
               param={property}
-              value={(value as any)[property.name]}
+              value={((value as any) || {})[property.name]}
               onChangeParam={(
                 parentInputs: string[],
                 paramName: string,

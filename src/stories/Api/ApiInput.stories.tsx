@@ -78,6 +78,7 @@ ObjectInput.args = {
   param: {
     name: "Object Input",
     type: "object",
+    required: true,
     properties: [
       { name: "Example Property Name" },
       { name: "camelCasePropertyName" },
@@ -96,4 +97,53 @@ FileInput.args = {
     type: "file",
   },
   value: "",
+};
+
+export const ArrayOfObjectsInput = Template.bind({});
+ArrayOfObjectsInput.args = {
+  param: {
+    name: "home_feed_contents",
+    required: true,
+    type: "array",
+    properties: [
+      {
+        name: "id",
+        type: "string",
+      },
+      {
+        name: "price",
+        type: "object",
+        properties: [
+          {
+            name: "money",
+            type: "object",
+
+            properties: [
+              {
+                name: "currency_code",
+                type: "string",
+              },
+              {
+                name: "units",
+                type: "string",
+              },
+            ],
+          },
+          {
+            name: "prefix",
+            placeholder: "PREFIX_UNSPECIFIED",
+            type: "string",
+            enum: [
+              "PREFIX_UNSPECIFIED",
+              "PREFIX_PER_UNIT",
+              "PREFIX_PER_SESSION",
+              "PREFIX_PER_PERSON",
+              "PREFIX_FREE",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  value: [],
 };
