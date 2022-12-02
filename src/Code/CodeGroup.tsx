@@ -78,7 +78,7 @@ export function CodeGroup({
             selectedIndex === children.length - 1 ? "rounded-tl border-l" : ""
           )}
         >
-          {hydrated && selectedChild ? (
+          {hydrated && selectedChild?.props ? (
             <CopyToClipboardButton
               textToCopy={getNodeText(selectedChild.props.children)}
               copiedTooltipColor={copiedTooltipColor ?? selectedColor}
@@ -96,7 +96,7 @@ export function CodeGroup({
             )}
             style={{ fontVariantLigatures: "none" }}
           >
-            {hydrated && child && child.props.children}
+            {hydrated && child?.props?.children}
           </Tab.Panel>
         ))}
       </Tab.Panels>

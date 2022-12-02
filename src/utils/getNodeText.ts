@@ -9,7 +9,7 @@ export const getNodeText = (node: any): string => {
     return node.map(getNodeText).join("");
   }
 
-  if (typeof node === "object" && node) {
+  if (typeof node === "object" && node?.props?.children) {
     return getNodeText(node.props.children);
   }
 
