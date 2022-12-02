@@ -4,7 +4,9 @@ import Tab from "./Tab";
 export default function Tabs({ children }: { children: ReactElement[] }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const arrayChildren = Children.toArray(children) as ReactElement[];
-  const activeTabContent = arrayChildren[activeTabIndex].props.children;
+  const activeTabContent = arrayChildren[activeTabIndex]
+    ? arrayChildren[activeTabIndex].props.children
+    : null;
 
   return (
     <>
