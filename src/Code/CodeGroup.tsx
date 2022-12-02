@@ -63,12 +63,12 @@ export function CodeGroup({
         <Tab.List className="flex">
           {children.map((child: any, tabIndex: number) => (
             <TabItem
-              key={child.props.filename + "TabItem" + tabIndex}
+              key={child?.props?.filename + "TabItem" + tabIndex}
               myIndex={tabIndex}
               selectedIndex={selectedIndex}
               selectedColor={selectedColor}
             >
-              {child.props.filename}
+              {child?.props?.filename || "Filename"}
             </TabItem>
           ))}
         </Tab.List>
@@ -80,7 +80,7 @@ export function CodeGroup({
         >
           {hydrated && selectedChild?.props ? (
             <CopyToClipboardButton
-              textToCopy={getNodeText(selectedChild.props.children)}
+              textToCopy={getNodeText(selectedChild?.props?.children)}
               copiedTooltipColor={copiedTooltipColor ?? selectedColor}
             />
           ) : undefined}
@@ -89,7 +89,7 @@ export function CodeGroup({
       <Tab.Panels className="flex overflow-auto">
         {children.map((child: any) => (
           <Tab.Panel
-            key={child.props.filename}
+            key={child?.props?.filename}
             className={clsx(
               "flex-none code-in-gray-frame",
               isSmallText && "text-xs leading-5"
