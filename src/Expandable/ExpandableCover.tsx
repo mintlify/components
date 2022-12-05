@@ -31,7 +31,7 @@ function ExpandableCover({
   );
 }
 
-function ExpandableItemCoverIcon({ open }: { open: boolean }) {
+export function ExpandableItemCoverIcon({ open }: { open: boolean }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
+import { ExpandableItemCoverIcon } from "../Expandable/ExpandableCover";
 
 function AccordionItemCover({
   title,
@@ -32,7 +33,9 @@ function AccordionItemCover({
       aria-controls={title + "Children"}
       aria-expanded={open}
     >
-      <ToggleIcon open={open} />
+      <div className="mr-0.5">
+        <ExpandableItemCoverIcon open={open} />
+      </div>
       {icon ? (
         <div className="h-4 w-4 fill-slate-800 dark:fill-slate-100 text-slate-800 dark:text-slate-100">
           {icon}
@@ -49,24 +52,6 @@ function AccordionItemCover({
         ) : null}
       </div>
     </button>
-  );
-}
-
-function ToggleIcon({ open }: { open: boolean }) {
-  // We rotate the icon 90 degrees when open.
-  // Chevron Right icon comes from Font Awesome's free solid icons v6.
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 384 512"
-      className="h-3 w-3"
-      style={{
-        fill: "currentColor",
-        transform: open ? "rotate(90deg)" : undefined,
-      }}
-    >
-      <path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-    </svg>
   );
 }
 
