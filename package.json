@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.1.61",
+  "version": "0.1.62",
   "description": "Open-source library of UI components made with React and TailwindCSS.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -70,7 +70,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.3",
+    "@headlessui/react": "^1.7.4",
     "assert": "^2.0.0",
     "clsx": "^1.1.1",
     "is-absolute-url": "^4.0.1",
