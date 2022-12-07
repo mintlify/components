@@ -1,4 +1,5 @@
 import { Switch } from "@headlessui/react";
+import clsx from "clsx";
 
 /**
  * The toggle moves according to the dark class name.
@@ -7,9 +8,15 @@ import { Switch } from "@headlessui/react";
 export function LightDarkToggle({
   defaultChecked,
   onChange,
+  colors,
 }: {
   defaultChecked: boolean;
   onChange: (enabled: boolean) => void;
+  colors?: {
+    brandColor: string;
+    lightBackground: string;
+    darkBackground: string;
+  };
 }) {
   return (
     <Switch
@@ -17,15 +24,34 @@ export function LightDarkToggle({
       onChange={(enabled: boolean) => onChange(enabled)}
       className="relative inline-flex h-[24px] w-[36px] shrink-0 cursor-pointer border-2 border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
     >
-      <div className="bg-black/10 dark:bg-white/10 rounded-full absolute left-0 right-0 h-[0.65rem] top-1/2 translate-y-[-50%]"></div>
-      <span className="sr-only">Switch theme</span>
-      <span
-        aria-hidden="true"
-        className="translate-x-0 dark:translate-x-3 border border-zinc-300/60 bg-background-light dark:border-indigo-900/80 dark:bg-background-dark p-[3px] pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white ring-0 transition-transform duration-200 ease-in-out"
-      >
-        <SunIcon />
-        <MoonIcon />
-      </span>
+      {({ checked }) => (
+        <>
+          <div className="bg-black/10 dark:bg-white/10 rounded-full absolute left-0 right-0 h-[0.65rem] top-1/2 translate-y-[-50%]"></div>
+          <span className="sr-only">Switch theme</span>
+          <span
+            aria-hidden="true"
+            className={clsx(
+              "translate-x-0 dark:translate-x-3 border border-zinc-300/60 p-[3px] pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white ring-0 transition-transform duration-200 ease-in-out",
+              checked && !colors
+                ? "dark:bg-slate-800 dark:border-indigo-900/80"
+                : "bg-white"
+            )}
+            style={
+              checked
+                ? {
+                    borderColor: colors?.brandColor,
+                    backgroundColor: colors?.darkBackground,
+                  }
+                : {
+                    backgroundColor: colors?.lightBackground,
+                  }
+            }
+          >
+            <SunIcon />
+            <MoonIcon brandColor={colors?.brandColor} />
+          </span>
+        </>
+      )}
     </Switch>
   );
 }
@@ -46,7 +72,7 @@ function SunIcon() {
   );
 }
 
-function MoonIcon() {
+function MoonIcon({ brandColor }: { brandColor?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -55,6 +81,7 @@ function MoonIcon() {
     >
       <path
         className="fill-indigo-800"
+        style={brandColor ? { fill: brandColor } : {}}
         d="M7.914 0a6.874 6.874 0 00-1.26 3.972c0 3.875 3.213 7.017 7.178 7.017.943 0 1.843-.178 2.668-.5C15.423 13.688 12.34 16 8.704 16 4.174 16 .5 12.41.5 7.982.5 3.814 3.754.389 7.914 0z"
         fillRule="evenodd"
       ></path>

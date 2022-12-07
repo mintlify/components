@@ -20,9 +20,15 @@ const Template: ComponentStory<typeof LightDarkToggle> = (args) => {
       <LightDarkToggle
         defaultChecked={args.defaultChecked}
         onChange={() => {}}
+        colors={args.colors}
       />
     </div>
   );
+};
+
+export const Light = Template.bind({});
+Light.args = {
+  defaultChecked: false,
 };
 
 export const Dark = Template.bind({});
@@ -30,7 +36,12 @@ Dark.args = {
   defaultChecked: true,
 };
 
-export const Light = Template.bind({});
-Light.args = {
-  defaultChecked: false,
+export const DarkCustomColors = Template.bind({});
+DarkCustomColors.args = {
+  defaultChecked: true,
+  colors: {
+    brandColor: "#0000ff",
+    lightBackground: "#ffffff",
+    darkBackground: "#000000",
+  },
 };
