@@ -74,7 +74,7 @@ export function CodeGroup({
         </Tab.List>
         <div
           className={clsx(
-            "flex-auto flex justify-end bg-zinc-700/50 border-y border-zinc-500/30 pr-4 rounded-tr",
+            "flex-auto flex justify-end bg-slate-700/50 border-y border-slate-500/30 pr-4 rounded-tr",
             selectedIndex === children.length - 1 ? "rounded-tl border-l" : ""
           )}
         >
@@ -131,7 +131,7 @@ function TabItem({
 
   return (
     <Tab
-      className="flex items-center relative overflow-hidden px-4 py-1 text-zinc-400 outline-none"
+      className="flex items-center relative overflow-hidden px-4 py-1 text-slate-400 outline-none"
       style={{ color: isSelected ? selectedColor : "" }}
     >
       <span className="z-10">{children}</span>
@@ -140,7 +140,7 @@ function TabItem({
       {!isSelected && (
         <TabAdornment
           className={clsx(
-            "bg-zinc-700/50 border-y border-slate-500/30",
+            "bg-slate-700/50 border-y border-slate-500/30",
             edges.leading === "capped" && "border-l rounded-tl",
             edges.trailing === "capped" && "border-r rounded-tr"
           )}
