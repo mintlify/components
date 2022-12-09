@@ -106,7 +106,7 @@ export function ApiInput({
   ) {
     InputField = (
       <input
-        className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200"
+        className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-dark-input text-slate-700 dark:text-slate-200"
         type="number"
         placeholder={param.placeholder}
         value={value as any}
@@ -115,7 +115,7 @@ export function ApiInput({
     );
   } else if (lowerCaseParamType === "file" || lowerCaseParamType === "files") {
     InputField = (
-      <button className="relative flex items-center px-2 w-full h-7 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 border-dashed hover:bg-slate-50 dark:hover:bg-slate-800">
+      <button className="relative flex items-center px-2 w-full h-7 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-dark-input text-slate-700 dark:text-slate-200 border-dashed hover:bg-slate-50 dark:hover:bg-slate-800">
         <input
           className="z-5 absolute inset-0 opacity-0 cursor-pointer"
           type="file"
@@ -182,7 +182,7 @@ export function ApiInput({
   } else {
     InputField = (
       <input
-        className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200"
+        className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-dark-input text-slate-700 dark:text-slate-200"
         type="text"
         placeholder={param.placeholder}
         value={value as any}
@@ -196,7 +196,7 @@ export function ApiInput({
       className={clsx(
         "text-[0.84rem]",
         ((isObject && isExpandedProperties) || array.length > 0) &&
-          "px-3 py-2 -mx-1.5 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 rounded-md"
+          "px-3 py-2 -mx-1.5 border border-slate-200 dark:border-slate-700 bg-white dark:bg-codeblock rounded-md"
       )}
     >
       <div className="flex items-center space-x-2 group">

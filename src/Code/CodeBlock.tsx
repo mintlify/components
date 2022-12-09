@@ -78,7 +78,7 @@ function CodeTabBar({
       >
         {filename}
       </div>
-      <div className="flex-auto flex items-center bg-slate-700/50 border border-slate-500/30 rounded-t">
+      <div className="flex-auto flex items-center bg-codeblock-tabs border border-slate-500/30 rounded-t">
         {children && (
           <div className="flex-auto flex items-center justify-end px-4 space-x-4">
             {children}

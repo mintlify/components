@@ -4,7 +4,7 @@ export function AddArrayItemButton({ onClick }: { onClick: () => void }) {
   return (
     <div className="relative">
       <button
-        className="w-full py-0.5 px-2 rounded text-left border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-500"
+        className="w-full py-0.5 px-2 rounded text-left border border-slate-200 dark:border-slate-600 bg-white dark:bg-dark-input text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-500"
         onClick={onClick}
       >
         Add Item

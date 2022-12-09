@@ -14,6 +14,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        codeblock: "#161b22",
+        "codeblock-tabs": "#21262d",
+        "dark-input": "#30363d",
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

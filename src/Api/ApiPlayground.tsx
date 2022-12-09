@@ -69,7 +69,7 @@ export function ApiPlayground({
   };
 
   return (
-    <div className="mt-4 border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 rounded-md truncate">
+    <div className="mt-4 border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-codeblock rounded-md truncate">
       <div className="px-3.5 pt-3.5 pb-4">
         {header}
         <div className="text-sm">

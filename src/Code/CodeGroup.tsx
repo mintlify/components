@@ -74,7 +74,7 @@ export function CodeGroup({
         </Tab.List>
         <div
           className={clsx(
-            "flex-auto flex justify-end bg-slate-700/50 border-y border-slate-500/30 pr-4 rounded-tr",
+            "flex-auto flex justify-end bg-codeblock-tabs border-y border-slate-500/30 pr-4 rounded-tr",
             selectedIndex === children.length - 1 ? "rounded-tl border-l" : ""
           )}
         >
@@ -140,7 +140,7 @@ function TabItem({
       {!isSelected && (
         <TabAdornment
           className={clsx(
-            "bg-slate-700/50 border-y border-slate-500/30",
+            "bg-codeblock-tabs border-y border-slate-500/30",
             edges.leading === "capped" && "border-l rounded-tl",
             edges.trailing === "capped" && "border-r rounded-tr"
           )}
