@@ -34,7 +34,7 @@ export const parameters = {
       },
       {
         name: "Dark Background",
-        value: "#0F172A",
+        value: "#0f1117",
       },
     ],
   },
