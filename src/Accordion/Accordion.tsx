@@ -55,7 +55,7 @@ function Accordion({
         icon={icon}
         coverClass={coverClass}
       ></AccordionCover>
-      <AppearFromTop isOpen={open} className={contentClass}>
+      <AppearFromTop show={open} className={contentClass}>
         {children}
       </AppearFromTop>
     </div>
