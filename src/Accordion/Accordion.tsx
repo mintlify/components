@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react";
-import clsx from "clsx";
 import AccordionCover from "./AccordionCover";
 import getAccordionStyleFromVariant from "./getAccordionStyleFromType";
+import { AppearFromTop } from "../AppearFromTop";
 
 function Accordion({
   title,
@@ -19,7 +19,7 @@ function Accordion({
   description?: string;
 
   /** Whether the Accordion is open initially */
-  defaultOpen: boolean;
+  defaultOpen?: boolean;
 
   /** Icon to display to the left */
   icon?: ReactNode;
@@ -53,10 +53,11 @@ function Accordion({
         open={open}
         setOpen={onClickOpen}
         icon={icon}
-        isRounded={variant === "rounded"}
         coverClass={coverClass}
       ></AccordionCover>
-      <div className={clsx(contentClass, !open && "hidden")}>{children}</div>
+      <AppearFromTop isOpen={open} className={contentClass}>
+        {children}
+      </AppearFromTop>
     </div>
   );
 }

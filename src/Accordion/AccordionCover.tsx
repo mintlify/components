@@ -8,7 +8,6 @@ function AccordionItemCover({
   open,
   setOpen,
   icon,
-  isRounded,
   coverClass,
 }: {
   title: string;
@@ -16,7 +15,6 @@ function AccordionItemCover({
   open: boolean;
   setOpen: (open: boolean) => any;
   icon?: ReactNode;
-  isRounded: boolean;
   coverClass: string;
 }) {
   // In rounded style, we round the button itself so when a web browser in keyboard navigation mode
@@ -26,8 +24,6 @@ function AccordionItemCover({
       onClick={() => setOpen(!open)}
       className={clsx(
         "not-prose flex flex-row items-center content-center w-full",
-        isRounded && "rounded-t-xl",
-        isRounded && !open && "rounded-b-xl",
         coverClass
       )}
       aria-controls={title + "Children"}
