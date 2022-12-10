@@ -12,9 +12,9 @@ export default function getAccordionStyleFromVariant(variant: string) {
 
   // Rounding is handled in Accordion by passing in isRounded to AccordionCover.
   return {
-    parentClass: "border dark:border-slate-800 rounded-xl mb-3",
+    parentClass: "border dark:border-slate-800 rounded-xl mb-3 overflow-hidden",
     coverClass:
-      "py-4 px-5 space-x-2 hover:bg-slate-100 hover:dark:bg-slate-800",
+      "py-4 px-5 space-x-2 hover:bg-slate-100 hover:dark:bg-slate-800 rounded-t-xl",
     contentClass: "mt-2 mb-4 mx-6",
   };
 }

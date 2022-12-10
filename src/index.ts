@@ -1,4 +1,6 @@
 import { Accordion, AccordionGroup } from "./Accordion";
+import { AppearFromTop } from "./AppearFromTop";
+import { ApiPlayground, RequestMethodBubble, RequestPathHeader } from "./Api";
 import { Button } from "./Button";
 import { Card } from "./Card";
 import { CardGroup } from "./CardGroup";
@@ -10,7 +12,6 @@ import { PillSelect } from "./PillSelect";
 import { Tab, Tabs } from "./Tabs";
 import { Tooltip } from "./Tooltip";
 import { Expandable } from "./Expandable";
-import { ApiPlayground, RequestMethodBubble, RequestPathHeader } from "./Api";
 
 // Import Tailwind
 import "./css/globals.css";
@@ -18,6 +19,7 @@ import "./css/globals.css";
 export {
   Accordion,
   AccordionGroup,
+  AppearFromTop,
   ApiPlayground,
   Button,
   Card,
