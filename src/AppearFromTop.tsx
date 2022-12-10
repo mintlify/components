@@ -19,7 +19,7 @@ export function AppearFromTop({
         enterTo="transform opacity-100 translate-y-0"
         leave="transition duration-75 ease-out transform"
         leaveFrom="transform opacity-100 translate-y-0"
-        leaveTo="transform opacity-0 -translate-y-12"
+        leaveTo="transform opacity-0 -translate-y-6"
       >
         {children}
       </Transition>
