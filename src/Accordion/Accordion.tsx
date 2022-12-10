@@ -33,7 +33,7 @@ function Accordion({
   /** The Accordion contents */
   children: ReactNode;
 }) {
-  const [open, setOpen] = useState<boolean>(defaultOpen);
+  const [open, setOpen] = useState<boolean>(Boolean(defaultOpen));
 
   const onClickOpen = (open: boolean) => {
     setOpen(open);

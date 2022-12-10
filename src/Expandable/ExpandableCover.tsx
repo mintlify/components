@@ -36,8 +36,9 @@ export function ExpandableItemCoverIcon({ open }: { open: boolean }) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className={clsx(
-        "h-3 w-3 transition duration-200",
-        open && "rotate-90 -mt-1"
+        "h-3 w-3 transition",
+        open && "duration-200 rotate-90 -mt-1",
+        !open && "duration-75"
       )}
       viewBox="0 0 256 512"
       fill="currentColor"
