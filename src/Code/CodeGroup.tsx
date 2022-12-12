@@ -119,15 +119,12 @@ function TabItem({
   const isBeforeSelected = selectedIndex === myIndex + 1;
   const isAfterSelected = selectedIndex === myIndex - 1;
 
-  // A cap is the edge of a list of tabs that has a special border treatment
-  // The edges of a tab may be in one of three states:
+  // An edge can be in one of three states:
   // - null if selected
-  // - normal if it looks like a normal tab
-  // - capped if there's a solid rounded corner on that edge
-  const edges = {
-    leading: isSelected ? null : isAfterSelected ? "capped" : "normal",
-    trailing: isSelected ? null : isBeforeSelected ? "capped" : "normal",
-  };
+  // - normal if not selected and in the middle
+  // - rounded if there's a rounded corner on that side
+  const edgeLeft = isSelected ? null : isAfterSelected ? "rounded" : "normal";
+  const edgeRight = isSelected ? null : isBeforeSelected ? "rounded" : "normal";
 
   return (
     <Tab
@@ -141,14 +138,14 @@ function TabItem({
         <TabAdornment
           className={clsx(
             "bg-codeblock-tabs border-y border-slate-500/30",
-            edges.leading === "capped" && "border-l rounded-tl",
-            edges.trailing === "capped" && "border-r rounded-tr"
+            edgeLeft === "rounded" && "border-l rounded-tl",
+            edgeRight === "rounded" && "border-r rounded-tr"
           )}
         />
       )}
 
       {/* Divider between inactive tabs */}
-      {edges.trailing === "normal" && (
+      {edgeRight === "normal" && (
         <TabAdornment className="inset-y-px border-r border-slate-200/5 z-20" />
       )}
 
