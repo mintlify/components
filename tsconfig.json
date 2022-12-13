@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "esnext",
     "declaration": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./dist",
     "moduleResolution": "node",
     "jsx": "react-jsx",
