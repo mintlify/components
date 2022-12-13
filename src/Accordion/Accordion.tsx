@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import AccordionCover from "./AccordionCover";
 import getAccordionStyleFromVariant from "./getAccordionStyleFromType";
 import { AppearFromTop } from "../AppearFromTop";
+import clsx from "clsx";
 
 function Accordion({
   title,
@@ -55,9 +56,9 @@ function Accordion({
         icon={icon}
         coverClass={coverClass}
       ></AccordionCover>
-      <AppearFromTop show={open} className={contentClass}>
+      <div className={clsx(contentClass, !open && "hidden")}>
         {children}
-      </AppearFromTop>
+      </div>
     </div>
   );
 }
