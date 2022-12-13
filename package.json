@@ -49,6 +49,7 @@
     "babel-loader": "^8.3.0",
     "chromatic": "^6.9.0",
     "css-loader": "^6.7.2",
+    "cssnano": "^5.1.14",
     "glob-parent": "^6.0.2",
     "mini-css-extract-plugin": "^2.6.1",
     "mini-svg-data-uri": "^1.4.4",
