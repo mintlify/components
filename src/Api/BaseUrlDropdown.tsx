@@ -12,7 +12,7 @@ export function BaseUrlDropdown({
   /** Function called when the user selects a different base URL. */
   onChange: (baseUrl: string) => void;
 }) {
-  if (baseUrls.length <= 1) {
+  if (baseUrls == null || !Array.isArray(baseUrls) || baseUrls.length <= 1) {
     return null;
   }
 

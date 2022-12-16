@@ -39,7 +39,7 @@ export function ApiInput({
     isObject ? (value as any) : {}
   );
   const [array, setArray] = useState<{ param: Param; value: any }[]>(
-    isArray ? (value as any[]) : []
+    isArray && Array.isArray(value) ? (value as any[]) : []
   );
 
   let InputField;
