@@ -52,9 +52,9 @@ export function Frame({
         <div
           style={{ backgroundPosition: "10px 10px" }}
           className={clsx(
-            "absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]",
+            "absolute inset-0 bg-grid-zinc-100 [mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,1))]",
             !lightOnly &&
-              "dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"
+              "dark:bg-grid-zinc-800 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.3),rgba(255,255,255,1))]"
           )}
         />
         <div

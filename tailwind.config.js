@@ -223,11 +223,15 @@ module.exports = {
     function ({ matchUtilities, theme }) {
       matchUtilities(
         {
-          "bg-grid": (value) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
-            )}")`,
-          }),
+          "bg-grid": (value) => {
+            // https://stackoverflow.com/questions/1787124/programmatically-darken-a-hex-colour
+            const darker = ((value & 0x7e7e7e) >> 1) | (value & 0x808080);
+            return {
+              backgroundImage: `url("${svgToDataUri(
+                `<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 200 200'><rect fill='${value}' width='200' height='200'/><defs><linearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'><stop offset='0' stop-color='#000' stop-opacity='0'/><stop offset='1' stop-color='#000' stop-opacity='1'/></linearGradient><linearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'><stop offset='0' stop-color='#000' stop-opacity='0'/><stop offset='1' stop-color='#000' stop-opacity='1'/></linearGradient></defs><g fill='${darker}' fill-opacity='0.05'><rect x='100' width='100' height='100'/><rect y='100'  width='100' height='100'/></g><g fill-opacity='0.15'><polygon fill='url(#a)' points='100 30 0 0 200 0'/><polygon fill='url(#b)' points='100 100 0 130 0 100 200 100 200 130'/></g></svg>`
+              )}")`,
+            };
+          },
         },
         { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
       );
