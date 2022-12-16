@@ -36,15 +36,15 @@ export function ParamField({
   return (
     <div
       className={clsx(
-        "pb-3 mb-4 border-b border-slate-100 dark:border-slate-800"
+        "pb-3 mb-4 border-b border-zinc-100 dark:border-zinc-800"
       )}
     >
       <div className="flex font-mono text-sm">
         {name && (
-          <div className="py-px flex-1 space-x-2 truncate">
+          <div className="py-0.5 flex-1 space-x-2 truncate">
             <span
               className={clsx(
-                "px-1 py-px rounded-md font-medium bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700",
+                "rounded-md px-1.5 py-px border border-zinc-300 dark:brightness-[1.35] dark:border-zinc-800 bg-zinc-50 dark:bg-background-dark font-medium",
                 nameClasses,
                 (nameClasses && !nameClasses.includes("text-")) || !nameClasses
                   ? "dark:text-slate-200"
