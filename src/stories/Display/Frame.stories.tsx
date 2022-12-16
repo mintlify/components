@@ -2,6 +2,7 @@ import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Frame } from "../../Frame";
+import { CodeBlock } from "../../Code";
 
 export default {
   title: "Display/Frame",
@@ -22,7 +23,16 @@ const TestContent = (
   </article>
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const WithText = Template.bind({});
+WithText.args = {
   children: TestContent,
+};
+
+export const WithCodeBlock = Template.bind({});
+WithCodeBlock.args = {
+  children: (
+    <CodeBlock filename="Example File Name" filenameColor="#00ff00">
+      Example code
+    </CodeBlock>
+  ),
 };
