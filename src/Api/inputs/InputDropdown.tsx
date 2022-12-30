@@ -9,7 +9,7 @@ export const InputDropdown = ({
 }) => (
   <div className="relative">
     <select
-      className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-zinc-700 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-400 dark:hover:border-slate-500 cursor-pointer"
+      className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-dark-input text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-400 dark:hover:border-slate-500 cursor-pointer"
       onChange={(e) => onInputChange(e.target.value)}
       // We use || instead of ?? because the default value passed to
       // ApiPlayground is an empty string instead of undefined
