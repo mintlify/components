@@ -35,7 +35,8 @@ export function ApiInput({
     if (param.default) {
       onInputChange(param.default);
     }
-  }, [])
+  }, [param.default]);
+
   const isObject = param.type === "object" && param.properties != null;
   const isArray = param.type === "array";
 
