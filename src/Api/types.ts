@@ -23,6 +23,7 @@ export type ParamGroup = {
 export type Param = {
   name: string;
   placeholder?: string;
+  default?: string;
   required?: boolean;
   type?: string;
   enum?: string[];

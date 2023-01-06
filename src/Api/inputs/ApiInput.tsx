@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ApiInputValue, Param } from "../types";
 import { AddArrayItemButton } from "./AddArrayItemButton";
 import { InputDropdown } from "./InputDropdown";
@@ -27,6 +27,15 @@ export function ApiInput({
   onDeleteArrayItem?: () => void;
   parentInputs?: string[];
 }) {
+  const onInputChange = (value: any) => {
+    onChangeParam(parentInputs, param.name, value);
+  };
+
+  useEffect(() => {
+    if (param.default) {
+      onInputChange(param.default);
+    }
+  }, [])
   const isObject = param.type === "object" && param.properties != null;
   const isArray = param.type === "array";
 
@@ -49,10 +58,6 @@ export function ApiInput({
   if (typeof param.type === "string") {
     lowerCaseParamType = param.type?.toLowerCase();
   }
-
-  const onInputChange = (value: any) => {
-    onChangeParam(parentInputs, param.name, value);
-  };
 
   const onObjectParentChange = (property: string, value: any) => {
     const newObj = { ...object, [property]: value };

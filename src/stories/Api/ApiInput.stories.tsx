@@ -42,6 +42,16 @@ TextInputWithPlaceholder.args = {
   value: "",
 };
 
+export const TextInputWithDefaultValue = Template.bind({});
+TextInputWithDefaultValue.args = {
+  param: {
+    name: "Text Input",
+    type: "text",
+    default: "Default Value",
+  },
+  value: "",
+};
+
 export const BooleanInput = Template.bind({});
 BooleanInput.args = {
   param: {
