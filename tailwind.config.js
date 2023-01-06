@@ -156,13 +156,6 @@ module.exports = {
             "tbody code": {
               fontSize: theme("fontSize.xs")[0],
             },
-            "figure figcaption": {
-              textAlign: "center",
-              fontStyle: "italic",
-            },
-            "figure > figcaption": {
-              marginTop: `${12 / 14}em`,
-            },
           },
         },
         dark: {
@@ -202,18 +195,12 @@ module.exports = {
             "tbody tr": {
               borderBottomColor: "rgb(148 163 184 / 0.1)",
             },
-            blockQuote: {
-              color: theme("colors.white"),
-            },
           },
         },
       }),
       spacing: {
         18: "4.5rem",
         full: "100%",
-      },
-      maxWidth: {
-        "8xl": "90rem",
       },
     },
   },
