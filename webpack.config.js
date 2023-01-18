@@ -24,10 +24,11 @@ module.exports = {
         enforce: "pre",
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         include: path.resolve(__dirname, "src"),
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
+      { test: /\.(png|jpe?g|svg)$/, type: "asset/resource" },
     ],
   },
   resolve: {

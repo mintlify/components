@@ -4,6 +4,7 @@ let paddingMap = { none: "", md: "p-8" };
 
 export function Frame({
   as: Component = "div",
+  caption,
   style,
   className,
   containerClassName,
@@ -14,6 +15,7 @@ export function Frame({
   lightOnly = false,
 }: {
   as: any;
+  caption?: string;
   style: any;
   p: string;
   className: string;
@@ -67,6 +69,17 @@ export function Frame({
             ? { dangerouslySetInnerHTML: { __html: html } }
             : { children })}
         />
+        {caption && (
+          <div
+            className={clsx(
+              "relative rounded-xl overflow-auto flex justify-center pt-0 text-slate-700 dark:text-slate-400",
+              paddingClassName,
+              className
+            )}
+          >
+            <p>{caption}</p>
+          </div>
+        )}
         <div
           className={clsx(
             "absolute inset-0 pointer-events-none border border-black/5 rounded-xl",
