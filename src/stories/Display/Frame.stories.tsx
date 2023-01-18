@@ -2,6 +2,7 @@ import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Frame } from "../../Frame";
+import mountain from "../images/mountain.jpeg";
 
 export default {
   title: "Display/Frame",
@@ -22,7 +23,31 @@ const TestContent = (
   </article>
 );
 
+const TestParagraph = (
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+);
+
+const TestImage = <img src={mountain} />;
+
 export const Default = Template.bind({});
 Default.args = {
   children: TestContent,
+};
+
+export const Paragraph = Template.bind({});
+Paragraph.args = {
+  children: TestParagraph,
+};
+
+export const ImageWithCaption = Template.bind({});
+ImageWithCaption.args = {
+  caption: "This is a caption",
+  children: TestImage,
 };
