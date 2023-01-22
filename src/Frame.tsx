@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-let paddingMap = { none: "", md: "p-8" };
+const paddingMap = { none: "", md: "p-8" };
 
 export function Frame({
   as: Component = "div",
@@ -72,8 +72,7 @@ export function Frame({
         {caption && (
           <div
             className={clsx(
-              "relative rounded-xl overflow-auto flex justify-center pt-0 text-slate-700 dark:text-slate-400",
-              paddingClassName,
+              "relative rounded-xl overflow-auto flex justify-center -mt-2 pt-0 px-8 pb-7 text-sm text-slate-700 dark:text-slate-400",
               className
             )}
           >
