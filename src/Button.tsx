@@ -1,7 +1,10 @@
-import { ReactNode } from "react";
+import {
+  ElementType,
+  ComponentPropsWithoutRef,
+} from "react";
 import clsx from "clsx";
 
-type ColorInterface = "indigo" | "pink" | "sky" | "blue" | "gray";
+type ColorInterface = keyof typeof colors;
 
 let colors = {
   indigo: [
@@ -26,7 +29,7 @@ let colors = {
   ],
 };
 
-let colorsDark = {
+let colorsDark: Record<ColorInterface, string[]> = {
   ...colors,
   gray: [
     "dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white dark:focus:ring-slate-500",
@@ -38,34 +41,59 @@ let colorsDark = {
   ],
 };
 
-// We should refactor this class to support callbacks (ie. "onClick") instead of assuming
-// you want to pass in a link.
-export function Button({
-  href,
+/**
+ * Props for the `Button` component
+ * @typeParam T - Type of the Element rendered by the button.
+ */
+interface ButtonProps<T extends ElementType> {
+  /**
+   * Color of the button. Default is `gray`.
+   */
+  color?: ColorInterface;
+  /**
+   * Color when in dark mode. Default is the same as the `color` prop.
+   */
+  darkColor?: ColorInterface;
+  /**
+   * Whether to reverse the layout.
+   */
+  reverse?: boolean;
+  /**
+   * Type of element to be rendered.
+   */
+  as?: T;
+  /**
+   * If provided, will render as an anchor element.
+   */
+  href? : string;
+}
+
+export function Button<T extends ElementType = 'button'>({
+  as,
   color = "gray",
   darkColor = color,
   reverse = false,
   children,
-}: {
-  href: string;
-  color?: ColorInterface;
-  darkColor?: ColorInterface;
-  reverse?: boolean;
-  children: ReactNode;
-} & React.LinkHTMLAttributes<HTMLElement>) {
+  ...props
+}: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
   let colorClasses = typeof color === "string" ? colors[color] : color;
   let darkColorClasses =
     typeof darkColor === "string" ? colorsDark[darkColor] || [] : darkColor;
 
+  /**
+   * If provided, use `as` or an `a` tag if linking to things with href.
+   * Defaults to `button`.
+   */
+  const Component = as || props.href != undefined ? "a" : "button";
   return (
-    <a
+    <Component
       className={clsx(
         "group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2",
         colorClasses[0],
         darkColorClasses[0],
         reverse && "flex-row-reverse"
       )}
-      href={href}
+      {...props}
     >
       {children}
       <svg
@@ -86,6 +114,6 @@ export function Button({
       >
         <path d={reverse ? "M3 0L0 3L3 6" : "M0 0L3 3L0 6"} />
       </svg>
-    </a>
+    </Component>
   );
 }
