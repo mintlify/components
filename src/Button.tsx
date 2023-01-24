@@ -1,7 +1,4 @@
-import {
-  ElementType,
-  ComponentPropsWithoutRef,
-} from "react";
+import { ElementType, ComponentPropsWithoutRef } from "react";
 import clsx from "clsx";
 
 type ColorInterface = keyof typeof colors;
@@ -65,10 +62,10 @@ interface ButtonProps<T extends ElementType> {
   /**
    * If provided, will render as an anchor element.
    */
-  href? : string;
+  href?: string;
 }
 
-export function Button<T extends ElementType = 'button'>({
+export function Button<T extends ElementType = "button">({
   as,
   color = "gray",
   darkColor = color,
