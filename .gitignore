@@ -1,6 +1,10 @@
 # we are using npm in this project
 yarn.lock
 
+# user editor preferences
+/.vscode/
+/.idea/
+
 # dependencies
 /node_modules
 /.pnp
