@@ -1,4 +1,4 @@
-import { ElementType, ComponentProps, Ref } from "react";
+import { ElementType, ComponentPropsWithoutRef, Ref } from "react";
 import clsx from "clsx";
 
 type ColorInterface = keyof typeof colors;
@@ -38,7 +38,7 @@ let colorsDark: Record<ColorInterface, string[]> = {
   ],
 };
 
-export interface ButtonPropsBase<T extends ElementType> {
+export interface ButtonPropsBase<T> {
   /**
    * Color of the button. Default is `gray`.
    */
@@ -59,6 +59,10 @@ export interface ButtonPropsBase<T extends ElementType> {
    * If provided, will render as an anchor element.
    */
   href?: string;
+  /**
+   * Ref of the element to be rendered.
+   */
+  mRef?: Ref<T>;
 }
 
 /**
@@ -66,15 +70,16 @@ export interface ButtonPropsBase<T extends ElementType> {
  * @typeParam T - Type of the Element rendered by the button.
  */
 export type ButtonProps<T extends ElementType> = ButtonPropsBase<T> &
-  Omit<ComponentProps<T>, keyof ButtonPropsBase<T>>;
+  Omit<ComponentPropsWithoutRef<T>, keyof ButtonPropsBase<T>>;
 
-function ButtonBase<T extends ElementType>({
+export function Button<T extends ElementType = "button">({
   as,
   color = "gray",
   darkColor = color,
   reverse = false,
   children,
   className,
+  mRef,
   ...props
 }: ButtonProps<T>) {
   let colorClasses = typeof color === "string" ? colors[color] : color;
@@ -97,6 +102,7 @@ function ButtonBase<T extends ElementType>({
         className
       )}
       {...props}
+      ref={mRef as Ref<any>}
     >
       {children}
       <svg
@@ -119,11 +125,4 @@ function ButtonBase<T extends ElementType>({
       </svg>
     </Component>
   );
-}
-
-export function Button <T extends ElementType = "button">({
-  ref,
-  ...rest
-}: ButtonProps<T> & { ref: Ref<T> }) {
-  return <ButtonBase {...rest} ref={ref} />;
 }

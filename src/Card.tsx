@@ -1,14 +1,8 @@
-import {
-  ComponentProps,
-  ElementType,
-  ForwardedRef,
-  ReactNode,
-  Ref,
-} from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode, Ref } from "react";
 import clsx from "clsx";
 import isAbsoluteUrl from "is-absolute-url";
 
-export interface CardPropsBase<T extends ElementType> {
+export interface CardPropsBase<T> {
   /**
    * Large title above children.
    */
@@ -28,7 +22,7 @@ export interface CardPropsBase<T extends ElementType> {
   /**
    * Ref of the element to be rendered.
    */
-  mRef?: ForwardedRef<T>;
+  mRef?: Ref<T>;
 }
 
 /**
@@ -36,14 +30,15 @@ export interface CardPropsBase<T extends ElementType> {
  * @typeParam T - Type of the Element rendered by the card.
  */
 export type CardProps<T extends ElementType> = CardPropsBase<T> &
-  Omit<ComponentProps<T>, keyof CardPropsBase<T>>;
+  Omit<ComponentPropsWithoutRef<T>, keyof CardPropsBase<T>>;
 
-function CardBase<T extends ElementType>({
+export function Card<T extends ElementType = "div">({
   title,
   icon,
   className,
   children,
   as,
+  mRef,
   ...props
 }: CardProps<T>) {
   /**
@@ -66,6 +61,7 @@ function CardBase<T extends ElementType>({
       )}
       {...newTabProps}
       {...props}
+      ref={mRef as Ref<any>}
     >
       {icon ? (
         <div className="h-6 w-6 fill-slate-800 dark:fill-slate-100 text-slate-800 dark:text-slate-100">
@@ -92,11 +88,4 @@ function CardBase<T extends ElementType>({
       </span>
     </Component>
   );
-}
-
-export function Card<T extends ElementType = "div">({
-  ref,
-  ...rest
-}: CardProps<T> & { ref: Ref<T> }) {
-  return <CardBase {...rest} ref={ref} />;
 }
