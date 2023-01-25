@@ -2,17 +2,13 @@ import {
   ComponentProps,
   ElementType,
   ForwardedRef,
-  forwardRef,
   ReactNode,
+  Ref,
 } from "react";
 import clsx from "clsx";
 import isAbsoluteUrl from "is-absolute-url";
 
-/**
- * Props for the `Card` component
- * @typeParam T - Type of the Element rendered by the card.
- */
-interface CardProps<T extends ElementType> {
+export interface CardPropsBase<T extends ElementType> {
   /**
    * Large title above children.
    */
@@ -29,16 +25,27 @@ interface CardProps<T extends ElementType> {
    * If provided, will render as an anchor element.
    */
   href?: string;
+  /**
+   * Ref of the element to be rendered.
+   */
+  mRef?: ForwardedRef<T>;
 }
 
-export function Card<T extends ElementType = "div">({
+/**
+ * Props for the `Card` component
+ * @typeParam T - Type of the Element rendered by the card.
+ */
+export type CardProps<T extends ElementType> = CardPropsBase<T> &
+  Omit<ComponentProps<T>, keyof CardPropsBase<T>>;
+
+function CardBase<T extends ElementType>({
   title,
   icon,
   className,
   children,
   as,
   ...props
-}: CardProps<T> & Omit<ComponentProps<T>, keyof CardProps<T>>) {
+}: CardProps<T>) {
   /**
    * If provided, use `as` or an `a` tag if linking to things with href.
    * Defaults to `div`.
@@ -85,4 +92,11 @@ export function Card<T extends ElementType = "div">({
       </span>
     </Component>
   );
+}
+
+export function Card<T extends ElementType = "div">({
+  ref,
+  ...rest
+}: CardProps<T> & { ref: Ref<T> }) {
+  return <CardBase {...rest} ref={ref} />;
 }
