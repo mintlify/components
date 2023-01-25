@@ -2,13 +2,21 @@ import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Card } from "../../../Card";
+import { forwardRef, useRef } from "react";
 
 export default {
   title: "Display/Cards/Card",
   component: Card,
+  argTypes: { onClick: { action: "clicked" } },
 } as ComponentMeta<typeof Card>;
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  title: "Card Title",
+  children: "Card text.",
+};
 
 export const WithCustomClasses = Template.bind({});
 WithCustomClasses.args = {

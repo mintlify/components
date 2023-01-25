@@ -1,4 +1,10 @@
-import { ElementType, ComponentPropsWithoutRef } from "react";
+import {
+  ElementType,
+  ComponentPropsWithoutRef,
+  forwardRef,
+  ForwardedRef,
+  ComponentProps,
+} from "react";
 import clsx from "clsx";
 
 type ColorInterface = keyof typeof colors;
@@ -71,8 +77,9 @@ export function Button<T extends ElementType = "button">({
   darkColor = color,
   reverse = false,
   children,
+  className,
   ...props
-}: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
+}: ButtonProps<T> & Omit<ComponentProps<T>, keyof ButtonProps<T>>) {
   let colorClasses = typeof color === "string" ? colors[color] : color;
   let darkColorClasses =
     typeof darkColor === "string" ? colorsDark[darkColor] || [] : darkColor;
@@ -88,7 +95,8 @@ export function Button<T extends ElementType = "button">({
         "group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2",
         colorClasses[0],
         darkColorClasses[0],
-        reverse && "flex-row-reverse"
+        reverse && "flex-row-reverse",
+        className
       )}
       {...props}
     >
