@@ -1,5 +1,5 @@
-# we are using npm in this project
-yarn.lock
+# we are using yarn in this project
+package.lock
 
 # user editor preferences
 /.vscode/
