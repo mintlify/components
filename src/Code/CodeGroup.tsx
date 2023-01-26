@@ -81,7 +81,7 @@ export function CodeGroup({
           {hydrated && selectedChild?.props ? (
             <CopyToClipboardButton
               textToCopy={getNodeText(selectedChild?.props?.children)}
-              copiedTooltipColor={copiedTooltipColor ?? selectedColor}
+              tooltipColor={copiedTooltipColor ?? selectedColor}
             />
           ) : undefined}
         </div>
