@@ -14,15 +14,15 @@ export function CodeBlock({
 }: {
   filename?: string;
   /**
-   *  Color of the filename text and the border underneath it when the content is being shown.
+   *  Color of the filename text and the border underneath it when content is being shown.
    */
   filenameColor?: string;
   /**
-   * Background color for the tooltip saying Click to Copy when you hover the clipboard.
+   * Background color for the tooltip saying `Click to Copy` when hovering the clipboard button.
    */
   tooltipColor?: string;
   /**
-   * Background color for the tooltip saying Copied when you click the clipboard.
+   * Background color for the tooltip saying `Copied` when clicking the clipboard button.
    */
   copiedTooltipColor?: string;
 
