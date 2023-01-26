@@ -9,8 +9,13 @@
     "jsx": "react-jsx",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "src/stories"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/stories"
+  ]
 }

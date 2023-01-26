@@ -1,4 +1,4 @@
-import { ElementType, ComponentPropsWithoutRef } from "react";
+import { ElementType, ComponentPropsWithoutRef, Ref } from "react";
 import clsx from "clsx";
 
 type ColorInterface = keyof typeof colors;
@@ -38,11 +38,7 @@ let colorsDark: Record<ColorInterface, string[]> = {
   ],
 };
 
-/**
- * Props for the `Button` component
- * @typeParam T - Type of the Element rendered by the button.
- */
-interface ButtonProps<T extends ElementType> {
+export interface ButtonPropsBase<T> {
   /**
    * Color of the button. Default is `gray`.
    */
@@ -63,7 +59,18 @@ interface ButtonProps<T extends ElementType> {
    * If provided, will render as an anchor element.
    */
   href?: string;
+  /**
+   * Ref of the element to be rendered.
+   */
+  mRef?: Ref<T>;
 }
+
+/**
+ * Props for the `Button` component
+ * @typeParam T - Type of the Element rendered by the button.
+ */
+export type ButtonProps<T extends ElementType> = ButtonPropsBase<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof ButtonPropsBase<T>>;
 
 export function Button<T extends ElementType = "button">({
   as,
@@ -71,8 +78,10 @@ export function Button<T extends ElementType = "button">({
   darkColor = color,
   reverse = false,
   children,
+  className,
+  mRef,
   ...props
-}: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
+}: ButtonProps<T>) {
   let colorClasses = typeof color === "string" ? colors[color] : color;
   let darkColorClasses =
     typeof darkColor === "string" ? colorsDark[darkColor] || [] : darkColor;
@@ -82,15 +91,18 @@ export function Button<T extends ElementType = "button">({
    * Defaults to `button`.
    */
   const Component = as || props.href != undefined ? "a" : "button";
+
   return (
     <Component
       className={clsx(
         "group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2",
         colorClasses[0],
         darkColorClasses[0],
-        reverse && "flex-row-reverse"
+        reverse && "flex-row-reverse",
+        className
       )}
       {...props}
+      ref={mRef as Ref<any>}
     >
       {children}
       <svg
