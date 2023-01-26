@@ -26,7 +26,7 @@
   </p>
   <p>
     <sub>
-      Built with ❤︎ by
+      Built with 💚 by
       <a href="https://mintlify.com">
         Mintlify
       </a>
@@ -85,5 +85,3 @@ Join our Discord community if you have questions or just want to chat:
 # License
 
 [MIT](https://tldrlegal.com/license/mit-license)
-
-_Built with 💚 by the Mintlify team._
