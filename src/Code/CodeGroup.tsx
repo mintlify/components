@@ -20,6 +20,10 @@ export type CodeGroupPropsBase = {
   copiedTooltipColor?: string;
 
   isSmallText?: boolean;
+
+  children?:
+    | React.ReactElement<CodeBlockProps>[]
+    | React.ReactElement<CodeBlockProps>;
 };
 
 export type CodeGroupProps = CodeGroupPropsBase &
