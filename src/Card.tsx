@@ -55,7 +55,7 @@ export function Card<T extends ElementType = "div">({
   return (
     <Component
       className={clsx(
-        "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden px-6 py-5 w-full",
+        "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden px-6 py-5 w-full",
         props.href && "cursor-pointer",
         className
       )}
