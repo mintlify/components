@@ -64,7 +64,7 @@ export function CodeGroup({
     <Tab.Group
       as="div"
       onChange={setSelectedIndex as any}
-      className="not-prose gray-frame"
+      className="mt-5 mb-8 not-prose gray-frame"
     >
       <div className="flex text-xs leading-6 rounded-tl-xl pt-2">
         <Tab.List className="flex">

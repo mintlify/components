@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof CodeGroup>;
 
 const Template: ComponentStory<typeof CodeGroup> = (args) => (
-  <CodeGroup {...args} />
+    <CodeGroup {...args} > {args.children}</CodeGroup>
 );
 
 const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = (args) => (
@@ -19,7 +19,7 @@ const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = (args) => (
     description="Testing to see the CodeGroup shrinks to fit inside an Accordion"
     defaultOpen={true}
   >
-    <CodeGroup {...args} />
+    <CodeGroup {...args} > {args.children}</CodeGroup>
   </Accordion>
 );
 
