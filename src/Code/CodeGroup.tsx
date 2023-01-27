@@ -142,7 +142,6 @@ function TabItem({
     <Tab
       className="flex items-center relative overflow-hidden px-4 py-1 text-slate-400 outline-none"
       style={isSelected ? { color: selectedColor } : {}}
-      tabIndex={myIndex}
     >
       <span className="z-10">{children}</span>
 
