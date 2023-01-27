@@ -19,7 +19,7 @@ export function CopyToClipboardButton({
   }
 
   // Hide copy button if the browser does not support it
-  if (!navigator.clipboard) {
+  if (typeof window !== 'undefined' && !navigator?.clipboard) {
     console.warn(
       "The browser's Clipboard API is unavailable. The Clipboard API is only available on HTTPS."
     );
@@ -28,6 +28,7 @@ export function CopyToClipboardButton({
 
   return (
     <button
+      aria-label={'Copy code to clipboard'}
       className="relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);
@@ -50,7 +51,7 @@ export function CopyToClipboardButton({
         color={hidden ? tooltipColor : copiedTooltipColor}
         className={`${hidden ? "invisible" : undefined} group-hover:visible`}
       >
-        {hidden ? "Click to Copy" : "Copied"}
+        {hidden ? "Copy" : "Copied"}
       </Tooltip>
     </button>
   );
@@ -72,20 +73,18 @@ function Tooltip({
       )}
     >
       <div
-        className="relative whitespace-nowrap text-white text-xs leading-6 font-medium px-1.5 rounded-lg"
+        className={`relative whitespace-nowrap text-white text-xs leading-6 font-medium px-1.5 rounded-lg`}
         style={{ background: color }}
         data-reach-alert="true"
       >
         {children}
         <div
+          className={`absolute border-solid`}
           style={{
-            content: "",
-            position: "absolute",
             top: "100%",
             left: "50%",
             marginLeft: "-6px",
             borderWidth: "6px",
-            borderStyle: "solid",
             borderColor: `${color} transparent transparent transparent`,
           }}
         />
