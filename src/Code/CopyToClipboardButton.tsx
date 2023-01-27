@@ -1,12 +1,14 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { copyToClipboard } from "../utils/copyToClipboard";
 
 export function CopyToClipboardButton({
   textToCopy,
-  copiedTooltipColor = "#002937",
+  tooltipColor = "#002937",
+  copiedTooltipColor = tooltipColor,
 }: {
   textToCopy: string;
+  tooltipColor?: string;
   copiedTooltipColor?: string;
 }) {
   const [hidden, setHidden] = useState(true);
@@ -26,7 +28,7 @@ export function CopyToClipboardButton({
 
   return (
     <button
-      className="relative"
+      className="relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);
         if (result === "success") {
@@ -44,46 +46,49 @@ export function CopyToClipboardButton({
       >
         <path d="M320 64H280h-9.6C263 27.5 230.7 0 192 0s-71 27.5-78.4 64H104 64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64zM80 112v24c0 13.3 10.7 24 24 24h88 88c13.3 0 24-10.7 24-24V112h16c8.8 0 16 7.2 16 16V448c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V128c0-8.8 7.2-16 16-16H80zm88-32a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM136 272a24 24 0 1 0 -48 0 24 24 0 1 0 48 0zm40-16c-8.8 0-16 7.2-16 16s7.2 16 16 16h96c8.8 0 16-7.2 16-16s-7.2-16-16-16H176zm0 96c-8.8 0-16 7.2-16 16s7.2 16 16 16h96c8.8 0 16-7.2 16-16s-7.2-16-16-16H176zm-64 40a24 24 0 1 0 0-48 24 24 0 1 0 0 48z" />
       </svg>
-      <CopiedTooltip hidden={hidden} copiedTooltipColor={copiedTooltipColor} />
+      <Tooltip
+        color={hidden ? tooltipColor : copiedTooltipColor}
+        className={`${hidden ? "invisible" : undefined} group-hover:visible`}
+      >
+        {hidden ? "Click to Copy" : "Copied"}
+      </Tooltip>
     </button>
   );
 }
-
-function CopiedTooltip({
-  hidden,
-  copiedTooltipColor,
+function Tooltip({
+  color,
+  className,
+  children,
 }: {
-  hidden: boolean;
-  copiedTooltipColor: string;
+  color: string;
+  className?: string;
+  children: ReactNode;
 }) {
   return (
     <div
       className={clsx(
-        hidden && "hidden",
-        "absolute bottom-full left-1/2 mb-3.5 pb-1 -translate-x-1/2"
+        "absolute bottom-full left-1/2 mb-3.5 pb-1 -translate-x-1/2",
+        className
       )}
     >
       <div
-        className="relative text-white text-xs leading-6 font-medium px-1.5 rounded-lg"
-        style={{ background: copiedTooltipColor }}
+        className="relative whitespace-nowrap text-white text-xs leading-6 font-medium px-1.5 rounded-lg"
+        style={{ background: color }}
         data-reach-alert="true"
       >
-        Copied
-        <svg
-          aria-hidden="true"
-          width="16"
-          height="6"
-          viewBox="0 0 16 6"
-          className="absolute top-full left-1/2 -mt-px -ml-2"
-          style={{ color: copiedTooltipColor }}
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M15 0H1V1.00366V1.00366V1.00371H1.01672C2.72058 1.0147 4.24225 2.74704 5.42685 4.72928C6.42941 6.40691 9.57154 6.4069 10.5741 4.72926C11.7587 2.74703 13.2803 1.0147 14.9841 1.00371H15V0Z"
-            fill="currentColor"
-          ></path>
-        </svg>
+        {children}
+        <div
+          style={{
+            content: "",
+            position: "absolute",
+            top: "100%",
+            left: "50%",
+            marginLeft: "-6px",
+            borderWidth: "6px",
+            borderStyle: "solid",
+            borderColor: `${color} transparent transparent transparent`,
+          }}
+        />
       </div>
     </div>
   );
