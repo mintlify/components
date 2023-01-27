@@ -19,7 +19,7 @@ export function CopyToClipboardButton({
   }
 
   // Hide copy button if the browser does not support it
-  if (typeof window !== 'undefined' && !navigator?.clipboard) {
+  if (typeof window !== "undefined" && !navigator?.clipboard) {
     console.warn(
       "The browser's Clipboard API is unavailable. The Clipboard API is only available on HTTPS."
     );
@@ -28,7 +28,7 @@ export function CopyToClipboardButton({
 
   return (
     <button
-      aria-label={'Copy code to clipboard'}
+      aria-label={"Copy code to clipboard"}
       className="relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);

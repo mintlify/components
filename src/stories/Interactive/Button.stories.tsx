@@ -1,9 +1,8 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Button } from "../../Button";
+import { Button, ButtonProps } from "../../Button";
 import { forwardRef, useRef } from "react";
-import { Card, CardProps } from "../../Card";
 
 export default {
   title: "Interactive/Button",
@@ -25,8 +24,8 @@ Indigo.args = {
   color: "indigo",
 };
 
-const RefButton = forwardRef<"button", CardProps<"button">>((args, ref) => (
-  <Card {...args} mRef={ref} />
+const RefButton = forwardRef<"button", ButtonProps<"button">>((args, ref) => (
+  <Button {...args} mRef={ref} />
 ));
 RefButton.displayName = "RefButton";
 const RefTemplate: ComponentStory<typeof RefButton> = (args) => {
