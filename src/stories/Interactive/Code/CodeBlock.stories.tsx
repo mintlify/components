@@ -36,6 +36,8 @@ export const FileNameGreenAccents = Template.bind({});
 FileNameGreenAccents.args = {
   filename: "Example File Name",
   filenameColor: "#00ff00",
+  tooltipColor: "#00AA00",
+  copiedTooltipColor: "#00DD00"
 };
 
 export const NoFileName = Template.bind({});
