@@ -8,15 +8,22 @@ import { CopyToClipboardButton } from "./CopyToClipboardButton";
 export function CodeBlock({
   filename,
   filenameColor,
+  tooltipColor,
   copiedTooltipColor,
   children,
 }: {
   filename?: string;
-
-  /** Color of the filename text and the border underneath it when the content is being shown */
+  /**
+   *  Color of the filename text and the border underneath it when content is being shown.
+   */
   filenameColor?: string;
-
-  /** Background color for the tooltip saying Copied when you click the clipboard */
+  /**
+   * Background color for the tooltip saying `Click to Copy` when hovering the clipboard button.
+   */
+  tooltipColor?: string;
+  /**
+   * Background color for the tooltip saying `Copied` when clicking the clipboard button.
+   */
   copiedTooltipColor?: string;
 
   children?: any;
@@ -27,24 +34,24 @@ export function CodeBlock({
     setHydrated(true);
   }, []);
 
+  const Button = () => (
+    <CopyToClipboardButton
+      textToCopy={getNodeText(children)}
+      tooltipColor={tooltipColor ?? filenameColor}
+      copiedTooltipColor={copiedTooltipColor ?? tooltipColor ?? filenameColor}
+    />
+  );
+
   return (
     <div className={clsx("mt-5 mb-8 not-prose gray-frame", filename && "pt-2")}>
       {filename ? (
         <CodeTabBar filename={filename} filenameColor={filenameColor}>
-          {hydrated ? (
-            <CopyToClipboardButton
-              textToCopy={getNodeText(children)}
-              copiedTooltipColor={copiedTooltipColor ?? filenameColor}
-            />
-          ) : undefined}
+          {hydrated ? <Button /> : undefined}
         </CodeTabBar>
       ) : null}
       {!filename && hydrated && (
         <div className="z-10 absolute top-5 right-5">
-          <CopyToClipboardButton
-            textToCopy={getNodeText(children)}
-            copiedTooltipColor={copiedTooltipColor ?? filenameColor}
-          />
+          <Button />
         </div>
       )}
       <div
