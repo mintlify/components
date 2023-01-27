@@ -28,11 +28,6 @@ export function CodeBlock({
 
   children?: any;
 }) {
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
 
   const Button = () => (
     <CopyToClipboardButton
@@ -46,10 +41,10 @@ export function CodeBlock({
     <div className={clsx("mt-5 mb-8 not-prose gray-frame", filename && "pt-2")}>
       {filename ? (
         <CodeTabBar filename={filename} filenameColor={filenameColor}>
-          {hydrated ? <Button /> : undefined}
+          <Button />
         </CodeTabBar>
       ) : null}
-      {!filename && hydrated && (
+      {!filename && (
         <div className="z-10 absolute top-5 right-5">
           <Button />
         </div>
@@ -58,7 +53,7 @@ export function CodeBlock({
         className="code-in-gray-frame children:!my-0 children:!shadow-none children:!bg-transparent"
         style={{ fontVariantLigatures: "none" }}
       >
-        {hydrated ? children : null}
+        {children}
       </div>
     </div>
   );

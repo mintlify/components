@@ -6,11 +6,17 @@ import { CopyToClipboardButton } from "./CopyToClipboardButton";
 
 export type CodeGroupProps = {
   children: any;
-
-  /** Color of the filename text and the border underneath it when the content is being shown */
+  /**
+   * Color of the filename text and the border underneath it when the content is being shown
+   */
   selectedColor?: string;
-
-  /** Background color for the tooltip saying Copied when you click the clipboard */
+  /**
+   * Background color for the tooltip saying `Click to Copy` when hovering the clipboard button.
+   */
+  tooltipColor?: string;
+  /**
+   * Background color for the tooltip saying `Copied` when clicking the clipboard button.
+   */
   copiedTooltipColor?: string;
 
   isSmallText?: boolean;
@@ -26,6 +32,7 @@ export type CodeGroupProps = {
 export function CodeGroup({
   children,
   selectedColor,
+  tooltipColor,
   copiedTooltipColor,
   isSmallText,
 }: CodeGroupProps) {
@@ -81,7 +88,8 @@ export function CodeGroup({
           {hydrated && selectedChild?.props ? (
             <CopyToClipboardButton
               textToCopy={getNodeText(selectedChild?.props?.children)}
-              tooltipColor={copiedTooltipColor ?? selectedColor}
+              tooltipColor={tooltipColor ?? selectedColor}
+              copiedTooltipColor={copiedTooltipColor ?? tooltipColor ?? selectedColor}
             />
           ) : undefined}
         </div>
