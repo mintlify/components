@@ -35,7 +35,7 @@ function Expandable({
       <div
         id={title + "Children"}
         className={clsx(
-          "mt-2 pt-2 mb-4 mx-[6px] px-4 border-l border-slate-100 dark:border-slate-800",
+          "mt-2 pt-2 mb-4 mx-[6px] px-4 border-l border-zinc-100 dark:border-zinc-800",
           !open && "hidden"
         )}
       >

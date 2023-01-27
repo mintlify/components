@@ -7,7 +7,7 @@ function AccordionGroup({ children }: { children: ReactNode }) {
   // when inside of an Accordion group.
   return (
     <div
-      className="[&>div]:border-0 [&>div]:rounded-none [&>div>button]:rounded-none [&>div]:mb-0 overflow-hidden mt-0 mb-3 rounded-xl prose prose-slate dark:prose-dark divide-y divide-inherit border dark:border-slate-800"
+      className="[&>div]:border-0 [&>div]:rounded-none [&>div>button]:rounded-none [&>div]:mb-0 overflow-hidden mt-0 mb-3 rounded-xl prose prose-slate dark:prose-dark divide-y divide-inherit border dark:border-zinc-800"
       role="list"
     >
       {children}

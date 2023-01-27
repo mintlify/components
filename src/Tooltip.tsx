@@ -14,7 +14,7 @@ export function Tooltip({
   return (
     <span className="group z-10 inline relative">
       {underlineWhenTextOnly(children)}
-      <span className="hidden group-hover:flex w-fit lg:whitespace-nowrap absolute bottom-full left-1/2 mb-0.5 pb-1 -translate-x-1/2 bg-slate-800 text-center text-slate-50 text-xs px-1.5 py-1 rounded-lg border border-slate-50">
+      <span className="hidden group-hover:flex w-fit lg:whitespace-nowrap absolute bottom-full left-1/2 mb-0.5 pb-1 -translate-x-1/2 bg-slate-800 text-center text-slate-50 text-xs px-1.5 py-1 rounded-lg border border-zinc-50">
         {tip}
       </span>
     </span>
