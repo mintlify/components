@@ -16,17 +16,20 @@ export default {
   ],
 } as ComponentMeta<typeof CodeGroup>;
 
-const Template: ComponentStory<typeof CodeGroup> = (args) => (
-  <CodeGroup {...args}>{args.children}</CodeGroup>
+const Template: ComponentStory<typeof CodeGroup> = ({ children, ...props }) => (
+  <CodeGroup {...props}>{children}</CodeGroup>
 );
 
-const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = (args) => (
+const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = ({
+  children,
+  ...props
+}) => (
   <Accordion
     title="Accordion"
     description="Testing to see the CodeGroup shrinks to fit inside an Accordion"
     defaultOpen={true}
   >
-    <CodeGroup {...args}>{args.children}</CodeGroup>
+    <CodeGroup {...props}>{children}</CodeGroup>
   </Accordion>
 );
 
