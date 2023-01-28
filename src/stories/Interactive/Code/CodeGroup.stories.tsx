@@ -7,10 +7,17 @@ import { CodeBlock, CodeGroup } from "../../../Code";
 export default {
   title: "Interactive/Code/CodeGroup",
   component: CodeGroup,
+  decorators: [
+    (Story) => (
+      <div className={"mt-6"}>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof CodeGroup>;
 
 const Template: ComponentStory<typeof CodeGroup> = (args) => (
-    <CodeGroup {...args}>{args.children}</CodeGroup>
+  <CodeGroup {...args}>{args.children}</CodeGroup>
 );
 
 const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = (args) => (

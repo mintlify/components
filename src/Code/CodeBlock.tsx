@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
 import { getNodeText } from "../utils/getNodeText";
 import { ReactElement } from "react";
 

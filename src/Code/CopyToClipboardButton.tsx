@@ -29,7 +29,7 @@ export function CopyToClipboardButton({
   return (
     <button
       aria-label={'Copy code to clipboard'}
-      className="relative group"
+      className="z-40 relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);
         if (result === "success") {
