@@ -29,7 +29,7 @@ export function CopyToClipboardButton({
   return (
     <button
       aria-label={'Copy code to clipboard'}
-      className="z-40 relative group"
+      className="relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);
         if (result === "success") {
@@ -68,7 +68,7 @@ function Tooltip({
   return (
     <div
       className={clsx(
-        "absolute bottom-full left-1/2 mb-3.5 pb-1 -translate-x-1/2",
+        "z-40 absolute bottom-full left-1/2 mb-3.5 pb-1 -translate-x-1/2",
         className
       )}
     >
