@@ -7,19 +7,29 @@ import { CodeBlock, CodeGroup } from "../../../Code";
 export default {
   title: "Interactive/Code/CodeGroup",
   component: CodeGroup,
+  decorators: [
+    (Story) => (
+      <div className={"mt-6"}>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof CodeGroup>;
 
-const Template: ComponentStory<typeof CodeGroup> = (args) => (
-  <CodeGroup {...args} />
+const Template: ComponentStory<typeof CodeGroup> = ({ children, ...props }) => (
+  <CodeGroup {...props}>{children}</CodeGroup>
 );
 
-const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = (args) => (
+const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = ({
+  children,
+  ...props
+}) => (
   <Accordion
     title="Accordion"
     description="Testing to see the CodeGroup shrinks to fit inside an Accordion"
     defaultOpen={true}
   >
-    <CodeGroup {...args} />
+    <CodeGroup {...props}>{children}</CodeGroup>
   </Accordion>
 );
 
