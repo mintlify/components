@@ -73,7 +73,7 @@ function Tooltip({
   return (
     <div
       className={clsx(
-        "absolute bottom-full left-1/2 mb-3.5 pb-1 -translate-x-1/2",
+        "z-50 absolute bottom-full left-1/2 mb-3.5 pb-1 -translate-x-1/2",
         className
       )}
     >
