@@ -1,11 +1,11 @@
 import { Tab } from "@headlessui/react";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
 import { getNodeText } from "../utils/getNodeText";
 import { CopyToClipboardButton } from "./CopyToClipboardButton";
+import React, { ComponentPropsWithoutRef } from "react";
+import { CodeBlockProps } from "./CodeBlock";
 
-export type CodeGroupProps = {
-  children: any;
+export type CodeGroupPropsBase = {
   /**
    * Color of the filename text and the border underneath it when the content is being shown
    */
@@ -20,14 +20,21 @@ export type CodeGroupProps = {
   copiedTooltipColor?: string;
 
   isSmallText?: boolean;
+
+  children?:
+    | React.ReactElement<CodeBlockProps>[]
+    | React.ReactElement<CodeBlockProps>;
 };
+
+export type CodeGroupProps = CodeGroupPropsBase &
+  Omit<ComponentPropsWithoutRef<"div">, keyof CodeGroupPropsBase>;
 
 /**
  * Group multiple code blocks into a tabbed UI.
  * Uses CodeBlocks as children but does not render them directly. Instead,
  * CodeGroup extracts the props and renders CodeBlock's children.
  *
- * @param {CodeBlock[]} props.children
+ * @param {CodeBlock[]} - children
  */
 export function CodeGroup({
   children,
@@ -36,13 +43,6 @@ export function CodeGroup({
   copiedTooltipColor,
   isSmallText,
 }: CodeGroupProps) {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
-
   if (children == null) {
     // Hide the frame when no children were passed
     console.warn(
@@ -55,47 +55,49 @@ export function CodeGroup({
   } else if (children.length === 0) {
     return null;
   }
-
-  const selectedChild = children.filter(
-    (_: any, i: number) => i === selectedIndex
-  )[0];
-
+  const childArr = React.Children.toArray(children) as Array<
+    Exclude<React.ReactElement<CodeBlockProps>, boolean | null | undefined>
+  >;
   return (
-    <Tab.Group
-      as="div"
-      onChange={setSelectedIndex as any}
-      className="not-prose gray-frame"
-    >
-      <div className="flex text-xs leading-6 rounded-tl-xl pt-2">
-        <Tab.List className="flex">
-          {children.map((child: any, tabIndex: number) => (
-            <TabItem
-              key={child?.props?.filename + "TabItem" + tabIndex}
-              myIndex={tabIndex}
-              selectedIndex={selectedIndex}
-              selectedColor={selectedColor}
-            >
-              {child?.props?.filename || "Filename"}
-            </TabItem>
-          ))}
-        </Tab.List>
-        <div
-          className={clsx(
-            "flex-auto flex justify-end bg-codeblock-tabs border-y border-slate-500/30 pr-4 rounded-tr",
-            selectedIndex === children.length - 1 ? "rounded-tl border-l" : ""
-          )}
-        >
-          {hydrated && selectedChild?.props ? (
-            <CopyToClipboardButton
-              textToCopy={getNodeText(selectedChild?.props?.children)}
-              tooltipColor={tooltipColor ?? selectedColor}
-              copiedTooltipColor={copiedTooltipColor ?? tooltipColor ?? selectedColor}
-            />
-          ) : undefined}
-        </div>
-      </div>
+    <Tab.Group as="div" className="not-prose gray-frame">
+      <Tab.List className="flex text-xs leading-6 rounded-tl-xl pt-2">
+        {({ selectedIndex }) => (
+          <>
+            {childArr.map((child, tabIndex: number) => (
+              <>
+                <TabItem
+                  key={child?.props?.filename + "TabItem" + tabIndex}
+                  myIndex={tabIndex}
+                  selectedIndex={selectedIndex}
+                  selectedColor={selectedColor}
+                >
+                  {child?.props?.filename || "Filename"}
+                </TabItem>
+                <div
+                  className={clsx(
+                    "flex-auto flex justify-end bg-codeblock-tabs border-y border-slate-500/30 pr-4 rounded-tr",
+                    selectedIndex === childArr?.length - 1
+                      ? "rounded-tl border-l"
+                      : ""
+                  )}
+                >
+                  <CopyToClipboardButton
+                    textToCopy={getNodeText(
+                      childArr[selectedIndex]?.props?.children
+                    )}
+                    tooltipColor={tooltipColor ?? selectedColor}
+                    copiedTooltipColor={
+                      copiedTooltipColor ?? tooltipColor ?? selectedColor
+                    }
+                  />
+                </div>
+              </>
+            ))}
+          </>
+        )}
+      </Tab.List>
       <Tab.Panels className="flex overflow-auto">
-        {children.map((child: any) => (
+        {childArr.map((child: any) => (
           <Tab.Panel
             key={child?.props?.filename}
             className={clsx(
@@ -104,7 +106,7 @@ export function CodeGroup({
             )}
             style={{ fontVariantLigatures: "none" }}
           >
-            {hydrated && child?.props?.children}
+            {child?.props?.children}
           </Tab.Panel>
         ))}
       </Tab.Panels>
@@ -112,17 +114,19 @@ export function CodeGroup({
   );
 }
 
+interface TabItemProps {
+  children: any;
+  selectedIndex: number;
+  myIndex: number;
+  selectedColor?: string;
+}
+
 function TabItem({
   children,
   selectedIndex,
   myIndex,
   selectedColor = "#CBD5E1",
-}: {
-  children: any;
-  selectedIndex: number;
-  myIndex: number;
-  selectedColor?: string;
-}) {
+}: TabItemProps) {
   const isSelected = selectedIndex === myIndex;
   const isBeforeSelected = selectedIndex === myIndex + 1;
   const isAfterSelected = selectedIndex === myIndex - 1;

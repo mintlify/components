@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { copyToClipboard } from "../utils/copyToClipboard";
 
 export function CopyToClipboardButton({
@@ -12,23 +12,28 @@ export function CopyToClipboardButton({
   copiedTooltipColor?: string;
 }) {
   const [hidden, setHidden] = useState(true);
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    // Hide copy button if the browser does not support it
+    if (typeof window !== "undefined" && !navigator?.clipboard) {
+      console.warn(
+          "The browser's Clipboard API is unavailable. The Clipboard API is only available on HTTPS."
+      );
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, []);
 
   // Hide copy button if you would copy an empty string
-  if (!textToCopy) {
-    return null;
-  }
-
-  // Hide copy button if the browser does not support it
-  if (typeof window !== 'undefined' && !navigator?.clipboard) {
-    console.warn(
-      "The browser's Clipboard API is unavailable. The Clipboard API is only available on HTTPS."
-    );
+  if (!textToCopy || disabled) {
     return null;
   }
 
   return (
     <button
-      aria-label={'Copy code to clipboard'}
+      aria-label={"Copy code to clipboard"}
       className="relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);

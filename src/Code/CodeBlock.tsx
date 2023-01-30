@@ -1,16 +1,10 @@
 import clsx from "clsx";
 import { getNodeText } from "../utils/getNodeText";
-import { ReactElement } from "react";
+import { ComponentPropsWithoutRef, ReactElement } from "react";
 
 import { CopyToClipboardButton } from "./CopyToClipboardButton";
 
-export function CodeBlock({
-  filename,
-  filenameColor,
-  tooltipColor,
-  copiedTooltipColor,
-  children,
-}: {
+export interface CodeBlockPropsBase {
   filename?: string;
   /**
    *  Color of the filename text and the border underneath it when content is being shown.
@@ -24,10 +18,20 @@ export function CodeBlock({
    * Background color for the tooltip saying `Copied` when clicking the clipboard button.
    */
   copiedTooltipColor?: string;
+}
 
-  children?: any;
-}) {
+export type CodeBlockProps = CodeBlockPropsBase &
+  Omit<ComponentPropsWithoutRef<"div">, keyof CodeBlockPropsBase>;
 
+export function CodeBlock({
+  filename,
+  filenameColor,
+  tooltipColor,
+  copiedTooltipColor,
+  children,
+  className,
+  ...props
+}: CodeBlockProps) {
   const Button = () => (
     <CopyToClipboardButton
       textToCopy={getNodeText(children)}
@@ -37,7 +41,14 @@ export function CodeBlock({
   );
 
   return (
-    <div className={clsx("mt-5 mb-8 not-prose gray-frame", filename && "pt-2")}>
+    <div
+      className={clsx(
+        "mt-5 mb-8 not-prose gray-frame",
+        filename && "pt-2",
+        className
+      )}
+      {...props}
+    >
       {filename ? (
         <CodeTabBar filename={filename} filenameColor={filenameColor}>
           <Button />
