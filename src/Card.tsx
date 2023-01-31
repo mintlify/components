@@ -22,7 +22,7 @@ export interface CardPropsBase<T> {
   /**
    * Ref of the element to be rendered.
    */
-  mRef?: Ref<T>;
+  mRef?: Ref<T | undefined>;
 }
 
 /**

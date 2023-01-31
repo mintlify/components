@@ -18,7 +18,7 @@ export function CopyToClipboardButton({
     // Hide copy button if the browser does not support it
     if (typeof window !== "undefined" && !navigator?.clipboard) {
       console.warn(
-          "The browser's Clipboard API is unavailable. The Clipboard API is only available on HTTPS."
+        "The browser's Clipboard API is unavailable. The Clipboard API is only available on HTTPS."
       );
       setDisabled(true);
     } else {
@@ -73,7 +73,7 @@ function Tooltip({
   return (
     <div
       className={clsx(
-        "z-50 absolute bottom-full left-1/2 mb-3.5 pb-1 -translate-x-1/2",
+        "z-40 absolute bottom-full left-1/2 mb-3.5 pb-1 -translate-x-1/2",
         className
       )}
     >

@@ -73,26 +73,26 @@ export function CodeGroup({
                 >
                   {child?.props?.filename || "Filename"}
                 </TabItem>
-                <div
-                  className={clsx(
-                    "flex-auto flex justify-end bg-codeblock-tabs border-y border-slate-500/30 pr-4 rounded-tr",
-                    selectedIndex === childArr?.length - 1
-                      ? "rounded-tl border-l"
-                      : ""
-                  )}
-                >
-                  <CopyToClipboardButton
-                    textToCopy={getNodeText(
-                      childArr[selectedIndex]?.props?.children
-                    )}
-                    tooltipColor={tooltipColor ?? selectedColor}
-                    copiedTooltipColor={
-                      copiedTooltipColor ?? tooltipColor ?? selectedColor
-                    }
-                  />
-                </div>
               </>
             ))}
+            <div
+                className={clsx(
+                    "flex-auto flex justify-end bg-codeblock-tabs border-y border-slate-500/30 pr-4 rounded-tr",
+                    selectedIndex === childArr?.length - 1
+                        ? "rounded-tl border-l"
+                        : ""
+                )}
+            >
+              <CopyToClipboardButton
+                  textToCopy={getNodeText(
+                      childArr[selectedIndex]?.props?.children
+                  )}
+                  tooltipColor={tooltipColor ?? selectedColor}
+                  copiedTooltipColor={
+                    copiedTooltipColor ?? tooltipColor ?? selectedColor
+                  }
+              />
+            </div>
           </>
         )}
       </Tab.List>

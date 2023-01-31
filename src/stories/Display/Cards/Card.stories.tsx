@@ -39,7 +39,7 @@ NoTitle.args = {
   children: "The card text should be darker if there is no title.",
 };
 
-const RefCard = forwardRef<"div", CardProps<"div">>((args, ref) => (
+const RefCard = forwardRef<"div" | undefined, CardProps<"div">>((args, ref) => (
   <Card {...args} mRef={ref} />
 ));
 RefCard.displayName = "RefCard";
