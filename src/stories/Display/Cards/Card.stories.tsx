@@ -2,7 +2,7 @@ import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Card, CardProps } from "../../../Card";
-import { ElementType, forwardRef, Ref, useRef } from "react";
+import { forwardRef, useRef } from "react";
 
 export default {
   title: "Display/Cards/Card",
