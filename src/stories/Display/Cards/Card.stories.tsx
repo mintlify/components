@@ -2,7 +2,7 @@ import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Card, CardProps } from "../../../Card";
-import { forwardRef, useRef } from "react";
+import { ElementType, forwardRef, Ref, useRef } from "react";
 
 export default {
   title: "Display/Cards/Card",
@@ -39,7 +39,7 @@ NoTitle.args = {
   children: "The card text should be darker if there is no title.",
 };
 
-const RefCard = forwardRef<"div", CardProps<"div">>((args, ref) => (
+const RefCard = forwardRef<"div" | undefined, CardProps<"div">>((args, ref) => (
   <Card {...args} mRef={ref} />
 ));
 RefCard.displayName = "RefCard";

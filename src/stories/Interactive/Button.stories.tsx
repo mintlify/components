@@ -24,7 +24,7 @@ Indigo.args = {
   color: "indigo",
 };
 
-const RefButton = forwardRef<"button", ButtonProps<"button">>((args, ref) => (
+const RefButton = forwardRef<"button" | undefined, ButtonProps<"button">>((args, ref) => (
   <Button {...args} mRef={ref} />
 ));
 RefButton.displayName = "RefButton";

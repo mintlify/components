@@ -62,7 +62,7 @@ export interface ButtonPropsBase<T> {
   /**
    * Ref of the element to be rendered.
    */
-  mRef?: Ref<T>;
+  mRef?: Ref<T | undefined>;
 }
 
 /**
