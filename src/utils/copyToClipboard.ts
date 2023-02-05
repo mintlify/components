@@ -1,4 +1,8 @@
-export async function copyToClipboard(text: string) {
+export type CopyToClipboardResult = "success" | "error";
+
+export async function copyToClipboard(
+  text: string
+): Promise<CopyToClipboardResult> {
   if (!text) {
     console.warn("Called copyToClipboard() with empty text");
   }
@@ -7,7 +11,6 @@ export async function copyToClipboard(text: string) {
     console.error(
       "The Clipboard API was unavailable. The Clipboard API is only available client-side in browsers using HTTPS."
     );
-    return;
   }
 
   try {

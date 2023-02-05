@@ -3,6 +3,7 @@ import { getNodeText } from "../utils/getNodeText";
 import { ComponentPropsWithoutRef, ReactElement } from "react";
 
 import { CopyToClipboardButton } from "./CopyToClipboardButton";
+import { CopyToClipboardResult } from "../utils/copyToClipboard";
 
 export interface CodeBlockPropsBase {
   filename?: string;
@@ -18,6 +19,10 @@ export interface CodeBlockPropsBase {
    * Background color for the tooltip saying `Copied` when clicking the clipboard button.
    */
   copiedTooltipColor?: string;
+  /**
+   * The callback function when a user clicks on the copied to clipboard button
+   */
+  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => {};
 }
 
 export type CodeBlockProps = CodeBlockPropsBase &
@@ -28,6 +33,7 @@ export function CodeBlock({
   filenameColor,
   tooltipColor,
   copiedTooltipColor,
+  onCopied,
   children,
   className,
   ...props
@@ -37,6 +43,7 @@ export function CodeBlock({
       textToCopy={getNodeText(children)}
       tooltipColor={tooltipColor ?? filenameColor}
       copiedTooltipColor={copiedTooltipColor ?? tooltipColor ?? filenameColor}
+      onCopied={onCopied}
     />
   );
 
