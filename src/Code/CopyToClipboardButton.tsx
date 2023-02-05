@@ -1,15 +1,20 @@
 import clsx from "clsx";
 import { ReactNode, useEffect, useState } from "react";
-import { copyToClipboard } from "../utils/copyToClipboard";
+import {
+  copyToClipboard,
+  CopyToClipboardResult,
+} from "../utils/copyToClipboard";
 
 export function CopyToClipboardButton({
   textToCopy,
   tooltipColor = "#002937",
   copiedTooltipColor = tooltipColor,
+  onCopied,
 }: {
   textToCopy: string;
   tooltipColor?: string;
   copiedTooltipColor?: string;
+  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => {};
 }) {
   const [hidden, setHidden] = useState(true);
   const [disabled, setDisabled] = useState(true);
@@ -37,6 +42,9 @@ export function CopyToClipboardButton({
       className="relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);
+        if (onCopied) {
+          onCopied(result, textToCopy);
+        }
         if (result === "success") {
           setHidden(false);
           setTimeout(() => {

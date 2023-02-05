@@ -4,6 +4,7 @@ import { getNodeText } from "../utils/getNodeText";
 import { CopyToClipboardButton } from "./CopyToClipboardButton";
 import React, { ComponentPropsWithoutRef } from "react";
 import { CodeBlockProps } from "./CodeBlock";
+import { CopyToClipboardResult } from "../utils/copyToClipboard";
 
 export type CodeGroupPropsBase = {
   /**
@@ -18,6 +19,10 @@ export type CodeGroupPropsBase = {
    * Background color for the tooltip saying `Copied` when clicking the clipboard button.
    */
   copiedTooltipColor?: string;
+  /**
+   * The callback function when a user clicks on the copied to clipboard button
+   */
+  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => {};
 
   isSmallText?: boolean;
 
@@ -41,6 +46,7 @@ export function CodeGroup({
   selectedColor,
   tooltipColor,
   copiedTooltipColor,
+  onCopied,
   isSmallText,
 }: CodeGroupProps) {
   if (children == null) {
@@ -76,21 +82,22 @@ export function CodeGroup({
               </>
             ))}
             <div
-                className={clsx(
-                    "flex-auto flex justify-end bg-codeblock-tabs border-y border-slate-500/30 pr-4 rounded-tr",
-                    selectedIndex === childArr?.length - 1
-                        ? "rounded-tl border-l"
-                        : ""
-                )}
+              className={clsx(
+                "flex-auto flex justify-end bg-codeblock-tabs border-y border-slate-500/30 pr-4 rounded-tr",
+                selectedIndex === childArr?.length - 1
+                  ? "rounded-tl border-l"
+                  : ""
+              )}
             >
               <CopyToClipboardButton
-                  textToCopy={getNodeText(
-                      childArr[selectedIndex]?.props?.children
-                  )}
-                  tooltipColor={tooltipColor ?? selectedColor}
-                  copiedTooltipColor={
-                    copiedTooltipColor ?? tooltipColor ?? selectedColor
-                  }
+                textToCopy={getNodeText(
+                  childArr[selectedIndex]?.props?.children
+                )}
+                tooltipColor={tooltipColor ?? selectedColor}
+                copiedTooltipColor={
+                  copiedTooltipColor ?? tooltipColor ?? selectedColor
+                }
+                onCopied={onCopied}
               />
             </div>
           </>

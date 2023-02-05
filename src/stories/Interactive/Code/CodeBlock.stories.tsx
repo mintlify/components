@@ -32,12 +32,18 @@ WithFileName.args = {
   filename: "Example File Name",
 };
 
+export const WithOnCopiedCallback = Template.bind({});
+WithFileName.args = {
+  filename: "Example File Name",
+  onCopy: () => console.log("Copied!"),
+};
+
 export const FileNameGreenAccents = Template.bind({});
 FileNameGreenAccents.args = {
   filename: "Example File Name",
   filenameColor: "#00ff00",
   tooltipColor: "#00AA00",
-  copiedTooltipColor: "#00DD00"
+  copiedTooltipColor: "#00DD00",
 };
 
 export const NoFileName = Template.bind({});
