@@ -22,7 +22,7 @@ export interface CodeBlockPropsBase {
   /**
    * The callback function when a user clicks on the copied to clipboard button
    */
-  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => {};
+  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
 }
 
 export type CodeBlockProps = CodeBlockPropsBase &

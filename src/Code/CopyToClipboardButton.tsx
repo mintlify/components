@@ -14,7 +14,7 @@ export function CopyToClipboardButton({
   textToCopy: string;
   tooltipColor?: string;
   copiedTooltipColor?: string;
-  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => {};
+  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
 }) {
   const [hidden, setHidden] = useState(true);
   const [disabled, setDisabled] = useState(true);
