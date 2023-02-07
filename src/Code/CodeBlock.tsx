@@ -38,12 +38,13 @@ export function CodeBlock({
   className,
   ...props
 }: CodeBlockProps) {
-  const Button = () => (
+  const Button = (props: Partial<ComponentPropsWithoutRef<typeof CopyToClipboardButton>>) => (
     <CopyToClipboardButton
       textToCopy={getNodeText(children)}
       tooltipColor={tooltipColor ?? filenameColor}
       copiedTooltipColor={copiedTooltipColor ?? tooltipColor ?? filenameColor}
       onCopied={onCopied}
+      {...props}
     />
   );
 
@@ -62,9 +63,7 @@ export function CodeBlock({
         </CodeTabBar>
       ) : null}
       {!filename && (
-        <div className="z-10 absolute top-5 right-5">
-          <Button />
-        </div>
+          <Button className="z-10 absolute top-5 right-5"  />
       )}
       <div
         className="code-in-gray-frame children:!my-0 children:!shadow-none children:!bg-transparent"
