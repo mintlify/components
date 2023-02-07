@@ -8,14 +8,24 @@ type CalloutProps = {
   childrenClassName: string;
 };
 
-function CalloutTemplate({ children, icon, className, childrenClassName }: CalloutProps) {
+function CalloutTemplate({
+  children,
+  icon,
+  className,
+  childrenClassName,
+}: CalloutProps) {
   return (
     <div
       className={clsx("px-5 py-4 mb-4 overflow-hidden rounded-xl", className)}
     >
       <div className="flex items-start space-x-3">
         <div className="mt-0.5 w-4">{icon}</div>
-        <div className={clsx("flex-1 text-sm prose overflow-x-auto", childrenClassName)}>
+        <div
+          className={clsx(
+            "flex-1 text-sm prose overflow-x-auto",
+            childrenClassName
+          )}
+        >
           {children}
         </div>
       </div>

@@ -1,5 +1,10 @@
 import clsx from "clsx";
-import { ReactNode, useEffect, useState } from "react";
+import {
+  ComponentPropsWithoutRef,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import {
   copyToClipboard,
   CopyToClipboardResult,
@@ -10,12 +15,14 @@ export function CopyToClipboardButton({
   tooltipColor = "#002937",
   copiedTooltipColor = tooltipColor,
   onCopied,
+  className,
+  ...props
 }: {
   textToCopy: string;
   tooltipColor?: string;
   copiedTooltipColor?: string;
   onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
-}) {
+} & ComponentPropsWithoutRef<"button">) {
   const [hidden, setHidden] = useState(true);
   const [disabled, setDisabled] = useState(true);
 
@@ -39,7 +46,6 @@ export function CopyToClipboardButton({
   return (
     <button
       aria-label={"Copy code to clipboard"}
-      className="relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);
         if (onCopied) {
@@ -52,6 +58,8 @@ export function CopyToClipboardButton({
           }, 2000);
         }
       }}
+      className={clsx("group", className)}
+      {...props}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
