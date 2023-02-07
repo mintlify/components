@@ -61,7 +61,7 @@ export function CodeBlock({
     >
       {filename ? (
         <CodeTabBar filename={filename} filenameColor={filenameColor}>
-          <Button />
+          <Button className={'relative'} />
         </CodeTabBar>
       ) : (
         <Button className="absolute top-5 right-5" />

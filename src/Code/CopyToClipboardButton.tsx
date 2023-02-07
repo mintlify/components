@@ -58,7 +58,7 @@ export function CopyToClipboardButton({
           }, 2000);
         }
       }}
-      className={clsx(className, "group")}
+      className={clsx("group", className)}
       {...props}
     >
       <svg
