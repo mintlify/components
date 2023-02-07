@@ -1,5 +1,10 @@
 import clsx from "clsx";
-import {ComponentPropsWithoutRef, ReactNode, useEffect, useState} from "react";
+import {
+  ComponentPropsWithoutRef,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import {
   copyToClipboard,
   CopyToClipboardResult,
@@ -16,7 +21,7 @@ export function CopyToClipboardButton({
   tooltipColor?: string;
   copiedTooltipColor?: string;
   onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
-} & ComponentPropsWithoutRef<'button'>) {
+} & ComponentPropsWithoutRef<"button">) {
   const [hidden, setHidden] = useState(true);
   const [disabled, setDisabled] = useState(true);
 

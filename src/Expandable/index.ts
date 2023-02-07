@@ -1,3 +1,3 @@
-import Expandable from './Expandable';
+import Expandable from "./Expandable";
 
 export { Expandable };
