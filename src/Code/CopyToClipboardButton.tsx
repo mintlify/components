@@ -15,6 +15,7 @@ export function CopyToClipboardButton({
   tooltipColor = "#002937",
   copiedTooltipColor = tooltipColor,
   onCopied,
+  className,
   ...props
 }: {
   textToCopy: string;
@@ -45,7 +46,6 @@ export function CopyToClipboardButton({
   return (
     <button
       aria-label={"Copy code to clipboard"}
-      className="relative group"
       onClick={async () => {
         const result = await copyToClipboard(textToCopy);
         if (onCopied) {
@@ -58,6 +58,7 @@ export function CopyToClipboardButton({
           }, 2000);
         }
       }}
+      className={clsx(className, "group")}
       {...props}
     >
       <svg
