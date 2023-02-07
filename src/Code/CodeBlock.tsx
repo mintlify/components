@@ -64,7 +64,7 @@ export function CodeBlock({
           <Button />
         </CodeTabBar>
       ) : null}
-      {!filename && <Button className="z-10 absolute top-5 right-5" />}
+      {!filename && <Button className="absolute top-5 right-5" />}
       <div
         className="code-in-gray-frame children:!my-0 children:!shadow-none children:!bg-transparent"
         style={{ fontVariantLigatures: "none" }}
