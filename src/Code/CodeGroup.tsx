@@ -98,7 +98,7 @@ export function CodeGroup({
                   copiedTooltipColor ?? tooltipColor ?? selectedColor
                 }
                 onCopied={onCopied}
-                className={'relative'}
+                className={"relative"}
               />
             </div>
           </>
