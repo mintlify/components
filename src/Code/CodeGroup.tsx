@@ -16,9 +16,6 @@ export type CodeGroupPropsBase = {
    */
   tooltipColor?: string;
   /**
-   * Background color for the tooltip saying `Copied` when clicking the clipboard button.
-   */
-  /**
    * The callback function when a user clicks on the copied to clipboard button
    */
   onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
