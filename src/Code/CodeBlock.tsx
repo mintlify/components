@@ -16,10 +16,6 @@ export interface CodeBlockPropsBase {
    */
   tooltipColor?: string;
   /**
-   * Background color for the tooltip saying `Copied` when clicking the clipboard button.
-   */
-  copiedTooltipColor?: string;
-  /**
    * The callback function when a user clicks on the copied to clipboard button
    */
   onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
@@ -32,7 +28,6 @@ export function CodeBlock({
   filename,
   filenameColor,
   tooltipColor,
-  copiedTooltipColor,
   onCopied,
   children,
   className,
@@ -44,7 +39,6 @@ export function CodeBlock({
     <CopyToClipboardButton
       textToCopy={getNodeText(children)}
       tooltipColor={tooltipColor ?? filenameColor}
-      copiedTooltipColor={copiedTooltipColor ?? tooltipColor ?? filenameColor}
       onCopied={onCopied}
       {...props}
     />

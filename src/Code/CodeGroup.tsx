@@ -16,10 +16,6 @@ export type CodeGroupPropsBase = {
    */
   tooltipColor?: string;
   /**
-   * Background color for the tooltip saying `Copied` when clicking the clipboard button.
-   */
-  copiedTooltipColor?: string;
-  /**
    * The callback function when a user clicks on the copied to clipboard button
    */
   onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
@@ -45,7 +41,6 @@ export function CodeGroup({
   children,
   selectedColor,
   tooltipColor,
-  copiedTooltipColor,
   onCopied,
   isSmallText,
 }: CodeGroupProps) {
@@ -94,9 +89,6 @@ export function CodeGroup({
                   childArr[selectedIndex]?.props?.children
                 )}
                 tooltipColor={tooltipColor ?? selectedColor}
-                copiedTooltipColor={
-                  copiedTooltipColor ?? tooltipColor ?? selectedColor
-                }
                 onCopied={onCopied}
                 className={"relative"}
               />

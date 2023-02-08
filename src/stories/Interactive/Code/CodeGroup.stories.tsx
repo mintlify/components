@@ -36,7 +36,6 @@ const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = ({
 export const OneChild = Template.bind({});
 OneChild.args = {
   selectedColor: "#ffff00",
-  copiedTooltipColor: "#0000ff",
   children: (
     <CodeBlock filename="Very Very Very Long Filename">
       <p>Example Code</p>
@@ -47,7 +46,6 @@ OneChild.args = {
 export const ThreeChildren = Template.bind({});
 ThreeChildren.args = {
   selectedColor: "#ffff00",
-  copiedTooltipColor: "#0000ff",
   children: [
     <CodeBlock filename="Name 1">
       <p>First Page of Code</p>
@@ -69,7 +67,6 @@ ThreeChildren.args = {
 export const InsideAccordionWithTwoChildren = TemplateInsideAccordion.bind({});
 InsideAccordionWithTwoChildren.args = {
   selectedColor: "#ffff00",
-  copiedTooltipColor: "#0000ff",
   children: [
     <CodeBlock filename="Name 1">
       <p>First Page of Code</p>
