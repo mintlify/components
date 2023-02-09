@@ -52,6 +52,30 @@ export function Card<T extends ElementType = "div">({
     ? { target: "_blank", rel: "noreferrer" }
     : {};
 
+  let testIconisImage: boolean = false;
+
+  if (typeof icon === "string") {
+    testIconisImage = icon.startsWith("http://") || icon.startsWith("https://");
+  }
+
+  const renderIcon: JSX.Element = (
+    <>
+      {icon ? (
+        testIconisImage ? (
+          <img
+            src={icon as string}
+            alt={title}
+            className="h-6 w-6 rounded-full object-cover object-center"
+          />
+        ) : (
+          <div className="h-6 w-6 fill-slate-800 dark:fill-slate-100 text-slate-800 dark:text-slate-100">
+            {icon}
+          </div>
+        )
+      ) : null}
+    </>
+  );
+
   return (
     <Component
       className={clsx(
@@ -63,11 +87,7 @@ export function Card<T extends ElementType = "div">({
       {...props}
       ref={mRef as Ref<any>}
     >
-      {icon ? (
-        <div className="h-6 w-6 fill-slate-800 dark:fill-slate-100 text-slate-800 dark:text-slate-100">
-          {icon}
-        </div>
-      ) : null}
+      {renderIcon}
       <h2
         className={clsx(
           "font-semibold text-base text-slate-800 dark:text-white",
