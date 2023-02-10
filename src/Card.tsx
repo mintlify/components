@@ -52,20 +52,16 @@ export function Card<T extends ElementType = "div">({
     ? { target: "_blank", rel: "noreferrer" }
     : {};
 
-  let testIconisImage: boolean = false;
-
-  if (typeof icon === "string") {
-    testIconisImage = icon.startsWith("http://") || icon.startsWith("https://");
-  }
+  const isImageSrc: boolean = typeof icon === "string";
 
   const renderIcon: JSX.Element = (
     <>
       {icon ? (
-        testIconisImage ? (
+        isImageSrc ? (
           <img
             src={icon as string}
             alt={title}
-            className="h-6 w-6 rounded-full object-cover object-center"
+            className="h-6 w-6 object-cover object-center"
           />
         ) : (
           <div className="h-6 w-6 fill-slate-800 dark:fill-slate-100 text-slate-800 dark:text-slate-100">
