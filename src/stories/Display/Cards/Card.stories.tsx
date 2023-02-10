@@ -26,10 +26,19 @@ const icon = (
   </svg>
 );
 
+const imageIcon = "https://avatars.githubusercontent.com/u/93011474?s=200&v=4";
+
 export const WithCustomIcon = Template.bind({});
 WithCustomIcon.args = {
   title: "Card Title",
   icon,
+  children: "Card text.",
+};
+
+export const WithCustomImageIcon = Template.bind({});
+WithCustomImageIcon.args = {
+  title: "Card Title",
+  icon: imageIcon,
   children: "Card text.",
 };
 
