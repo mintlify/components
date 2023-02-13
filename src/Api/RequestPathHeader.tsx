@@ -1,6 +1,6 @@
-import { BaseUrlDropdown } from "./BaseUrlDropdown";
-import { RequestMethodBubble } from "./RequestMethodBubble";
-import { RequestMethods } from "./types";
+import { BaseUrlDropdown } from './BaseUrlDropdown';
+import { RequestMethodBubble } from './RequestMethodBubble';
+import { RequestMethods } from './types';
 
 export const RequestPathHeader = ({
   method,
@@ -34,9 +34,7 @@ export const RequestPathHeader = ({
       />
     )}
     <div className="font-mono text-[0.95rem] overflow-auto">
-      <p className="inline-block text-slate-700 dark:text-slate-100 font-semibold">
-        {path}
-      </p>
+      <p className="inline-block text-slate-700 dark:text-slate-100 font-semibold">{path}</p>
     </div>
   </div>
 );

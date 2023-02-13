@@ -1,7 +1,7 @@
-import "../src/css/globals.css";
+import '../src/css/globals.css';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -10,31 +10,31 @@ export const parameters = {
   },
   themes: {
     clearable: false,
-    icon: "lightning",
+    icon: 'lightning',
     list: [
       {
-        name: "Light Mode",
+        name: 'Light Mode',
         class: [],
-        color: "#ffffff",
+        color: '#ffffff',
         default: true,
       },
       {
-        name: "Dark Mode",
+        name: 'Dark Mode',
         // The class dark will be added to the body tag for Tailwind to work
-        class: ["dark"],
-        color: "#000000",
+        class: ['dark'],
+        color: '#000000',
       },
     ],
   },
   backgrounds: {
     values: [
       {
-        name: "Light Background",
-        value: "#00000",
+        name: 'Light Background',
+        value: '#00000',
       },
       {
-        name: "Dark Background",
-        value: "#0f1117",
+        name: 'Dark Background',
+        value: '#0f1117',
       },
     ],
   },

@@ -1,5 +1,6 @@
-import { useState, ReactElement, Children } from "react";
-import Tab from "./Tab";
+import { useState, ReactElement, Children } from 'react';
+
+import Tab from './Tab';
 
 export default function Tabs({ children }: { children: ReactElement[] }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -11,10 +12,7 @@ export default function Tabs({ children }: { children: ReactElement[] }) {
       <ul className="not-prose mb-6 pb-[1px] flex-none min-w-full overflow-auto border-b border-zinc-200 space-x-6 flex dark:border-zinc-200/10">
         {arrayChildren.map((child: ReactElement, i: number) => (
           <li className="cursor-pointer" onClick={() => setActiveTabIndex(i)}>
-            <Tab
-              title={child?.props?.title ?? "Tab Title"}
-              isActive={i === activeTabIndex}
-            />
+            <Tab title={child?.props?.title ?? 'Tab Title'} isActive={i === activeTabIndex} />
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 function AccordionGroup({ children }: { children: ReactNode }) {
   // [&>div] modifies the Accordion's borders to only show divider borders.

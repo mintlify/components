@@ -1,12 +1,6 @@
-import { ReactNode, isValidElement } from "react";
+import { ReactNode, isValidElement } from 'react';
 
-export function Tooltip({
-  tip,
-  children,
-}: {
-  tip: string;
-  children: ReactNode;
-}) {
+export function Tooltip({ tip, children }: { tip: string; children: ReactNode }) {
   if (!children) {
     return null;
   }

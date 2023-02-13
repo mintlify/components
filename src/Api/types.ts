@@ -1,19 +1,19 @@
 export type RequestMethods =
-  | "GET"
-  | "POST"
-  | "PUT"
-  | "DELETE"
-  | "PATCH"
-  | "COPY" // "COPY" and everything below has a grey color
-  | "HEAD"
-  | "OPTIONS"
-  | "LINK"
-  | "UNLINK"
-  | "PURGE"
-  | "LOCK"
-  | "UNLOCK"
-  | "PROPFIND"
-  | "VIEW";
+  | 'GET'
+  | 'POST'
+  | 'PUT'
+  | 'DELETE'
+  | 'PATCH'
+  | 'COPY' // "COPY" and everything below has a grey color
+  | 'HEAD'
+  | 'OPTIONS'
+  | 'LINK'
+  | 'UNLINK'
+  | 'PURGE'
+  | 'LOCK'
+  | 'UNLOCK'
+  | 'PROPFIND'
+  | 'VIEW';
 
 export type ParamGroup = {
   name: string;

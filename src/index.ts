@@ -1,9 +1,10 @@
-import { Accordion, AccordionGroup } from "./Accordion";
-import { AppearFromTop } from "./AppearFromTop";
-import { ApiPlayground, RequestMethodBubble, RequestPathHeader } from "./Api";
-import { Button, ButtonProps, ButtonPropsBase } from "./Button";
-import { Card, CardProps, CardPropsBase } from "./Card";
-import { CardGroup } from "./CardGroup";
+import { Accordion, AccordionGroup } from './Accordion';
+import { ApiPlayground, RequestMethodBubble, RequestPathHeader } from './Api';
+import { AppearFromTop } from './AppearFromTop';
+import { Button, ButtonProps, ButtonPropsBase } from './Button';
+import { Info, Warning, Note, Tip, Check } from './Callouts';
+import { Card, CardProps, CardPropsBase } from './Card';
+import { CardGroup } from './CardGroup';
 import {
   CodeBlock,
   CodeBlockProps,
@@ -11,17 +12,15 @@ import {
   CodeGroup,
   CodeGroupProps,
   CodeGroupPropsBase,
-} from "./Code";
-import { Info, Warning, Note, Tip, Check } from "./Callouts";
-import { Frame } from "./Frame";
-import { Param } from "./Param";
-import { PillSelect } from "./PillSelect";
-import { Tab, Tabs } from "./Tabs";
-import { Tooltip } from "./Tooltip";
-import { Expandable } from "./Expandable";
-
+} from './Code';
+import { Expandable } from './Expandable';
+import { Frame } from './Frame';
+import { Param } from './Param';
+import { PillSelect } from './PillSelect';
+import { Tab, Tabs } from './Tabs';
+import { Tooltip } from './Tooltip';
 // Import Tailwind
-import "./css/globals.css";
+import './css/globals.css';
 
 export type {
   CardProps,
