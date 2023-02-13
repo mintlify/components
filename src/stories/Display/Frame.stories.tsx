@@ -1,11 +1,11 @@
-import * as React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import * as React from 'react';
 
-import { Frame } from "../../Frame";
-import mountain from "../images/mountain.jpeg";
+import { Frame } from '../../Frame';
+import mountain from '../images/mountain.jpeg';
 
 export default {
-  title: "Display/Frame",
+  title: 'Display/Frame',
   component: Frame,
 } as ComponentMeta<typeof Frame>;
 
@@ -13,11 +13,11 @@ export default {
 const Template: ComponentStory<typeof Frame> = (args) => <Frame {...args} />;
 
 const TestContent = (
-  <article style={{ lineHeight: "64px" }}>
-    <div style={{ width: "50%", textAlign: "center", display: "inline-block" }}>
+  <article style={{ lineHeight: '64px' }}>
+    <div style={{ width: '50%', textAlign: 'center', display: 'inline-block' }}>
       <p>Test Content</p>
     </div>
-    <div style={{ width: "50%", textAlign: "center", display: "inline-block" }}>
+    <div style={{ width: '50%', textAlign: 'center', display: 'inline-block' }}>
       <p>Test Content</p>
     </div>
   </article>
@@ -25,11 +25,10 @@ const TestContent = (
 
 const TestParagraph = (
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
 );
@@ -48,6 +47,6 @@ Paragraph.args = {
 
 export const ImageWithCaption = Template.bind({});
 ImageWithCaption.args = {
-  caption: "This is a caption",
+  caption: 'This is a caption',
   children: TestImage,
 };

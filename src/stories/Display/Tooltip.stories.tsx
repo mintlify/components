@@ -1,11 +1,11 @@
-import * as React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import * as React from 'react';
 
-import { Tooltip } from "../../Tooltip";
-import { Button } from "../../Button";
+import { Button } from '../../Button';
+import { Tooltip } from '../../Tooltip';
 
 export default {
-  title: "Display/Tooltip",
+  title: 'Display/Tooltip',
   component: Tooltip,
 } as ComponentMeta<typeof Tooltip>;
 
@@ -17,18 +17,18 @@ const Template: ComponentStory<typeof Tooltip> = (args) => (
 
 export const WrappingText = Template.bind({});
 WrappingText.args = {
-  tip: "Text shows on hover. We are making it long to see how text wraps.",
-  children: "Text should be a dotted underline",
+  tip: 'Text shows on hover. We are making it long to see how text wraps.',
+  children: 'Text should be a dotted underline',
 };
 
 export const WrappingLetter = Template.bind({});
 WrappingLetter.args = {
-  tip: "Text shows on hover",
-  children: "A",
+  tip: 'Text shows on hover',
+  children: 'A',
 };
 
 export const WrappingAnElement = Template.bind({});
 WrappingAnElement.args = {
-  tip: "Text shows on hover",
+  tip: 'Text shows on hover',
   children: <Button href="https://mintlify.com">Hover Me</Button>,
 };

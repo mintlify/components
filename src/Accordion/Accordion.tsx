@@ -1,7 +1,8 @@
-import { ReactNode, useState } from "react";
-import AccordionCover from "./AccordionCover";
-import getAccordionStyleFromVariant from "./getAccordionStyleFromType";
-import clsx from "clsx";
+import clsx from 'clsx';
+import { ReactNode, useState } from 'react';
+
+import AccordionCover from './AccordionCover';
+import getAccordionStyleFromVariant from './getAccordionStyleFromType';
 
 function Accordion({
   title,
@@ -9,7 +10,7 @@ function Accordion({
   defaultOpen = false,
   icon,
   onChange,
-  variant = "rounded",
+  variant = 'rounded',
   children,
 }: {
   /** The main text of the Accordion shown in bold */
@@ -28,7 +29,7 @@ function Accordion({
   onChange?: (open: boolean) => void;
 
   /** The Accordion UI style */
-  variant?: "rounded" | "minimalist";
+  variant?: 'rounded' | 'minimalist';
 
   /** The Accordion contents */
   children: ReactNode;
@@ -42,8 +43,7 @@ function Accordion({
     }
   };
 
-  const { parentClass, coverClass, contentClass } =
-    getAccordionStyleFromVariant(variant);
+  const { parentClass, coverClass, contentClass } = getAccordionStyleFromVariant(variant);
 
   return (
     <div key={title} role="listitem" className={parentClass}>
@@ -55,7 +55,7 @@ function Accordion({
         icon={icon}
         coverClass={coverClass}
       />
-      <div className={clsx(contentClass, !open && "hidden")}>{children}</div>
+      <div className={clsx(contentClass, !open && 'hidden')}>{children}</div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import { useState } from "react";
-import ExpandableCover from "./ExpandableCover";
+import clsx from 'clsx';
+import { useState } from 'react';
+
+import ExpandableCover from './ExpandableCover';
 
 function Expandable({
   title,
@@ -26,17 +27,12 @@ function Expandable({
 
   return (
     <div key={title} role="listitem" className="">
-      <ExpandableCover
-        title={title}
-        description={description}
-        open={open}
-        setOpen={onClickOpen}
-      />
+      <ExpandableCover title={title} description={description} open={open} setOpen={onClickOpen} />
       <div
-        id={title + "Children"}
+        id={title + 'Children'}
         className={clsx(
-          "mt-2 pt-2 mb-4 mx-[6px] px-4 border-l border-zinc-100 dark:border-zinc-800",
-          !open && "hidden"
+          'mt-2 pt-2 mb-4 mx-[6px] px-4 border-l border-zinc-100 dark:border-zinc-800',
+          !open && 'hidden'
         )}
       >
         {children}

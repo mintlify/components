@@ -1,14 +1,15 @@
-import clsx from "clsx";
-import set from "lodash.set";
-import { ReactNode, useState } from "react";
+import clsx from 'clsx';
+import set from 'lodash.set';
+import { ReactNode, useState } from 'react';
+
 import {
   getMethodBgColor,
   getMethodTextColor,
   getMethodBorderColor,
   getMethodBgHoverColor,
-} from "../utils/apiPlaygroundColors";
-import { ApiInput } from "./inputs/ApiInput";
-import { ApiInputValue, ParamGroup, RequestMethods } from "./types";
+} from '../utils/apiPlaygroundColors';
+import { ApiInput } from './inputs/ApiInput';
+import { ApiInputValue, ParamGroup, RequestMethods } from './types';
 
 export function ApiPlayground({
   method,
@@ -34,9 +35,7 @@ export function ApiPlayground({
   isSendingRequest: boolean;
 
   /** Callback when the user changes a parameter's value. */
-  onChangeParamValues: (
-    paramValues: Record<string, Record<string, any>>
-  ) => void;
+  onChangeParamValues: (paramValues: Record<string, Record<string, any>>) => void;
 
   /** Callback when the user clicks the Send Request button. */
   onSendRequest: () => void;
@@ -48,8 +47,9 @@ export function ApiPlayground({
    *  This component does not automatically syntax highlight code. */
   response?: ReactNode;
 }) {
-  const [currentActiveParamGroup, setCurrentActiveParamGroup] =
-    useState<ParamGroup>(paramGroups[0]);
+  const [currentActiveParamGroup, setCurrentActiveParamGroup] = useState<ParamGroup>(
+    paramGroups[0]
+  );
 
   const setParamInObject = (
     paramGroupName: string,
@@ -59,11 +59,7 @@ export function ApiPlayground({
   ) => {
     const newParamGroup = {
       ...paramValues[paramGroupName],
-      ...set(
-        paramValues[paramGroupName] ?? {},
-        [...parentInputs, paramName],
-        value
-      ),
+      ...set(paramValues[paramGroupName] ?? {}, [...parentInputs, paramName], value),
     };
     onChangeParamValues({ ...paramValues, [paramGroupName]: newParamGroup });
   };
@@ -81,11 +77,9 @@ export function ApiPlayground({
                     key={paramGroup.name}
                     className={clsx(
                       currentActiveParamGroup?.name === paramGroup.name
-                        ? `${getMethodTextColor(method)} ${getMethodBorderColor(
-                            method
-                          )}`
-                        : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 dark:text-slate-400 dark:hover:text-slate-200",
-                      "whitespace-nowrap py-2 border-b-2 font-medium text-[0.84rem]"
+                        ? `${getMethodTextColor(method)} ${getMethodBorderColor(method)}`
+                        : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 dark:text-slate-400 dark:hover:text-slate-200',
+                      'whitespace-nowrap py-2 border-b-2 font-medium text-[0.84rem]'
                     )}
                     onClick={() => setCurrentActiveParamGroup(paramGroup)}
                   >
@@ -100,9 +94,7 @@ export function ApiPlayground({
               <ApiInput
                 key={`${param.name}${i}`}
                 param={param}
-                value={
-                  paramValues[currentActiveParamGroup.name]?.[param.name] ?? ""
-                }
+                value={paramValues[currentActiveParamGroup.name]?.[param.name] ?? ''}
                 onChangeParam={(
                   parentInputs: string[],
                   paramName: string,
@@ -120,10 +112,10 @@ export function ApiPlayground({
           </div>
           <button
             className={clsx(
-              "flex items-center py-1.5 px-3 rounded text-white font-medium space-x-2",
+              'flex items-center py-1.5 px-3 rounded text-white font-medium space-x-2',
               getMethodBgColor(method),
               getMethodBgHoverColor(method),
-              currentActiveParamGroup && "mt-4"
+              currentActiveParamGroup && 'mt-4'
             )}
             disabled={isSendingRequest}
             onClick={onSendRequest}
@@ -135,7 +127,7 @@ export function ApiPlayground({
             >
               <path d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z" />
             </svg>
-            <div>{!isSendingRequest ? "Send Request" : "Sending..."}</div>
+            <div>{!isSendingRequest ? 'Send Request' : 'Sending...'}</div>
           </button>
         </div>
       </div>

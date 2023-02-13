@@ -1,9 +1,9 @@
-import clsx from "clsx";
-import { getNodeText } from "../utils/getNodeText";
-import { ComponentPropsWithoutRef, ReactElement } from "react";
+import clsx from 'clsx';
+import { ComponentPropsWithoutRef, ReactElement } from 'react';
 
-import { CopyToClipboardButton } from "./CopyToClipboardButton";
-import { CopyToClipboardResult } from "../utils/copyToClipboard";
+import { CopyToClipboardResult } from '../utils/copyToClipboard';
+import { getNodeText } from '../utils/getNodeText';
+import { CopyToClipboardButton } from './CopyToClipboardButton';
 
 export interface CodeBlockPropsBase {
   filename?: string;
@@ -22,7 +22,7 @@ export interface CodeBlockPropsBase {
 }
 
 export type CodeBlockProps = CodeBlockPropsBase &
-  Omit<ComponentPropsWithoutRef<"div">, keyof CodeBlockPropsBase>;
+  Omit<ComponentPropsWithoutRef<'div'>, keyof CodeBlockPropsBase>;
 
 export function CodeBlock({
   filename,
@@ -33,9 +33,7 @@ export function CodeBlock({
   className,
   ...props
 }: CodeBlockProps) {
-  const Button = (
-    props: Partial<ComponentPropsWithoutRef<typeof CopyToClipboardButton>>
-  ) => (
+  const Button = (props: Partial<ComponentPropsWithoutRef<typeof CopyToClipboardButton>>) => (
     <CopyToClipboardButton
       textToCopy={getNodeText(children)}
       tooltipColor={tooltipColor ?? filenameColor}
@@ -46,23 +44,19 @@ export function CodeBlock({
 
   return (
     <div
-      className={clsx(
-        "mt-5 mb-8 not-prose gray-frame",
-        filename && "pt-2",
-        className
-      )}
+      className={clsx('mt-5 mb-8 not-prose gray-frame', filename && 'pt-2', className)}
       {...props}
     >
       {filename ? (
         <CodeTabBar filename={filename} filenameColor={filenameColor}>
-          <Button className={"relative"} />
+          <Button className={'relative'} />
         </CodeTabBar>
       ) : (
         <Button className="absolute top-5 right-5" />
       )}
       <div
         className="code-in-gray-frame children:!my-0 children:!shadow-none children:!bg-transparent"
-        style={{ fontVariantLigatures: "none" }}
+        style={{ fontVariantLigatures: 'none' }}
       >
         {children}
       </div>
@@ -93,9 +87,7 @@ function CodeTabBar({
       </div>
       <div className="flex-auto flex items-center bg-codeblock-tabs border border-slate-500/30 rounded-t">
         {children && (
-          <div className="flex-auto flex items-center justify-end px-4 space-x-4">
-            {children}
-          </div>
+          <div className="flex-auto flex items-center justify-end px-4 space-x-4">{children}</div>
         )}
       </div>
     </div>

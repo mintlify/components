@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Menu } from "@headlessui/react";
-import clsx from "clsx";
+import { Menu } from '@headlessui/react';
+import clsx from 'clsx';
+import { useState } from 'react';
 
 export function PillSelect({
   options,
@@ -43,12 +43,7 @@ export function PillSelect({
       <Menu>
         <Menu.Button className="text-xs text-slate-500 dark:text-slate-400 leading-5 font-semibold !bg-zinc-400/10 rounded-full py-1 px-3 flex items-center space-x-2 hover:bg-zinc-400/20">
           {selectedOption}
-          <svg
-            width="6"
-            height="3"
-            className="ml-2 overflow-visible"
-            aria-hidden="true"
-          >
+          <svg width="6" height="3" className="ml-2 overflow-visible" aria-hidden="true">
             <path
               d="M0 0L3 3L6 0"
               fill="none"
@@ -64,9 +59,8 @@ export function PillSelect({
               {({ active }) => (
                 <a
                   className={clsx(
-                    "flex items-center justify-between px-3 py-1 cursor-pointer",
-                    active &&
-                      "bg-zinc-50 text-slate-900 dark:bg-zinc-600/30 dark:text-white",
+                    'flex items-center justify-between px-3 py-1 cursor-pointer',
+                    active && 'bg-zinc-50 text-slate-900 dark:bg-zinc-600/30 dark:text-white',
                     option === selectedOption && selectedOptionClass
                   )}
                   onClick={() => onClickOption(option)}

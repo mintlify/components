@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import { ReactNode } from "react";
-import { ExpandableItemCoverIcon } from "../Expandable/ExpandableCover";
+import clsx from 'clsx';
+import { ReactNode } from 'react';
+
+import { ExpandableItemCoverIcon } from '../Expandable/ExpandableCover';
 
 function AccordionItemCover({
   title,
@@ -22,11 +23,8 @@ function AccordionItemCover({
   return (
     <button
       onClick={() => setOpen(!open)}
-      className={clsx(
-        "not-prose flex flex-row items-center content-center w-full",
-        coverClass
-      )}
-      aria-controls={title + "Children"}
+      className={clsx('not-prose flex flex-row items-center content-center w-full', coverClass)}
+      aria-controls={title + 'Children'}
       aria-expanded={open}
     >
       <div className="mr-0.5">
@@ -38,13 +36,9 @@ function AccordionItemCover({
         </div>
       ) : null}
       <div className="leading-tight text-left">
-        <p className="m-0 font-medium text-slate-900 dark:text-slate-200">
-          {title}
-        </p>
+        <p className="m-0 font-medium text-slate-900 dark:text-slate-200">{title}</p>
         {description ? (
-          <p className="m-0 text-slate-900 dark:text-slate-200">
-            {description}
-          </p>
+          <p className="m-0 text-slate-900 dark:text-slate-200">{description}</p>
         ) : null}
       </div>
     </button>
