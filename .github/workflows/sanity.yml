@@ -1,13 +1,13 @@
-name: Code Style Checks
+name: Sanity Check
 
 on: push
 
 jobs:
-  style-checks:
+  sanity-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Install modules
         run: yarn
-      - name: Check formatting
-        run: yarn format:check
+      - name: Check build
+        run: yarn build
