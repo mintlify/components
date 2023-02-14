@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import * as React from 'react';
+import React from 'react';
 import { forwardRef, useRef } from 'react';
 
 import { Card, CardProps } from '../../../Card';
@@ -28,7 +28,7 @@ const icon = (
 
 const imageIcon = 'https://avatars.githubusercontent.com/u/93011474?s=200&v=4';
 const image =
-  "https://images.unsplash.com/photo-1549880181-56a44cf4a9a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80";
+  'https://images.unsplash.com/photo-1549880181-56a44cf4a9a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80';
 
 export const WithCustomIcon = Template.bind({});
 WithCustomIcon.args = {
@@ -39,16 +39,16 @@ WithCustomIcon.args = {
 
 export const WithCustomImageIcon = Template.bind({});
 WithCustomImageIcon.args = {
-  title: "Card Title",
+  title: 'Card Title',
   icon: imageIcon,
-  children: "Card text.",
+  children: 'Card text.',
 };
 
 export const WithImage = Template.bind({});
 WithImage.args = {
-  title: "Card Title",
+  title: 'Card Title',
   image: image,
-  children: "Card text.",
+  children: 'Card text.',
 };
 
 export const NoTitle = Template.bind({});
