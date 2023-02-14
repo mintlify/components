@@ -12,7 +12,7 @@ export interface CardPropsBase<T> {
    */
   icon?: ReactNode;
   /**
-   * If provided, will render an image to the top of the card
+   * If provided, will render an image to the top of the card.
    */
   image?: string;
   /**
