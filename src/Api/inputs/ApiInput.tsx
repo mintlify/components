@@ -1,8 +1,9 @@
-import clsx from "clsx";
-import { useState } from "react";
-import { ApiInputValue, Param } from "../types";
-import { AddArrayItemButton } from "./AddArrayItemButton";
-import { InputDropdown } from "./InputDropdown";
+import clsx from 'clsx';
+import { useState } from 'react';
+
+import { ApiInputValue, Param } from '../types';
+import { AddArrayItemButton } from './AddArrayItemButton';
+import { InputDropdown } from './InputDropdown';
 
 /**
  *  ApiInput provides a UI to receive inputs from the user for API calls.
@@ -19,25 +20,18 @@ export function ApiInput({
 }: {
   param: Param;
   value: ApiInputValue;
-  onChangeParam: (
-    parentInputs: string[],
-    paramName: string,
-    value: ApiInputValue
-  ) => void;
+  onChangeParam: (parentInputs: string[], paramName: string, value: ApiInputValue) => void;
   onDeleteArrayItem?: () => void;
   parentInputs?: string[];
 }) {
-  const isObject = param.type === "object" && param.properties != null;
-  const isArray = param.type === "array";
+  const isObject = param.type === 'object' && param.properties != null;
+  const isArray = param.type === 'array';
 
   const [isExpandedProperties, setIsExpandedProperties] = useState(
-    (Boolean(param.required) && isObject) ||
-      (isArray && Array.isArray(value) && value.length > 0)
+    (Boolean(param.required) && isObject) || (isArray && Array.isArray(value) && value.length > 0)
   );
 
-  const [object, setObject] = useState<Record<string, any>>(
-    isObject ? (value as any) : {}
-  );
+  const [object, setObject] = useState<Record<string, any>>(isObject ? (value as any) : {});
   const [array, setArray] = useState<{ param: Param; value: any }[]>(
     isArray && Array.isArray(value) ? (value as any[]) : []
   );
@@ -46,7 +40,7 @@ export function ApiInput({
 
   // TO DO: Support multiple types
   let lowerCaseParamType;
-  if (typeof param.type === "string") {
+  if (typeof param.type === 'string') {
     lowerCaseParamType = param.type?.toLowerCase();
   }
 
@@ -77,7 +71,7 @@ export function ApiInput({
       {
         param: {
           ...param,
-          type: param.properties ? "object" : getArrayType(param.type),
+          type: param.properties ? 'object' : getArrayType(param.type),
         },
         value: param.properties ? {} : null,
       },
@@ -92,18 +86,15 @@ export function ApiInput({
     onInputChange(inputValue?.map((item: any) => item.value));
   };
 
-  if (lowerCaseParamType === "boolean") {
+  if (lowerCaseParamType === 'boolean') {
     InputField = (
       <InputDropdown
-        options={["true", "false"]}
-        value={value != null ? (value as boolean).toString() : ""}
-        onInputChange={(newValue: string) => onInputChange(newValue === "true")}
+        options={['true', 'false']}
+        value={value != null ? (value as boolean).toString() : ''}
+        onInputChange={(newValue: string) => onInputChange(newValue === 'true')}
       />
     );
-  } else if (
-    lowerCaseParamType === "integer" ||
-    lowerCaseParamType === "number"
-  ) {
+  } else if (lowerCaseParamType === 'integer' || lowerCaseParamType === 'number') {
     InputField = (
       <input
         className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-dark-input text-slate-700 dark:text-slate-200"
@@ -113,7 +104,7 @@ export function ApiInput({
         onChange={(e) => onInputChange(parseInt(e.target.value, 10))}
       />
     );
-  } else if (lowerCaseParamType === "file" || lowerCaseParamType === "files") {
+  } else if (lowerCaseParamType === 'file' || lowerCaseParamType === 'files') {
     InputField = (
       <button className="relative flex items-center px-2 w-full h-7 rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-dark-input text-slate-700 dark:text-slate-200 border-dashed hover:bg-slate-50 dark:hover:bg-slate-800">
         <input
@@ -136,7 +127,7 @@ export function ApiInput({
         <span className="w-full truncate text-left inline-block pointer-events-none">
           {value != null && (value as any)[param.name] != null
             ? (value as any)[param.name].name
-            : "Choose file"}
+            : 'Choose file'}
         </span>
       </button>
     );
@@ -168,16 +159,10 @@ export function ApiInput({
       </button>
     );
   } else if (isArray) {
-    InputField = array.length === 0 && (
-      <AddArrayItemButton onClick={onAddArrayItem} />
-    );
+    InputField = array.length === 0 && <AddArrayItemButton onClick={onAddArrayItem} />;
   } else if (param.enum) {
     InputField = (
-      <InputDropdown
-        options={param.enum}
-        value={value as string}
-        onInputChange={onInputChange}
-      />
+      <InputDropdown options={param.enum} value={value as string} onInputChange={onInputChange} />
     );
   } else {
     InputField = (
@@ -194,33 +179,27 @@ export function ApiInput({
   return (
     <div
       className={clsx(
-        "text-[0.84rem]",
+        'text-[0.84rem]',
         ((isObject && isExpandedProperties) || array.length > 0) &&
-          "px-3 py-2 -mx-1.5 border border-slate-200 dark:border-slate-700 bg-white dark:bg-codeblock rounded-md"
+          'px-3 py-2 -mx-1.5 border border-slate-200 dark:border-slate-700 bg-white dark:bg-codeblock rounded-md'
       )}
     >
       <div className="flex items-center space-x-2 group">
         <div
           className={clsx(
-            "flex items-center flex-1 font-mono text-slate-600 dark:text-slate-300",
-            isObject && "cursor-pointer",
-            onDeleteArrayItem && "invisible" // Array items don't have parameter names
+            'flex items-center flex-1 font-mono text-slate-600 dark:text-slate-300',
+            isObject && 'cursor-pointer',
+            onDeleteArrayItem && 'invisible' // Array items don't have parameter names
           )}
-          onClick={() =>
-            isObject && setIsExpandedProperties(!isExpandedProperties)
-          }
+          onClick={() => isObject && setIsExpandedProperties(!isExpandedProperties)}
         >
           {param.name}
-          {param.required && (
-            <span className="text-red-600 dark:text-red-400">*</span>
-          )}
+          {param.required && <span className="text-red-600 dark:text-red-400">*</span>}
         </div>
         <div
           className={clsx(
-            "flex-initial",
-            onDeleteArrayItem
-              ? "w-[calc(40%-1.05rem)] sm:w-[calc(33%-1.05rem)]"
-              : "w-2/5 sm:w-1/3"
+            'flex-initial',
+            onDeleteArrayItem ? 'w-[calc(40%-1.05rem)] sm:w-[calc(33%-1.05rem)]' : 'w-2/5 sm:w-1/3'
           )}
         >
           {InputField}
@@ -230,11 +209,7 @@ export function ApiInput({
             className="py-1 fill-red-600 dark:fill-red-400 hover:fill-red-800 dark:hover:fill-red-200"
             onClick={onDeleteArrayItem}
           >
-            <svg
-              className="h-3"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 448 512"
-            >
+            <svg className="h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path d="M424 80C437.3 80 448 90.75 448 104C448 117.3 437.3 128 424 128H412.4L388.4 452.7C385.9 486.1 358.1 512 324.6 512H123.4C89.92 512 62.09 486.1 59.61 452.7L35.56 128H24C10.75 128 0 117.3 0 104C0 90.75 10.75 80 24 80H93.82L130.5 24.94C140.9 9.357 158.4 0 177.1 0H270.9C289.6 0 307.1 9.358 317.5 24.94L354.2 80H424zM177.1 48C174.5 48 171.1 49.34 170.5 51.56L151.5 80H296.5L277.5 51.56C276 49.34 273.5 48 270.9 48H177.1zM364.3 128H83.69L107.5 449.2C108.1 457.5 115.1 464 123.4 464H324.6C332.9 464 339.9 457.5 340.5 449.2L364.3 128z" />
             </svg>
           </button>
@@ -262,8 +237,8 @@ export function ApiInput({
       {array.length > 0 && (
         <div
           className={clsx(
-            "mt-1 pt-2 pb-1 space-y-2",
-            !isObject && "border-t border-slate-100 dark:border-slate-700"
+            'mt-1 pt-2 pb-1 space-y-2',
+            !isObject && 'border-t border-slate-100 dark:border-slate-700'
           )}
         >
           {array.map((item, i) => (
@@ -276,9 +251,7 @@ export function ApiInput({
                 paramName: string,
                 paramValue: ApiInputValue
               ) => onArrayParentChange(i, paramValue)}
-              onDeleteArrayItem={() =>
-                onUpdateArray(array.filter((_, j) => i !== j))
-              }
+              onDeleteArrayItem={() => onUpdateArray(array.filter((_, j) => i !== j))}
             />
           ))}
           <div className="flex items-center justify-end space-x-2 group">
@@ -293,8 +266,8 @@ export function ApiInput({
 }
 
 const getArrayType = (type: string | undefined) => {
-  if (!type || type === "array") {
-    return "";
+  if (!type || type === 'array') {
+    return '';
   }
-  return type.replace(/\[\]/g, "");
+  return type.replace(/\[\]/g, '');
 };

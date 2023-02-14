@@ -1,18 +1,18 @@
-import * as React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import * as React from 'react';
+import { forwardRef, useRef } from 'react';
 
-import { Card, CardProps } from "../../../Card";
-import { forwardRef, useRef } from "react";
+import { Card, CardProps } from '../../../Card';
 
 export default {
-  title: "Display/Cards/Card",
+  title: 'Display/Cards/Card',
   component: Card,
-  argTypes: { onClick: { action: "clicked" } },
+  argTypes: { onClick: { action: 'clicked' } },
 } as ComponentMeta<typeof Card>;
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 const defaultText =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae porta arcu. Nam nec congue tellus. Nunc eleifend fermentum tortor, nec consectetur libero molestie eget. Nulla rhoncus elit eu mi auctor fringilla. Quisque et mattis eros, eu hendrerit libero. Mauris in erat ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque velit nisi, ornare at tincidunt ac, euismod sit amet ligula. In sodales ligula quis vestibulum lacinia. Pellentesque ut elit lectus. Sed tristique nunc nulla, non ultricies turpis eleifend non. Quisque viverra mauris vel sapien dictum, et elementum ante accumsan.";
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae porta arcu. Nam nec congue tellus. Nunc eleifend fermentum tortor, nec consectetur libero molestie eget. Nulla rhoncus elit eu mi auctor fringilla. Quisque et mattis eros, eu hendrerit libero. Mauris in erat ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque velit nisi, ornare at tincidunt ac, euismod sit amet ligula. In sodales ligula quis vestibulum lacinia. Pellentesque ut elit lectus. Sed tristique nunc nulla, non ultricies turpis eleifend non. Quisque viverra mauris vel sapien dictum, et elementum ante accumsan.';
 
 export const Default = Template.bind({});
 Default.args = {
@@ -26,15 +26,15 @@ const icon = (
   </svg>
 );
 
-const imageIcon = "https://avatars.githubusercontent.com/u/93011474?s=200&v=4";
+const imageIcon = 'https://avatars.githubusercontent.com/u/93011474?s=200&v=4';
 const image =
   "https://images.unsplash.com/photo-1549880181-56a44cf4a9a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80";
 
 export const WithCustomIcon = Template.bind({});
 WithCustomIcon.args = {
-  title: "Card Title",
+  title: 'Card Title',
   icon,
-  children: "Card text.",
+  children: 'Card text.',
 };
 
 export const WithCustomImageIcon = Template.bind({});
@@ -54,15 +54,15 @@ WithImage.args = {
 export const NoTitle = Template.bind({});
 NoTitle.args = {
   icon,
-  children: "The card text should be darker if there is no title.",
+  children: 'The card text should be darker if there is no title.',
 };
 
-const RefCard = forwardRef<"div" | undefined, CardProps<"div">>((args, ref) => (
+const RefCard = forwardRef<'div' | undefined, CardProps<'div'>>((args, ref) => (
   <Card {...args} mRef={ref} />
 ));
-RefCard.displayName = "RefCard";
+RefCard.displayName = 'RefCard';
 const RefTemplate: ComponentStory<typeof RefCard> = (args) => {
-  const ref = useRef<"div">();
+  const ref = useRef<'div'>();
   return (
     <RefCard
       {...args}
@@ -77,8 +77,8 @@ const RefTemplate: ComponentStory<typeof RefCard> = (args) => {
 
 export const WithCustomClassesAndRef = RefTemplate.bind({});
 WithCustomClassesAndRef.args = {
-  title: "Card Title",
-  children: "Card text.",
+  title: 'Card Title',
+  children: 'Card text.',
   className:
-    "bg-red-100 border-red-200 hover:border-red-800 dark:border-red-600 dark:hover:border-red-400",
+    'bg-red-100 border-red-200 hover:border-red-800 dark:border-red-600 dark:hover:border-red-400',
 };

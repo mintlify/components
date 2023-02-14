@@ -13,7 +13,7 @@ export const InputDropdown = ({
       onChange={(e) => onInputChange(e.target.value)}
       // We use || instead of ?? because the default value passed to
       // ApiPlayground is an empty string instead of undefined
-      value={value || "Select"}
+      value={value || 'Select'}
     >
       <option disabled>Select</option>
       {options.map((option) => (

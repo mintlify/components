@@ -1,0 +1,13 @@
+name: Sanity Check
+
+on: push
+
+jobs:
+  sanity-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install modules
+        run: yarn
+      - name: Check build
+        run: yarn build

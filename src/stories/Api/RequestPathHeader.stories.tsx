@@ -1,10 +1,10 @@
-import * as React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import * as React from 'react';
 
-import { RequestPathHeader } from "../../Api";
+import { RequestPathHeader } from '../../Api';
 
 export default {
-  title: "Api/RequestPathHeader",
+  title: 'Api/RequestPathHeader',
   component: RequestPathHeader,
 } as ComponentMeta<typeof RequestPathHeader>;
 
@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof RequestPathHeader> = (args) => (
 
 export const MultipleBaseUrls = Template.bind({});
 MultipleBaseUrls.args = {
-  method: "GET",
-  path: "/api/example/path",
-  baseUrls: ["Base URL 1", "Base URL 2"],
+  method: 'GET',
+  path: '/api/example/path',
+  baseUrls: ['Base URL 1', 'Base URL 2'],
 };

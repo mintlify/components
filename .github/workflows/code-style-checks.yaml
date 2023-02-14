@@ -1,0 +1,13 @@
+name: Code Style Checks
+
+on: push
+
+jobs:
+  style-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install modules
+        run: yarn
+      - name: Check formatting
+        run: yarn format:check

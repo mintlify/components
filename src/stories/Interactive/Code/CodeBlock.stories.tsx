@@ -1,11 +1,11 @@
-import * as React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import * as React from 'react';
 
-import { Accordion } from "../../../Accordion";
-import { CodeBlock } from "../../../Code";
+import { Accordion } from '../../../Accordion';
+import { CodeBlock } from '../../../Code';
 
 export default {
-  title: "Interactive/Code/CodeBlock",
+  title: 'Interactive/Code/CodeBlock',
   component: CodeBlock,
 } as ComponentMeta<typeof CodeBlock>;
 
@@ -29,20 +29,20 @@ const TemplateInsideAccordion: ComponentStory<typeof CodeBlock> = (args) => (
 
 export const WithFileName = Template.bind({});
 WithFileName.args = {
-  filename: "Example File Name",
+  filename: 'Example File Name',
 };
 
 export const WithOnCopiedCallback = Template.bind({});
 WithFileName.args = {
-  filename: "Example File Name",
-  onCopy: () => console.log("Copied!"),
+  filename: 'Example File Name',
+  onCopy: () => console.log('Copied!'),
 };
 
 export const FileNameGreenAccents = Template.bind({});
 FileNameGreenAccents.args = {
-  filename: "Example File Name",
-  filenameColor: "#00ff00",
-  tooltipColor: "#00AA00",
+  filename: 'Example File Name',
+  filenameColor: '#00ff00',
+  tooltipColor: '#00AA00',
 };
 
 export const NoFileName = Template.bind({});
@@ -52,6 +52,6 @@ export const InsideAccordionNoFileName = TemplateInsideAccordion.bind({});
 
 export const InsideAccordionWithFileName = TemplateInsideAccordion.bind({});
 InsideAccordionWithFileName.args = {
-  filename: "Example File Name",
-  filenameColor: "#00ff00",
+  filename: 'Example File Name',
+  filenameColor: '#00ff00',
 };
