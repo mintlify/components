@@ -12,6 +12,10 @@ export interface CardPropsBase<T> {
    */
   icon?: ReactNode;
   /**
+   * If provided, will render an Image to the top of the card
+   */
+  image?: string;
+  /**
    * Type of element to be rendered.
    */
   as?: T;
@@ -35,6 +39,7 @@ export type CardProps<T extends ElementType> = CardPropsBase<T> &
 export function Card<T extends ElementType = "div">({
   title,
   icon,
+  image,
   className,
   children,
   as,
@@ -75,7 +80,7 @@ export function Card<T extends ElementType = "div">({
   return (
     <Component
       className={clsx(
-        "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden px-6 py-5 w-full",
+        "block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden w-full",
         props.href && "cursor-pointer",
         className
       )}
@@ -83,25 +88,34 @@ export function Card<T extends ElementType = "div">({
       {...props}
       ref={mRef as Ref<any>}
     >
-      {renderIcon}
-      <h2
-        className={clsx(
-          "font-semibold text-base text-slate-800 dark:text-white",
-          icon !== null && icon !== undefined && "mt-4"
-        )}
-      >
-        {title}
-      </h2>
-      <span
-        className={clsx(
-          "mt-1 font-normal",
-          title
-            ? "text-slate-600 dark:text-slate-400"
-            : "text-slate-700 dark:text-slate-300"
-        )}
-      >
-        {children}
-      </span>
+      {image && (
+        <img
+          src={image}
+          alt={image}
+          className="w-full h-64 object-cover object-center"
+        />
+      )}
+      <div className="px-6 py-5">
+        {renderIcon}
+        <h2
+          className={clsx(
+            "font-semibold text-base text-slate-800 dark:text-white",
+            icon !== null && icon !== undefined && "mt-4"
+          )}
+        >
+          {title}
+        </h2>
+        <span
+          className={clsx(
+            "mt-1 font-normal",
+            title
+              ? "text-slate-600 dark:text-slate-400"
+              : "text-slate-700 dark:text-slate-300"
+          )}
+        >
+          {children}
+        </span>
+      </div>
     </Component>
   );
 }
