@@ -8,9 +8,9 @@ export interface CardPropsBase<T> {
    */
   title?: string;
   /**
-   * Icon to the top-left of the title.
+   * Icon to the top-left of the title. Can be a ReactNode or a string equal to an image source.
    */
-  icon?: ReactNode;
+  icon?: ReactNode | string;
   /**
    * If provided, will render an image to the top of the card.
    */
