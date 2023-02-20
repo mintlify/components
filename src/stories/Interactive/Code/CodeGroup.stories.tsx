@@ -106,7 +106,7 @@ CodeGroupInteractions.play = async ({ canvasElement }) => {
   await expect(canvas.getByText('Copy')).toBeInTheDOM();
   await expect(canvas.getByText('Copy')).not.toBeVisible();
   await expect(canvas.getByText(testString)).toBeInTheDOM;
-  // 👇 Simulate copy to clipboard click.
+  // 👇 Simulate copy to clipboard.
   await userEvent.click(canvas.getByText('Copy'));
 
   // 👇 Assert DOM structure.

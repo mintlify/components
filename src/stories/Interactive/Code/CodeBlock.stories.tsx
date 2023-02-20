@@ -73,7 +73,7 @@ CodeBlockInteractions.args = {
 };
 CodeBlockInteractions.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  // 👇 Assert DOM structure
+  // 👇 Assert DOM structure.
   await delay(20);
   await expect(canvas.getByText(fileName)).toBeInTheDOM();
   await expect(canvas.getByText(testString)).toBeInTheDOM();
@@ -81,9 +81,9 @@ CodeBlockInteractions.play = async ({ canvasElement }) => {
   await expect(canvas.getByText(testString)).toBeInTheDOM;
   await expect(canvas.getByText('Copy')).not.toBeVisible();
 
-  // 👇 Simulate interactions with the component
+  // 👇 Simulate copy to clipboard.
   await userEvent.click(canvas.getByText('Copy'));
-  // 👇 Assert DOM structure
+  // 👇 Assert DOM structure.
   await delay(20);
   await expect(canvas.getByText('Copied')).toBeVisible();
   await expect(canvas.getByText('Copied')).toBeInTheDOM();
