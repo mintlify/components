@@ -1,6 +1,12 @@
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
-import React, { ComponentPropsWithoutRef } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  FormEventHandler,
+  ForwardedRef,
+  forwardRef,
+  ReactElement,
+} from 'react';
 
 import { CopyToClipboardResult } from '../utils/copyToClipboard';
 import { getNodeText } from '../utils/getNodeText';
@@ -23,7 +29,9 @@ export type CodeGroupPropsBase = {
 
   isSmallText?: boolean;
 
-  children?: React.ReactElement<CodeBlockProps>[] | React.ReactElement<CodeBlockProps>;
+  children?: ReactElement<CodeBlockProps>[] | ReactElement<CodeBlockProps>;
+
+  onChange?: FormEventHandler<HTMLDivElement> & ((index: number) => void);
 };
 
 export type CodeGroupProps = CodeGroupPropsBase &
@@ -36,13 +44,10 @@ export type CodeGroupProps = CodeGroupPropsBase &
  *
  * @param {CodeBlock[]} - children
  */
-export function CodeGroup({
-  children,
-  selectedColor,
-  tooltipColor,
-  onCopied,
-  isSmallText,
-}: CodeGroupProps) {
+export const CodeGroup = forwardRef(function CodeGroup(
+  { children, selectedColor, tooltipColor, onCopied, isSmallText, ...props }: CodeGroupProps,
+  ref: ForwardedRef<HTMLDivElement> | undefined
+) {
   if (children == null) {
     // Hide the frame when no children were passed
     console.warn('CodeGroup has no children, expected at least one CodeBlock child.');
@@ -57,7 +62,7 @@ export function CodeGroup({
     Exclude<React.ReactElement<CodeBlockProps>, boolean | null | undefined>
   >;
   return (
-    <Tab.Group as="div" className="not-prose gray-frame">
+    <Tab.Group {...props} ref={ref} as="div" className="not-prose gray-frame">
       <Tab.List className="flex text-xs leading-6 rounded-tl-xl pt-2">
         {({ selectedIndex }) => (
           <>
@@ -102,7 +107,7 @@ export function CodeGroup({
       </Tab.Panels>
     </Tab.Group>
   );
-}
+});
 
 interface TabItemProps {
   children: any;
