@@ -48,7 +48,13 @@ This repo contains the components Mintlify uses in our open-source documentation
 
 ## Installation
 
-`npm install @mintlify/components`
+### npm
+
+`npm install @headlessui/react @mintlify/components`
+
+### yarn
+
+`yarn add @headlessui/react @mintlify/components`
 
 Add the following at the start of your `main.css` file:
 
