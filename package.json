@@ -27,6 +27,7 @@
     "url": "https://github.com/mintlify/components/issues"
   },
   "peerDependencies": {
+    "@headlessui/react": "^1.7",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
@@ -35,6 +36,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@headlessui/react": "^1.7.11",
     "@mintlify/eslint-config": "^1.0.3",
     "@mintlify/eslint-config-typescript": "^1.0.7",
     "@mintlify/prettier-config": "1.0.2",
@@ -87,7 +89,6 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.10",
     "assert": "^2.0.0",
     "clsx": "^1.1.1",
     "is-absolute-url": "^4.0.1",
