@@ -91,3 +91,19 @@ Join our Discord community if you have questions or just want to chat:
 # License
 
 [MIT](https://tldrlegal.com/license/mit-license)
+
+# Contributing
+
+Read the [Contributing guide](https://mintlify.com/docs/contributing) to learn about our development process, the standards and tools used, and how to propose fixes, bugs or open issues.
+
+### Code Quality
+
+Check out the [Contribution Tools](https://mintlify.com/docs/contributing#contribution-tools) section in our [Contributing guide](https://mintlify.com/docs/contributing).
+
+#### Formatting
+
+This project uses [prettier](https://prettier.io/) for code formatting. You can auto-format across the codebase by running `yarn format`.
+
+#### Linting
+
+This project uses [eslint](https://eslint.org/) for code linting. You can check linter warnings and errors by running `yarn lint`.

@@ -20,7 +20,8 @@
     "format:check": "prettier \"**/*.{css,js,ts,tsx,md}\" --check",
     "prepare": "husky install && npm run build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint src"
   },
   "author": "Mintlify",
   "bugs": {
