@@ -3,5 +3,6 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-  "@mintlify/eslint-config-typescript"]
+    "@mintlify/eslint-config-typescript"
+  ]
 }
