@@ -45,7 +45,15 @@ export type CodeGroupProps = CodeGroupPropsBase &
  * @param {CodeBlock[]} - children
  */
 export const CodeGroup = forwardRef(function CodeGroup(
-  { children, selectedColor, tooltipColor, onCopied, isSmallText, ...props }: CodeGroupProps,
+  {
+    children,
+    selectedColor,
+    tooltipColor,
+    onCopied,
+    isSmallText,
+    className,
+    ...props
+  }: CodeGroupProps,
   ref: ForwardedRef<HTMLDivElement> | undefined
 ) {
   if (children == null) {
@@ -62,7 +70,7 @@ export const CodeGroup = forwardRef(function CodeGroup(
     Exclude<React.ReactElement<CodeBlockProps>, boolean | null | undefined>
   >;
   return (
-    <Tab.Group {...props} ref={ref} as="div" className="not-prose gray-frame">
+    <Tab.Group ref={ref} as="div" className={clsx('not-prose gray-frame', className)} {...props}>
       <Tab.List className="flex text-xs leading-6 rounded-tl-xl pt-2">
         {({ selectedIndex }) => (
           <>
