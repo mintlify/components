@@ -89,7 +89,6 @@ CodeBlockInteractions.play = async ({ canvasElement }) => {
   await expect(canvas.getByText('Copied')).toBeInTheDOM();
 
   // 👇 Assert if copied to clipboard.
-  console.log(canvas.getByText('Copied'));
   await expect(await navigator.clipboard.readText()).toEqual(testString);
 
   // 👇 Wait for Tooltip to close.
