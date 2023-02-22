@@ -72,7 +72,7 @@ The project is designed for use with static side rendering where we don't have a
 
 # Documentation
 
-Go to [mintlify.com/docs/components](https://mintlify.com/docs/components) for how to use the components in Mintlify's documentation platform.
+Go to [mintlify.com/docs/components](https://mintlify.com/docs/components) to see how to use the components in Mintlify's documentation platform.
 
 [Storybook](https://main--63134bd5ae01f2a7717a0e47.chromatic.com/) has interactive demos.
 
