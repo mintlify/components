@@ -18,7 +18,7 @@
     "build": "webpack",
     "format": "prettier \"**/*.{css,js,ts,tsx,md}\" --write",
     "format:check": "prettier \"**/*.{css,js,ts,tsx,md}\" --check",
-    "prepare": "husky install && npm run build",
+    "prepare": "husky install && yarn build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint src"
