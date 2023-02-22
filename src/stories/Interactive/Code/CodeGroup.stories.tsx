@@ -1,8 +1,12 @@
+import { expect } from '@storybook/jest';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { userEvent, within } from '@storybook/testing-library';
 import * as React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Accordion } from '../../../Accordion';
 import { CodeBlock, CodeGroup } from '../../../Code';
+import { delay } from '../../../utils/delay';
 
 export default {
   title: 'Interactive/Code/CodeGroup',
@@ -73,4 +77,65 @@ InsideAccordionWithTwoChildren.args = {
       <p>Second Line on Second Page of Code</p>
     </CodeBlock>,
   ],
+};
+
+/*
+ * See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+ * to learn more about using the canvasElement to query the DOM.
+ */
+export const CodeGroupInteractions = Template.bind({});
+const filename = 'Name 1';
+const filename2 = 'Name 2';
+const testString = uuidv4();
+const testString2 = uuidv4();
+CodeGroupInteractions.args = {
+  children: [
+    <CodeBlock filename={filename}>
+      <p>{testString}</p>
+    </CodeBlock>,
+    <CodeBlock filename={filename2}>
+      <p>{testString2}</p>
+    </CodeBlock>,
+  ],
+};
+CodeGroupInteractions.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  // 👇 Assert DOM structure
+  await delay(20);
+  await expect(canvas.getByText(filename)).toBeInTheDOM();
+  await expect(canvas.getByText('Copy')).toBeInTheDOM();
+  await expect(canvas.getByText('Copy')).not.toBeVisible();
+  await expect(canvas.getByText(testString)).toBeInTheDOM;
+  // 👇 Simulate copy to clipboard.
+  await userEvent.click(canvas.getByText('Copy'));
+
+  // 👇 Assert DOM structure.
+  await delay(20);
+  await expect(canvas.getByText('Copied')).toBeInTheDOM();
+  await expect(canvas.getByText('Copied')).toBeVisible();
+  // 👇 Assert if copied to clipboard.
+  await expect(await navigator.clipboard.readText()).toEqual(testString);
+
+  // 👇 Simulate tab switch.
+  await userEvent.click(canvas.getByText(filename2));
+  await delay(20);
+  await expect(canvas.getByText(filename2)).toBeInTheDOM();
+  await expect(canvas.getByText(testString2)).toBeInTheDOM();
+
+  // 👇 Simulate copy to clipboard click.
+  await userEvent.click(canvas.getByText('Copied'));
+
+  // 👇 Assert DOM structure.
+  await delay(20);
+  await expect(canvas.getByText('Copied')).toBeInTheDOM();
+  await expect(canvas.getByText('Copied')).toBeVisible();
+
+  // 👇 Assert if copied to clipboard.
+  await expect(await navigator.clipboard.readText()).toEqual(testString2);
+
+  // 👇 Wait for Tooltip to close.
+  await delay(3000);
+
+  // 👇 Expect Tooltip to be hidden.
+  await expect(canvas.getByText('Copy')).not.toBeVisible();
 };
