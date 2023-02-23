@@ -6,6 +6,7 @@ import React, {
   ForwardedRef,
   forwardRef,
   ReactElement,
+  ReactNode,
 } from 'react';
 
 import { CopyToClipboardResult } from '../utils/copyToClipboard';
@@ -103,7 +104,7 @@ export const CodeGroup = forwardRef(function CodeGroup(
         )}
       </Tab.List>
       <Tab.Panels className="flex overflow-auto">
-        {childArr.map((child: any) => (
+        {childArr.map((child) => (
           <Tab.Panel
             key={child?.props?.filename}
             className={clsx('flex-none code-in-gray-frame', isSmallText && 'text-xs leading-5')}
@@ -118,7 +119,7 @@ export const CodeGroup = forwardRef(function CodeGroup(
 });
 
 interface TabItemProps {
-  children: any;
+  children: ReactNode;
   selectedIndex: number;
   myIndex: number;
   selectedColor?: string;

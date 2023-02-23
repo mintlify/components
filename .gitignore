@@ -1,6 +1,10 @@
 # we are using yarn in this project
 package.lock
 
+
+# eslint
+.eslintcache
+
 # user editor preferences
 /.vscode/
 /.idea/

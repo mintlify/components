@@ -20,9 +20,7 @@ export default {
   ],
 } as ComponentMeta<typeof CodeGroup>;
 
-const Template: ComponentStory<typeof CodeGroup> = ({ children, ...props }) => (
-  <CodeGroup {...props}>{children}</CodeGroup>
-);
+const Template: ComponentStory<typeof CodeGroup> = ({ ...props }) => <CodeGroup {...props} />;
 
 const TemplateInsideAccordion: ComponentStory<typeof CodeGroup> = ({ children, ...props }) => (
   <Accordion
@@ -48,17 +46,17 @@ export const ThreeChildren = Template.bind({});
 ThreeChildren.args = {
   selectedColor: '#ffff00',
   children: [
-    <CodeBlock filename="Name 1">
+    <CodeBlock key={1} filename="Name 1">
       <p>First Page of Code</p>
     </CodeBlock>,
-    <CodeBlock filename="Duplicated Name, But Different Content">
+    <CodeBlock key={2} filename="Duplicated Name, But Different Content">
       <p>Second Page of Code</p>
       <p>The next line of code is as long as possible to test scrolling:</p>
       <p>
         Loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
       </p>
     </CodeBlock>,
-    <CodeBlock filename="Duplicated Name, But Different Content">
+    <CodeBlock key={3} filename="Duplicated Name, But Different Content">
       <p>Third Page of Code</p>
       <p>Second Line on Third Page of Code</p>
     </CodeBlock>,
@@ -69,10 +67,10 @@ export const InsideAccordionWithTwoChildren = TemplateInsideAccordion.bind({});
 InsideAccordionWithTwoChildren.args = {
   selectedColor: '#ffff00',
   children: [
-    <CodeBlock filename="Name 1">
+    <CodeBlock key={1} filename="Name 1">
       <p>First Page of Code</p>
     </CodeBlock>,
-    <CodeBlock filename="Name 2">
+    <CodeBlock key={2} filename="Name 2">
       <p>Second Page of Code</p>
       <p>Second Line on Second Page of Code</p>
     </CodeBlock>,
@@ -90,10 +88,10 @@ const testString = uuidv4();
 const testString2 = uuidv4();
 CodeGroupInteractions.args = {
   children: [
-    <CodeBlock filename={filename}>
+    <CodeBlock key={1} filename={filename}>
       <p>{testString}</p>
     </CodeBlock>,
-    <CodeBlock filename={filename2}>
+    <CodeBlock key={2} filename={filename2}>
       <p>{testString2}</p>
     </CodeBlock>,
   ],

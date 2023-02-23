@@ -18,15 +18,17 @@
     "build": "webpack",
     "format": "prettier \"**/*.{css,js,ts,tsx,md}\" --write",
     "format:check": "prettier \"**/*.{css,js,ts,tsx,md}\" --check",
-    "prepare": "npm run build",
+    "prepare": "husky install && yarn build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint src --cache"
   },
   "author": "Mintlify",
   "bugs": {
     "url": "https://github.com/mintlify/components/issues"
   },
   "peerDependencies": {
+    "@headlessui/react": "^1.7",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
@@ -35,6 +37,9 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@headlessui/react": "^1.7.11",
+    "@mintlify/eslint-config": "^1.0.3",
+    "@mintlify/eslint-config-typescript": "^1.0.7",
     "@mintlify/prettier-config": "1.0.2",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
@@ -49,12 +54,21 @@
     "@trivago/prettier-plugin-sort-imports": "3.x",
     "@types/lodash.set": "^4.3.7",
     "@types/react": "^18.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.3.0",
     "chromatic": "^6.9.0",
     "css-loader": "^6.7.2",
     "cssnano": "^5.1.14",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "glob-parent": "^6.0.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.1",
     "mini-css-extract-plugin": "^2.6.1",
     "mini-svg-data-uri": "^1.4.4",
     "postcss": "^8.4.19",
@@ -79,10 +93,13 @@
     "@types/uuid": "^9.0.0"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.10",
     "assert": "^2.0.0",
     "clsx": "^1.1.1",
     "is-absolute-url": "^4.0.1",
     "lodash.set": "^4.3.2"
+  },
+  "lint-staged": {
+    "*.+(ts|tsx)": "eslint --cache --fix --max-warnings 0",
+    "*.{css,js,ts,tsx,md}": "prettier --write"
   }
 }
