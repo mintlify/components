@@ -1,8 +1,9 @@
-import { expect , jest} from '@storybook/jest';
+import { expect, jest } from '@storybook/jest';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
 import * as React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import { Accordion } from '../../../Accordion';
 import { CodeBlock, CodeGroup } from '../../../Code';
 import { delay } from '../../../utils/delay';
@@ -98,35 +99,27 @@ CodeGroupInteractions.args = {
   ],
 };
 
-
 CodeGroupInteractions.play = async ({ canvasElement }) => {
   let clipboardData: unknown = '';
 
-  jest
-      .spyOn(window, 'navigator', 'get')
-      .mockImplementation(() => {
-        return {
-          clipboard: {
-            writeText: jest.fn(
-                (data) => {
-                  clipboardData = data
-                }
-            ),
-            readText: jest.fn(
-                () => {
-                  return clipboardData
-                }
-            ),
-          }
-        } as any
-      })
-
+  jest.spyOn(window, 'navigator', 'get').mockImplementation(() => {
+    return {
+      clipboard: {
+        writeText: jest.fn((data) => {
+          clipboardData = data;
+        }),
+        readText: jest.fn(() => {
+          return clipboardData;
+        }),
+      },
+    } as any;
+  });
 
   const canvas = within(canvasElement);
-  await expect(window.navigator.clipboard).toBeDefined()
+  await expect(window.navigator.clipboard).toBeDefined();
 
   await delay(20);
-  await userEvent.hover(await within(canvasElement).getByRole('button'))
+  await userEvent.hover(await within(canvasElement).getByRole('button'));
 
   // 👇 Assert DOM structure.
   await expect(canvas.getByText(filename)).toBeInTheDocument();
@@ -167,5 +160,4 @@ CodeGroupInteractions.play = async ({ canvasElement }) => {
 
   // 👇 Expect Tooltip to be hidden.
   await expect(canvas.queryByText('Copy')).not.toBeVisible();
-
 };

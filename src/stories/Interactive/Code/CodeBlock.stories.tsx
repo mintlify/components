@@ -1,4 +1,4 @@
-import {expect, jest} from '@storybook/jest';
+import { expect, jest } from '@storybook/jest';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
 import * as React from 'react';
@@ -74,30 +74,24 @@ CodeBlockInteractions.args = {
 CodeBlockInteractions.play = async ({ canvasElement }) => {
   let clipboardData: unknown = '';
 
-  jest
-      .spyOn(window, 'navigator', 'get')
-      .mockImplementation(() => {
-        return {
-          clipboard: {
-            writeText: jest.fn(
-                (data) => {
-                  clipboardData = data
-                }
-            ),
-            readText: jest.fn(
-                () => {
-                  return clipboardData
-                }
-            ),
-          }
-        } as any
-      })
+  jest.spyOn(window, 'navigator', 'get').mockImplementation(() => {
+    return {
+      clipboard: {
+        writeText: jest.fn((data) => {
+          clipboardData = data;
+        }),
+        readText: jest.fn(() => {
+          return clipboardData;
+        }),
+      },
+    } as any;
+  });
 
   const canvas = within(canvasElement);
-  await expect(window.navigator.clipboard).toBeDefined()
+  await expect(window.navigator.clipboard).toBeDefined();
 
   await delay(20);
-  await userEvent.hover(await within(canvasElement).getByRole('button'))
+  await userEvent.hover(await within(canvasElement).getByRole('button'));
 
   // 👇 Assert DOM structure.
   await expect(canvas.getByText(fileName)).toBeInTheDocument();
