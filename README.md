@@ -48,13 +48,46 @@ This repo contains the components Mintlify uses in our open-source documentation
 
 ## Installation
 
-### npm
+## Add Dependencies
 
-`npm install @headlessui/react @mintlify/components`
+Install this package and peerDependencies of this package,
+using [install-peerdeps](https://github.com/nathanhleung/install-peerdeps).
 
-### yarn
+```sh
+npx install-peerdeps @mintlify/components
+```
 
-`yarn add @headlessui/react @mintlify/components`
+### React is already installed
+
+You already have `react` installed or are using `preact` and just need `@headlessui/react` and `@mintlify/components`.
+
+```sh
+# yarn
+yarn add @headlessui/react @mintlify/components
+
+# npm
+npm i @headlessui/react @mintlify/components
+
+# pnpm
+pnpm add @headlessui/react @mintlify/components
+```
+
+### React and headlessui are already installed
+
+You are already using `react` and `@headlessui/react` and just need `@mintlify/components`.
+
+```sh
+# yarn
+yarn add @mintlify/components
+
+# npm
+npm i @mintlify/components
+
+# pnpm
+pnpm add @mintlify/components
+```
+
+## CSS import
 
 Add the following at the start of your `main.css` file:
 
