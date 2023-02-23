@@ -74,7 +74,7 @@ pnpm add @headlessui/react @mintlify/components
 
 ### React and headlessui are already installed
 
-You are already using `react` and `@headlessui/react` and just need `@mintlify/components`.
+You already have `react` and `@headlessui/react` installed and just need `@mintlify/components`.
 
 ```sh
 # yarn
