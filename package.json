@@ -20,7 +20,8 @@
     "format:check": "prettier \"**/*.{css,js,ts,tsx,md}\" --check",
     "prepare": "npm run build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test-storybook": "test-storybook"
   },
   "author": "Mintlify",
   "bugs": {
@@ -42,13 +43,16 @@
     "@storybook/addon-links": "^6.5.13",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-webpack5": "^6.5.13",
+    "@storybook/jest": "^0.0.10",
     "@storybook/manager-webpack5": "^6.5.13",
     "@storybook/react": "^6.5.13",
+    "@storybook/test-runner": "^0.9.4",
     "@storybook/testing-library": "^0.0.13",
     "@tailwindcss/typography": "^0.5.7",
     "@trivago/prettier-plugin-sort-imports": "3.x",
     "@types/lodash.set": "^4.3.7",
     "@types/react": "^18.0.21",
+    "@types/uuid": "^9.0.0",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.3.0",
     "chromatic": "^6.9.0",
@@ -72,11 +76,9 @@
     "trim-newlines": "^4.0.2",
     "ts-loader": "^9.3.1",
     "typescript": "^4.9.4",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^4.10.0",
-    "@storybook/jest": "^0.0.10",
     "uuid": "^9.0.0",
-    "@types/uuid": "^9.0.0"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.10",
