@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ComponentPropsWithoutRef, ReactElement } from 'react';
+import React, { ComponentPropsWithoutRef, ForwardedRef, forwardRef, ReactElement } from 'react';
 
 import { CopyToClipboardResult } from '../utils/copyToClipboard';
 import { getNodeText } from '../utils/getNodeText';
@@ -24,15 +24,18 @@ export interface CodeBlockPropsBase {
 export type CodeBlockProps = CodeBlockPropsBase &
   Omit<ComponentPropsWithoutRef<'div'>, keyof CodeBlockPropsBase>;
 
-export function CodeBlock({
-  filename,
-  filenameColor,
-  tooltipColor,
-  onCopied,
-  children,
-  className,
-  ...props
-}: CodeBlockProps) {
+export const CodeBlock = forwardRef(function CodeBlock(
+  {
+    filename,
+    filenameColor,
+    tooltipColor,
+    onCopied,
+    children,
+    className,
+    ...props
+  }: CodeBlockProps,
+  ref: ForwardedRef<HTMLDivElement>
+) {
   const Button = (props: Partial<ComponentPropsWithoutRef<typeof CopyToClipboardButton>>) => (
     <CopyToClipboardButton
       textToCopy={getNodeText(children)}
@@ -45,6 +48,7 @@ export function CodeBlock({
   return (
     <div
       className={clsx('mt-5 mb-8 not-prose gray-frame', filename && 'pt-2', className)}
+      ref={ref}
       {...props}
     >
       {filename ? (
@@ -62,7 +66,7 @@ export function CodeBlock({
       </div>
     </div>
   );
-}
+});
 
 /**
  * Different from CodeGroup because we cannot use Headless UI's Tab component outside a Tab.Group

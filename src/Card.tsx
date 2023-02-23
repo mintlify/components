@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import isAbsoluteUrl from 'is-absolute-url';
-import { ComponentPropsWithoutRef, ElementType, ReactNode, Ref } from 'react';
+import React, { ComponentPropsWithoutRef, ElementType, ReactNode, Ref } from 'react';
 
 export interface CardPropsBase<T> {
   /**
@@ -8,7 +8,7 @@ export interface CardPropsBase<T> {
    */
   title?: string;
   /**
-   * Icon to the top-left of the title.
+   * Icon to the top-left of the title. Can be a ReactNode or a string equal to an image source.
    */
   icon?: ReactNode;
   /**
@@ -80,7 +80,7 @@ export function Card<T extends ElementType = 'div'>({
       )}
       {...newTabProps}
       {...props}
-      ref={mRef as Ref<any>}
+      ref={mRef as Ref<never>}
     >
       {image && <img src={image} alt={image} className="w-full h-64 object-cover object-center" />}
       <div className="px-6 py-5">
