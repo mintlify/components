@@ -21,7 +21,7 @@
     "prepare": "husky install && npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint src"
+    "lint": "eslint src --cache"
   },
   "author": "Mintlify",
   "bugs": {
