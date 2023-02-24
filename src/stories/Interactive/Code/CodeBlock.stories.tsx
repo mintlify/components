@@ -84,7 +84,7 @@ CodeBlockInteractions.play = async ({ canvasElement }) => {
           return clipboardData;
         }),
       },
-    } as any;
+    } as never;
   });
 
   const canvas = within(canvasElement);

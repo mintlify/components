@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "@mintlify/eslint-config-typescript"
+  ],
+  "rules": {
+    "react/prop-types": "off"
+  }
+}
