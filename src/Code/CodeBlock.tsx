@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ComponentPropsWithoutRef, ForwardedRef, forwardRef, ReactElement } from 'react';
+import React, { ComponentPropsWithoutRef, ForwardedRef, forwardRef, ReactElement } from 'react';
 
 import { CopyToClipboardResult } from '../utils/copyToClipboard';
 import { getNodeText } from '../utils/getNodeText';
