@@ -1,5 +1,4 @@
-
-import React from 'react'
+import React from 'react';
 
 export function AddArrayItemButton({ onClick }: { onClick: () => void }) {
   // pointer-events-none on the plus sign SVG is needed to allow clicking the button underneath.
