@@ -127,9 +127,7 @@ export function ApiInput({
         <span className="w-full truncate text-left inline-block pointer-events-none">
           {value != null && typeof value == 'string' && value.length > 0
             ? (value as string)
-            : (value as { name: string })?.name != undefined
-            ? (value as { name: string }).name
-            : 'Choose file'}
+            : (value as { name: string })?.name ?? 'Choose file'}
         </span>
       </button>
     );
