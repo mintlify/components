@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-
+import React from 'react'
 // required and optional should be merged into a single prop that allows arbitrary text
 export type ParamProps = {
   name: string;
@@ -12,11 +12,11 @@ export type ParamProps = {
   /** Custom classes for the param variable name, can be used to customize its color */
   nameClasses?: string;
 
-  children: any;
+  children: React.ReactNode;
 };
 
-export function Param(props: ParamProps) {
-  return <ParamField {...props} />;
+export function Param({children, ...props}: ParamProps) {
+  return <ParamField {...props} >{children}</ParamField>;
 }
 
 export function ParamField({

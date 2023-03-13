@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-import { useState } from 'react';
-
+import React, { useState } from 'react';
 import { ApiInputValue, Param } from '../types';
 import { AddArrayItemButton } from './AddArrayItemButton';
 import { InputDropdown } from './InputDropdown';
@@ -82,7 +81,7 @@ export function ApiInput({
 
   const onUpdateArray = (newArray: any) => {
     setArray(newArray);
-    let inputValue = newArray.length > 0 ? newArray : undefined;
+    const inputValue = newArray.length > 0 ? newArray : undefined;
     onInputChange(inputValue?.map((item: any) => item.value));
   };
 
@@ -100,7 +99,7 @@ export function ApiInput({
         className="w-full py-0.5 px-2 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-dark-input text-slate-700 dark:text-slate-200"
         type="number"
         placeholder={param.placeholder}
-        value={value as any}
+        value={value as never}
         onChange={(e) => onInputChange(parseInt(e.target.value, 10))}
       />
     );
@@ -110,11 +109,11 @@ export function ApiInput({
         <input
           className="z-5 absolute inset-0 opacity-0 cursor-pointer"
           type="file"
-          onChange={(event) => {
+          onChange={async (event) => {
             if (event.target.files == null) {
               return;
             }
-            onInputChange(event.target.files[0]);
+            onInputChange(await getBase64(event.target.files[0]));
           }}
         />
         <svg
@@ -125,9 +124,9 @@ export function ApiInput({
           <path d="M105.4 182.6c12.5 12.49 32.76 12.5 45.25 .001L224 109.3V352c0 17.67 14.33 32 32 32c17.67 0 32-14.33 32-32V109.3l73.38 73.38c12.49 12.49 32.75 12.49 45.25-.001c12.49-12.49 12.49-32.75 0-45.25l-128-128C272.4 3.125 264.2 0 256 0S239.6 3.125 233.4 9.375L105.4 137.4C92.88 149.9 92.88 170.1 105.4 182.6zM480 352h-160c0 35.35-28.65 64-64 64s-64-28.65-64-64H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456z" />
         </svg>
         <span className="w-full truncate text-left inline-block pointer-events-none">
-          {value != null && (value as any)[param.name] != null
-            ? (value as any)[param.name].name
-            : 'Choose file'}
+          {value != null && typeof value == 'string' && value.length > 0 ? value as string :
+              (value as {name: string})?.name != undefined ? (value as {name: string}).name :
+              'Choose file'}
         </span>
       </button>
     );
@@ -271,3 +270,16 @@ const getArrayType = (type: string | undefined) => {
   }
   return type.replace(/\[\]/g, '');
 };
+
+function getBase64(file: File) {
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      resolve(reader.result);
+    };
+    reader.onerror = function (error) {
+      reject(error);
+    };
+  })
+}

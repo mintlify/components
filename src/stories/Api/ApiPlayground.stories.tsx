@@ -10,13 +10,12 @@ export default {
 } as ComponentMeta<typeof ApiPlayground>;
 
 const Template: ComponentStory<typeof ApiPlayground> = (args) => {
-  const [paramValues, setParamValues] = useState<Record<string, Record<string, any>>>(
+  const [paramValues, setParamValues] = useState<Record<string, Record<string, unknown>>>(
     args.paramValues
   );
 
   args.paramValues = paramValues;
   args.onChangeParamValues = setParamValues;
-
   return <ApiPlayground {...args} />;
 };
 
@@ -28,6 +27,10 @@ const testParamGroups = [
         name: 'Text Input',
         type: 'text',
         placeholder: 'Placeholder Value',
+      },
+      {
+        name: 'File Input',
+        type: 'file',
       },
       {
         name: 'Array Input',
