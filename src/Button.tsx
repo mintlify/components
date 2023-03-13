@@ -1,9 +1,9 @@
-import clsx from 'clsx';
-import { ElementType, ComponentPropsWithoutRef, Ref } from 'react';
+import { clsx } from 'clsx';
+import React, { ElementType, ComponentPropsWithoutRef, Ref } from 'react';
 
 type ColorInterface = keyof typeof colors;
 
-let colors = {
+const colors = {
   indigo: [
     'bg-indigo-50 text-indigo-600 hover:bg-indigo-200 hover:text-indigo-700 focus:ring-indigo-500',
     'text-indigo-300 group-hover:text-indigo-400',
@@ -26,7 +26,7 @@ let colors = {
   ],
 };
 
-let colorsDark: Record<ColorInterface, string[]> = {
+const colorsDark: Record<ColorInterface, string[]> = {
   ...colors,
   gray: [
     'dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white dark:focus:ring-slate-500',
@@ -82,8 +82,8 @@ export function Button<T extends ElementType = 'button'>({
   mRef,
   ...props
 }: ButtonProps<T>) {
-  let colorClasses = typeof color === 'string' ? colors[color] : color;
-  let darkColorClasses = typeof darkColor === 'string' ? colorsDark[darkColor] || [] : darkColor;
+  const colorClasses = typeof color === 'string' ? colors[color] : color;
+  const darkColorClasses = typeof darkColor === 'string' ? colorsDark[darkColor] || [] : darkColor;
 
   /**
    * If provided, use `as` or an `a` tag if linking to things with href.

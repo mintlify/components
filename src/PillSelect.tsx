@@ -1,6 +1,6 @@
 import { Menu } from '@headlessui/react';
-import clsx from 'clsx';
-import { useState } from 'react';
+import { clsx } from 'clsx';
+import React, { useState } from 'react';
 
 export function PillSelect({
   options,

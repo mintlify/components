@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import isAbsoluteUrl from 'is-absolute-url';
 import React, { ComponentPropsWithoutRef, ElementType, ReactNode, Ref } from 'react';
 

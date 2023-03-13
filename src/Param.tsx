@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React from 'react';
 
 // required and optional should be merged into a single prop that allows arbitrary text

@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import { ReactNode, useState } from 'react';
+import { clsx } from 'clsx';
+import React, { ReactNode, useState } from 'react';
 
 import AccordionCover from './AccordionCover';
 import getAccordionStyleFromVariant from './getAccordionStyleFromType';
