@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import set from 'lodash.set';
 import React, { ReactNode, useState } from 'react';
 

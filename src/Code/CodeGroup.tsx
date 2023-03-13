@@ -1,5 +1,5 @@
 import { Tab } from '@headlessui/react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   ComponentPropsWithoutRef,
   FormEventHandler,

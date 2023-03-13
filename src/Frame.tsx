@@ -1,4 +1,5 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
+import React from 'react';
 
 const paddingMap = { none: '', md: 'p-8' };
 
@@ -26,7 +27,7 @@ export function Frame({
   padding: 'none' | 'md';
   lightOnly: boolean;
 }) {
-  let paddingClassName = paddingMap[padding];
+  const paddingClassName = paddingMap[padding];
 
   return (
     <div className={containerClassName}>

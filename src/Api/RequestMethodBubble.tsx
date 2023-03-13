@@ -1,4 +1,5 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
+import React from 'react';
 
 import { getMethodBgColor } from '../utils/apiPlaygroundColors';
 import { RequestMethods } from './types';

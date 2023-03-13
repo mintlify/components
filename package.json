@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "description": "Open-source library of UI components made with React and TailwindCSS.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -96,7 +96,7 @@
   },
   "dependencies": {
     "assert": "^2.0.0",
-    "clsx": "^1.1.1",
+    "clsx": "^1.2.1",
     "is-absolute-url": "^4.0.1",
     "lodash.set": "^4.3.2"
   },

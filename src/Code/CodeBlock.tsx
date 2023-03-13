@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { ComponentPropsWithoutRef, ForwardedRef, forwardRef, ReactElement } from 'react';
 
 import { CopyToClipboardResult } from '../utils/copyToClipboard';
