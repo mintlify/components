@@ -113,7 +113,7 @@ export function ApiInput({
             if (event.target.files == null) {
               return;
             }
-            onInputChange(await getBase64(event.target.files[0]));
+            onInputChange(await b64(event.target.files[0]));
           }}
         />
         <svg
@@ -271,8 +271,7 @@ const getArrayType = (type: string | undefined) => {
   return type.replace(/\[\]/g, '');
 };
 
-function getBase64(file: File) {
-  return new Promise((resolve,reject)=>{
+const b64 =(file: File) => new Promise((resolve,reject)=>{
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
@@ -282,4 +281,3 @@ function getBase64(file: File) {
       reject(error);
     };
   })
-}
