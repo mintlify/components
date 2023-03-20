@@ -101,7 +101,7 @@ export function ApiInput({
         type="number"
         placeholder={param.placeholder}
         value={value as never}
-        onChange={(e) => onInputChange(parseInt(e.target.value, 10))}
+        onChange={(e) => onInputChange(parseFloat(e.target.value))}
       />
     );
   } else if (lowerCaseParamType === 'file' || lowerCaseParamType === 'files') {
