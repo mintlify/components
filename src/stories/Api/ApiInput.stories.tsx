@@ -57,15 +57,6 @@ EnumInput.args = {
   value: 'Enum Option 2',
 };
 
-export const OpenApiEnumInput = Template.bind({});
-OpenApiEnumInput.args = {
-  param: {
-    name: 'Enum Input',
-    enum: ['Enum Option 1', 'Enum Option 2', 'Enum Option 3'],
-  },
-  value: ['Enum Option 1', 'Enum Option 2', 'Enum Option 3'],
-};
-
 export const ArrayInput = Template.bind({});
 ArrayInput.args = {
   param: {
