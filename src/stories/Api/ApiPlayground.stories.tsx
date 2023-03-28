@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import { ApiPlayground, RequestPathHeader } from '../../Api';
+import { ParamGroup } from '../../Api/types';
 
 export default {
   title: 'Api/ApiPlayground',
@@ -37,6 +38,11 @@ const testParamGroups = [
         type: 'array',
       },
       {
+        name: 'Enum Input',
+        type: 'enum',
+        enum: ['Enum Option 1', 'Enum Option 2', 'Enum Option 3'],
+      },
+      {
         name: 'Object Input',
         type: 'object',
         properties: [
@@ -45,7 +51,7 @@ const testParamGroups = [
         ],
       },
     ],
-  },
+  } as ParamGroup,
   {
     name: 'Path',
     params: [
@@ -55,7 +61,7 @@ const testParamGroups = [
         required: true,
       },
     ],
-  },
+  } as ParamGroup,
 ];
 
 const testParamValues = {

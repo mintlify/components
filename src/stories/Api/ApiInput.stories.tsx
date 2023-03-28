@@ -11,13 +11,13 @@ export default {
 } as ComponentMeta<typeof ApiInput>;
 
 const Template: ComponentStory<typeof ApiInput> = (args) => {
-  const [value, setValue] = useState<any>(args.value);
+  const [value, setValue] = useState<ApiInputValue>(args.value);
   return (
     <div className="max-w-md">
       <ApiInput
         param={args.param}
         value={value}
-        onChangeParam={(parentInputs: string[], paramName: string, value: ApiInputValue) => {
+        onChangeParam={(_: string[], __: string, value: ApiInputValue) => {
           setValue(value);
         }}
         // Storybook automatically adds a blank function if we don't do this, and our code
@@ -55,6 +55,15 @@ EnumInput.args = {
     enum: ['Enum Option 1', 'Enum Option 2', 'Enum Option 3'],
   },
   value: 'Enum Option 2',
+};
+
+export const OpenApiEnumInput = Template.bind({});
+OpenApiEnumInput.args = {
+  param: {
+    name: 'Enum Input',
+    enum: ['Enum Option 1', 'Enum Option 2', 'Enum Option 3'],
+  },
+  value: ['Enum Option 1', 'Enum Option 2', 'Enum Option 3'],
 };
 
 export const ArrayInput = Template.bind({});
