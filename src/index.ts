@@ -1,5 +1,4 @@
 import { Accordion, AccordionGroup } from './Accordion';
-import { ApiPlayground, RequestMethodBubble, RequestPathHeader } from './Api';
 import { AppearFromTop } from './AppearFromTop';
 import { Button, ButtonProps, ButtonPropsBase } from './Button';
 import { Info, Warning, Note, Tip, Check } from './Callouts';
@@ -37,7 +36,6 @@ export {
   Accordion,
   AccordionGroup,
   AppearFromTop,
-  ApiPlayground,
   Button,
   Card,
   CardGroup,
@@ -51,8 +49,6 @@ export {
   Note,
   Param,
   PillSelect,
-  RequestMethodBubble,
-  RequestPathHeader,
   Tabs,
   Tip,
   Tab,
