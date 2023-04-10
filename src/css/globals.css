@@ -11,8 +11,8 @@ select {
 
 @layer components {
   .gray-frame {
-    @apply bg-codeblock rounded-xl shadow-lg dark:ring-1 dark:ring-white/10 dark:ring-inset relative;
-  }
+    @apply bg-[#0F1117] rounded-[0.65rem] dark:ring-1 dark:ring-white/10 relative;
+  }  
 
   .code-in-gray-frame {
     @apply text-slate-50 p-5 min-w-full text-sm leading-6 overflow-x-auto;

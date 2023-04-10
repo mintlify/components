@@ -44,8 +44,8 @@ WithFileName.args = {
 
 export const FileNameGreenAccents = Template.bind({});
 FileNameGreenAccents.args = {
-  filename: 'Example File Name',
-  filenameColor: '#00ff00',
+  filename: 'Regular Navigation',
+  filenameColor: '#2AB673',
   tooltipColor: '#00AA00',
 };
 
