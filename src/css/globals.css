@@ -11,7 +11,7 @@ select {
 
 @layer components {
   .gray-frame {
-    @apply bg-[#0F1117] rounded-[0.65rem] dark:ring-1 dark:ring-white/10 relative;
+    @apply bg-[#0F1117] rounded-xl dark:ring-1 dark:ring-white/10 relative;
   }  
 
   .code-in-gray-frame {

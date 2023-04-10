@@ -11,8 +11,7 @@ import React, {
 
 import { CopyToClipboardResult } from '../utils/copyToClipboard';
 import { getNodeText } from '../utils/getNodeText';
-import { CodeBlockProps } from './CodeBlock';
-import { CopyToClipboardButton } from './CopyToClipboardButton';
+import { CodeBlockProps, CopyToClipboardButton } from './CodeBlock';
 
 export type CodeGroupPropsBase = {
   /**
@@ -72,7 +71,7 @@ export const CodeGroup = forwardRef(function CodeGroup(
   >;
   return (
     <Tab.Group ref={ref} as="div" className={clsx('not-prose gray-frame', className)} {...props}>
-      <Tab.List className="flex text-xs leading-6 rounded-tl-xl pt-2">
+      <Tab.List className="flex text-xs bg-black leading-6 rounded-t-xl">
         {({ selectedIndex }) => (
           <>
             {childArr.map((child, tabIndex: number) => (
@@ -89,15 +88,13 @@ export const CodeGroup = forwardRef(function CodeGroup(
             ))}
             <div
               className={clsx(
-                'flex-auto flex justify-end bg-codeblock-tabs border-y border-slate-500/30 pr-4 rounded-tr',
-                selectedIndex === childArr?.length - 1 ? 'rounded-tl border-l' : ''
+                'flex-auto flex justify-end items-center pr-4 rounded-tr'
               )}
             >
               <CopyToClipboardButton
                 textToCopy={getNodeText(childArr[selectedIndex]?.props?.children)}
                 tooltipColor={tooltipColor ?? selectedColor}
                 onCopied={onCopied}
-                className={'relative'}
               />
             </div>
           </>
@@ -127,38 +124,13 @@ interface TabItemProps {
 
 function TabItem({ children, selectedIndex, myIndex, selectedColor = '#CBD5E1' }: TabItemProps) {
   const isSelected = selectedIndex === myIndex;
-  const isBeforeSelected = selectedIndex === myIndex + 1;
-  const isAfterSelected = selectedIndex === myIndex - 1;
-
-  // An edge can be in one of three states:
-  // - null if selected
-  // - normal if not selected and in the middle
-  // - rounded if there's a rounded corner on that side
-  const edgeLeft = isSelected ? null : isAfterSelected ? 'rounded' : 'normal';
-  const edgeRight = isSelected ? null : isBeforeSelected ? 'rounded' : 'normal';
 
   return (
     <Tab
-      className="flex items-center relative overflow-hidden px-4 py-1 text-slate-400 outline-none"
+      className="flex items-center relative overflow-hidden px-4 pt-2.5 pb-2 text-zinc-400 outline-none"
       style={isSelected ? { color: selectedColor } : {}}
     >
       <span className="z-10">{children}</span>
-
-      {/* Inactive tabs with optional edge caps */}
-      {!isSelected && (
-        <TabAdornment
-          className={clsx(
-            'bg-codeblock-tabs border-y border-slate-500/30',
-            edgeLeft === 'rounded' && 'border-l rounded-tl',
-            edgeRight === 'rounded' && 'border-r rounded-tr'
-          )}
-        />
-      )}
-
-      {/* Divider between inactive tabs */}
-      {edgeRight === 'normal' && (
-        <TabAdornment className="inset-y-px border-r border-slate-200/5 z-20" />
-      )}
 
       {/* Active tab highlight bar */}
       {isSelected && (
@@ -169,8 +141,4 @@ function TabItem({ children, selectedIndex, myIndex, selectedColor = '#CBD5E1' }
       )}
     </Tab>
   );
-}
-
-function TabAdornment({ className }: { className: string }) {
-  return <div className={clsx('pointer-events-none absolute inset-0', className)} />;
 }

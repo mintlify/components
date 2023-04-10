@@ -46,7 +46,7 @@ export const CodeBlock = forwardRef(function CodeBlock(
 
   return (
     <div
-      className={clsx('mt-5 mb-8 not-prose gray-frame', className)}
+      className={clsx('mb-8 not-prose gray-frame', className)}
       ref={ref}
       {...props}
     >
@@ -81,7 +81,7 @@ function CodeTabBar({
   children?: ReactNode
 }) {
   return (
-    <div className="flex rounded-t-[0.65rem] bg-black text-slate-400 text-xs leading-6">
+    <div className="flex rounded-t-xl bg-black text-slate-400 text-xs leading-6">
       <div
         className="flex-none border-b px-4 pt-2.5 pb-2 flex items-center"
         style={{ color: filenameColor, borderBottomColor: filenameColor }}
@@ -95,7 +95,7 @@ function CodeTabBar({
   );
 }
 
-function CopyToClipboardButton({
+export function CopyToClipboardButton({
   textToCopy,
   tooltipColor = '#002937',
   onCopied,

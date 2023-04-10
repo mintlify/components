@@ -13,9 +13,7 @@ export default {
   component: CodeGroup,
   decorators: [
     (Story) => (
-      <div className={'mt-6'}>
-        <Story />
-      </div>
+      <Story />
     ),
   ],
 } as ComponentMeta<typeof CodeGroup>;
