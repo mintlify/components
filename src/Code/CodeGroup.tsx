@@ -74,6 +74,7 @@ export const CodeGroup = forwardRef(function CodeGroup(
       <Tab.List className="flex text-xs bg-black leading-6 rounded-t-xl">
         {({ selectedIndex }) => (
           <>
+          <div className="flex overflow-x-scroll">
             {childArr.map((child, tabIndex: number) => (
               <>
                 <TabItem
@@ -86,6 +87,7 @@ export const CodeGroup = forwardRef(function CodeGroup(
                 </TabItem>
               </>
             ))}
+            </div>
             <div
               className={clsx(
                 'flex-auto flex justify-end items-center pr-4 rounded-tr'
@@ -127,7 +129,7 @@ function TabItem({ children, selectedIndex, myIndex, selectedColor = '#CBD5E1' }
 
   return (
     <Tab
-      className="flex items-center relative overflow-hidden px-4 pt-2.5 pb-2 text-zinc-400 outline-none"
+      className="flex items-center relative px-4 pt-2.5 pb-2 text-zinc-400 outline-none whitespace-nowrap"
       style={isSelected ? { color: selectedColor } : {}}
     >
       <span className="z-10">{children}</span>
