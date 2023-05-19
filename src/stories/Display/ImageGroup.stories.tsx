@@ -29,3 +29,9 @@ TwoColumns.args = {
   cols: 2,
   children: ThreeCards,
 };
+
+export const ThreeColumns = Template.bind({});
+ThreeColumns.args = {
+  cols: 3,
+  children: ThreeCards,
+};
