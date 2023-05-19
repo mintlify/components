@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ImageGroup } from '../../ImageGroup';
 
 export default {
-  title: 'Display/Cards/ImageGroup',
+  title: 'Display/ImageGroup',
   component: ImageGroup,
 } as ComponentMeta<typeof ImageGroup>;
 
