@@ -14,6 +14,7 @@ import {
 } from './Code';
 import { Expandable } from './Expandable';
 import { Frame } from './Frame';
+import { ImageGroup } from './ImageGroup';
 import { Param } from './Param';
 import { PillSelect } from './PillSelect';
 import { Tab, Tabs } from './Tabs';
@@ -53,4 +54,5 @@ export {
   Tip,
   Tab,
   Tooltip,
+  ImageGroup,
 };
