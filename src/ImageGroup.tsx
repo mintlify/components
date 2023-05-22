@@ -7,7 +7,7 @@ export function ImageGroup({
   className,
 }: {
   children: ReactNode;
-  cols?: number;
+  cols?: 1 | 2 | 3 | 4;
   className?: string;
 }) {
   return (
