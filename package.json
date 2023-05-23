@@ -98,7 +98,8 @@
     "assert": "^2.0.0",
     "clsx": "^1.2.1",
     "is-absolute-url": "^4.0.1",
-    "lodash.set": "^4.3.2"
+    "lodash.set": "^4.3.2",
+    "mermaid": "^10.1.0"
   },
   "lint-staged": {
     "*.+(ts|tsx)": "eslint --cache --fix --max-warnings 0",
