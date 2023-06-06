@@ -21,6 +21,12 @@ WrappingText.args = {
   children: 'Text should be a dotted underline',
 };
 
+export const LongTooltip = Template.bind({});
+LongTooltip.args = {
+  tip: 'Text shows on hover. We are making this one extra long to show how the tooltip wraps when the text inside it is longer than a certain length.',
+  children: 'Text should be a dotted underline',
+};
+
 export const WrappingLetter = Template.bind({});
 WrappingLetter.args = {
   tip: 'Text shows on hover',
