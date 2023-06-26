@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import React, { ComponentPropsWithoutRef, ForwardedRef, forwardRef, ReactElement } from 'react';
+import React, { ComponentPropsWithoutRef, FC, ForwardedRef, forwardRef, ReactElement } from 'react';
 
 import { CopyToClipboardResult } from '../utils/copyToClipboard';
 import { getNodeText } from '../utils/getNodeText';
@@ -36,13 +36,14 @@ export const CodeBlock = forwardRef(function CodeBlock(
   }: CodeBlockProps,
   ref: ForwardedRef<HTMLDivElement>
 ) {
-  const Button = (props: Partial<ComponentPropsWithoutRef<typeof CopyToClipboardButton>>) => (
-    <CopyToClipboardButton
-      textToCopy={getNodeText(children)}
-      tooltipColor={tooltipColor ?? filenameColor}
-      onCopied={onCopied}
-      {...props}
-    />
+  const Button: FC<{ className?: string }> = ({ className, ...props }) => (
+    <div className={clsx('w-fit h-fit bg-inherit', className)} {...props}>
+      <CopyToClipboardButton
+        textToCopy={getNodeText(children)}
+        tooltipColor={tooltipColor ?? filenameColor}
+        onCopied={onCopied}
+      />
+    </div>
   );
 
   return (
