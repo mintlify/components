@@ -15,7 +15,7 @@ const Step = ({ indicator, title, description, children, variant = 'subtle' }: S
       <div className="absolute ml-[-38px] p-1 rounded-[6px] bg-white dark:bg-zinc-900">
         <div
           className={cn(
-            'w-5 h-5 shrink-0 border rounded-[4px] text-sm flex items-center justify-center text-center font-mono',
+            'p-px w-5 h-5 shrink-0 border rounded-[4px] text-sm flex items-center justify-center text-center font-mono',
             {
               'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 border-transparent': variant === 'subtle',
               'text-zinc-500 border-zinc-200': variant === 'outline',
