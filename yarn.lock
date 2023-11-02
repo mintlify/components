@@ -1833,9 +1833,9 @@
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
 "@mintlify/eslint-config-typescript@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/@mintlify/eslint-config-typescript/-/eslint-config-typescript-1.0.7.tgz#a6da20179b21df85d3e08fed39e8be2c9a527692"
-  integrity sha512-gUtChM6VWXjHk6BlAuSlLJ9e1Q/WqIKqvf6sK3yE5hWfHt9vx5I9/5dhkl9YenNPscJ+DdoIr3z7EMawUJYOtA==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@mintlify/eslint-config-typescript/-/eslint-config-typescript-1.0.8.tgz#e0900a94f6695232529012eab5d8b32d45853b06"
+  integrity sha512-CS6f5vXG/2RiVVSaMWJZT3n0G+A3G4cqQmD053tan9kXbTITWAaPmL2VCMPhNbeSm5RYFJKHLtPguA9sRVptsA==
 
 "@mintlify/eslint-config@^1.0.3":
   version "1.0.3"
