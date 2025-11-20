@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@source "../src/**/*.stories.{js,ts,jsx,tsx}";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background-light: var(--mt-color-base-white);
+  --color-background-dark: var(--mt-color-gray-13);
+}

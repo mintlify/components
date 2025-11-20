@@ -1,0 +1,6 @@
+{
+  "stylelint.enable": true,
+  "files.readonlyInclude": {
+    "**/theme.css": true
+  }
+}
