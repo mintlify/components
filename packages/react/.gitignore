@@ -3,4 +3,4 @@ dist
 storybook-static
 *.log
 .DS_Store
-
+*storybook.log

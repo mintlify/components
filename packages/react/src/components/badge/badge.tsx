@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { Icon } from "../icon";
-import { IconType } from "../../types";
+import { Icon, IconType } from "../icon";
 import { cn } from "../../utils/cn";
 import "./badge.css";
 

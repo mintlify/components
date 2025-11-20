@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@source "../src/**/*.stories.{js,ts,jsx,tsx}";
+
+@variant dark (&:where(.dark, .dark *));

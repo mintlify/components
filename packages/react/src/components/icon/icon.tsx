@@ -1,4 +1,3 @@
-import { IconType } from "../../types";
 import { cn } from "../../utils/cn";
 import "./icon.css";
 
@@ -9,6 +8,15 @@ export interface IconProps {
   size?: number;
   className?: string;
 }
+
+export type IconType =
+  | "regular"
+  | "solid"
+  | "light"
+  | "thin"
+  | "sharp-solid"
+  | "duotone"
+  | "brands";
 
 export function Icon({
   icon,

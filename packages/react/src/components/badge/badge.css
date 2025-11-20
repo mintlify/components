@@ -126,161 +126,161 @@
 }
 
 .mt-badge-gray {
-  --color-bg: #f5f5f5;
-  --color-text: #78787a;
-  --color-bg-disabled: #f5f5f5;
-  --color-text-disabled: #e9e9ea;
+  --color-bg: var(--mt-color-badge-gray);
+  --color-text: var(--mt-color-text-tertiary);
+  --color-bg-disabled: var(--mt-color-badge-gray);
+  --color-text-disabled: var(--mt-color-checkbox-disabled);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-gray {
-    --color-bg: #262727;
-    --color-text: #d7d7d7;
-    --color-bg-disabled: #262727;
-    --color-text-disabled: #3c3c3d;
+    --color-bg: var(--mt-color-badge-gray);
+    --color-text: var(--mt-color-text-tertiary);
+    --color-bg-disabled: var(--mt-color-badge-gray);
+    --color-text-disabled: var(--mt-color-text-quaternary-solid);
   }
 }
 
 .mt-badge-blue {
-  --color-bg: #e3eafd;
-  --color-text: #133a9a;
-  --color-bg-disabled: #f0f4fe;
-  --color-text-disabled: rgb(51 104 240 / 50%);
+  --color-bg: var(--mt-color-badge-blue);
+  --color-text: var(--mt-color-text-accent-blue-inverted);
+  --color-bg-disabled: var(--mt-color-badge-blue-disabled);
+  --color-text-disabled: var(--mt-color-text-accent-blue-tertiary);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-blue {
-    --color-bg: #07296a;
-    --color-text: #7196f4;
-    --color-bg-disabled: #03153a;
-    --color-text-disabled: rgb(51 104 240 / 30%);
+    --color-bg: var(--mt-color-badge-blue);
+    --color-text: var(--mt-color-text-accent-blue-inverted);
+    --color-bg-disabled: var(--mt-color-badge-blue-disabled);
+    --color-text-disabled: var(--mt-color-text-accent-blue-tertiary);
   }
 }
 
 .mt-badge-green {
-  --color-bg: #d1fae4;
-  --color-text: #166e3f;
-  --color-bg-disabled: #edfdf4;
-  --color-text-disabled: rgb(38 189 108 / 50%);
+  --color-bg: var(--mt-color-badge-green);
+  --color-text: var(--mt-color-text-accent-green);
+  --color-bg-disabled: var(--mt-color-badge-green-disabled);
+  --color-text-disabled: var(--mt-color-text-accent-green-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-green {
-    --color-bg: #0f4c2c;
-    --color-text: #6ae1a1;
-    --color-bg-disabled: #072213;
-    --color-text-disabled: rgb(38 189 108 / 30%);
+    --color-bg: var(--mt-color-badge-green);
+    --color-text: var(--mt-color-text-accent-green-inverted);
+    --color-bg-disabled: var(--mt-color-badge-green-disabled);
+    --color-text-disabled: var(--mt-color-text-accent-green-secondary);
   }
 }
 
 .mt-badge-orange {
-  --color-bg: #fdead8;
-  --color-text: #ae590a;
-  --color-bg-disabled: #fef4ec;
-  --color-text-disabled: rgb(244 142 47 / 50%);
+  --color-bg: var(--mt-color-badge-orange);
+  --color-text: var(--mt-color-text-accent-orange-inverted);
+  --color-bg-disabled: var(--mt-color-badge-orange-disabled);
+  --color-text-disabled: var(--mt-color-text-accent-orange-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-orange {
-    --color-bg: #613105;
-    --color-text: #f8b577;
-    --color-bg-disabled: #301903;
-    --color-text-disabled: rgb(244 142 47 / 30%);
+    --color-bg: var(--mt-color-badge-orange);
+    --color-text: var(--mt-color-text-accent-orange-inverted);
+    --color-bg-disabled: var(--mt-color-badge-orange-disabled);
+    --color-text-disabled: var(--mt-color-text-accent-orange-secondary);
   }
 }
 
 .mt-badge-red {
-  --color-bg: #fce5e4;
-  --color-text: #9a1c13;
-  --color-bg-disabled: #fdf2f1;
-  --color-text-disabled: rgb(230 72 61 / 50%);
+  --color-bg: var(--mt-color-badge-red);
+  --color-text: var(--mt-color-text-accent-red-inverted);
+  --color-bg-disabled: var(--mt-color-badge-red-disabled);
+  --color-text-disabled: var(--mt-color-text-accent-red-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-red {
-    --color-bg: #64120d;
-    --color-text: #f08b85;
-    --color-bg-disabled: #360a07;
-    --color-text-disabled: rgb(230 72 61 / 30%);
+    --color-bg: var(--mt-color-badge-red);
+    --color-text: var(--mt-color-text-accent-red-inverted);
+    --color-bg-disabled: var(--mt-color-badge-red-disabled);
+    --color-text-disabled: var(--mt-color-text-accent-red-secondary);
   }
 }
 
 .mt-badge-purple {
-  --color-bg: #ecdffb;
-  --color-text: #5314a3;
-  --color-bg-disabled: #ecdffb;
-  --color-text-disabled: rgb(135 61 230 / 50%);
+  --color-bg: var(--mt-color-badge-purple);
+  --color-text: var(--mt-color-text-accent-purple-inverted);
+  --color-bg-disabled: var(--mt-color-badge-purple);
+  --color-text-disabled: var(--mt-color-text-accent-purple-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-purple {
-    --color-bg: #3a0f71;
-    --color-text: #b78af0;
-    --color-bg-disabled: #3a0f71;
-    --color-text-disabled: rgb(135 61 230 / 30%);
+    --color-bg: var(--mt-color-badge-purple);
+    --color-text: var(--mt-color-text-accent-purple-inverted);
+    --color-bg-disabled: var(--mt-color-badge-purple);
+    --color-text-disabled: var(--mt-color-text-accent-purple-secondary);
   }
 }
 
 .mt-badge-white {
   --color-bg: rgb(255 255 255 / 95%);
-  --color-text: rgb(11 12 14 / 60%);
+  --color-text: var(--mt-color-text-quaternary);
   --color-bg-disabled: rgb(255 255 255 / 8%);
-  --color-text-disabled: #e9e9ea;
+  --color-text-disabled: var(--mt-color-checkbox-disabled);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-white {
     --color-bg: rgb(255 255 255 / 95%);
-    --color-text: rgb(11 12 14 / 60%);
+    --color-text: var(--mt-color-text-quaternary);
     --color-bg-disabled: rgb(255 255 255 / 24%);
-    --color-text-disabled: #3c3c3d;
+    --color-text-disabled: var(--mt-color-text-quaternary-solid);
   }
 }
 
 .mt-badge-surface {
   --color-bg: rgb(255 255 255 / 95%);
-  --color-text: #78787a;
+  --color-text: var(--mt-color-text-tertiary);
   --color-bg-disabled: rgb(255 255 255 / 95%);
-  --color-text-disabled: #e9e9ea;
+  --color-text-disabled: var(--mt-color-checkbox-disabled);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-surface {
-    --color-bg: #262727;
-    --color-text: #d7d7d7;
-    --color-bg-disabled: #262727;
-    --color-text-disabled: #3c3c3d;
+    --color-bg: var(--mt-color-badge-surface);
+    --color-text: var(--mt-color-text-tertiary);
+    --color-bg-disabled: var(--mt-color-badge-surface);
+    --color-text-disabled: var(--mt-color-text-quaternary-solid);
   }
 }
 
 .mt-badge-white-destructive {
   --color-bg: rgb(255 255 255 / 95%);
-  --color-text: #e6483d;
+  --color-text: var(--mt-color-text-destructive);
   --color-bg-disabled: rgb(255 255 255 / 8%);
-  --color-text-disabled: rgb(230 72 61 / 30%);
+  --color-text-disabled: var(--mt-color-text-destructive-tertiary);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-white-destructive {
     --color-bg: rgb(255 255 255 / 95%);
-    --color-text: #e6483d;
+    --color-text: var(--mt-color-text-destructive);
     --color-bg-disabled: rgb(255 255 255 / 24%);
-    --color-text-disabled: rgb(230 72 61 / 40%);
+    --color-text-disabled: var(--mt-color-text-destructive-tertiary);
   }
 }
 
 .mt-badge-surface-destructive {
   --color-bg: rgb(255 255 255 / 95%);
-  --color-text: #e6483d;
+  --color-text: var(--mt-color-text-destructive);
   --color-bg-disabled: rgb(255 255 255 / 95%);
-  --color-text-disabled: rgb(230 72 61 / 30%);
+  --color-text-disabled: var(--mt-color-text-destructive-tertiary);
 }
 
 @media (prefers-color-scheme: dark) {
   .mt-badge-surface-destructive {
-    --color-bg: #262727;
-    --color-text: #e6483d;
-    --color-bg-disabled: #262727;
-    --color-text-disabled: rgb(230 72 61 / 40%);
+    --color-bg: var(--mt-color-badge-surface);
+    --color-text: var(--mt-color-text-destructive);
+    --color-bg-disabled: var(--mt-color-badge-surface);
+    --color-text-disabled: var(--mt-color-text-destructive-tertiary);
   }
 }

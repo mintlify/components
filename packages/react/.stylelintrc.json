@@ -8,8 +8,9 @@
     "value-no-vendor-prefix": null,
     "color-hex-length": null,
     "selector-max-type": 0,
-    "selector-class-pattern": "^((xs|sm|md|lg|xl):)?-?mt-|^(light|dark)(-theme)?$",
+    "selector-class-pattern": null,
     "keyframes-name-pattern": "^mt-([a-z]|-)+$",
+    "at-rule-empty-line-before": null,
     "at-rule-no-unknown": [
       true,
       {
