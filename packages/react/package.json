@@ -6,12 +6,6 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc && vite build",
