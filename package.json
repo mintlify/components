@@ -1,107 +1,36 @@
 {
-  "name": "@mintlify/components",
-  "version": "0.3.15",
-  "description": "Open-source library of UI components made with React and TailwindCSS.",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "style": "./dist/main.css",
+  "name": "@mintlify-components/monorepo",
+  "version": "0.1.0",
+  "description": "Open-source library of UI components made",
+  "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/mintlify/components"
   },
   "keywords": [
     "react",
-    "tailwindcss"
+    "headless",
+    "mdx"
   ],
   "license": "MIT",
-  "scripts": {
-    "build": "webpack",
-    "format": "prettier \"**/*.{css,js,ts,tsx,md}\" --write",
-    "format:check": "prettier \"**/*.{css,js,ts,tsx,md}\" --check",
-    "prepare": "husky install && yarn build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "test-storybook": "test-storybook",
-    "lint": "eslint src --cache"
-  },
   "author": "Mintlify",
   "bugs": {
     "url": "https://github.com/mintlify/components/issues"
   },
-  "peerDependencies": {
-    "@headlessui/react": "^1.7",
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
+  "scripts": {
+    "dev": "pnpm --filter @mintlify-components/react dev",
+    "build": "pnpm --filter @mintlify-components/react build",
+    "lint": "pnpm -r lint",
+    "storybook": "pnpm --filter @mintlify-components/react storybook",
+    "build-storybook": "pnpm --filter @mintlify-components/react build-storybook"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.5",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.18.6",
-    "@headlessui/react": "^1.7.11",
-    "@mintlify/eslint-config": "^1.0.3",
-    "@mintlify/eslint-config-typescript": "^1.0.7",
-    "@mintlify/prettier-config": "1.0.2",
-    "@storybook/addon-actions": "^6.5.13",
-    "@storybook/addon-essentials": "^6.5.13",
-    "@storybook/addon-interactions": "^6.5.13",
-    "@storybook/addon-links": "^6.5.13",
-    "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/builder-webpack5": "^6.5.13",
-    "@storybook/jest": "^0.0.10",
-    "@storybook/manager-webpack5": "^6.5.13",
-    "@storybook/react": "^6.5.13",
-    "@storybook/test-runner": "^0.9.4",
-    "@storybook/testing-library": "^0.0.13",
-    "@tailwindcss/typography": "^0.5.7",
-    "@trivago/prettier-plugin-sort-imports": "3.x",
-    "@types/lodash.set": "^4.3.7",
-    "@types/react": "^18.0.21",
-    "@types/uuid": "^9.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.52.0",
-    "@typescript-eslint/parser": "^5.52.0",
-    "autoprefixer": "^10.4.8",
-    "babel-loader": "^8.3.0",
-    "chromatic": "^6.9.0",
-    "css-loader": "^6.7.2",
-    "cssnano": "^5.1.14",
-    "eslint": "^8.34.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "glob-parent": "^6.0.2",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.1.1",
-    "mini-css-extract-plugin": "^2.6.1",
-    "mini-svg-data-uri": "^1.4.4",
-    "postcss": "^8.4.19",
-    "postcss-loader": "^7.0.2",
-    "postcss-preset-env": "^7.8.3",
-    "prettier": "2.x",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "source-map-loader": "^4.0.0",
-    "storybook-addon-themes": "^6.1.0",
-    "style-loader": "^3.3.1",
-    "tailwind-children": "^0.5.0",
-    "tailwindcss": "^3.2.4",
-    "trim": "^1.0.1",
-    "trim-newlines": "^4.0.2",
-    "ts-loader": "^9.3.1",
-    "typescript": "^4.9.4",
-    "uuid": "^9.0.0",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^4.10.0"
+    "eslint-plugin-import": "^2.32.0",
+    "postcss": "^8.5.6",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1",
+    "typescript": "^5.7.2"
   },
-  "dependencies": {
-    "assert": "^2.0.0",
-    "clsx": "^1.2.1",
-    "is-absolute-url": "^4.0.1",
-    "lodash.set": "^4.3.2"
-  },
-  "lint-staged": {
-    "*.+(ts|tsx)": "eslint --cache --fix --max-warnings 0",
-    "*.{css,js,ts,tsx,md}": "prettier --write"
-  }
+  "packageManager": "pnpm@10.0.0"
 }

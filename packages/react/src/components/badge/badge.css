@@ -1,0 +1,113 @@
+.mt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.mt-badge.mt-xs {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.mt-badge.mt-sm {
+  padding: 0.25rem 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.mt-badge.mt-md {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.mt-badge.mt-lg {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.mt-badge.mt-rounded {
+  border-radius: 0.375rem;
+}
+
+.mt-badge.mt-pill {
+  border-radius: 9999px;
+}
+
+.mt-badge.mt-gray {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.mt-badge.mt-blue {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.mt-badge.mt-green {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.mt-badge.mt-orange {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+.mt-badge.mt-red {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.mt-badge.mt-purple {
+  background-color: #e9d5ff;
+  color: #6b21a8;
+}
+
+.mt-badge.mt-white {
+  background-color: #ffffff;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+}
+
+.mt-badge.mt-surface {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+.mt-badge.mt-white-destructive {
+  background-color: #ffffff;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+}
+
+.mt-badge.mt-surface-destructive {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.mt-badge.mt-stroke {
+  border: 1px solid currentcolor;
+  background-color: transparent;
+}
+
+.mt-badge.mt-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.mt-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt-content {
+  display: inline-flex;
+  align-items: center;
+}

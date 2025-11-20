@@ -1,4 +1,6 @@
 {
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
