@@ -1,113 +1,286 @@
 .mt-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  width: fit-content;
   font-weight: 500;
-  transition: all 0.2s ease;
+  position: relative;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
-.mt-badge.mt-xs {
-  padding: 0.125rem 0.5rem;
+.mt-badge[data-disabled="true"] {
+  cursor: not-allowed;
+  background-color: var(--color-bg-disabled);
+  color: var(--color-text-disabled);
+}
+
+.mt-badge[data-shape="pill"] {
+  border-radius: 9999px;
+}
+
+.mt-badge[data-stroke="true"] {
+  outline: 1px solid rgb(11 12 14 / 8%);
+  outline-offset: -1px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mt-badge[data-stroke="true"] {
+    outline-color: rgb(255 255 255 / 14%);
+  }
+}
+
+/* stylelint-disable selector-max-type */
+.mt-badge-xs svg,
+.mt-badge-sm svg,
+.mt-badge-md svg,
+.mt-badge-lg svg {
+  margin: 1px;
+  background-color: var(--color-text);
+}
+
+.mt-badge[data-disabled="true"] svg {
+  background-color: var(--color-text-disabled);
+}
+
+.mt-badge-icon {
+  flex-shrink: 0;
+  color: var(--color-text);
+}
+
+.mt-badge[data-disabled="true"] .mt-badge-icon {
+  color: var(--color-text-disabled);
+}
+
+.mt-badge .mt-icon {
+  color: var(--color-text);
+}
+
+.mt-badge[data-disabled="true"] .mt-icon {
+  color: var(--color-text-disabled);
+}
+
+.mt-badge-xs {
+  gap: 0.125rem;
+  padding: 0 0.125rem;
   font-size: 0.75rem;
   line-height: 1rem;
 }
 
-.mt-badge.mt-sm {
-  padding: 0.25rem 0.625rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+.mt-badge-xs:has(svg),
+.mt-badge-xs:has(.mt-icon) {
+  padding-right: 0.25rem;
 }
 
-.mt-badge.mt-md {
-  padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+.mt-badge-xs[data-shape="rounded"] {
+  border-radius: 0.25rem;
 }
 
-.mt-badge.mt-lg {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
+.mt-badge-sm {
+  gap: 0.1875rem;
+  padding: 0.125rem 0.125rem 0.125rem 0.1875rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
-.mt-badge.mt-rounded {
+.mt-badge-sm:has(svg),
+.mt-badge-sm:has(.mt-icon) {
+  padding-right: 0.375rem;
+}
+
+.mt-badge-sm[data-shape="rounded"] {
   border-radius: 0.375rem;
 }
 
-.mt-badge.mt-pill {
-  border-radius: 9999px;
+.mt-badge-md {
+  gap: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: -0.01em;
 }
 
-.mt-badge.mt-gray {
-  background-color: #f3f4f6;
-  color: #374151;
+.mt-badge-md:has(svg),
+.mt-badge-md:has(.mt-icon) {
+  padding-right: 0.5rem;
 }
 
-.mt-badge.mt-blue {
-  background-color: #dbeafe;
-  color: #1e40af;
+.mt-badge-md[data-shape="rounded"] {
+  border-radius: 0.5rem;
 }
 
-.mt-badge.mt-green {
-  background-color: #d1fae5;
-  color: #065f46;
+.mt-badge-lg {
+  gap: 0.25rem;
+  padding: 0.25rem 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: -0.01em;
 }
 
-.mt-badge.mt-orange {
-  background-color: #fed7aa;
-  color: #9a3412;
+.mt-badge-lg:has(svg),
+.mt-badge-lg:has(.mt-icon) {
+  padding-right: 0.625rem;
 }
 
-.mt-badge.mt-red {
-  background-color: #fee2e2;
-  color: #991b1b;
+.mt-badge-lg[data-shape="rounded"] {
+  border-radius: 0.5rem;
 }
 
-.mt-badge.mt-purple {
-  background-color: #e9d5ff;
-  color: #6b21a8;
+.mt-badge-gray {
+  --color-bg: #f5f5f5;
+  --color-text: #78787a;
+  --color-bg-disabled: #f5f5f5;
+  --color-text-disabled: #e9e9ea;
 }
 
-.mt-badge.mt-white {
-  background-color: #ffffff;
-  color: #111827;
-  border: 1px solid #e5e7eb;
+@media (prefers-color-scheme: dark) {
+  .mt-badge-gray {
+    --color-bg: #262727;
+    --color-text: #d7d7d7;
+    --color-bg-disabled: #262727;
+    --color-text-disabled: #3c3c3d;
+  }
 }
 
-.mt-badge.mt-surface {
-  background-color: #f9fafb;
-  color: #111827;
+.mt-badge-blue {
+  --color-bg: #e3eafd;
+  --color-text: #133a9a;
+  --color-bg-disabled: #f0f4fe;
+  --color-text-disabled: rgb(51 104 240 / 50%);
 }
 
-.mt-badge.mt-white-destructive {
-  background-color: #ffffff;
-  color: #dc2626;
-  border: 1px solid #fee2e2;
+@media (prefers-color-scheme: dark) {
+  .mt-badge-blue {
+    --color-bg: #07296a;
+    --color-text: #7196f4;
+    --color-bg-disabled: #03153a;
+    --color-text-disabled: rgb(51 104 240 / 30%);
+  }
 }
 
-.mt-badge.mt-surface-destructive {
-  background-color: #fef2f2;
-  color: #dc2626;
+.mt-badge-green {
+  --color-bg: #d1fae4;
+  --color-text: #166e3f;
+  --color-bg-disabled: #edfdf4;
+  --color-text-disabled: rgb(38 189 108 / 50%);
 }
 
-.mt-badge.mt-stroke {
-  border: 1px solid currentcolor;
-  background-color: transparent;
+@media (prefers-color-scheme: dark) {
+  .mt-badge-green {
+    --color-bg: #0f4c2c;
+    --color-text: #6ae1a1;
+    --color-bg-disabled: #072213;
+    --color-text-disabled: rgb(38 189 108 / 30%);
+  }
 }
 
-.mt-badge.mt-disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
+.mt-badge-orange {
+  --color-bg: #fdead8;
+  --color-text: #ae590a;
+  --color-bg-disabled: #fef4ec;
+  --color-text-disabled: rgb(244 142 47 / 50%);
 }
 
-.mt-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+@media (prefers-color-scheme: dark) {
+  .mt-badge-orange {
+    --color-bg: #613105;
+    --color-text: #f8b577;
+    --color-bg-disabled: #301903;
+    --color-text-disabled: rgb(244 142 47 / 30%);
+  }
 }
 
-.mt-content {
-  display: inline-flex;
-  align-items: center;
+.mt-badge-red {
+  --color-bg: #fce5e4;
+  --color-text: #9a1c13;
+  --color-bg-disabled: #fdf2f1;
+  --color-text-disabled: rgb(230 72 61 / 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .mt-badge-red {
+    --color-bg: #64120d;
+    --color-text: #f08b85;
+    --color-bg-disabled: #360a07;
+    --color-text-disabled: rgb(230 72 61 / 30%);
+  }
+}
+
+.mt-badge-purple {
+  --color-bg: #ecdffb;
+  --color-text: #5314a3;
+  --color-bg-disabled: #ecdffb;
+  --color-text-disabled: rgb(135 61 230 / 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .mt-badge-purple {
+    --color-bg: #3a0f71;
+    --color-text: #b78af0;
+    --color-bg-disabled: #3a0f71;
+    --color-text-disabled: rgb(135 61 230 / 30%);
+  }
+}
+
+.mt-badge-white {
+  --color-bg: rgb(255 255 255 / 95%);
+  --color-text: rgb(11 12 14 / 60%);
+  --color-bg-disabled: rgb(255 255 255 / 8%);
+  --color-text-disabled: #e9e9ea;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mt-badge-white {
+    --color-bg: rgb(255 255 255 / 95%);
+    --color-text: rgb(11 12 14 / 60%);
+    --color-bg-disabled: rgb(255 255 255 / 24%);
+    --color-text-disabled: #3c3c3d;
+  }
+}
+
+.mt-badge-surface {
+  --color-bg: rgb(255 255 255 / 95%);
+  --color-text: #78787a;
+  --color-bg-disabled: rgb(255 255 255 / 95%);
+  --color-text-disabled: #e9e9ea;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mt-badge-surface {
+    --color-bg: #262727;
+    --color-text: #d7d7d7;
+    --color-bg-disabled: #262727;
+    --color-text-disabled: #3c3c3d;
+  }
+}
+
+.mt-badge-white-destructive {
+  --color-bg: rgb(255 255 255 / 95%);
+  --color-text: #e6483d;
+  --color-bg-disabled: rgb(255 255 255 / 8%);
+  --color-text-disabled: rgb(230 72 61 / 30%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .mt-badge-white-destructive {
+    --color-bg: rgb(255 255 255 / 95%);
+    --color-text: #e6483d;
+    --color-bg-disabled: rgb(255 255 255 / 24%);
+    --color-text-disabled: rgb(230 72 61 / 40%);
+  }
+}
+
+.mt-badge-surface-destructive {
+  --color-bg: rgb(255 255 255 / 95%);
+  --color-text: #e6483d;
+  --color-bg-disabled: rgb(255 255 255 / 95%);
+  --color-text-disabled: rgb(230 72 61 / 30%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .mt-badge-surface-destructive {
+    --color-bg: #262727;
+    --color-text: #e6483d;
+    --color-bg-disabled: #262727;
+    --color-text-disabled: rgb(230 72 61 / 40%);
+  }
 }

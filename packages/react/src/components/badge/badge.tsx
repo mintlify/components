@@ -26,6 +26,13 @@ export interface BadgeProps {
   className?: string;
 }
 
+const iconSizes: Record<"xs" | "sm" | "md" | "lg", number> = {
+  xs: 12,
+  sm: 14,
+  md: 16,
+  lg: 16,
+};
+
 export function Badge({
   children,
   color = "gray",
@@ -37,28 +44,32 @@ export function Badge({
   iconType,
   className,
 }: BadgeProps) {
-  const badgeClasses = cn(
-    "mt-badge",
-    `mt-${color}`,
-    `mt-${shape}`,
-    `mt-${size}`,
-    stroke && "mt-stroke",
-    disabled && "mt-disabled",
-    className
-  );
+  const IconComponent =
+    typeof icon === "string" ? (
+      <Icon
+        icon={icon}
+        iconType={iconType}
+        className="mt-badge-icon"
+        size={iconSizes[size]}
+      />
+    ) : (
+      icon
+    );
 
   return (
-    <span className={badgeClasses}>
-      {icon && (
-        <span className="mt-icon">
-          {typeof icon === "string" ? (
-            <Icon icon={icon} iconType={iconType} />
-          ) : (
-            icon
-          )}
-        </span>
+    <span
+      data-shape={shape}
+      data-stroke={stroke}
+      data-disabled={disabled}
+      className={cn(
+        "mt-badge",
+        `mt-badge-${color}`,
+        `mt-badge-${size}`,
+        className
       )}
-      <span className="mt-content">{children}</span>
+    >
+      {!!IconComponent && IconComponent}
+      {children}
     </span>
   );
 }
