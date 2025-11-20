@@ -1,12 +1,23 @@
 {
   "name": "@mintlify/components",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Mintlify Headless UI components",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./*.css": "./dist/components/*/*.css"
+  },
   "files": [
     "dist",
     "README.md",
