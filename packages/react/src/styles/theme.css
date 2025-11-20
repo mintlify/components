@@ -25,7 +25,7 @@
   --mt-color-gray-5a: #0b0c0e40;
   --mt-color-gray-5a-solid: #c2c2c2;
   --mt-color-gray-7a: #0b0c0e66;
-  --mt-color-gray-9a: #0b0c0e99;
+  --mt-color-gray-9a: #0b0c0e80;
   --mt-color-gray-9a-solid: #6d6d6e;
   --mt-color-white-1: #ffffff14;
   --mt-color-white-2: #ffffff24;
@@ -196,6 +196,7 @@
   --mt-color-text-quaternary-solid: var(--mt-color-gray-5a-solid);
   --mt-color-text-inverted: var(--mt-color-base-white);
   --mt-color-text-static-dark: var(--mt-color-gray-13);
+  --mt-color-text-static-dark-secondary: var(--mt-color-gray-9a);
   --mt-color-text-destructive: var(--mt-color-red-8);
   --mt-color-text-destructive-secondary: var(--mt-color-red-9a);
   --mt-color-text-destructive-tertiary: var(--mt-color-red-5a);
@@ -295,13 +296,14 @@
   --mt-color-border-base-alpha: var(--mt-color-gray-2a);
   --mt-color-border-base-alpha-white: var(--mt-color-white-3);
   --mt-color-text-primary: var(--mt-color-base-white);
-  --mt-color-text-secondary: var(--mt-color-white-9);
-  --mt-color-text-secondary-solid: var(--mt-color-white-9-solid);
+  --mt-color-text-secondary: var(--mt-color-gray-4);
+  --mt-color-text-secondary-solid: var(--mt-color-gray-5a-solid);
   --mt-color-text-tertiary: var(--mt-color-white-7);
   --mt-color-text-quaternary: var(--mt-color-white-5);
   --mt-color-text-quaternary-solid: var(--mt-color-white-5-solid);
   --mt-color-text-inverted: var(--mt-color-base-dark-1);
   --mt-color-text-static-dark: var(--mt-color-gray-13);
+  --mt-color-text-static-dark-secondary: var(--mt-color-gray-9a);
   --mt-color-text-destructive: var(--mt-color-red-8);
   --mt-color-text-destructive-secondary: var(--mt-color-red-9a);
   --mt-color-text-destructive-tertiary: var(--mt-color-red-6a);
