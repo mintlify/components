@@ -23,7 +23,9 @@
     "build": "pnpm --filter @mintlify-components/react build",
     "lint": "pnpm -r lint",
     "storybook": "pnpm --filter @mintlify-components/react storybook",
-    "build-storybook": "pnpm --filter @mintlify-components/react build-storybook"
+    "build-storybook": "pnpm --filter @mintlify-components/react build-storybook",
+    "prepare": "git config core.hooksPath .husky",
+    "postinstall": "pnpm prepare"
   },
   "devDependencies": {
     "eslint-plugin-import": "^2.32.0",

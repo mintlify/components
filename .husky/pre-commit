@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cd packages/react
+
+echo "🎨 Regenerating theme.css..."
+pnpm generate:theme
+
+if [ $? -eq 0 ]; then
+  git add src/styles/theme.css
+  echo "✅ theme.css regenerated and staged"
+else
+  echo "❌ Failed to regenerate theme.css"
+  exit 1
+fi
+
