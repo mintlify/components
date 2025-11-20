@@ -1,4 +1,4 @@
-import "./styles/theme.css";
+import "./styles.css";
 
 export * from "./components";
-export * from "./styles/design-tokens";
+export * from "./styles";
