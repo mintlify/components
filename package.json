@@ -1,5 +1,5 @@
 {
-  "name": "@mintlify-components/monorepo",
+  "name": "@mintlify/components-monorepo",
   "version": "0.1.0",
   "description": "Open-source library of UI components made",
   "private": true,
@@ -19,11 +19,11 @@
     "url": "https://github.com/mintlify/components/issues"
   },
   "scripts": {
-    "dev": "pnpm --filter @mintlify-components/react dev",
-    "build": "pnpm --filter @mintlify-components/react build",
+    "dev": "pnpm --filter @mintlify/components dev",
+    "build": "pnpm --filter @mintlify/components build",
     "lint": "pnpm -r lint",
-    "storybook": "pnpm --filter @mintlify-components/react storybook",
-    "build-storybook": "pnpm --filter @mintlify-components/react build-storybook",
+    "storybook": "pnpm --filter @mintlify/components storybook",
+    "build-storybook": "pnpm --filter @mintlify/components build-storybook",
     "prepare": "git config core.hooksPath .husky",
     "postinstall": "pnpm prepare"
   },
