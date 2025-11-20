@@ -58,7 +58,9 @@ const preview: Preview = {
                   }
                 `}
               </style>
-              <div className={`${inter.variable} ${jetbrainsMono.variable}`}>
+              <div
+                className={`relative antialiased text-gray-500 dark:text-gray-400 ${inter.variable} ${jetbrainsMono.variable}`}
+              >
                 <Story />
               </div>
             </div>

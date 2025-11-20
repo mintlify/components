@@ -217,8 +217,8 @@
 :is(.dark, .dark-theme) .mt-badge-white {
   --color-bg: rgb(255 255 255 / 99%);
   --color-text: var(--mt-color-text-static-dark-secondary);
-  --color-bg-disabled: rgb(255 255 255 / 4%);
-  --color-text-disabled: var(--mt-color-text-quaternary-solid);
+  --color-bg-disabled: var(--mt-color-white-2);
+  --color-text-disabled: rgb(11 12 14 / 60%);
 }
 
 .mt-badge-surface {
@@ -232,7 +232,7 @@
   --color-bg: var(--mt-color-gray-10);
   --color-text: var(--mt-color-text-secondary);
   --color-bg-disabled: var(--mt-color-gray-10);
-  --color-text-disabled: var(--mt-color-text-quaternary);
+  --color-text-disabled: var(--mt-color-gray-9);
 }
 
 .mt-badge-white-destructive {
