@@ -1,6 +1,6 @@
-# @mintlify-components/react
+# @mintlify/components
 
-Headless UI components for Mintlify with optional styling. Built with React, TypeScript, and Tailwind CSS.
+Mintlify Headless UI components. Built with React, TypeScript, and Tailwind CSS.
 
 ## Requirements
 
@@ -11,7 +11,7 @@ Headless UI components for Mintlify with optional styling. Built with React, Typ
 ## Installation
 
 ```bash
-pnpm add @mintlify-components/react
+pnpm add @mintlify/components
 ```
 
 ## Development
