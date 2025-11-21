@@ -1,0 +1,132 @@
+.mt-callout {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border-width: 1px;
+  border-style: solid;
+  margin: 1rem 0;
+  background-color: var(--callout-bg, rgb(250 250 250 / 50%));
+  border-color: var(--callout-border, rgb(113 113 122 / 20%));
+  color: var(--callout-text, rgb(24 24 27));
+
+  --callout-icon-color: rgb(161 161 170);
+}
+
+:is(.dark, .dark-theme) .mt-callout {
+  background-color: var(--callout-bg, rgb(113 113 122 / 10%));
+  border-color: var(--callout-border, rgb(113 113 122 / 30%));
+  color: var(--callout-text, rgb(228 228 231));
+
+  --callout-icon-color: rgb(212 212 216);
+}
+
+.mt-callout-icon-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 0.125rem;
+}
+
+.mt-callout-icon {
+  color: var(--callout-icon-color);
+}
+
+.mt-callout-content {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.mt-callout-body {
+  color: var(--callout-text);
+}
+
+:is(.dark, .dark-theme) .mt-callout-custom .mt-callout-body {
+  color: var(--dark-callout-text);
+}
+
+.mt-callout-info {
+  --callout-bg: rgb(250 250 250);
+  --callout-border: rgb(113 113 122 / 20%);
+  --callout-text: rgb(24 24 27);
+  --callout-icon-color: rgb(161 161 170);
+}
+
+:is(.dark, .dark-theme) .mt-callout-info {
+  --callout-bg: rgb(113 113 122, 10%);
+  --callout-border: rgb(113 113 122, 30%);
+  --callout-text: rgb(228 228 231);
+  --callout-icon-color: rgb(212 212 216);
+}
+
+.mt-callout-warning {
+  --callout-bg: rgb(255 251 235 / 50%);
+  --callout-border: rgb(245 158 11 / 20%);
+  --callout-text: rgb(120 53 15);
+  --callout-icon-color: rgb(251 191 36);
+}
+
+:is(.dark, .dark-theme) .mt-callout-warning {
+  --callout-bg: rgb(245 158 11 / 10%);
+  --callout-border: rgb(245 158 11 / 30%);
+  --callout-text: rgb(253 230 138);
+  --callout-icon-color: rgb(252 211 77 / 80%);
+}
+
+.mt-callout-success {
+  --callout-bg: rgb(236 253 245 / 50%);
+  --callout-border: rgb(16 185 129 / 20%);
+  --callout-text: rgb(6 78 59);
+  --callout-icon-color: rgb(22 163 74);
+}
+
+:is(.dark, .dark-theme) .mt-callout-success {
+  --callout-bg: rgb(16 185 129 / 10%);
+  --callout-border: rgb(16 185 129 / 30%);
+  --callout-text: rgb(167 243 208);
+  --callout-icon-color: rgb(74 222 128 / 80%);
+}
+
+.mt-callout-danger {
+  --callout-bg: rgb(254 242 242 / 50%);
+  --callout-border: rgb(239 68 68 / 20%);
+  --callout-text: rgb(127 29 29);
+  --callout-icon-color: rgb(220 38 38);
+}
+
+:is(.dark, .dark-theme) .mt-callout-danger {
+  --callout-bg: rgb(239 68 68 / 10%);
+  --callout-border: rgb(239 68 68 / 30%);
+  --callout-text: rgb(252 165 165);
+  --callout-icon-color: rgb(248 113 113 / 80%);
+}
+
+.mt-callout-note {
+  --callout-bg: rgb(240 249 255 / 50%);
+  --callout-border: rgb(14 165 233 / 20%);
+  --callout-text: rgb(12 74 110);
+  --callout-icon-color: rgb(14 165 233);
+}
+
+:is(.dark, .dark-theme) .mt-callout-note {
+  --callout-bg: rgb(14 165 233 / 10%);
+  --callout-border: rgb(14 165 233 / 30%);
+  --callout-text: rgb(186 230 253);
+  --callout-icon-color: rgb(14 165 233);
+}
+
+.mt-callout-tip {
+  --callout-bg: rgb(236 253 245 / 50%);
+  --callout-border: rgb(16 185 129 / 20%);
+  --callout-text: rgb(6 78 59);
+  --callout-icon-color: rgb(5 150 105);
+}
+
+:is(.dark, .dark-theme) .mt-callout-tip {
+  --callout-bg: rgb(16 185 129 / 10%);
+  --callout-border: rgb(16 185 129 / 30%);
+  --callout-text: rgb(167 243 208);
+  --callout-icon-color: rgb(52 211 153 / 80%);
+}

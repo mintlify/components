@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Mintlify Headless UI components",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -61,12 +61,14 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "color": "^5.0.3"
   },
   "devDependencies": {
     "@storybook/addon-docs": "^10.0.8",
     "@storybook/react-vite": "^10.0.8",
     "@tailwindcss/postcss": "^4.1.17",
+    "@types/color": "^3.0.6",
     "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
