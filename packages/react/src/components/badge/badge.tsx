@@ -31,6 +31,9 @@ export function Badge({
       data-shape={shape}
       data-stroke={stroke}
       data-disabled={disabled}
+      data-color={color}
+      data-size={size}
+      aria-disabled={disabled}
       className={cn(
         "mt-badge",
         `mt-badge-${color}`,
