@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Icon, IconType } from "../icon";
+import { Icon, IconLibrary, IconType } from "../icon";
 import { cn } from "../../utils/cn";
 import "./badge.css";
 
@@ -12,6 +12,7 @@ export function Badge({
   disabled = false,
   icon,
   iconType,
+  iconLibrary,
   className,
 }: BadgeProps) {
   const IconComponent =
@@ -19,6 +20,7 @@ export function Badge({
       <Icon
         icon={icon}
         iconType={iconType}
+        iconLibrary={iconLibrary}
         className="mt-badge-icon"
         size={iconSizes[size]}
       />
@@ -95,6 +97,11 @@ export interface BadgeProps {
    * @see {@link IconType}
    */
   iconType?: IconType;
+  /**
+   * Icon library when `icon` is a string.
+   * @see {@link IconLibrary}
+   */
+  iconLibrary?: IconLibrary;
   className?: string;
   children: ReactNode;
 }
