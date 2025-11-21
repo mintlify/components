@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 import { cn } from "../../utils/cn";
+=======
+import { CSSProperties } from "react";
+import { BaseIcon, IconType, IconLibrary } from "./base-icon";
+>>>>>>> Stashed changes
 import "./icon.css";
 
 export interface IconProps {
@@ -25,6 +30,7 @@ export function Icon({
   size = 16,
   className,
 }: IconProps) {
+<<<<<<< Updated upstream
   const isSvg = icon.startsWith("<svg");
   const isUrl = icon.startsWith("http") || icon.startsWith("/");
 
@@ -62,7 +68,34 @@ export function Icon({
       style={{
         color,
         fontSize: size,
+=======
+  return (
+    <BaseIcon
+      icon={icon}
+      iconType={iconType}
+      iconLibrary={iconLibrary}
+      color={color}
+      size={size}
+      className={className}
+      style={{
+        display: "inline-block",
+        verticalAlign: "middle",
+        ...style,
+>>>>>>> Stashed changes
       }}
     />
   );
 }
+<<<<<<< Updated upstream
+=======
+
+export interface IconProps {
+  icon: string;
+  iconType?: IconType;
+  iconLibrary?: IconLibrary;
+  color?: string;
+  size?: number;
+  className?: string;
+  style?: CSSProperties;
+}
+>>>>>>> Stashed changes
