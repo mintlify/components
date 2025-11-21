@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Icon } from "./icon";
+import { Icon, IconType, IconLibrary } from "./icon";
 
 const meta: Meta<typeof Icon> = {
   title: "Components/Icon",
@@ -11,15 +11,50 @@ const meta: Meta<typeof Icon> = {
   tags: ["autodocs"],
   render: (args) => {
     return (
-      <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+      <Container>
         <Icon {...args} />
-      </div>
+      </Container>
     );
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Icon>;
+
+const Container = ({ children }: { children: React.ReactNode }) => (
+  <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+    {children}
+  </div>
+);
+
+const IconItem = ({
+  icon,
+  iconType,
+  iconLibrary,
+  size = 32,
+  color,
+  label,
+  labelSize = "sm",
+}: {
+  icon: string;
+  iconType?: IconType;
+  iconLibrary?: IconLibrary;
+  size?: number;
+  color?: string;
+  label: string;
+  labelSize?: "xs" | "sm";
+}) => (
+  <div className="flex flex-col items-center gap-2">
+    <Icon
+      icon={icon}
+      iconType={iconType}
+      iconLibrary={iconLibrary}
+      size={size}
+      color={color}
+    />
+    <span className={`text-${labelSize} text-text-secondary`}>{label}</span>
+  </div>
+);
 
 export const Basic: Story = {
   args: {
@@ -30,218 +65,183 @@ export const Basic: Story = {
 
 export const AllIconTypes: Story = {
   render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+    <Container>
       <div className="grid grid-cols-4 gap-6 max-w-4xl">
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="regular" size={32} />
-          <span className="text-sm text-text-secondary">Regular</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="solid" size={32} />
-          <span className="text-sm text-text-secondary">Solid</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="light" size={32} />
-          <span className="text-sm text-text-secondary">Light</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="thin" size={32} />
-          <span className="text-sm text-text-secondary">Thin</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="duotone" size={32} />
-          <span className="text-sm text-text-secondary">Duotone</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="sharp-solid" size={32} />
-          <span className="text-sm text-text-secondary">Sharp Solid</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="sharp-regular" size={32} />
-          <span className="text-sm text-text-secondary">Sharp Regular</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="sharp-light" size={32} />
-          <span className="text-sm text-text-secondary">Sharp Light</span>
-        </div>
+        <IconItem icon="heart" iconType="regular" label="Regular" />
+        <IconItem icon="heart" iconType="solid" label="Solid" />
+        <IconItem icon="heart" iconType="light" label="Light" />
+        <IconItem icon="heart" iconType="thin" label="Thin" />
+        <IconItem icon="heart" iconType="duotone" label="Duotone" />
+        <IconItem icon="heart" iconType="sharp-solid" label="Sharp Solid" />
+        <IconItem icon="heart" iconType="sharp-regular" label="Sharp Regular" />
+        <IconItem icon="heart" iconType="sharp-light" label="Sharp Light" />
       </div>
-    </div>
+    </Container>
   ),
 };
 
 export const Sizes: Story = {
   render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+    <Container>
       <div className="flex items-center gap-6">
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="rocket" iconType="solid" size={16} />
-          <span className="text-sm text-text-secondary">16px</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="rocket" iconType="solid" size={20} />
-          <span className="text-sm text-text-secondary">20px</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="rocket" iconType="solid" size={24} />
-          <span className="text-sm text-text-secondary">24px</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="rocket" iconType="solid" size={32} />
-          <span className="text-sm text-text-secondary">32px</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="rocket" iconType="solid" size={48} />
-          <span className="text-sm text-text-secondary">48px</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="rocket" iconType="solid" size={64} />
-          <span className="text-sm text-text-secondary">64px</span>
-        </div>
+        <IconItem icon="rocket" iconType="solid" size={16} label="16px" />
+        <IconItem icon="rocket" iconType="solid" size={20} label="20px" />
+        <IconItem icon="rocket" iconType="solid" size={24} label="24px" />
+        <IconItem icon="rocket" iconType="solid" size={32} label="32px" />
+        <IconItem icon="rocket" iconType="solid" size={48} label="48px" />
+        <IconItem icon="rocket" iconType="solid" size={64} label="64px" />
       </div>
-    </div>
+    </Container>
   ),
 };
 
 export const Colors: Story = {
   render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+    <Container>
       <div className="flex items-center gap-6">
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="solid" size={32} color="#ef4444" />
-          <span className="text-sm text-text-secondary">Red</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="solid" size={32} color="#3b82f6" />
-          <span className="text-sm text-text-secondary">Blue</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="solid" size={32} color="#10b981" />
-          <span className="text-sm text-text-secondary">Green</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="solid" size={32} color="#f59e0b" />
-          <span className="text-sm text-text-secondary">Orange</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="solid" size={32} color="#8b5cf6" />
-          <span className="text-sm text-text-secondary">Purple</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconType="solid" size={32} color="#6366f1" />
-          <span className="text-sm text-text-secondary">Indigo</span>
-        </div>
+        <IconItem icon="heart" iconType="solid" color="#ef4444" label="Red" />
+        <IconItem icon="heart" iconType="solid" color="#3b82f6" label="Blue" />
+        <IconItem icon="heart" iconType="solid" color="#10b981" label="Green" />
+        <IconItem
+          icon="heart"
+          iconType="solid"
+          color="#f59e0b"
+          label="Orange"
+        />
+        <IconItem
+          icon="heart"
+          iconType="solid"
+          color="#8b5cf6"
+          label="Purple"
+        />
+        <IconItem
+          icon="heart"
+          iconType="solid"
+          color="#6366f1"
+          label="Indigo"
+        />
       </div>
-    </div>
+    </Container>
   ),
 };
 
 export const BrandIcons: Story = {
   render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+    <Container>
       <div className="grid grid-cols-6 gap-6 max-w-4xl">
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="github" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">GitHub</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="twitter" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">Twitter</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="linkedin" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">LinkedIn</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="facebook" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">Facebook</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="instagram" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">Instagram</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="youtube" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">YouTube</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="discord" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">Discord</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="slack" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">Slack</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="figma" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">Figma</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="react" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">React</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="npm" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">NPM</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="docker" iconType="brands" size={32} />
-          <span className="text-xs text-text-secondary">Docker</span>
-        </div>
+        <IconItem
+          icon="github"
+          iconType="brands"
+          label="GitHub"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="twitter"
+          iconType="brands"
+          label="Twitter"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="linkedin"
+          iconType="brands"
+          label="LinkedIn"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="facebook"
+          iconType="brands"
+          label="Facebook"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="instagram"
+          iconType="brands"
+          label="Instagram"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="youtube"
+          iconType="brands"
+          label="YouTube"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="discord"
+          iconType="brands"
+          label="Discord"
+          labelSize="xs"
+        />
+        <IconItem icon="slack" iconType="brands" label="Slack" labelSize="xs" />
+        <IconItem icon="figma" iconType="brands" label="Figma" labelSize="xs" />
+        <IconItem icon="react" iconType="brands" label="React" labelSize="xs" />
+        <IconItem icon="npm" iconType="brands" label="NPM" labelSize="xs" />
+        <IconItem
+          icon="docker"
+          iconType="brands"
+          label="Docker"
+          labelSize="xs"
+        />
       </div>
-    </div>
+    </Container>
   ),
 };
 
 export const LucideIcons: Story = {
   render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+    <Container>
       <div className="grid grid-cols-6 gap-6 max-w-4xl">
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="heart" iconLibrary="lucide" size={32} />
-          <span className="text-xs text-text-secondary">Heart</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="star" iconLibrary="lucide" size={32} />
-          <span className="text-xs text-text-secondary">Star</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="check" iconLibrary="lucide" size={32} />
-          <span className="text-xs text-text-secondary">Check</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="x" iconLibrary="lucide" size={32} />
-          <span className="text-xs text-text-secondary">X</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="settings" iconLibrary="lucide" size={32} />
-          <span className="text-xs text-text-secondary">Settings</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Icon icon="search" iconLibrary="lucide" size={32} />
-          <span className="text-xs text-text-secondary">Search</span>
-        </div>
+        <IconItem
+          icon="heart"
+          iconLibrary="lucide"
+          label="Heart"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="star"
+          iconLibrary="lucide"
+          label="Star"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="check"
+          iconLibrary="lucide"
+          label="Check"
+          labelSize="xs"
+        />
+        <IconItem icon="x" iconLibrary="lucide" label="X" labelSize="xs" />
+        <IconItem
+          icon="settings"
+          iconLibrary="lucide"
+          label="Settings"
+          labelSize="xs"
+        />
+        <IconItem
+          icon="search"
+          iconLibrary="lucide"
+          label="Search"
+          labelSize="xs"
+        />
       </div>
-    </div>
+    </Container>
   ),
 };
 
 export const CustomURL: Story = {
   render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
-      <div className="flex flex-col items-center gap-4">
-        <Icon
-          icon="https://mintcdn.com/mintlify/e0-N9JebsJpsinlD/logo/light.svg?fit=max&auto=format&n=e0-N9JebsJpsinlD&q=85&s=b0900d78fd30c5583e438ce3f2591f94"
-          size={48}
-        />
-        <span className="text-sm text-text-secondary">CDN URL (with mask)</span>
-      </div>
-    </div>
+    <Container>
+      <IconItem
+        icon="https://mintcdn.com/mintlify/e0-N9JebsJpsinlD/logo/light.svg?fit=max&auto=format&n=e0-N9JebsJpsinlD&q=85&s=b0900d78fd30c5583e438ce3f2591f94"
+        size={48}
+        label="CDN URL (with mask)"
+        labelSize="xs"
+      />
+    </Container>
   ),
 };
 
 export const InlineInText: Story = {
   render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+    <Container>
       <div className="max-w-2xl space-y-4">
         <p className="text-text-primary">
           Icons can be used inline with text{" "}
@@ -306,13 +306,13 @@ export const InlineInText: Story = {
           Error.
         </p>
       </div>
-    </div>
+    </Container>
   ),
 };
 
 export const WithCurrentColor: Story = {
   render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+    <Container>
       <div className="space-y-6">
         <div className="text-blue-500 flex items-center gap-2">
           <Icon icon="info-circle" iconType="solid" size={20} />
@@ -331,43 +331,6 @@ export const WithCurrentColor: Story = {
           <span>Tip with icon</span>
         </div>
       </div>
-    </div>
-  ),
-};
-
-export const DifferentStates: Story = {
-  render: () => (
-    <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
-      <div className="flex gap-8">
-        <div className="flex flex-col items-center gap-2">
-          <button
-            type="button"
-            className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          >
-            <Icon icon="heart" iconType="regular" size={24} />
-          </button>
-          <span className="text-xs text-text-secondary">Inactive</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <button
-            type="button"
-            className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          >
-            <Icon icon="heart" iconType="solid" size={24} color="#ef4444" />
-          </button>
-          <span className="text-xs text-text-secondary">Active</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <button
-            type="button"
-            className="p-2 rounded opacity-50 cursor-not-allowed"
-            disabled
-          >
-            <Icon icon="heart" iconType="solid" size={24} />
-          </button>
-          <span className="text-xs text-text-secondary">Disabled</span>
-        </div>
-      </div>
-    </div>
+    </Container>
   ),
 };
