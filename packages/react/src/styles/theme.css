@@ -228,7 +228,8 @@
   --mt-color-focus-light-destructive: var(--mt-focus-light-destructive-light);
 }
 
-:is(.dark, .dark-theme) {
+@media (prefers-color-scheme: dark) {
+  :root {
   --mt-color-red-1-focus: var(--mt-color-red-1-focus);
   --mt-color-brand-1a: var(--mt-color-green-1);
   --mt-color-brand-7: var(--mt-color-green-7);
@@ -333,9 +334,8 @@
   --mt-color-focus-light: var(--mt-focus-light-dark);
   --mt-color-focus-accent: var(--mt-focus-accent-dark);
   --mt-color-focus-light-destructive: var(--mt-focus-light-destructive-dark);
+
+    color-scheme: dark;
+  }
 }
 
-:is(.dark, .dark-theme),
-:is(.dark, .dark-theme) :where(:root) {
-  color-scheme: dark;
-}

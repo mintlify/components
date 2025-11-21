@@ -1,7 +1,8 @@
-import { ReactNode } from "react";
-import { Icon, IconLibrary, IconType } from "../icon";
+import { ReactNode, HTMLAttributes } from "react";
+import { Icon, IconProps } from "../icon";
 import { cn } from "../../utils/cn";
 import "./badge.css";
+import { IconProp } from "../../types/icon";
 
 export function Badge({
   children,
@@ -11,25 +12,21 @@ export function Badge({
   stroke = false,
   disabled = false,
   icon,
-  iconType,
-  iconLibrary,
   className,
+  ...props
 }: BadgeProps) {
   const IconComponent =
     typeof icon === "string" ? (
-      <Icon
-        icon={icon}
-        iconType={iconType}
-        iconLibrary={iconLibrary}
-        className="mt-badge-icon"
-        size={iconSizes[size]}
-      />
+      <Icon icon={icon} className="mt-badge-icon" size={iconSizes[size]} />
+    ) : icon && typeof icon === "object" && "icon" in icon ? (
+      <Icon {...icon} className="mt-badge-icon" size={iconSizes[size]} />
     ) : (
       icon
     );
 
   return (
     <span
+      data-slot="badge"
       data-shape={shape}
       data-stroke={stroke}
       data-disabled={disabled}
@@ -42,6 +39,7 @@ export function Badge({
         `mt-badge-${size}`,
         className
       )}
+      {...props}
     >
       {!!IconComponent && IconComponent}
       {children}
@@ -49,7 +47,8 @@ export function Badge({
   );
 }
 
-export interface BadgeProps {
+export interface BadgeProps
+  extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
   /**
    * @default "gray"
    */
@@ -84,24 +83,10 @@ export interface BadgeProps {
    */
   disabled?: boolean;
   /**
-   * Optional icon before content. String (icon name) or React node.
-   * see {@link Icon} for available icon sets.
-   * @example
-   * ```tsx
-   * <Badge icon="check" iconType="lucide">Verified</Badge>
-   * ```
+   * Icon before content. String (icon name) or IconProps object.
+   * @see {@link IconProps}
    */
-  icon?: ReactNode | string;
-  /**
-   * Icon set type when `icon` is a string.
-   * @see {@link IconType}
-   */
-  iconType?: IconType;
-  /**
-   * Icon library when `icon` is a string.
-   * @see {@link IconLibrary}
-   */
-  iconLibrary?: IconLibrary;
+  icon?: IconProp;
   className?: string;
   children: ReactNode;
 }

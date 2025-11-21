@@ -152,43 +152,73 @@ export const Disabled: Story = {
   render: () => (
     <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
       <div className="flex items-center justify-center gap-4 flex-wrap max-w-lg">
-        <Badge disabled color="gray" icon="lock" iconLibrary="lucide">
+        <Badge
+          disabled
+          color="gray"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
+        >
           Gray
         </Badge>
-        <Badge disabled color="blue" icon="lock" iconLibrary="lucide">
+        <Badge
+          disabled
+          color="blue"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
+        >
           Blue
         </Badge>
-        <Badge disabled color="green" icon="lock" iconLibrary="lucide">
+        <Badge
+          disabled
+          color="green"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
+        >
           Green
         </Badge>
-        <Badge disabled color="orange" icon="lock" iconLibrary="lucide">
+        <Badge
+          disabled
+          color="orange"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
+        >
           Orange
         </Badge>
-        <Badge disabled color="red" icon="lock" iconLibrary="lucide">
+        <Badge
+          disabled
+          color="red"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
+        >
           Red
         </Badge>
-        <Badge disabled color="purple" icon="lock" iconLibrary="lucide">
+        <Badge
+          disabled
+          color="purple"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
+        >
           Purple
         </Badge>
-        <Badge disabled color="white" icon="lock" iconLibrary="lucide">
+        <Badge
+          disabled
+          color="white"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
+        >
           White
         </Badge>
-        <Badge disabled color="surface" icon="lock" iconLibrary="lucide">
+        <Badge
+          disabled
+          color="surface"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
+        >
           Surface
         </Badge>
         <Badge
           disabled
           color="white-destructive"
-          icon="lock"
-          iconLibrary="lucide"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
         >
           White Destructive
         </Badge>
         <Badge
           disabled
           color="surface-destructive"
-          icon="lock"
-          iconLibrary="lucide"
+          icon={{ icon: "lock", iconLibrary: "lucide" }}
         >
           Surface Destructive
         </Badge>
@@ -218,11 +248,19 @@ export const InlineInText: Story = {
         </p>
         <p>
           Badges work well with icons too:{" "}
-          <Badge icon="check" iconType="solid" color="green" size="sm">
+          <Badge
+            icon={{ icon: "check", iconType: "solid" }}
+            color="green"
+            size="sm"
+          >
             Verified
           </Badge>{" "}
           or{" "}
-          <Badge icon="star" iconType="solid" color="orange" size="sm">
+          <Badge
+            icon={{ icon: "star", iconType: "solid" }}
+            color="orange"
+            size="sm"
+          >
             Featured
           </Badge>
           .
@@ -257,15 +295,27 @@ export const InlineWithLongText: Story = {
         </p>
         <p>
           Status indicators work great inline too:{" "}
-          <Badge icon="check-circle" iconType="solid" color="green" size="sm">
+          <Badge
+            icon={{ icon: "check-circle", iconType: "solid" }}
+            color="green"
+            size="sm"
+          >
             Active
           </Badge>
           ,{" "}
-          <Badge icon="clock" iconType="solid" color="orange" size="sm">
+          <Badge
+            icon={{ icon: "clock", iconType: "solid" }}
+            color="orange"
+            size="sm"
+          >
             Pending
           </Badge>
           , and{" "}
-          <Badge icon="ban" iconType="solid" color="red" size="sm">
+          <Badge
+            icon={{ icon: "ban", iconType: "solid" }}
+            color="red"
+            size="sm"
+          >
             Failed
           </Badge>
           .
@@ -281,18 +331,25 @@ export const Combinations: Story = {
       <div className="space-x-4 space-y-4">
         <div className="flex flex-wrap items-center gap-3">
           <Badge
-            icon="star"
-            iconType="solid"
+            icon={{ icon: "star", iconType: "solid" }}
             color="blue"
             size="lg"
             shape="pill"
           >
             Premium Feature
           </Badge>
-          <Badge icon="check" iconType="solid" color="green" stroke>
+          <Badge
+            icon={{ icon: "check", iconType: "solid" }}
+            color="green"
+            stroke
+          >
             Verified
           </Badge>
-          <Badge icon="warning" iconType="solid" color="orange" size="sm">
+          <Badge
+            icon={{ icon: "warning", iconType: "solid" }}
+            color="orange"
+            size="sm"
+          >
             Beta
           </Badge>
           <Badge color="red" shape="pill" size="xs">
@@ -300,12 +357,15 @@ export const Combinations: Story = {
           </Badge>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <Badge icon="lock" iconType="solid" color="surface" disabled>
+          <Badge
+            icon={{ icon: "lock", iconType: "solid" }}
+            color="surface"
+            disabled
+          >
             Locked
           </Badge>
           <Badge
-            icon="heart"
-            iconType="solid"
+            icon={{ icon: "heart", iconType: "solid" }}
             color="purple"
             size="md"
             shape="pill"

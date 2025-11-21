@@ -119,7 +119,8 @@ function generateCSS(): string {
   css += `  --mt-color-focus-light-destructive: var(--mt-focus-light-destructive-light);\n`;
   css += "}\n\n";
 
-  css += ":is(.dark, .dark-theme) {\n";
+  css += "@media (prefers-color-scheme: dark) {\n";
+  css += "  :root {\n";
   const darkTokens = designTokens.dark;
   const skipKeysDark = new Set([
     "shadow-xs",
@@ -141,12 +142,10 @@ function generateCSS(): string {
   css += `  --mt-color-focus-light: var(--mt-focus-light-dark);\n`;
   css += `  --mt-color-focus-accent: var(--mt-focus-accent-dark);\n`;
   css += `  --mt-color-focus-light-destructive: var(--mt-focus-light-destructive-dark);\n`;
+  css += "\n";
+  css += "    color-scheme: dark;\n";
+  css += "  }\n";
   css += "}\n\n";
-
-  css += `:is(.dark, .dark-theme),\n`;
-  css += `:is(.dark, .dark-theme) :where(:root) {\n`;
-  css += `  color-scheme: dark;\n`;
-  css += "}\n";
 
   return css;
 }
