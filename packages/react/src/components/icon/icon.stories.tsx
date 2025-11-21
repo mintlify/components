@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Icon, IconType, IconLibrary } from "./icon";
+import { Icon } from "./icon";
+import { IconType, IconLibrary } from "./base-icon";
 
 const meta: Meta<typeof Icon> = {
   title: "Components/Icon",
