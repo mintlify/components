@@ -152,34 +152,44 @@ export const Disabled: Story = {
   render: () => (
     <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
       <div className="flex items-center justify-center gap-4 flex-wrap max-w-lg">
-        <Badge disabled color="gray">
+        <Badge disabled color="gray" icon="lock" iconLibrary="lucide">
           Gray
         </Badge>
-        <Badge disabled color="blue">
+        <Badge disabled color="blue" icon="lock" iconLibrary="lucide">
           Blue
         </Badge>
-        <Badge disabled color="green">
+        <Badge disabled color="green" icon="lock" iconLibrary="lucide">
           Green
         </Badge>
-        <Badge disabled color="orange">
+        <Badge disabled color="orange" icon="lock" iconLibrary="lucide">
           Orange
         </Badge>
-        <Badge disabled color="red">
+        <Badge disabled color="red" icon="lock" iconLibrary="lucide">
           Red
         </Badge>
-        <Badge disabled color="purple">
+        <Badge disabled color="purple" icon="lock" iconLibrary="lucide">
           Purple
         </Badge>
-        <Badge disabled color="white">
+        <Badge disabled color="white" icon="lock" iconLibrary="lucide">
           White
         </Badge>
-        <Badge disabled color="surface">
+        <Badge disabled color="surface" icon="lock" iconLibrary="lucide">
           Surface
         </Badge>
-        <Badge disabled color="white-destructive">
+        <Badge
+          disabled
+          color="white-destructive"
+          icon="lock"
+          iconLibrary="lucide"
+        >
           White Destructive
         </Badge>
-        <Badge disabled color="surface-destructive">
+        <Badge
+          disabled
+          color="surface-destructive"
+          icon="lock"
+          iconLibrary="lucide"
+        >
           Surface Destructive
         </Badge>
       </div>
