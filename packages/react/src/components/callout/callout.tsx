@@ -1,5 +1,5 @@
 import { ReactNode, CSSProperties, HTMLAttributes } from "react";
-import { Icon, IconProps, IconType } from "../icon";
+import { Icon, IconProps } from "../icon";
 import { cn } from "../../utils/cn";
 import Color from "color";
 
@@ -164,10 +164,10 @@ function CalloutComponent({
       icon
     ) : variantIcon ? (
       <Icon
-        icon={variantIcon.icon}
+        icon={variantIcon}
         className="mt-callout-icon"
         size={16}
-        iconType={variantIcon.iconType}
+        iconType="regular"
       />
     ) : null;
 
@@ -186,37 +186,14 @@ function CalloutComponent({
   );
 }
 
-interface VariantIcon {
-  icon: string;
-  iconType?: IconType;
-}
-
-function getVariantIcon(variant: CalloutVariant): VariantIcon {
-  const configs: Record<CalloutVariant, VariantIcon> = {
-    info: {
-      icon: "circle-info",
-      iconType: "regular",
-    },
-    warning: {
-      icon: "triangle-exclamation",
-      iconType: "regular",
-    },
-    success: {
-      icon: "check",
-      iconType: "regular",
-    },
-    danger: {
-      icon: "hexagon-exclamation",
-      iconType: "regular",
-    },
-    note: {
-      icon: "circle-exclamation",
-      iconType: "regular",
-    },
-    tip: {
-      icon: "lightbulb",
-      iconType: "regular",
-    },
+function getVariantIcon(variant: CalloutVariant): string {
+  const configs: Record<CalloutVariant, string> = {
+    info: "circle-info",
+    warning: "triangle-exclamation",
+    success: "check",
+    danger: "hexagon-exclamation",
+    note: "circle-exclamation",
+    tip: "lightbulb",
   };
 
   return configs[variant];
