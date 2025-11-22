@@ -1,0 +1,109 @@
+.mt-frame-container {
+  display: block;
+}
+
+.mt-frame-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.mt-frame-hint-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  fill: rgb(156 163 175);
+}
+
+.mt-frame-hint-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: rgb(55 65 81);
+}
+
+.mt-frame {
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: rgb(249 250 251 / 50%);
+}
+
+.mt-frame-background {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(229 229 229 / 0.2)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  background-position: 10px 10px;
+  mask-image: linear-gradient(0deg, #fff, rgb(255 255 255 / 60%));
+  -webkit-mask-image: linear-gradient(0deg, #fff, rgb(255 255 255 / 60%));
+}
+
+.mt-frame-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: rgb(255 255 255);
+}
+
+.mt-frame-caption {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+  padding: 0 2rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(55 65 81);
+}
+
+.mt-frame-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgb(0 0 0 / 5%);
+  border-radius: 1rem;
+}
+
+:is(.dark, .dark-theme) {
+  .mt-frame {
+    background-color: rgb(31 41 55 / 25%);
+  }
+
+  .mt-frame-hint-icon {
+    fill: rgb(209 213 219);
+  }
+
+  .mt-frame-hint-text {
+    color: rgb(229 231 235);
+  }
+
+  .mt-frame-background {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+    mask-image: linear-gradient(
+      0deg,
+      rgb(255 255 255 / 10%),
+      rgb(255 255 255 / 50%)
+    );
+    -webkit-mask-image: linear-gradient(
+      0deg,
+      rgb(255 255 255 / 10%),
+      rgb(255 255 255 / 50%)
+    );
+  }
+
+  .mt-frame-content {
+    background-color: rgb(17 24 39);
+  }
+
+  .mt-frame-caption {
+    color: rgb(156 163 175);
+  }
+
+  .mt-frame-border {
+    border-color: rgb(255 255 255 / 5%);
+  }
+}
