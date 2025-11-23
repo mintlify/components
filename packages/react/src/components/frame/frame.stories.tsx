@@ -99,14 +99,18 @@ export const CompoundBasic: Story = {
   },
   render: () => (
     <Frame.Root>
-      <Frame.Content>
-        <div className="p-4 bg-white dark:bg-gray-800">
-          <h3 className="text-lg font-semibold">Compound Components</h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            Using Frame.Root and Frame.Content
-          </p>
-        </div>
-      </Frame.Content>
+      <Frame.Wrapper>
+        <Frame.Background />
+        <Frame.Content>
+          <div className="p-4 bg-white dark:bg-gray-800">
+            <h3 className="text-lg font-semibold">Compound Components</h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              Using Frame.Root, Frame.Wrapper and Frame.Content
+            </p>
+          </div>
+        </Frame.Content>
+        <Frame.Border />
+      </Frame.Wrapper>
     </Frame.Root>
   ),
 };
@@ -117,17 +121,21 @@ export const CompoundWithCaption: Story = {
   },
   render: () => (
     <Frame.Root>
-      <Frame.Content>
-        <div className="p-6 bg-white dark:bg-gray-800">
-          <h3 className="text-xl font-bold mb-2">Product Title</h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            This is a product description that appears inside the frame.
-          </p>
-        </div>
-      </Frame.Content>
-      <Frame.Caption>
-        <p>Product showcase with custom caption styling</p>
-      </Frame.Caption>
+      <Frame.Wrapper>
+        <Frame.Background />
+        <Frame.Content>
+          <div className="p-6 bg-white dark:bg-gray-800">
+            <h3 className="text-xl font-bold mb-2">Product Title</h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              This is a product description that appears inside the frame.
+            </p>
+          </div>
+        </Frame.Content>
+        <Frame.Caption>
+          <p>Product showcase with custom caption styling</p>
+        </Frame.Caption>
+        <Frame.Border />
+      </Frame.Wrapper>
     </Frame.Root>
   ),
 };
@@ -137,7 +145,7 @@ export const CompoundWithHint: Story = {
     children: null,
   },
   render: () => (
-    <div>
+    <Frame.Root>
       <Frame.Hint
         icon={
           <svg
@@ -156,7 +164,8 @@ export const CompoundWithHint: Story = {
       >
         Preview Mode
       </Frame.Hint>
-      <Frame.Root>
+      <Frame.Wrapper>
+        <Frame.Background />
         <Frame.Content>
           <div className="p-6 bg-white dark:bg-gray-800 text-center">
             <h3 className="text-lg font-semibold mb-2">Preview Content</h3>
@@ -165,8 +174,9 @@ export const CompoundWithHint: Story = {
             </p>
           </div>
         </Frame.Content>
-      </Frame.Root>
-    </div>
+        <Frame.Border />
+      </Frame.Wrapper>
+    </Frame.Root>
   ),
 };
 
@@ -175,7 +185,7 @@ export const CompoundFullComposition: Story = {
     children: null,
   },
   render: () => (
-    <div>
+    <Frame.Root>
       <Frame.Hint
         icon={
           <svg
@@ -195,7 +205,8 @@ export const CompoundFullComposition: Story = {
       >
         Interactive Demo
       </Frame.Hint>
-      <Frame.Root>
+      <Frame.Wrapper>
+        <Frame.Background />
         <Frame.Content>
           <div className="p-8 bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
             <div className="text-center">
@@ -214,11 +225,13 @@ export const CompoundFullComposition: Story = {
         </Frame.Content>
         <Frame.Caption>
           <p className="font-medium">
-            Built with Frame.Root, Frame.Content, Frame.Caption, and Frame.Hint
+            Built with Frame.Root, Frame.Wrapper, Frame.Content, Frame.Caption,
+            and Frame.Hint
           </p>
         </Frame.Caption>
-      </Frame.Root>
-    </div>
+        <Frame.Border />
+      </Frame.Wrapper>
+    </Frame.Root>
   ),
 };
 
@@ -228,9 +241,10 @@ export const CompoundMultipleFrames: Story = {
   },
   render: () => (
     <div className="space-y-6">
-      <div>
+      <Frame.Root>
         <Frame.Hint>Card 1</Frame.Hint>
-        <Frame.Root>
+        <Frame.Wrapper>
+          <Frame.Background />
           <Frame.Content>
             <div className="p-4 bg-white dark:bg-gray-800">
               <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -241,12 +255,14 @@ export const CompoundMultipleFrames: Story = {
           <Frame.Caption>
             <p className="text-xs">Caption for first card</p>
           </Frame.Caption>
-        </Frame.Root>
-      </div>
+          <Frame.Border />
+        </Frame.Wrapper>
+      </Frame.Root>
 
-      <div>
+      <Frame.Root>
         <Frame.Hint>Card 2</Frame.Hint>
-        <Frame.Root>
+        <Frame.Wrapper>
+          <Frame.Background />
           <Frame.Content>
             <div className="p-4 bg-white dark:bg-gray-800">
               <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -257,8 +273,9 @@ export const CompoundMultipleFrames: Story = {
           <Frame.Caption>
             <p className="text-xs">Caption for second card</p>
           </Frame.Caption>
-        </Frame.Root>
-      </div>
+          <Frame.Border />
+        </Frame.Wrapper>
+      </Frame.Root>
     </div>
   ),
 };
@@ -268,9 +285,10 @@ export const CompoundWithImage: Story = {
     children: null,
   },
   render: () => (
-    <div>
+    <Frame.Root>
       <Frame.Hint>Yellowstone</Frame.Hint>
-      <Frame.Root>
+      <Frame.Wrapper>
+        <Frame.Background />
         <Frame.Content>
           <img
             src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg"
@@ -278,22 +296,21 @@ export const CompoundWithImage: Story = {
             style={{ width: "100%", height: "auto", display: "block" }}
           />
         </Frame.Content>
-        <Frame.Caption>
-          <p>A beautiful Yellowstone landscape photograph</p>
-        </Frame.Caption>
-      </Frame.Root>
-    </div>
+        <Frame.Border />
+      </Frame.Wrapper>
+    </Frame.Root>
   ),
 };
 
-export const CompoundWithImageYosemite: Story = {
+export const CompoundWithImageAndCaption: Story = {
   args: {
     children: null,
   },
   render: () => (
-    <div>
+    <Frame.Root>
       <Frame.Hint>Yosemite</Frame.Hint>
-      <Frame.Root>
+      <Frame.Wrapper>
+        <Frame.Background />
         <Frame.Content>
           <img
             src="https://mintlify-assets.b-cdn.net/yosemite.jpg"
@@ -304,8 +321,9 @@ export const CompoundWithImageYosemite: Story = {
         <Frame.Caption>
           <p>A stunning view of Yosemite National Park</p>
         </Frame.Caption>
-      </Frame.Root>
-    </div>
+        <Frame.Border />
+      </Frame.Wrapper>
+    </Frame.Root>
   ),
 };
 
@@ -315,8 +333,9 @@ export const CompoundImageGallery: Story = {
   },
   render: () => (
     <div className="grid grid-cols-2 gap-6">
-      <div>
-        <Frame.Root>
+      <Frame.Root>
+        <Frame.Wrapper>
+          <Frame.Background />
           <Frame.Content>
             <img
               src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg"
@@ -327,10 +346,12 @@ export const CompoundImageGallery: Story = {
           <Frame.Caption>
             <p className="text-xs">Yellowstone</p>
           </Frame.Caption>
-        </Frame.Root>
-      </div>
-      <div>
-        <Frame.Root>
+          <Frame.Border />
+        </Frame.Wrapper>
+      </Frame.Root>
+      <Frame.Root>
+        <Frame.Wrapper>
+          <Frame.Background />
           <Frame.Content>
             <img
               src="https://mintlify-assets.b-cdn.net/yosemite.jpg"
@@ -341,8 +362,9 @@ export const CompoundImageGallery: Story = {
           <Frame.Caption>
             <p className="text-xs">Yosemite</p>
           </Frame.Caption>
-        </Frame.Root>
-      </div>
+          <Frame.Border />
+        </Frame.Wrapper>
+      </Frame.Root>
     </div>
   ),
 };
@@ -353,27 +375,31 @@ export const CompoundNestedContent: Story = {
   },
   render: () => (
     <Frame.Root>
-      <Frame.Content>
-        <div className="p-6 bg-white dark:bg-gray-800 space-y-4">
-          <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-            <h3 className="text-lg font-semibold">Header Section</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Subtitle text
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded">
-              <p className="text-xs font-medium">Feature 1</p>
+      <Frame.Wrapper>
+        <Frame.Background />
+        <Frame.Content>
+          <div className="p-6 bg-white dark:bg-gray-800 space-y-4">
+            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <h3 className="text-lg font-semibold">Header Section</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Subtitle text
+              </p>
             </div>
-            <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded">
-              <p className="text-xs font-medium">Feature 2</p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded">
+                <p className="text-xs font-medium">Feature 1</p>
+              </div>
+              <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded">
+                <p className="text-xs font-medium">Feature 2</p>
+              </div>
             </div>
           </div>
-        </div>
-      </Frame.Content>
-      <Frame.Caption>
-        <p>Complex nested content structure</p>
-      </Frame.Caption>
+        </Frame.Content>
+        <Frame.Caption>
+          <p>Complex nested content structure</p>
+        </Frame.Caption>
+        <Frame.Border />
+      </Frame.Wrapper>
     </Frame.Root>
   ),
 };
@@ -383,18 +409,23 @@ export const CompoundCustomRender: Story = {
     children: null,
   },
   render: () => (
-    <Frame.Root render={<section />}>
-      <Frame.Content>
-        <div className="p-6 bg-white dark:bg-gray-800">
-          <h3 className="text-lg font-semibold mb-2">Custom Element</h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            This frame renders as a {`<section>`} element instead of a {`<div>`}
-          </p>
-        </div>
-      </Frame.Content>
-      <Frame.Caption>
-        <p>Using the render prop for semantic HTML</p>
-      </Frame.Caption>
+    <Frame.Root>
+      <Frame.Wrapper render={<section />}>
+        <Frame.Background />
+        <Frame.Content>
+          <div className="p-6 bg-white dark:bg-gray-800">
+            <h3 className="text-lg font-semibold mb-2">Custom Element</h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              This frame renders as a {`<section>`} element instead of a{" "}
+              {`<div>`}
+            </p>
+          </div>
+        </Frame.Content>
+        <Frame.Caption>
+          <p>Using the render prop for semantic HTML</p>
+        </Frame.Caption>
+        <Frame.Border />
+      </Frame.Wrapper>
     </Frame.Root>
   ),
 };
