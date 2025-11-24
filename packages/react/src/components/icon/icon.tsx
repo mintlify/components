@@ -11,7 +11,7 @@ export function Icon({
   iconType,
   iconLibrary,
   color,
-  size = 16,
+  size,
   className,
   style,
   ...props
