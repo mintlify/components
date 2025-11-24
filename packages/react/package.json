@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "Mintlify Headless UI components",
   "type": "module",
   "main": "./dist/index.cjs",

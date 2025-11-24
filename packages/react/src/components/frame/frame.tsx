@@ -41,7 +41,12 @@ function FrameComponent({
     <FrameRoot className={containerClassName}>
       {hint && <FrameHint icon={hintIcon}>{hint}</FrameHint>}
 
-      <FrameWrapper {...props}>
+      <FrameWrapper
+        {...props}
+        className={className}
+        style={style}
+        render={render}
+      >
         <FrameBackground />
         <FrameContent>{children}</FrameContent>
         {caption && (
@@ -206,13 +211,4 @@ export {
   FrameContent,
   FrameCaption,
   FrameHint,
-};
-
-export type {
-  FrameProps,
-  FrameRootProps,
-  FrameWrapperProps,
-  FrameContentProps,
-  FrameCaptionProps,
-  FrameHintProps,
 };
