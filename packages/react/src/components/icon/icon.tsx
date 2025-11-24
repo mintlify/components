@@ -11,7 +11,6 @@ export function Icon({
   iconType,
   iconLibrary,
   color,
-  size = 16,
   className,
   style,
   ...props
@@ -48,8 +47,6 @@ export function Icon({
             maskPosition: "center",
             maskSize: "100%",
             backgroundColor: "currentColor",
-            width: size,
-            height: size,
             ...style,
           }}
           {...svgProps}
@@ -64,8 +61,6 @@ export function Icon({
         alt={icon}
         className={cn("mt-icon", className)}
         style={{
-          width: size,
-          height: size,
           ...style,
         }}
         {...imgProps}
@@ -88,8 +83,6 @@ export function Icon({
         maskPosition: "center",
         maskSize: iconLibrary === "lucide" ? "100%" : undefined,
         backgroundColor: color,
-        width: size,
-        height: size,
         ...style,
       }}
       {...svgProps}
@@ -120,11 +113,6 @@ export interface IconProps extends Omit<SVGAttributes<SVGSVGElement>, "color"> {
    * @default "currentColor"
    */
   color?: string;
-  /**
-   * Icon size in pixels.
-   * @default 16
-   */
-  size?: number;
   className?: string;
   style?: CSSProperties;
 }
