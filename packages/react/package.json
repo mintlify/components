@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "description": "Mintlify Headless UI components",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -16,6 +16,7 @@
       "default": "./dist/index.js"
     },
     "./styles.css": "./dist/styles.css",
+    "./styles.nolayered.css": "./dist/styles.nolayered.css",
     "./*.css": "./dist/components/*/*.css"
   },
   "files": [
@@ -48,13 +49,14 @@
   },
   "scripts": {
     "dev": "pnpm generate:theme && vite build --watch",
-    "build": "pnpm generate:theme && tsc && vite build",
+    "build": "pnpm generate:theme && tsc && vite build && pnpm generate:nolayered-css",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:css": "stylelint '**/*.css'",
     "lint:all": "pnpm lint && pnpm lint:css",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "generate:theme": "tsx scripts/generate-theme-css.ts"
+    "generate:theme": "tsx scripts/generate-theme-css.ts",
+    "generate:nolayered-css": "tsx scripts/generate-nolayered-css.ts"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
