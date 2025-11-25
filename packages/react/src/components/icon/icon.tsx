@@ -4,7 +4,6 @@ import { isAbsoluteUrl } from "../../utils/isAbsoluteUrl";
 import { MINTLIFY_ICONS_CDN_URL } from "../../constants";
 import { FONT_AWESOME_BRANDS } from "../../constants/font-awesome-brands";
 import { IS_DEV } from "../../constants/env";
-import "./icon.css";
 
 export function Icon({
   icon,

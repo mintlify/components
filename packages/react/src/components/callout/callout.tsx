@@ -3,7 +3,6 @@ import { Icon } from "../icon";
 import { cn } from "../../utils/cn";
 import Color from "color";
 
-import "./callout.css";
 import { IconProp } from "../../types/icon";
 
 function getVariantIcon(variant: CalloutVariant): string {

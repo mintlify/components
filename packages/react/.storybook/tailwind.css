@@ -4,6 +4,10 @@
 
 @import "tailwindcss";
 
+@import "../src/styles.css";
+
+@config "./tailwind.config.ts";
+
 @source "../src/**/*.stories.{js,ts,jsx,tsx}";
 
 @variant dark (&:where(.dark, .dark *));

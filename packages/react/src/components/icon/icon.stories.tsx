@@ -23,7 +23,7 @@ export default meta;
 type Story = StoryObj<typeof Icon>;
 
 const Container = ({ children }: { children: React.ReactNode }) => (
-  <div className="w-full flex items-center justify-center gap-4 bg-background-light dark:bg-background-dark px-6 py-8">
+  <div className="w-full flex items-center justify-center gap-4 bg-white dark:bg-neutral-950 px-6 py-8">
     {children}
   </div>
 );
@@ -33,7 +33,7 @@ const IconItem = ({
   iconType,
   iconLibrary,
   size = 32,
-  color,
+  color = "currentColor",
   label,
   labelSize = "sm",
 }: {
@@ -61,6 +61,7 @@ export const Basic: Story = {
   args: {
     icon: "rocket",
     size: 24,
+    color: "currentColor",
   },
 };
 
@@ -261,6 +262,7 @@ export const InlineInText: Story = {
             icon="download"
             iconType="solid"
             size={16}
+            color="currentColor"
             className="inline align-middle"
           />{" "}
           download,{" "}
@@ -268,6 +270,7 @@ export const InlineInText: Story = {
             icon="share"
             iconType="solid"
             size={16}
+            color="currentColor"
             className="inline align-middle"
           />{" "}
           share, or{" "}
@@ -275,6 +278,7 @@ export const InlineInText: Story = {
             icon="bookmark"
             iconType="solid"
             size={16}
+            color="currentColor"
             className="inline align-middle"
           />{" "}
           save.
@@ -316,19 +320,48 @@ export const WithCurrentColor: Story = {
     <Container>
       <div className="space-y-6">
         <div className="text-blue-500 flex items-center gap-2">
-          <Icon icon="info-circle" iconType="solid" size={20} />
+          <Icon
+            icon="info-circle"
+            iconType="solid"
+            size={20}
+            color="currentColor"
+          />
           <span>Icons inherit text color by default</span>
         </div>
-        <div className="text-green-600 flex items-center gap-2">
-          <Icon icon="check-circle" iconType="solid" size={20} />
+        <div
+          className="text-green-600 flex items-center gap-2"
+          color="currentColor"
+        >
+          <Icon
+            icon="check-circle"
+            iconType="solid"
+            size={20}
+            color="currentColor"
+          />
           <span>Success message with icon</span>
         </div>
-        <div className="text-red-600 flex items-center gap-2">
-          <Icon icon="exclamation-triangle" iconType="solid" size={20} />
+        <div
+          className="text-red-600 flex items-center gap-2"
+          color="currentColor"
+        >
+          <Icon
+            icon="exclamation-triangle"
+            iconType="solid"
+            size={20}
+            color="currentColor"
+          />
           <span>Error message with icon</span>
         </div>
-        <div className="text-orange-500 flex items-center gap-2">
-          <Icon icon="lightbulb" iconType="solid" size={20} />
+        <div
+          className="text-orange-500 flex items-center gap-2"
+          color="currentColor"
+        >
+          <Icon
+            icon="lightbulb"
+            iconType="solid"
+            size={20}
+            color="currentColor"
+          />
           <span>Tip with icon</span>
         </div>
       </div>

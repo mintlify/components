@@ -1,7 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 import { Icon, IconProps } from "../icon";
 import { cn } from "../../utils/cn";
-import "./badge.css";
 import { IconProp } from "../../types/icon";
 
 export function Badge({

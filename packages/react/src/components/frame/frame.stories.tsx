@@ -286,7 +286,7 @@ export const CompoundWithImage: Story = {
   },
   render: () => (
     <Frame.Root>
-      <Frame.Hint className="text-red-500">Yellowstone</Frame.Hint>
+      <Frame.Hint hintTextClassName="text-red-500">Yellowstone</Frame.Hint>
       <Frame.Wrapper className="not-prose bg-blue-400 dark:bg-blue-600">
         <Frame.Background />
         <Frame.Content>
