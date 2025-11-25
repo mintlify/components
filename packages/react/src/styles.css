@@ -1,1 +1,6 @@
 @import "./styles/theme.css";
+
+@import "./components/callout/callout.css";
+@import "./components/frame/frame.css";
+@import "./components/icon/icon.css";
+@import "./components/badge/badge.css";
