@@ -1,10 +1,23 @@
 import { ReactNode, CSSProperties, HTMLAttributes } from "react";
-import { Icon, IconProps } from "../icon";
+import { Icon } from "../icon";
 import { cn } from "../../utils/cn";
 import Color from "color";
 
 import "./callout.css";
 import { IconProp } from "../../types/icon";
+
+function getVariantIcon(variant: CalloutVariant): string {
+  const configs: Record<CalloutVariant, string> = {
+    info: "circle-info",
+    warning: "triangle-exclamation",
+    success: "check",
+    danger: "hexagon-exclamation",
+    note: "circle-exclamation",
+    tip: "lightbulb",
+  };
+
+  return configs[variant];
+}
 
 export type CalloutVariant =
   | "info"
@@ -79,23 +92,51 @@ interface CalloutIconProps extends HTMLAttributes<HTMLDivElement> {
    * Icon before content. String (icon name) or IconProps object.
    * @see {@link IconProp}
    */
-  icon?: string | Omit<IconProps, "size" | "className" | "style">;
+  icon?: IconProp;
+  variant?: CalloutVariant;
   className?: string;
 }
 
 function CalloutIcon({
   children,
   icon,
+  variant,
   className,
   ...props
 }: CalloutIconProps) {
+  const variantIcon = variant ? getVariantIcon(variant) : null;
+
   const IconComponent = children ? (
     children
   ) : typeof icon === "string" ? (
-    <Icon icon={icon} className="mt-callout-icon" size={16} />
+    <Icon
+      icon={icon}
+      className="mt-callout-icon"
+      size={16}
+      color="currentColor"
+    />
   ) : icon && typeof icon === "object" && "icon" in icon ? (
-    <Icon {...icon} className="mt-callout-icon" size={16} />
+    <Icon
+      {...icon}
+      className="mt-callout-icon"
+      size={16}
+      color="currentColor"
+    />
+  ) : icon !== undefined ? (
+    icon
+  ) : variantIcon ? (
+    <Icon
+      icon={variantIcon}
+      className="mt-callout-icon"
+      size={16}
+      iconType="regular"
+      color="currentColor"
+    />
   ) : null;
+
+  if (!IconComponent) {
+    return null;
+  }
 
   return (
     <div className={cn("mt-callout-icon-wrapper", className)} {...props}>
@@ -153,24 +194,6 @@ function CalloutComponent({
   style,
   ...props
 }: CalloutProps) {
-  const variantIcon = variant ? getVariantIcon(variant) : null;
-
-  const IconComponent =
-    typeof icon === "string" ? (
-      <Icon icon={icon} className="mt-callout-icon" size={16} />
-    ) : icon && typeof icon === "object" && "icon" in icon ? (
-      <Icon {...icon} className="mt-callout-icon" size={16} />
-    ) : icon !== undefined ? (
-      icon
-    ) : variantIcon ? (
-      <Icon
-        icon={variantIcon}
-        className="mt-callout-icon"
-        size={16}
-        iconType="regular"
-      />
-    ) : null;
-
   return (
     <CalloutRoot
       data-slot="callout-root"
@@ -180,23 +203,10 @@ function CalloutComponent({
       style={style}
       {...props}
     >
-      {IconComponent && <CalloutIcon>{IconComponent}</CalloutIcon>}
+      <CalloutIcon icon={icon} variant={variant} />
       <CalloutContent>{children}</CalloutContent>
     </CalloutRoot>
   );
-}
-
-function getVariantIcon(variant: CalloutVariant): string {
-  const configs: Record<CalloutVariant, string> = {
-    info: "circle-info",
-    warning: "triangle-exclamation",
-    success: "check",
-    danger: "hexagon-exclamation",
-    note: "circle-exclamation",
-    tip: "lightbulb",
-  };
-
-  return configs[variant];
 }
 
 export const Callout = Object.assign(CalloutComponent, {
