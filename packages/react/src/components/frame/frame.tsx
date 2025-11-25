@@ -5,8 +5,6 @@ import "./frame.css";
 import { IconProp } from "../../types/icon";
 import { Icon } from "../icon/icon";
 
-import "./frame.css";
-
 interface FrameProps extends HTMLAttributes<HTMLElement> {
   /**
    * Frame caption, at the bottom of the frame.

@@ -1,6 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
 import "./tailwind.css";
-import "../src/styles/theme.css";
 import React, { useEffect } from "react";
 import { ThemeProvider, useTheme } from "next-themes";
 
