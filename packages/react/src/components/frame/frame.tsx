@@ -5,6 +5,8 @@ import "./frame.css";
 import { IconProp } from "../../types/icon";
 import { Icon } from "../icon/icon";
 
+import "./frame.css";
+
 interface FrameProps extends HTMLAttributes<HTMLElement> {
   /**
    * Frame caption, at the bottom of the frame.
@@ -168,9 +170,16 @@ interface FrameHintProps extends HTMLAttributes<HTMLDivElement> {
   icon?: IconProp;
   children: ReactNode;
   className?: string;
+  hintTextClassName?: string;
 }
 
-function FrameHint({ children, className, icon, ...props }: FrameHintProps) {
+function FrameHint({
+  children,
+  className,
+  icon,
+  hintTextClassName,
+  ...props
+}: FrameHintProps) {
   const IconComponent =
     typeof icon === "string" ? (
       <Icon icon={icon} className="mt-frame-hint-icon" size={16} />
@@ -195,7 +204,11 @@ function FrameHint({ children, className, icon, ...props }: FrameHintProps) {
       {...props}
     >
       {IconComponent ? IconComponent : null}
-      {children && <p className="mt-frame-hint-text">{children}</p>}
+      {children && (
+        <p className={cn("mt-frame-hint-text", hintTextClassName)}>
+          {children}
+        </p>
+      )}
     </div>
   );
 }

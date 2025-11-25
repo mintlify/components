@@ -1,3 +1,7 @@
+/* Layer order: mt-components after base so component defaults override Tailwind reset,
+   but before utilities so Tailwind classes can override component defaults */
+@layer theme, base, mt-components, components, utilities;
+
 @import "tailwindcss";
 
 @source "../src/**/*.stories.{js,ts,jsx,tsx}";

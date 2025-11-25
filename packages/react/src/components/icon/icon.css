@@ -1,3 +1,5 @@
-.mt-icon {
-  flex-shrink: 0;
+@layer mt-components {
+  .mt-icon {
+    flex-shrink: 0;
+  }
 }
