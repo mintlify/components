@@ -1,6 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig } from "vite";
-import tailwindcssPostcss from "@tailwindcss/postcss";
+import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
 
 const config: StorybookConfig = {
@@ -14,7 +14,7 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       css: {
         postcss: {
-          plugins: [tailwindcssPostcss(), autoprefixer()],
+          plugins: [tailwindcss(), autoprefixer()],
         },
       },
     });
