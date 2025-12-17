@@ -1,6 +1,6 @@
 # Mintlify Components
 
-Open-source UI components for documentation sites. Built with React, TypeScript, and Tailwind CSS.
+Mintlify's Open Source UI components.
 
 ## Installation
 
