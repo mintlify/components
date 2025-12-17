@@ -19,8 +19,7 @@
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "types": ["vite/client"]
+    "resolveJsonModule": true
   },
-  "include": ["src", "scripts"]
+  "include": ["src"]
 }

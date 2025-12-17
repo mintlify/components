@@ -1,15 +1,25 @@
-# Mintlify Headles/Themed Componend
+# Mintlify Components
 
-#
+Open-source UI components for documentation sites. Built with React, TypeScript, and Tailwind CSS.
 
-1. Install dependencies
+## Installation
 
 ```bash
 pnpm install
 ```
 
-2. build the project
+## Development
 
 ```bash
 pnpm build
 ```
+
+## Storybook
+
+```bash
+pnpm storybook
+```
+
+## License
+
+MIT

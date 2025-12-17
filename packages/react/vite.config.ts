@@ -8,17 +8,11 @@ export default defineConfig({
     react(),
     dts({
       include: ["src/**/*"],
-      exclude: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+      exclude: ["src/**/*.stories.tsx", "src/**/*.test.ts", "src/**/*.test.tsx"],
       outDir: "dist",
-      copyDtsFiles: true,
       rollupTypes: true,
     }),
   ],
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "src"),
-    },
-  },
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
@@ -26,25 +20,13 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: (id) => {
-        return !id.startsWith(".") && !id.startsWith("/");
-      },
+      external: ["react", "react-dom", "react/jsx-runtime"],
       output: {
         preserveModules: true,
         preserveModulesRoot: "src",
         entryFileNames: "[name].js",
-        assetFileNames: (assetInfo) => {
-          if (!assetInfo.name) return "assets/[name][extname]";
-
-          if (assetInfo.name.endsWith(".css")) {
-            return "[name][extname]";
-          }
-
-          return assetInfo.name || "assets/[name][extname]";
-        },
       },
     },
-    cssCodeSplit: true,
     sourcemap: false,
   },
 });

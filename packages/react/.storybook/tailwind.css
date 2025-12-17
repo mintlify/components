@@ -1,10 +1,4 @@
-/* Layer order: mt-components after base so component defaults override Tailwind reset,
-   but before utilities so Tailwind classes can override component defaults */
-@layer theme, base, mt-components, components, utilities;
-
 @import "tailwindcss";
-
-@import "../src/styles.css";
 
 @config "./tailwind.config.ts";
 
@@ -13,6 +7,6 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-background-light: var(--mt-color-base-white);
-  --color-background-dark: var(--mt-color-gray-13);
+  --color-background-light: #ffffff;
+  --color-background-dark: #0f0f10;
 }
