@@ -1,7 +1,7 @@
 {
   "name": "@mintlify/components-monorepo",
   "version": "0.1.0",
-  "description": "Open-source library of UI components made",
+  "description": "Open-source UI components for documentation sites",
   "private": true,
   "type": "module",
   "repository": {
@@ -10,8 +10,9 @@
   },
   "keywords": [
     "react",
-    "headless",
-    "mdx"
+    "components",
+    "ui",
+    "tailwindcss"
   ],
   "license": "MIT",
   "author": "Mintlify",
@@ -23,15 +24,9 @@
     "build": "pnpm --filter @mintlify/components build",
     "lint": "pnpm -r lint",
     "storybook": "pnpm --filter @mintlify/components storybook",
-    "build-storybook": "pnpm --filter @mintlify/components build-storybook",
-    "prepare": "git config core.hooksPath .husky",
-    "postinstall": "pnpm prepare"
+    "build-storybook": "pnpm --filter @mintlify/components build-storybook"
   },
   "devDependencies": {
-    "eslint-plugin-import": "^2.32.0",
-    "postcss": "^8.5.6",
-    "stylelint": "^16.25.0",
-    "stylelint-config-standard": "^39.0.1",
     "typescript": "^5.7.2"
   },
   "packageManager": "pnpm@10.0.0"

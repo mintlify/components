@@ -1,6 +1,3 @@
 {
-  "stylelint.enable": true,
-  "files.readonlyInclude": {
-    "**/theme.css": true
-  }
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

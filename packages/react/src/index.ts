@@ -1,4 +1,2 @@
-import "./styles.css";
-
 export * from "./components";
-export * from "./styles";
+export { cn } from "./utils/cn";

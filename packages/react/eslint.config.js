@@ -43,13 +43,6 @@ export default [
         { argsIgnorePattern: "^_" },
       ],
       "import/export": "error",
-      "import/no-unused-modules": [
-        "error",
-        {
-          unusedExports: true,
-          ignoreExports: ["src/index.ts", "src/components/index.ts"],
-        },
-      ],
     },
   },
   ...storybook.configs["flat/recommended"],
