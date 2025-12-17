@@ -1,6 +1,6 @@
 # @mintlify/components
 
-Mintlify Headless UI components. Built with React, TypeScript, and Tailwind CSS.
+Mintlify's Open Source UI components package.
 
 ## Requirements
 
