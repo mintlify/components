@@ -143,7 +143,7 @@ const Badge = ({
 
   if (Component === 'a') {
     return (
-      <a {...commonProps} href={href}>
+      <a {...commonProps} href={href} onClick={onClick}>
         {content}
       </a>
     );

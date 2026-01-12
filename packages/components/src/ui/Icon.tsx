@@ -65,7 +65,8 @@ export function ComponentIcon({
     color,
     overrideColor,
     iconLibrary = 'fontawesome',
-    basePath
+    basePath,
+    pageType
 }: IconProps) {
     // Validate the types
     if (iconType && !iconTypes.includes(iconType)) {
@@ -119,6 +120,7 @@ export function ComponentIcon({
             className={cn(className, !color && !overrideColor && 'bg-gray-800 dark:bg-gray-100')}
             style={style}
             color={color}
+            pageType={pageType}
         />
     );
 }
