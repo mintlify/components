@@ -38,10 +38,10 @@ if empty - nothing to change
     - Rename `<AccordionGroup>` to `<Accordion.Group>`
     - Add `data-component-part` **for:
         - `<details>`
-- Badge
-    - add `tailIcon` + `leadIcon` , current `icon` prop should be `tailIcon`
-    - rename `stroke` to `variant="outline"`
-    - add support for the props `onClick` and `href`
+- ~~Badge~~
+    - ~~add `tailIcon` + `leadIcon` , current `icon` prop should be `tailIcon`~~
+    - ~~rename `stroke` to `variant="outline"`~~
+    - ~~add support for the props `onClick` and `href`~~
 - ~~Banner~~
 - Callouts
     - update to `variant="note"` instead of 7 different components. add `variant="custom"`, set it by default

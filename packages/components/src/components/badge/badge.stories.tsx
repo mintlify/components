@@ -33,8 +33,9 @@ const meta: Meta<typeof Badge> = {
       control: "select",
       options: ["xs", "sm", "md", "lg"],
     },
-    stroke: {
-      control: "boolean",
+    variant: {
+      control: "select",
+      options: ["solid", "outline"],
     },
     disabled: {
       control: "boolean",
@@ -88,13 +89,34 @@ export const Shapes: Story = {
   ),
 };
 
-export const WithStroke: Story = {
+export const Variants: Story = {
   render: () => (
-    <div className="flex gap-2">
-      <Badge stroke>With Stroke</Badge>
-      <Badge color="blue" stroke>
-        Blue Stroke
-      </Badge>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2">
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
+          Solid (Default)
+        </h3>
+      </div>
+      <div className="flex gap-2">
+        <Badge>Default</Badge>
+        <Badge color="blue">Blue</Badge>
+        <Badge color="green">Green</Badge>
+      </div>
+
+      <div className="flex gap-2">
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
+          Outline
+        </h3>
+      </div>
+      <div className="flex gap-2">
+        <Badge variant="outline">Outline</Badge>
+        <Badge color="blue" variant="outline">
+          Blue Outline
+        </Badge>
+        <Badge color="green" variant="outline">
+          Green Outline
+        </Badge>
+      </div>
     </div>
   ),
 };
@@ -115,62 +137,88 @@ export const WithIcon: Story = {
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
-          Inline SVG Icons
+          Lead Icons
         </h3>
       </div>
       <div className="flex gap-2">
-        <Badge
-          icon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-          }
-        >
-          With Icon
+        <Badge leadIcon="star">With Lead Icon</Badge>
+        <Badge leadIcon="heart" color="red">
+          Heart Lead
         </Badge>
-        <Badge
-          color="green"
-          icon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-          }
-        >
-          Success
+        <Badge leadIcon="check" color="green">
+          Check Lead
         </Badge>
       </div>
 
       <div className="flex gap-2">
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
-          String Icon Names
+          Tail Icons
         </h3>
       </div>
       <div className="flex gap-2">
-        <Badge icon="star">Star</Badge>
-        <Badge icon="heart" color="red">
-          Heart
+        <Badge tailIcon="star">With Tail Icon</Badge>
+        <Badge tailIcon="arrow-right" color="blue">
+          Next
         </Badge>
-        <Badge icon="check" color="green">
-          Check
+        <Badge tailIcon="external-link" color="purple">
+          External
         </Badge>
-        <Badge icon="circle-info" color="blue">
-          Info
+      </div>
+
+      <div className="flex gap-2">
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
+          Both Lead and Tail Icons
+        </h3>
+      </div>
+      <div className="flex gap-2">
+        <Badge leadIcon="star" tailIcon="star">
+          Both Icons
+        </Badge>
+        <Badge leadIcon="check" tailIcon="arrow-right" color="green">
+          Complete
+        </Badge>
+      </div>
+
+      <div className="flex gap-2">
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
+          Inline SVG Icons
+        </h3>
+      </div>
+      <div className="flex gap-2">
+        <Badge
+          leadIcon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                clipRule="evenodd"
+              />
+            </svg>
+          }
+        >
+          With Lead
+        </Badge>
+        <Badge
+          color="green"
+          tailIcon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                clipRule="evenodd"
+              />
+            </svg>
+          }
+        >
+          With Tail
         </Badge>
       </div>
 
@@ -180,16 +228,16 @@ export const WithIcon: Story = {
         </h3>
       </div>
       <div className="flex gap-2">
-        <Badge icon="star" iconType="regular">
+        <Badge leadIcon="star" iconType="regular">
           Regular
         </Badge>
-        <Badge icon="star" iconType="solid" color="yellow">
+        <Badge leadIcon="star" iconType="solid" color="yellow">
           Solid
         </Badge>
-        <Badge icon="star" iconType="light" color="blue">
+        <Badge leadIcon="star" iconType="light" color="blue">
           Light
         </Badge>
-        <Badge icon="star" iconType="duotone" color="purple">
+        <Badge leadIcon="star" iconType="duotone" color="purple">
           Duotone
         </Badge>
       </div>
@@ -200,16 +248,16 @@ export const WithIcon: Story = {
         </h3>
       </div>
       <div className="flex gap-2">
-        <Badge icon="star" iconLibrary="lucide">
+        <Badge leadIcon="star" iconLibrary="lucide">
           Lucide Star
         </Badge>
-        <Badge icon="heart" iconLibrary="lucide" color="red">
+        <Badge leadIcon="heart" iconLibrary="lucide" color="red">
           Lucide Heart
         </Badge>
-        <Badge icon="circle-check" iconLibrary="lucide" color="green">
+        <Badge leadIcon="circle-check" iconLibrary="lucide" color="green">
           Lucide Check
         </Badge>
-        <Badge icon="info" iconLibrary="lucide" color="blue">
+        <Badge leadIcon="info" iconLibrary="lucide" color="blue">
           Lucide Info
         </Badge>
       </div>
@@ -220,16 +268,16 @@ export const WithIcon: Story = {
         </h3>
       </div>
       <div className="flex items-center gap-2">
-        <Badge icon="bolt" size="xs" color="orange">
+        <Badge leadIcon="bolt" size="xs" color="orange">
           XS
         </Badge>
-        <Badge icon="bolt" size="sm" color="orange">
+        <Badge leadIcon="bolt" size="sm" color="orange">
           SM
         </Badge>
-        <Badge icon="bolt" size="md" color="orange">
+        <Badge leadIcon="bolt" size="md" color="orange">
           MD
         </Badge>
-        <Badge icon="bolt" size="lg" color="orange">
+        <Badge leadIcon="bolt" size="lg" color="orange">
           LG
         </Badge>
       </div>
@@ -253,17 +301,17 @@ export const IconCombinations: Story = {
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
-          Icons with Stroke
+          Icons with Outline Variant
         </h3>
       </div>
       <div className="flex gap-2">
-        <Badge icon="star" stroke>
+        <Badge leadIcon="star" variant="outline">
           Star
         </Badge>
-        <Badge icon="check" color="green" stroke>
+        <Badge leadIcon="check" color="green" variant="outline">
           Check
         </Badge>
-        <Badge icon="heart" color="red" stroke>
+        <Badge leadIcon="heart" color="red" variant="outline">
           Heart
         </Badge>
       </div>
@@ -274,13 +322,13 @@ export const IconCombinations: Story = {
         </h3>
       </div>
       <div className="flex gap-2">
-        <Badge icon="star" disabled>
+        <Badge leadIcon="star" disabled>
           Star
         </Badge>
-        <Badge icon="check" color="green" disabled>
+        <Badge leadIcon="check" color="green" disabled>
           Check
         </Badge>
-        <Badge icon="heart" color="red" disabled>
+        <Badge leadIcon="heart" color="red" disabled>
           Heart
         </Badge>
       </div>
@@ -291,13 +339,13 @@ export const IconCombinations: Story = {
         </h3>
       </div>
       <div className="flex gap-2">
-        <Badge icon="star" shape="pill">
+        <Badge leadIcon="star" shape="pill">
           Pill Star
         </Badge>
-        <Badge icon="check" color="green" shape="pill">
+        <Badge leadIcon="check" color="green" shape="pill">
           Pill Check
         </Badge>
-        <Badge icon="heart" color="red" shape="pill">
+        <Badge leadIcon="heart" color="red" shape="pill">
           Pill Heart
         </Badge>
       </div>
@@ -309,7 +357,7 @@ export const IconCombinations: Story = {
       </div>
       <div className="flex gap-2">
         <Badge
-          icon={
+          leadIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -322,13 +370,13 @@ export const IconCombinations: Story = {
               />
             </svg>
           }
-          stroke
+          variant="outline"
           color="green"
         >
-          With Stroke
+          With Outline
         </Badge>
         <Badge
-          icon={
+          leadIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -347,7 +395,7 @@ export const IconCombinations: Story = {
           Disabled
         </Badge>
         <Badge
-          icon={
+          leadIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -373,10 +421,22 @@ export const IconCombinations: Story = {
         </h3>
       </div>
       <div className="flex gap-2">
-        <Badge icon="star" color="yellow" shape="pill" stroke size="lg">
+        <Badge
+          leadIcon="star"
+          color="yellow"
+          shape="pill"
+          variant="outline"
+          size="lg"
+        >
           All Options
         </Badge>
-        <Badge icon="bolt" color="orange" shape="pill" stroke size="sm">
+        <Badge
+          leadIcon="bolt"
+          color="orange"
+          shape="pill"
+          variant="outline"
+          size="sm"
+        >
           Small Combo
         </Badge>
       </div>
@@ -412,11 +472,76 @@ export const CustomStyling: Story = {
           Hover Effect
         </Badge>
         <Badge
-          icon="star"
+          leadIcon="star"
           className="opacity-75 hover:opacity-100 transition-opacity"
           color="yellow"
         >
           Custom Opacity
+        </Badge>
+      </div>
+    </div>
+  ),
+};
+
+export const Interactive: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2">
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
+          Clickable Badges (onClick)
+        </h3>
+      </div>
+      <div className="flex gap-2">
+        <Badge onClick={() => alert("Badge clicked!")}>Click me</Badge>
+        <Badge
+          onClick={() => alert("Star clicked!")}
+          leadIcon="star"
+          color="yellow"
+        >
+          Click Star
+        </Badge>
+        <Badge
+          onClick={() => alert("Outline clicked!")}
+          variant="outline"
+          color="blue"
+        >
+          Click Outline
+        </Badge>
+      </div>
+
+      <div className="flex gap-2">
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
+          Link Badges (href)
+        </h3>
+      </div>
+      <div className="flex gap-2">
+        <Badge href="https://example.com" tailIcon="external-link">
+          External Link
+        </Badge>
+        <Badge
+          href="https://github.com"
+          leadIcon="github"
+          color="gray"
+          variant="outline"
+        >
+          GitHub
+        </Badge>
+        <Badge href="/docs" tailIcon="arrow-right" color="blue">
+          Documentation
+        </Badge>
+      </div>
+
+      <div className="flex gap-2">
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 w-full">
+          Disabled Interactive Badges
+        </h3>
+      </div>
+      <div className="flex gap-2">
+        <Badge onClick={() => alert("Should not fire")} disabled>
+          Disabled Click
+        </Badge>
+        <Badge href="https://example.com" disabled tailIcon="external-link">
+          Disabled Link
         </Badge>
       </div>
     </div>

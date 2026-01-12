@@ -5,6 +5,7 @@ import { IconLibrary, IconType } from '@/models';
 
 export type BadgeSize = 'xs' | 'sm' | 'md' | 'lg';
 export type BadgeShape = 'rounded' | 'pill';
+export type BadgeVariant = 'solid' | 'outline';
 export type BadgeColor =
   | 'gray'
   | 'blue'
@@ -52,12 +53,19 @@ export type BadgeProps = {
   color?: BadgeColor;
   shape?: BadgeShape;
   size?: BadgeSize;
-  stroke?: boolean;
+  variant?: BadgeVariant;
   disabled?: boolean;
   className?: string;
-  icon?: React.ReactNode;
+  leadIcon?: React.ReactNode;
+  tailIcon?: React.ReactNode;
   iconType?: IconType;
   iconLibrary?: IconLibrary;
+  onClick?: () => void;
+  href?: string;
+  /** @deprecated Use leadIcon or tailIcon instead */
+  icon?: React.ReactNode;
+  /** @deprecated Use variant="outline" instead */
+  stroke?: boolean;
 };
 
 const Badge = ({
@@ -65,47 +73,91 @@ const Badge = ({
   className,
   color = 'gray',
   shape = 'rounded',
-  stroke = false,
+  variant: variantProp,
+  stroke,
   disabled = false,
   size = 'md',
+  leadIcon,
+  tailIcon: tailIconProp,
   icon,
   iconType,
   iconLibrary = 'fontawesome',
+  onClick,
+  href,
 }: BadgeProps) => {
-  const isStringIcon = typeof icon === 'string';
-  const Icon = isStringIcon ? (
-    <ComponentIcon
-      icon={icon}
-      iconType={iconType}
-      iconLibrary={iconLibrary}
-      className="shrink-0 bg-[--color-text] data-[disabled='true']:bg-[--color-text-disabled]"
-      overrideColor
-    />
-  ) : (
-    icon
+  const variant = variantProp ?? (stroke ? 'outline' : 'solid');
+  const tailIcon = tailIconProp ?? icon;
+
+  const renderIcon = (iconNode: React.ReactNode, position: 'lead' | 'tail') => {
+    if (!iconNode) return null;
+
+    const isStringIcon = typeof iconNode === 'string';
+    const iconElement = isStringIcon ? (
+      <ComponentIcon
+        icon={iconNode}
+        iconType={iconType}
+        iconLibrary={iconLibrary}
+        className="shrink-0"
+        overrideColor
+      />
+    ) : (
+      iconNode
+    );
+
+    return (
+      <span data-component-part={`${position}-icon`} data-icon-type={isStringIcon ? 'string' : 'inline'}>
+        {iconElement}
+      </span>
+    );
+  };
+
+  const isInteractive = !!(onClick || href);
+  const Component = href && !disabled ? 'a' : onClick && !disabled ? 'button' : 'span';
+
+  const commonProps = {
+    'data-shape': shape,
+    'data-variant': variant,
+    'data-disabled': disabled,
+    className: cn(
+      'inline-flex items-center w-fit font-medium relative data-[disabled="true"]:cursor-not-allowed',
+      "data-[shape='pill']:rounded-full",
+      "data-[variant='outline']:outline data-[variant='outline']:outline-1 data-[variant='outline']:-outline-offset-[1px] data-[variant='outline']:outline-[rgba(11,12,14,0.08)] dark:data-[variant='outline']:outline-[rgba(255,255,255,0.14)]",
+      'bg-[--color-bg] text-[--color-text] data-[disabled="true"]:bg-[--color-bg-disabled] data-[disabled="true"]:text-[--color-text-disabled]',
+      '[&_[data-component-part$="-icon"][data-icon-type="string"]_svg]:bg-[--color-text] [&_[data-component-part$="-icon"][data-icon-type="string"]_svg]:data-[disabled="true"]:bg-[--color-text-disabled]',
+      '[&_[data-component-part$="-icon"][data-icon-type="inline"]_svg]:fill-current',
+      sizeVariants[size],
+      colorVariants[color],
+      isInteractive && !disabled && 'cursor-pointer hover:opacity-80 transition-opacity',
+      Component === 'button' && 'border-0',
+      className
+    ),
+  };
+
+  const content = (
+    <>
+      {renderIcon(leadIcon, 'lead')}
+      {children}
+      {renderIcon(tailIcon, 'tail')}
+    </>
   );
 
-  return (
-    <span
-      data-shape={shape}
-      data-stroke={stroke}
-      data-disabled={disabled}
-      className={cn(
-        'inline-flex items-center w-fit font-medium relative data-[disabled="true"]:cursor-not-allowed',
-        "data-[shape='pill']:rounded-full",
-        "data-[stroke='true']:outline data-[stroke='true']:outline-1 data-[stroke='true']:-outline-offset-[1px] data-[stroke='true']:outline-[rgba(11,12,14,0.08)] dark:data-[stroke='true']:outline-[rgba(255,255,255,0.14)]",
-        'bg-[--color-bg] text-[--color-text] data-[disabled="true"]:bg-[--color-bg-disabled] data-[disabled="true"]:text-[--color-text-disabled]',
-        isStringIcon && '[&_svg]:bg-[--color-text] [&_svg]:data-[disabled="true"]:bg-[--color-text-disabled]',
-        !isStringIcon && '[&_svg]:fill-current',
-        sizeVariants[size],
-        colorVariants[color],
-        className
-      )}
-    >
-      {!!Icon && Icon}
-      {children}
-    </span>
-  );
+  if (Component === 'a') {
+    return (
+      <a {...commonProps} href={href}>
+        {content}
+      </a>
+    );
+  }
+
+  if (Component === 'button') {
+    return (
+      <button {...commonProps} onClick={onClick} type="button">
+        {content}
+      </button>
+    );
+  }
+
+  return <span {...commonProps}>{content}</span>;
 };
 
 export { Badge };

@@ -13,11 +13,11 @@ type IconProps = {
     color?: string;
     overrideColor?: boolean;
     style?: CSSProperties;
-    // was coming from DocsConfigContext, should be passed as prop
+    // pass in from DocsConfigContext if specified in docs.json
     iconLibrary?: IconLibrary;
-    // was coming from PageContext, needed for different PDF icon styling
+    // pass in from PageContext, needed for different PDF icon styling
     pageType?: PageType;
-    // was coming from NEXT_PUBLIC.BASE_PATH
+    // pass in from env.NEXT_PUBLIC.BASE_PATH
     basePath?: string;
 };
 
