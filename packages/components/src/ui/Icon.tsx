@@ -13,7 +13,9 @@ type IconProps = {
     color?: string;
     overrideColor?: boolean;
     style?: CSSProperties;
+    // was coming from DocsConfigContext, should be passed as prop
     iconLibrary?: IconLibrary;
+    // was coming from PageContext, needed for different PDF icon styling
     pageType?: PageType;
     // from NEXT_PUBLIC.BASE_PATH
     basePath?: string;
