@@ -1,6 +1,6 @@
 # Mintlify Components
 
-Mintlify's Open Source UI components.
+Mintlify's Open Source UI components
 
 ## Installation
 
@@ -13,6 +13,8 @@ pnpm install
 ```bash
 pnpm build
 ```
+
+Set up the husky pre-commit hooks or run `pnpm lint` before committing
 
 ## Storybook
 

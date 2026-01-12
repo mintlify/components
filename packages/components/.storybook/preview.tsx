@@ -1,7 +1,8 @@
 import type { Preview } from "@storybook/react-vite";
 import "./tailwind.css";
-import React, { useEffect } from "react";
-import { ThemeProvider, useTheme } from "next-themes";
+import React from "react";
+import { ThemeProvider } from "next-themes";
+import { ThemeSync } from "./ThemeSync";
 
 const inter = {
   style: { fontFamily: "Inter, system-ui, sans-serif" },
@@ -85,21 +86,5 @@ const preview: Preview = {
     },
   },
 };
-
-function ThemeSync({
-  theme,
-  children,
-}: {
-  theme: Theme;
-  children: React.ReactNode;
-}) {
-  const { setTheme } = useTheme();
-
-  useEffect(() => {
-    setTheme(theme);
-  }, [theme, setTheme]);
-
-  return <>{children}</>;
-}
 
 export default preview;
