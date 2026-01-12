@@ -17,7 +17,7 @@ type IconProps = {
     iconLibrary?: IconLibrary;
     // was coming from PageContext, needed for different PDF icon styling
     pageType?: PageType;
-    // from NEXT_PUBLIC.BASE_PATH
+    // was coming from NEXT_PUBLIC.BASE_PATH
     basePath?: string;
 };
 
