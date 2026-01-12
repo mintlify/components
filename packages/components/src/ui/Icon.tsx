@@ -3,8 +3,8 @@ import { IconLibrary, IconType, iconTypes, PageType } from '@/models';
 import { CSSProperties } from 'react';
 
 import { MINTLIFY_ICONS_CDN_URL } from '@/constants';
-import { FONT_AWESOME_BRANDS } from '@/constants/icons/font-awesome/v7.1.0/brands';
 import { cn } from '@/utils/cn';
+import { getIconUrl } from '@/utils/iconUtils';
 
 type IconProps = {
     icon: string;
@@ -20,17 +20,6 @@ type IconProps = {
     // was coming from NEXT_PUBLIC.BASE_PATH
     basePath?: string;
 };
-
-export function getIconUrl(icon: string, iconType?: IconType, iconLibrary?: IconLibrary) {
-    if (isBrandsIcon(icon)) {
-        return `${MINTLIFY_ICONS_CDN_URL}/v7.1.0/brands/${icon}.svg`;
-    }
-    if (iconLibrary === 'lucide') {
-        return `${MINTLIFY_ICONS_CDN_URL}/lucide/v0.545.0/${icon}.svg`;
-    }
-    const type = iconType ?? 'regular';
-    return `${MINTLIFY_ICONS_CDN_URL}/v7.1.0/${type}/${icon}.svg`;
-}
 
 export default function Icon({ style, icon, iconType, iconLibrary, className, color, pageType }: IconProps) {
     const isPdf = pageType === 'pdf';
@@ -132,9 +121,4 @@ export function ComponentIcon({
             color={color}
         />
     );
-}
-
-function isBrandsIcon(icon?: string): boolean {
-    if (!icon) return false;
-    return FONT_AWESOME_BRANDS.includes(icon.toLowerCase());
 }

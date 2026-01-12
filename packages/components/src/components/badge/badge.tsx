@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentIcon } from '@/ui/Icon';
 import { cn } from '@/utils/cn';
 import { IconLibrary, IconType } from '@/models';

@@ -1,19 +1,6 @@
 // @mintlify/common
 
-const protocols = [
-    'http',
-    'https',
-    'ftp',
-    'ftps',
-    'file',
-    'data',
-    'mailto',
-    'tel',
-    'sms',
-    'ws',
-    'wss',
-] as const;
-type Protocol = (typeof protocols)[number];
+type Protocol = 'http' | 'https' | 'ftp' | 'ftps' | 'file' | 'data' | 'mailto' | 'tel' | 'sms' | 'ws' | 'wss';
 type AbsoluteUrl = `${Protocol}://${string}` | `${Protocol}:${string}`;
 
 /**
