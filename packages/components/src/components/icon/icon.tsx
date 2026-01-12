@@ -1,3 +1,126 @@
-export const Icon = () => {
-  return <div>Icon</div>;
-};
+import { CSSProperties } from 'react';
+
+import { isAbsoluteUrl } from '@/common';
+import { MINTLIFY_ICONS_CDN_URL } from '@/constants';
+
+import { IconLibrary, IconType, iconTypes, PageType } from '@/models';
+
+import { Classes } from '@/lib/local/selectors';
+import { cn } from '@/utils/cn';
+import { getIconUrl } from '@/utils/iconUtils';
+
+export type IconProps = {
+  icon: string;
+  iconType?: IconType;
+  className?: string;
+  color?: string;
+  overrideColor?: boolean;
+  size?: number;
+  // pass in from DocsConfigContext if specified in docs.json
+  iconLibrary?: IconLibrary;
+  // pass in from env.NEXT_PUBLIC.BASE_PATH
+  basePath?: string;
+  // pass in from PageContext, needed for different PDF icon styling
+  pageType?: PageType;
+}
+
+export function Icon({
+  icon,
+  iconType,
+  color,
+  size,
+  className,
+  iconLibrary,
+  basePath,
+  pageType,
+  overrideColor,
+}: IconProps) {
+  const style: CSSProperties = {
+    width: size || 16,
+    height: size || 16,
+    display: 'inline-block',
+    verticalAlign: 'middle',
+  }
+  const classNames = cn(
+    Classes.Icon,
+    'inline',
+    !color && 'bg-primary dark:bg-primary-light',
+    className
+  )
+  const isPdf = pageType === 'pdf';
+  const url = getIconUrl(icon.toLowerCase(), iconType, iconLibrary);
+
+  if (iconType && !iconTypes.includes(iconType)) {
+    console.log(
+      `Invalid iconType ${iconType} expected a string equal to one of: brands, duotone, light, regular, sharp-solid, solid, thin`
+    );
+    return null;
+  }
+
+  if (typeof icon === 'string' && (isAbsoluteUrl(icon) || icon.startsWith('/'))) {
+    if (icon.startsWith(MINTLIFY_ICONS_CDN_URL) || icon.startsWith('https://mintlify.b-cdn.net')) {
+      return (
+        <svg
+          className={classNames}
+          style={{
+            WebkitMaskImage: `url(${icon})`,
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            maskImage: `url(${icon})`,
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
+            maskSize: '100%',
+            backgroundColor: 'currentColor',
+            ...style,
+          }}
+        ></svg>
+      );
+    }
+
+    let iconUrl = icon;
+    if (icon.startsWith('/') && basePath) {
+      iconUrl = `${basePath}${icon}`;
+    }
+
+    // because s3 urls are missing CORS headers, we will default it to an img tag
+    return (
+      <img
+        src={iconUrl}
+        alt={icon}
+        className={cn(classNames, 'bg-transparent dark:bg-transparent')}
+        style={style}
+      />
+    );
+  }
+
+  if (isPdf) {
+    return (
+      <img
+        src={url}
+        className={cn(classNames, !color && !overrideColor && 'bg-gray-800 dark:bg-gray-100')}
+        style={{
+          backgroundColor: 'transparent',
+          ...style,
+        }}
+        alt={icon}
+      />
+    );
+  }
+
+  return (
+    <svg
+    className={className}
+      style={{
+        WebkitMaskImage: `url(${url})`,
+        WebkitMaskRepeat: 'no-repeat',
+        WebkitMaskPosition: 'center',
+        maskImage: `url(${url})`,
+        maskRepeat: 'no-repeat',
+        maskPosition: 'center',
+        maskSize: iconLibrary == 'lucide' ? '100%' : undefined,
+        backgroundColor: color,
+        ...style,
+      }}
+    ></svg>
+  );
+}
