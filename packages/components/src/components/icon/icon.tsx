@@ -18,6 +18,7 @@ export type IconProps = {
   colorDark?: string;
   overrideColor?: boolean;
   size?: number;
+  overrideSize?: boolean;
   // pass in from DocsConfigContext if specified in docs.json
   iconLibrary?: IconLibrary;
   // pass in from env.NEXT_PUBLIC.BASE_PATH
@@ -38,10 +39,10 @@ export function Icon({
   basePath,
   pageType,
   overrideColor,
+  overrideSize,
 }: IconProps) {
   const style: CSSProperties = {
-    width: size || 16,
-    height: size || 16,
+    ...(!overrideSize && { width: size || 16, height: size || 16 }),
     display: 'inline-block',
     verticalAlign: 'middle',
   }
