@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import React from "react";
 import { Card } from "./card";
 import { Zap, Heart, Package } from "lucide-react";
 import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
@@ -249,4 +250,43 @@ export const CardGrid: Story = {
       </Card>
     </div>
   ),
+};
+
+// Custom Link Component Example
+export const WithCustomLinkComponent: Story = {
+  render: () => {
+    // Mock Next.js Link component for demonstration
+    const NextLink = ({ href, children, ...props }: React.ComponentPropsWithoutRef<"a">) => (
+      <a href={href} {...props}>
+        {children}
+      </a>
+    );
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "400px" }}>
+        <Card
+          title="Using Custom Link Component"
+          icon="bolt"
+          href="/custom-route"
+          as={NextLink}
+        >
+          This card uses a custom Link component (like Next.js Link) via the &quot;as&quot; prop.
+        </Card>
+        <Card
+          title="Standard Link"
+          icon="cat"
+          href="/standard-route"
+        >
+          This card uses the standard &lt;a&gt; tag for comparison.
+        </Card>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Use the `as` prop to pass a custom Link component (e.g., Next.js Link, React Router Link). The component will receive all standard link props including `href`.",
+      },
+    },
+  },
 };
