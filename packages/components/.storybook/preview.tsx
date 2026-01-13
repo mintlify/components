@@ -57,7 +57,7 @@ const preview: Preview = {
                   body {
                     background-color: white;
                   }
-                  .dark body {
+                  body:has(.dark) {
                     background-color: #09090b;
                   }
                 `}

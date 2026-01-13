@@ -95,10 +95,10 @@ export function Callout({
         const darkerTextColor = baseColor.darken(0.5);
 
         customStyle = {
-          borderColor: `${hexColor}33`,
-          backgroundColor: `${hexColor}1a`,
-          '--callout-border-color': `${hexColor}${isDarkColor ? '66' : '4d'}`,
-          '--callout-bg-color': `${hexColor}${isDarkColor ? '4d' : '1a'}`,
+          '--callout-border-color-light': `${hexColor}33`,
+          '--callout-bg-color-light': `${hexColor}1a`,
+          '--callout-border-color-dark': `${hexColor}${isDarkColor ? '66' : '4d'}`,
+          '--callout-bg-color-dark': `${hexColor}${isDarkColor ? '4d' : '1a'}`,
         };
 
         customTextStyle = {
@@ -106,7 +106,7 @@ export function Callout({
           '--dark-callout-text-color': `${lighterTextColor.hex()}`,
         };
 
-        variantClassName = 'border bg-transparent dark:border-[var(--callout-border-color,#71717a4d)] dark:bg-[var(--callout-bg-color,#71717a1a)]';
+        variantClassName = 'border border-[var(--callout-border-color-light,#71717a33)] bg-[var(--callout-bg-color-light,#71717a1a)] dark:border-[var(--callout-border-color-dark,#71717a4d)] dark:bg-[var(--callout-bg-color-dark,#71717a1a)]';
         childrenClassName = 'text-[var(--callout-text-color)] dark:text-[var(--dark-callout-text-color)]';
       } catch {
         variantClassName = 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10';
@@ -149,7 +149,11 @@ export function Callout({
       data-callout-type={variant}
     >
       {!!IconElement && (
-        <div className="mt-0.5 w-4" data-component-part="callout-icon">
+        <div
+          className="mt-0.5 w-4"
+          data-component-part="callout-icon"
+          {...(variant === 'custom' && ariaLabel && { 'aria-label': ariaLabel })}
+        >
           {IconElement}
         </div>
       )}
