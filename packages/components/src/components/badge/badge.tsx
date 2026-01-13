@@ -20,10 +20,17 @@ export type BadgeColor =
   | 'surface-destructive';
 
 const sizeVariants: Record<BadgeSize, string> = {
-  lg: 'gap-1 py-1 pl-2.5 pr-2.5 [&_svg]:size-3.5 text-sm tracking-[-0.1px] data-[shape="rounded"]:rounded-[8px]',
-  md: 'gap-1 py-0.5 pl-2 pr-2 [&_svg]:size-3.5 text-sm tracking-[-0.1px] data-[shape="rounded"]:rounded-[8px]',
-  sm: 'gap-[3px] py-0.5 pl-1.5 pr-1.5 [&_svg]:size-3 text-xs data-[shape="rounded"]:rounded-[6px]',
-  xs: 'gap-0.5 py-0 pl-1 pr-1 [&_svg]:size-2.5 text-xs data-[shape="rounded"]:rounded-[4px]',
+  lg: 'gap-1 py-1 pl-2.5 pr-2.5 text-sm tracking-[-0.1px] data-[shape="rounded"]:rounded-[8px]',
+  md: 'gap-1 py-0.5 pl-2 pr-2 text-sm tracking-[-0.1px] data-[shape="rounded"]:rounded-[8px]',
+  sm: 'gap-[3px] py-0.5 pl-1.5 pr-1.5 text-xs data-[shape="rounded"]:rounded-[6px]',
+  xs: 'gap-0.5 py-0 pl-1 pr-1 text-xs data-[shape="rounded"]:rounded-[4px]',
+};
+
+const iconSizeMap: Record<BadgeSize, number> = {
+  lg: 14, // size-3.5
+  md: 14, // size-3.5
+  sm: 12, // size-3
+  xs: 10, // size-2.5
 };
 
 const colorVariants: Record<BadgeColor, string> = {
@@ -97,6 +104,7 @@ const Badge = ({
         icon={iconNode}
         iconType={iconType}
         iconLibrary={iconLibrary}
+        size={iconSizeMap[size]}
         className="shrink-0"
         overrideColor
       />

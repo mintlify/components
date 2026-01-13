@@ -46,7 +46,6 @@ export function Icon({
     verticalAlign: 'middle',
   }
 
-  // Handle light/dark mode colors via CSS custom properties
   const hasLightDarkColors = colorLight && colorDark;
   const styleWithColors: CSSProperties = hasLightDarkColors
     ? ({
@@ -59,7 +58,7 @@ export function Icon({
   const classNames = cn(
     Classes.Icon,
     'inline',
-    !color && !hasLightDarkColors && 'bg-primary dark:bg-primary-light',
+    !color && !hasLightDarkColors && !overrideColor && 'bg-primary dark:bg-primary-light',
     hasLightDarkColors && 'bg-[--color-light] dark:bg-[--color-dark]',
     className
   )
