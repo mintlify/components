@@ -145,9 +145,10 @@ export function GenericCard<T extends ElementType = 'div'>({
 }: CardProps<T>) {
   /**
    * If provided, use `as` or an `a` tag if linking to things with href.
-   * Defaults to `div`.
+   * Defaults to `div`. When disabled, always use `div` to prevent custom
+   * link components from receiving undefined href.
    */
-  const Component = as || (props.href != undefined ? 'a' : 'div');
+  const Component = disabled ? 'div' : (as || (props.href != undefined ? 'a' : 'div'));
 
   const isExternalLink = isRemoteUrl(props.href ?? '');
   const newTabProps = isExternalLink ? { target: '_blank', rel: 'noreferrer' } : {};
@@ -224,16 +225,18 @@ export function GenericCard<T extends ElementType = 'div'>({
         )}
         {renderIcon}
         <div className="min-w-0 flex-1">
-          <h2
-            className={cn(
-              'not-prose font-semibold text-base text-gray-800 dark:text-white break-words',
-              icon !== null && icon !== undefined && !horizontal && 'mt-4'
-            )}
-            contentEditable={false}
-            data-component-part="card-title"
-          >
-            {title}
-          </h2>
+          {title && (
+            <h2
+              className={cn(
+                'not-prose font-semibold text-base text-gray-800 dark:text-white break-words',
+                icon !== null && icon !== undefined && !horizontal && 'mt-4'
+              )}
+              contentEditable={false}
+              data-component-part="card-title"
+            >
+              {title}
+            </h2>
+          )}
           <div
             className={cn(
               'prose mt-1 font-normal text-base leading-6 break-words',
