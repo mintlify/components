@@ -85,21 +85,9 @@ export interface CardPropsBase<T> {
    */
   title?: string;
   /**
-   * Icon to the top-left of the title. Can be a ReactNode or a string equal to an image source.
+   * Icon to the top-left of the title. Must be a ReactNode (not a string).
    */
   icon?: ReactNode;
-  /**
-   * Icon type for FontAwesome icons (e.g., "regular", "solid", "brands").
-   */
-  iconType?: IconType;
-  /**
-   * Icon library to use ("fontawesome" or "lucide"). Defaults to "fontawesome".
-   */
-  iconLibrary?: IconLibrary;
-  /**
-   * Custom color for the icon.
-   */
-  color?: string;
   /**
    * If provided, will render an image to the top of the card.
    */
