@@ -172,50 +172,28 @@ export function Callout({
 }
 
 // Backward compatibility exports
-export function Info({ children, ariaLabel }: { children: ReactNode; ariaLabel?: string }) {
-  return (
-    <Callout variant="info" ariaLabel={ariaLabel}>
-      {children}
-    </Callout>
-  );
+type BackwardCompatibleCalloutProps = Omit<CalloutProps, 'variant'>;
+
+export function Info(props: BackwardCompatibleCalloutProps) {
+  return <Callout {...props} variant="info" />;
 }
 
-export function Warning({ children, ariaLabel }: { children: ReactNode; ariaLabel?: string }) {
-  return (
-    <Callout variant="warning" ariaLabel={ariaLabel}>
-      {children}
-    </Callout>
-  );
+export function Warning(props: BackwardCompatibleCalloutProps) {
+  return <Callout {...props} variant="warning" />;
 }
 
-export function Note({ children, ariaLabel }: { children: ReactNode; ariaLabel?: string }) {
-  return (
-    <Callout variant="note" ariaLabel={ariaLabel}>
-      {children}
-    </Callout>
-  );
+export function Note(props: BackwardCompatibleCalloutProps) {
+  return <Callout {...props} variant="note" />;
 }
 
-export function Tip({ children, ariaLabel }: { children: ReactNode; ariaLabel?: string }) {
-  return (
-    <Callout variant="tip" ariaLabel={ariaLabel}>
-      {children}
-    </Callout>
-  );
+export function Tip(props: BackwardCompatibleCalloutProps) {
+  return <Callout {...props} variant="tip" />;
 }
 
-export function Check({ children, ariaLabel }: { children: ReactNode; ariaLabel?: string }) {
-  return (
-    <Callout variant="check" ariaLabel={ariaLabel}>
-      {children}
-    </Callout>
-  );
+export function Check(props: BackwardCompatibleCalloutProps) {
+  return <Callout {...props} variant="check" />;
 }
 
-export function Danger({ children, ariaLabel }: { children: ReactNode; ariaLabel?: string }) {
-  return (
-    <Callout variant="danger" ariaLabel={ariaLabel}>
-      {children}
-    </Callout>
-  );
+export function Danger(props: BackwardCompatibleCalloutProps) {
+  return <Callout {...props} variant="danger" />;
 }
