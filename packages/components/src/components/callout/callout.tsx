@@ -83,36 +83,40 @@ export function Callout({
   let customTextStyle = {};
 
   if (variant === 'custom') {
-    // Custom variant - use provided icon and color
     finalIcon = icon;
     finalColor = color;
 
     if (color) {
-      const baseColor = Color(color);
-      const isDarkColor = baseColor.isDark();
-      const lighterTextColor = baseColor.lighten(0.5);
-      const darkerTextColor = baseColor.darken(0.5);
+      try {
+        const baseColor = Color(color);
+        const hexColor = baseColor.hex();
+        const isDarkColor = baseColor.isDark();
+        const lighterTextColor = baseColor.lighten(0.5);
+        const darkerTextColor = baseColor.darken(0.5);
 
-      customStyle = {
-        borderColor: `${color}33`,
-        backgroundColor: `${color}1a`,
-        '--callout-border-color': `${color}${isDarkColor ? '66' : '4d'}`,
-        '--callout-bg-color': `${color}${isDarkColor ? '4d' : '1a'}`,
-      };
+        customStyle = {
+          borderColor: `${hexColor}33`,
+          backgroundColor: `${hexColor}1a`,
+          '--callout-border-color': `${hexColor}${isDarkColor ? '66' : '4d'}`,
+          '--callout-bg-color': `${hexColor}${isDarkColor ? '4d' : '1a'}`,
+        };
 
-      customTextStyle = {
-        '--callout-text-color': `${darkerTextColor.hex()}`,
-        '--dark-callout-text-color': `${lighterTextColor.hex()}`,
-      };
+        customTextStyle = {
+          '--callout-text-color': `${darkerTextColor.hex()}`,
+          '--dark-callout-text-color': `${lighterTextColor.hex()}`,
+        };
 
-      variantClassName = 'border bg-transparent dark:border-[var(--callout-border-color,#71717a4d)] dark:bg-[var(--callout-bg-color,#7171711a)]';
-      childrenClassName = 'text-[var(--callout-text-color)] dark:text-[var(--dark-callout-text-color)]';
+        variantClassName = 'border bg-transparent dark:border-[var(--callout-border-color,#71717a4d)] dark:bg-[var(--callout-bg-color,#71717a1a)]';
+        childrenClassName = 'text-[var(--callout-text-color)] dark:text-[var(--dark-callout-text-color)]';
+      } catch {
+        variantClassName = 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10';
+        childrenClassName = 'text-zinc-900 dark:text-zinc-200';
+      }
     } else {
       variantClassName = 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10';
       childrenClassName = 'text-zinc-900 dark:text-zinc-200';
     }
   } else {
-    // Predefined variant
     const config = variantConfig[variant];
     const IconComponent = config.icon;
     finalIcon = <IconComponent ariaLabel={ariaLabel || config.defaultAriaLabel} />;
@@ -163,7 +167,7 @@ export function Callout({
   );
 }
 
-// Backward compatibility exports - these are now wrappers around the main Callout component
+// Backward compatibility exports
 export function Info({ children, ariaLabel }: { children: ReactNode; ariaLabel?: string }) {
   return (
     <Callout variant="info" ariaLabel={ariaLabel}>
