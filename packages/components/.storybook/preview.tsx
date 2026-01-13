@@ -24,15 +24,13 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      values: [
-        { name: "Dark", value: "var(--color-background-dark)" },
-        { name: "Light", value: "var(--color-background-light)" },
-      ],
+      disable: true,
     },
   },
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme as Theme;
+      const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
       return (
         <ThemeProvider
@@ -42,7 +40,7 @@ const preview: Preview = {
           disableTransitionOnChange
         >
           <ThemeSync theme={theme}>
-            <div>
+            <div className={isDark ? "dark" : ""}>
               <link
                 rel="stylesheet"
                 href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
@@ -56,10 +54,16 @@ const preview: Preview = {
                     --font-inter: ${inter.style.fontFamily};
                     --font-jetbrains-mono: ${jetbrainsMono.style.fontFamily};
                   }
+                  body {
+                    background-color: white;
+                  }
+                  body:has(.dark) {
+                    background-color: #09090b;
+                  }
                 `}
               </style>
               <div
-                className={`relative antialiased text-gray-500 dark:text-gray-400 ${inter.variable} ${jetbrainsMono.variable}`}
+                className={`relative antialiased text-gray-500 dark:text-gray-400 bg-white dark:bg-zinc-950 min-h-screen p-8 ${inter.variable} ${jetbrainsMono.variable}`}
               >
                 <Story />
               </div>
