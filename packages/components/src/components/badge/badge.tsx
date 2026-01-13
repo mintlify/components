@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentIcon } from '@/ui/Icon';
+import { Icon } from '@/components/icon';
 import { cn } from '@/utils/cn';
 import { IconLibrary, IconType } from '@/models';
 
@@ -93,12 +93,13 @@ const Badge = ({
 
     const isStringIcon = typeof iconNode === 'string';
     const iconElement = isStringIcon ? (
-      <ComponentIcon
+      <Icon
         icon={iconNode}
         iconType={iconType}
         iconLibrary={iconLibrary}
         className="shrink-0"
         overrideColor
+        overrideSize
       />
     ) : (
       iconNode
