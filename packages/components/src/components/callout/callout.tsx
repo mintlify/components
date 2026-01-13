@@ -1,4 +1,4 @@
-import { IconType } from '@/models';
+import { IconLibrary, IconType } from '@/models';
 import Color from 'color';
 import { ReactNode } from 'react';
 
@@ -14,6 +14,7 @@ type CalloutProps = {
   variant?: CalloutVariant;
   icon?: ReactNode | string;
   iconType?: IconType;
+  iconLibrary?: IconLibrary;
   color?: string;
   className?: string;
   ariaLabel?: string;
@@ -71,6 +72,7 @@ export function Callout({
   variant = 'custom',
   icon,
   iconType,
+  iconLibrary,
   color,
   className,
   ariaLabel,
@@ -107,7 +109,7 @@ export function Callout({
         };
 
         variantClassName = 'border border-[var(--callout-border-color-light,#71717a33)] bg-[var(--callout-bg-color-light,#71717a1a)] dark:border-[var(--callout-border-color-dark,#71717a4d)] dark:bg-[var(--callout-bg-color-dark,#71717a1a)]';
-        childrenClassName = 'text-[var(--callout-text-color)] dark:text-[var(--dark-callout-text-color)]';
+        childrenClassName = 'mt-1 text-[var(--callout-text-color)] dark:text-[var(--dark-callout-text-color)]';
       } catch {
         finalColor = undefined;
         variantClassName = 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10';
@@ -131,6 +133,7 @@ export function Callout({
       <ComponentIcon
         icon={finalIcon}
         iconType={iconType}
+        iconLibrary={iconLibrary}
         color={finalColor}
         className="h-4 w-4 !m-0 shrink-0"
       />

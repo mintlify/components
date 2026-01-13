@@ -104,6 +104,7 @@ export const CustomVariantWithIcon: Story = {
     variant: "custom",
     icon: "cat",
     iconType: "solid",
+    iconLibrary: "lucide",
     color: "#3b82f6",
     children: <p>This is a custom callout with a cat icon and blue color.</p>,
   },
@@ -174,11 +175,21 @@ export const InfoWithMultipleElements: Story = {
   },
 };
 
-export const WarningWithCode: Story = {
+export const CustomWithMultipleElements: Story = {
   args: {
-    variant: "warning",
+    variant: "custom",
+    icon: "cat",
+    color: "#FF00FF",
     children: (
-      <p>Be careful when using the <code>delete</code> method as it cannot be undone.</p>
+      <>
+        <p><strong>Important information:</strong></p>
+        <p>This callout can contain multiple paragraphs and formatted text.</p>
+        <ul>
+          <li>It supports lists</li>
+          <li>And other HTML elements</li>
+          <li>With proper styling</li>
+        </ul>
+      </>
     ),
   },
 };
