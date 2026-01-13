@@ -43,8 +43,8 @@ if empty - nothing to change
     - ~~rename `stroke` to `variant="outline"`~~
     - ~~add support for the props `onClick` and `href`~~
 - ~~Banner~~
-- Callouts
-    - update to `variant="note"` instead of 7 different components. add `variant="custom"`, set it by default
+- ~~Callouts~~
+    - ~~update to `variant="note"` instead of 7 different components. add `variant="custom"`, set it by default~~
 - Cards
 - Code groups
 - Color
@@ -62,7 +62,7 @@ if empty - nothing to change
 - Frames
     - `caption` → `description`
     - `hint` → `title`
-- Icons
+- ~~Icons~~
 - Mermaid
 - Panel
 - Steps
