@@ -109,3 +109,22 @@ export const CheckIcon = ({
         </svg>
     );
 };
+
+export const ArrowRightIcon = ({ className }: { className: string }) => {
+    return (
+        <svg
+            width="3"
+            height="24"
+            viewBox="0 -9 3 24"
+            className={cn('h-5 rotate-0 overflow-visible', className)}
+        >
+            <path
+                d="M0 0L3 3L0 6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+            ></path>
+        </svg>
+    );
+};
