@@ -86,7 +86,7 @@ export function Icon({
             maskRepeat: 'no-repeat',
             maskPosition: 'center',
             maskSize: '100%',
-            backgroundColor: 'currentColor',
+            ...(!hasLightDarkColors && { backgroundColor: 'currentColor' }),
             ...styleWithColors,
           }}
         ></svg>
