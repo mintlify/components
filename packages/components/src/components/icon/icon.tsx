@@ -14,6 +14,8 @@ export type IconProps = {
   iconType?: IconType;
   className?: string;
   color?: string;
+  colorLight?: string;
+  colorDark?: string;
   overrideColor?: boolean;
   size?: number;
   // pass in from DocsConfigContext if specified in docs.json
@@ -28,9 +30,11 @@ export function Icon({
   icon,
   iconType,
   color,
+  colorLight,
+  colorDark,
   size,
   className,
-  iconLibrary,
+  iconLibrary = "fontawesome",
   basePath,
   pageType,
   overrideColor,
@@ -41,10 +45,22 @@ export function Icon({
     display: 'inline-block',
     verticalAlign: 'middle',
   }
+
+  // Handle light/dark mode colors via CSS custom properties
+  const hasLightDarkColors = colorLight && colorDark;
+  const styleWithColors: CSSProperties = hasLightDarkColors
+    ? ({
+        ...style,
+        '--color-light': colorLight,
+        '--color-dark': colorDark,
+      } as CSSProperties)
+    : style;
+
   const classNames = cn(
     Classes.Icon,
     'inline',
-    !color && 'bg-primary dark:bg-primary-light',
+    !color && !hasLightDarkColors && 'bg-primary dark:bg-primary-light',
+    hasLightDarkColors && 'bg-[--color-light] dark:bg-[--color-dark]',
     className
   )
   const isPdf = pageType === 'pdf';
@@ -62,6 +78,7 @@ export function Icon({
       return (
         <svg
           className={classNames}
+          data-component-part="icon-svg"
           style={{
             WebkitMaskImage: `url(${icon})`,
             WebkitMaskRepeat: 'no-repeat',
@@ -71,7 +88,7 @@ export function Icon({
             maskPosition: 'center',
             maskSize: '100%',
             backgroundColor: 'currentColor',
-            ...style,
+            ...styleWithColors,
           }}
         ></svg>
       );
@@ -88,7 +105,8 @@ export function Icon({
         src={iconUrl}
         alt={icon}
         className={cn(classNames, 'bg-transparent dark:bg-transparent')}
-        style={style}
+        data-component-part="icon-image"
+        style={styleWithColors}
       />
     );
   }
@@ -97,10 +115,11 @@ export function Icon({
     return (
       <img
         src={url}
-        className={cn(classNames, !color && !overrideColor && 'bg-gray-800 dark:bg-gray-100')}
+        className={cn(classNames, !color && !overrideColor && !hasLightDarkColors && 'bg-gray-800 dark:bg-gray-100')}
+        data-component-part="icon-image"
         style={{
           backgroundColor: 'transparent',
-          ...style,
+          ...styleWithColors,
         }}
         alt={icon}
       />
@@ -109,7 +128,8 @@ export function Icon({
 
   return (
     <svg
-    className={className}
+      className={cn(classNames, !color && !overrideColor && !hasLightDarkColors && 'bg-gray-800 dark:bg-gray-100')}
+      data-component-part="icon-svg"
       style={{
         WebkitMaskImage: `url(${url})`,
         WebkitMaskRepeat: 'no-repeat',
@@ -119,7 +139,7 @@ export function Icon({
         maskPosition: 'center',
         maskSize: iconLibrary == 'lucide' ? '100%' : undefined,
         backgroundColor: color,
-        ...style,
+        ...styleWithColors,
       }}
     ></svg>
   );
