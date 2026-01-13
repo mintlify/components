@@ -159,7 +159,7 @@ export function Callout({
       )}
       <div
         className={cn(
-          'text-sm prose dark:prose-invert min-w-0 w-full [&_kbd]:bg-background-light dark:[&_kbd]:bg-background-dark [&_code]:!text-current [&_kbd]:!text-current [&_a]:!text-current [&_a]:border-current',
+          'text-sm prose dark:prose-invert min-w-0 w-full [&_kbd]:bg-zinc-100 dark:[&_kbd]:bg-zinc-800 [&_code]:!text-current [&_kbd]:!text-current [&_a]:!text-current [&_a]:border-current',
           childrenClassName
         )}
         style={customTextStyle}
