@@ -28,6 +28,7 @@ export function Card({
   cta,
   arrow,
   as,
+  className,
 }: {
   title?: string;
   icon?: ReactNode | string;
@@ -42,6 +43,7 @@ export function Card({
   cta?: string;
   arrow?: boolean;
   as?: ElementType;
+  className?: string;
 }) {
   const Icon =
     typeof icon === 'string' ? (
@@ -62,7 +64,7 @@ export function Card({
   return (
     <GenericCard
       as={as}
-      className={cn(href && 'hover:!border-primary dark:hover:!border-primary-light')}
+      className={cn(href && 'hover:!border-primary dark:hover:!border-primary-light', className)}
       title={title}
       icon={Icon}
       img={img}
@@ -222,7 +224,6 @@ export function GenericCard<T extends ElementType = 'div'>({
       >
         {props.href && (
           <div
-            id="card-link-arrow-icon"
             className={cn(
               'absolute text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary-light top-5 right-5',
               !shouldShowArrowIcon && 'hidden'

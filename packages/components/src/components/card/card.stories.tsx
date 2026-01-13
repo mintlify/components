@@ -252,6 +252,16 @@ export const CardGrid: Story = {
   ),
 };
 
+// Custom ClassName Example
+export const WithCustomClassName: Story = {
+  args: {
+    title: "Card with Custom Styles",
+    icon: "heart",
+    className: "shadow-lg border-4 border-blue-500",
+    children: "This card has custom styling applied via the className prop.",
+  },
+};
+
 // Custom Link Component Example
 export const WithCustomLinkComponent: Story = {
   render: () => {
