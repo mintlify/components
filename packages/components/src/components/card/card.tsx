@@ -198,6 +198,7 @@ export function GenericCard<T extends ElementType = 'div'>({
         Classes.Card,
         'block font-normal group relative my-2 ring-2 ring-transparent rounded-2xl bg-white dark:bg-background-dark border border-gray-950/10 dark:border-white/10 overflow-hidden w-full',
         props.href && 'cursor-pointer',
+        props.href && 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-primary-light',
         className
       )}
       {...newTabProps}
@@ -223,15 +224,17 @@ export function GenericCard<T extends ElementType = 'div'>({
               'absolute text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary-light top-5 right-5',
               !shouldShowArrowIcon && 'hidden'
             )}
+            aria-hidden="true"
+            data-component-part="card-arrow"
           >
             <ArrowUpRight className="w-4 h-4" />
           </div>
         )}
         {renderIcon}
-        <div>
+        <div className="min-w-0 flex-1">
           <h2
             className={cn(
-              'not-prose font-semibold text-base text-gray-800 dark:text-white',
+              'not-prose font-semibold text-base text-gray-800 dark:text-white break-words',
               icon !== null && icon !== undefined && !horizontal && 'mt-4'
             )}
             contentEditable={false}
@@ -241,7 +244,7 @@ export function GenericCard<T extends ElementType = 'div'>({
           </h2>
           <div
             className={cn(
-              'prose mt-1 font-normal text-base leading-6',
+              'prose mt-1 font-normal text-base leading-6 break-words',
               title ? 'text-gray-600 dark:text-gray-400' : 'text-gray-700 dark:text-gray-300',
               horizontal && 'leading-6 mt-0'
             )}
@@ -251,17 +254,17 @@ export function GenericCard<T extends ElementType = 'div'>({
           </div>
           {cta && (
             <div className="mt-8" data-component-part="card-cta">
-              <button
+              <span
                 className={cn(
                   'text-left text-gray-600 gap-2 dark:text-gray-400 text-sm font-medium flex flex-row items-center',
                   !disabled &&
-                  'hover:text-primary dark:hover:text-primary-light group-hover:text-primary group-hover:dark:text-primary-light'
+                    'group-hover:text-primary group-hover:dark:text-primary-light',
+                  disabled && 'opacity-50'
                 )}
-                disabled={disabled}
               >
                 {cta}
                 <ArrowRightIcon className="h-6" />
-              </button>
+              </span>
             </div>
           )}
         </div>
