@@ -23,7 +23,7 @@ export type BannerProps = {
 
 const variantStyles: Record<BannerVariant, string> = {
   primary:
-    'bg-primary-dark text-white/90 dark:text-white/90 [&_a]:text-white [&_a:hover]:text-white/80',
+    'bg-blue-600 text-white/90 dark:bg-blue-700 dark:text-white/90 [&_a]:text-white [&_a:hover]:text-white/80',
   info: 'bg-sky-600 text-white/90 dark:bg-sky-700 [&_a]:text-white [&_a:hover]:text-white/80',
   warning:
     'bg-amber-500 text-amber-950 dark:bg-amber-600 dark:text-amber-50 [&_a]:text-amber-950 dark:[&_a]:text-amber-50 [&_a:hover]:opacity-80',
@@ -53,7 +53,8 @@ export function Banner({
         variantStyles[variant],
         className
       )}
-      role="banner"
+      role="status"
+      aria-live="polite"
       data-variant={variant}
     >
       <div
