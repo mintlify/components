@@ -11,8 +11,8 @@ export function getInitialOpenState() {
         : undefined;
 
     if (!hashes || hashes.length === 0) return false;
-    if (isEqual(parentIds, hashes.slice(0, hashes.indexOf(id)))) {
-      return hashes.indexOf(id) === parentIds.length;
+    if (hashes.length > parentIds.length) {
+      return isEqual(parentIds, hashes.slice(0, parentIds.length)) && hashes[parentIds.length] === id;
     }
     return false;
   };
@@ -20,7 +20,7 @@ export function getInitialOpenState() {
 
 export function updateAndCopyUrl() {
   const buildHistoryUrl = (idsString: string) => {
-    return `${window.location.pathname}${idsString ? `#${idsString}` : ''}`;
+    return `${window.location.origin}${window.location.pathname}${idsString ? `#${idsString}` : ''}`;
   };
 
   function updateAndCopy(ids: string[]) {

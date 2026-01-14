@@ -156,8 +156,9 @@ function GenericAccordion({
         id &&
         open &&
         hashes &&
-        hashes[hashes.length - 1] === id &&
-        isEqual(context.parentIds, hashes.slice(0, hashes.indexOf(id)))
+        hashes.length > context.parentIds.length &&
+        hashes[context.parentIds.length] === id &&
+        isEqual(context.parentIds, hashes.slice(0, context.parentIds.length))
       ) {
         onMount();
       }
