@@ -69,7 +69,7 @@ export function Expandable({
           setOpenState(newState);
         }
       }}
-      className={cn(Classes.Expandable, 'mt-4 border-standard rounded-xl', className)}
+      className={cn(Classes.Expandable, 'mt-4 border border-gray-200 dark:border-white/10 rounded-xl', className)}
       data-component-part="expandable"
     >
       <summary
@@ -82,7 +82,7 @@ export function Expandable({
         aria-expanded={open}
         data-component-part="expandable-summary"
       >
-        <span data-component-part="expandable-icon">
+        <span data-component-part="expandable-icon" aria-hidden="true">
           <Icon
             icon="angle-right"
             className={cn('h-2.5 w-2.5 bg-zinc-400 transition-transform', open && 'rotate-90')}

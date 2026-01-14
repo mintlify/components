@@ -93,12 +93,14 @@ export const Controlled: Story = {
       <div className="space-y-4">
         <div className="flex gap-2">
           <button
+            type="button"
             onClick={() => setIsOpen(true)}
             className="px-3 py-1.5 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
             Open
           </button>
           <button
+            type="button"
             onClick={() => setIsOpen(false)}
             className="px-3 py-1.5 text-sm bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600"
           >
