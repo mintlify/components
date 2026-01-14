@@ -34,7 +34,7 @@ export function Columns({ children, cols = 2, className }: ColumnsProps) {
 
   return (
     <div
-      className={cn(Classes.Columns, "grid gap-x-4", colsClassName, className)}
+      className={cn(Classes.Columns, "grid gap-4", colsClassName, className)}
       data-component-part="columns-root"
     >
       {children}
