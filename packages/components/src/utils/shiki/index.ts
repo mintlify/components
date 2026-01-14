@@ -1,12 +1,14 @@
-import { codeStylingToThemeOrThemes } from '@mintlify/common';
-import { CodeStyling, DocsConfig } from '@mintlify/validation';
+import {
+  codeStylingToThemeOrThemes,
+  CodeStyling,
+  DocsConfig,
+} from './types';
 import {
   transformerNotationHighlight,
   transformerNotationFocus,
   transformerMetaHighlight,
   transformerNotationDiff,
 } from '@shikijs/transformers';
-import type { ShikiTransformer } from '@shikijs/types';
 import type { Root, Element } from 'hast';
 import { createHighlighter, hastToHtml } from 'shiki';
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
@@ -15,6 +17,7 @@ import type {
   BundledTheme,
   CodeToHastOptions,
   HighlighterGeneric,
+  ShikiTransformer,
 } from 'shiki/types';
 
 import { MAX_PREVIEW_BYTES } from '@/constants';
@@ -77,7 +80,6 @@ export const highlighterPromise = createHighlighter({
   });
 
 export function getShikiLanguage(lang: string | undefined): ShikiLanguage {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: Please fix this violation when you can!
   const text = 'text' as ShikiLanguage;
   if (lang === undefined) return text;
 
@@ -124,14 +126,14 @@ export async function loadShikiThemes(
 
   const { theme } = codeblocks;
   if (typeof theme === 'string' && theme !== 'css-variables') {
-    await highlighter.loadTheme(theme);
+    await highlighter.loadTheme(theme as BundledTheme);
   } else if (typeof theme === 'object') {
     if (theme.dark !== 'css-variables' && theme.light !== 'css-variables') {
-      await highlighter.loadTheme(theme.dark, theme.light);
+      await highlighter.loadTheme(theme.dark as BundledTheme, theme.light as BundledTheme);
     } else if (theme.dark !== 'css-variables') {
-      await highlighter.loadTheme(theme.dark);
+      await highlighter.loadTheme(theme.dark as BundledTheme);
     } else if (theme.light !== 'css-variables') {
-      await highlighter.loadTheme(theme.light);
+      await highlighter.loadTheme(theme.light as BundledTheme);
     }
   }
 
@@ -140,7 +142,7 @@ export async function loadShikiThemes(
 
 export type ShikiHighlightedHtmlArgs = {
   codeString: string;
-  codeBlockTheme: CodeStyling;
+  codeBlockTheme?: CodeStyling;
   opts?: Partial<CodeToHastOptions> & {
     highlightedLines?: Array<number>;
     focusedLines?: Array<number>;
@@ -156,6 +158,8 @@ export type ShikiHighlightedHtmlArgs = {
     }
 );
 
+// Function overloads for getShikiHighlightedHtml
+/* eslint-disable no-redeclare */
 export function getShikiHighlightedHtml(
   props: ShikiHighlightedHtmlArgs & {
     opts: ShikiHighlightedHtmlArgs['opts'] & { noAsync: true };
@@ -169,6 +173,7 @@ export function getShikiHighlightedHtml(
 export function getShikiHighlightedHtml(
   props: ShikiHighlightedHtmlArgs
 ): string | undefined | Promise<string | undefined> {
+/* eslint-enable no-redeclare */
   if (!props.codeString || highlighterError !== undefined) return undefined;
 
   if (highlighter === undefined) {
@@ -227,7 +232,9 @@ export function getShikiHighlightedHtml(
         tabindex: false,
         ...props.opts,
       });
-    } catch {}
+    } catch {
+      // Ignore errors during highlighting
+    }
   }
 
   if (typeof html !== 'object') {
@@ -237,7 +244,6 @@ export function getShikiHighlightedHtml(
   const firstChild = html.children[0];
   if (!firstChild) return undefined;
   if (firstChild.type === 'element' && firstChild.tagName === 'pre') {
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: Please fix this violation when you can!
     const spanElements = (firstChild.children[0] as Element).children.filter(
       (child) => child.type === 'element' && child.tagName === 'span'
     ) as Element[];

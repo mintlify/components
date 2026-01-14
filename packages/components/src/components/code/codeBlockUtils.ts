@@ -30,7 +30,7 @@ const ALL_CODE_BLOCK_PROPS: {
 };
 
 export const extractCodeBlockBaseProps = (
-    props?: Record<string, any>
+    props?: Record<string, unknown>
 ): Partial<CodeBlockPropsBase> => {
     if (!props) return {};
 
@@ -38,7 +38,8 @@ export const extractCodeBlockBaseProps = (
 
     (Object.keys(ALL_CODE_BLOCK_PROPS) as Array<keyof CodeBlockPropsBase>).forEach((key) => {
         if (props[key] !== undefined) {
-            result[key] = props[key];
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            result[key] = props[key] as any;
         }
     });
 

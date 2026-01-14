@@ -1,9 +1,11 @@
 import { EllipsisIcon } from 'lucide-react';
+import React from 'react';
 
 import { useExpandable } from '@/hooks/useExpandable';
 import { cn } from '@/utils/cn';
 import { getCodeBlockScrollbarClassname } from '@/utils/getScrollbarClassname';
 import { getCodeString, useCalculateCodeLines } from '@/utils/shiki/lib';
+import { CodeStyling } from '@/utils/shiki/types';
 import { useGetShikiHighlightedHtml } from '@/utils/shiki/useGetShikiHighlightedHtml';
 
 import { CodeBlockPropsBase } from './codeBlock';
@@ -19,7 +21,7 @@ interface BaseCodeBlockProps extends CodeBlockPropsBase {
     shouldHighlight?: boolean;
     // force shiki re-highlighting for live preview, pass in isLivePreview
     forceExtractCodeString?: boolean;
-    codeBlockThemeObject?: any; // type of docsConfig.styling.codeBlocks
+    codeBlockThemeObject?: CodeStyling;
     children?: ReactNode;
 }
 
@@ -155,21 +157,18 @@ export const BaseCodeBlock = ({
                 )}
                 data-component-part="code-block-root"
                 tabIndex={0}
-                style={
-                    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-                    {
-                        fontVariantLigatures: 'none',
-                        height: expandable
-                            ? !isExpanded
-                                ? `${numberOfLines && numberOfLines < SMALL_EXPANDABLE_NUMBER_OF_LINES ? SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT : DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT}px`
-                                : `${calculatedHeight}px`
-                            : isParentCodeGroup
-                                ? '100%'
-                                : 'auto',
-                        backgroundColor: shikiBackgroundColors?.light,
-                        '--shiki-dark-bg': shikiBackgroundColors?.dark,
-                    } as React.CSSProperties
-                }
+                style={{
+                    fontVariantLigatures: 'none',
+                    height: expandable
+                        ? !isExpanded
+                            ? `${numberOfLines && numberOfLines < SMALL_EXPANDABLE_NUMBER_OF_LINES ? SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT : DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT}px`
+                            : `${calculatedHeight}px`
+                        : isParentCodeGroup
+                            ? '100%'
+                            : 'auto',
+                    backgroundColor: shikiBackgroundColors?.light,
+                    '--shiki-dark-bg': shikiBackgroundColors?.dark,
+                } as React.CSSProperties}
             >
                 <CodeElement />
             </div>
@@ -177,13 +176,10 @@ export const BaseCodeBlock = ({
                 <div
                     data-fade-overlay
                     aria-hidden
-                    style={
-                        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-                        {
-                            '--fade-color-light': shikiBackgroundColors?.light,
-                            '--fade-color-dark': shikiBackgroundColors?.dark,
-                        } as React.CSSProperties
-                    }
+                    style={{
+                        '--fade-color-light': shikiBackgroundColors?.light,
+                        '--fade-color-dark': shikiBackgroundColors?.dark,
+                    } as React.CSSProperties}
                 />
             )}
             {expandable && (

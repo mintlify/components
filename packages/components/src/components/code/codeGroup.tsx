@@ -33,6 +33,15 @@ export type CodeGroupPropsBase = {
   hideCodeSnippetFeedbackButton?: boolean;
   codeBlockTheme?: 'dark' | 'system';
   /**
+   * Controlled selected tab index. When provided, the component operates in controlled mode.
+   * Use with onChange to manage state externally (e.g., with useTabState hook).
+   */
+  selectedIndex?: number;
+  /**
+   * Default selected tab index for uncontrolled mode. Defaults to 0.
+   */
+  defaultSelectedIndex?: number;
+  /**
    * Render prop for action buttons (copy, feedback, AI, etc.)
    * Receives the currently selected code string and child props
    */
@@ -68,14 +77,19 @@ export const CodeGroup = function CodeGroup({
   codeBlockTheme = 'system',
   renderActionButtons,
   renderLanguageDropdown,
+  selectedIndex: controlledSelectedIndex,
+  defaultSelectedIndex = 0,
 }: CodeGroupProps) {
   const triggerRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
   const childArr = Array.isArray(children)
     ? children
-    : // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: Please fix this violation when you can!
-      (React.Children.toArray(children) as Array<CodeBlockChild>);
+    : (React.Children.toArray(children) as Array<CodeBlockChild>);
 
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [uncontrolledSelectedTab, setUncontrolledSelectedTab] = useState(defaultSelectedIndex);
+
+  // Support both controlled and uncontrolled modes
+  const isControlled = controlledSelectedIndex !== undefined;
+  const selectedTab = isControlled ? controlledSelectedIndex : uncontrolledSelectedTab;
 
   const handleValueChange = useCallback(
     (value: string) => {
@@ -87,8 +101,12 @@ export const CodeGroup = function CodeGroup({
         window.history.replaceState(null, '', window.location.pathname + window.location.search);
       }
 
-      setSelectedTab(index);
+      // Only update internal state if in uncontrolled mode
+      if (!isControlled) {
+        setUncontrolledSelectedTab(index);
+      }
 
+      // Always call onChange callback
       if (typeof onChange === 'function') {
         onChange(index);
       }
@@ -102,7 +120,7 @@ export const CodeGroup = function CodeGroup({
         });
       }
     },
-    [onChange]
+    [onChange, isControlled]
   );
 
   if (!children) {
