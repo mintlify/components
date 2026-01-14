@@ -65,6 +65,7 @@ export const Dismissible: Story = {
       return (
         <div className="p-4 text-center">
           <button
+            type="button"
             onClick={() => setVisible(true)}
             className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
           >
@@ -162,6 +163,7 @@ export const DismissibleVariants: Story = {
         {allHidden && (
           <div className="p-4 text-center">
             <button
+              type="button"
               onClick={resetAll}
               className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
             >
