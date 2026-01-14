@@ -8,6 +8,17 @@ import { cn } from '@/utils/cn';
 const MAX_DEFAULT_VALUE_LENGTH = 50;
 
 /**
+ * Safely stringify a value for display, returning null if it fails
+ */
+const safeStringify = (value: unknown): string | null => {
+  try {
+    return JSON.stringify(value);
+  } catch {
+    return null;
+  }
+};
+
+/**
  * LinkIcon component for anchor links
  */
 const LinkIcon = () => {
@@ -228,7 +239,7 @@ export function PropertyHead({
     return () => {
       resizeObserver.unobserve(ref);
     };
-  }, []);
+  }, [name]);
 
   useEffect(() => {
     scrollElementIntoView({
@@ -240,6 +251,8 @@ export function PropertyHead({
     });
   }, [paramId, parentName]);
 
+  if (name == null) return null;
+
   const paramInfo = !parentName ? (
     name
   ) : (
@@ -248,8 +261,6 @@ export function PropertyHead({
       {name}
     </>
   );
-
-  if (name == null) return null;
 
   return (
     <div
@@ -318,7 +329,7 @@ export function PropertyHead({
                   ? defaultValue === ''
                     ? '""'
                     : defaultValue
-                  : JSON.stringify(defaultValue)}
+                  : (safeStringify(defaultValue) ?? String(defaultValue))}
               </InfoPill>
             )}
             {required && <RequiredPill label={mergedLabels.required} />}
@@ -390,13 +401,8 @@ function PropertyBase({
       }
     }
 
-    let stringifiedValue: string;
-    try {
-      stringifiedValue = JSON.stringify(defaultValue);
-    } catch {
-      // JSON.stringify can throw for BigInt or circular references
-      return null;
-    }
+    // safeStringify handles BigInt and circular references
+    const stringifiedValue = safeStringify(defaultValue);
     if (
       stringifiedValue &&
       stringifiedValue.length > 0 &&
