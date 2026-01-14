@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, isValidElement, useState, useRef, useEffect } from 'react';
+import { ReactNode, isValidElement, useState, useRef, useLayoutEffect } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
 import { cn } from '@/utils/cn';
@@ -18,7 +18,7 @@ export function Tooltip({ tip, children, headline, className }: TooltipProps) {
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isVisible && triggerRef.current && tooltipRef.current) {
       const triggerRect = triggerRef.current.getBoundingClientRect();
       const tooltipRect = tooltipRef.current.getBoundingClientRect();

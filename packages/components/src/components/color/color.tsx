@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useTransition } from 'react';
+import React, { createContext, useContext, useRef, useState, useTransition } from 'react';
 
 import { CheckIcon } from '@/icons';
 import { Classes } from '@/lib/local/selectors';
@@ -100,6 +100,7 @@ const ColorItem = ({ name, value, className }: ColorItemProps) => {
   const [state, setState] = useState<'idle' | 'copied'>('idle');
   const [, startTransition] = useTransition();
   const { variant, theme } = useContext(ColorContext);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const getCurrentColor = (): string => {
     if (typeof value === 'string') {
@@ -111,20 +112,26 @@ const ColorItem = ({ name, value, className }: ColorItemProps) => {
   const currentColor = getCurrentColor();
 
   const handleCopy = async () => {
+    // Clear any existing timeout to prevent race condition on rapid clicks
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
     await copyToClipboard(currentColor);
     startTransition(() => {
       setState('copied');
     });
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    startTransition(() => {
-      setState('idle');
-    });
+    timeoutRef.current = setTimeout(() => {
+      startTransition(() => {
+        setState('idle');
+      });
+    }, 2000);
   };
 
   const colorButton = (
     <button
+      type="button"
       data-component-part="item-button"
       style={{ backgroundColor: currentColor }}
       onClick={handleCopy}
