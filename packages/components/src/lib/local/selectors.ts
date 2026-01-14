@@ -4,6 +4,7 @@ const _classes = {
     Callout: 'callout',
     Card: 'card',
     CardGroup: 'card-group',
+    Columns: 'columns',
     CodeBlock: 'code-block',
     CodeBlockIcon: 'code-block-icon',
     CodeGroup: 'code-group',
