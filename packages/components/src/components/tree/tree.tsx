@@ -276,7 +276,19 @@ const TreeRoot = ({ children, className }: TreeProps) => {
   const initializedRef = useRef(false);
 
   useEffect(() => {
-    if (!treeRef.current || initializedRef.current) return;
+    if (!treeRef.current) return;
+
+    // Check if any treeitem already has tabindex="0" - if so, we're already initialized
+    const existingFocusable = treeRef.current.querySelector<HTMLElement>(
+      '[role="treeitem"][tabindex="0"]'
+    );
+    if (existingFocusable) {
+      initializedRef.current = true;
+      return;
+    }
+
+    // Reset initialized flag if all items were removed (no tabindex="0" found)
+    initializedRef.current = false;
 
     const firstItem =
       treeRef.current.querySelector<HTMLElement>('[role="treeitem"]');
@@ -466,6 +478,7 @@ function TreeFolder({
   const uniqueId = useId();
   const nodeId = `tree-folder-${uniqueId}`;
   const groupId = `tree-group-${uniqueId}`;
+  const folderRef = useRef<HTMLDivElement>(null);
 
   const openable = _openable && !!children;
 
@@ -473,6 +486,22 @@ function TreeFolder({
   const [open, setOpen] = useState(openable && defaultOpen);
 
   const FolderIcon = openable && open ? Folder2OpenIcon : Folder2Icon;
+
+  const handleClick = useCallback(() => {
+    if (!openable) return;
+
+    setOpen((prev) => {
+      if (prev && folderRef.current) {
+        // When collapsing, check if focus is within the folder's children
+        const groupElement = document.getElementById(groupId);
+        if (groupElement?.contains(document.activeElement)) {
+          // Move focus to the folder itself before collapsing
+          folderRef.current.focus();
+        }
+      }
+      return !prev;
+    });
+  }, [openable, groupId]);
 
   return (
     <div
@@ -482,6 +511,7 @@ function TreeFolder({
       }
     >
       <div
+        ref={folderRef}
         id={nodeId}
         role="treeitem"
         aria-level={level}
@@ -489,7 +519,7 @@ function TreeFolder({
         aria-selected={false}
         aria-owns={openable && open ? groupId : undefined}
         tabIndex={-1}
-        onClick={openable ? () => setOpen((prev) => !prev) : undefined}
+        onClick={openable ? handleClick : undefined}
         className={cn(
           "py-1 pr-1.5 -outline-offset-1 pl-[calc(var(--padding-left)*1px)] flex items-center gap-1.5 hover:bg-neutral-100 rounded-lg dark:hover:bg-neutral-900 text-gray-700 dark:text-gray-400",
           openable ? "cursor-pointer" : "cursor-default",
