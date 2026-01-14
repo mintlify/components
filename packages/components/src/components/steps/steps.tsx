@@ -73,7 +73,7 @@ const StepsItem = ({
         className="h-3 w-3 bg-gray-900 dark:bg-gray-50"
         overrideColor
       />
-    ) : typeof icon === 'undefined' ? (
+    ) : icon == null ? (
       Number(stepNumber)
     ) : (
       icon
@@ -159,7 +159,8 @@ export type StepsProps = {
 };
 
 export const Steps = ({ children, titleSize, className }: StepsProps) => {
-  const childArray = Array.isArray(children) ? children : [children];
+  // Filter out falsy children (null, undefined, false) that can come from conditional rendering
+  const childArray = (Array.isArray(children) ? children : [children]).filter(Boolean);
 
   return (
     <div
