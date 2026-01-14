@@ -1,6 +1,5 @@
 import { IconType } from '@/models';
 import slugify from '@sindresorhus/slugify';
-import { isEqual } from 'lodash';
 import { ReactNode, createContext, useContext, useEffect, useId, useRef, useState } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
@@ -152,6 +151,14 @@ function GenericAccordion({
   const openRef = useRef<boolean>(initialOpen);
 
   useEffect(() => {
+    if (getInitialOpenFromUrl && id) {
+      const urlResult = getInitialOpenFromUrl(id, context.parentIds);
+      if (urlResult === true && !openRef.current) {
+        setOpen(true);
+        openRef.current = true;
+      }
+    }
+
     if (onMount) {
       onMount();
     }
