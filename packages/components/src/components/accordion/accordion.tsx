@@ -140,7 +140,10 @@ function GenericAccordion({
 
   const initialOpen = (() => {
     if (getInitialOpenFromUrl && id) {
-      return getInitialOpenFromUrl(id, context.parentIds);
+      const urlResult = getInitialOpenFromUrl(id, context.parentIds);
+      if (urlResult === true) {
+        return true;
+      }
     }
     return defaultOpen;
   })();
