@@ -59,6 +59,7 @@
     "clsx": "^2.1.1",
     "color": "^4.2.3",
     "lodash": "^4.17.21",
+    "lucide-react": "^0.453.0",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
