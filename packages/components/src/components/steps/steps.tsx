@@ -170,7 +170,7 @@ export const Steps = ({ children, titleSize, className }: StepsProps) => {
     >
       {childArray.map(({ props }, index) => (
         <StepsItem
-          key={`${props.title}-${index}`}
+          key={`step-${index}`}
           {...props}
           stepNumber={props.stepNumber ?? index + 1}
           {...(titleSize && { titleSize })}
