@@ -18,10 +18,10 @@ const enhanceVideoProps = (children: ReactNode): ReactNode => {
 
       if (props.autoPlay) {
         return React.cloneElement(childElement, {
-          ...props,
           playsInline: true,
           loop: true,
           muted: true,
+          ...props,
         });
       }
     }
@@ -83,7 +83,7 @@ export function Frame({
 
   return (
     <div className={containerClassName} data-component-part="frame-wrapper">
-      {title !== undefined && (
+      {title && (
         <div
           className="not-prose mb-4 flex items-center space-x-2"
           data-component-part="frame-title-container"
