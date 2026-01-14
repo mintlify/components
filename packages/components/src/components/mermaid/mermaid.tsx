@@ -44,6 +44,11 @@ export function Mermaid({ chart, className }: MermaidProps): ReactElement {
     };
   }, []);
 
+  // Reset transform state when chart changes
+  useEffect(() => {
+    reset();
+  }, [chart, reset]);
+
   useEffect(() => {
     let cancelled = false;
 
