@@ -167,7 +167,7 @@ export function ResponseField({
       // don't display values with nested objects; looks bad on one line
       const containsNestedObject = Object.values(
         defaultValue as Record<string, unknown>
-      ).some((value) => typeof value === "object");
+      ).some((value) => value !== null && typeof value === "object");
       if (containsNestedObject) {
         return null;
       }
