@@ -1,7 +1,7 @@
 import { IconType } from '@/models';
 import slugify from '@sindresorhus/slugify';
 import { isEqual } from 'lodash';
-import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useId, useState } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
 import { Icon as ComponentIcon } from '@/components/icon';
@@ -130,10 +130,11 @@ function GenericAccordion({
   onUrlStateChange?: (isOpen: boolean, id: string | undefined, parentIds: string[]) => void;
 }) {
   const connectingCharacter = ':';
+  const generatedId = useId();
   const id =
     typeof title === 'string'
       ? slugify(title.replace(connectingCharacter, '-'), { decamelize: false })
-      : undefined;
+      : generatedId;
 
   const context = useContext(AccordionContext);
 
@@ -169,7 +170,7 @@ function GenericAccordion({
 
     // Call the URL state change callback if provided
     if (!_disabled && onUrlStateChange) {
-      onUrlStateChange(isOpen, id, context.parentIds);
+      onUrlStateChange(isOpen, typeof title === 'string' ? id : undefined, context.parentIds);
     }
 
     // Call the onChange callback
@@ -187,7 +188,7 @@ function GenericAccordion({
     <AccordionContext.Provider
       value={{
         ...context,
-        parentIds: [...context.parentIds, ...(id != undefined ? [id] : [])],
+        parentIds: [...context.parentIds, ...(typeof title === 'string' ? [id] : [])],
       }}
     >
       <details
@@ -195,7 +196,6 @@ function GenericAccordion({
         onToggle={(e) => {
           const newState = e.currentTarget.open;
           if (newState !== open) {
-            setOpen(newState);
             onClickOpen(newState);
           }
         }}

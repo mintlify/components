@@ -44,6 +44,13 @@ export function updateAndCopyUrl() {
       if (parentIds.length > 0) {
         updateAndCopy(parentIds);
       } else {
+        if (
+          typeof window === 'undefined' ||
+          typeof document === 'undefined' ||
+          !document.hasFocus()
+        ) {
+          return;
+        }
         const newUrl = buildHistoryUrl('');
         window.history.replaceState(
           { ...window.history.state, as: newUrl, url: newUrl },
