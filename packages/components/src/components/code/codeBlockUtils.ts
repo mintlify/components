@@ -23,6 +23,10 @@ const ALL_CODE_BLOCK_PROPS: {
     hideAskAiButton: true,
     hideCodeSnippetFeedbackButton: true,
     isSmallText: true,
+    headerButtons: true,
+    codeBlockTheme: true,
+    className: true,
+    children: true,
 };
 
 export const extractCodeBlockBaseProps = (

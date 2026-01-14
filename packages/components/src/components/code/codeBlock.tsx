@@ -1,66 +1,57 @@
-// import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-// import { CodeSnippetFeedbackProvider } from '@/contexts/CodeSnippetFeedbackContext';
-// import { useCodeBlockThemeEnum } from '@/hooks/useCodeBlockTheme';
-// import { Classes } from '@/lib/local/selectors';
-// import { Icon as ComponentIcon } from '@/components/icon';
-// import { cn } from '@/utils/cn';
-// import { extractCodeBlockBaseProps } from '@/utils/extractCodeBlockProps';
-
-// import { CopyToClipboardResult } from '../../utils/copyToClipboard';
-// import { BaseCodeBlock } from './baseCodeBlock';
-// import { getNodeText } from './getNodeText';
-
-// /**
-//  * User-defined properties
-//  */
-// export type CodeBlockPropsBase = {
-//     language?: string;
-//     filename?: string;
-//     icon?: string;
-//     lang?: string;
-//     /**
-//      * Whether to show line numbers.
-//      */
-//     lines?: boolean;
-//     /**
-//      * Whether to wrap the code block.
-//      */
-//     wrap?: boolean;
-//     /**
-//      * Whether to expand the code block.
-//      */
-//     expandable?: boolean;
-//     /**
-//      * The lines to highlight. it's a stringified array of numbers.
-//      * Example: "[1,3,4,5]"
-//      */
-//     highlight?: string;
-//     /**
-//      * The lines to focus on. it's a stringified array of numbers.
-//      * Example: "[1,3,4,5]"
-//      */
-//     focus?: string;
-//     /**
-//      * Internal prop to set the number of lines in the code block.
-//      * Users should not set this prop.
-//      */
-//     numberOfLines?: number;
-//     /**
-//      * Internal prop to hide code snippet feedback button
-//      */
-//     hideCodeSnippetFeedbackButton?: boolean;
-//     /**
-//      * Internal prop to show ask ai button
-//      */
-//     hideAskAiButton?: boolean;
-//     /**
-//      * Internal prop to set the small text size
-//      */
-//     isSmallText?: boolean;
-//     headerButtons?: ReactNode;
-//     codeBlockTheme?: 'dark' | 'system';
-// };
+/**
+ * User-defined properties
+ */
+export type CodeBlockPropsBase = {
+    language?: string;
+    filename?: string;
+    icon?: string;
+    lang?: string;
+    /**
+     * Whether to show line numbers.
+     */
+    lines?: boolean;
+    /**
+     * Whether to wrap the code block.
+     */
+    wrap?: boolean;
+    /**
+     * Whether to expand the code block.
+     */
+    expandable?: boolean;
+    /**
+     * The lines to highlight. it's a stringified array of numbers.
+     * Example: "[1,3,4,5]"
+     */
+    highlight?: string;
+    /**
+     * The lines to focus on. it's a stringified array of numbers.
+     * Example: "[1,3,4,5]"
+     */
+    focus?: string;
+    /**
+     * Internal prop to set the number of lines in the code block.
+     * Users should not set this prop.
+     */
+    numberOfLines?: number;
+    /**
+     * Internal prop to hide code snippet feedback button
+     */
+    hideCodeSnippetFeedbackButton?: boolean;
+    /**
+     * Internal prop to show ask ai button
+     */
+    hideAskAiButton?: boolean;
+    /**
+     * Internal prop to set the small text size
+     */
+    isSmallText?: boolean;
+    headerButtons?: ReactNode;
+    codeBlockTheme?: 'dark' | 'system';
+    className?: string;
+    children?: ReactNode;
+};
 
 // export interface CodeBlockInternalPropsBase extends CodeBlockPropsBase {
 //     /**

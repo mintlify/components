@@ -6,22 +6,21 @@ import { getCodeBlockScrollbarClassname } from '@/utils/getScrollbarClassname';
 import { getCodeString, useCalculateCodeLines } from '@/utils/shiki/lib';
 import { useGetShikiHighlightedHtml } from '@/utils/shiki/useGetShikiHighlightedHtml';
 
-import { CodeBlockProps } from './codeBlock';
+import { CodeBlockPropsBase } from './codeBlock';
 import { getShikiBackgroundColors } from './getShikiBackgroundColors';
+import { ReactNode } from 'react';
 
 export const SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT = 45;
 export const DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT = 190;
 export const SMALL_EXPANDABLE_NUMBER_OF_LINES = 7;
 
-interface BaseCodeBlockProps extends CodeBlockProps {
+interface BaseCodeBlockProps extends CodeBlockPropsBase {
     isParentCodeGroup?: boolean;
-    isSmallText?: boolean;
     shouldHighlight?: boolean;
-    numberOfLines?: number;
     // force shiki re-highlighting for live preview, pass in isLivePreview
     forceExtractCodeString?: boolean;
-    codeBlockTheme?: 'dark' | 'system';
     codeBlockThemeObject?: any; // type of docsConfig.styling.codeBlocks
+    children?: ReactNode;
 }
 
 export const BaseCodeBlock = ({

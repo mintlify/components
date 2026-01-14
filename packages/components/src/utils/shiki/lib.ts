@@ -1,6 +1,6 @@
 import { ReactNode, useMemo } from 'react';
 
-import { getNodeText } from '@/components/Code/getNodeText';
+import { getNodeText } from '@/components/code/getNodeText';
 import { SHIKI_CLASSNAME } from '@/utils/shiki/constants';
 
 function findShikiClassName(children: unknown): boolean {
