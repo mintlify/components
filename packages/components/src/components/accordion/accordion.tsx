@@ -16,6 +16,7 @@ type AccordionProps = {
   icon?: ReactNode | string;
   iconType?: IconType;
   children: ReactNode;
+  className?: string;
   _disabled?: boolean;
   trackOpen?: (event: { title: string }) => void;
   trackClose?: (event: { title: string }) => void;
@@ -32,6 +33,7 @@ export function Accordion({
   icon,
   iconType,
   children,
+  className,
   _disabled,
   trackOpen,
   trackClose,
@@ -63,6 +65,7 @@ export function Accordion({
       }
       onChange={onChange}
       icon={Icon}
+      className={className}
       _disabled={_disabled}
       onMount={onMount}
       topOffset={topOffset}
@@ -83,6 +86,7 @@ function GenericAccordion({
   icon,
   onChange,
   children,
+  className,
   _disabled,
   onMount,
   topOffset,
@@ -106,6 +110,9 @@ function GenericAccordion({
 
   /** The Accordion contents */
   children: ReactNode;
+
+  /** Custom className for the root element */
+  className?: string;
 
   /** For internal use only (whether to make clicking affect URL state) */
   _disabled?: boolean;
@@ -193,7 +200,8 @@ function GenericAccordion({
           }
         }}
         key={typeof title === 'string' ? title : 'accordion'}
-        className={cn(Classes.Accordion, parentClass, 'cursor-default')}
+        className={cn(Classes.Accordion, parentClass, 'cursor-default', className)}
+        data-component-part="accordion"
       >
         <AccordionCover
           id={id}

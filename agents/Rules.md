@@ -36,8 +36,8 @@ if empty - nothing to change
 
 - Accordions
     - Rename `<AccordionGroup>` to `<Accordion.Group>`
-    - Add `data-component-part` **for:
-        - `<details>`
+    - ~~Add `data-component-part` **for:~~
+        - ~~`<details>`~~
 - ~~Badge~~
     - ~~add `tailIcon` + `leadIcon` , current `icon` prop should be `tailIcon`~~
     - ~~rename `stroke` to `variant="outline"`~~

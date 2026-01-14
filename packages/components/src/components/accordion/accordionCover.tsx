@@ -47,7 +47,7 @@ export function AccordionCover({
             </div>
             {icon ? (
                 <div
-                    className="h-4 w-4 fill-gray-800 dark:fill-gray-100 text-gray-800 dark:text-gray-100"
+                    className="h-4 w-4 flex items-center justify-center fill-gray-800 dark:fill-gray-100 text-gray-800 dark:text-gray-100"
                     data-component-part="accordion-icon"
                 >
                     {icon}
