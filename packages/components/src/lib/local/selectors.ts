@@ -132,6 +132,8 @@ const _classes = {
     Tree: 'tree',
     TreeFolder: 'tree-folder',
     TreeFile: 'tree-file',
+
+    ResponseExample: 'response-example',
 } as const;
 
 export const Classes = Object.fromEntries(

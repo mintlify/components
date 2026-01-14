@@ -17,6 +17,10 @@ const meta: Meta<typeof ResponseExample> = {
       control: "text",
       description: "Additional CSS classes for the root element",
     },
+    ariaLabel: {
+      control: "text",
+      description: "Accessible label for the response example region",
+    },
     children: {
       control: false,
       description: "Code blocks to display as response examples",

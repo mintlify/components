@@ -1,7 +1,6 @@
-'use client';
-
 import { ReactNode } from 'react';
 import { cn } from '@/utils/cn';
+import { Classes } from '@/lib/local/selectors';
 
 export type ResponseExampleProps = {
   /**
@@ -17,6 +16,11 @@ export type ResponseExampleProps = {
    * Additional CSS classes for the root element.
    */
   className?: string;
+  /**
+   * Accessible label for the response example region.
+   * Useful when multiple ResponseExample components are on the same page.
+   */
+  ariaLabel?: string;
 };
 
 /**
@@ -30,14 +34,17 @@ export function ResponseExample({
   children,
   dropdown,
   className,
+  ariaLabel = 'Response example',
 }: ResponseExampleProps) {
   return (
     <div
       className={cn(
-        'response-example',
+        Classes.ResponseExample,
         'mt-8',
         className
       )}
+      role="region"
+      aria-label={ariaLabel}
       data-response-example
       data-dropdown={dropdown ? 'true' : undefined}
     >
