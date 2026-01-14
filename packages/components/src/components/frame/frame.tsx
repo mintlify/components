@@ -43,11 +43,11 @@ export interface FrameProps {
    */
   style?: CSSProperties;
   /**
-   * Additional CSS classes for the inner content container.
+   * Additional CSS classes for the root wrapper element.
    */
   className?: string;
   /**
-   * Additional CSS classes for the outer wrapper container.
+   * Additional CSS classes for the inner frame container.
    */
   containerClassName?: string;
   /**
@@ -80,7 +80,7 @@ export function Frame({
   const enhancedChildren = enhanceVideoProps(children);
 
   return (
-    <div className={containerClassName} data-component-part="frame-wrapper">
+    <div className={className} data-component-part="frame-wrapper">
       {title && (
         <div
           className="not-prose mb-4 flex items-center space-x-2"
@@ -106,10 +106,11 @@ export function Frame({
       <div
         style={style}
         data-name="frame"
+        data-component-part="frame-container"
         className={cn(
           Classes.Frame,
           'p-2 not-prose relative bg-gray-50/50 rounded-2xl overflow-hidden dark:bg-gray-800/25',
-          className
+          containerClassName
         )}
       >
         <div
