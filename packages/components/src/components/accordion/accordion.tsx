@@ -152,25 +152,7 @@ function GenericAccordion({
   const openRef = useRef<boolean>(initialOpen);
 
   useEffect(() => {
-    if (!onMount) return;
-
-    if (getInitialOpenFromUrl && !open) {
-      const hashes =
-        typeof window !== 'undefined'
-          ? window.location.hash.substring(1).split(connectingCharacter)
-          : undefined;
-
-      if (
-        id &&
-        hashes &&
-        hashes.length > context.parentIds.length &&
-        hashes[context.parentIds.length] === id &&
-        isEqual(context.parentIds, hashes.slice(0, context.parentIds.length))
-      ) {
-        // used for scrollElementIntoView into view when open from url
-        onMount();
-      }
-    } else {
+    if (onMount) {
       onMount();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
