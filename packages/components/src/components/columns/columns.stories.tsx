@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { ReactNode } from "react";
 import { Columns } from "./columns";
 
 const meta: Meta<typeof Columns> = {
@@ -25,7 +26,7 @@ const DemoCard = ({
   children,
 }: {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => (
   <div className="rounded-lg border border-gray-200 p-4 dark:border-gray-700">
     <h3 className="font-semibold text-gray-900 dark:text-gray-100">{title}</h3>
