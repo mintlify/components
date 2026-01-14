@@ -47,7 +47,7 @@ export function Tooltip({ description, children, title, cta, href, className }: 
       <RadixTooltip.Root open={open} onOpenChange={setOpen}>
         <RadixTooltip.Trigger
           aria-label={title ? `${title}: ${description}` : description}
-          asChild={isButtonElement && isValidElement(children)}
+          asChild={isButtonElement}
           onClick={handleClick}
           className={className}
         >
@@ -102,7 +102,8 @@ function underlineWhenTextOnly(children: ReactNode) {
     <span
       className={cn(
         Classes.Tooltip,
-        'underline decoration-dotted decoration-2 underline-offset-4 decoration-gray-400 dark:decoration-gray-500'
+        'underline decoration-dotted decoration-2 underline-offset-4 decoration-gray-400 dark:decoration-gray-500',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm'
       )}
     >
       {children}
