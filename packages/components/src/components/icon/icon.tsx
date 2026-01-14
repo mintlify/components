@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
-import { isAbsoluteUrl } from '@/common';
+import { isAbsoluteUrl } from '@/common/isAbsoluteUrl';
 import { MINTLIFY_ICONS_CDN_URL } from '@/constants';
 
 import { IconLibrary, IconType, iconTypes, PageType } from '@/models';

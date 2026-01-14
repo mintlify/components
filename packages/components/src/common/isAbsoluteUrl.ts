@@ -1,5 +1,3 @@
-// @mintlify/common
-
 type Protocol = 'http' | 'https' | 'ftp' | 'ftps' | 'file' | 'data' | 'mailto' | 'tel' | 'sms' | 'ws' | 'wss';
 type AbsoluteUrl = `${Protocol}://${string}` | `${Protocol}:${string}`;
 
