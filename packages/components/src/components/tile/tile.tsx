@@ -85,7 +85,7 @@ export function Tile<T extends ElementType = 'div'>({
 
   const DEFAULT_BG_PATTERN_CLASSES = cn(
     'bg-repeat-round bg-center [grid-area:1/1] size-full pointer-events-none select-none',
-    `bg-[size:${SIZE}px_${SIZE}px]`,
+    `bg-[length:${SIZE}px_${SIZE}px]`,
     "after:content-[''] after:left-0 after:absolute after:h-full after:w-[7px] dark:after:bg-gray-900 after:bg-gray-50",
     "before:content-[''] before:right-0 before:absolute before:h-full before:w-[7px] dark:before:bg-gray-900 before:bg-gray-50"
   );
@@ -95,8 +95,8 @@ export function Tile<T extends ElementType = 'div'>({
       href={href}
       className={cn(
         Classes.Tile,
-        'flex items-center justify-center flex-col w-full min-w-0 gap-1 group not-prose',
-        href && 'cursor-pointer',
+        'flex items-center justify-center flex-col w-full min-w-0 gap-1 group not-prose rounded-2xl',
+        href && 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500',
         className
       )}
       {...newTabProps}
