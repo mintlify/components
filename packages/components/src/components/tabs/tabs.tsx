@@ -113,7 +113,6 @@ function TabsRoot({
         'tabs tab-container',
         borderBottom && 'border-b border-gray-200 dark:border-gray-200/10 pb-6'
       )}
-      id={tabIds[activeTabIndex]}
     >
       <ul
         ref={tabListRef}
