@@ -12,7 +12,7 @@ const MAX_DEFAULT_VALUE_LENGTH = 50;
  */
 const LinkIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="gray" height="12px" viewBox="0 0 576 512">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="gray" height="12px" viewBox="0 0 576 512" aria-hidden="true">
       <path d="M0 256C0 167.6 71.6 96 160 96h72c13.3 0 24 10.7 24 24s-10.7 24-24 24H160C98.1 144 48 194.1 48 256s50.1 112 112 112h72c13.3 0 24 10.7 24 24s-10.7 24-24 24H160C71.6 416 0 344.4 0 256zm576 0c0 88.4-71.6 160-160 160H344c-13.3 0-24-10.7-24-24s10.7-24 24-24h72c61.9 0 112-50.1 112-112s-50.1-112-112-112H344c-13.3 0-24-10.7-24-24s10.7-24 24-24h72c88.4 0 160 71.6 160 160zM184 232H392c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z" />
     </svg>
   );
@@ -244,7 +244,7 @@ export function PropertyHead({
     name
   ) : (
     <>
-      <span className="text-gray-500 dark:text-gray-400">{parentName}</span>
+      <span className="text-gray-500 dark:text-gray-400">{parentName}.</span>
       {name}
     </>
   );
@@ -292,13 +292,15 @@ export function PropertyHead({
             </div>
           ))}
           {(parentName || name) && (
-            <div
-              className="font-semibold text-primary dark:text-primary-light cursor-pointer overflow-wrap-anywhere"
+            <button
+              type="button"
+              className="font-semibold text-primary dark:text-primary-light cursor-pointer overflow-wrap-anywhere text-left bg-transparent border-none p-0"
               data-component-part="name"
               onClick={copyAnchorLink}
+              aria-label={`${name}, ${mergedLabels.navigateToHeader}`}
             >
               {paramInfo}
-            </div>
+            </button>
           )}
           <div
             ref={pillsRef}
@@ -388,7 +390,13 @@ function PropertyBase({
       }
     }
 
-    const stringifiedValue = JSON.stringify(defaultValue);
+    let stringifiedValue: string;
+    try {
+      stringifiedValue = JSON.stringify(defaultValue);
+    } catch {
+      // JSON.stringify can throw for BigInt or circular references
+      return null;
+    }
     if (
       stringifiedValue &&
       stringifiedValue.length > 0 &&
@@ -451,8 +459,6 @@ export type ParamFieldProps = {
   required?: boolean;
   deprecated?: boolean;
   hidden?: boolean;
-  placeholder?: string;
-  enum?: string[];
   id?: string;
   pre?: string[];
   post?: string[];
