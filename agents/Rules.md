@@ -45,7 +45,7 @@ if empty - nothing to change
 - ~~Banner~~
 - ~~Callouts~~
     - ~~update to `variant="note"` instead of 7 different components. add `variant="custom"`, set it by default~~
-- Cards
+- ~~Cards~~
 - Code groups
 - Color
     - nits https://mintlify.slack.com/archives/C09QQDHD7PG/p1764635576242229?thread_ts=1763963569.715779&cid=C09QQDHD7PG
