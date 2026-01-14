@@ -447,3 +447,187 @@ export const RichContent: Story = {
     </div>
   ),
 };
+
+export const AccordionGroupDefault: Story = {
+  render: () => (
+    <div className="max-w-2xl">
+      <Accordion.Group>
+        <Accordion title="First Accordion" defaultOpen={true}>
+          <p>Content of the first accordion.</p>
+        </Accordion>
+        <Accordion title="Second Accordion" defaultOpen={false}>
+          <p>Content of the second accordion.</p>
+        </Accordion>
+        <Accordion title="Third Accordion" defaultOpen={false}>
+          <p>Content of the third accordion.</p>
+        </Accordion>
+      </Accordion.Group>
+    </div>
+  ),
+};
+
+export const AccordionGroupWithIcons: Story = {
+  render: () => (
+    <div className="max-w-2xl">
+      <Accordion.Group>
+        <Accordion title="Documents" icon="file" iconType="regular" defaultOpen={false}>
+          <p>Document-related content here.</p>
+        </Accordion>
+        <Accordion title="Settings" icon="gear" iconType="regular" defaultOpen={false}>
+          <p>Settings-related content here.</p>
+        </Accordion>
+        <Accordion title="Help" icon="circle-question" iconType="regular" defaultOpen={false}>
+          <p>Help and support content here.</p>
+        </Accordion>
+        <Accordion title="Account" icon="user" iconType="regular" defaultOpen={false}>
+          <p>Account and profile settings here.</p>
+        </Accordion>
+      </Accordion.Group>
+    </div>
+  ),
+};
+
+export const AccordionGroupWithDescriptions: Story = {
+  render: () => (
+    <div className="max-w-2xl">
+      <Accordion.Group>
+        <Accordion
+          title="Getting Started"
+          description="Basic introduction and setup"
+          defaultOpen={false}
+        >
+          <p>Getting started content here.</p>
+          <ol className="list-decimal list-inside mt-2">
+            <li>Install the package</li>
+            <li>Configure your project</li>
+            <li>Start building</li>
+          </ol>
+        </Accordion>
+        <Accordion
+          title="Advanced Features"
+          description="Detailed guide to advanced functionality"
+          defaultOpen={false}
+        >
+          <p>Advanced features content here.</p>
+          <ul className="list-disc list-inside mt-2">
+            <li>Custom theming</li>
+            <li>Plugin system</li>
+            <li>Advanced routing</li>
+          </ul>
+        </Accordion>
+        <Accordion
+          title="Troubleshooting"
+          description="Common issues and solutions"
+          defaultOpen={false}
+        >
+          <p>Troubleshooting content here.</p>
+          <p className="mt-2">If you encounter issues, check the documentation or contact support.</p>
+        </Accordion>
+      </Accordion.Group>
+    </div>
+  ),
+};
+
+export const AccordionGroupWithRichContent: Story = {
+  render: () => (
+    <div className="max-w-2xl">
+      <Accordion.Group>
+        <Accordion
+          title="Installation"
+          icon="download"
+          iconType="solid"
+          defaultOpen={true}
+        >
+          <p className="mb-3">Install the package using your preferred package manager:</p>
+          <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+            npm install @mintlify/components
+          </pre>
+        </Accordion>
+        <Accordion
+          title="Configuration"
+          icon="gear"
+          iconType="solid"
+          defaultOpen={false}
+        >
+          <p className="mb-3">Create a configuration file:</p>
+          <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+            {`{
+  "theme": "light",
+  "components": ["accordion", "badge"]
+}`}
+          </pre>
+        </Accordion>
+        <Accordion
+          title="Usage"
+          icon="code"
+          iconType="solid"
+          defaultOpen={false}
+        >
+          <p className="mb-3">Import and use the components:</p>
+          <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+            {`import { Accordion } from '@mintlify/components';
+
+<Accordion title="Hello">
+  Content here
+</Accordion>`}
+          </pre>
+        </Accordion>
+      </Accordion.Group>
+    </div>
+  ),
+};
+
+export const AccordionGroupCustomStyling: Story = {
+  render: () => (
+    <div className="max-w-2xl">
+      <Accordion.Group className="shadow-lg">
+        <Accordion title="Item One" defaultOpen={false}>
+          <p>This AccordionGroup has a custom shadow applied.</p>
+        </Accordion>
+        <Accordion title="Item Two" defaultOpen={false}>
+          <p>All accordions share the group styling.</p>
+        </Accordion>
+        <Accordion title="Item Three" defaultOpen={false}>
+          <p>The group creates a unified appearance.</p>
+        </Accordion>
+      </Accordion.Group>
+    </div>
+  ),
+};
+
+export const MultipleAccordionGroups: Story = {
+  render: () => (
+    <div className="max-w-2xl space-y-4">
+      <div>
+        <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
+          Documentation
+        </h3>
+        <Accordion.Group>
+          <Accordion title="Quick Start" icon="rocket" iconType="solid" defaultOpen={false}>
+            <p>Get up and running in minutes.</p>
+          </Accordion>
+          <Accordion title="API Reference" icon="book" iconType="solid" defaultOpen={false}>
+            <p>Complete API documentation.</p>
+          </Accordion>
+          <Accordion title="Examples" icon="lightbulb" iconType="solid" defaultOpen={false}>
+            <p>Real-world usage examples.</p>
+          </Accordion>
+        </Accordion.Group>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
+          Support
+        </h3>
+        <Accordion.Group>
+          <Accordion title="FAQ" icon="circle-question" iconType="solid" defaultOpen={false}>
+            <p>Frequently asked questions.</p>
+          </Accordion>
+          <Accordion title="Contact Us" icon="envelope" iconType="solid" defaultOpen={false}>
+            <p>Get in touch with our team.</p>
+          </Accordion>
+        </Accordion.Group>
+      </div>
+    </div>
+  ),
+};
