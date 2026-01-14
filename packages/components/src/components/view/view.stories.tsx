@@ -102,8 +102,12 @@ export const MultipleViews: Story = {
 
     return (
       <div className="space-y-4">
-        <div className="flex gap-2">
+        <div className="flex gap-2" role="tablist" aria-label="View selection">
           <button
+            role="tab"
+            aria-selected={activeView === "view-1"}
+            aria-controls="panel-view-1"
+            id="tab-view-1"
             className={`px-4 py-2 rounded-lg transition-colors ${
               activeView === "view-1"
                 ? "bg-blue-500 text-white"
@@ -114,6 +118,10 @@ export const MultipleViews: Story = {
             View 1
           </button>
           <button
+            role="tab"
+            aria-selected={activeView === "view-2"}
+            aria-controls="panel-view-2"
+            id="tab-view-2"
             className={`px-4 py-2 rounded-lg transition-colors ${
               activeView === "view-2"
                 ? "bg-blue-500 text-white"
@@ -124,6 +132,10 @@ export const MultipleViews: Story = {
             View 2
           </button>
           <button
+            role="tab"
+            aria-selected={activeView === "view-3"}
+            aria-controls="panel-view-3"
+            id="tab-view-3"
             className={`px-4 py-2 rounded-lg transition-colors ${
               activeView === "view-3"
                 ? "bg-blue-500 text-white"
@@ -136,7 +148,7 @@ export const MultipleViews: Story = {
         </div>
 
         <div className="min-h-[100px]">
-          <View title="view-1" visible={activeView === "view-1"}>
+          <View title="view-1" visible={activeView === "view-1"} id="panel-view-1" role="tabpanel" aria-labelledby="tab-view-1">
             <div className="p-4 bg-purple-100 dark:bg-purple-900 rounded-lg">
               <h3 className="text-lg font-semibold mb-2 text-purple-800 dark:text-purple-200">
                 First View
@@ -147,7 +159,7 @@ export const MultipleViews: Story = {
             </div>
           </View>
 
-          <View title="view-2" visible={activeView === "view-2"}>
+          <View title="view-2" visible={activeView === "view-2"} id="panel-view-2" role="tabpanel" aria-labelledby="tab-view-2">
             <div className="p-4 bg-teal-100 dark:bg-teal-900 rounded-lg">
               <h3 className="text-lg font-semibold mb-2 text-teal-800 dark:text-teal-200">
                 Second View
@@ -158,7 +170,7 @@ export const MultipleViews: Story = {
             </div>
           </View>
 
-          <View title="view-3" visible={activeView === "view-3"}>
+          <View title="view-3" visible={activeView === "view-3"} id="panel-view-3" role="tabpanel" aria-labelledby="tab-view-3">
             <div className="p-4 bg-orange-100 dark:bg-orange-900 rounded-lg">
               <h3 className="text-lg font-semibold mb-2 text-orange-800 dark:text-orange-200">
                 Third View
@@ -213,8 +225,12 @@ export const CodeExampleViews: Story = {
 
     return (
       <div className="space-y-4 w-full max-w-lg">
-        <div className="flex gap-2">
+        <div className="flex gap-2" role="tablist" aria-label="Code language selection">
           <button
+            role="tab"
+            aria-selected={language === "javascript"}
+            aria-controls="panel-javascript"
+            id="tab-javascript"
             className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
               language === "javascript"
                 ? "bg-yellow-500 text-white"
@@ -225,6 +241,10 @@ export const CodeExampleViews: Story = {
             JavaScript
           </button>
           <button
+            role="tab"
+            aria-selected={language === "python"}
+            aria-controls="panel-python"
+            id="tab-python"
             className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
               language === "python"
                 ? "bg-blue-500 text-white"
@@ -235,6 +255,10 @@ export const CodeExampleViews: Story = {
             Python
           </button>
           <button
+            role="tab"
+            aria-selected={language === "ruby"}
+            aria-controls="panel-ruby"
+            id="tab-ruby"
             className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
               language === "ruby"
                 ? "bg-red-500 text-white"
@@ -246,7 +270,7 @@ export const CodeExampleViews: Story = {
           </button>
         </div>
 
-        <View title="javascript" visible={language === "javascript"}>
+        <View title="javascript" visible={language === "javascript"} id="panel-javascript" role="tabpanel" aria-labelledby="tab-javascript">
           <pre className="p-4 bg-gray-900 text-green-400 rounded-lg overflow-x-auto font-mono text-sm">
 {`// JavaScript Example
 const fetchData = async () => {
@@ -257,7 +281,7 @@ const fetchData = async () => {
           </pre>
         </View>
 
-        <View title="python" visible={language === "python"}>
+        <View title="python" visible={language === "python"} id="panel-python" role="tabpanel" aria-labelledby="tab-python">
           <pre className="p-4 bg-gray-900 text-green-400 rounded-lg overflow-x-auto font-mono text-sm">
 {`# Python Example
 import requests
@@ -268,7 +292,7 @@ def fetch_data():
           </pre>
         </View>
 
-        <View title="ruby" visible={language === "ruby"}>
+        <View title="ruby" visible={language === "ruby"} id="panel-ruby" role="tabpanel" aria-labelledby="tab-ruby">
           <pre className="p-4 bg-gray-900 text-green-400 rounded-lg overflow-x-auto font-mono text-sm">
 {`# Ruby Example
 require 'net/http'
