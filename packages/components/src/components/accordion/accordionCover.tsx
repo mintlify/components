@@ -30,7 +30,7 @@ export function AccordionCover({
                 'list-none [&::-webkit-details-marker]:hidden',
                 coverClass
             )}
-            aria-controls={id + ' accordion children'}
+            aria-controls={id + '-accordion-children'}
             aria-expanded={open}
             data-component-part="accordion-button"
         >

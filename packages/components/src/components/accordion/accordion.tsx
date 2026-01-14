@@ -149,9 +149,9 @@ function GenericAccordion({
   const openRef = useRef<boolean>(initialOpen);
 
   useEffect(() => {
-    if (!onMount || !open) return;
+    if (!onMount) return;
 
-    if (getInitialOpenFromUrl) {
+    if (getInitialOpenFromUrl && !open) {
       const hashes =
         typeof window !== 'undefined'
           ? window.location.hash.substring(1).split(connectingCharacter)
@@ -222,7 +222,7 @@ function GenericAccordion({
           topOffset={topOffset}
         />
         <div
-          id={id + ' accordion children'}
+          id={id + '-accordion-children'}
           role="region"
           aria-labelledby={id + '-label'}
           className={cn(
