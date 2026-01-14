@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 const MAX_DEFAULT_VALUE_LENGTH = 50;
@@ -17,7 +17,7 @@ export type ResponseFieldProps = {
   /** Whether the field is deprecated */
   deprecated?: boolean;
   /** Description of the field */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Custom ID for the field (used for anchor links) */
   id?: string;
   /** Custom labels to display before the type */
@@ -33,7 +33,7 @@ function InfoPill({
   prefix,
   className,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   prefix?: string;
   className?: string;
 }) {
@@ -58,6 +58,8 @@ function RequiredPill() {
     <div
       className="px-2 py-0.5 rounded-md bg-red-100/50 dark:bg-red-400/10 text-red-600 dark:text-red-300 font-medium whitespace-nowrap"
       data-component-part="required-pill"
+      role="status"
+      aria-label="Required field"
     >
       required
     </div>
@@ -69,6 +71,8 @@ function DeprecatedPill() {
     <div
       className="px-2 py-0.5 rounded-md bg-amber-100/50 dark:bg-amber-400/10 text-amber-600 dark:text-amber-300 font-medium whitespace-nowrap"
       data-component-part="deprecated-pill"
+      role="status"
+      aria-label="Deprecated field"
     >
       deprecated
     </div>
