@@ -1,3 +1,52 @@
-export const ResponseExample = () => {
-  return <div>ResponseExample</div>;
+'use client';
+
+import { ReactNode } from 'react';
+import { cn } from '@/utils/cn';
+
+export type ResponseExampleProps = {
+  /**
+   * Code blocks to display as response examples.
+   * Typically CodeBlock components or similar.
+   */
+  children?: ReactNode;
+  /**
+   * When true, displays multiple examples in a dropdown instead of tabs.
+   */
+  dropdown?: boolean;
+  /**
+   * Additional CSS classes for the root element.
+   */
+  className?: string;
 };
+
+/**
+ * ResponseExample is a container for displaying API response examples.
+ * It wraps code blocks and provides consistent styling and layout.
+ *
+ * When CodeGroup is fully available, this component integrates with it
+ * to provide tabbed or dropdown navigation between multiple response examples.
+ */
+export function ResponseExample({
+  children,
+  dropdown,
+  className,
+}: ResponseExampleProps) {
+  return (
+    <div
+      className={cn(
+        'response-example',
+        'mt-8',
+        className
+      )}
+      data-response-example
+      data-dropdown={dropdown ? 'true' : undefined}
+    >
+      <div
+        className="response-example-content"
+        data-component-part="response-example-content"
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
