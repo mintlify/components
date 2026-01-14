@@ -1,1 +1,1 @@
-export { ResponseField } from "./responseField";
+export { ResponseField, type ResponseFieldProps } from "./responseField";
