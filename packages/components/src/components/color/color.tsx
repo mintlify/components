@@ -130,6 +130,7 @@ const ColorItem = ({ name, value, className }: ColorItemProps) => {
       onClick={handleCopy}
       className={cn(
         'cursor-copy relative flex items-center justify-center rounded-lg border border-neutral-200 dark:border-neutral-800',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500',
         variant === 'compact' && 'max-h-[104px] aspect-square',
         variant === 'table' && 'aspect-square w-full md:h-10'
       )}
