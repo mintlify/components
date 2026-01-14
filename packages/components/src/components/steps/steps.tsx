@@ -117,17 +117,17 @@ const StepsItem = ({
               </p>
             ),
             h2: (
-              <h2 className="mt-2" contentEditable={false} data-component-part="step-title">
+              <h2 className="mt-2 text-gray-900 dark:text-gray-200" contentEditable={false} data-component-part="step-title">
                 {title}
               </h2>
             ),
             h3: (
-              <h3 className="mt-2" contentEditable={false} data-component-part="step-title">
+              <h3 className="mt-2 text-gray-900 dark:text-gray-200" contentEditable={false} data-component-part="step-title">
                 {title}
               </h3>
             ),
             h4: (
-              <h4 className="mt-2" contentEditable={false} data-component-part="step-title">
+              <h4 className="mt-2 text-gray-900 dark:text-gray-200" contentEditable={false} data-component-part="step-title">
                 {title}
               </h4>
             ),
