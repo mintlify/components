@@ -24,6 +24,7 @@ export function AccordionCover({
 
     return (
         <summary
+            id={id + '-label'}
             className={cn(
                 'relative not-prose flex flex-row items-center content-center w-full cursor-pointer',
                 'list-none [&::-webkit-details-marker]:hidden',

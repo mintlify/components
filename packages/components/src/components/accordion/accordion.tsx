@@ -1,7 +1,7 @@
 import { IconType } from '@/models';
 import slugify from '@sindresorhus/slugify';
 import { isEqual } from 'lodash';
-import { ReactNode, createContext, useContext, useEffect, useId, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useId, useRef, useState } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
 import { Icon as ComponentIcon } from '@/components/icon';
@@ -138,12 +138,15 @@ function GenericAccordion({
 
   const context = useContext(AccordionContext);
 
-  const [open, setOpen] = useState<boolean>(() => {
+  const initialOpen = (() => {
     if (getInitialOpenFromUrl && id) {
       return getInitialOpenFromUrl(id, context.parentIds);
     }
     return defaultOpen;
-  });
+  })();
+
+  const [open, setOpen] = useState<boolean>(initialOpen);
+  const openRef = useRef<boolean>(initialOpen);
 
   useEffect(() => {
     if (getInitialOpenFromUrl && onMount) {
@@ -168,6 +171,7 @@ function GenericAccordion({
 
   const onClickOpen = (isOpen: boolean) => {
     setOpen(isOpen);
+    openRef.current = isOpen;
 
     // Call the URL state change callback if provided
     if (!_disabled && onUrlStateChange) {
@@ -196,7 +200,7 @@ function GenericAccordion({
         open={open}
         onToggle={(e) => {
           const newState = e.currentTarget.open;
-          if (newState !== open) {
+          if (newState !== openRef.current) {
             onClickOpen(newState);
           }
         }}
@@ -216,7 +220,7 @@ function GenericAccordion({
         <div
           id={id + ' accordion children'}
           role="region"
-          aria-labelledby={id}
+          aria-labelledby={id + '-label'}
           className={cn(
             contentClass,
             'prose prose-gray dark:prose-invert overflow-x-auto cursor-default'
