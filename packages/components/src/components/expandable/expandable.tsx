@@ -40,13 +40,13 @@ export function Expandable({
   // shouldRenderChildren should only ever be set to true - we never want to unmount stateful components
   const [shouldRenderChildren, setShouldRenderChildren] = useState(open || !lazy);
 
-  // Update shouldRenderChildren when open becomes true
+  // Update shouldRenderChildren when open becomes true or lazy becomes false
   // Use useLayoutEffect to update synchronously before paint, preventing flash of empty expanded state
   useLayoutEffect(() => {
-    if (open && !shouldRenderChildren) {
+    if ((open || !lazy) && !shouldRenderChildren) {
       setShouldRenderChildren(true);
     }
-  }, [open, shouldRenderChildren]);
+  }, [open, lazy, shouldRenderChildren]);
 
   const setOpenState = (newOpenState: boolean) => {
     if (!isControlled) {
