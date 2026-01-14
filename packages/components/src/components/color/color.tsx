@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useRef, useState, useTransition } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, useTransition, ReactNode } from 'react';
 
 import { CheckIcon } from '@/icons';
 import { Classes } from '@/lib/local/selectors';
@@ -23,7 +23,7 @@ const ColorContext = createContext<ColorContextValue>({
 });
 
 type ColorProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   variant?: ColorVariant;
   className?: string;
   /**
@@ -54,7 +54,7 @@ const ColorRoot = ({ children, variant = 'compact', className, theme = 'light' }
 };
 
 type ColorRowProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   title?: string;
   className?: string;
 };
@@ -111,13 +111,26 @@ const ColorItem = ({ name, value, className }: ColorItemProps) => {
 
   const currentColor = getCurrentColor();
 
+  // Cleanup timeout on unmount to prevent memory leak and state updates on unmounted component
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleCopy = async () => {
     // Clear any existing timeout to prevent race condition on rapid clicks
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
 
-    await copyToClipboard(currentColor);
+    const result = await copyToClipboard(currentColor);
+    if (result !== 'success') {
+      return;
+    }
+
     startTransition(() => {
       setState('copied');
     });
@@ -141,12 +154,14 @@ const ColorItem = ({ name, value, className }: ColorItemProps) => {
         variant === 'compact' && 'max-h-[104px] aspect-square',
         variant === 'table' && 'aspect-square w-full md:h-10'
       )}
-      aria-label={name || `Color ${currentColor}`}
-      aria-pressed={state === 'copied'}
-      aria-roledescription={state === 'copied' ? 'Copied' : 'Copy'}
+      aria-label={
+        state === 'copied'
+          ? `Copied ${name || currentColor}`
+          : `Copy color ${name || currentColor}`
+      }
     >
       <CheckIcon
-        aria-hidden
+        aria-hidden="true"
         className={cn(
           'absolute inset-0 m-auto pointer-events-none transition-opacity duration-100 opacity-0',
           'text-white dark:text-white [filter:drop-shadow(0_0_2px_rgb(0_0_0_/_0.1))_drop-shadow(0_0_4px_rgb(0_0_0_/_0.1))]',
