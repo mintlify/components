@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentPropsWithoutRef, forwardRef, useCallback, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, forwardRef, useCallback, ReactNode, KeyboardEvent } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
 import { cn } from '@/utils/cn';
@@ -10,7 +10,7 @@ import { cn } from '@/utils/cn';
  */
 const LinkIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="gray" height="12px" viewBox="0 0 576 512">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="12px" viewBox="0 0 576 512" aria-hidden="true">
       <path d="M0 256C0 167.6 71.6 96 160 96h72c13.3 0 24 10.7 24 24s-10.7 24-24 24H160C98.1 144 48 194.1 48 256s50.1 112 112 112h72c13.3 0 24 10.7 24 24s-10.7 24-24 24H160C71.6 416 0 344.4 0 256zm576 0c0 88.4-71.6 160-160 160H344c-13.3 0-24-10.7-24-24s10.7-24 24-24h72c61.9 0 112-50.1 112-112s-50.1-112-112-112H344c-13.3 0-24-10.7-24-24s10.7-24 24-24h72c88.4 0 160 71.6 160 160zM184 232H392c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z" />
     </svg>
   );
@@ -22,6 +22,7 @@ const LinkIcon = () => {
 async function copyToClipboard(text: string): Promise<'success' | 'error'> {
   if (!text) {
     console.warn('Called copyToClipboard() with empty text');
+    return 'error';
   }
   try {
     await navigator.clipboard.writeText(text);
@@ -97,12 +98,23 @@ export const Update = forwardRef<HTMLDivElement, UpdateProps>(
     const tagsArray = tags?.map((tag) => tag.trim()).filter(Boolean);
 
     const copyAnchorLink = useCallback(() => {
+      if (typeof window === 'undefined') return;
       void copyToClipboard(
-        `${window.location.protocol}//${window.location.host}${window.location.pathname}#${id}`
+        `${window.location.protocol}//${window.location.host}${window.location.pathname}${window.location.search}#${id}`
       );
       window.location.hash = id;
       scrollElementIntoView(id);
     }, [id]);
+
+    const handleKeyDown = useCallback(
+      (event: KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          copyAnchorLink();
+        }
+      },
+      [copyAnchorLink]
+    );
 
     return (
       <div
@@ -122,12 +134,11 @@ export const Update = forwardRef<HTMLDivElement, UpdateProps>(
           <div className="absolute">
             <a
               href={`#${id}`}
-              className="-ml-10 flex items-center opacity-0 border-0 group-hover:opacity-100 focus:opacity-100 focus:outline-0 group/link"
+              className="-ml-10 flex items-center opacity-0 border-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none group/link"
               aria-label={anchorAriaLabel}
             >
-              &#8203;
               <div
-                className="w-6 h-6 rounded-md flex items-center justify-center shadow-sm text-gray-400 dark:text-white/50 dark:bg-background-dark dark:brightness-[1.35] dark:ring-1 dark:hover:brightness-150 bg-white ring-1 ring-gray-400/30 dark:ring-gray-700/25 hover:ring-gray-400/60 dark:hover:ring-white/20 group-focus/link:border-2 group-focus/link:border-primary dark:group-focus/link:border-primary-light"
+                className="w-6 h-6 rounded-md flex items-center justify-center shadow-sm text-gray-400 dark:text-white/50 dark:bg-background-dark dark:brightness-[1.35] dark:ring-1 dark:hover:brightness-150 bg-white ring-1 ring-gray-400/30 dark:ring-gray-700/25 hover:ring-gray-400/60 dark:hover:ring-white/20 group-focus/link:ring-2 group-focus/link:ring-primary dark:group-focus/link:ring-primary-light"
                 data-component-part="anchor-icon"
               >
                 <LinkIcon />
@@ -135,8 +146,12 @@ export const Update = forwardRef<HTMLDivElement, UpdateProps>(
             </a>
           </div>
           <div
-            className="cursor-pointer px-2 py-1 rounded-lg text-sm flex items-center flex-grow-0 justify-center font-medium bg-primary/10 text-primary dark:text-primary-light"
+            className="cursor-pointer px-2 py-1 rounded-lg text-sm flex items-center flex-grow-0 justify-center font-medium bg-primary/10 text-primary dark:text-primary-light focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-light"
             onClick={copyAnchorLink}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label={`Copy link to ${label}`}
             contentEditable={false}
             data-component-part="label"
           >
