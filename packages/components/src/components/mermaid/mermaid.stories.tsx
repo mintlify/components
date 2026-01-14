@@ -244,3 +244,10 @@ export const AllDiagramTypes: Story = {
     </div>
   ),
 };
+
+export const InvalidSyntax: Story = {
+  args: {
+    chart: `graph TD
+    A[Start --> B{Invalid syntax here`,
+  },
+};

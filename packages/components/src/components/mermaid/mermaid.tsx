@@ -21,6 +21,7 @@ export type MermaidProps = {
 export function Mermaid({ chart, className }: MermaidProps): ReactElement {
   const id = useId();
   const [svg, setSvg] = useState('');
+  const [error, setError] = useState<string | null>(null);
   const [showControls, setShowControls] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -44,9 +45,10 @@ export function Mermaid({ chart, className }: MermaidProps): ReactElement {
     };
   }, []);
 
-  // Reset transform state when chart changes
+  // Reset transform state and error when chart changes
   useEffect(() => {
     reset();
+    setError(null);
   }, [chart, reset]);
 
   useEffect(() => {
@@ -75,9 +77,15 @@ export function Mermaid({ chart, className }: MermaidProps): ReactElement {
 
         if (!cancelled) {
           setSvg(svg);
+          setError(null);
         }
-      } catch (error) {
-        console.error('Error while rendering mermaid', error);
+      } catch (err) {
+        console.error('Error while rendering mermaid', err);
+        if (!cancelled) {
+          const message = err instanceof Error ? err.message : 'Failed to render diagram';
+          setError(message);
+          setSvg('');
+        }
       } finally {
         document.body.removeChild(tempContainer);
       }
@@ -107,6 +115,21 @@ export function Mermaid({ chart, className }: MermaidProps): ReactElement {
       resizeObserver.disconnect();
     };
   }, [svg]);
+
+  if (error) {
+    return (
+      <div
+        className={cn(
+          'rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/50 dark:text-red-400',
+          className
+        )}
+        role="alert"
+      >
+        <p className="font-medium">Failed to render diagram</p>
+        <p className="mt-1 text-xs opacity-80">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className={cn('group relative overflow-hidden', className)}>

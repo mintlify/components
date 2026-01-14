@@ -1,5 +1,6 @@
 'use client';
 
+import { ComponentProps } from 'react';
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -12,7 +13,7 @@ import {
 
 import { cn } from '@/utils/cn';
 
-const Button = ({ children, className, ...props }: React.ComponentProps<'button'>) => {
+const Button = ({ children, className, ...props }: ComponentProps<'button'>) => {
   return (
     <button
       type="button"
@@ -40,6 +41,8 @@ export const ZoomControls = ({ onZoomIn, onZoomOut, onReset, onPan, panStep }: Z
     <div
       className="absolute bottom-2 right-2 z-10 grid grid-cols-3 gap-1"
       data-component-part="zoom-controls"
+      role="group"
+      aria-label="Diagram zoom and pan controls"
     >
       <div aria-hidden="true" className="pointer-events-none" />
 
