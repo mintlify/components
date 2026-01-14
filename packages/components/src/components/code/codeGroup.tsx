@@ -42,6 +42,21 @@ export type CodeGroupPropsBase = {
    */
   defaultSelectedIndex?: number;
   /**
+   * Primary brand color (RGB values, e.g., "37 99 235"). Used for selected tab text and underline.
+   * @default "37 99 235" (blue-600)
+   */
+  primary?: string;
+  /**
+   * Light variant of primary color (RGB values). Used for selected tab in dark mode.
+   * @default "96 165 250" (blue-400)
+   */
+  primaryLight?: string;
+  /**
+   * Dark variant of primary color (RGB values). Used for focus states.
+   * @default "29 78 216" (blue-700)
+   */
+  primaryDark?: string;
+  /**
    * Render prop for action buttons (copy, feedback, AI, etc.)
    * Receives the currently selected code string and child props
    */
@@ -79,6 +94,9 @@ export const CodeGroup = function CodeGroup({
   renderLanguageDropdown,
   selectedIndex: controlledSelectedIndex,
   defaultSelectedIndex = 0,
+  primary = '37 99 235',
+  primaryLight = '96 165 250',
+  primaryDark = '29 78 216',
 }: CodeGroupProps) {
   const triggerRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
   const childArr = Array.isArray(children)
@@ -216,9 +234,16 @@ export const CodeGroup = function CodeGroup({
         codeBlockTheme === 'system' &&
           'bg-gray-50 dark:bg-white/5 dark:codeblock-dark text-gray-950 dark:text-gray-50 codeblock-light',
         codeBlockTheme === 'dark' &&
-          'border-transparent bg-codeblock dark:bg-white/5 text-gray-50 codeblock-dark',
+          'border-transparent bg-white/5 text-gray-50 codeblock-dark',
         className
       )}
+      style={
+        {
+          '--primary': primary,
+          '--primary-light': primaryLight,
+          '--primary-dark': primaryDark,
+        } as React.CSSProperties
+      }
       asChild={false}
     >
       <div
@@ -270,6 +295,7 @@ export const CodeGroup = function CodeGroup({
                 // avoid heavy re-rendering of the code block
                 expandable={child.props.expandable && index === selectedIndex}
                 codeBlockTheme={codeBlockTheme}
+                codeBlockThemeObject={codeBlockTheme}
               />
             </TabsPrimitive.Content>
           );
