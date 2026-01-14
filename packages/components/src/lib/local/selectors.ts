@@ -1,6 +1,7 @@
 const _classes = {
     Accordion: 'accordion',
     AccordionGroup: 'accordion-group',
+    Banner: 'banner',
     Callout: 'callout',
     Card: 'card',
     CardGroup: 'card-group',
