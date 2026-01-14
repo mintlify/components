@@ -98,7 +98,7 @@ export const Update = forwardRef<HTMLDivElement, UpdateProps>(
 
     const copyAnchorLink = useCallback(() => {
       void copyToClipboard(
-        `https://${window.location.host}${window.location.pathname}#${id}`
+        `${window.location.protocol}//${window.location.host}${window.location.pathname}#${id}`
       );
       window.location.hash = id;
       scrollElementIntoView(id);
@@ -147,9 +147,9 @@ export const Update = forwardRef<HTMLDivElement, UpdateProps>(
               className="px-1 flex flex-wrap gap-2 text-secondary dark:text-secondary-light mt-3 text-sm"
               data-component-part="tag-list"
             >
-              {tagsArray.map((tag) => (
+              {tagsArray.map((tag, index) => (
                 <span
-                  key={tag}
+                  key={`${tag}-${index}`}
                   className="inline-block rounded-lg text-sm font-medium"
                   data-component-part="tag"
                 >
