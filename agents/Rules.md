@@ -34,8 +34,8 @@ if empty - nothing to change
 
 </aside>
 
-- Accordions
-    - Rename `<AccordionGroup>` to `<Accordion.Group>`
+- ~~Accordions~~
+    - ~~Rename `<AccordionGroup>` to `<Accordion.Group>`~~
     - ~~Add `data-component-part` **for:~~
         - ~~`<details>`~~
 - ~~Badge~~
