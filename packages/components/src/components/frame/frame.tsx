@@ -13,15 +13,13 @@ import { cn } from '@/utils/cn';
 const enhanceVideoProps = (children: ReactNode): ReactNode => {
   return React.Children.map(children, (child) => {
     if (isValidElement(child) && typeof child.type === 'string' && child.type === 'video') {
-      const props = child.props as React.VideoHTMLAttributes<HTMLVideoElement>;
-      const childElement = child as React.ReactElement<React.VideoHTMLAttributes<HTMLVideoElement>>;
+      const videoElement = child as React.ReactElement<React.VideoHTMLAttributes<HTMLVideoElement>>;
 
-      if (props.autoPlay) {
-        return React.cloneElement(childElement, {
+      if (videoElement.props.autoPlay) {
+        return React.cloneElement(videoElement, {
           playsInline: true,
           loop: true,
           muted: true,
-          ...props,
         });
       }
     }
@@ -130,7 +128,6 @@ export function Frame({
         {description && (
           <div
             className="relative rounded-2xl flex justify-center mt-3 pt-0 px-8 pb-2 text-sm text-gray-700 dark:text-gray-400"
-            contentEditable={false}
             data-component-part="frame-description"
           >
             <p>{description}</p>
