@@ -5,7 +5,6 @@ import { cn } from '@/utils/cn';
 import { enhanceVideoProps } from '@/utils/enhanceVideoProps';
 
 export interface FrameProps {
-  hint?: string;
   as: 'div';
   style: CSSProperties;
   className: string;
