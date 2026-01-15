@@ -9,6 +9,7 @@ export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+     colors: {
       red: {
         50: 'rgb(254 242 242 / <alpha-value>)',
         100: 'rgb(254 226 226 / <alpha-value>)',
@@ -100,6 +101,7 @@ export default {
         900: 'rgb(88 28 135 / <alpha-value>)',
         950: 'rgb(59 7 100 / <alpha-value>)',
       },
+     }
     },
   },
   plugins: [
