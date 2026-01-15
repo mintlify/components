@@ -1,2 +1,10 @@
-export { Tree } from "./tree";
-export type { TreeProps, TreeFolderProps, TreeFileProps } from "./tree";
+import { TreeFile } from './file';
+import { TreeFolder } from './folder';
+import { TreeRoot } from './root';
+
+const Tree = Object.assign(TreeRoot, {
+    File: TreeFile,
+    Folder: TreeFolder,
+});
+
+export { Tree };

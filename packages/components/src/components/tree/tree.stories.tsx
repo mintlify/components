@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Tree } from "./tree";
+import { Tree } from "./index";
 
 const meta: Meta<typeof Tree> = {
   title: "Components/Tree",
