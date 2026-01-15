@@ -1,5 +1,3 @@
-'use client';
-
 import { Children, useRef, useCallback, isValidElement, useState, useEffect, ReactElement, ReactNode } from 'react';
 
 import { Icon } from '@/components/icon';
@@ -261,5 +259,3 @@ export const Tabs = Object.assign(TabsRoot, {
   Item: TabsItem,
 });
 
-// For backwards compatibility - export TabsItem separately too
-export { TabsItem };
