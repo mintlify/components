@@ -20,7 +20,9 @@ export function getInitialOpenState() {
 
 export function updateAndCopyUrl() {
   const buildHistoryUrl = (idsString: string) => {
-    return `${window.location.origin}${window.location.pathname}${idsString ? `#${idsString}` : ''}`;
+    const url = new URL(window.location.href);
+    url.hash = idsString;
+    return url.toString();
   };
 
   function updateAndCopy(ids: string[]) {
@@ -38,8 +40,10 @@ export function updateAndCopyUrl() {
   }
 
   return (isOpen: boolean, id: string | undefined, parentIds: string[]) => {
-    if (isOpen && id) {
-      updateAndCopy([...parentIds, id]);
+    if (isOpen) {
+      if (id) {
+        updateAndCopy([...parentIds, id]);
+      }
     } else {
       if (parentIds.length > 0) {
         updateAndCopy(parentIds);
