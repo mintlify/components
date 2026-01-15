@@ -15,8 +15,7 @@ type Story = StoryObj<typeof Frame>;
 export const Basic: Story = {
   args: {
     style: { width: '400px', height: '200px' },
-    className: 'bg-white dark:bg-gray-800',
-    containerClassName: 'w-full',
+    className: 'w-full',
     children: <div className="p-4">Basic frame content</div>,
   },
 };
@@ -24,8 +23,7 @@ export const Basic: Story = {
 export const WithCaption: Story = {
   args: {
     style: { width: '400px', height: '200px' },
-    className: 'bg-white dark:bg-gray-800',
-    containerClassName: 'w-full',
+    className: 'w-full',
     description: 'This is a frame caption',
     children: <div className="p-4">Frame with caption</div>,
   },
@@ -34,8 +32,7 @@ export const WithCaption: Story = {
 export const WithHint: Story = {
   args: {
     style: { width: '400px', height: '200px' },
-    className: 'bg-white dark:bg-gray-800',
-    containerClassName: 'w-full',
+    className: 'w-full',
     title: 'This is a helpful hint',
     children: <div className="p-4">Frame with hint</div>,
   },
@@ -48,8 +45,7 @@ export const WithCustomStyle: Story = {
       height: '200px',
       background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
     },
-    className: 'bg-white dark:bg-gray-800',
-    containerClassName: 'w-full',
+    className: 'w-full',
     children: <div className="p-4 text-white">Frame with custom background</div>,
   },
 };
@@ -57,8 +53,7 @@ export const WithCustomStyle: Story = {
 export const WithContent: Story = {
   args: {
     style: { width: '400px', height: '200px' },
-    className: 'bg-white dark:bg-gray-800',
-    containerClassName: 'w-full',
+    className: 'w-full',
     children: (
       <div className="p-4">
         <h3 className="text-lg font-semibold mb-2">Frame Content</h3>
@@ -73,8 +68,7 @@ export const WithContent: Story = {
 export const WithAllFeatures: Story = {
   args: {
     style: { width: '400px', height: '200px' },
-    className: 'bg-white dark:bg-gray-800',
-    containerClassName: 'w-full',
+    className: 'w-full',
     description: 'Complete frame example',
     title: 'This frame shows all available features',
     children: (

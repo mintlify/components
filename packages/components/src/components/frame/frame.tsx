@@ -8,9 +8,7 @@ export interface FrameProps {
   hint?: string;
   as: 'div';
   style: CSSProperties;
-  p: string;
   className: string;
-  containerClassName: string;
   children: ReactNode;
   title?: string;
   description?: string;
@@ -34,13 +32,12 @@ export function Frame({
   description,
   style,
   className,
-  containerClassName,
   children,
 }: FrameProps) {
   const enhancedChildren = enhanceVideoProps(children);
 
   return (
-    <div className={containerClassName} data-component-part="frame-container">
+    <div className={className} data-component-part="frame-container">
       {title && (
         <div className="not-prose mb-4 flex items-center space-x-2">
           <svg
@@ -69,7 +66,7 @@ export function Frame({
           data-component-part="frame-background-pattern"
         />
         <div
-          className={cn('relative rounded-xl overflow-hidden flex justify-center', className)}
+          className="relative w-full rounded-xl overflow-hidden flex justify-center bg-white dark:bg-gray-800"
           data-component-part="frame-content"
         >
           {enhancedChildren}
@@ -77,10 +74,7 @@ export function Frame({
 
         {description && (
           <div
-            className={cn(
-              'relative rounded-2xl flex justify-center mt-3 pt-0 px-8 pb-2 text-sm text-gray-700 dark:text-gray-400',
-              className
-            )}
+            className="relative w-full rounded-2xl flex justify-center mt-3 pt-0 px-8 pb-2 text-sm text-gray-700 dark:text-gray-400 bg-white dark:bg-gray-800"
             contentEditable={false}
             data-component-part="frame-description"
           >
