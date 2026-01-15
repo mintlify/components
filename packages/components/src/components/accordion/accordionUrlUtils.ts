@@ -5,12 +5,12 @@ const connectingCharacter = ':';
 
 export function getInitialOpenState() {
   return (id: string, parentIds: string[]): boolean => {
-    const hashes =
-      typeof window !== 'undefined'
-        ? window.location.hash.substring(1).split(connectingCharacter)
-        : undefined;
+    const hash =
+      typeof window !== 'undefined' ? window.location.hash.substring(1) : '';
 
-    if (!hashes || hashes.length === 0) return false;
+    if (!hash) return false;
+
+    const hashes = hash.split(connectingCharacter);
     if (hashes.length > parentIds.length) {
       return isEqual(parentIds, hashes.slice(0, parentIds.length)) && hashes[parentIds.length] === id;
     }
