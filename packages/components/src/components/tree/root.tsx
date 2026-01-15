@@ -24,15 +24,18 @@ export const TreeRoot = ({ className, children }: TreeProps) => {
     const treeRef = useRef<HTMLDivElement>(null);
     const typeAheadBufferRef = useRef('');
     const typeAheadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const initializedRef = useRef(false);
 
     useEffect(() => {
-        if (!treeRef.current || initializedRef.current) return;
+        if (!treeRef.current) return;
+
+        const existingFocusable = treeRef.current.querySelector<HTMLElement>(
+            '[role="treeitem"][tabindex="0"]'
+        );
+        if (existingFocusable) return;
 
         const firstItem = treeRef.current.querySelector<HTMLElement>('[role="treeitem"]');
         if (firstItem) {
             updateRovingTabindex(treeRef.current, firstItem);
-            initializedRef.current = true;
         }
     }, [children]);
 
