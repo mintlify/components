@@ -39,8 +39,9 @@ export function AccordionCover({
                 <Icon
                     icon="caret-right"
                     iconType="solid"
+                    size={12}
                     className={cn(
-                        'h-3 w-3 transition bg-gray-700 dark:bg-gray-400',
+                        'transition bg-gray-700 dark:bg-gray-400',
                         open && 'duration-200 rotate-90 -mt-1',
                         !open && 'duration-75'
                     )}
