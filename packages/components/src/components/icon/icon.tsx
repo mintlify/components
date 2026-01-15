@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 
 import { isAbsoluteUrl } from '@/common';
-import { MINTLIFY_ICONS_CDN_URL } from '@/constants';
+import { DEFAULT_COLORS, MINTLIFY_ICONS_CDN_URL } from '@/constants';
 
 import { IconLibrary, IconType, iconTypes, PageType } from '@/models';
 
@@ -48,19 +48,25 @@ export function Icon({
   }
 
   const hasLightDarkColors = colorLight && colorDark;
+  const useDefaultColors = !color && !hasLightDarkColors && !overrideColor;
   const styleWithColors: CSSProperties = hasLightDarkColors
     ? ({
         ...style,
         '--color-light': colorLight,
         '--color-dark': colorDark,
       } as CSSProperties)
+    : useDefaultColors
+    ? ({
+        ...style,
+        '--color-light': DEFAULT_COLORS.primary,
+        '--color-dark': DEFAULT_COLORS.light,
+      } as CSSProperties)
     : style;
 
   const classNames = cn(
     Classes.Icon,
     'inline',
-    !color && !hasLightDarkColors && !overrideColor && 'bg-primary dark:bg-primary-light',
-    hasLightDarkColors && 'bg-[--color-light] dark:bg-[--color-dark]',
+    (hasLightDarkColors || useDefaultColors) && 'bg-[--color-light] dark:bg-[--color-dark]',
     className
   )
   const isPdf = pageType === 'pdf';

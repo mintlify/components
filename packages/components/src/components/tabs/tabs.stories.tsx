@@ -78,41 +78,6 @@ export const WithIcons: Story = {
   ),
 };
 
-export const WithIconTypes: Story = {
-  render: () => (
-    <Tabs>
-      <Tabs.Item title="Solid" icon="star" iconType="solid">
-        <p>This tab uses a solid star icon.</p>
-      </Tabs.Item>
-      <Tabs.Item title="Regular" icon="star" iconType="regular">
-        <p>This tab uses a regular star icon.</p>
-      </Tabs.Item>
-      <Tabs.Item title="Light" icon="star" iconType="light">
-        <p>This tab uses a light star icon.</p>
-      </Tabs.Item>
-      <Tabs.Item title="Duotone" icon="star" iconType="duotone">
-        <p>This tab uses a duotone star icon.</p>
-      </Tabs.Item>
-    </Tabs>
-  ),
-};
-
-export const WithLucideIcons: Story = {
-  render: () => (
-    <Tabs>
-      <Tabs.Item title="Dashboard" icon="layout-dashboard" iconLibrary="lucide">
-        <p>Dashboard view with Lucide icon.</p>
-      </Tabs.Item>
-      <Tabs.Item title="Analytics" icon="bar-chart-3" iconLibrary="lucide">
-        <p>Analytics data with Lucide icon.</p>
-      </Tabs.Item>
-      <Tabs.Item title="Settings" icon="settings" iconLibrary="lucide">
-        <p>Settings panel with Lucide icon.</p>
-      </Tabs.Item>
-    </Tabs>
-  ),
-};
-
 export const WithBorderBottom: Story = {
   render: () => (
     <Tabs borderBottom>
@@ -143,12 +108,14 @@ export const WithRichContent: Story = {
   render: () => (
     <Tabs>
       <Tabs.Item title="Code Example">
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto">
-          <code>{`function greet(name) {
-  console.log(\`Hello, \${name}!\`);
-}
+        <h2>Usage</h2>
+        <p>Here's how to use the component:</p>
+        <pre>
+          <code>{`import { Component } from '@your-org/component';
 
-greet('World');`}</code>
+function App() {
+  return <Component />;
+}`}</code>
         </pre>
       </Tabs.Item>
       <Tabs.Item title="List Content">
@@ -223,7 +190,7 @@ export const WithCallback: Story = {
 
 export const CustomClassName: Story = {
   render: () => (
-    <Tabs className="bg-gray-50 dark:bg-gray-900 rounded-t-lg px-4">
+    <Tabs className="bg-[#FF00FF] dark:bg-[#00FF00]" activeColor="#00FF00" activeColorDark="#0000FF">
       <Tabs.Item title="Styled Tab List">
         <p>The tab list has custom styling applied via className.</p>
       </Tabs.Item>
@@ -234,65 +201,11 @@ export const CustomClassName: Story = {
   ),
 };
 
-export const APIDocumentationExample: Story = {
+export const SingularTabComponent: Story = {
   render: () => (
     <Tabs>
-      <Tabs.Item title="cURL" icon="terminal">
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm">
-          <code>{`curl -X POST https://api.example.com/users \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -d '{"name": "John Doe", "email": "john@example.com"}'`}</code>
-        </pre>
-      </Tabs.Item>
-      <Tabs.Item title="JavaScript" icon="code">
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm">
-          <code>{`const response = await fetch('https://api.example.com/users', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer YOUR_API_KEY'
-  },
-  body: JSON.stringify({
-    name: 'John Doe',
-    email: 'john@example.com'
-  })
-});
-
-const data = await response.json();`}</code>
-        </pre>
-      </Tabs.Item>
-      <Tabs.Item title="Python" icon="code">
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm">
-          <code>{`import requests
-
-response = requests.post(
-    'https://api.example.com/users',
-    headers={
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_API_KEY'
-    },
-    json={
-        'name': 'John Doe',
-        'email': 'john@example.com'
-    }
-)
-
-data = response.json()`}</code>
-        </pre>
-      </Tabs.Item>
-    </Tabs>
-  ),
-};
-
-export const TwoTabs: Story = {
-  render: () => (
-    <Tabs>
-      <Tabs.Item title="Tab A">
-        <p>Content for Tab A</p>
-      </Tabs.Item>
-      <Tabs.Item title="Tab B">
-        <p>Content for Tab B</p>
+    <Tabs.Item title="Active Tab">
+        <div>Hi I'm a tab</div>
       </Tabs.Item>
     </Tabs>
   ),

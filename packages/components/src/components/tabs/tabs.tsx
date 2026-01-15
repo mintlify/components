@@ -1,61 +1,56 @@
-import { Children, useRef, useCallback, isValidElement, useState, useEffect, ReactElement, ReactNode } from 'react';
+import { Children, useRef, useCallback, isValidElement, useState, useEffect, ReactElement, ReactNode, RefObject, CSSProperties, KeyboardEvent } from 'react';
 
 import { Icon } from '@/components/icon';
+import { DEFAULT_COLORS } from '@/constants';
 import { Classes } from '@/lib/local/selectors';
 import { IconLibrary, IconType } from '@/models';
 import { cn } from '@/utils/cn';
-
-/**
- * Simple slugify function that converts a string into a URL-friendly slug.
- */
-function slugify(str: string): string {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/[\s_-]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
+import { CHILD_HEADING_IDS_ATTRIBUTE, CHILD_TAB_IDS_ATTRIBUTE, slugify } from '@/common';
 
 const DEFAULT_TAB_TITLE = 'Tab Title';
 
 export type TabsItemProps = {
-  /** Unique identifier for the tab */
+  // injected by remarkComponentIds plugin based on title
   id?: string;
-  /** Title displayed in the tab button */
   title: string;
-  /** Icon to display in the tab button (string name passed to Icon component) */
   icon?: string;
-  /** Icon type for FontAwesome icons */
   iconType?: IconType;
-  /** Icon library to use */
+  // pass in from DocsConfigContext if specified in docs.json
   iconLibrary?: IconLibrary;
-  /** Content displayed when the tab is active */
   children?: ReactNode;
+  // injected by remarkComponentIds plugin - JSON array of nested tab IDs for URL hash navigation
+  [CHILD_TAB_IDS_ATTRIBUTE]?: string;
+  // injected by remarkComponentIds plugin - JSON array of heading IDs within this tab for URL hash navigation
+  [CHILD_HEADING_IDS_ATTRIBUTE]?: string;
 };
 
-/**
- * TabsItem is used as a child of Tabs to define individual tab panels.
- * Access via Tabs.Item
- */
 function TabsItem({ children }: TabsItemProps) {
-  // This component is used for its props only, the actual rendering is handled by Tabs
   return <>{children}</>;
 }
 
+/**
+ * Mint app integration:
+ * - Wrap with useTabState hook for URL hash sync, tab sync across components, and localStorage persistence
+ * - useTabState provides: activeIndex, setActiveIndex (handles hash/sync/persist updates)
+ * - Connect onTabChange to setActiveIndex for full integration
+ * - Pass panelsRef and use it to implement findInPanels callback for useTabState
+ * - The component renders role="tabpanel" and aria-controls attributes that useTabState's
+ *   findAndActivateTabContainingElement() uses for DOM-based navigation
+ */
 export type TabsProps = {
-  /** Tab items - should be Tabs.Item components */
   children: ReactElement<TabsItemProps> | ReactElement<TabsItemProps>[];
-  /** Index of the initially active tab (0-based) */
   defaultTabIndex?: number;
-  /** Callback fired when a tab is clicked */
+  // connect to useTabState.setActiveIndex in mint app for URL hash, tab sync, and localStorage
   onTabChange?: (tabIndex: number) => void;
-  /** Additional CSS class for the tab list */
   className?: string;
-  /** Whether to show a border at the bottom of the tabs container */
   borderBottom?: boolean;
-  /** Accessible label for the tablist (recommended for screen readers) */
-  'aria-label'?: string;
+  ariaLabel?: string;
+  // pass a ref to use with useTabState's findInPanels callback for URL hash navigation to elements inside panels
+  panelsRef?: RefObject<HTMLDivElement>;
+  // pass in from DocsConfigContext (colors.primary) for active tab text/underline color
+  activeColor?: string;
+  // pass in from DocsConfigContext (colors.primary-light or colors.primaryLight) for dark mode
+  activeColorDark?: string;
 };
 
 function TabsRoot({
@@ -64,9 +59,17 @@ function TabsRoot({
   onTabChange,
   className,
   borderBottom,
-  'aria-label': ariaLabel,
+  ariaLabel,
+  panelsRef,
+  activeColor = DEFAULT_COLORS.primary,
+  activeColorDark = DEFAULT_COLORS.light,
 }: TabsProps) {
   const tabRefs = useRef<(HTMLLIElement | null)[]>([]);
+
+  const colorStyles = {
+    '--tabs-active-color': activeColor,
+    '--tabs-active-color-dark': activeColorDark,
+  } as CSSProperties;
 
   const arrayChildren = Children.toArray(children).filter(
     (child): child is ReactElement<TabsItemProps> => isValidElement(child)
@@ -78,7 +81,6 @@ function TabsRoot({
     return `${slugify(tabId)}-${index}`;
   });
 
-  // Clamp defaultTabIndex to valid bounds to ensure keyboard accessibility
   const validDefaultTabIndex =
     arrayChildren.length > 0
       ? Math.max(0, Math.min(defaultTabIndex, arrayChildren.length - 1))
@@ -86,7 +88,6 @@ function TabsRoot({
 
   const [activeTabIndex, setActiveTabIndex] = useState(validDefaultTabIndex);
 
-  // Ensure activeTabIndex stays within bounds if children change dynamically
   useEffect(() => {
     if (arrayChildren.length > 0 && activeTabIndex >= arrayChildren.length) {
       setActiveTabIndex(arrayChildren.length - 1);
@@ -103,7 +104,7 @@ function TabsRoot({
   );
 
   const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent, currentIndex: number) => {
+    (e: KeyboardEvent, currentIndex: number) => {
       const tabCount = arrayChildren.length;
       if (tabCount === 0) return;
 
@@ -118,18 +119,15 @@ function TabsRoot({
           tabRefs.current[newIndex]?.focus();
         }, 0);
       } else if (e.key === 'Enter' || e.key === ' ') {
-        // Activate tab on Enter/Space for accessibility
         e.preventDefault();
         handleTabClick(currentIndex);
       } else if (e.key === 'Home') {
-        // Move to first tab
         e.preventDefault();
         handleTabClick(0);
         setTimeout(() => {
           tabRefs.current[0]?.focus();
         }, 0);
       } else if (e.key === 'End') {
-        // Move to last tab
         e.preventDefault();
         const lastIndex = tabCount - 1;
         handleTabClick(lastIndex);
@@ -146,14 +144,15 @@ function TabsRoot({
       className={cn(
         Classes.Tabs,
         'tabs tab-container',
-        borderBottom && 'border-b border-gray-200 dark:border-gray-200/10 pb-6'
+        borderBottom && 'border-b border-gray-200 dark:border-gray-700 pb-6'
       )}
+      style={colorStyles}
     >
       <ul
         role="tablist"
         aria-label={ariaLabel ?? 'Tabs'}
         className={cn(
-          'not-prose mb-6 pb-[1px] flex-none min-w-full overflow-auto border-b border-gray-200 gap-x-6 flex dark:border-gray-200/10',
+          'not-prose mb-6 pb-[1px] flex-none min-w-full overflow-auto border-b border-gray-200 gap-x-6 flex dark:border-gray-700',
           className
         )}
         data-component-part="tabs-list"
@@ -176,20 +175,22 @@ function TabsRoot({
               aria-selected={isActive}
               aria-controls={`panel-${tabIds[i]}`}
               tabIndex={isActive ? 0 : -1}
-              className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
+              className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--tabs-active-color] dark:focus-visible:ring-[--tabs-active-color-dark] focus-visible:ring-offset-2 rounded-sm"
               onClick={(e) => {
                 e.stopPropagation();
                 handleTabClick(i);
               }}
               onKeyDown={(e) => handleKeyDown(e, i)}
               data-component-part="tab"
+              data-child-tab-ids={child.props[CHILD_TAB_IDS_ATTRIBUTE]}
+              data-child-heading-ids={child.props[CHILD_HEADING_IDS_ATTRIBUTE]}
             >
               <div
                 className={cn(
                   'flex text-sm items-center gap-1.5 leading-6 font-semibold whitespace-nowrap pt-3 pb-2.5 -mb-px max-w-max border-b',
                   isActive
-                    ? 'text-primary dark:text-primary-light border-current'
-                    : 'text-gray-900 border-transparent hover:border-gray-300 dark:text-gray-200 dark:hover:border-gray-700'
+                    ? 'text-[--tabs-active-color] dark:text-[--tabs-active-color-dark] border-current'
+                    : 'text-gray-900 border-transparent hover:border-gray-300 dark:text-gray-200 dark:hover:border-gray-600'
                 )}
                 data-component-part="tab-button"
                 data-active={isActive}
@@ -202,7 +203,7 @@ function TabsRoot({
                     iconLibrary={iconLibrary}
                     className={cn(
                       'h-4 w-4 shrink-0',
-                      isActive ? 'bg-primary dark:bg-primary-light' : 'bg-gray-900 dark:bg-gray-200',
+                      isActive ? 'bg-[--tabs-active-color] dark:bg-[--tabs-active-color-dark]' : 'bg-gray-900 dark:bg-gray-200',
                       Classes.TabIcon
                     )}
                     overrideColor
@@ -214,7 +215,7 @@ function TabsRoot({
           );
         })}
       </ul>
-      <div data-component-part="tabs-panels">
+      <div ref={panelsRef} data-component-part="tabs-panels">
         {arrayChildren.map((child: ReactElement<TabsItemProps>, i: number) => {
           const isActive = i === activeTabIndex;
           return (
@@ -226,7 +227,7 @@ function TabsRoot({
               aria-hidden={!isActive}
               tabIndex={isActive ? 0 : -1}
               className={cn(
-                'prose dark:prose-dark overflow-x-auto',
+                'prose dark:prose-invert overflow-x-auto',
                 !isActive && 'hidden'
               )}
               data-component-part="tab-content"
@@ -240,21 +241,6 @@ function TabsRoot({
   );
 }
 
-/**
- * Tabs component for organizing content into selectable tabs.
- *
- * @example
- * ```tsx
- * <Tabs>
- *   <Tabs.Item title="First Tab">
- *     Content for the first tab
- *   </Tabs.Item>
- *   <Tabs.Item title="Second Tab">
- *     Content for the second tab
- *   </Tabs.Item>
- * </Tabs>
- * ```
- */
 export const Tabs = Object.assign(TabsRoot, {
   Item: TabsItem,
 });

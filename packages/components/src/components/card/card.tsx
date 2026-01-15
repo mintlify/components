@@ -2,6 +2,7 @@ import { IconLibrary, IconType } from '@/models';
 import { ArrowUpRight } from 'lucide-react';
 import React, {
   ComponentPropsWithoutRef,
+  CSSProperties,
   ElementType,
   JSX,
   ReactNode,
@@ -9,6 +10,7 @@ import React, {
 } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
+import { DEFAULT_COLORS } from '@/constants';
 import { Icon as ComponentIcon } from '@/components/icon';
 import { ArrowRightIcon } from '@/icons';
 import { cn } from '@/utils/cn';
@@ -29,6 +31,10 @@ export function Card({
   arrow,
   as,
   className,
+  // pass in from DocsConfigContext (colors.primary) for hover/focus accent color
+  accentColor = DEFAULT_COLORS.primary,
+  // pass in from DocsConfigContext (colors.light) for dark mode hover/focus accent color
+  accentColorDark = DEFAULT_COLORS.light,
 }: {
   title?: string;
   icon?: ReactNode | string;
@@ -44,6 +50,8 @@ export function Card({
   arrow?: boolean;
   as?: ElementType;
   className?: string;
+  accentColor?: string;
+  accentColorDark?: string;
 }) {
   const Icon =
     typeof icon === 'string' ? (
@@ -64,7 +72,7 @@ export function Card({
   return (
     <GenericCard
       as={as}
-      className={cn(href && 'hover:!border-primary dark:hover:!border-primary-light', className)}
+      className={cn(href && 'hover:!border-[--card-accent-color] dark:hover:!border-[--card-accent-color-dark]', className)}
       title={title}
       icon={Icon}
       img={img}
@@ -73,6 +81,8 @@ export function Card({
       cta={cta}
       arrow={arrow}
       disabled={disabled}
+      accentColor={accentColor}
+      accentColorDark={accentColorDark}
     >
       {children}
     </GenericCard>
@@ -120,6 +130,10 @@ export interface CardPropsBase<T> {
    * Whether the card is disabled
    */
   disabled?: boolean;
+  // pass in from DocsConfigContext (colors.primary) for hover/focus accent color
+  accentColor?: string;
+  // pass in from DocsConfigContext (colors.light) for dark mode hover/focus accent color
+  accentColorDark?: string;
 }
 
 /**
@@ -141,8 +155,14 @@ export function GenericCard<T extends ElementType = 'div'>({
   mRef,
   cta,
   disabled,
+  accentColor = DEFAULT_COLORS.primary,
+  accentColorDark = DEFAULT_COLORS.light,
   ...props
 }: CardProps<T>) {
+  const colorStyles = {
+    '--card-accent-color': accentColor,
+    '--card-accent-color-dark': accentColorDark,
+  } as CSSProperties;
   /**
    * If provided, use `as` or an `a` tag if linking to things with href.
    * Defaults to `div`. When disabled, always use `div` to prevent custom
@@ -190,11 +210,12 @@ export function GenericCard<T extends ElementType = 'div'>({
     <Component
       className={cn(
         Classes.Card,
-        'block font-normal group relative my-2 ring-2 ring-transparent rounded-2xl bg-white dark:bg-background-dark border border-gray-950/10 dark:border-white/10 overflow-hidden w-full',
+        'block font-normal group relative my-2 ring-2 ring-transparent rounded-2xl bg-white dark:bg-gray-900 border border-gray-950/10 dark:border-white/10 overflow-hidden w-full',
         props.href && 'cursor-pointer',
-        props.href && 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-primary-light',
+        props.href && 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--card-accent-color] dark:focus-visible:ring-[--card-accent-color-dark]',
         className
       )}
+      style={colorStyles}
       {...newTabProps}
       {...props}
       ref={mRef as Ref<never>}
@@ -214,7 +235,7 @@ export function GenericCard<T extends ElementType = 'div'>({
         {props.href && (
           <div
             className={cn(
-              'absolute text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary-light top-5 right-5',
+              'absolute text-gray-400 dark:text-gray-500 group-hover:text-[--card-accent-color] dark:group-hover:text-[--card-accent-color-dark] top-5 right-5',
               !shouldShowArrowIcon && 'hidden'
             )}
             aria-hidden="true"
@@ -253,7 +274,7 @@ export function GenericCard<T extends ElementType = 'div'>({
                 className={cn(
                   'text-left text-gray-600 gap-2 dark:text-gray-400 text-sm font-medium flex flex-row items-center',
                   !disabled &&
-                    'group-hover:text-primary group-hover:dark:text-primary-light',
+                    'group-hover:text-[--card-accent-color] dark:group-hover:text-[--card-accent-color-dark]',
                   disabled && 'opacity-50'
                 )}
               >
