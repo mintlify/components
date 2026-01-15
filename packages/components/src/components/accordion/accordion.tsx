@@ -132,7 +132,7 @@ function GenericAccordion({
   const generatedId = useId();
   const id =
     typeof title === 'string'
-      ? slugify(title.replace(connectingCharacter, '-'), { decamelize: false })
+      ? slugify(title.replaceAll(connectingCharacter, '-'), { decamelize: false })
       : generatedId;
 
   const context = useContext(AccordionContext);
