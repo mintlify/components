@@ -1,5 +1,3 @@
-'use client';
-
 import * as RadixTooltip from '@radix-ui/react-tooltip';
 import { ChevronRightIcon } from 'lucide-react';
 import { ReactNode, isValidElement, useState } from 'react';
@@ -9,17 +7,11 @@ import { Classes } from '@/lib/local/selectors';
 import { cn } from '@/utils/cn';
 
 export type TooltipProps = {
-  /** The descriptive text shown in the tooltip */
   description: string;
-  /** The content that triggers the tooltip on hover/click */
   children: ReactNode;
-  /** Optional title shown above the description */
   title?: string;
-  /** Optional call-to-action text (requires href) */
   cta?: string;
-  /** Optional link URL for the CTA */
   href?: string;
-  /** Additional CSS classes for the root element */
   className?: string;
 };
 
@@ -38,7 +30,7 @@ export function Tooltip({ description, children, title, cta, href, className }: 
 
   const handleClick = !hasHover
     ? () => {
-        setOpen(!open);
+        setOpen((prev) => !prev);
       }
     : undefined;
 
