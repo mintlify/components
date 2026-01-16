@@ -212,7 +212,7 @@ export function GenericCard<T extends ElementType = 'div'>({
         Classes.Card,
         'block font-normal group relative my-2 ring-2 ring-transparent rounded-2xl bg-white dark:bg-gray-900 border border-gray-950/10 dark:border-white/10 overflow-hidden w-full',
         props.href && 'cursor-pointer',
-        props.href && 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--card-accent-color] dark:focus-visible:ring-[--card-accent-color-dark]',
+        props.href && 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--card-accent-color) dark:focus-visible:ring-(--card-accent-color-dark)',
         className
       )}
       style={colorStyles}
@@ -235,7 +235,7 @@ export function GenericCard<T extends ElementType = 'div'>({
         {props.href && (
           <div
             className={cn(
-              'absolute text-gray-400 dark:text-gray-500 group-hover:text-[--card-accent-color] dark:group-hover:text-[--card-accent-color-dark] top-5 right-5',
+              'absolute text-gray-400 dark:text-gray-500 group-hover:text-(--card-accent-color) dark:group-hover:text-(--card-accent-color-dark) top-5 right-5',
               !shouldShowArrowIcon && 'hidden'
             )}
             aria-hidden="true"
@@ -274,7 +274,7 @@ export function GenericCard<T extends ElementType = 'div'>({
                 className={cn(
                   'text-left text-gray-600 gap-2 dark:text-gray-400 text-sm font-medium flex flex-row items-center',
                   !disabled &&
-                    'group-hover:text-[--card-accent-color] dark:group-hover:text-[--card-accent-color-dark]',
+                    'group-hover:text-(--card-accent-color) dark:group-hover:text-(--card-accent-color-dark)',
                   disabled && 'opacity-50'
                 )}
               >

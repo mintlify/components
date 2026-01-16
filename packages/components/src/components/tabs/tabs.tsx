@@ -152,7 +152,7 @@ function TabsRoot({
         role="tablist"
         aria-label={ariaLabel ?? 'Tabs'}
         className={cn(
-          'not-prose mb-6 pb-[1px] flex-none min-w-full overflow-auto border-b border-gray-200 gap-x-6 flex dark:border-gray-700',
+          'not-prose mb-6 pb-px flex-none min-w-full overflow-auto border-b border-gray-200 gap-x-6 flex dark:border-gray-700',
           className
         )}
         data-component-part="tabs-list"
@@ -175,7 +175,7 @@ function TabsRoot({
               aria-selected={isActive}
               aria-controls={`panel-${tabIds[i]}`}
               tabIndex={isActive ? 0 : -1}
-              className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--tabs-active-color] dark:focus-visible:ring-[--tabs-active-color-dark] focus-visible:ring-offset-2 rounded-sm"
+              className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--tabs-active-color) dark:focus-visible:ring-(--tabs-active-color-dark) focus-visible:ring-offset-2 rounded-sm"
               onClick={(e) => {
                 e.stopPropagation();
                 handleTabClick(i);
@@ -189,7 +189,7 @@ function TabsRoot({
                 className={cn(
                   'flex text-sm items-center gap-1.5 leading-6 font-semibold whitespace-nowrap pt-3 pb-2.5 -mb-px max-w-max border-b',
                   isActive
-                    ? 'text-[--tabs-active-color] dark:text-[--tabs-active-color-dark] border-current'
+                    ? 'text-(--tabs-active-color) dark:text-(--tabs-active-color-dark) border-current'
                     : 'text-gray-900 border-transparent hover:border-gray-300 dark:text-gray-200 dark:hover:border-gray-600'
                 )}
                 data-component-part="tab-button"
@@ -203,7 +203,7 @@ function TabsRoot({
                     iconLibrary={iconLibrary}
                     className={cn(
                       'h-4 w-4 shrink-0',
-                      isActive ? 'bg-[--tabs-active-color] dark:bg-[--tabs-active-color-dark]' : 'bg-gray-900 dark:bg-gray-200',
+                      isActive ? 'bg-(--tabs-active-color) dark:bg-(--tabs-active-color-dark)' : 'bg-gray-900 dark:bg-gray-200',
                       Classes.TabIcon
                     )}
                     overrideColor
