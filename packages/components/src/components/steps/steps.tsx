@@ -133,7 +133,7 @@ export const Steps = ({ children, titleSize, className }: StepsProps) => {
           key={`step-${index}`}
           {...props}
           stepNumber={props.stepNumber ?? index + 1}
-          {...(titleSize && { titleSize })}
+          titleSize={props.titleSize ?? titleSize}
           isLast={index === childArray.length - 1}
         />
       ))}
