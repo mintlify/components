@@ -78,7 +78,7 @@ export function Tooltip({ description, children, title, cta, href, className }: 
                 target="_blank"
                 rel="noreferrer"
                 data-component-part="tooltip-cta"
-                className="text-gray-600 !mt-2 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light gap-0.5 flex items-center text-xs font-medium leading-4"
+                className="text-gray-600 mt-2! dark:text-gray-400 hover:text-primary dark:hover:text-primary-light gap-0.5 flex items-center text-xs font-medium leading-4"
               >
                 {cta}
                 <ChevronRightIcon className="size-3" strokeWidth={2.5} aria-hidden="true" />
