@@ -178,11 +178,6 @@ function GenericAccordion({
     }
   };
 
-  const parentClass =
-    'border border-gray-200/70 dark:border-white/10 rounded-2xl mb-3 overflow-hidden bg-white dark:bg-[#0b0c0e]';
-  const coverClass = 'py-4 px-5 space-x-2 hover:bg-gray-100 hover:dark:bg-gray-800 rounded-t-xl';
-  const contentClass = 'mt-2 mb-4 mx-6';
-
   return (
     <AccordionContext.Provider
       value={{
@@ -199,7 +194,7 @@ function GenericAccordion({
           }
         }}
         key={typeof title === 'string' ? title : 'accordion'}
-        className={cn(Classes.Accordion, parentClass, 'cursor-default', className)}
+        className={cn(Classes.Accordion, 'border border-gray-200/70 dark:border-white/10 rounded-2xl mb-3 overflow-hidden bg-white dark:bg-[#0b0c0e] cursor-default', className)}
         data-component-part="accordion"
       >
         <AccordionCover
@@ -208,17 +203,13 @@ function GenericAccordion({
           description={description}
           open={open}
           icon={icon}
-          coverClass={coverClass}
           topOffset={topOffset}
         />
         <div
           id={id + '-accordion-children'}
           role="region"
           aria-labelledby={id + '-label'}
-          className={cn(
-            contentClass,
-            'prose prose-gray dark:prose-invert overflow-x-auto cursor-default'
-          )}
+          className="mt-2 mb-4 mx-6 prose prose-gray dark:prose-invert overflow-x-auto cursor-default"
           data-component-part="accordion-content"
         >
           {children}

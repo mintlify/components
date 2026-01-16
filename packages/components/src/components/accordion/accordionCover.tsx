@@ -10,7 +10,6 @@ export function AccordionCover({
     description,
     open,
     icon,
-    coverClass,
     topOffset = '-top-[4.5rem]',
 }: {
     id: string;
@@ -18,18 +17,13 @@ export function AccordionCover({
     description?: string;
     open: boolean;
     icon?: ReactNode;
-    coverClass: string;
     topOffset?: string;
 }) {
 
     return (
         <summary
             id={id + '-label'}
-            className={cn(
-                'relative not-prose flex flex-row items-center content-center w-full cursor-pointer',
-                'list-none [&::-webkit-details-marker]:hidden',
-                coverClass
-            )}
+            className="py-4 px-5 space-x-2 hover:bg-gray-100 hover:dark:bg-gray-800 rounded-t-xl relative not-prose flex flex-row items-center content-center w-full cursor-pointer list-none [&::-webkit-details-marker]:hidden"
             aria-controls={id + '-accordion-children'}
             aria-expanded={open}
             data-component-part="accordion-button"
