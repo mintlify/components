@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Steps } from "./steps";
-import { CheckCircle, Zap, Settings } from "lucide-react";
+import { Settings } from "lucide-react";
 
 const meta: Meta<typeof Steps> = {
   title: "Components/Steps",

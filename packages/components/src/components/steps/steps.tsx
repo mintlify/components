@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
 import { Icon } from '@/components/icon';
