@@ -23,10 +23,12 @@ export function Tooltip({ description, children, title, cta, href, className }: 
     return null;
   }
 
-  const isButtonElement =
+  const isInteractiveElement =
     isValidElement(children) &&
-    (children.type === 'button' ||
-      (typeof children.type === 'string' && children.type.toLowerCase() === 'button'));
+    (typeof children.type === 'function' ||
+      typeof children.type === 'object' ||
+      (typeof children.type === 'string' &&
+        ['button', 'a', 'input', 'select', 'textarea'].includes(children.type.toLowerCase())));
 
   const handleClick = !hasHover
     ? () => {
@@ -34,14 +36,20 @@ export function Tooltip({ description, children, title, cta, href, className }: 
       }
     : undefined;
 
+  const isTextOnly = !isValidElement(children);
+
   return (
     <RadixTooltip.Provider delayDuration={0}>
       <RadixTooltip.Root open={open} onOpenChange={setOpen}>
         <RadixTooltip.Trigger
           aria-label={title ? `${title}: ${description}` : description}
-          asChild={isButtonElement}
+          asChild={isInteractiveElement}
           onClick={handleClick}
-          className={className}
+          className={cn(
+            className,
+            isTextOnly &&
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm'
+          )}
         >
           {underlineWhenTextOnly(children)}
         </RadixTooltip.Trigger>
@@ -94,8 +102,7 @@ function underlineWhenTextOnly(children: ReactNode) {
     <span
       className={cn(
         Classes.Tooltip,
-        'underline decoration-dotted decoration-2 underline-offset-4 decoration-gray-400 dark:decoration-gray-500',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm'
+        'underline decoration-dotted decoration-2 underline-offset-4 decoration-gray-400 dark:decoration-gray-500'
       )}
     >
       {children}
