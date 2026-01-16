@@ -40,7 +40,7 @@ export function Tooltip({ description, children, title, cta, href, className }: 
     <RadixTooltip.Provider delayDuration={0}>
       <RadixTooltip.Root open={open} onOpenChange={setOpen}>
         <RadixTooltip.Trigger
-          aria-label={title ? `${title}: ${description}` : description}
+          aria-label={isInteractiveElement ? undefined : (title ? `${title}: ${description}` : description)}
           asChild={isInteractiveElement}
           onClick={handleClick}
           className={cn(
