@@ -7,6 +7,7 @@ import { Icon as ComponentIcon } from '@/components/icon';
 import { cn } from '@/utils/cn';
 
 import { AccordionCover } from './accordionCover';
+import { CONNECTING_CHARACTER } from './accordionUrlUtils';
 
 type AccordionProps = {
   title: string;
@@ -128,11 +129,10 @@ function GenericAccordion({
   /** Called when accordion state changes to update URL. Receives open state, accordion id, and parent ids. */
   onUrlStateChange?: (isOpen: boolean, id: string | undefined, parentIds: string[]) => void;
 }) {
-  const connectingCharacter = ':';
   const generatedId = useId();
   const id =
     typeof title === 'string'
-      ? slugify(title.split(connectingCharacter).join('-'), { decamelize: false })
+      ? slugify(title.split(CONNECTING_CHARACTER).join('-'), { decamelize: false })
       : generatedId;
 
   const context = useContext(AccordionContext);

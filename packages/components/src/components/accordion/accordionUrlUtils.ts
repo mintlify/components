@@ -1,7 +1,7 @@
 import isEqual from 'lodash/isEqual';
 import { copyToClipboard } from '@/utils/copyToClipboard';
 
-const connectingCharacter = ':';
+export const CONNECTING_CHARACTER = ':';
 
 export function getInitialOpenState() {
   return (id: string, parentIds: string[]): boolean => {
@@ -10,7 +10,7 @@ export function getInitialOpenState() {
 
     if (!hash) return false;
 
-    const hashes = hash.split(connectingCharacter);
+    const hashes = hash.split(CONNECTING_CHARACTER);
     if (hashes.length > parentIds.length) {
       return isEqual(parentIds, hashes.slice(0, parentIds.length)) && hashes[parentIds.length] === id;
     }
@@ -33,7 +33,7 @@ export function updateAndCopyUrl() {
     ) {
       return;
     }
-    const idsString = ids.join(connectingCharacter);
+    const idsString = ids.join(CONNECTING_CHARACTER);
     const newUrl = buildHistoryUrl(idsString);
     void copyToClipboard(newUrl);
     window.history.replaceState({ ...window.history.state, as: newUrl, url: newUrl }, '', newUrl);
