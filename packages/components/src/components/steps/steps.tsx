@@ -8,8 +8,6 @@ import { stepTitleSizes, StepTitleSize } from './constants';
 
 type Numberish = number | `${number}`;
 
-export type { StepTitleSize };
-
 export type StepsItemProps = {
   icon?: ReactNode | string;
   stepNumber?: Numberish;
@@ -143,5 +141,3 @@ export const Steps = ({ children, titleSize, className }: StepsProps) => {
 };
 
 Steps.Item = StepsItem;
-
-export type { StepsItemProps as StepProps };
