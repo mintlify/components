@@ -76,32 +76,32 @@ const StepsItem = ({
       </div>
       <div className="w-full overflow-hidden pl-8 pr-px">
         {!!title &&
-          {
-            p: (
-              <p
-                className="mt-2 font-semibold prose dark:prose-invert text-gray-900 dark:text-gray-200"
-                contentEditable={false}
-                data-component-part="step-title"
-              >
-                {title}
-              </p>
-            ),
-            h2: (
-              <h2 className="mt-2 text-gray-900 dark:text-gray-200" contentEditable={false} data-component-part="step-title">
-                {title}
-              </h2>
-            ),
-            h3: (
-              <h3 className="mt-2 text-gray-900 dark:text-gray-200" contentEditable={false} data-component-part="step-title">
-                {title}
-              </h3>
-            ),
-            h4: (
-              <h4 className="mt-2 text-gray-900 dark:text-gray-200" contentEditable={false} data-component-part="step-title">
-                {title}
-              </h4>
-            ),
-          }[titleTag]}
+          (() => {
+            const titleClasses = 'mt-2 text-gray-900 dark:text-gray-200';
+            const titleProps = { contentEditable: false, 'data-component-part': 'step-title' };
+            return {
+              p: (
+                <p className={cn(titleClasses, 'font-semibold prose dark:prose-invert')} {...titleProps}>
+                  {title}
+                </p>
+              ),
+              h2: (
+                <h2 className={titleClasses} {...titleProps}>
+                  {title}
+                </h2>
+              ),
+              h3: (
+                <h3 className={titleClasses} {...titleProps}>
+                  {title}
+                </h3>
+              ),
+              h4: (
+                <h4 className={titleClasses} {...titleProps}>
+                  {title}
+                </h4>
+              ),
+            }[titleTag];
+          })()}
         <div
           data-component-part="step-content"
           className={cn('prose dark:prose-invert', !title && 'mt-2')}
