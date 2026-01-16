@@ -60,7 +60,7 @@ export function Frame({
       >
         <div
           style={{ backgroundPosition: '10px 10px' }}
-          className="absolute inset-0 bg-grid-neutral-200/20 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-white/5 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"
+          className="absolute inset-0 bg-grid-neutral-200/20 mask-[linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-white/5 dark:mask-[linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"
           aria-hidden="true"
           data-component-part="frame-background-pattern"
         />

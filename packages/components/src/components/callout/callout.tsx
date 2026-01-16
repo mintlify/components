@@ -24,46 +24,40 @@ const variantConfig = {
   info: {
     icon: InfoIcon,
     defaultAriaLabel: 'Info',
-    color: '#71717a',
-    className: 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10',
-    childrenClassName: 'text-zinc-900 dark:text-zinc-200',
+    className: 'border border-neutral-200 bg-neutral-50 dark:border-neutral-700 dark:bg-white/10',
+    childrenClassName: 'text-neutral-800 dark:text-neutral-300',
   },
   warning: {
     icon: WarningIcon,
     defaultAriaLabel: 'Warning',
-    color: '#f59e0b',
     className:
-      'border border-amber-500/20 bg-amber-50/50 dark:border-amber-500/30 dark:bg-amber-500/10 [&_[data-component-part="callout-icon"]]:mt-px',
-    childrenClassName: 'text-amber-900 dark:text-amber-200',
+      'border border-yellow-200 bg-yellow-50 dark:border-yellow-900 dark:bg-yellow-600/20 **:data-[component-part="callout-icon"]:mt-px',
+    childrenClassName: 'text-yellow-800 dark:text-yellow-300',
   },
   note: {
     icon: NoteIcon,
     defaultAriaLabel: 'Note',
-    color: '#0ea5e9',
-    className: 'border border-sky-500/20 bg-sky-50/50 dark:border-sky-500/30 dark:bg-sky-500/10',
-    childrenClassName: 'text-sky-900 dark:text-sky-200',
+    className: 'border border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-600/20',
+    childrenClassName: 'text-blue-800 dark:text-blue-300',
   },
   tip: {
     icon: TipIcon,
     defaultAriaLabel: 'Tip',
-    color: '#10b981',
     className:
-      'border border-emerald-500/20 bg-emerald-50/50 dark:border-emerald-500/30 dark:bg-emerald-500/10 [&_[data-component-part="callout-icon"]]:mt-px',
-    childrenClassName: 'text-emerald-900 dark:text-emerald-200',
+      'border border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-600/20 **:data-[component-part="callout-icon"]:mt-px',
+    childrenClassName: 'text-green-800 dark:text-green-300',
   },
   check: {
     icon: CheckIcon,
     defaultAriaLabel: 'Check',
-    color: '#10b981',
-    className: 'border border-emerald-500/20 bg-emerald-50/50 dark:border-emerald-500/30 dark:bg-emerald-500/10',
-    childrenClassName: 'text-emerald-900 dark:text-emerald-200',
+    className: 'border border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-600/20',
+    childrenClassName: 'text-green-800 dark:text-green-300',
   },
   danger: {
     icon: DangerIcon,
     defaultAriaLabel: 'Danger',
-    color: '#ef4444',
-    className: 'border border-red-500/20 bg-red-50/50 dark:border-red-500/30 dark:bg-red-500/10',
-    childrenClassName: 'text-red-900 dark:text-red-200',
+    className: 'border border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-600/20',
+    childrenClassName: 'text-red-800 dark:text-red-300',
   },
 };
 
@@ -108,8 +102,8 @@ export function Callout({
           '--dark-callout-text-color': `${lighterTextColor.hex()}`,
         };
 
-        variantClassName = 'border border-[var(--callout-border-color-light,#71717a33)] bg-[var(--callout-bg-color-light,#71717a1a)] dark:border-[var(--callout-border-color-dark,#71717a4d)] dark:bg-[var(--callout-bg-color-dark,#71717a1a)]';
-        childrenClassName = 'mt-1 text-[var(--callout-text-color)] dark:text-[var(--dark-callout-text-color)]';
+        variantClassName = 'border border-(--callout-border-color-light,#71717a33) bg-(--callout-bg-color-light,#71717a1a) dark:border-(--callout-border-color-dark,#71717a4d) dark:bg-(--callout-bg-color-dark,#71717a1a)';
+        childrenClassName = 'mt-1 text-(--callout-text-color) dark:text-(--dark-callout-text-color)';
       } catch {
         finalColor = undefined;
         variantClassName = 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10';
@@ -123,7 +117,6 @@ export function Callout({
     const config = variantConfig[variant];
     const IconComponent = config.icon;
     finalIcon = <IconComponent ariaLabel={ariaLabel || config.defaultAriaLabel} />;
-    finalColor = config.color;
     variantClassName = config.className;
     childrenClassName = config.childrenClassName;
   }
@@ -135,7 +128,7 @@ export function Callout({
         iconType={iconType}
         iconLibrary={iconLibrary}
         color={finalColor}
-        className="h-4 w-4 !m-0 shrink-0"
+        className="h-4 w-4 m-0! shrink-0"
       />
     ) : (
       finalIcon
@@ -163,7 +156,7 @@ export function Callout({
       )}
       <div
         className={cn(
-          'text-sm prose dark:prose-invert min-w-0 w-full [&_kbd]:bg-zinc-100 dark:[&_kbd]:bg-zinc-800 [&_code]:!text-current [&_kbd]:!text-current [&_a]:!text-current [&_a]:border-current',
+          'text-sm prose dark:prose-invert min-w-0 w-full [&_kbd]:bg-zinc-100 dark:[&_kbd]:bg-zinc-800 [&_code]:text-current! [&_kbd]:text-current! [&_a]:text-current! [&_a]:border-current',
           childrenClassName
         )}
         style={customTextStyle}
