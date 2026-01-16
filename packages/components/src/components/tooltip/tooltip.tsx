@@ -36,8 +36,6 @@ export function Tooltip({ description, children, title, cta, href, className }: 
       }
     : undefined;
 
-  const isTextOnly = !isValidElement(children);
-
   return (
     <RadixTooltip.Provider delayDuration={0}>
       <RadixTooltip.Root open={open} onOpenChange={setOpen}>
@@ -47,7 +45,7 @@ export function Tooltip({ description, children, title, cta, href, className }: 
           onClick={handleClick}
           className={cn(
             className,
-            isTextOnly &&
+            !isInteractiveElement &&
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm'
           )}
         >
