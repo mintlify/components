@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactNode } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
@@ -13,41 +11,14 @@ export const stepTitleSizes = ['p', 'h2', 'h3', 'h4'] as const;
 export type StepTitleSize = (typeof stepTitleSizes)[number];
 
 export type StepsItemProps = {
-  /**
-   * The icon for the step. Defaults to the step number, but can also accept an Icon string or ReactNode.
-   */
   icon?: ReactNode | string;
-  /**
-   * The number of the step. Defaults to 1.
-   */
   stepNumber?: Numberish;
-  /**
-   * Determines the icon type. Defaults to `regular`.
-   */
   iconType?: IconType;
-  /**
-   * Determines the icon library. Defaults to `fontawesome`.
-   */
   iconLibrary?: IconLibrary;
-  /**
-   * The title is the primary text for the step and shows up next to the indicator.
-   */
   title: string | ReactNode;
-  /**
-   * The content of the step.
-   */
   children?: string | ReactNode;
-  /**
-   * The size of the step title. Defaults to p.
-   */
   titleSize?: StepTitleSize;
-  /**
-   * Additional CSS classes for the step item.
-   */
   className?: string;
-  /**
-   * Internal: Used to mark whether the index is the last index
-   */
   isLast?: boolean;
 };
 
@@ -144,22 +115,12 @@ const StepsItem = ({
 };
 
 export type StepsProps = {
-  /**
-   * One or more `Steps.Item` components.
-   */
   children: React.ReactElement<StepsItemProps> | React.ReactElement<StepsItemProps>[];
-  /**
-   * The size of the step title. Defaults to h3.
-   */
   titleSize?: StepTitleSize;
-  /**
-   * Additional CSS classes for the Steps container.
-   */
   className?: string;
 };
 
 export const Steps = ({ children, titleSize, className }: StepsProps) => {
-  // Filter out falsy children (null, undefined, false) that can come from conditional rendering
   const childArray = (Array.isArray(children) ? children : [children]).filter(Boolean);
 
   return (
