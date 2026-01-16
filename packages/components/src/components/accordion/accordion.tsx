@@ -159,9 +159,7 @@ function GenericAccordion({
       }
     }
 
-    if (onMount) {
-      onMount();
-    }
+    onMount?.();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
