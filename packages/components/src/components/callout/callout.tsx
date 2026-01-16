@@ -31,7 +31,7 @@ const variantConfig = {
     icon: WarningIcon,
     defaultAriaLabel: 'Warning',
     className:
-      'border border-yellow-200 bg-yellow-50 dark:border-yellow-900 dark:bg-yellow-600/20 [&_[data-component-part="callout-icon"]]:mt-px',
+      'border border-yellow-200 bg-yellow-50 dark:border-yellow-900 dark:bg-yellow-600/20 **:data-[component-part="callout-icon"]:mt-px',
     childrenClassName: 'text-yellow-800 dark:text-yellow-300',
   },
   note: {
@@ -44,7 +44,7 @@ const variantConfig = {
     icon: TipIcon,
     defaultAriaLabel: 'Tip',
     className:
-      'border border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-600/20 [&_[data-component-part="callout-icon"]]:mt-px',
+      'border border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-600/20 **:data-[component-part="callout-icon"]:mt-px',
     childrenClassName: 'text-green-800 dark:text-green-300',
   },
   check: {
@@ -102,8 +102,8 @@ export function Callout({
           '--dark-callout-text-color': `${lighterTextColor.hex()}`,
         };
 
-        variantClassName = 'border border-[var(--callout-border-color-light,#71717a33)] bg-[var(--callout-bg-color-light,#71717a1a)] dark:border-[var(--callout-border-color-dark,#71717a4d)] dark:bg-[var(--callout-bg-color-dark,#71717a1a)]';
-        childrenClassName = 'mt-1 text-[var(--callout-text-color)] dark:text-[var(--dark-callout-text-color)]';
+        variantClassName = 'border border-(--callout-border-color-light,#71717a33) bg-(--callout-bg-color-light,#71717a1a) dark:border-(--callout-border-color-dark,#71717a4d) dark:bg-(--callout-bg-color-dark,#71717a1a)';
+        childrenClassName = 'mt-1 text-(--callout-text-color) dark:text-(--dark-callout-text-color)';
       } catch {
         finalColor = undefined;
         variantClassName = 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10';
@@ -128,7 +128,7 @@ export function Callout({
         iconType={iconType}
         iconLibrary={iconLibrary}
         color={finalColor}
-        className="h-4 w-4 !m-0 shrink-0"
+        className="h-4 w-4 m-0! shrink-0"
       />
     ) : (
       finalIcon
@@ -156,7 +156,7 @@ export function Callout({
       )}
       <div
         className={cn(
-          'text-sm prose dark:prose-invert min-w-0 w-full [&_kbd]:bg-zinc-100 dark:[&_kbd]:bg-zinc-800 [&_code]:!text-current [&_kbd]:!text-current [&_a]:!text-current [&_a]:border-current',
+          'text-sm prose dark:prose-invert min-w-0 w-full [&_kbd]:bg-zinc-100 dark:[&_kbd]:bg-zinc-800 [&_code]:text-current! [&_kbd]:text-current! [&_a]:text-current! [&_a]:border-current',
           childrenClassName
         )}
         style={customTextStyle}

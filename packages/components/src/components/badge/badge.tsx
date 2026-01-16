@@ -122,9 +122,9 @@ const Badge = ({
     className: cn(
       'inline-flex items-center w-fit font-medium relative data-[disabled="true"]:cursor-not-allowed',
       "data-[shape='pill']:rounded-full",
-      "data-[variant='outline']:outline data-[variant='outline']:outline-1 data-[variant='outline']:-outline-offset-[1px] data-[variant='outline']:outline-[rgba(11,12,14,0.08)] dark:data-[variant='outline']:outline-[rgba(255,255,255,0.14)]",
-      'bg-[--color-bg] text-[--color-text] data-[disabled="true"]:bg-[--color-bg-disabled] data-[disabled="true"]:text-[--color-text-disabled]',
-      '[&_[data-component-part$="-icon"][data-icon-type="string"]_svg]:bg-[--color-text] [&_[data-component-part$="-icon"][data-icon-type="string"]_svg]:data-[disabled="true"]:bg-[--color-text-disabled]',
+      "data-[variant='outline']:outline-solid data-[variant='outline']:outline-1 data-[variant='outline']:-outline-offset-1 data-[variant='outline']:outline-[rgba(11,12,14,0.08)] dark:data-[variant='outline']:outline-[rgba(255,255,255,0.14)]",
+      'bg-(--color-bg) text-(--color-text) data-[disabled="true"]:bg-(--color-bg-disabled) data-[disabled="true"]:text-(--color-text-disabled)',
+      '[&_[data-component-part$="-icon"][data-icon-type="string"]_svg]:bg-(--color-text) data-[disabled="true"]:[&_[data-component-part$="-icon"][data-icon-type="string"]_svg]:bg-(--color-text-disabled)',
       '[&_[data-component-part$="-icon"][data-icon-type="inline"]_svg]:fill-current',
       sizeVariants[size],
       colorVariants[color],
