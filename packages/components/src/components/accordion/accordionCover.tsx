@@ -10,7 +10,7 @@ export function AccordionCover({
     description,
     open,
     icon,
-    topOffset = '-top-[4.5rem]',
+    topOffset = '-top-18',
 }: {
     id: string;
     title: string | ReactNode;

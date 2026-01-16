@@ -18,7 +18,7 @@ export function AccordionGroup({
         <div
             className={cn(
                 Classes.AccordionGroup,
-                '[&>details]:border-0 [&>details]:rounded-none [&>details>summary]:rounded-none [&>details]:mb-0 overflow-hidden mt-0 mb-3 rounded-xl prose prose-gray dark:prose-invert divide-y divide-inherit border dark:border-gray-800/50',
+                '[&>details]:border-0 [&>details]:rounded-none [&>details>summary]:rounded-none [&>details]:mb-0 [&>details+details]:border-t [&>details+details]:border-t-gray-200/70 dark:[&>details+details]:border-t-white/10 overflow-hidden mt-0 mb-3 rounded-xl prose prose-gray dark:prose-invert border border-gray-200/70 dark:border-white/10',
                 className
             )}
             data-component-part="accordion-group"

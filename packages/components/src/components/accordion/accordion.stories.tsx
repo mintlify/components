@@ -61,7 +61,7 @@ export const WithDescription: Story = {
         defaultOpen={false}
       >
         <p>Run the following command to install Mintlify:</p>
-        <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded">
+        <pre className="bg-gray-800 p-3 rounded">
           npm install -g mintlify
         </pre>
       </Accordion>
@@ -71,7 +71,7 @@ export const WithDescription: Story = {
         defaultOpen={false}
       >
         <p>Create a mint.json file in your project root with the following structure:</p>
-        <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded">
+        <pre className="bg-gray-800 p-3 rounded">
           {`{
   "name": "My Documentation",
   "navigation": []
@@ -385,7 +385,7 @@ export const RichContent: Story = {
       >
         <div>
           <p className="mb-3">Here's how to use the Accordion component:</p>
-          <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded overflow-x-auto text-sm">
+          <pre className="bg-gray-800 p-4 rounded overflow-x-auto text-sm">
             {`<Accordion
   title="My Accordion"
   defaultOpen={false}
@@ -539,7 +539,7 @@ export const AccordionGroupWithRichContent: Story = {
           defaultOpen={true}
         >
           <p className="mb-3">Install the package using your preferred package manager:</p>
-          <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+          <pre className="bg-gray-800 p-3 rounded text-sm overflow-x-auto">
             npm install @mintlify/components
           </pre>
         </Accordion>
@@ -550,7 +550,7 @@ export const AccordionGroupWithRichContent: Story = {
           defaultOpen={false}
         >
           <p className="mb-3">Create a configuration file:</p>
-          <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+          <pre className="bg-gray-800 p-3 rounded text-sm overflow-x-auto">
             {`{
   "theme": "light",
   "components": ["accordion", "badge"]
@@ -564,7 +564,7 @@ export const AccordionGroupWithRichContent: Story = {
           defaultOpen={false}
         >
           <p className="mb-3">Import and use the components:</p>
-          <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto">
+          <pre className="bg-gray-800 p-3 rounded text-sm overflow-x-auto">
             {`import { Accordion } from '@mintlify/components';
 
 <Accordion title="Hello">

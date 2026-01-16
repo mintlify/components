@@ -120,7 +120,7 @@ function GenericAccordion({
   /** Callback when the accordion mounts (called on initial render if conditions are met) */
   onMount?: () => void;
 
-  /** Custom top offset for the anchor element (default: '-top-[4.5rem]') */
+  /** Custom top offset for the anchor element (default: '-top-18') */
   topOffset?: string;
 
   /** Get initial open state based on URL/hash. Return true to open, false to use defaultOpen. */
