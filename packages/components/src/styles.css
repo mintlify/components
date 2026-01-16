@@ -1,9 +1,100 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+@plugin "./plugins/bg-grid.ts";
+
+@source "./**/*.{js,jsx,ts,tsx}";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-red-50: oklch(97.1% 0.013 17.38);
+  --color-red-100: oklch(93.6% 0.032 17.72);
+  --color-red-200: oklch(88.5% 0.062 18.33);
+  --color-red-300: oklch(80.8% 0.114 19.57);
+  --color-red-400: oklch(70.4% 0.191 22.22);
+  --color-red-500: oklch(63.7% 0.237 25.33);
+  --color-red-600: oklch(57.7% 0.245 27.33);
+  --color-red-700: oklch(50.5% 0.213 27.52);
+  --color-red-800: oklch(44.4% 0.177 26.9);
+  --color-red-900: oklch(39.6% 0.141 25.72);
+  --color-red-950: oklch(25.8% 0.092 26.04);
+
+  --color-orange-50: oklch(98% 0.016 73.68);
+  --color-orange-100: oklch(95.4% 0.038 75.16);
+  --color-orange-200: oklch(90.1% 0.076 70.7);
+  --color-orange-300: oklch(83.7% 0.128 66.29);
+  --color-orange-400: oklch(75% 0.183 55.93);
+  --color-orange-500: oklch(70.5% 0.213 47.6);
+  --color-orange-600: oklch(64.6% 0.222 41.12);
+  --color-orange-700: oklch(55.3% 0.195 38.4);
+  --color-orange-800: oklch(47% 0.157 37.3);
+  --color-orange-900: oklch(40.8% 0.123 38.17);
+  --color-orange-950: oklch(26.6% 0.079 36.26);
+
+  --color-green-50: oklch(98.2% 0.018 155.83);
+  --color-green-100: oklch(96.2% 0.044 156.74);
+  --color-green-200: oklch(92.5% 0.084 155.99);
+  --color-green-300: oklch(87.1% 0.15 154.45);
+  --color-green-400: oklch(79.2% 0.209 151.71);
+  --color-green-500: oklch(72.3% 0.219 149.58);
+  --color-green-600: oklch(62.7% 0.194 149.21);
+  --color-green-700: oklch(52.7% 0.154 150.07);
+  --color-green-800: oklch(44.8% 0.119 151.33);
+  --color-green-900: oklch(39.3% 0.095 152.54);
+  --color-green-950: oklch(26.6% 0.065 152.93);
+
+  --color-blue-50: oklch(97% 0.014 254.6);
+  --color-blue-100: oklch(93.2% 0.032 255.59);
+  --color-blue-200: oklch(88.2% 0.059 254.13);
+  --color-blue-300: oklch(80.9% 0.105 251.81);
+  --color-blue-400: oklch(70.7% 0.165 254.62);
+  --color-blue-500: oklch(62.3% 0.214 259.12);
+  --color-blue-600: oklch(54.6% 0.245 262.88);
+  --color-blue-700: oklch(48.8% 0.243 264.38);
+  --color-blue-800: oklch(42.4% 0.199 265.64);
+  --color-blue-900: oklch(37.9% 0.146 265.52);
+  --color-blue-950: oklch(28.2% 0.091 267.94);
+
+  --color-neutral-50: oklch(98.5% 0 0);
+  --color-neutral-100: oklch(97% 0 0);
+  --color-neutral-200: oklch(92.2% 0 0);
+  --color-neutral-300: oklch(87% 0 0);
+  --color-neutral-400: oklch(70.8% 0 0);
+  --color-neutral-500: oklch(55.6% 0 0);
+  --color-neutral-600: oklch(43.9% 0 0);
+  --color-neutral-700: oklch(37.1% 0 0);
+  --color-neutral-800: oklch(26.9% 0 0);
+  --color-neutral-900: oklch(20.5% 0 0);
+  --color-neutral-950: oklch(14.5% 0 0);
+
+  --color-yellow-50: oklch(98.7% 0.026 102.21);
+  --color-yellow-100: oklch(97.3% 0.071 103.19);
+  --color-yellow-200: oklch(94.5% 0.129 101.54);
+  --color-yellow-300: oklch(90.5% 0.182 98.11);
+  --color-yellow-400: oklch(85.2% 0.199 91.94);
+  --color-yellow-500: oklch(79.5% 0.184 86.05);
+  --color-yellow-600: oklch(68.1% 0.162 75.83);
+  --color-yellow-700: oklch(55.4% 0.135 66.44);
+  --color-yellow-800: oklch(47.6% 0.114 61.91);
+  --color-yellow-900: oklch(42.1% 0.095 57.71);
+  --color-yellow-950: oklch(28.6% 0.066 53.81);
+
+  --color-purple-50: oklch(97.7% 0.014 308.3);
+  --color-purple-100: oklch(94.6% 0.033 307.17);
+  --color-purple-200: oklch(90.2% 0.063 306.7);
+  --color-purple-300: oklch(82.7% 0.119 306.38);
+  --color-purple-400: oklch(71.4% 0.203 305.5);
+  --color-purple-500: oklch(62.7% 0.265 303.9);
+  --color-purple-600: oklch(55.8% 0.288 302.32);
+  --color-purple-700: oklch(49.6% 0.265 301.92);
+  --color-purple-800: oklch(43.8% 0.218 303.72);
+  --color-purple-900: oklch(38.1% 0.176 304.99);
+  --color-purple-950: oklch(29.1% 0.149 302.72);
+}
 
 @layer base {
-    html {
-        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-    }
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
 }
