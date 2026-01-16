@@ -19,7 +19,7 @@ export function Tooltip({ description, children, title, cta, href, className }: 
   const [open, setOpen] = useState(false);
   const hasHover = useHasHover();
 
-  if (!children) {
+  if (children == null) {
     return null;
   }
 
