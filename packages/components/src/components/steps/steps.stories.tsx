@@ -44,7 +44,7 @@ export const WithIcon: Story = {
 export const WithCustomIcon: Story = {
   render: () => (
     <Steps>
-      <Steps.Item title="Configuration" icon={<Settings />}>
+      <Steps.Item title="Configuration" icon={<Settings className="size-3" />}>
         Configure your settings in this step.
       </Steps.Item>
     </Steps>

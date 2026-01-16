@@ -39,8 +39,9 @@ const StepsItem = ({
         icon={icon}
         iconType={iconType}
         iconLibrary={iconLibrary}
-        className="h-3 w-3 bg-gray-900 dark:bg-gray-50"
+        className="size-3 bg-gray-900 dark:bg-gray-50"
         overrideColor
+        overrideSize
       />
     ) : icon == null ? (
       Number(stepNumber)
