@@ -58,9 +58,9 @@ const StepsItem = ({
       <div
         data-component-part="step-line"
         className={cn(
-          'absolute w-px h-[calc(100%-2.75rem)] top-[2.75rem]',
+          'absolute w-px h-[calc(100%-2.75rem)] top-11',
           isLast
-            ? 'bg-gradient-to-b from-gray-200 via-gray-200 via-80% to-transparent dark:from-white/10 dark:via-white/10 group-has-[[data-component-part="step-content"]:empty]/step:hidden'
+            ? 'bg-linear-to-b from-gray-200 via-gray-200 via-80% to-transparent dark:from-white/10 dark:via-white/10 group-has-[[data-component-part="step-content"]:empty]/step:hidden'
             : 'bg-gray-200/70 dark:bg-white/10'
         )}
         contentEditable={false}
