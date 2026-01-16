@@ -4,11 +4,11 @@ import { Classes } from '@/lib/local/selectors';
 import { Icon } from '@/components/icon';
 import { cn } from '@/utils/cn';
 import { IconLibrary, IconType } from '@/models';
+import { stepTitleSizes, StepTitleSize } from './constants';
 
 type Numberish = number | `${number}`;
 
-export const stepTitleSizes = ['p', 'h2', 'h3', 'h4'] as const;
-export type StepTitleSize = (typeof stepTitleSizes)[number];
+export type { StepTitleSize };
 
 export type StepsItemProps = {
   icon?: ReactNode | string;
