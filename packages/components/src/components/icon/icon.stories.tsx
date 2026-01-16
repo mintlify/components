@@ -147,7 +147,7 @@ export const WithOverrideColor: Story = {
           "--color-text": "#133a9a",
         } as React.CSSProperties
       }
-      className="[&_svg]:bg-[--color-text]"
+      className="[&_svg]:bg-(--color-text)"
     >
       <Icon
         icon="cat"
