@@ -5,6 +5,7 @@ import { ReactNode, isValidElement, useState } from 'react';
 import { useHasHover } from '@/hooks/useHasHover';
 import { Classes } from '@/lib/local/selectors';
 import { cn } from '@/utils/cn';
+import { isRemoteUrl } from '@/utils/isRemoteUrl';
 
 export type TooltipProps = {
   description: string;
@@ -70,8 +71,7 @@ export function Tooltip({ description, children, title, cta, href, className }: 
             {cta && href && (
               <a
                 href={href}
-                target="_blank"
-                rel="noreferrer"
+                {...(isRemoteUrl(href) ? { target: '_blank', rel: 'noreferrer' } : {})}
                 data-component-part="tooltip-cta"
                 className="text-gray-600 mt-2! dark:text-gray-400 hover:text-primary dark:hover:text-primary-light gap-0.5 flex items-center text-xs font-medium leading-4"
               >
