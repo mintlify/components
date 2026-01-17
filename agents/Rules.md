@@ -34,10 +34,10 @@ if empty - nothing to change
 
 </aside>
 
-- Accordions
-    - Rename `<AccordionGroup>` to `<Accordion.Group>`
-    - Add `data-component-part` **for:
-        - `<details>`
+- ~~Accordions~~
+    - ~~Rename `<AccordionGroup>` to `<Accordion.Group>`~~
+    - ~~Add `data-component-part` **for:~~
+        - ~~`<details>`~~
 - ~~Badge~~
     - ~~add `tailIcon` + `leadIcon` , current `icon` prop should be `tailIcon`~~
     - ~~rename `stroke` to `variant="outline"`~~
@@ -59,9 +59,9 @@ if empty - nothing to change
     - rename to `Property`
         - `Property.Param`
         - `Property.Response`
-- Frames
-    - `caption` → `description`
-    - `hint` → `title`
+- ~~Frames~~
+    - ~~`caption` → `description`~~
+    - ~~`hint` → `title`~~
 - ~~Icons~~
 - Mermaid
 - Panel
@@ -74,7 +74,7 @@ if empty - nothing to change
     - `headline` → `title`
     - `tip` → `description`
     - add trigger identification  (Classes)
-- Tree
+~~- Tree~~
 - Update
 - View
 

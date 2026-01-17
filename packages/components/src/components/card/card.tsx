@@ -52,7 +52,7 @@ export function Card({
         iconType={iconType}
         iconLibrary={iconLibrary}
         color={color}
-        className="h-6 w-6 !m-0 shrink-0"
+        className="h-6 w-6 m-0! shrink-0"
         overrideColor={!!color}
       />
     ) : (
@@ -64,7 +64,7 @@ export function Card({
   return (
     <GenericCard
       as={as}
-      className={cn(href && 'hover:!border-primary dark:hover:!border-primary-light', className)}
+      className={cn(href && 'hover:border-primary! dark:hover:border-primary-light!', className)}
       title={title}
       icon={Icon}
       img={img}
@@ -228,7 +228,7 @@ export function GenericCard<T extends ElementType = 'div'>({
           {title && (
             <h2
               className={cn(
-                'not-prose font-semibold text-base text-gray-800 dark:text-white break-words',
+                'not-prose font-semibold text-base text-gray-800 dark:text-white wrap-break-word',
                 icon !== null && icon !== undefined && !horizontal && 'mt-4'
               )}
               contentEditable={false}
@@ -239,7 +239,7 @@ export function GenericCard<T extends ElementType = 'div'>({
           )}
           <div
             className={cn(
-              'prose mt-1 font-normal text-base leading-6 break-words',
+              'prose mt-1 font-normal text-base leading-6 wrap-break-word',
               title ? 'text-gray-600 dark:text-gray-400' : 'text-gray-700 dark:text-gray-300',
               horizontal && 'leading-6 mt-0'
             )}

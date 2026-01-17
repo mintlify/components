@@ -60,7 +60,7 @@ export function Icon({
     Classes.Icon,
     'inline',
     !color && !hasLightDarkColors && !overrideColor && 'bg-primary dark:bg-primary-light',
-    hasLightDarkColors && 'bg-[--color-light] dark:bg-[--color-dark]',
+    hasLightDarkColors && 'bg-(--color-light) dark:bg-(--color-dark)',
     className
   )
   const isPdf = pageType === 'pdf';
