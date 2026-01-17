@@ -23,12 +23,7 @@ export function Tooltip({ description, children, title, cta, href, className }: 
     return null;
   }
 
-  const isInteractiveElement =
-    isValidElement(children) &&
-    (typeof children.type === 'function' ||
-      typeof children.type === 'object' ||
-      (typeof children.type === 'string' &&
-        ['button', 'a', 'input', 'select', 'textarea'].includes(children.type.toLowerCase())));
+  const isInteractive = isInteractiveElement(children);
 
   const handleClick = !hasHover
     ? () => {
@@ -40,12 +35,12 @@ export function Tooltip({ description, children, title, cta, href, className }: 
     <RadixTooltip.Provider delayDuration={0}>
       <RadixTooltip.Root open={open} onOpenChange={setOpen}>
         <RadixTooltip.Trigger
-          aria-label={isInteractiveElement ? undefined : (title ? `${title}: ${description}` : description)}
-          asChild={isInteractiveElement}
+          aria-label={isInteractive ? undefined : (title ? `${title}: ${description}` : description)}
+          asChild={isInteractive}
           onClick={handleClick}
           className={cn(
             className,
-            !isInteractiveElement &&
+            !isInteractive &&
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm'
           )}
         >
@@ -89,6 +84,26 @@ export function Tooltip({ description, children, title, cta, href, className }: 
       </RadixTooltip.Root>
     </RadixTooltip.Provider>
   );
+}
+
+function isInteractiveElement(children: ReactNode): boolean {
+  if (!isValidElement(children)) {
+    return false;
+  }
+
+  if (typeof children.type === 'function') {
+    return true;
+  }
+
+  if (typeof children.type === 'object') {
+    return true;
+  }
+
+  if (typeof children.type === 'string') {
+    return ['button', 'a', 'input', 'select', 'textarea'].includes(children.type.toLowerCase());
+  }
+
+  return false;
 }
 
 function underlineWhenTextOnly(children: ReactNode) {
