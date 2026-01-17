@@ -1,4 +1,4 @@
 export { Steps } from "./steps";
-export { stepTitleSizes } from "./constants";
+export { STEP_TITLE_SIZES } from "./constants";
 export type { StepsProps, StepsItemProps } from "./steps";
 export type { StepTitleSize } from "./constants";

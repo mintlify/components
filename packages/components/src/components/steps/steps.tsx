@@ -4,7 +4,7 @@ import { Classes } from '@/lib/local/selectors';
 import { Icon } from '@/components/icon';
 import { cn } from '@/utils/cn';
 import { IconLibrary, IconType } from '@/models';
-import { stepTitleSizes, StepTitleSize } from './constants';
+import { STEP_TITLE_SIZES, StepTitleSize } from './constants';
 
 type Numberish = number | `${number}`;
 
@@ -31,7 +31,7 @@ const StepsItem = ({
   className,
   isLast = false,
 }: StepsItemProps) => {
-  const titleTag = stepTitleSizes.includes(titleSize) ? titleSize : 'p';
+  const titleTag = STEP_TITLE_SIZES.includes(titleSize) ? titleSize : 'p';
 
   const transformedIconOrNumber =
     typeof icon === 'string' ? (
