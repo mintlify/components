@@ -1,5 +1,3 @@
-'use client';
-
 import { ComponentProps } from 'react';
 import {
   ChevronDownIcon,
