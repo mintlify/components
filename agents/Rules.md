@@ -65,8 +65,8 @@ if empty - nothing to change
 - ~~Icons~~
 - Mermaid
 - Panel
-- Steps
-    - `Step` → `Steps.Item`
+- ~~Steps~~
+    - ~~`Step` → `Steps.Item`~~
 - Tabs
     - `Tab` → `Tabs.Item`
 - Tiles
