@@ -98,7 +98,6 @@ export function Mermaid({ chart, className, ariaLabel = 'Mermaid diagram' }: Mer
     };
   }, [svg]);
 
-
   if (error) {
     return (
       <div
