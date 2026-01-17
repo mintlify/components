@@ -6,10 +6,9 @@ import { ReactElement, useEffect, useId, useRef, useState } from 'react';
 import { cn } from '@/utils/cn';
 import { ZoomControls } from './ZoomControls';
 import { usePanZoom } from './usePanZoom';
+import { useIsDarkTheme } from '@/hooks/useIsDarkTheme';
 
 const MIN_HEIGHT_FOR_CONTROLS = 120;
-
-const getIsDarkTheme = () => document.documentElement.classList.contains('dark');
 
 export type MermaidProps = {
   /** The mermaid chart definition string */
@@ -24,26 +23,10 @@ export function Mermaid({ chart, className }: MermaidProps): ReactElement {
   const [error, setError] = useState<string | null>(null);
   const [showControls, setShowControls] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const { isDarkTheme } = useIsDarkTheme();
 
   const { style, zoomIn, zoomOut, reset, pan, panStep } = usePanZoom();
 
-  useEffect(() => {
-    setIsDarkTheme(getIsDarkTheme());
-
-    const mutationObserver = new MutationObserver(() => {
-      setIsDarkTheme(getIsDarkTheme());
-    });
-
-    mutationObserver.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    return () => {
-      mutationObserver.disconnect();
-    };
-  }, []);
 
   // Reset transform state and error when chart changes
   useEffect(() => {
