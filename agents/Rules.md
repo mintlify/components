@@ -34,10 +34,10 @@ if empty - nothing to change
 
 </aside>
 
-- Accordions
-    - Rename `<AccordionGroup>` to `<Accordion.Group>`
-    - Add `data-component-part` **for:
-        - `<details>`
+- ~~Accordions~~
+    - ~~Rename `<AccordionGroup>` to `<Accordion.Group>`~~
+    - ~~Add `data-component-part` **for:~~
+        - ~~`<details>`~~
 - ~~Badge~~
     - ~~add `tailIcon` + `leadIcon` , current `icon` prop should be `tailIcon`~~
     - ~~rename `stroke` to `variant="outline"`~~
