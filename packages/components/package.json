@@ -56,8 +56,10 @@
   },
   "dependencies": {
     "@radix-ui/react-tooltip": "^1.1.4",
+    "@sindresorhus/slugify": "^2.1.1",
     "clsx": "^2.1.1",
     "color": "^4.2.3",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.453.0",
     "tailwind-merge": "^2.6.0"
   },
@@ -69,6 +71,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
     "@types/color": "^4.2.0",
+    "@types/lodash": "4.17.23",
     "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
