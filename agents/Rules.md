@@ -63,7 +63,7 @@ if empty - nothing to change
     - ~~`caption` → `description`~~
     - ~~`hint` → `title`~~
 - ~~Icons~~
-- Mermaid
+- ~~Mermaid~~
 - Panel
 - ~~Steps~~
     - ~~`Step` → `Steps.Item`~~
