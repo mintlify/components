@@ -18,7 +18,7 @@ const Button = ({ children, className, ...props }: ComponentProps<'button'>) => 
     <button
       type="button"
       className={cn(
-        'flex items-center [&_svg]:size-4 justify-center size-7 rounded-md bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-white/10 transition-[transform] duration-100 active:scale-95',
+        'flex items-center [&_svg]:size-4 justify-center size-7 rounded-md bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-white/10 transition-[transform] duration-100 motion-safe:active:scale-95 cursor-pointer touch-manipulation',
         className
       )}
       {...props}

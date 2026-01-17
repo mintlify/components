@@ -1,8 +1,7 @@
-'use client';
-
 import mermaid, { MermaidConfig } from 'mermaid';
 import { ReactElement, useEffect, useId, useRef, useState } from 'react';
 
+import { Classes } from '@/lib/local/selectors';
 import { cn } from '@/utils/cn';
 import { ZoomControls } from './ZoomControls';
 import { usePanZoom } from './usePanZoom';
@@ -11,24 +10,23 @@ import { useIsDarkTheme } from '@/hooks/useIsDarkTheme';
 const MIN_HEIGHT_FOR_CONTROLS = 120;
 
 export type MermaidProps = {
-  /** The mermaid chart definition string */
   chart: string;
-  /** Additional CSS classes for the root element */
   className?: string;
+  ariaLabel?: string;
 };
 
-export function Mermaid({ chart, className }: MermaidProps): ReactElement {
-  const id = useId();
+export function Mermaid({ chart, className, ariaLabel = 'Mermaid diagram' }: MermaidProps): ReactElement {
   const [svg, setSvg] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [showControls, setShowControls] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const id = useId();
+
   const { isDarkTheme } = useIsDarkTheme();
 
   const { style, zoomIn, zoomOut, reset, pan, panStep } = usePanZoom();
 
-
-  // Reset transform state and error when chart changes
   useEffect(() => {
     reset();
     setError(null);
@@ -64,6 +62,7 @@ export function Mermaid({ chart, className }: MermaidProps): ReactElement {
         }
       } catch (err) {
         console.error('Error while rendering mermaid', err);
+
         if (!cancelled) {
           const message = err instanceof Error ? err.message : 'Failed to render diagram';
           setError(message);
@@ -99,23 +98,26 @@ export function Mermaid({ chart, className }: MermaidProps): ReactElement {
     };
   }, [svg]);
 
+
   if (error) {
     return (
       <div
         className={cn(
+          Classes.Mermaid,
           'rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/50 dark:text-red-400',
           className
         )}
         role="alert"
+        data-component-part="mermaid-error"
       >
-        <p className="font-medium">Failed to render diagram</p>
-        <p className="mt-1 text-xs opacity-80">{error}</p>
+        <p className="font-medium" data-component-part="mermaid-error-title">Failed to render diagram</p>
+        <p className="mt-1 text-xs" data-component-part="mermaid-error-message">{error}</p>
       </div>
     );
   }
 
   return (
-    <div className={cn('group relative overflow-hidden', className)}>
+    <div className={cn(Classes.Mermaid, 'group relative overflow-hidden', className)}>
       {showControls && (
         <ZoomControls
           onZoomIn={zoomIn}
@@ -128,11 +130,10 @@ export function Mermaid({ chart, className }: MermaidProps): ReactElement {
       <div
         ref={containerRef}
         dangerouslySetInnerHTML={{ __html: svg }}
-        className="mermaid"
-        data-component-part="diagram"
+        data-component-part="mermaid-diagram"
         style={style}
         role="img"
-        aria-label="Mermaid diagram"
+        aria-label={ariaLabel}
       />
     </div>
   );
