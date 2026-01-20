@@ -190,7 +190,7 @@ export const WithCallback: Story = {
 
 export const CustomClassName: Story = {
   render: () => (
-    <Tabs className="bg-[#FF00FF] dark:bg-[#00FF00]" activeColor="#00FF00" activeColorDark="#0000FF">
+    <Tabs className="border-b border-2 p-2 border-[#FF00FF] rounded-md" activeColor='#FF00FF'>
       <Tabs.Item title="Styled Tab List">
         <p>The tab list has custom styling applied via className.</p>
       </Tabs.Item>
