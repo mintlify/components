@@ -45,10 +45,6 @@ export type CodeBlockPropsBase = {
      */
     numberOfLines?: number;
     /**
-     * Internal prop to hide code snippet feedback button
-     */
-    hideCodeSnippetFeedbackButton?: boolean;
-    /**
      * Internal prop to show ask ai button
      */
     hideAskAiButton?: boolean;

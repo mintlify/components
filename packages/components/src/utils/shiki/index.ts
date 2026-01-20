@@ -18,7 +18,7 @@ import type {
 } from 'shiki/types';
 
 import { MAX_PREVIEW_BYTES } from '@/constants';
-import { getShikiLanguageFromPreset } from '@/constants/snippePresets';
+import { getShikiLanguageFromPreset } from '@/constants/snippetPresets';
 
 import {
     LANGS,

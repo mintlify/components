@@ -30,7 +30,7 @@ const ready = (async () => {
         await import('shiki'),
         await import('@shikijs/transformers'),
         await import('./constants.ts'),
-        await import('@mintlify/common'),
+        await import('@/common'),
     ]);
 
     replacements = shikiColorReplacements;
