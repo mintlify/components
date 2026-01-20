@@ -2,7 +2,7 @@ import { useState, useEffect, ComponentPropsWithoutRef } from 'react';
 import { CopyToClipboardResult, copyToClipboard } from '@/utils/copyToClipboard';
 import { cn } from '@/utils/cn';
 
-const DEFAULT_ARIA_LABEL = 'Copy the contents from the code block';
+const DEFAULT_COPY_BUTTON_ARIA_LABEL = 'Copy the contents from the code block';
 const DEFAULT_TOOLTIP_COPY_TEXT = 'Copy';
 const DEFAULT_TOOLTIP_COPIED_TEXT = 'Copied!';
 
@@ -12,21 +12,21 @@ type CodeGroupCopyButtonProps = {
     onCopy?: (result: CopyToClipboardResult, textToCopy?: string) => void;
     codeBlockTheme?: 'system' | 'dark';
     // pass in ariaLabel from useSelectedLocale['aria.copyCodeBlock']
-    ariaLabel?: string;
+    copyButtonAriaLabel?: string;
     // pass in tooltipCopyText from useSelectedLocale['tooltip.copy']
     tooltipCopyText?: string;
     // pass in tooltipCopiedText from useSelectedLocale['tooltip.copied']
     tooltipCopiedText?: string;
 };
 
-export const CodeGroupCopyButton = ({ code, onCopy, codeBlockTheme = 'system', ariaLabel = DEFAULT_ARIA_LABEL, tooltipCopyText = DEFAULT_TOOLTIP_COPY_TEXT, tooltipCopiedText = DEFAULT_TOOLTIP_COPIED_TEXT }: CodeGroupCopyButtonProps) => {
+export const CodeGroupCopyButton = ({ code, onCopy, codeBlockTheme = 'system', copyButtonAriaLabel = DEFAULT_COPY_BUTTON_ARIA_LABEL, tooltipCopyText = DEFAULT_TOOLTIP_COPY_TEXT, tooltipCopiedText = DEFAULT_TOOLTIP_COPIED_TEXT }: CodeGroupCopyButtonProps) => {
     return (
         <div data-testid="code-group-select-copy-button">
             <CopyToClipboardButton
                 textToCopy={code}
                 onCopied={onCopy ? (result, textToCopy) => onCopy(result, textToCopy) : undefined}
                 codeBlockTheme={codeBlockTheme}
-                ariaLabel={ariaLabel}
+                copyButtonAriaLabel={copyButtonAriaLabel}
                 tooltipCopyText={tooltipCopyText}
                 tooltipCopiedText={tooltipCopiedText}
             />
@@ -40,7 +40,7 @@ type CopyToClipboardButtonProps = {
     className?: string;
     showTooltip?: boolean;
     codeBlockTheme?: 'system' | 'dark';
-    ariaLabel?: string;
+    copyButtonAriaLabel?: string;
     tooltipCopyText?: string;
     tooltipCopiedText?: string;
 }
@@ -52,7 +52,7 @@ export function CopyToClipboardButton({
     className,
     showTooltip = true,
     codeBlockTheme,
-    ariaLabel = DEFAULT_ARIA_LABEL,
+    copyButtonAriaLabel = DEFAULT_COPY_BUTTON_ARIA_LABEL,
     tooltipCopyText = DEFAULT_TOOLTIP_COPY_TEXT,
     tooltipCopiedText = DEFAULT_TOOLTIP_COPIED_TEXT,
 }: CopyToClipboardButtonProps & ComponentPropsWithoutRef<'button'>) {
@@ -97,7 +97,7 @@ export function CopyToClipboardButton({
             className={className}
             showTooltip={showTooltip}
             codeBlockTheme={codeBlockTheme}
-            ariaLabel={ariaLabel}
+            copyButtonAriaLabel={copyButtonAriaLabel}
             tooltipCopyText={tooltipCopyText}
             tooltipCopiedText={tooltipCopiedText}
         />
@@ -110,7 +110,7 @@ type CopyIconButtonProps = {
     showTooltip?: boolean;
     className?: string;
     codeBlockTheme?: 'system' | 'dark';
-    ariaLabel?: string;
+    copyButtonAriaLabel?: string;
     tooltipCopyText?: string;
     tooltipCopiedText?: string;
 }
@@ -121,7 +121,7 @@ export function CopyIconButton({
     showTooltip = true,
     className,
     codeBlockTheme,
-    ariaLabel = DEFAULT_ARIA_LABEL,
+    copyButtonAriaLabel = DEFAULT_COPY_BUTTON_ARIA_LABEL,
     tooltipCopyText = DEFAULT_TOOLTIP_COPY_TEXT,
     tooltipCopiedText = DEFAULT_TOOLTIP_COPIED_TEXT,
 }: CopyIconButtonProps) {
@@ -134,7 +134,7 @@ export function CopyIconButton({
                 }
                 onClick={onClick}
                 data-testid="copy-code-button"
-                aria-label={ariaLabel}
+                aria-label={copyButtonAriaLabel}
             >
                 {isCopiedActive ? (
                     <svg
