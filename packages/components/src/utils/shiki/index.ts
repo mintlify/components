@@ -77,7 +77,6 @@ export const highlighterPromise = createHighlighter({
     });
 
 export function getShikiLanguage(lang: string | undefined): ShikiLanguage {
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: Please fix this violation when you can!
     const text = 'text' as ShikiLanguage;
     if (lang === undefined) return text;
 
@@ -162,10 +161,12 @@ export function getShikiHighlightedHtml(
     }
 ): string | undefined;
 
+// eslint-disable-next-line no-redeclare
 export function getShikiHighlightedHtml(
     props: ShikiHighlightedHtmlArgs
 ): string | undefined | Promise<string | undefined>;
 
+// eslint-disable-next-line no-redeclare
 export function getShikiHighlightedHtml(
     props: ShikiHighlightedHtmlArgs
 ): string | undefined | Promise<string | undefined> {
@@ -227,7 +228,8 @@ export function getShikiHighlightedHtml(
                 tabindex: false,
                 ...props.opts,
             });
-        } catch { }
+            // eslint-disable-next-line no-empty
+        } catch {}
     }
 
     if (typeof html !== 'object') {
@@ -237,7 +239,6 @@ export function getShikiHighlightedHtml(
     const firstChild = html.children[0];
     if (!firstChild) return undefined;
     if (firstChild.type === 'element' && firstChild.tagName === 'pre') {
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: Please fix this violation when you can!
         const spanElements = (firstChild.children[0] as Element).children.filter(
             (child) => child.type === 'element' && child.tagName === 'span'
         ) as Element[];

@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 
 import { cn } from '@/utils/cn';
 
