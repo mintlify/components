@@ -268,7 +268,7 @@ const TabItem = forwardRef<
       ref={ref}
       value={value}
       className={cn(
-        'group flex items-center relative gap-1.5 my-1 mb-1.5 outline-0 whitespace-nowrap font-medium !ml-0 first:!ml-2.5 focus:outline-2',
+        'group flex items-center relative gap-1.5 my-1 mb-1.5 outline-0 whitespace-nowrap font-medium ml-0! first:ml-2.5! focus:outline-2',
         isSelected && codeBlockTheme === 'system' && 'text-primary dark:text-primary-light',
         isSelected &&
         (codeBlockTheme === 'dark' || codeBlockTheme == undefined) &&

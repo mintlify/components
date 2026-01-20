@@ -42,7 +42,7 @@ const DropdownMenuContent = React.forwardRef<
             align="start"
             style={{ textRendering: 'geometricPrecision' }}
             className={cn(
-                'origin-[--radix-dropdown-menu-content-transform-origin] shadow-xl dark:shadow-none shadow-gray-500/5 dark:shadow-gray-500/5 bg-background-light dark:bg-background-dark p-1 relative z-50 max-h-96 max-w-[var(--radix-dropdown-menu-content-available-width)] min-w-[var(--radix-dropdown-menu-trigger-width)] overflow-y-auto rounded-2xl border-standard text-gray-950/70 dark:text-white/70',
+                'origin-(--radix-dropdown-menu-content-transform-origin) shadow-xl dark:shadow-none shadow-gray-500/5 dark:shadow-gray-500/5 bg-background-light dark:bg-background-dark p-1 relative z-50 max-h-96 max-w-(--radix-dropdown-menu-content-available-width) min-w-(--radix-dropdown-menu-trigger-width) overflow-y-auto rounded-2xl border-standard text-gray-950/70 dark:text-white/70',
                 'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
                 className
             )}
@@ -60,7 +60,7 @@ const DropdownMenuItem = React.forwardRef<
         ref={ref}
         style={{ fontWeight: 'normal !important' }}
         className={cn(
-            'flex items-center justify-between px-2 py-1 gap-2 text-sm rounded-md group hover:bg-background-dark/[0.03] dark:hover:bg-background-light/[0.03] focus:bg-background-dark/5 dark:focus:bg-background-light/5 relative w-full cursor-pointer select-none outline-0 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:cursor-default data-[disabled]:opacity-50',
+            'flex items-center justify-between px-2 py-1 gap-2 text-sm rounded-md group hover:bg-background-dark/3 dark:hover:bg-background-light/[0.03] focus:bg-background-dark/5 dark:focus:bg-background-light/5 relative w-full cursor-pointer select-none outline-0 focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:cursor-default data-disabled:opacity-50',
             isSelected
                 ? 'text-primary dark:text-primary-light font-medium'
                 : 'text-gray-950/50 dark:text-white/50 hover:text-gray-950/75 dark:hover:text-white/75 focus:text-gray-950/75 dark:focus:text-white/75',

@@ -145,7 +145,7 @@ export const BaseCodeBlock = ({
                     // prevent code blocks from growing beyond their container, setting width to 0 to recalculate the width
                     'w-0 min-w-full max-w-full py-3.5 px-4 h-full dark:bg-codeblock relative text-sm leading-6 children:!my-0 children:!shadow-none children:!bg-transparent',
                     'transition-[height] duration-300 ease-in-out overflow-x-auto code-block-background',
-                    '[&_*]:ring-0 [&_*]:outline-0 [&_*]:focus:ring-0 [&_*]:focus:outline-0',
+                    '**:ring-0 **:outline-0 **:focus:ring-0 **:focus:outline-0',
                     !props.filename ? 'rounded-2xl' : 'rounded-xt',
                     codeBlockTheme === 'system' ? 'bg-white' : 'bg-codeblock',
                     (expandable || isParentCodeGroup) && 'overflow-auto',

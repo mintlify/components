@@ -176,7 +176,7 @@ html:not(.dark) .codeblock-light {
 /* line highlighting (without line numbers) */
 [data-component-part='code-block-root']:not(.has-line-numbers) {
   .line-highlight {
-    background: rgb(var(--primary-light) / 0.2) !important;
+    background: color-mix(in srgb, var(--color-primary-light) 20%, transparent) !important;
     width: 100%;
     display: inline-block;
     position: relative;
@@ -189,12 +189,12 @@ html:not(.dark) .codeblock-light {
       top: 0;
       bottom: 0;
       width: 1rem;
-      background: rgb(var(--primary-light) / 0.2) !important;
+      background: color-mix(in srgb, var(--color-primary-light) 20%, transparent) !important;
     }
 
     &::before {
       left: -1rem;
-      border-left: 1px solid rgb(var(--primary-light) / 1);
+      border-left: 1px solid var(--color-primary-light);
     }
 
     &::after {
@@ -300,8 +300,8 @@ html:not(.dark) .codeblock-light {
     bottom: 0;
     left: -1rem;
     right: -1rem;
-    background: rgb(var(--primary-light) / 0.2) !important;
-    border-left: 1px solid rgb(var(--primary-light) / 1);
+    background: color-mix(in srgb, var(--color-primary-light) 20%, transparent) !important;
+    border-left: 1px solid var(--color-primary-light);
     z-index: -1;
   }
 }
