@@ -1,7 +1,6 @@
 import { Children, useRef, useCallback, isValidElement, useState, useEffect, useId, ReactElement, ReactNode, RefObject, CSSProperties, KeyboardEvent } from 'react';
 
 import { Icon } from '@/components/icon';
-import { DEFAULT_COLORS } from '@/constants';
 import { Classes } from '@/lib/local/selectors';
 import { IconLibrary, IconType } from '@/models';
 import { cn } from '@/utils/cn';
@@ -47,10 +46,6 @@ export type TabsProps = {
   ariaLabel?: string;
   // pass a ref to use with useTabState's findInPanels callback for URL hash navigation to elements inside panels
   panelsRef?: RefObject<HTMLDivElement>;
-  // pass in from DocsConfigContext (colors.primary) for active tab text/underline color
-  activeColor?: string;
-  // pass in from DocsConfigContext (colors.primary-light or colors.primaryLight) for dark mode
-  activeColorDark?: string;
 };
 
 function TabsRoot({
@@ -61,16 +56,9 @@ function TabsRoot({
   borderBottom,
   ariaLabel,
   panelsRef,
-  activeColor = DEFAULT_COLORS.primary,
-  activeColorDark = DEFAULT_COLORS.light,
 }: TabsProps) {
   const tabRefs = useRef<(HTMLLIElement | null)[]>([]);
   const uniqueId = useId();
-
-  const colorStyles = {
-    '--tabs-active-color': activeColor,
-    '--tabs-active-color-dark': activeColorDark,
-  } as CSSProperties;
 
   const arrayChildren = Children.toArray(children).filter(
     (child): child is ReactElement<TabsItemProps> => isValidElement(child)
@@ -148,7 +136,6 @@ function TabsRoot({
         borderBottom && 'border-b border-gray-200 dark:border-gray-700 pb-6',
         className
       )}
-      style={colorStyles}
     >
       <ul
         role="tablist"
@@ -174,7 +161,7 @@ function TabsRoot({
               aria-selected={isActive}
               aria-controls={`panel-${tabIds[i]}`}
               tabIndex={isActive ? 0 : -1}
-              className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--tabs-active-color) dark:focus-visible:ring-(--tabs-active-color-dark) focus-visible:ring-offset-2 rounded-sm"
+              className="cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 handleTabClick(i);
@@ -188,8 +175,8 @@ function TabsRoot({
                 className={cn(
                   'flex text-sm items-center gap-1.5 leading-6 font-semibold whitespace-nowrap pt-3 pb-2.5 -mb-px max-w-max border-b',
                   isActive
-                    ? 'text-(--tabs-active-color) dark:text-(--tabs-active-color-dark) border-current'
-                    : 'text-gray-900 border-transparent hover:border-gray-300 dark:text-gray-200 dark:hover:border-gray-600'
+                    ? 'text-primary dark:text-primary-light border-current'
+                    : 'text-gray-900 border-transparent hover:border-gray-300 dark:text-gray-200 dark:hover:border-gray-700'
                 )}
                 data-component-part="tab-button"
                 data-active={isActive}
@@ -202,7 +189,7 @@ function TabsRoot({
                     iconLibrary={iconLibrary}
                     className={cn(
                       'h-4 w-4 shrink-0',
-                      isActive ? 'bg-(--tabs-active-color) dark:bg-(--tabs-active-color-dark)' : 'bg-gray-900 dark:bg-gray-200',
+                      isActive ? 'bg-primary dark:bg-primary-light' : 'bg-gray-900 dark:bg-gray-200',
                       Classes.TabIcon
                     )}
                     overrideColor
