@@ -28,7 +28,7 @@ export function Card({
   cta,
   arrow,
   as,
-  className
+  className,
 }: {
   title?: string;
   icon?: ReactNode | string;
@@ -253,7 +253,7 @@ export function GenericCard<T extends ElementType = 'div'>({
                 className={cn(
                   'text-left text-gray-600 gap-2 dark:text-gray-400 text-sm font-medium flex flex-row items-center',
                   !disabled &&
-                    'group-hover:text-primary dark:group-hover:text-primary-light',
+                    'group-hover:text-primary group-hover:dark:text-primary-light',
                   disabled && 'opacity-50'
                 )}
               >
