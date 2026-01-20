@@ -1,6 +1,6 @@
 
 import { cn } from '@/utils/cn';
-import { getLanguageIconUrl } from '@/utils/getLanguageIconUrl';
+import { getLanguageIconUrl } from '@/utils/iconUtils';
 
 export const LanguageIcon = ({ language, className }: { language: string; className?: string }) => {
     const url = getLanguageIconUrl(language);

@@ -101,40 +101,35 @@ export function getLanguageFromClassName(className: string | undefined, fallback
     return match ? match[1] ?? 'text' : fallback ?? 'text';
 }
 
-let hasLoadedThemes: boolean = false;
-export async function loadShikiThemes(
-    codeblocks?: CodeStyling,
-    //Used for storybook testing
-    force?: boolean
-) {
+function getThemesForCodeStyling(codeblocks?: CodeStyling): string[] {
+    if (typeof codeblocks === 'string' || !codeblocks) {
+        return codeblocks === 'system' || !codeblocks
+            ? ['dark-plus', 'github-light-default']
+            : ['dark-plus'];
+    }
+    const { theme } = codeblocks;
+    if (typeof theme === 'string') return [theme];
+    if (typeof theme === 'object') return [theme.dark, theme.light];
+    return [];
+}
+
+function areThemesLoaded(codeblocks?: CodeStyling): boolean {
+    if (!highlighter) return false;
+    const loaded = highlighter.getLoadedThemes();
+    const needed = getThemesForCodeStyling(codeblocks);
+    return needed.every((t) => t === 'css-variables' || loaded.includes(t));
+}
+
+export async function loadShikiThemes(codeblocks?: CodeStyling) {
     await highlighterPromise;
-    if (hasLoadedThemes && !force) return;
     if (!highlighter) return;
 
-    if (typeof codeblocks === 'string' || !codeblocks) {
-        if (codeblocks === 'system' || !codeblocks) {
-            await highlighter.loadTheme('dark-plus', 'github-light-default');
-        } else {
-            await highlighter.loadTheme('dark-plus');
-        }
-        hasLoadedThemes = true;
-        return;
-    }
+    const loaded = highlighter.getLoadedThemes();
+    const toLoad = getThemesForCodeStyling(codeblocks).filter(
+        (t) => t !== 'css-variables' && !loaded.includes(t)
+    ) as [BundledTheme, ...BundledTheme[]];
 
-    const { theme } = codeblocks;
-    if (typeof theme === 'string' && theme !== 'css-variables') {
-        await highlighter.loadTheme(theme);
-    } else if (typeof theme === 'object') {
-        if (theme.dark !== 'css-variables' && theme.light !== 'css-variables') {
-            await highlighter.loadTheme(theme.dark, theme.light);
-        } else if (theme.dark !== 'css-variables') {
-            await highlighter.loadTheme(theme.dark);
-        } else if (theme.light !== 'css-variables') {
-            await highlighter.loadTheme(theme.light);
-        }
-    }
-
-    hasLoadedThemes = true;
+    if (toLoad.length > 0) await highlighter.loadTheme(...toLoad);
 }
 
 export type ShikiHighlightedHtmlArgs = {
@@ -177,9 +172,9 @@ export function getShikiHighlightedHtml(
         return highlighterPromise.then(() => getShikiHighlightedHtml(props)).catch(() => undefined);
     }
 
-    if (!hasLoadedThemes) {
+    if (!areThemesLoaded(props.codeBlockTheme)) {
         if (props.opts?.noAsync) return undefined;
-        return loadShikiThemes()
+        return loadShikiThemes(props.codeBlockTheme)
             .then(() => getShikiHighlightedHtml(props))
             .catch(() => undefined);
     }
@@ -228,8 +223,9 @@ export function getShikiHighlightedHtml(
                 tabindex: false,
                 ...props.opts,
             });
-            // eslint-disable-next-line no-empty
-        } catch {}
+        } catch (error) {
+            console.error('error getting shiki highlighted html', error);
+        }
     }
 
     if (typeof html !== 'object') {

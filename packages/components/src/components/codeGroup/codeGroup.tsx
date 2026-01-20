@@ -8,6 +8,7 @@ import React, {
   forwardRef,
   useCallback,
   useRef,
+  useState,
 } from 'react';
 
 import { Classes } from '@/lib/local/selectors';
@@ -21,6 +22,7 @@ import { CodeBlockProps } from './codeBlock';
 import { CopyToClipboardButton } from './copyButton';
 import { LanguageDropdown } from './languageDropdown';
 import { getNodeText } from './getNodeText';
+import { CodeStyling } from '@/validation';
 
 export type CodeGroupPropsBase = {
   dropdown?: boolean;
@@ -32,9 +34,10 @@ export type CodeGroupPropsBase = {
   feedbackModalOpen?: boolean;
   anchorRef?: RefObject<HTMLDivElement>;
   codeBlockTheme?: 'dark' | 'system';
+  codeBlockThemeObject?: CodeStyling;
   // pass in from useTabState
-  selectedTab?: number;
-  setActiveIndex?: (index: number) => void;
+  initialSelectedTab?: number;
+  onSelectedTabChange?: (index: number) => void;
   askAiButton?: ReactNode;
   feedbackButton?: ReactNode;
 };
@@ -54,12 +57,14 @@ export const CodeGroup = function CodeGroup({
   feedbackModalOpen,
   anchorRef,
   codeBlockTheme = 'system',
-  selectedTab,
-  setActiveIndex,
+  codeBlockThemeObject,
+  initialSelectedTab = 0,
+  onSelectedTabChange,
   askAiButton,
   feedbackButton,
   ...props
 }: CodeGroupProps) {
+  const [selectedTab, setSelectedTab] = useState(initialSelectedTab);
   const triggerRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
   const childArr = Array.isArray(children)
     ? children
@@ -76,7 +81,8 @@ export const CodeGroup = function CodeGroup({
         window.history.replaceState(null, '', window.location.pathname + window.location.search);
       }
 
-      setActiveIndex?.(index);
+      setSelectedTab(index);
+      onSelectedTabChange?.(index);
 
       if (wasFocusOnTab) {
         requestAnimationFrame(() => {
@@ -87,7 +93,7 @@ export const CodeGroup = function CodeGroup({
         });
       }
     },
-    [setActiveIndex]
+    [onSelectedTabChange]
   );
 
   if (!children) {
@@ -236,6 +242,8 @@ export const CodeGroup = function CodeGroup({
                 shouldHighlight={index === selectedIndex}
                 // avoid heavy re-rendering of the code block
                 expandable={child.props.expandable && index === selectedIndex}
+                codeBlockTheme={codeBlockTheme}
+                codeBlockThemeObject={codeBlockThemeObject ?? codeBlockTheme}
               />
             </TabsPrimitive.Content>
           );

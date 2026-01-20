@@ -8,6 +8,7 @@ import { CopyToClipboardResult } from '../../utils/copyToClipboard';
 import { BaseCodeBlock } from './baseCodeBlock';
 import { CopyToClipboardButton } from './copyButton';
 import { getNodeText } from './getNodeText';
+import { CodeStyling } from '@/validation';
 
 /**
  * User-defined properties
@@ -55,6 +56,7 @@ export type CodeBlockPropsBase = {
     feedbackModalOpen?: boolean;
     anchorRef?: RefObject<HTMLDivElement>;
     codeBlockTheme?: 'dark' | 'system';
+    codeBlockThemeObject?: CodeStyling;
     askAiButton?: ReactNode;
     feedbackButton?: ReactNode;
 };
@@ -70,7 +72,7 @@ export type CodeBlockProps = CodeBlockInternalPropsBase &
     Omit<ComponentPropsWithoutRef<'div'>, keyof CodeBlockInternalPropsBase>;
 
 export const CodeBlock = function CodeBlock(params: CodeBlockProps) {
-    const { filename, onCopied, children, className, icon, isSmallText, hideAskAiButton, feedbackModalOpen, anchorRef, codeBlockTheme, askAiButton, feedbackButton, ...props } =
+    const { filename, onCopied, children, className, icon, isSmallText, hideAskAiButton, feedbackModalOpen, anchorRef, codeBlockTheme, codeBlockThemeObject, askAiButton, feedbackButton, ...props } =
         params;
 
     const codeString = getNodeText(children);
@@ -114,6 +116,8 @@ export const CodeBlock = function CodeBlock(params: CodeBlockProps) {
             <BaseCodeBlock
                 isSmallText={isSmallText}
                 hideAskAiButton={hideAskAiButton}
+                codeBlockTheme={codeBlockTheme}
+                codeBlockThemeObject={codeBlockThemeObject}
                 {...params}
             />
         </div>
