@@ -63,10 +63,10 @@ if empty - nothing to change
     - ~~`caption` → `description`~~
     - ~~`hint` → `title`~~
 - ~~Icons~~
-- Mermaid
+- ~~Mermaid~~
 - Panel
-- Steps
-    - `Step` → `Steps.Item`
+- ~~Steps~~
+    - ~~`Step` → `Steps.Item`~~
 - ~~Tabs~~
     - ~~`Tab` → `Tabs.Item`~~
 - Tiles
