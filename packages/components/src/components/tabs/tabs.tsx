@@ -1,4 +1,4 @@
-import { Children, useRef, useCallback, isValidElement, useState, useEffect, ReactElement, ReactNode, RefObject, CSSProperties, KeyboardEvent } from 'react';
+import { Children, useRef, useCallback, isValidElement, useState, useEffect, useId, ReactElement, ReactNode, RefObject, CSSProperties, KeyboardEvent } from 'react';
 
 import { Icon } from '@/components/icon';
 import { DEFAULT_COLORS } from '@/constants';
@@ -65,6 +65,7 @@ function TabsRoot({
   activeColorDark = DEFAULT_COLORS.light,
 }: TabsProps) {
   const tabRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const uniqueId = useId();
 
   const colorStyles = {
     '--tabs-active-color': activeColor,
@@ -78,7 +79,7 @@ function TabsRoot({
   const tabIds = arrayChildren.map((child, index) => {
     if (child.props.id) return child.props.id;
     const tabId = child.props.title ?? DEFAULT_TAB_TITLE;
-    return `${slugify(tabId)}-${index}`;
+    return `${uniqueId}-${slugify(tabId)}-${index}`;
   });
 
   const validDefaultTabIndex =
@@ -144,17 +145,15 @@ function TabsRoot({
       className={cn(
         Classes.Tabs,
         'tabs tab-container',
-        borderBottom && 'border-b border-gray-200 dark:border-gray-700 pb-6'
+        borderBottom && 'border-b border-gray-200 dark:border-gray-700 pb-6',
+        className
       )}
       style={colorStyles}
     >
       <ul
         role="tablist"
         aria-label={ariaLabel ?? 'Tabs'}
-        className={cn(
-          'not-prose mb-6 pb-px flex-none min-w-full overflow-auto border-b border-gray-200 gap-x-6 flex dark:border-gray-700',
-          className
-        )}
+        className="not-prose mb-6 pb-px flex-none min-w-full overflow-auto border-b border-gray-200 gap-x-6 flex dark:border-gray-700"
         data-component-part="tabs-list"
       >
         {arrayChildren.map((child: ReactElement<TabsItemProps>, i: number) => {
