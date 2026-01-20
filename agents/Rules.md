@@ -70,10 +70,10 @@ if empty - nothing to change
 - Tabs
     - `Tab` → `Tabs.Item`
 - Tiles
-- Tooltips
-    - `headline` → `title`
-    - `tip` → `description`
-    - add trigger identification  (Classes)
+- ~~Tooltips~~
+    - ~~`headline` → `title`~~
+    - ~~`tip` → `description`~~
+    - ~~add trigger identification  (Classes)~~
 ~~- Tree~~
 - Update
 - View
