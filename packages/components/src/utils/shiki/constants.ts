@@ -1,6 +1,9 @@
-import { DEFAULT_DARK_THEME, DEFAULT_LIGHT_THEME } from '@/common';
 import { SHIKI_THEMES } from '@/mdx';
 import type { BuiltinTheme } from 'shiki/types';
+
+export const DEFAULT_DARK_THEME = 'dark-plus';
+export const DEFAULT_LIGHT_THEME = 'github-light-default';
+export type ShikiThemeType = (typeof SHIKI_THEMES)[number];
 
 export const LINE_HIGHLIGHT_CLASS_NAME = 'line-highlight';
 export const LINE_FOCUS_CLASS_NAME = 'line-focus';

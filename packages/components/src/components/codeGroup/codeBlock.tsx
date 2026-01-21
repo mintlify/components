@@ -155,7 +155,7 @@ function CodeHeader({
                     <ComponentIcon
                         icon={icon}
                         iconType="regular"
-                        className={cn('h-3.5 w-3.5 bg-gray-500 dark:bg-gray-400', Classes.CodeBlockIcon)}
+                        className={cn('size-3.5 bg-gray-500 dark:bg-gray-400', Classes.CodeBlockIcon)}
                         overrideColor
                     />
                 )}

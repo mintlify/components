@@ -11,7 +11,7 @@ export const LanguageIcon = ({ language, className }: { language: string; classN
 
     return (
         <svg
-            className={cn('w-3.5 h-3.5 shrink-0', className)}
+            className={cn('size-3.5 shrink-0', className)}
             style={{
                 WebkitMaskImage: `url(${url})`,
                 WebkitMaskRepeat: 'no-repeat',

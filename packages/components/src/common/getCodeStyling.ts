@@ -1,9 +1,5 @@
-import { SHIKI_THEMES } from '@/mdx';
 import { CodeStyling } from '@/validation';
-
-export const DEFAULT_DARK_THEME = 'dark-plus';
-export const DEFAULT_LIGHT_THEME = 'github-light-default';
-export type ShikiThemeType = (typeof SHIKI_THEMES)[number];
+import { DEFAULT_DARK_THEME, DEFAULT_LIGHT_THEME, type ShikiThemeType } from '@/utils/shiki/constants';
 
 const getThemeModeFromTheme = (theme: ShikiThemeType): 'system' | 'dark' => {
     const lightThemes = [

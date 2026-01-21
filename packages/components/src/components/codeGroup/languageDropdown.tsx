@@ -53,7 +53,7 @@ export const LanguageDropdown = ({
                 >
                     <LanguageIcon language={selectedLanguage} />
                     <p className="truncate font-medium">{getDisplayName(selectedLanguage)}</p>
-                    {hasOptions && <ChevronsUpDownIcon className="w-3.5 h-3.5 shrink-0" />}
+                    {hasOptions && <ChevronsUpDownIcon className="size-3.5 shrink-0" />}
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent
