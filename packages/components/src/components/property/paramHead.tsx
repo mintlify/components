@@ -2,32 +2,21 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import { copyToClipboard } from '@/utils/copyToClipboard';
 import slugify from '@sindresorhus/slugify';
 import { cn } from '@/utils/cn';
-import { OptionDropdown } from './optionDropdown';
 import { LinkIcon } from '@/icons';
 import { InfoPill, RequiredPill, DeprecatedPill } from './pills';
-
-export type FieldType = 'body' | 'schema' | 'parameter' | 'response' | 'authorization';
 
 type ParamHeadProps = {
     name?: string | null;
     typeLabel?: string;
-    fieldType?: FieldType;
     location?: string;
     required?: boolean;
     deprecated?: boolean;
     defaultValue?: unknown;
-    typeOptions?: string[];
-    selectedTypeOptionIndex?: number;
-    onSelectTypeOption?: (index: number) => void;
-    parentName?: string;
     id?: string;
     pre?: string[];
     post?: string[];
-    style?: string;
-    explode?: boolean;
     onMount?: () => void;
     navigateToHeaderAriaLabel?: string;
-    selectSchemaTypeAriaLabel?: string;
     defaultLabel?: string;
     requiredLabel?: string;
     deprecatedLabel?: string;
@@ -39,27 +28,19 @@ export function ParamHead({
     location,
     required,
     deprecated,
-    fieldType,
     defaultValue,
-    typeOptions,
-    selectedTypeOptionIndex,
-    onSelectTypeOption,
-    parentName,
     id,
     pre,
     post,
-    style,
-    explode,
     onMount,
     navigateToHeaderAriaLabel,
-    selectSchemaTypeAriaLabel,
     defaultLabel,
     requiredLabel,
     deprecatedLabel,
 }: ParamHeadProps) {
     const pillsRef = useRef<HTMLDivElement>(null);
     const [isMultiLine, setIsMultiLine] = useState(false);
-    const paramId = id ?? buildRecursiveParamFieldId(fieldType, name, parentName);
+    const paramId = id ?? slugify(name ?? '', { decamelize: true });
 
     const copyAnchorLink = useCallback(() => {
         if (paramId) {
@@ -90,21 +71,6 @@ export function ParamHead({
         onMount?.();
     }, [onMount]);
 
-    const paramInfo = !parentName ? (
-        name
-    ) : style === 'deepObject' && explode ? (
-        <>
-            <span className="text-gray-500 dark:text-gray-400">{parentName}</span>
-            {name}
-            <span className="text-gray-500 dark:text-gray-400">]</span>
-        </>
-    ) : (
-        <>
-            <span className="text-gray-500 dark:text-gray-400">{parentName}</span>
-            {name}
-        </>
-    );
-
     return name == null ? null : (
         <div
             className={cn('flex font-mono text-sm group/param-head param-head break-all relative')}
@@ -117,10 +83,7 @@ export function ParamHead({
                         <div className="absolute -top-1.5">
                             <a
                                 href={`#${paramId}`}
-                                className={cn(
-                                    parentName ? '-ml-[2.1rem]' : '-ml-10',
-                                    'flex items-center opacity-0 border-0 group-hover/param-head:opacity-100 focus:opacity-100 focus:outline-0 py-2 in-[.expandable-content]:-ml-[2.1rem] group/link'
-                                )}
+                                className="flex items-center opacity-0 border-0 group-hover/param-head:opacity-100 focus:opacity-100 focus:outline-0 py-2 in-[.expandable-content]:-ml-[2.1rem] group/link"
                                 aria-label={navigateToHeaderAriaLabel}
                                 onClick={copyAnchorLink}
                             >
@@ -140,15 +103,13 @@ export function ParamHead({
                             {item}
                         </div>
                     ))}
-                    {(parentName || name) && (
-                        <div
-                            className="font-semibold text-primary dark:text-primary-light cursor-pointer overflow-wrap-anywhere"
-                            data-component-part="field-name"
-                            onClick={copyAnchorLink}
-                        >
-                            {paramInfo}
-                        </div>
-                    )}
+                    <div
+                        className="font-semibold text-primary dark:text-primary-light cursor-pointer overflow-wrap-anywhere"
+                        data-component-part="field-name"
+                        onClick={copyAnchorLink}
+                    >
+                        {name}
+                    </div>
                     <div
                         ref={pillsRef}
                         className={cn(
@@ -157,16 +118,7 @@ export function ParamHead({
                         )}
                         data-component-part="field-meta"
                     >
-                        {typeOptions && typeOptions.length > 1 && onSelectTypeOption ? (
-                            <OptionDropdown
-                                options={typeOptions}
-                                selectedIndex={selectedTypeOptionIndex}
-                                onSelectOption={onSelectTypeOption}
-                                selectSchemaTypeAriaLabel={selectSchemaTypeAriaLabel}
-                            />
-                        ) : (
-                            typeLabel && <InfoPill>{typeLabel}</InfoPill>
-                        )}
+                        {typeLabel && <InfoPill>{typeLabel}</InfoPill>}
                         {location && <InfoPill>{location}</InfoPill>}
                         {defaultValue != null && (
                             <InfoPill prefix={defaultLabel}>
@@ -194,17 +146,3 @@ export function ParamHead({
         </div>
     );
 }
-
-export const buildRecursiveParamFieldId = (
-    fieldType: FieldType | undefined,
-    name: string | undefined | null,
-    parentName: string | undefined,
-    propertyName?: string | undefined
-) => {
-    return slugify(
-        `${fieldType ? `${fieldType}-` : ''}${parentName ? `${parentName}-` : ''}${name ? name : ''}-${propertyName ? propertyName : ''}`,
-        {
-            decamelize: true,
-        }
-    );
-};

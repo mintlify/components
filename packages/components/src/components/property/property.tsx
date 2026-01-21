@@ -18,8 +18,6 @@ type PropertyProps = {
     pre?: string[];
     post?: string[];
     onMount?: () => void;
-    // pass in locale['aria.selectSchemaType']
-    selectSchemaTypeAriaLabel?: string;
     // pass in locale['aria.navigateToHeader']
     navigateToHeaderAriaLabel?: string;
     // pass in locale['api.default']
@@ -30,7 +28,6 @@ type PropertyProps = {
     deprecatedLabel?: string;
 }
 
-const DEFAULT_SELECT_SCHEMA_TYPE_ARIA_LABEL = 'Select schema type';
 const DEFAULT_NAVIGATE_TO_HEADER_ARIA_LABEL = 'Navigate to header';
 const DEFAULT_DEFAULT_LABEL = 'default';
 const DEFAULT_REQUIRED_LABEL = 'required';
@@ -49,7 +46,6 @@ export function Property({
     pre,
     post,
     onMount,
-    selectSchemaTypeAriaLabel = DEFAULT_SELECT_SCHEMA_TYPE_ARIA_LABEL,
     navigateToHeaderAriaLabel = DEFAULT_NAVIGATE_TO_HEADER_ARIA_LABEL,
     defaultLabel = DEFAULT_DEFAULT_LABEL,
     requiredLabel = DEFAULT_REQUIRED_LABEL,
@@ -98,7 +94,6 @@ export function Property({
                 pre={pre}
                 post={post}
                 onMount={onMount}
-                selectSchemaTypeAriaLabel={selectSchemaTypeAriaLabel}
                 navigateToHeaderAriaLabel={navigateToHeaderAriaLabel}
                 defaultLabel={defaultLabel}
                 requiredLabel={requiredLabel}
