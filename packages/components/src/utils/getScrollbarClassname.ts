@@ -16,7 +16,7 @@ export const getCodeBlockScrollbarClassname = (codeBlockTheme?: 'dark' | 'system
 };
 
 export const commonScrollbarClassNames =
-    'scrollbar-thin scrollbar-thumb-rounded scrollbar-track-transparent' +
-    'scrollbar-thumb-black/20 dark:scrollbar-thumb-white/20' +
-    'hover:scrollbar-thumb-black/25 dark:hover:scrollbar-thumb-white/25' +
+    'scrollbar-thin scrollbar-thumb-rounded scrollbar-track-transparent ' +
+    'scrollbar-thumb-black/20 dark:scrollbar-thumb-white/20 ' +
+    'hover:scrollbar-thumb-black/25 dark:hover:scrollbar-thumb-white/25 ' +
     'active:scrollbar-thumb-black/25 dark:active:scrollbar-thumb-white/25';

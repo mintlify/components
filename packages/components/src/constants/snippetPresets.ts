@@ -162,7 +162,7 @@ export const getDisplayName = (lang: string): string => getPreset(lang)?.display
 
 export const getIconKey = (lang: string): string | undefined => {
     const preset = getPreset(lang);
-    return preset ? preset.iconKey ?? preset.key : lang.toLowerCase();
+    return preset ? preset.iconKey ?? preset.key : undefined;
 };
 
 export const getShikiLanguageFromPreset = (lang: string): string =>

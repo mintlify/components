@@ -5,6 +5,7 @@ let transformers;
 let highlighter;
 let hastToHtmlFn;
 let codeStylingToThemeOrThemesFn;
+let getShikiLanguageFromPresetFn;
 
 const ready = (async () => {
     const [
@@ -26,17 +27,20 @@ const ready = (async () => {
             LINE_DIFF_REMOVE_CLASS_NAME,
         },
         { codeStylingToThemeOrThemes },
+        { getShikiLanguageFromPreset },
     ] = await Promise.all([
         await import('shiki'),
         await import('@shikijs/transformers'),
         await import('./constants.ts'),
         await import('@/common/getCodeStyling'),
+        await import('@/constants/snippetPresets'),
     ]);
 
     replacements = shikiColorReplacements;
     langMap = shikiLangMap;
     hastToHtmlFn = hastToHtml;
     codeStylingToThemeOrThemesFn = codeStylingToThemeOrThemes;
+    getShikiLanguageFromPresetFn = getShikiLanguageFromPreset;
     const engine = createJavaScriptRegexEngine({ forgiving: true, cache: new Map() });
     highlighter = await createHighlighter({ themes: THEMES, langs: LANGS, engine });
 
@@ -68,7 +72,11 @@ function getShikiLanguage(lang) {
     const text = 'text';
     const n = Number(lang);
     const isStatus = !Number.isNaN(n) && Number.isFinite(n) && n > 99 && n < 600;
-    return isStatus ? 'json' : lang ? langMap[lang.toLowerCase()] ?? text : text;
+    if (isStatus) return 'json';
+    if (!lang) return text;
+    const presetLang = getShikiLanguageFromPresetFn(lang);
+    if (presetLang !== lang) return presetLang;
+    return langMap[lang.toLowerCase()] ?? text;
 }
 
 function getLanguageFromClassName(className, fallback) {
