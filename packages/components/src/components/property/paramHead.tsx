@@ -71,7 +71,9 @@ export function ParamHead({
         onMount?.();
     }, [onMount]);
 
-    return name == null ? null : (
+    if (name == null) return null;
+
+    return (
         <div
             className={cn('flex font-mono text-sm group/param-head param-head break-all relative')}
             id={paramId}
