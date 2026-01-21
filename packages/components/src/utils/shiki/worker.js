@@ -9,7 +9,8 @@ let getShikiLanguageFromPresetFn;
 
 const ready = (async () => {
     const [
-        { createHighlighter, hastToHtml, createJavaScriptRegexEngine },
+        { createHighlighter, hastToHtml },
+        { createJavaScriptRegexEngine },
         {
             transformerNotationHighlight,
             transformerNotationFocus,
@@ -30,6 +31,7 @@ const ready = (async () => {
         { getShikiLanguageFromPreset },
     ] = await Promise.all([
         import('shiki'),
+        import('shiki/engine/javascript'),
         import('@shikijs/transformers'),
         import('./constants.ts'),
         import('@/common/getCodeStyling'),
