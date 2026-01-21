@@ -88,7 +88,9 @@ const ColorItem = ({ name, value }: ColorItemProps) => {
   const currentColor = getCurrentColor()
 
   const handleCopy = async () => {
-    await copyToClipboard(currentColor)
+    const result = await copyToClipboard(currentColor)
+    if (result === "error") return
+
     setState("copied")
 
     if (timeoutRef.current) {

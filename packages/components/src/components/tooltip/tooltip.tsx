@@ -46,9 +46,9 @@ export function Tooltip({
           aria-label={
             isInteractive
               ? undefined
-              : title
+              : title && description
               ? `${title}: ${description}`
-              : description
+              : title || description
           }
           asChild={isInteractive}
           onClick={handleClick}
