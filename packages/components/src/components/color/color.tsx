@@ -55,16 +55,25 @@ const ColorRow = ({ children, title }: ColorRowProps) => {
       )}
     >
       {!!title && (
-        <div className="md:w-[120px] w-full shrink-0">
+        <div
+          className="md:w-[120px] w-full shrink-0"
+          data-component-part="color-row-title-container"
+        >
           <p
             className="text-sm font-medium tracking-[-0.1px] text-gray-900 dark:text-gray-200 m-0 truncate"
+            data-component-part="color-row-title"
             title={title}
           >
             {title}
           </p>
         </div>
       )}
-      <div className="flex w-full gap-1 md:gap-2">{children}</div>
+      <div
+        className="flex w-full gap-1 md:gap-2"
+        data-component-part="color-row-items-container"
+      >
+        {children}
+      </div>
     </div>
   )
 }
@@ -128,6 +137,7 @@ const ColorItem = ({ name, value }: ColorItemProps) => {
       aria-label={name || `Color ${currentColor}`}
       aria-pressed={state === "copied"}
       aria-roledescription={state === "copied" ? "Copied" : "Copy"}
+      data-component-part="color-item-button"
     >
       <CheckIcon
         aria-hidden
@@ -159,6 +169,7 @@ const ColorItem = ({ name, value }: ColorItemProps) => {
             <p
               className="text-sm font-medium text-gray-900 dark:text-gray-200 m-0 truncate text-center"
               title={name}
+              data-component-part="color-item-name"
             >
               {name}
             </p>
@@ -166,6 +177,7 @@ const ColorItem = ({ name, value }: ColorItemProps) => {
           <p
             className="text-xs text-gray-600 dark:text-gray-400 m-0 truncate font-mono text-center"
             title={currentColor}
+            data-component-part="color-item-value"
           >
             {currentColor}
           </p>
