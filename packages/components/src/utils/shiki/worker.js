@@ -105,6 +105,7 @@ function highlightSync(opts) {
             ...themeOrThemes,
             colorReplacements: { ...replacements },
             transformers: transformers,
+            tabindex: false,
             ...opts.opts,
         });
     }
