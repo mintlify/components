@@ -340,3 +340,15 @@ export const DiffExpandable: Story = {
         </CodeBlock>
     ),
 };
+
+export const WithCustomClassName: Story = {
+    render: () => (
+        <CodeBlock
+            language="javascript"
+            filename="custom-styled.js"
+            className="shadow-xl ring-2 ring-blue-500 [&_[data-component-part=code-block-root]]:rounded-b-2xl"
+        >
+            {mediumCode}
+        </CodeBlock>
+    ),
+};

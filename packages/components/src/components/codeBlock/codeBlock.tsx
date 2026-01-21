@@ -59,6 +59,7 @@ export type CodeBlockPropsBase = {
     codeBlockThemeObject?: CodeStyling;
     askAiButton?: ReactNode;
     feedbackButton?: ReactNode;
+    className?: string;
 };
 
 export interface CodeBlockInternalPropsBase extends CodeBlockPropsBase {
