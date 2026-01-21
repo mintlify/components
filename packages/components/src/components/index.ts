@@ -12,8 +12,6 @@ export * from "./icon";
 export * from "./mermaid";
 export * from "./panel";
 export * from "./property";
-export * from "./requestExample";
-export * from "./responseExample";
 export * from "./steps";
 export * from "./tabs";
 export * from "./tile";
