@@ -1,28 +1,3 @@
-
-// Code samples for testing
-export const getString = (tabIndex?: number, language?: string) => {
-    if (language === 'python') {
-        return new Array(tabIndex || 1)
-            .fill(`print("Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}")`)
-            .join('\n');
-    }
-
-    if (language === 'java') {
-        return new Array(tabIndex || 1)
-            .fill(`System.out.println("Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}");`)
-            .join('\n');
-    }
-
-    return new Array(tabIndex || 1)
-        .fill(`console.log('Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}');`)
-        .join('\n');
-}
-
-export const shortMultiLineCode = `function greet(name) {
-  console.log("Hello, " + name + "!");
-  return true;
-}`;
-
 export const mediumCode = `class HelloWorld {
     private String message;
     

@@ -167,25 +167,3 @@ export const getIconKey = (lang: string): string | undefined => {
 
 export const getShikiLanguageFromPreset = (lang: string): string =>
     getPreset(lang)?.shikiLanguage ?? lang;
-
-export const snippetPresets: SnippetPreset[] = SNIPPET_PRESETS.filter((p) =>
-    ['bash', 'python', 'javascript', 'php', 'go', 'java', 'ruby'].includes(p.key)
-);
-
-export const langToPresetMap: Record<string, SnippetPreset> = Object.fromEntries(
-    SNIPPET_PRESETS.flatMap((preset) => [
-        [preset.key, preset],
-        ...(preset.aliases ?? []).map((alias) => [alias, preset]),
-    ])
-);
-
-/** @deprecated Use getPreset(lang)?.key instead */
-export const toShikiLang = (lang: string): string => getPreset(lang)?.key ?? lang.toLowerCase();
-
-/** @deprecated Use getDisplayName instead */
-export const shikiLangToDisplayLang: Record<string, string> = Object.fromEntries(
-    SNIPPET_PRESETS.flatMap((preset) => [
-        [preset.key, preset.displayName],
-        ...(preset.aliases ?? []).map((alias) => [alias, preset.displayName]),
-    ])
-);
