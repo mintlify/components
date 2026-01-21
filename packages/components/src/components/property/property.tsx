@@ -64,14 +64,17 @@ export function Property({
             }
         }
 
-        const stringifiedValue = JSON.stringify(defaultValue);
-        if (
-            stringifiedValue &&
-            stringifiedValue.length > 0 &&
-            stringifiedValue.length < MAX_DEFAULT_VALUE_LENGTH
-        ) {
-            return stringifiedValue;
-        }
+        try {
+            const stringifiedValue = JSON.stringify(defaultValue);
+            if (
+                stringifiedValue &&
+                stringifiedValue.length > 0 &&
+                stringifiedValue.length < MAX_DEFAULT_VALUE_LENGTH
+            ) {
+                return stringifiedValue;
+            }
+        // eslint-disable-next-line no-empty
+        } catch {}
         return null;
     }, [defaultValue]);
 
