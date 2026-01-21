@@ -22,7 +22,7 @@ const Color = ({ children, variant }: ColorProps) => {
         data-variant={variant}
         className={cn(
           Classes.Color,
-          "flex group",
+          "flex group py-6",
           variant === "table" && "flex-col gap-6",
           variant === "compact" && "flex-row flex-wrap gap-x-2 gap-y-4"
         )}
