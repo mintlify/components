@@ -119,7 +119,7 @@ export function ParamHead({
                                 href={`#${paramId}`}
                                 className={cn(
                                     parentName ? '-ml-[2.1rem]' : '-ml-10',
-                                    'flex items-center opacity-0 border-0 group-hover/param-head:opacity-100 focus:opacity-100 focus:outline-0 py-2 [.expandable-content_&]:-ml-[2.1rem] group/link'
+                                    'flex items-center opacity-0 border-0 group-hover/param-head:opacity-100 focus:opacity-100 focus:outline-0 py-2 in-[.expandable-content]:-ml-[2.1rem] group/link'
                                 )}
                                 aria-label={navigateToHeaderAriaLabel}
                                 onClick={copyAnchorLink}

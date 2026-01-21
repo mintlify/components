@@ -30,15 +30,15 @@ export const OptionDropdown = ({
         .join('\n');
 
     return (
-        <div className={cn(Classes.OptionDropdown, 'inline-flex relative !mr-0')}>
+        <div className={cn(Classes.OptionDropdown, 'inline-flex relative mr-0!')}>
             <div
                 className={cn(
-                    'font-mono text-xs font-medium !inline-block !leading-4 items-center rounded-md space-x-1.5 text-gray-600 dark:text-gray-200 py-0.5',
+                    'font-mono text-xs font-medium inline-block! leading-4! items-center rounded-md space-x-1.5 text-gray-600 dark:text-gray-200 py-0.5',
                     !noBackground && 'bg-gray-100/50 dark:bg-white/5'
                 )}
             >
                 <style dangerouslySetInnerHTML={{ __html: cssRules }} />
-                <div className="group relative !inline-flex">
+                <div className="group relative inline-flex!">
                     <select
                         id={selectId}
                         aria-label={selectSchemaTypeAriaLabel}
