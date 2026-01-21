@@ -1,1 +1,0 @@
-export { ResponseExample } from "./responseExample";
