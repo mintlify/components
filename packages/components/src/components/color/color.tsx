@@ -2,7 +2,7 @@ import { CheckIcon } from "@/icons"
 import { Classes } from "@/lib/local/selectors"
 import { cn } from "@/utils/cn"
 import { copyToClipboard } from "@/utils/copyToClipboard"
-import React, { createContext, useContext, useRef, useState } from "react"
+import React, { createContext, useContext, useEffect, useRef, useState } from "react"
 import { Tooltip } from "../tooltip"
 import { useIsDarkTheme } from "@/hooks/useIsDarkTheme"
 
@@ -74,6 +74,14 @@ const ColorItem = ({ name, value }: ColorItemProps) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { isDarkTheme } = useIsDarkTheme()
   const variant = useContext(ColorContext)
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
 
   const getCurrentColor = (): string => {
     if (typeof value === "string") {
