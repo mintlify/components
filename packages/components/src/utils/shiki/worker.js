@@ -33,7 +33,7 @@ const ready = (async () => {
         import('@shikijs/transformers'),
         import('./constants.ts'),
         import('@/common/getCodeStyling'),
-        import('@/constants/snippetPresets'),
+        import('@/utils/shiki/snippetPresets'),
     ]);
 
     replacements = SHIKI_COLOR_REPLACEMENTS;
