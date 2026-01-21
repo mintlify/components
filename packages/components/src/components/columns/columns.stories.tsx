@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Columns } from "./columns"
+import { COL_OPTIONS } from "./constants"
 import React from "react"
+
+const Box = ({ children }: { children?: React.ReactNode }) => (
+  <div className="h-24 rounded-lg bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-sm text-zinc-500">
+    {children}
+  </div>
+)
 
 const meta: Meta<typeof Columns> = {
   title: "Components/Columns",
@@ -9,10 +16,25 @@ const meta: Meta<typeof Columns> = {
     layout: "padded",
   },
   tags: ["autodocs"],
+  args: {
+    children: (
+      <>
+        <Box>1</Box>
+        <Box>2</Box>
+        <Box>3</Box>
+        <Box>4</Box>
+        <Box>5</Box>
+        <Box>6</Box>
+      </>
+    ),
+  },
   argTypes: {
     cols: {
       control: "select",
-      options: [1, 2, 3, 4],
+      options: [...COL_OPTIONS],
+    },
+    children: {
+      table: { disable: true },
     },
   },
 }
@@ -20,72 +42,27 @@ const meta: Meta<typeof Columns> = {
 export default meta
 type Story = StoryObj<typeof Columns>
 
-const Box = ({ children }: { children?: React.ReactNode }) => (
-  <div className="h-24 rounded-lg bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-sm text-zinc-500">
-    {children}
-  </div>
-)
+export const Default: Story = {}
 
-export const Default: Story = {
-  render: () => (
-    <Columns>
-      <Box>1</Box>
-      <Box>2</Box>
-      <Box>3</Box>
-    </Columns>
-  ),
+export const SingleColumn: Story = {
+  args: { cols: 1 },
 }
 
 export const TwoColumns: Story = {
-  render: () => (
-    <Columns cols={2}>
-      <Box>1</Box>
-      <Box>2</Box>
-      <Box>3</Box>
-      <Box>4</Box>
-    </Columns>
-  ),
+  args: { cols: 2 },
 }
 
 export const ThreeColumns: Story = {
-  render: () => (
-    <Columns cols={3}>
-      <Box>1</Box>
-      <Box>2</Box>
-      <Box>3</Box>
-      <Box>4</Box>
-      <Box>5</Box>
-      <Box>6</Box>
-    </Columns>
-  ),
+  args: { cols: 3 },
 }
 
 export const FourColumns: Story = {
-  render: () => (
-    <Columns cols={4}>
-      <Box>1</Box>
-      <Box>2</Box>
-      <Box>3</Box>
-      <Box>4</Box>
-    </Columns>
-  ),
-}
-
-export const SingleColumn: Story = {
-  render: () => (
-    <Columns cols={1}>
-      <Box>1</Box>
-      <Box>2</Box>
-      <Box>3</Box>
-    </Columns>
-  ),
+  args: { cols: 4 },
 }
 
 export const WithCustomClassName: Story = {
-  render: () => (
-    <Columns cols={2} className="gap-8">
-      <Box>1</Box>
-      <Box>2</Box>
-    </Columns>
-  ),
+  args: {
+    cols: 2,
+    className: "gap-8",
+  },
 }

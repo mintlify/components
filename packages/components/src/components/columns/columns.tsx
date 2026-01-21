@@ -1,8 +1,7 @@
 import { Classes } from "@/lib/local/selectors"
 import { cn } from "@/utils/cn"
 import React from "react"
-
-type ColCount = 1 | 2 | 3 | 4
+import type { ColCount } from "./constants"
 
 type ColumnsProps = {
   children: React.ReactNode
@@ -10,12 +9,12 @@ type ColumnsProps = {
   className?: string
 }
 
-const Columns = ({ children, className, cols }: ColumnsProps) => {
+const Columns = ({ children, className, cols = 2 }: ColumnsProps) => {
   return (
     <div
       className={cn(
         Classes.CardGroup,
-        `prose dark:prose-dark grid gap-4`,
+        `prose dark:prose-invert grid gap-4`,
         Number(cols) === 1 && "sm:grid-cols-1",
         Number(cols) === 2 && "sm:grid-cols-2",
         Number(cols) === 3 && "sm:grid-cols-3",
