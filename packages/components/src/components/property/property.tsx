@@ -57,7 +57,7 @@ export function Property({
         if (defaultValue !== null && typeof defaultValue === 'object') {
             // don't display values with nested objects; looks bad on one line
             const containsNestedObject = Object.values(defaultValue).some(
-                (value) => typeof value === 'object'
+                (value) => value !== null && typeof value === 'object'
             );
             if (containsNestedObject) {
                 return null;
