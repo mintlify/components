@@ -15,7 +15,7 @@ export function InfoPill({
     return (
         <div
             className={cn(
-                'flex items-center px-2 py-0.5 rounded-md bg-gray-100/50 dark:bg-white/5 text-gray-600 dark:text-gray-200 font-medium break-all',
+                'flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-100/50 dark:bg-white/5 text-gray-600 dark:text-gray-200 font-medium break-all',
                 className
             )}
             data-component-part="field-info-pill"
@@ -27,6 +27,7 @@ export function InfoPill({
 }
 
 export function RequiredPill({ label }: { label?: string }) {
+    if (!label) return null;
     return (
         <div
             className="px-2 py-0.5 rounded-md bg-red-100/50 dark:bg-red-400/10 text-red-600 dark:text-red-300 font-medium whitespace-nowrap"
@@ -38,6 +39,7 @@ export function RequiredPill({ label }: { label?: string }) {
 }
 
 export function DeprecatedPill({ label }: { label?: string }) {
+    if (!label) return null;
     return (
         <div
             className="px-2 py-0.5 rounded-md bg-amber-100/50 dark:bg-amber-400/10 text-amber-600 dark:text-amber-300 font-medium whitespace-nowrap"

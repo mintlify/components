@@ -10,7 +10,7 @@ type PropertyProps = {
     type: string;
     location?: string;
     hidden?: boolean;
-    default?: string;
+    default?: unknown;
     required?: boolean;
     deprecated?: boolean;
     children: ReactNode;
@@ -52,7 +52,7 @@ export function Property({
     deprecatedLabel = DEFAULT_DEPRECATED_LABEL,
 }: PropertyProps) {
     const stringifiedDefaultValue = useMemo(() => {
-        if (typeof defaultValue === 'object') {
+        if (defaultValue !== null && typeof defaultValue === 'object') {
             // don't display values with nested objects; looks bad on one line
             const containsNestedObject = Object.values(defaultValue).some(
                 (value) => typeof value === 'object'
