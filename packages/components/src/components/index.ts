@@ -1,4 +1,5 @@
 export * from "./accordion";
+export * from "./apiField";
 export * from "./badge";
 export * from "./banner";
 export * from "./callout";
@@ -11,10 +12,8 @@ export * from "./frame";
 export * from "./icon";
 export * from "./mermaid";
 export * from "./panel";
-export * from "./paramField";
 export * from "./requestExample";
 export * from "./responseExample";
-export * from "./responseField";
 export * from "./steps";
 export * from "./tabs";
 export * from "./tile";
