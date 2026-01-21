@@ -72,7 +72,7 @@ export type CodeBlockProps = CodeBlockInternalPropsBase &
     Omit<ComponentPropsWithoutRef<'div'>, keyof CodeBlockInternalPropsBase>;
 
 export const CodeBlock = function CodeBlock(params: CodeBlockProps) {
-    const { filename, onCopied, children, className, icon, isSmallText, hideAskAiButton, feedbackModalOpen, anchorRef, codeBlockTheme, codeBlockThemeObject, askAiButton, feedbackButton, ...props } =
+    const { filename, onCopied, children, className, icon, isSmallText, hideAskAiButton, feedbackModalOpen, anchorRef, codeBlockTheme = 'system', codeBlockThemeObject, askAiButton, feedbackButton, ...props } =
         params;
 
     const codeString = getNodeText(children);

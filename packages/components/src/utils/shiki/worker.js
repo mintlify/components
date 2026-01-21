@@ -30,7 +30,7 @@ const ready = (async () => {
         await import('shiki'),
         await import('@shikijs/transformers'),
         await import('./constants.ts'),
-        await import('@/common'),
+        await import('@/common/getCodeStyling'),
     ]);
 
     replacements = shikiColorReplacements;
