@@ -3,6 +3,7 @@ export * from "./badge";
 export * from "./banner";
 export * from "./callout";
 export * from "./card";
+export * from "./codeBlock";
 export * from "./codeGroup";
 export * from "./color";
 export * from "./columns";
