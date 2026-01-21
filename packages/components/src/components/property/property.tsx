@@ -5,7 +5,7 @@ import { Classes } from '@/lib/local/selectors';
 import { MAX_DEFAULT_VALUE_LENGTH } from '@/constants';
 import { ParamHead } from './paramHead';
 
-type PropertyProps = {
+export type PropertyProps = {
     name: string;
     type: string;
     location?: string;
@@ -88,11 +88,11 @@ export function Property({
         >
             <ParamHead
                 name={name}
-                typeLabel={type}
+                type={type}
                 location={location}
                 required={required}
                 deprecated={deprecated}
-                defaultValue={stringifiedDefaultValue}
+                default={stringifiedDefaultValue}
                 id={id}
                 pre={pre}
                 post={post}

@@ -4,31 +4,17 @@ import slugify from '@sindresorhus/slugify';
 import { cn } from '@/utils/cn';
 import { LinkIcon } from '@/icons';
 import { InfoPill, RequiredPill, DeprecatedPill } from './pills';
+import type { PropertyProps } from './property';
 
-type ParamHeadProps = {
-    name?: string | null;
-    typeLabel?: string;
-    location?: string;
-    required?: boolean;
-    deprecated?: boolean;
-    defaultValue?: unknown;
-    id?: string;
-    pre?: string[];
-    post?: string[];
-    onMount?: () => void;
-    navigateToHeaderAriaLabel?: string;
-    defaultLabel?: string;
-    requiredLabel?: string;
-    deprecatedLabel?: string;
-}
+type ParamHeadProps = Omit<PropertyProps, 'children'>;
 
 export function ParamHead({
     name,
-    typeLabel,
+    type,
     location,
     required,
     deprecated,
-    defaultValue,
+    default: defaultValue,
     id,
     pre,
     post,
@@ -120,7 +106,7 @@ export function ParamHead({
                         )}
                         data-component-part="field-meta"
                     >
-                        {typeLabel && <InfoPill>{typeLabel}</InfoPill>}
+                        {type && <InfoPill>{type}</InfoPill>}
                         {location && <InfoPill>{location}</InfoPill>}
                         {defaultValue != null && (
                             <InfoPill prefix={defaultLabel}>
