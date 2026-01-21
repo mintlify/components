@@ -181,3 +181,46 @@ export const Locations: Story = {
     </div>
   ),
 };
+
+export const TranslatedLabels: Story = {
+  render: () => (
+    <div className="w-[500px]">
+      <Property
+        name="api_key"
+        type="string"
+        required
+        requiredLabel="必填"
+      >
+        用于身份验证的 API 密钥。
+      </Property>
+      <Property
+        name="limit"
+        type="integer"
+        default="10"
+        defaultLabel="默认值"
+      >
+        返回结果的最大数量。
+      </Property>
+      <Property
+        name="legacy_token"
+        type="string"
+        deprecated
+        deprecatedLabel="已弃用"
+      >
+        此字段已弃用，请使用 api_key 代替。
+      </Property>
+      <Property
+        name="complex_field"
+        type="object"
+        required
+        deprecated
+        default='{"key": "value"}'
+        requiredLabel="必填"
+        deprecatedLabel="已弃用"
+        defaultLabel="默认值"
+      >
+        显示所有自定义标签的复杂字段。
+      </Property>
+    </div>
+  ),
+};
