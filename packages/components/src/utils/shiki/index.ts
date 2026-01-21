@@ -22,8 +22,8 @@ import { getShikiLanguageFromPreset } from '@/constants/snippetPresets';
 
 import {
     LANGS,
-    shikiColorReplacements,
-    shikiLangMap,
+    SHIKI_COLOR_REPLACEMENTS,
+    SHIKI_LANG_MAP,
     LINE_HIGHLIGHT_CLASS_NAME,
     LINE_FOCUS_CLASS_NAME,
     type ShikiLanguage,
@@ -92,8 +92,8 @@ export function getShikiLanguage(lang: string | undefined): ShikiLanguage {
     // e.g., "dotnet" → "csharp", "node" → "javascript"
     const presetLang = getShikiLanguageFromPreset(lower);
 
-    // Then check shikiLangMap (handles general aliases like "py" → "python")
-    return shikiLangMap[presetLang] ?? shikiLangMap[lower] ?? text;
+    // Then check shiki lang map (handles general aliases like "py" → "python")
+    return SHIKI_LANG_MAP[presetLang] ?? SHIKI_LANG_MAP[lower] ?? text;
 }
 
 export function getLanguageFromClassName(className: string | undefined, fallback?: string): string {
@@ -218,7 +218,7 @@ export function getShikiHighlightedHtml(
             html = highlighter[serializer](code, {
                 lang: getShikiLanguage(lang),
                 ...themeOrThemes,
-                colorReplacements: { ...shikiColorReplacements },
+                colorReplacements: { ...SHIKI_COLOR_REPLACEMENTS },
                 transformers: SHIKI_TRANSFORMERS,
                 tabindex: false,
                 ...props.opts,

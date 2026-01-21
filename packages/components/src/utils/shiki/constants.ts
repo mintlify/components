@@ -45,18 +45,18 @@ export const LANGS = [
 export type ShikiTheme = BuiltinTheme;
 export type ShikiLanguage = (typeof LANGS)[number];
 
-export const shikiColorReplacements: Record<string, string | Record<string, string>> = {
+export const SHIKI_COLOR_REPLACEMENTS: Record<string, string | Record<string, string>> = {
     [THEMES[0]]: {
         '#1e1e1e': DEFAULT_DARK_BG,
     },
 };
 
-export const shikiThemeMap: Record<'dark' | 'light', ShikiTheme> = {
+export const SHIKI_THEME_MAP: Record<'dark' | 'light', ShikiTheme> = {
     dark: THEMES[0],
     light: THEMES[1],
 } as const;
 
-export const shikiLangMap: Record<string, ShikiLanguage> = {
+export const SHIKI_LANG_MAP: Record<string, ShikiLanguage> = {
     curl: 'bash',
     bash: 'bash',
     sh: 'bash',
@@ -117,7 +117,7 @@ export const shikiLangMap: Record<string, ShikiLanguage> = {
     toml: 'yaml',
 } as const;
 
-export const shikiDisplayLangMap: Record<string, string> = {
+export const SHIKI_DISPLAY_LANG_MAP: Record<string, string> = {
     bash: 'cURL',
     c: 'C',
     'c++': 'C++',

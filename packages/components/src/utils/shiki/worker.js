@@ -19,8 +19,8 @@ const ready = (async () => {
         {
             THEMES,
             LANGS,
-            shikiColorReplacements,
-            shikiLangMap,
+            SHIKI_COLOR_REPLACEMENTS,
+            SHIKI_LANG_MAP,
             LINE_HIGHLIGHT_CLASS_NAME,
             LINE_FOCUS_CLASS_NAME,
             LINE_DIFF_ADD_CLASS_NAME,
@@ -36,8 +36,8 @@ const ready = (async () => {
         import('@/constants/snippetPresets'),
     ]);
 
-    replacements = shikiColorReplacements;
-    langMap = shikiLangMap;
+    replacements = SHIKI_COLOR_REPLACEMENTS;
+    langMap = SHIKI_LANG_MAP;
     hastToHtmlFn = hastToHtml;
     codeStylingToThemeOrThemesFn = codeStylingToThemeOrThemes;
     getShikiLanguageFromPresetFn = getShikiLanguageFromPreset;
