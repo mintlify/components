@@ -2,7 +2,13 @@ import { CheckIcon } from "@/icons"
 import { Classes } from "@/lib/local/selectors"
 import { cn } from "@/utils/cn"
 import { copyToClipboard } from "@/utils/copyToClipboard"
-import React, { createContext, useContext, useEffect, useRef, useState } from "react"
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import { Tooltip } from "../tooltip"
 import { useIsDarkTheme } from "@/hooks/useIsDarkTheme"
 
@@ -11,11 +17,12 @@ type ColorVariant = "table" | "compact"
 type ColorProps = {
   children: React.ReactNode
   variant: ColorVariant
+  className?: string
 }
 
 const ColorContext = createContext<ColorVariant>("compact")
 
-const Color = ({ children, variant }: ColorProps) => {
+const Color = ({ children, variant, className }: ColorProps) => {
   return (
     <ColorContext.Provider value={variant}>
       <div
@@ -24,7 +31,8 @@ const Color = ({ children, variant }: ColorProps) => {
           Classes.Color,
           "flex group py-6",
           variant === "table" && "flex-col gap-6",
-          variant === "compact" && "flex-row flex-wrap gap-x-2 gap-y-4"
+          variant === "compact" && "flex-row flex-wrap gap-x-2 gap-y-4",
+          className
         )}
       >
         {children}
