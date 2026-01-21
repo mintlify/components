@@ -17,6 +17,7 @@ type PropertyProps = {
     id?: string;
     pre?: string[];
     post?: string[];
+    className?: string;
     onMount?: () => void;
     // pass in locale['aria.navigateToHeader']
     navigateToHeaderAriaLabel?: string;
@@ -45,6 +46,7 @@ export function Property({
     id,
     pre,
     post,
+    className,
     onMount,
     navigateToHeaderAriaLabel = DEFAULT_NAVIGATE_TO_HEADER_ARIA_LABEL,
     defaultLabel = DEFAULT_DEFAULT_LABEL,
@@ -80,7 +82,8 @@ export function Property({
         <div
             className={cn(
                 Classes.Field,
-                'pt-2.5 pb-5 my-2.5 border-gray-50 dark:border-gray-800/50 border-b'
+                'pt-2.5 pb-5 my-2.5 border-gray-50 dark:border-gray-800/50 border-b',
+                className
             )}
         >
             <ParamHead

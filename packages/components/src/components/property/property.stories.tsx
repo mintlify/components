@@ -224,3 +224,31 @@ export const TranslatedLabels: Story = {
     </div>
   ),
 };
+
+export const CustomClassName: Story = {
+  render: () => (
+    <div className="w-[500px]">
+      <Property
+        name="highlighted"
+        type="string"
+        className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg px-4"
+      >
+        This property has a custom background highlight.
+      </Property>
+      <Property
+        name="bordered"
+        type="string"
+        className="border-2 border-blue-300 dark:border-blue-700 rounded-lg px-4"
+      >
+        This property has a custom border style.
+      </Property>
+      <Property
+        name="no_border"
+        type="string"
+        className="border-b-0"
+      >
+        This property removes the default bottom border.
+      </Property>
+    </div>
+  ),
+};
