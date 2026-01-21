@@ -14,7 +14,6 @@ import React, {
 import { Classes } from '@/lib/local/selectors';
 import { Icon as ComponentIcon } from '@/components/icon';
 import { cn } from '@/utils/cn';
-import { getCodeBlockScrollbarClassname } from '@/utils/getScrollbarClassname';
 
 import { CopyToClipboardResult } from '../../utils/copyToClipboard';
 import { BaseCodeBlock } from './baseCodeBlock';
@@ -134,7 +133,7 @@ export const CodeGroup = function CodeGroup({
       <TabsPrimitive.List
         className={cn(
           'flex-1 w-0 text-xs leading-6 rounded-tl-xl gap-1 flex overflow-x-auto overflow-y-hidden',
-          getCodeBlockScrollbarClassname(codeBlockTheme)
+          codeBlockTheme === 'system' ? 'scrollbar-code-system' : 'scrollbar-code-dark'
         )}
       >
         {childArr.map((child, index) => (

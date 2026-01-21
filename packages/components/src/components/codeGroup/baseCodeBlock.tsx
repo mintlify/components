@@ -4,7 +4,6 @@ import { CodeStyling } from '@/validation';
 
 import { useExpandable } from '@/hooks/useExpandable';
 import { cn } from '@/utils/cn';
-import { getCodeBlockScrollbarClassname } from '@/utils/getScrollbarClassname';
 import { getCodeString, useCalculateCodeLines } from '@/utils/shiki/lib';
 import { useGetShikiHighlightedHtml } from '@/utils/shiki/useGetShikiHighlightedHtml';
 
@@ -154,7 +153,7 @@ export const BaseCodeBlock = ({
                     lines && 'has-line-numbers',
                     isFocusEnabled && 'has-focused',
                     isHighlightEnabled && 'has-highlighted',
-                    getCodeBlockScrollbarClassname(codeBlockTheme)
+                    codeBlockTheme === 'system' ? 'scrollbar-code-system' : 'scrollbar-code-dark'
                 )}
                 data-component-part="code-block-root"
                 tabIndex={0}

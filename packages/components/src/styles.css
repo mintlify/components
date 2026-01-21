@@ -2,6 +2,7 @@
 
 @plugin "@tailwindcss/typography";
 @plugin "./plugins/bg-grid.ts";
+@plugin "./plugins/scrollbar.ts";
 
 @source "./**/*.{js,jsx,ts,tsx}";
 
