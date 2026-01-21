@@ -110,7 +110,7 @@ function getThemesForCodeStyling(codeblocks?: CodeStyling): string[] {
     const { theme } = codeblocks;
     if (typeof theme === 'string') return [theme];
     if (typeof theme === 'object') return [theme.dark, theme.light];
-    return [];
+    return ['dark-plus', 'github-light-default'];
 }
 
 function areThemesLoaded(codeblocks?: CodeStyling): boolean {
