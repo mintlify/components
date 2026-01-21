@@ -103,3 +103,54 @@ class Library:
         return late_fee`;
 
 export const longSingleLineCode = `To denote a \`word\` or \`phrase\` as code, enclose it in backticks (\`). The backtick \` is a typographical mark used mainly in computing. It is also known as backquote, grave, or grave accent. This line is intentionally very long to test wrapping behavior and horizontal scrolling.`;
+
+export const singleLineCode = `To denote a \`word\` or \`phrase\` as code, enclose it in backticks (\`)`;
+
+export const diffCodeWithRemove = `function calculateTotal(items) {
+  let total = 0;
+  for (let i = 0; i < items.length; i++) { // [!code --]
+    total += items[i].price; // [!code --]
+  for (const item of items) { // [!code ++]
+    total += item.price; // [!code ++]
+    total += item.tax; // [!code ++]
+  }
+  return total;
+}
+
+function processOrder(order) {
+  const total = calculateTotal(order.items);
+  const discount = calculateDiscount(order); // [!code ++]
+  order.total = total - discount; // [!code ++]
+  order.total = total; // [!code --]
+  return order;
+}`;
+
+export const simpleDiffCode = `console.log("Hello World");
+console.log("Old message"); // [!code --]
+console.log("New message"); // [!code ++]
+console.log("End");`;
+
+export const complexDiffCode = `import React from 'react';
+import { useState } from 'react'; // [!code --]
+import { useState, useEffect } from 'react'; // [!code ++]
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false); // [!code ++]
+
+  useEffect(() => { // [!code ++]
+    setIsLoading(true); // [!code ++]
+    // Simulate async operation // [!code ++]
+    setTimeout(() => setIsLoading(false), 1000); // [!code ++]
+  }, []); // [!code ++]
+
+  return (
+    <div>
+      <h1>Count: {count}</h1> // [!code --]
+      <h1>{isLoading ? 'Loading...' : \`Count: \${count}\`}</h1> // [!code ++]
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+}`;
