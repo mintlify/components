@@ -13,7 +13,7 @@ const Columns = ({ children, className, cols = 2 }: ColumnsProps) => {
   return (
     <div
       className={cn(
-        Classes.CardGroup,
+        Classes.Columns,
         `prose dark:prose-invert grid gap-4`,
         Number(cols) === 1 && "sm:grid-cols-1",
         Number(cols) === 2 && "sm:grid-cols-2",
