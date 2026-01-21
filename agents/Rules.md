@@ -55,10 +55,8 @@ if empty - nothing to change
     - ~~we can remove this and just use `Panel` + `CodeGroup`~~
 - Expandables
     - new name: `Collapsible` or `Accordion`?
-- Fields
-    - rename to `Property`
-        - `Property.Param`
-        - `Property.Response`
+- ~~Fields~~
+    - ~~rename to `Property`~~
 - ~~Frames~~
     - ~~`caption` → `description`~~
     - ~~`hint` → `title`~~
