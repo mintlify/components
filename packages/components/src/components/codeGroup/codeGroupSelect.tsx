@@ -51,6 +51,16 @@ export const CodeGroupSelect = memo(function CodeGroupSelect({ snippets, setSele
     };
 
     useEffect(() => {
+        const newGroups = Object.keys(snippets);
+        if (!newGroups.includes(selectedGroup)) {
+            setSelectedGroup(newGroups[0]);
+            const newGroupSnippets = snippets[newGroups[0]];
+            const newOptions = newGroupSnippets ? Object.keys(newGroupSnippets) : undefined;
+            setSelectedOption(newOptions?.[0]);
+        }
+    }, [snippets, selectedGroup]);
+
+    useEffect(() => {
         if (syncedLabel && syncedLabel !== safeSelectedOption && options?.includes(syncedLabel)) {
             setSelectedOption(syncedLabel);
         }

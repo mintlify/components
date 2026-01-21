@@ -66,10 +66,7 @@ export const CodeGroup = function CodeGroup({
 }: CodeGroupProps) {
   const [selectedTab, setSelectedTab] = useState(initialSelectedTab);
   const triggerRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
-  const childArr = Array.isArray(children)
-    ? children
-    : (React.Children.toArray(children) as Array<CodeBlockChild>);
-
+  const childArr = React.Children.toArray(children) as Array<CodeBlockChild>;
 
   const handleValueChange = useCallback(
     (value: string) => {

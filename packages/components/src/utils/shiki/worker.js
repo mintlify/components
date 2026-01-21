@@ -29,11 +29,11 @@ const ready = (async () => {
         { codeStylingToThemeOrThemes },
         { getShikiLanguageFromPreset },
     ] = await Promise.all([
-        await import('shiki'),
-        await import('@shikijs/transformers'),
-        await import('./constants.ts'),
-        await import('@/common/getCodeStyling'),
-        await import('@/constants/snippetPresets'),
+        import('shiki'),
+        import('@shikijs/transformers'),
+        import('./constants.ts'),
+        import('@/common/getCodeStyling'),
+        import('@/constants/snippetPresets'),
     ]);
 
     replacements = shikiColorReplacements;
