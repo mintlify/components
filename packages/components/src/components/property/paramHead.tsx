@@ -80,10 +80,10 @@ export function ParamHead({
             <div className="flex-1 flex flex-col content-start py-0.5 mr-5">
                 <div className="flex items-center flex-wrap gap-2">
                     {paramId && (
-                        <div className="absolute -top-1.5">
+                        <div className="absolute -top-1.5 -left-9">
                             <a
                                 href={`#${paramId}`}
-                                className="flex items-center opacity-0 border-0 group-hover/param-head:opacity-100 focus:opacity-100 focus:outline-0 py-2 in-[.expandable-content]:-ml-[2.1rem] group/link"
+                                className="flex items-center opacity-0 border-0 group-hover/param-head:opacity-100 focus:opacity-100 focus:outline-0 py-2 group/link"
                                 aria-label={navigateToHeaderAriaLabel}
                                 onClick={copyAnchorLink}
                             >
