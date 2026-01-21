@@ -1,4 +1,4 @@
-import { Children, useRef, useCallback, isValidElement, useState, useEffect, useId, ReactElement, ReactNode, RefObject, CSSProperties, KeyboardEvent } from 'react';
+import { Children, useRef, useCallback, isValidElement, useState, useEffect, useId, ReactElement, ReactNode, RefObject, KeyboardEvent } from 'react';
 
 import { Icon } from '@/components/icon';
 import { Classes } from '@/lib/local/selectors';

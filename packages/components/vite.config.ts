@@ -20,6 +20,9 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
     },
   },
+  worker: {
+    format: "es",
+  },
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),

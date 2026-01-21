@@ -2,6 +2,7 @@
 
 @plugin "@tailwindcss/typography";
 @plugin "./plugins/bg-grid.ts";
+@plugin "./plugins/scrollbar.ts";
 
 @source "./**/*.{js,jsx,ts,tsx}";
 
@@ -103,3 +104,5 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
+
+@import "./code.css";
