@@ -5,7 +5,7 @@ import { Classes } from '@/lib/local/selectors';
 import { MAX_DEFAULT_VALUE_LENGTH } from '@/constants';
 import { ParamHead } from './paramHead';
 
-type ApiFieldProps = {
+type PropertyProps = {
     name: string;
     type: string;
     location?: string;
@@ -36,7 +36,7 @@ const DEFAULT_DEFAULT_LABEL = 'default';
 const DEFAULT_REQUIRED_LABEL = 'required';
 const DEFAULT_DEPRECATED_LABEL = 'deprecated';
 
-export function ApiField({
+export function Property({
     name,
     type,
     location,
@@ -54,7 +54,7 @@ export function ApiField({
     defaultLabel = DEFAULT_DEFAULT_LABEL,
     requiredLabel = DEFAULT_REQUIRED_LABEL,
     deprecatedLabel = DEFAULT_DEPRECATED_LABEL,
-}: ApiFieldProps) {
+}: PropertyProps) {
     const stringifiedDefaultValue = useMemo(() => {
         if (typeof defaultValue === 'object') {
             // don't display values with nested objects; looks bad on one line

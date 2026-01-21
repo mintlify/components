@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ApiField } from "./apiField";
+import { Property } from "./property";
 
-const meta: Meta<typeof ApiField> = {
-    title: "Components/ApiField",
-    component: ApiField,
+const meta: Meta<typeof Property> = {
+    title: "Components/Property",
+    component: Property,
     parameters: {
         layout: "centered",
     },
@@ -11,7 +11,7 @@ const meta: Meta<typeof ApiField> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ApiField>;
+type Story = StoryObj<typeof Property>;
 
 export const Default: Story = {
     args: {},
