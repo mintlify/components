@@ -72,13 +72,16 @@ const ready = (async () => {
 
 function getShikiLanguage(lang) {
     const text = 'text';
+    if (!lang) return text;
+
     const n = Number(lang);
     const isStatus = !Number.isNaN(n) && Number.isFinite(n) && n > 99 && n < 600;
     if (isStatus) return 'json';
-    if (!lang) return text;
-    const presetLang = getShikiLanguageFromPresetFn(lang);
-    if (presetLang !== lang) return presetLang;
-    return langMap[lang.toLowerCase()] ?? text;
+
+    const lower = lang.toLowerCase();
+    const presetLang = getShikiLanguageFromPresetFn(lower);
+
+    return langMap[presetLang] ?? langMap[lower] ?? text;
 }
 
 function getLanguageFromClassName(className, fallback) {
