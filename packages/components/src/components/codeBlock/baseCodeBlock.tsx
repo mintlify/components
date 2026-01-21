@@ -97,42 +97,6 @@ export const BaseCodeBlock = ({
     numberOfLines = useCalculateCodeLines(html, numberOfLines);
     const shikiBackgroundColors = getShikiBackgroundColors(codeBlockTheme, html, children);
 
-    const CodeElement = () => {
-        return html ? (
-            <div
-                key={codeBlockTheme}
-                suppressHydrationWarning
-                ref={contentRef}
-                className={cn(
-                    'font-mono',
-                    wrap ? 'whitespace-pre-wrap' : 'whitespace-pre',
-                    isParentCodeGroup && 'flex-none text-sm h-full',
-                    isSmallText ? 'text-xs leading-[1.35rem]' : 'leading-6'
-                )}
-                {...(isParentCodeGroup && {
-                    'data-component-part': 'code-group-tab-content',
-                })}
-                dangerouslySetInnerHTML={{ __html: html }}
-            />
-        ) : (
-            <div
-                suppressHydrationWarning
-                ref={contentRef}
-                className={cn(
-                    'font-mono',
-                    wrap ? 'whitespace-pre-wrap' : 'whitespace-pre',
-                    isParentCodeGroup && 'flex-none text-sm h-full',
-                    isSmallText ? 'text-xs leading-[1.35rem]' : 'leading-6'
-                )}
-                {...(isParentCodeGroup && {
-                    'data-component-part': 'code-group-tab-content',
-                })}
-            >
-                {children}
-            </div>
-        );
-    };
-
     const isFocusEnabled = focusLines.length > 0;
     const isHighlightEnabled = highlightLines.length > 0;
 
@@ -171,7 +135,39 @@ export const BaseCodeBlock = ({
                     } as React.CSSProperties
                 }
             >
-                <CodeElement />
+                {html ? (
+                    <div
+                        key={codeBlockTheme}
+                        suppressHydrationWarning
+                        ref={contentRef}
+                        className={cn(
+                            'font-mono',
+                            wrap ? 'whitespace-pre-wrap' : 'whitespace-pre',
+                            isParentCodeGroup && 'flex-none text-sm h-full',
+                            isSmallText ? 'text-xs leading-[1.35rem]' : 'leading-6'
+                        )}
+                        {...(isParentCodeGroup && {
+                            'data-component-part': 'code-group-tab-content',
+                        })}
+                        dangerouslySetInnerHTML={{ __html: html }}
+                    />
+                ) : (
+                    <div
+                        suppressHydrationWarning
+                        ref={contentRef}
+                        className={cn(
+                            'font-mono',
+                            wrap ? 'whitespace-pre-wrap' : 'whitespace-pre',
+                            isParentCodeGroup && 'flex-none text-sm h-full',
+                            isSmallText ? 'text-xs leading-[1.35rem]' : 'leading-6'
+                        )}
+                        {...(isParentCodeGroup && {
+                            'data-component-part': 'code-group-tab-content',
+                        })}
+                    >
+                        {children}
+                    </div>
+                )}
             </div>
             {!wrap && !isHighlightEnabled && !expandable && focusLines.length === 0 && (
                 <div
