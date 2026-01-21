@@ -40,11 +40,6 @@ export const BaseCodeBlock = ({
 
     const codeString = getCodeString(children, props.className, forceExtract);
 
-    const { isExpanded, calculatedHeight, contentRef, toggleExpanded } = useExpandable(
-        expandable,
-        numberOfLines
-    );
-
     const opts: {
         highlightedLines?: number[];
         focusedLines?: number[];
@@ -55,7 +50,8 @@ export const BaseCodeBlock = ({
 
     if (focus) {
         try {
-            focusLines = JSON.parse(focus);
+            const parsed = JSON.parse(focus);
+            focusLines = Array.isArray(parsed) ? parsed : [];
         } catch {
             focusLines = [];
         }
@@ -63,7 +59,8 @@ export const BaseCodeBlock = ({
 
     if (highlight) {
         try {
-            highlightLines = JSON.parse(highlight);
+            const parsed = JSON.parse(highlight);
+            highlightLines = Array.isArray(parsed) ? parsed : [];
         } catch {
             highlightLines = [];
         }
@@ -95,6 +92,10 @@ export const BaseCodeBlock = ({
     );
 
     numberOfLines = useCalculateCodeLines(html, numberOfLines);
+    const { isExpanded, calculatedHeight, contentRef, toggleExpanded } = useExpandable(
+        expandable,
+        numberOfLines
+    );
     const shikiBackgroundColors = getShikiBackgroundColors(codeBlockTheme, html, children);
 
     const isFocusEnabled = focusLines.length > 0;
