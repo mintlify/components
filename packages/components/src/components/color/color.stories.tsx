@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Color } from "./color"
+import { COLOR_VARIANTS } from "./constants"
 
 const meta: Meta<typeof Color> = {
   title: "Components/Color",
@@ -11,8 +12,11 @@ const meta: Meta<typeof Color> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["compact", "table"],
+      options: [...COLOR_VARIANTS],
       description: "The display variant of the color palette",
+    },
+    children: {
+      table: { disable: true },
     },
   },
 }
@@ -21,6 +25,7 @@ export default meta
 type Story = StoryObj<typeof Color>
 
 export const CompactVariant: Story = {
+  args: { variant: "compact" },
   render: () => (
     <Color variant="compact">
       <Color.Item name="blue-500" value="#3B82F6" />
@@ -34,6 +39,7 @@ export const CompactVariant: Story = {
 }
 
 export const TableVariant: Story = {
+  args: { variant: "table" },
   render: () => (
     <Color variant="table">
       <Color.Row title="Gray">

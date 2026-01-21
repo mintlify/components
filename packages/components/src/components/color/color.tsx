@@ -11,8 +11,7 @@ import React, {
 } from "react"
 import { Tooltip } from "../tooltip"
 import { useIsDarkTheme } from "@/hooks/useIsDarkTheme"
-
-type ColorVariant = "table" | "compact"
+import type { ColorVariant } from "./constants"
 
 type ColorProps = {
   children: React.ReactNode
