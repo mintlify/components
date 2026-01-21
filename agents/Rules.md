@@ -67,8 +67,8 @@ if empty - nothing to change
 - Panel
 - ~~Steps~~
     - ~~`Step` → `Steps.Item`~~
-- Tabs
-    - `Tab` → `Tabs.Item`
+- ~~Tabs~~
+    - ~~`Tab` → `Tabs.Item`~~
 - Tiles
 - ~~Tooltips~~
     - ~~`headline` → `title`~~

@@ -8,6 +8,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --color-primary: rgb(22, 101, 52);
+  --color-primary-light: rgb(240, 249, 244);
+  --color-primary-dark: rgb(45, 90, 61);
+  --color-tooltip-foreground: rgb(255, 255, 255);
+  --color-background-dark: rgb(14, 14, 15);
   --color-red-50: oklch(97.1% 0.013 17.38);
   --color-red-100: oklch(93.6% 0.032 17.72);
   --color-red-200: oklch(88.5% 0.062 18.33);
