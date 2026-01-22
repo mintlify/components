@@ -51,7 +51,9 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
   ) => {
     const [rect, setRect] = useState<Rect | null>(null);
     const [rectRef] = useRect(setRect);
-    const tagsArray = [...new Set(tags?.map((tag) => tag.trim()).filter(Boolean))];
+    const tagsArray = [
+      ...new Set(tags?.map((tag) => tag.trim()).filter(Boolean)),
+    ];
 
     const copyAnchorLink = useCallback(() => {
       copyToClipboard(`${window.location.href.split("#")[0]}#${id}`);
