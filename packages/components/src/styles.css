@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./code.css";
 
 @plugin "@tailwindcss/typography";
 @plugin "./plugins/bg-grid.ts";
@@ -119,5 +120,3 @@
   word-break: break-word;
   hyphens: auto;
 }
-
-@import "./code.css";

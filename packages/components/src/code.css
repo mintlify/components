@@ -1,11 +1,11 @@
-@import './twoslash.css';
+@import "./twoslash.css";
 
 .code-block {
   --fade-width: 0px;
   --code-padding-right: 48px;
 }
 
-:not(.code-block) > [data-component-part='code-block-root'] {
+:not(.code-block) > [data-component-part="code-block-root"] {
   --code-padding-right: 48px;
 }
 
@@ -24,7 +24,7 @@
   --code-padding-right: 163px;
 }
 
-.code-block:has([data-component-part='code-block-root'].code-block-wrap) {
+.code-block:has([data-component-part="code-block-root"].code-block-wrap) {
   --code-padding-right: 0px !important;
 }
 
@@ -35,9 +35,24 @@
   background: linear-gradient(
     to right,
     transparent 0px,
-    color-mix(in srgb, var(--fade-color-light, var(--background-light)) 20%, transparent) 10px,
-    color-mix(in srgb, var(--fade-color-light, var(--background-light)) 50%, transparent) 25px,
-    color-mix(in srgb, var(--fade-color-light, var(--background-light)) 80%, transparent) 35px,
+    color-mix(
+        in srgb,
+        var(--fade-color-light, var(--background-light)) 20%,
+        transparent
+      )
+      10px,
+    color-mix(
+        in srgb,
+        var(--fade-color-light, var(--background-light)) 50%,
+        transparent
+      )
+      25px,
+    color-mix(
+        in srgb,
+        var(--fade-color-light, var(--background-light)) 80%,
+        transparent
+      )
+      35px,
     var(--fade-color-light, var(--background-light)) 45px
   );
 }
@@ -46,26 +61,44 @@ html.dark [data-fade-overlay] {
   background: linear-gradient(
     to right,
     transparent 0px,
-    color-mix(in srgb, var(--fade-color-dark, var(--background-dark)) 20%, transparent) 10px,
-    color-mix(in srgb, var(--fade-color-dark, var(--background-dark)) 50%, transparent) 25px,
-    color-mix(in srgb, var(--fade-color-dark, var(--background-dark)) 80%, transparent) 35px,
+    color-mix(
+        in srgb,
+        var(--fade-color-dark, var(--background-dark)) 20%,
+        transparent
+      )
+      10px,
+    color-mix(
+        in srgb,
+        var(--fade-color-dark, var(--background-dark)) 50%,
+        transparent
+      )
+      25px,
+    color-mix(
+        in srgb,
+        var(--fade-color-dark, var(--background-dark)) 80%,
+        transparent
+      )
+      35px,
     var(--fade-color-dark, var(--background-dark)) 45px
   );
 }
 
-:has([data-floating-buttons]) > [data-component-part='code-block-root'] pre > code {
+:has([data-floating-buttons])
+  > [data-component-part="code-block-root"]
+  pre
+  > code {
   padding-right: var(--code-padding-right, 0px) !important;
 }
 
-:has([data-component-part='code-block-header'])
-  > [data-component-part='code-block-root']
+:has([data-component-part="code-block-header"])
+  > [data-component-part="code-block-root"]
   pre
   > code {
   padding-right: var(--code-padding-right, 48px) !important;
 }
 
-[data-component-part='code-block-root'] pre > code > span.line-highlight,
-[data-component-part='code-block-root'] pre > code > span.line-diff {
+[data-component-part="code-block-root"] pre > code > span.line-highlight,
+[data-component-part="code-block-root"] pre > code > span.line-diff {
   min-width: calc(100% + var(--code-padding-right, 0px));
 }
 
@@ -103,11 +136,11 @@ html:not(.dark) .codeblock-dark {
     min-width: 100%;
   }
 
-  pre[class^='language-diff-'] {
+  pre[class^="language-diff-"] {
     @apply flex px-9;
   }
 
-  pre[class^='language-diff-'] > code {
+  pre[class^="language-diff-"] > code {
     @apply flex-none min-w-full;
   }
 }
@@ -121,11 +154,11 @@ html:not(.dark) .codeblock-light {
     min-width: 100%;
   }
 
-  pre[class^='language-diff-'] {
+  pre[class^="language-diff-"] {
     @apply flex px-9;
   }
 
-  pre[class^='language-diff-'] > code {
+  pre[class^="language-diff-"] > code {
     @apply flex-none min-w-full;
   }
 }
@@ -174,9 +207,13 @@ html:not(.dark) .codeblock-light {
 }
 
 /* line highlighting (without line numbers) */
-[data-component-part='code-block-root']:not(.has-line-numbers) {
+[data-component-part="code-block-root"]:not(.has-line-numbers) {
   .line-highlight {
-    background: color-mix(in srgb, var(--color-primary-light) 20%, transparent) !important;
+    background: color-mix(
+      in srgb,
+      var(--color-primary-light) 20%,
+      transparent
+    ) !important;
     width: 100%;
     display: inline-block;
     position: relative;
@@ -184,12 +221,16 @@ html:not(.dark) .codeblock-light {
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       bottom: 0;
       width: 1rem;
-      background: color-mix(in srgb, var(--color-primary-light) 20%, transparent) !important;
+      background: color-mix(
+        in srgb,
+        var(--color-primary-light) 20%,
+        transparent
+      ) !important;
     }
 
     &::before {
@@ -220,7 +261,7 @@ html:not(.dark) .codeblock-light {
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       bottom: 0;
@@ -232,7 +273,7 @@ html:not(.dark) .codeblock-light {
       background: rgb(34 197 94 / 0.15) !important;
 
       &::before {
-        content: '+';
+        content: "+";
         background: rgb(34 197 94 / 0.15) !important;
         border-left: 1px solid rgb(34 197 94 / 0.8);
         color: rgb(34 197 94);
@@ -247,7 +288,7 @@ html:not(.dark) .codeblock-light {
       background: rgb(239 68 68 / 0.15) !important;
 
       &::before {
-        content: '-';
+        content: "-";
         background: rgb(239 68 68 / 0.15) !important;
         border-left: 1px solid rgb(239 68 68 / 0.8);
         color: rgb(239 68 68);
@@ -294,13 +335,17 @@ html:not(.dark) .codeblock-light {
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: -1rem;
     right: -1rem;
-    background: color-mix(in srgb, var(--color-primary-light) 20%, transparent) !important;
+    background: color-mix(
+      in srgb,
+      var(--color-primary-light) 20%,
+      transparent
+    ) !important;
     border-left: 1px solid var(--color-primary-light);
     z-index: -1;
   }
@@ -312,15 +357,15 @@ html:not(.dark) .codeblock-light {
   position: relative;
 
   &.line-add::before {
-    content: '+' !important;
+    content: "+" !important;
   }
 
   &.line-remove::before {
-    content: '-' !important;
+    content: "-" !important;
   }
 
   &.line-add::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -332,7 +377,7 @@ html:not(.dark) .codeblock-light {
   }
 
   &.line-remove::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -348,6 +393,6 @@ html:not(.dark) .codeblock-light {
   z-index: -9999;
 }
 
-code[data-symbols='true'] {
+code[data-symbols="true"] {
   @apply font-[inherit];
 }

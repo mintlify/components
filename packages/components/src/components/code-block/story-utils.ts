@@ -77,9 +77,11 @@ class Library:
 
         return late_fee`;
 
-export const longSingleLineCode = `To denote a \`word\` or \`phrase\` as code, enclose it in backticks (\`). The backtick \` is a typographical mark used mainly in computing. It is also known as backquote, grave, or grave accent. This line is intentionally very long to test wrapping behavior and horizontal scrolling.`;
+export const longSingleLineCode =
+  "To denote a `word` or `phrase` as code, enclose it in backticks (`). The backtick ` is a typographical mark used mainly in computing. It is also known as backquote, grave, or grave accent. This line is intentionally very long to test wrapping behavior and horizontal scrolling.";
 
-export const singleLineCode = `To denote a \`word\` or \`phrase\` as code, enclose it in backticks (\`)`;
+export const singleLineCode =
+  "To denote a `word` or `phrase` as code, enclose it in backticks (`)";
 
 export const diffCodeWithRemove = `function calculateTotal(items) {
   let total = 0;

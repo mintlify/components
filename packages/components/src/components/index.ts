@@ -3,7 +3,7 @@ export * from "./accordion";
 export * from "./badge";
 export * from "./callout";
 export * from "./card";
-export * from "./codeBlock";
+export * from "./code-block";
 export * from "./code-group";
 export * from "./color";
 export * from "./columns";
