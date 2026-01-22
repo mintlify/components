@@ -1,13 +1,26 @@
-import { IconLibrary, IconType } from '@/models';
-import Color from 'color';
-import { ReactNode } from 'react';
+import Color from "color";
+import type { ReactNode } from "react";
+import { Icon as ComponentIcon } from "@/components/icon";
+import {
+  CheckIcon,
+  DangerIcon,
+  InfoIcon,
+  NoteIcon,
+  TipIcon,
+  WarningIcon,
+} from "@/icons";
+import { Classes } from "@/lib/local/selectors";
+import type { IconLibrary, IconType } from "@/models";
+import { cn } from "@/utils/cn";
 
-import { Classes } from '@/lib/local/selectors';
-import { Icon as ComponentIcon } from '@/components/icon';
-import { InfoIcon, WarningIcon, NoteIcon, TipIcon, CheckIcon, DangerIcon } from '@/icons';
-import { cn } from '@/utils/cn';
-
-type CalloutVariant = 'info' | 'warning' | 'note' | 'tip' | 'check' | 'danger' | 'custom';
+type CalloutVariant =
+  | "info"
+  | "warning"
+  | "note"
+  | "tip"
+  | "check"
+  | "danger"
+  | "custom";
 
 type CalloutProps = {
   children: ReactNode;
@@ -23,62 +36,66 @@ type CalloutProps = {
 const variantConfig = {
   info: {
     icon: InfoIcon,
-    defaultAriaLabel: 'Info',
-    className: 'border border-neutral-200 bg-neutral-50 dark:border-neutral-700 dark:bg-white/10',
-    childrenClassName: 'text-neutral-800 dark:text-neutral-300',
+    defaultAriaLabel: "Info",
+    className:
+      "border border-neutral-200 bg-neutral-50 dark:border-neutral-700 dark:bg-white/10",
+    childrenClassName: "text-neutral-800 dark:text-neutral-300",
   },
   warning: {
     icon: WarningIcon,
-    defaultAriaLabel: 'Warning',
+    defaultAriaLabel: "Warning",
     className:
       'border border-yellow-200 bg-yellow-50 dark:border-yellow-900 dark:bg-yellow-600/20 **:data-[component-part="callout-icon"]:mt-px',
-    childrenClassName: 'text-yellow-800 dark:text-yellow-300',
+    childrenClassName: "text-yellow-800 dark:text-yellow-300",
   },
   note: {
     icon: NoteIcon,
-    defaultAriaLabel: 'Note',
-    className: 'border border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-600/20',
-    childrenClassName: 'text-blue-800 dark:text-blue-300',
+    defaultAriaLabel: "Note",
+    className:
+      "border border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-600/20",
+    childrenClassName: "text-blue-800 dark:text-blue-300",
   },
   tip: {
     icon: TipIcon,
-    defaultAriaLabel: 'Tip',
+    defaultAriaLabel: "Tip",
     className:
       'border border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-600/20 **:data-[component-part="callout-icon"]:mt-px',
-    childrenClassName: 'text-green-800 dark:text-green-300',
+    childrenClassName: "text-green-800 dark:text-green-300",
   },
   check: {
     icon: CheckIcon,
-    defaultAriaLabel: 'Check',
-    className: 'border border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-600/20',
-    childrenClassName: 'text-green-800 dark:text-green-300',
+    defaultAriaLabel: "Check",
+    className:
+      "border border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-600/20",
+    childrenClassName: "text-green-800 dark:text-green-300",
   },
   danger: {
     icon: DangerIcon,
-    defaultAriaLabel: 'Danger',
-    className: 'border border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-600/20',
-    childrenClassName: 'text-red-800 dark:text-red-300',
+    defaultAriaLabel: "Danger",
+    className:
+      "border border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-600/20",
+    childrenClassName: "text-red-800 dark:text-red-300",
   },
 };
 
-export function Callout({
+const Callout = ({
   children,
-  variant = 'custom',
+  variant = "custom",
   icon,
   iconType,
   iconLibrary,
   color,
   className,
   ariaLabel,
-}: CalloutProps) {
+}: CalloutProps) => {
   let finalIcon: ReactNode | string | undefined;
   let finalColor: string | undefined;
-  let variantClassName = '';
-  let childrenClassName = '';
+  let variantClassName = "";
+  let childrenClassName = "";
   let customStyle = {};
   let customTextStyle = {};
 
-  if (variant === 'custom') {
+  if (variant === "custom") {
     finalIcon = icon;
     finalColor = color;
 
@@ -91,44 +108,50 @@ export function Callout({
         const darkerTextColor = baseColor.darken(0.5);
 
         customStyle = {
-          '--callout-border-color-light': `${hexColor}33`,
-          '--callout-bg-color-light': `${hexColor}1a`,
-          '--callout-border-color-dark': `${hexColor}${isDarkColor ? '66' : '4d'}`,
-          '--callout-bg-color-dark': `${hexColor}${isDarkColor ? '4d' : '1a'}`,
+          "--callout-border-color-light": `${hexColor}33`,
+          "--callout-bg-color-light": `${hexColor}1a`,
+          "--callout-border-color-dark": `${hexColor}${isDarkColor ? "66" : "4d"}`,
+          "--callout-bg-color-dark": `${hexColor}${isDarkColor ? "4d" : "1a"}`,
         };
 
         customTextStyle = {
-          '--callout-text-color': `${darkerTextColor.hex()}`,
-          '--dark-callout-text-color': `${lighterTextColor.hex()}`,
+          "--callout-text-color": `${darkerTextColor.hex()}`,
+          "--dark-callout-text-color": `${lighterTextColor.hex()}`,
         };
 
-        variantClassName = 'border border-(--callout-border-color-light,#71717a33) bg-(--callout-bg-color-light,#71717a1a) dark:border-(--callout-border-color-dark,#71717a4d) dark:bg-(--callout-bg-color-dark,#71717a1a)';
-        childrenClassName = 'mt-1 text-(--callout-text-color) dark:text-(--dark-callout-text-color)';
+        variantClassName =
+          "border border-(--callout-border-color-light,#71717a33) bg-(--callout-bg-color-light,#71717a1a) dark:border-(--callout-border-color-dark,#71717a4d) dark:bg-(--callout-bg-color-dark,#71717a1a)";
+        childrenClassName =
+          "mt-1 text-(--callout-text-color) dark:text-(--dark-callout-text-color)";
       } catch {
         finalColor = undefined;
-        variantClassName = 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10';
-        childrenClassName = 'text-zinc-900 dark:text-zinc-200';
+        variantClassName =
+          "border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10";
+        childrenClassName = "text-zinc-900 dark:text-zinc-200";
       }
     } else {
-      variantClassName = 'border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10';
-      childrenClassName = 'text-zinc-900 dark:text-zinc-200';
+      variantClassName =
+        "border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10";
+      childrenClassName = "text-zinc-900 dark:text-zinc-200";
     }
   } else {
     const config = variantConfig[variant];
     const IconComponent = config.icon;
-    finalIcon = <IconComponent aria-label={ariaLabel || config.defaultAriaLabel} />;
+    finalIcon = (
+      <IconComponent aria-label={ariaLabel || config.defaultAriaLabel} />
+    );
     variantClassName = config.className;
     childrenClassName = config.childrenClassName;
   }
 
   const IconElement =
-    typeof finalIcon === 'string' ? (
+    typeof finalIcon === "string" ? (
       <ComponentIcon
-        icon={finalIcon}
-        iconType={iconType}
-        iconLibrary={iconLibrary}
+        className="m-0! h-4 w-4 shrink-0"
         color={finalColor}
-        className="h-4 w-4 m-0! shrink-0"
+        icon={finalIcon}
+        iconLibrary={iconLibrary}
+        iconType={iconType}
       />
     ) : (
       finalIcon
@@ -138,59 +161,62 @@ export function Callout({
     <div
       className={cn(
         Classes.Callout,
-        'my-4 px-5 py-4 overflow-hidden rounded-2xl flex gap-3',
+        "my-4 flex gap-3 overflow-hidden rounded-2xl px-5 py-4",
         variantClassName,
         className
       )}
-      style={{ ...customStyle, ...customTextStyle }}
       data-callout-type={variant}
+      style={{ ...customStyle, ...customTextStyle }}
     >
       {!!IconElement && (
         <div
           className="mt-0.5 w-4"
           data-component-part="callout-icon"
-          {...(variant === 'custom' && ariaLabel && { 'aria-label': ariaLabel })}
+          {...(variant === "custom" &&
+            ariaLabel && { "aria-label": ariaLabel })}
         >
           {IconElement}
         </div>
       )}
       <div
         className={cn(
-          'text-sm prose dark:prose-invert min-w-0 w-full [&_kbd]:bg-zinc-100 dark:[&_kbd]:bg-zinc-800 [&_code]:text-current! [&_kbd]:text-current! [&_a]:text-current! [&_a]:border-current',
+          "prose dark:prose-invert w-full min-w-0 text-sm [&_a]:border-current [&_a]:text-current! [&_code]:text-current! [&_kbd]:bg-zinc-100 [&_kbd]:text-current! dark:[&_kbd]:bg-zinc-800",
           childrenClassName
         )}
-        style={customTextStyle}
         data-component-part="callout-content"
+        style={customTextStyle}
       >
         {children}
       </div>
     </div>
   );
-}
+};
 
 // Backward compatibility exports
-type BackwardCompatibleCalloutProps = Omit<CalloutProps, 'variant'>;
+type BackwardCompatibleCalloutProps = Omit<CalloutProps, "variant">;
 
-export function Info(props: BackwardCompatibleCalloutProps) {
+const Info = (props: BackwardCompatibleCalloutProps) => {
   return <Callout {...props} variant="info" />;
-}
+};
 
-export function Warning(props: BackwardCompatibleCalloutProps) {
+const Warning = (props: BackwardCompatibleCalloutProps) => {
   return <Callout {...props} variant="warning" />;
-}
+};
 
-export function Note(props: BackwardCompatibleCalloutProps) {
+const Note = (props: BackwardCompatibleCalloutProps) => {
   return <Callout {...props} variant="note" />;
-}
+};
 
-export function Tip(props: BackwardCompatibleCalloutProps) {
+const Tip = (props: BackwardCompatibleCalloutProps) => {
   return <Callout {...props} variant="tip" />;
-}
+};
 
-export function Check(props: BackwardCompatibleCalloutProps) {
+const Check = (props: BackwardCompatibleCalloutProps) => {
   return <Callout {...props} variant="check" />;
-}
+};
 
-export function Danger(props: BackwardCompatibleCalloutProps) {
+const Danger = (props: BackwardCompatibleCalloutProps) => {
   return <Callout {...props} variant="danger" />;
-}
+};
+
+export { Callout, Info, Warning, Note, Tip, Check, Danger };
