@@ -1,5 +1,7 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
-import { TreeLevelContext } from './tree-level-context';
+import { TreeLevelContext } from "./tree-level-context";
 
-export const useTreeLevel = () => useContext(TreeLevelContext);
+const useTreeLevel = () => useContext(TreeLevelContext);
+
+export { useTreeLevel };

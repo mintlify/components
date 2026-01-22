@@ -1,75 +1,77 @@
-import * as RadixTooltip from "@radix-ui/react-tooltip"
-import { ChevronRightIcon } from "lucide-react"
-import { ReactNode, isValidElement, useState } from "react"
+// biome-ignore lint/performance/noNamespaceImport: TODO
+import * as RadixTooltip from "@radix-ui/react-tooltip";
+import { ChevronRightIcon } from "lucide-react";
+import { isValidElement, type ReactNode, useState } from "react";
 
-import { useHasHover } from "@/hooks/useHasHover"
-import { Classes } from "@/lib/local/selectors"
-import { cn } from "@/utils/cn"
-import { isRemoteUrl } from "@/utils/isRemoteUrl"
+import { useHasHover } from "@/hooks/useHasHover";
+import { Classes } from "@/lib/local/selectors";
+import { cn } from "@/utils/cn";
+import { isRemoteUrl } from "@/utils/isRemoteUrl";
 
-export type TooltipProps = {
-  description?: string
-  children: ReactNode
-  title?: string
-  cta?: string
-  href?: string
-  className?: string
-}
+type TooltipProps = {
+  description?: string;
+  children: ReactNode;
+  title?: string;
+  cta?: string;
+  href?: string;
+  className?: string;
+};
 
-export function Tooltip({
+const Tooltip = ({
   description,
   children,
   title,
   cta,
   href,
   className,
-}: TooltipProps) {
-  const [open, setOpen] = useState(false)
-  const hasHover = useHasHover()
+}: TooltipProps) => {
+  const [open, setOpen] = useState(false);
+  const hasHover = useHasHover();
 
   if (children == null) {
-    return null
+    return null;
   }
 
-  const isInteractive = isInteractiveElement(children)
+  const isInteractive = isInteractiveElement(children);
 
-  const handleClick = !hasHover
-    ? () => {
-        setOpen((prev) => !prev)
-      }
-    : undefined
+  const handleClick = hasHover
+    ? undefined
+    : () => {
+        setOpen((prev) => !prev);
+      };
 
   return (
     <RadixTooltip.Provider delayDuration={0}>
-      <RadixTooltip.Root open={open} onOpenChange={setOpen}>
+      <RadixTooltip.Root onOpenChange={setOpen} open={open}>
         <RadixTooltip.Trigger
           aria-label={
             isInteractive
               ? undefined
-              : title && description
-              ? `${title}: ${description}`
-              : title || description
+              : // biome-ignore lint/style/noNestedTernary: TODO
+                title && description
+                ? `${title}: ${description}`
+                : title || description
           }
           asChild={isInteractive}
-          onClick={handleClick}
           className={cn(
             className,
             !isInteractive &&
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
+              "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           )}
+          onClick={handleClick}
         >
           {underlineWhenTextOnly(children)}
         </RadixTooltip.Trigger>
         <RadixTooltip.Portal>
           <RadixTooltip.Content
+            className="z-50 flex max-w-[16rem] flex-col gap-1 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-[0_10px_16px_-3px_rgb(10_10_10/0.05),0_3px_10px_-2px_rgb(10_10_10/0.02)] dark:border-gray-900 dark:bg-gray-950"
             collisionPadding={8}
-            className="z-50 max-w-[16rem] px-4 py-3 rounded-xl bg-white border border-gray-200 dark:bg-gray-950 dark:border-gray-900 flex flex-col gap-1 shadow-[0_10px_16px_-3px_rgb(10_10_10/0.05),0_3px_10px_-2px_rgb(10_10_10/0.02)]"
             data-component-part="tooltip-content"
             onPointerDownOutside={() => setOpen(false)}
           >
             {!!title && (
               <p
-                className="text-xs font-medium leading-4 text-gray-900 dark:text-gray-200"
+                className="font-medium text-gray-900 text-xs leading-4 dark:text-gray-200"
                 data-component-part="tooltip-title"
               >
                 {title}
@@ -77,7 +79,7 @@ export function Tooltip({
             )}
             {!!description && (
               <p
-                className="text-xs text-gray-600 dark:text-gray-400 leading-4"
+                className="text-gray-600 text-xs leading-4 dark:text-gray-400"
                 data-component-part="tooltip-description"
               >
                 {description}
@@ -89,14 +91,14 @@ export function Tooltip({
                 {...(isRemoteUrl(href)
                   ? { target: "_blank", rel: "noreferrer" }
                   : {})}
+                className="mt-2! flex items-center gap-0.5 font-medium text-gray-600 text-xs leading-4 hover:text-primary dark:text-gray-400 dark:hover:text-primary-light"
                 data-component-part="tooltip-cta"
-                className="text-gray-600 mt-2! dark:text-gray-400 hover:text-primary dark:hover:text-primary-light gap-0.5 flex items-center text-xs font-medium leading-4"
               >
                 {cta}
                 <ChevronRightIcon
+                  aria-hidden="true"
                   className="size-3"
                   strokeWidth={2.5}
-                  aria-hidden="true"
                 />
               </a>
             )}
@@ -104,44 +106,47 @@ export function Tooltip({
         </RadixTooltip.Portal>
       </RadixTooltip.Root>
     </RadixTooltip.Provider>
-  )
-}
+  );
+};
 
-function isInteractiveElement(children: ReactNode): boolean {
+const isInteractiveElement = (children: ReactNode): boolean => {
   if (!isValidElement(children)) {
-    return false
+    return false;
   }
 
   if (typeof children.type === "function") {
-    return true
+    return true;
   }
 
   if (typeof children.type === "object") {
-    return true
+    return true;
   }
 
   if (typeof children.type === "string") {
     return ["button", "a", "input", "select", "textarea"].includes(
       children.type.toLowerCase()
-    )
+    );
   }
 
-  return false
-}
+  return false;
+};
 
-function underlineWhenTextOnly(children: ReactNode) {
+const underlineWhenTextOnly = (children: ReactNode) => {
   if (isValidElement(children)) {
-    return children
+    return children;
   }
 
   return (
     <span
       className={cn(
         Classes.Tooltip,
-        "underline decoration-dotted decoration-2 underline-offset-4 decoration-gray-400 dark:decoration-gray-500"
+        "underline decoration-2 decoration-gray-400 decoration-dotted underline-offset-4 dark:decoration-gray-500"
       )}
     >
       {children}
     </span>
-  )
-}
+  );
+};
+
+export { Tooltip };
+export type { TooltipProps };
