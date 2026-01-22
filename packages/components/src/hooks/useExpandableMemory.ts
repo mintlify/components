@@ -6,7 +6,7 @@ const getManuallyToggledExpandables = (): Record<string, boolean> => {
     try {
         const manuallyToggledExpandables = sessionStorage.getItem(USER_TOGGLED_EXPANDABLES_KEY);
         return manuallyToggledExpandables ? JSON.parse(manuallyToggledExpandables) : {};
-    } catch (e) {
+    } catch {
         return {};
     }
 };
@@ -16,13 +16,13 @@ const saveManuallyToggledState = (id: string, isExpanded: boolean) => {
         const current = getManuallyToggledExpandables();
         const updated = { ...current, [id]: isExpanded };
         sessionStorage.setItem(USER_TOGGLED_EXPANDABLES_KEY, JSON.stringify(updated));
-    } catch (e) {
+    } catch {
         // silently fail if setItem() fails
     }
 };
 
 export const useExpandableMemory = (id: string | undefined, defaultExpanded = false) => {
-    const ref = useRef<HTMLDivElement>(null);
+    const ref = useRef<HTMLElement>(null);
 
     // track if user manually clicked the expandable
     const [manuallyChanged, setManuallyChanged] = useState(false);

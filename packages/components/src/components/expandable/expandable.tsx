@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useLayoutEffect, useRef, useState, RefObject } from 'react';
+import { ReactNode, useEffect, useLayoutEffect, useState, RefObject } from 'react';
 
 import { useExpandableMemory } from '@/hooks/useExpandableMemory';
 import { Classes } from '@/lib/local/selectors';
@@ -48,7 +48,7 @@ export function Expandable({
   // if uniqueParamId is provided, we use session storage to
   // track if a user manually toggled the param field expandable
   const shouldUseSessionStorage = !!uniqueParamId;
-  const { isExpanded, onManualToggle, isInSessionStorage } = useExpandableMemory(
+  const { ref: expandableRef, isExpanded, onManualToggle, isInSessionStorage } = useExpandableMemory(
     uniqueParamId || '',
     defaultOpen
   );
@@ -83,11 +83,10 @@ export function Expandable({
     }
   }, [open, shouldRenderChildren]);
 
-  const expandableRef = useRef<HTMLDetailsElement>(null);
-
   useEffect(() => {
     onMount?.();
-  }, [onMount]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onChange = (open: boolean) => {
     setShouldRenderChildren(true);
@@ -113,6 +112,8 @@ export function Expandable({
     onChange(newOpenState);
   };
 
+  const contentId = `${title}-content`.replace(/\s+/g, '-');
+
   return (
     <details
       key={title}
@@ -135,7 +136,7 @@ export function Expandable({
           'list-none [&::-webkit-details-marker]:hidden',
           !open && 'rounded-b-xl'
         )}
-        aria-controls="Children attributes"
+        aria-controls={contentId}
         aria-expanded={open}
         data-component-part="expandable-button"
       >
@@ -151,7 +152,7 @@ export function Expandable({
         </div>
       </summary>
       <div
-        id={title + 'Children'}
+        id={contentId}
         className={cn(
           EXPANDABLE_CONTENT_CLASS,
           'mx-3 px-2 border-t border-gray-100 dark:border-white/10'
