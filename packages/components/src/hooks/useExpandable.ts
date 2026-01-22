@@ -10,8 +10,9 @@ export const useExpandable = (enable: boolean, numberOfLines?: number) => {
     const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        let rafId: number | undefined;
         if (contentRef.current != null && enable) {
-            requestAnimationFrame(() => {
+            rafId = requestAnimationFrame(() => {
                 if (contentRef.current != null) {
                     setCalculatedHeight(
                         contentRef.current.scrollHeight +
@@ -22,6 +23,11 @@ export const useExpandable = (enable: boolean, numberOfLines?: number) => {
                 }
             });
         }
+        return () => {
+            if (rafId !== undefined) {
+                cancelAnimationFrame(rafId);
+            }
+        };
     }, [enable, contentRef.current?.scrollHeight, numberOfLines]);
 
     const toggleExpanded = () => setIsExpanded((prev) => !prev);

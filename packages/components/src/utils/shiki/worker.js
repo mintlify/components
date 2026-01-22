@@ -6,6 +6,7 @@ let highlighter;
 let hastToHtmlFn;
 let codeStylingToThemeOrThemesFn;
 let getShikiLanguageFromPresetFn;
+let lineHighlightClassName, lineFocusClassName;
 
 const ready = (async () => {
     const [
@@ -41,6 +42,8 @@ const ready = (async () => {
     replacements = SHIKI_COLOR_REPLACEMENTS;
     langMap = SHIKI_LANG_MAP;
     hastToHtmlFn = hastToHtml;
+    lineHighlightClassName = LINE_HIGHLIGHT_CLASS_NAME;
+    lineFocusClassName = LINE_FOCUS_CLASS_NAME;
     codeStylingToThemeOrThemesFn = codeStylingToThemeOrThemes;
     getShikiLanguageFromPresetFn = getShikiLanguageFromPreset;
     const engine = createJavaScriptRegexEngine({ forgiving: true, cache: new Map() });
@@ -118,19 +121,19 @@ function highlightSync(opts) {
         spanElements.forEach((c, i) => {
             if (typeof c.properties.class === 'string') {
                 if (opts.opts?.highlightedLines?.includes(i + 1)) {
-                    c.properties.class += ' line-highlight';
+                    c.properties.class += ` ${lineHighlightClassName}`;
                 }
 
                 if (opts.opts?.focusedLines?.includes(i + 1)) {
-                    c.properties.class += ' line-focus';
+                    c.properties.class += ` ${lineFocusClassName}`;
                 }
             } else if (Array.isArray(c.properties.class)) {
                 if (opts.opts?.highlightedLines?.includes(i + 1)) {
-                    c.properties.class.push('line-highlight');
+                    c.properties.class.push(lineHighlightClassName);
                 }
 
                 if (opts.opts?.focusedLines?.includes(i + 1)) {
-                    c.properties.class.push('line-focus');
+                    c.properties.class.push(lineFocusClassName);
                 }
             }
         });

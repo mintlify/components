@@ -204,7 +204,7 @@ export const FocusMixed: Story = {
 
 export const HighlightAndFocus: Story = {
     render: () => (
-        <CodeBlock language="java" filename="HelloWorld.java" highlight={JSON.stringify([1, 3, 5])} focus={JSON.stringify([2, 4, 6])} lines={true}>
+        <CodeBlock language="java" filename="HelloWorld.java" highlight={JSON.stringify([1, 3, 5])} focus={JSON.stringify([2, 4, 6])}>
             {mediumCode}
         </CodeBlock>
     ),
@@ -287,7 +287,7 @@ const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;`}
 
 export const DiffBasic: Story = {
     render: () => (
-        <CodeBlock language="javascript" filename="diff.js" lines={true}>
+        <CodeBlock language="javascript" filename="diff.js">
             {simpleDiffCode}
         </CodeBlock>
     ),
@@ -311,7 +311,7 @@ export const DiffWithLineNumbers: Story = {
 
 export const DiffFunction: Story = {
     render: () => (
-        <CodeBlock language="javascript" filename="diff.js" lines={true}>
+        <CodeBlock language="javascript" filename="diff.js">
             {diffCodeWithRemove}
         </CodeBlock>
     ),
