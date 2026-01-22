@@ -17,6 +17,20 @@ const meta: Meta<typeof Mermaid> = {
       control: "text",
       description: "Additional CSS classes for the root element",
     },
+    actions: {
+      control: "boolean",
+      description:
+        "Show or hide the interactive controls. When set, this overrides the default behavior (controls shown when diagram height exceeds 120px).",
+    },
+    placement: {
+      control: "select",
+      options: ["top-left", "top-right", "bottom-left", "bottom-right"],
+      description: "Position of the interactive controls.",
+    },
+    ariaLabel: {
+      control: "text",
+      description: "Accessible label for the diagram",
+    },
   },
 };
 
@@ -217,9 +231,18 @@ export const LargeDiagram: Story = {
     K -->|Yes| L[Celebrate]
     K -->|No| M[Try Again]
     M --> B`}
+        placement="top-right"
       />
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Large diagram with controls in the top-right corner. Controls appear automatically because the diagram height exceeds 120px.",
+      },
+    },
+  },
 };
 
 export const AllDiagramTypes: Story = {
@@ -243,6 +266,51 @@ export const AllDiagramTypes: Story = {
       </div>
     </div>
   ),
+};
+
+export const ActionsHidden: Story = {
+  args: {
+    chart: flowchartExample,
+    actions: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Hide the interactive controls regardless of diagram size.",
+      },
+    },
+  },
+};
+
+export const ActionsVisible: Story = {
+  args: {
+    chart: `flowchart LR
+    A --> B`,
+    actions: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Always show the interactive controls, even for small diagrams.",
+      },
+    },
+  },
+};
+
+export const Placement: Story = {
+  args: {
+    chart: flowchartExample,
+    actions: true,
+    placement: "bottom-right",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Position of the interactive controls. Use the controls panel to try different placements: top-left, top-right, bottom-left, bottom-right.",
+      },
+    },
+  },
 };
 
 export const InvalidSyntax: Story = {

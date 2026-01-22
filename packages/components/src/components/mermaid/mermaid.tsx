@@ -8,16 +8,26 @@ import { ZoomControls } from "./zoom-controls";
 
 const MIN_HEIGHT_FOR_CONTROLS = 120;
 
+type MermaidPlacement =
+  | "top-left"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-right";
+
 type MermaidProps = {
   chart: string;
   className?: string;
   ariaLabel?: string;
+  placement?: MermaidPlacement;
+  actions?: boolean;
 };
 
 const Mermaid = ({
   chart,
   className,
   ariaLabel = "Mermaid diagram",
+  placement = "bottom-right",
+  actions,
 }: MermaidProps) => {
   const [svg, setSvg] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -85,6 +95,10 @@ const Mermaid = ({
   }, [chart, id, isDarkTheme]);
 
   useEffect(() => {
+    if (actions !== undefined) {
+      return;
+    }
+
     const container = containerRef.current;
 
     if (!container) {
@@ -103,7 +117,7 @@ const Mermaid = ({
     return () => {
       resizeObserver.disconnect();
     };
-  }, []);
+  }, [actions]);
 
   if (error) {
     return (
@@ -134,13 +148,14 @@ const Mermaid = ({
         className
       )}
     >
-      {showControls && (
+      {(actions === true || (actions === undefined && showControls)) && (
         <ZoomControls
           onPan={pan}
           onReset={reset}
           onZoomIn={zoomIn}
           onZoomOut={zoomOut}
           panStep={panStep}
+          placement={placement}
         />
       )}
       <div
@@ -157,4 +172,4 @@ const Mermaid = ({
 };
 
 export { Mermaid };
-export type { MermaidProps };
+export type { MermaidProps, MermaidPlacement };
