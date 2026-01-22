@@ -5,7 +5,6 @@ import {
   Trigger as TabsTrigger,
 } from "@radix-ui/react-tabs";
 import React, {
-  type ComponentPropsWithoutRef,
   forwardRef,
   type ReactElement,
   type ReactNode,
@@ -27,7 +26,7 @@ import type { CodeStyling } from "@/validation";
 
 import { LanguageDropdown } from "./language-dropdown";
 
-type CodeGroupPropsBase = {
+type CodeGroupProps = {
   dropdown?: boolean;
   onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
   isSmallText?: boolean;
@@ -43,10 +42,8 @@ type CodeGroupPropsBase = {
   onSelectedTabChange?: (index: number) => void;
   askAiButton?: ReactNode;
   feedbackButton?: ReactNode;
+  className?: string;
 };
-
-type CodeGroupProps = CodeGroupPropsBase &
-  Omit<ComponentPropsWithoutRef<"div">, keyof CodeGroupPropsBase>;
 
 type CodeBlockChild = Exclude<
   React.ReactElement<CodeBlockProps>,
@@ -68,7 +65,6 @@ const CodeGroup = function CodeGroup({
   onSelectedTabChange,
   askAiButton,
   feedbackButton,
-  ...props
 }: CodeGroupProps) {
   const [selectedTab, setSelectedTab] = useState(initialSelectedTab);
   const triggerRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
@@ -118,8 +114,8 @@ const CodeGroup = function CodeGroup({
   const selectedIndex = Number(selectedTab);
 
   return (
-    // @ts-expect-error defaultValue should never an issue or passed in to the CodeBlock component
     <TabsRoot
+      asChild={false}
       className={cn(
         Classes.CodeGroup,
         "not-prose relative mt-5 mb-8 flex flex-col overflow-hidden rounded-2xl border border-gray-950/10 p-0.5 dark:border-white/10",
@@ -134,8 +130,6 @@ const CodeGroup = function CodeGroup({
       onValueChange={handleValueChange}
       ref={anchorRef as React.Ref<HTMLDivElement>}
       value={String(selectedTab)}
-      {...props}
-      asChild={false}
     >
       <div
         className={cn(
@@ -311,4 +305,4 @@ const TabItem = forwardRef<
   );
 });
 
-export { CodeGroup, type CodeGroupProps, type CodeGroupPropsBase };
+export { CodeGroup, type CodeGroupProps };
