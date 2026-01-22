@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "pnpm --filter @mintlify/components dev",
     "build": "pnpm --filter @mintlify/components build",
-    "lint": "pnpm -r check",
+    "lint": "pnpm -r lint:check",
     "storybook": "pnpm --filter @mintlify/components storybook",
     "build-storybook": "pnpm --filter @mintlify/components build-storybook"
   },

@@ -53,7 +53,7 @@ if empty - nothing to change
     - i think we should build something more flexible like `Grid, Grid.Row, Grid.Col`
 - ~~Examples~~
     - ~~we can remove this and just use `Panel` + `CodeGroup`~~
-- Expandables
+- ~~Expandables~~
     - new name: `Collapsible` or `Accordion`?
 - ~~Fields~~
     - ~~rename to `Property`~~
