@@ -60,13 +60,11 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
     }, [id, onCopyAnchorLink]);
 
     useEffect(() => {
-      if (!(hasContext && isVisible)) {
+      if (!(hasContext && isVisible && rect)) {
         return;
       }
 
-      if (rect) {
-        onRegisterHeading?.(id, rect);
-      }
+      onRegisterHeading?.(id, rect);
 
       return () => {
         onUnregisterHeading?.(id);
