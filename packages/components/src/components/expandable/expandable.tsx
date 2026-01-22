@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useLayoutEffect, useState, RefObject } from 'react';
+import { ReactNode, useEffect, useId, useLayoutEffect, useState, RefObject } from 'react';
 
 import { useExpandableMemory } from '@/hooks/useExpandableMemory';
 import { Classes } from '@/lib/local/selectors';
@@ -112,7 +112,8 @@ export function Expandable({
     onChange(newOpenState);
   };
 
-  const contentId = `${title}-content`.replace(/\s+/g, '-');
+  const reactId = useId();
+  const contentId = `${title}-${reactId}-content`.replace(/\s+/g, '-');
 
   return (
     <details
@@ -126,7 +127,7 @@ export function Expandable({
         }
       }}
       className={cn(Classes.Expandable, 'mt-4 border-standard rounded-xl', className)}
-      data-testid={uniqueParamId + '-children'}
+      data-testid={uniqueParamId ? `${uniqueParamId}-children` : undefined}
       data-component-part="expandable"
     >
       <summary
