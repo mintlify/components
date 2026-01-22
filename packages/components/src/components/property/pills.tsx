@@ -1,51 +1,57 @@
-import React from "react";
+import type React from "react";
 import { cn } from "@/utils/cn";
 
 type InfoPillProps = {
-    children: React.ReactNode;
-    prefix?: string;
-    className?: string;
-}
+  children: React.ReactNode;
+  prefix?: string;
+  className?: string;
+};
 
-export function InfoPill({
-    children,
-    prefix,
-    className,
-}: InfoPillProps) {
-    return (
-        <div
-            className={cn(
-                'flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-100/50 dark:bg-white/5 text-gray-600 dark:text-gray-200 font-medium break-all',
-                className
-            )}
-            data-component-part="field-info-pill"
-        >
-            {prefix && <span className="text-gray-400 dark:text-gray-500">{prefix}</span>}
-            <span>{children}</span>
-        </div>
-    );
-}
+const InfoPill = ({ children, prefix, className }: InfoPillProps) => {
+  return (
+    <div
+      className={cn(
+        "flex items-center gap-1 break-all rounded-md bg-gray-100/50 px-2 py-0.5 font-medium text-gray-600 dark:bg-white/5 dark:text-gray-200",
+        className
+      )}
+      data-component-part="field-info-pill"
+    >
+      {prefix && (
+        <span className="text-gray-400 dark:text-gray-500">{prefix}</span>
+      )}
+      <span>{children}</span>
+    </div>
+  );
+};
 
-export function RequiredPill({ label }: { label?: string }) {
-    if (!label) return null;
-    return (
-        <div
-            className="px-2 py-0.5 rounded-md bg-red-100/50 dark:bg-red-400/10 text-red-600 dark:text-red-300 font-medium whitespace-nowrap"
-            data-component-part="field-required-pill"
-        >
-            {label}
-        </div>
-    );
-}
+const RequiredPill = ({ label }: { label?: string }) => {
+  if (!label) {
+    return null;
+  }
 
-export function DeprecatedPill({ label }: { label?: string }) {
-    if (!label) return null;
-    return (
-        <div
-            className="px-2 py-0.5 rounded-md bg-amber-100/50 dark:bg-amber-400/10 text-amber-600 dark:text-amber-300 font-medium whitespace-nowrap"
-            data-component-part="field-deprecated-pill"
-        >
-            {label}
-        </div>
-    );
-}
+  return (
+    <div
+      className="whitespace-nowrap rounded-md bg-red-100/50 px-2 py-0.5 font-medium text-red-600 dark:bg-red-400/10 dark:text-red-300"
+      data-component-part="field-required-pill"
+    >
+      {label}
+    </div>
+  );
+};
+
+const DeprecatedPill = ({ label }: { label?: string }) => {
+  if (!label) {
+    return null;
+  }
+
+  return (
+    <div
+      className="whitespace-nowrap rounded-md bg-amber-100/50 px-2 py-0.5 font-medium text-amber-600 dark:bg-amber-400/10 dark:text-amber-300"
+      data-component-part="field-deprecated-pill"
+    >
+      {label}
+    </div>
+  );
+};
+
+export { InfoPill, RequiredPill, DeprecatedPill };
