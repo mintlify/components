@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite"
-import { Color } from "./color"
-import { COLOR_VARIANTS } from "./constants"
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Color } from "./color";
+import { COLOR_VARIANTS } from "./constants";
 
 const meta: Meta<typeof Color> = {
   title: "Components/Color",
@@ -19,10 +19,10 @@ const meta: Meta<typeof Color> = {
       table: { disable: true },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Color>
+export default meta;
+type Story = StoryObj<typeof Color>;
 
 export const CompactVariant: Story = {
   args: { variant: "compact" },
@@ -36,7 +36,7 @@ export const CompactVariant: Story = {
       <Color.Item name="yellow-500" value="#EAB308" />
     </Color>
   ),
-}
+};
 
 export const TableVariant: Story = {
   args: { variant: "table" },
@@ -65,7 +65,7 @@ export const TableVariant: Story = {
       </Color.Row>
     </Color>
   ),
-}
+};
 
 export const ColorFormats: Story = {
   render: () => (
@@ -107,7 +107,7 @@ export const ColorFormats: Story = {
       </Color>
     </div>
   ),
-}
+};
 
 export const ThemeAwareColors: Story = {
   render: () => (
@@ -177,7 +177,7 @@ export const ThemeAwareColors: Story = {
       </Color>
     </div>
   ),
-}
+};
 
 export const WithoutNames: Story = {
   render: () => (
@@ -203,7 +203,7 @@ export const WithoutNames: Story = {
       </Color>
     </div>
   ),
-}
+};
 
 export const LongColorNames: Story = {
   render: () => (
@@ -230,4 +230,4 @@ export const LongColorNames: Story = {
       </Color>
     </div>
   ),
-}
+};
