@@ -1,2 +1,2 @@
 // biome-ignore lint/performance/noBarrelFile: TODO
-export { Expandable } from "./expandable";
+export { Expandable, type ExpandableProps } from "./expandable";
