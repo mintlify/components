@@ -125,7 +125,7 @@ const BaseCodeBlock = ({
           "children:!my-0 children:!shadow-none children:!bg-transparent relative h-full w-0 min-w-full max-w-full rounded-[14px] px-4 py-3.5 text-sm leading-6 dark:bg-codeblock",
           "code-block-background overflow-x-auto transition-[height] duration-300 ease-in-out",
           "**:outline-0 **:ring-0 **:focus:outline-0 **:focus:ring-0",
-          props.filename ? "rounded-xt" : "rounded-2xl",
+          props.filename ? "rounded-[14px]" : "rounded-2xl",
           codeBlockTheme === "system" ? "bg-white" : "bg-codeblock",
           (expandable || isParentCodeGroup) && "overflow-auto",
           expandable && (isExpanded ? "overflow-y-auto" : "overflow-y-hidden"),
