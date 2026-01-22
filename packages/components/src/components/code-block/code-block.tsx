@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode, RefObject } from "react";
+import type { ReactNode, RefObject } from "react";
 
 import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
@@ -97,20 +97,9 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
     codeBlockThemeObject,
     askAiButton,
     feedbackButton,
-    ...props
   } = params;
 
   const codeString = getNodeText(children);
-  // biome-ignore lint/correctness/noNestedComponentDefinitions: TODO
-  const CopyButton = (
-    props: Partial<ComponentPropsWithoutRef<typeof CopyToClipboardButton>>
-  ) => (
-    <CopyToClipboardButton
-      onCopied={onCopied}
-      textToCopy={codeString}
-      {...props}
-    />
-  );
   const hasGrayBackgroundContainer = !!filename || !!icon;
 
   return (
@@ -129,7 +118,6 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
         className
       )}
       ref={anchorRef}
-      {...props}
     >
       {hasGrayBackgroundContainer ? (
         <CodeHeader
@@ -138,7 +126,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
           icon={icon}
         >
           {feedbackButton && feedbackButton}
-          <CopyButton />
+          <CopyToClipboardButton onCopied={onCopied} textToCopy={codeString} />
           {askAiButton && askAiButton}
         </CodeHeader>
       ) : (
@@ -147,7 +135,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
           data-floating-buttons
         >
           {feedbackButton && feedbackButton}
-          <CopyButton />
+          <CopyToClipboardButton onCopied={onCopied} textToCopy={codeString} />
           {askAiButton && askAiButton}
         </div>
       )}
