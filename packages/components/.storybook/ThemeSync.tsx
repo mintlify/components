@@ -5,18 +5,18 @@ import { useEffect } from "react";
 type Theme = "light" | "dark" | "system";
 
 type ThemeSyncProps = {
-	theme: Theme;
-	children: React.ReactNode;
+  theme: Theme;
+  children: React.ReactNode;
 };
 
 const ThemeSync = ({ theme, children }: ThemeSyncProps) => {
-	const { setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
-	useEffect(() => {
-		setTheme(theme);
-	}, [theme, setTheme]);
+  useEffect(() => {
+    setTheme(theme);
+  }, [theme, setTheme]);
 
-	return <>{children}</>;
+  return <>{children}</>;
 };
 
 export { ThemeSync };
