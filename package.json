@@ -1,34 +1,34 @@
 {
-	"name": "@mintlify/components-monorepo",
-	"version": "0.1.0",
-	"description": "Open-source UI components for documentation sites",
-	"private": true,
-	"type": "module",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/mintlify/components"
-	},
-	"keywords": [
-		"react",
-		"components",
-		"ui",
-		"tailwindcss"
-	],
-	"license": "MIT",
-	"author": "Mintlify",
-	"bugs": {
-		"url": "https://github.com/mintlify/components/issues"
-	},
-	"scripts": {
-		"dev": "pnpm --filter @mintlify/components dev",
-		"build": "pnpm --filter @mintlify/components build",
-		"lint": "pnpm -r lint",
-		"storybook": "pnpm --filter @mintlify/components storybook",
-		"build-storybook": "pnpm --filter @mintlify/components build-storybook"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.3.11",
-		"typescript": "^5.7.2"
-	},
-	"packageManager": "pnpm@10.0.0"
+  "name": "@mintlify/components-monorepo",
+  "version": "0.1.0",
+  "description": "Open-source UI components for documentation sites",
+  "private": true,
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mintlify/components"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwindcss"
+  ],
+  "license": "MIT",
+  "author": "Mintlify",
+  "bugs": {
+    "url": "https://github.com/mintlify/components/issues"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @mintlify/components dev",
+    "build": "pnpm --filter @mintlify/components build",
+    "lint": "pnpm -r check",
+    "storybook": "pnpm --filter @mintlify/components storybook",
+    "build-storybook": "pnpm --filter @mintlify/components build-storybook"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.11",
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "pnpm@10.0.0"
 }
