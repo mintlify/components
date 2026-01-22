@@ -28,6 +28,8 @@ const createPlusPattern = (color: string) => {
 const LIGHT_PATTERN = createPlusPattern("#F0F0F0");
 const DARK_PATTERN = createPlusPattern("#232323");
 
+const BG_SIZE = `${SIZE}px ${SIZE}px`;
+
 type TileProps = {
   href: string;
   children: React.ReactNode;
@@ -39,7 +41,6 @@ type TileProps = {
 const Tile = ({ href, children, title, description, className }: TileProps) => {
   const DEFAULT_BG_PATTERN_CLASSES = cn(
     "pointer-events-none size-full select-none bg-center bg-repeat-round [grid-area:1/1]",
-    `bg-[size:${SIZE}px_${SIZE}px]`,
     "after:absolute after:left-0 after:h-full after:w-[7px] after:bg-neutral-50 after:content-[''] dark:after:bg-neutral-900",
     "before:absolute before:right-0 before:h-full before:w-[7px] before:bg-neutral-50 before:content-[''] dark:before:bg-neutral-900"
   );
@@ -64,6 +65,7 @@ const Tile = ({ href, children, title, description, className }: TileProps) => {
           data-component-part="tile-background-light"
           style={{
             backgroundImage: `url("${LIGHT_PATTERN}")`,
+            backgroundSize: BG_SIZE,
           }}
         />
         <div
@@ -72,6 +74,7 @@ const Tile = ({ href, children, title, description, className }: TileProps) => {
           data-component-part="tile-background-dark"
           style={{
             backgroundImage: `url("${DARK_PATTERN}")`,
+            backgroundSize: BG_SIZE,
           }}
         />
         <div
