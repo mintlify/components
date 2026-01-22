@@ -3,7 +3,7 @@ import "./tailwind.css";
 import { ThemeProvider } from "next-themes";
 // biome-ignore lint/correctness/noUnusedImports: ignore
 import React from "react";
-import { type StorybookThemeType, ThemeSync } from "./ThemeSync";
+import { type StorybookThemeType, ThemeSync } from "./theme-sync";
 
 const inter = {
   style: { fontFamily: "Inter, system-ui, sans-serif" },
