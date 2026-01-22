@@ -1,14 +1,14 @@
-import React, { ReactNode } from 'react';
-
-import { Classes } from '@/lib/local/selectors';
-import { Icon } from '@/components/icon';
-import { cn } from '@/utils/cn';
-import { IconLibrary, IconType } from '@/models';
-import { STEP_TITLE_SIZES, StepTitleSize } from './constants';
+import type React from "react";
+import type { ReactNode } from "react";
+import { Icon } from "@/components/icon";
+import { Classes } from "@/lib/local/selectors";
+import type { IconLibrary, IconType } from "@/models";
+import { cn } from "@/utils/cn";
+import { STEP_TITLE_SIZES, type StepTitleSize } from "./constants";
 
 type Numberish = number | `${number}`;
 
-export type StepsItemProps = {
+type StepsItemProps = {
   icon?: ReactNode | string;
   stepNumber?: Numberish;
   iconType?: IconType;
@@ -27,22 +27,23 @@ const StepsItem = ({
   iconLibrary,
   title,
   children,
-  titleSize = 'p',
+  titleSize = "p",
   className,
   isLast = false,
 }: StepsItemProps) => {
-  const titleTag = STEP_TITLE_SIZES.includes(titleSize) ? titleSize : 'p';
+  const titleTag = STEP_TITLE_SIZES.includes(titleSize) ? titleSize : "p";
 
   const transformedIconOrNumber =
-    typeof icon === 'string' ? (
+    typeof icon === "string" ? (
       <Icon
-        icon={icon}
-        iconType={iconType}
-        iconLibrary={iconLibrary}
         className="size-3 bg-gray-900 dark:bg-gray-50"
+        icon={icon}
+        iconLibrary={iconLibrary}
+        iconType={iconType}
         overrideColor
         overrideSize
       />
+      // biome-ignore lint/style/noNestedTernary: TODO
     ) : icon == null ? (
       Number(stepNumber)
     ) : (
@@ -50,38 +51,52 @@ const StepsItem = ({
     );
 
   return (
+    // biome-ignore lint/a11y/useSemanticElements: TODO
     <div
-      role="listitem"
-      className={cn(Classes.Step, 'group/step relative flex items-start pb-5', className)}
+      className={cn(
+        Classes.Step,
+        "group/step relative flex items-start pb-5",
+        className
+      )}
       data-component-part="step-item"
+      role="listitem"
     >
       <div
-        data-component-part="step-line"
         className={cn(
-          'absolute w-px h-[calc(100%-2.75rem)] top-11',
+          "absolute top-11 h-[calc(100%-2.75rem)] w-px",
           isLast
-            ? 'bg-linear-to-b from-gray-200 via-gray-200 via-80% to-transparent dark:from-white/10 dark:via-white/10 group-has-[[data-component-part="step-content"]:empty]/step:hidden'
-            : 'bg-gray-200/70 dark:bg-white/10'
+            ? 'bg-linear-to-b from-gray-200 via-80% via-gray-200 to-transparent group-has-[[data-component-part="step-content"]:empty]/step:hidden dark:from-white/10 dark:via-white/10'
+            : "bg-gray-200/70 dark:bg-white/10"
         )}
         contentEditable={false}
-      ></div>
+        data-component-part="step-line"
+      />
       <div
         className="absolute ml-[-13px] py-2"
-        data-component-part="step-number"
         contentEditable={false}
+        data-component-part="step-number"
       >
-        <div className="size-7 shrink-0 rounded-full bg-gray-50 dark:bg-white/10 text-xs text-gray-900 dark:text-gray-50 font-semibold flex items-center justify-center">
+        <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-gray-50 font-semibold text-gray-900 text-xs dark:bg-white/10 dark:text-gray-50">
           {transformedIconOrNumber}
         </div>
       </div>
-      <div className="w-full overflow-hidden pl-8 pr-px">
+      <div className="w-full overflow-hidden pr-px pl-8">
         {!!title &&
           (() => {
-            const titleClasses = 'mt-2 text-gray-900 dark:text-gray-200';
-            const titleProps = { contentEditable: false, 'data-component-part': 'step-title' };
+            const titleClasses = "mt-2 text-gray-900 dark:text-gray-200";
+            const titleProps = {
+              contentEditable: false,
+              "data-component-part": "step-title",
+            };
             return {
               p: (
-                <p className={cn(titleClasses, 'font-semibold prose dark:prose-invert')} {...titleProps}>
+                <p
+                  className={cn(
+                    titleClasses,
+                    "prose dark:prose-invert font-semibold"
+                  )}
+                  {...titleProps}
+                >
                   {title}
                 </p>
               ),
@@ -103,8 +118,8 @@ const StepsItem = ({
             }[titleTag];
           })()}
         <div
+          className={cn("prose dark:prose-invert", !title && "mt-2")}
           data-component-part="step-content"
-          className={cn('prose dark:prose-invert', !title && 'mt-2')}
         >
           {children}
         </div>
@@ -113,28 +128,34 @@ const StepsItem = ({
   );
 };
 
-export type StepsProps = {
-  children: React.ReactElement<StepsItemProps> | React.ReactElement<StepsItemProps>[];
+type StepsProps = {
+  children:
+    | React.ReactElement<StepsItemProps>
+    | React.ReactElement<StepsItemProps>[];
   titleSize?: StepTitleSize;
   className?: string;
 };
 
-export const Steps = ({ children, titleSize, className }: StepsProps) => {
-  const childArray = (Array.isArray(children) ? children : [children]).filter(Boolean);
+const Steps = ({ children, titleSize, className }: StepsProps) => {
+  const childArray = (Array.isArray(children) ? children : [children]).filter(
+    Boolean
+  );
 
   return (
+    // biome-ignore lint/a11y/useSemanticElements: TODO
     <div
-      role="list"
-      className={cn(Classes.Steps, 'ml-3.5 mt-10 mb-6', className)}
+      className={cn(Classes.Steps, "mt-10 mb-6 ml-3.5", className)}
       data-component-part="steps"
+      role="list"
     >
       {childArray.map(({ props }, index) => (
         <StepsItem
+          // biome-ignore lint/suspicious/noArrayIndexKey: TODO
           key={`step-${index}`}
           {...props}
+          isLast={index === childArray.length - 1}
           stepNumber={props.stepNumber ?? index + 1}
           titleSize={props.titleSize ?? titleSize}
-          isLast={index === childArray.length - 1}
         />
       ))}
     </div>
@@ -142,3 +163,6 @@ export const Steps = ({ children, titleSize, className }: StepsProps) => {
 };
 
 Steps.Item = StepsItem;
+
+export { Steps };
+export type { StepsItemProps, StepsProps };

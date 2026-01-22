@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Callout, Info, Warning, Note, Tip, Check, Danger } from "./callout";
+import { Callout, Check, Danger, Info, Note, Tip, Warning } from "./callout";
 
 const meta: Meta<typeof Callout> = {
   title: "Components/Callout",
@@ -87,7 +87,9 @@ export const DangerVariant: Story = {
 export const CustomVariantDefault: Story = {
   args: {
     variant: "custom",
-    children: <p>This is a custom callout with default styling (no icon or color).</p>,
+    children: (
+      <p>This is a custom callout with default styling (no icon or color).</p>
+    ),
   },
 };
 
@@ -115,7 +117,9 @@ export const InfoVariantWithAriaLabel: Story = {
   args: {
     variant: "info",
     ariaLabel: "معلومات",
-    children: <p>This info callout has a custom aria label (Arabic "Information").</p>,
+    children: (
+      <p>This info callout has a custom aria label (Arabic "Information").</p>
+    ),
   },
 };
 
@@ -131,27 +135,48 @@ export const InfoVariantWithClassName: Story = {
 // All Variants Together
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "600px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        maxWidth: "600px",
+      }}
+    >
       <Callout variant="info">
-        <p><strong>Info:</strong> This is an informational callout.</p>
+        <p>
+          <strong>Info:</strong> This is an informational callout.
+        </p>
       </Callout>
       <Callout variant="warning">
-        <p><strong>Warning:</strong> This is a warning callout.</p>
+        <p>
+          <strong>Warning:</strong> This is a warning callout.
+        </p>
       </Callout>
       <Callout variant="note">
-        <p><strong>Note:</strong> This is a note callout.</p>
+        <p>
+          <strong>Note:</strong> This is a note callout.
+        </p>
       </Callout>
       <Callout variant="tip">
-        <p><strong>Tip:</strong> This is a tip callout.</p>
+        <p>
+          <strong>Tip:</strong> This is a tip callout.
+        </p>
       </Callout>
       <Callout variant="check">
-        <p><strong>Check:</strong> This is a success callout.</p>
+        <p>
+          <strong>Check:</strong> This is a success callout.
+        </p>
       </Callout>
       <Callout variant="danger">
-        <p><strong>Danger:</strong> This is a danger callout.</p>
+        <p>
+          <strong>Danger:</strong> This is a danger callout.
+        </p>
       </Callout>
-      <Callout variant="custom" icon="star" iconType="solid" color="#f59e0b">
-        <p><strong>Custom:</strong> This is a custom callout with a star icon.</p>
+      <Callout color="#f59e0b" icon="star" iconType="solid" variant="custom">
+        <p>
+          <strong>Custom:</strong> This is a custom callout with a star icon.
+        </p>
       </Callout>
     </div>
   ),
@@ -163,7 +188,9 @@ export const InfoWithMultipleElements: Story = {
     variant: "info",
     children: (
       <>
-        <p><strong>Important information:</strong></p>
+        <p>
+          <strong>Important information:</strong>
+        </p>
         <p>This callout can contain multiple paragraphs and formatted text.</p>
         <ul>
           <li>It supports lists</li>
@@ -182,7 +209,9 @@ export const CustomWithMultipleElements: Story = {
     color: "#FF00FF",
     children: (
       <>
-        <p><strong>Important information:</strong></p>
+        <p>
+          <strong>Important information:</strong>
+        </p>
         <p>This callout can contain multiple paragraphs and formatted text.</p>
         <ul>
           <li>It supports lists</li>
@@ -198,7 +227,9 @@ export const NoteWithLink: Story = {
   args: {
     variant: "note",
     children: (
-      <p>For more details, see the <a href="#documentation">documentation</a>.</p>
+      <p>
+        For more details, see the <a href="#documentation">documentation</a>.
+      </p>
     ),
   },
 };
@@ -208,7 +239,9 @@ export const TipWithSteps: Story = {
     variant: "tip",
     children: (
       <>
-        <p><strong>Pro tip:</strong> Follow these steps:</p>
+        <p>
+          <strong>Pro tip:</strong> Follow these steps:
+        </p>
         <ol>
           <li>First, read the documentation</li>
           <li>Then, try the example</li>
@@ -238,24 +271,43 @@ export const BackwardCompatibilityWarning: Story = {
 
 export const BackwardCompatibilityAllTypes: Story = {
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "600px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        maxWidth: "600px",
+      }}
+    >
       <Info>
-        <p><strong>Info component</strong> (backward compatible)</p>
+        <p>
+          <strong>Info component</strong> (backward compatible)
+        </p>
       </Info>
       <Warning>
-        <p><strong>Warning component</strong> (backward compatible)</p>
+        <p>
+          <strong>Warning component</strong> (backward compatible)
+        </p>
       </Warning>
       <Note>
-        <p><strong>Note component</strong> (backward compatible)</p>
+        <p>
+          <strong>Note component</strong> (backward compatible)
+        </p>
       </Note>
       <Tip>
-        <p><strong>Tip component</strong> (backward compatible)</p>
+        <p>
+          <strong>Tip component</strong> (backward compatible)
+        </p>
       </Tip>
       <Check>
-        <p><strong>Check component</strong> (backward compatible)</p>
+        <p>
+          <strong>Check component</strong> (backward compatible)
+        </p>
       </Check>
       <Danger>
-        <p><strong>Danger component</strong> (backward compatible)</p>
+        <p>
+          <strong>Danger component</strong> (backward compatible)
+        </p>
       </Danger>
     </div>
   ),

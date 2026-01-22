@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import React from "react";
-import { Card } from "./card";
-import { Zap, Heart, Package } from "lucide-react";
+import { Heart, Package, Zap } from "lucide-react";
+import type React from "react";
 import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
+import { Card } from "./card";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",
@@ -14,7 +14,15 @@ const meta: Meta<typeof Card> = {
   argTypes: {
     iconType: {
       control: "select",
-      options: ["brands", "duotone", "light", "regular", "sharp-solid", "solid", "thin"],
+      options: [
+        "brands",
+        "duotone",
+        "light",
+        "regular",
+        "sharp-solid",
+        "solid",
+        "thin",
+      ],
     },
     iconLibrary: {
       control: "select",
@@ -219,14 +227,26 @@ export const HorizontalWithLink: Story = {
 
 export const MultipleCards: Story = {
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px", width: "400px" }}>
-      <Card title="Documentation" icon="cat" href="/docs">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        width: "400px",
+      }}
+    >
+      <Card href="/docs" icon="cat" title="Documentation">
         Read our comprehensive documentation.
       </Card>
-      <Card title="API Reference" icon="bolt" href="/api">
+      <Card href="/api" icon="bolt" title="API Reference">
         Explore the API reference.
       </Card>
-      <Card title="GitHub" icon="github" iconType="brands" href="https://github.com">
+      <Card
+        href="https://github.com"
+        icon="github"
+        iconType="brands"
+        title="GitHub"
+      >
         View the source code on GitHub.
       </Card>
     </div>
@@ -235,17 +255,24 @@ export const MultipleCards: Story = {
 
 export const CardGrid: Story = {
   render: () => (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px", maxWidth: "800px" }}>
-      <Card title="Getting Started" icon={<Zap />} href="/start" cta="Begin">
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, 1fr)",
+        gap: "16px",
+        maxWidth: "800px",
+      }}
+    >
+      <Card cta="Begin" href="/start" icon={<Zap />} title="Getting Started">
         Start building with our platform.
       </Card>
-      <Card title="Features" icon="fire" href="/features" cta="Explore">
+      <Card cta="Explore" href="/features" icon="fire" title="Features">
         Discover all the powerful features.
       </Card>
-      <Card title="Community" icon={<Heart />} href="/community" cta="Join">
+      <Card cta="Join" href="/community" icon={<Heart />} title="Community">
         Join our growing community.
       </Card>
-      <Card title="Support" icon="circle-check" href="/support" cta="Get Help">
+      <Card cta="Get Help" href="/support" icon="circle-check" title="Support">
         Get help when you need it.
       </Card>
     </div>
@@ -266,27 +293,35 @@ export const WithCustomClassName: Story = {
 export const WithCustomLinkComponent: Story = {
   render: () => {
     // Mock Next.js Link component for demonstration
-    const NextLink = ({ href, children, ...props }: React.ComponentPropsWithoutRef<"a">) => (
+    const NextLink = ({
+      href,
+      children,
+      ...props
+    }: React.ComponentPropsWithoutRef<"a">) => (
       <a href={href} {...props}>
         {children}
       </a>
     );
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "400px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          maxWidth: "400px",
+        }}
+      >
         <Card
-          title="Using Custom Link Component"
-          icon="bolt"
-          href="/custom-route"
           as={NextLink}
+          href="/custom-route"
+          icon="bolt"
+          title="Using Custom Link Component"
         >
-          This card uses a custom Link component (like Next.js Link) via the &quot;as&quot; prop.
+          This card uses a custom Link component (like Next.js Link) via the
+          &quot;as&quot; prop.
         </Card>
-        <Card
-          title="Standard Link"
-          icon="cat"
-          href="/standard-route"
-        >
+        <Card href="/standard-route" icon="cat" title="Standard Link">
           This card uses the standard &lt;a&gt; tag for comparison.
         </Card>
       </div>
@@ -295,7 +330,8 @@ export const WithCustomLinkComponent: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Use the `as` prop to pass a custom Link component (e.g., Next.js Link, React Router Link). The component will receive all standard link props including `href`.",
+        story:
+          "Use the `as` prop to pass a custom Link component (e.g., Next.js Link, React Router Link). The component will receive all standard link props including `href`.",
       },
     },
   },

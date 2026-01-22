@@ -72,12 +72,12 @@ export const AllPills: Story = {
   render: () => (
     <div className="w-[500px]">
       <Property
-        name="complex_field"
-        type="object"
-        location="body"
-        required
-        deprecated
         default='{"key": "value"}'
+        deprecated
+        location="body"
+        name="complex_field"
+        required
+        type="object"
       >
         A complex field showing all available pills and metadata.
       </Property>
@@ -88,12 +88,7 @@ export const AllPills: Story = {
 export const WithPreAndPost: Story = {
   render: () => (
     <div className="w-[500px]">
-      <Property
-        name="status"
-        type="enum"
-        pre={["v2"]}
-        post={["read-only"]}
-      >
+      <Property name="status" post={["read-only"]} pre={["v2"]} type="enum">
         The current status of the resource.
       </Property>
     </div>
@@ -103,10 +98,10 @@ export const WithPreAndPost: Story = {
 export const MultipleProperties: Story = {
   render: () => (
     <div className="w-[500px]">
-      <Property name="id" type="string" required>
+      <Property name="id" required type="string">
         Unique identifier for the object.
       </Property>
-      <Property name="email" type="string" required>
+      <Property name="email" required type="string">
         The user&apos;s email address.
       </Property>
       <Property name="name" type="string">
@@ -150,7 +145,7 @@ export const Hidden: Story = {
       <Property name="visible_field" type="string">
         This field is visible.
       </Property>
-      <Property name="hidden_field" type="string" hidden>
+      <Property hidden name="hidden_field" type="string">
         This field is hidden and will not render.
       </Property>
       <Property name="another_visible" type="string">
@@ -163,19 +158,19 @@ export const Hidden: Story = {
 export const Locations: Story = {
   render: () => (
     <div className="w-[500px]">
-      <Property name="user_id" type="string" location="path" required>
+      <Property location="path" name="user_id" required type="string">
         The user ID in the URL path.
       </Property>
-      <Property name="limit" type="integer" location="query" default="20">
+      <Property default="20" location="query" name="limit" type="integer">
         Number of results to return.
       </Property>
-      <Property name="Authorization" type="string" location="header" required>
+      <Property location="header" name="Authorization" required type="string">
         Bearer token for authentication.
       </Property>
-      <Property name="payload" type="object" location="body">
+      <Property location="body" name="payload" type="object">
         The request body containing the data to create.
       </Property>
-      <Property name="session_id" type="string" location="cookie">
+      <Property location="cookie" name="session_id" type="string">
         Session identifier stored in cookies.
       </Property>
     </div>
@@ -185,39 +180,29 @@ export const Locations: Story = {
 export const TranslatedLabels: Story = {
   render: () => (
     <div className="w-[500px]">
-      <Property
-        name="api_key"
-        type="string"
-        required
-        requiredLabel="必填"
-      >
+      <Property name="api_key" required requiredLabel="必填" type="string">
         用于身份验证的 API 密钥。
       </Property>
-      <Property
-        name="limit"
-        type="integer"
-        default="10"
-        defaultLabel="默认值"
-      >
+      <Property default="10" defaultLabel="默认值" name="limit" type="integer">
         返回结果的最大数量。
       </Property>
       <Property
-        name="legacy_token"
-        type="string"
         deprecated
         deprecatedLabel="已弃用"
+        name="legacy_token"
+        type="string"
       >
         此字段已弃用，请使用 api_key 代替。
       </Property>
       <Property
-        name="complex_field"
-        type="object"
-        required
-        deprecated
         default='{"key": "value"}'
-        requiredLabel="必填"
-        deprecatedLabel="已弃用"
         defaultLabel="默认值"
+        deprecated
+        deprecatedLabel="已弃用"
+        name="complex_field"
+        required
+        requiredLabel="必填"
+        type="object"
       >
         显示所有自定义标签的复杂字段。
       </Property>
@@ -229,24 +214,20 @@ export const CustomClassName: Story = {
   render: () => (
     <div className="w-[500px]">
       <Property
+        className="rounded-lg bg-yellow-50 px-4 dark:bg-yellow-900/20"
         name="highlighted"
         type="string"
-        className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg px-4"
       >
         This property has a custom background highlight.
       </Property>
       <Property
+        className="rounded-lg border-2 border-blue-300 px-4 dark:border-blue-700"
         name="bordered"
         type="string"
-        className="border-2 border-blue-300 dark:border-blue-700 rounded-lg px-4"
       >
         This property has a custom border style.
       </Property>
-      <Property
-        name="no_border"
-        type="string"
-        className="border-b-0"
-      >
+      <Property className="border-b-0" name="no_border" type="string">
         This property removes the default bottom border.
       </Property>
     </div>

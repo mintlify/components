@@ -1,22 +1,25 @@
-import mermaid, { MermaidConfig } from 'mermaid';
-import { ReactElement, useEffect, useId, useRef, useState } from 'react';
-
-import { Classes } from '@/lib/local/selectors';
-import { cn } from '@/utils/cn';
-import { ZoomControls } from './ZoomControls';
-import { usePanZoom } from './usePanZoom';
-import { useIsDarkTheme } from '@/hooks/useIsDarkTheme';
+import mermaid, { type MermaidConfig } from "mermaid";
+import { useEffect, useId, useRef, useState } from "react";
+import { useIsDarkTheme } from "@/hooks/use-is-dark-theme";
+import { Classes } from "@/lib/local/selectors";
+import { cn } from "@/utils/cn";
+import { usePanZoom } from "./use-pan-zoom";
+import { ZoomControls } from "./zoom-controls";
 
 const MIN_HEIGHT_FOR_CONTROLS = 120;
 
-export type MermaidProps = {
+type MermaidProps = {
   chart: string;
   className?: string;
   ariaLabel?: string;
 };
 
-export function Mermaid({ chart, className, ariaLabel = 'Mermaid diagram' }: MermaidProps): ReactElement {
-  const [svg, setSvg] = useState('');
+const Mermaid = ({
+  chart,
+  className,
+  ariaLabel = "Mermaid diagram",
+}: MermaidProps) => {
+  const [svg, setSvg] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [showControls, setShowControls] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -30,7 +33,7 @@ export function Mermaid({ chart, className, ariaLabel = 'Mermaid diagram' }: Mer
   useEffect(() => {
     reset();
     setError(null);
-  }, [chart, reset]);
+  }, [reset]);
 
   useEffect(() => {
     let cancelled = false;
@@ -38,21 +41,21 @@ export function Mermaid({ chart, className, ariaLabel = 'Mermaid diagram' }: Mer
     const renderChart = async () => {
       const mermaidConfig: MermaidConfig = {
         startOnLoad: false,
-        fontFamily: 'inherit',
-        theme: isDarkTheme ? 'dark' : 'default',
+        fontFamily: "inherit",
+        theme: isDarkTheme ? "dark" : "default",
       };
 
       // create a temporary container for mermaid to render into
-      const tempContainer = document.createElement('div');
-      tempContainer.style.position = 'absolute';
-      tempContainer.style.left = '-9999px';
-      tempContainer.style.top = '-9999px';
+      const tempContainer = document.createElement("div");
+      tempContainer.style.position = "absolute";
+      tempContainer.style.left = "-9999px";
+      tempContainer.style.top = "-9999px";
       document.body.appendChild(tempContainer);
 
       try {
         mermaid.initialize(mermaidConfig);
 
-        const uniqueId = `mermaid-${id.replace(/:/g, '')}-${Date.now()}`;
+        const uniqueId = `mermaid-${id.replace(/:/g, "")}-${Date.now()}`;
 
         const { svg } = await mermaid.render(uniqueId, chart, tempContainer);
 
@@ -61,12 +64,13 @@ export function Mermaid({ chart, className, ariaLabel = 'Mermaid diagram' }: Mer
           setError(null);
         }
       } catch (err) {
-        console.error('Error while rendering mermaid', err);
+        console.error("Error while rendering mermaid", err);
 
         if (!cancelled) {
-          const message = err instanceof Error ? err.message : 'Failed to render diagram';
+          const message =
+            err instanceof Error ? err.message : "Failed to render diagram";
           setError(message);
-          setSvg('');
+          setSvg("");
         }
       } finally {
         document.body.removeChild(tempContainer);
@@ -82,7 +86,10 @@ export function Mermaid({ chart, className, ariaLabel = 'Mermaid diagram' }: Mer
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+
+    if (!container) {
+      return;
+    }
 
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -96,44 +103,58 @@ export function Mermaid({ chart, className, ariaLabel = 'Mermaid diagram' }: Mer
     return () => {
       resizeObserver.disconnect();
     };
-  }, [svg]);
+  }, []);
 
   if (error) {
     return (
       <div
         className={cn(
           Classes.Mermaid,
-          'rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/50 dark:text-red-400',
+          "rounded-md border border-red-200 bg-red-50 p-4 text-red-700 text-sm dark:border-red-900/50 dark:bg-red-950/50 dark:text-red-400",
           className
         )}
-        role="alert"
         data-component-part="mermaid-error"
+        role="alert"
       >
-        <p className="font-medium" data-component-part="mermaid-error-title">Failed to render diagram</p>
-        <p className="mt-1 text-xs" data-component-part="mermaid-error-message">{error}</p>
+        <p className="font-medium" data-component-part="mermaid-error-title">
+          Failed to render diagram
+        </p>
+        <p className="mt-1 text-xs" data-component-part="mermaid-error-message">
+          {error}
+        </p>
       </div>
     );
   }
 
   return (
-    <div className={cn(Classes.Mermaid, 'group relative overflow-hidden', className)}>
+    <div
+      className={cn(
+        Classes.Mermaid,
+        "group relative overflow-hidden",
+        className
+      )}
+    >
       {showControls && (
         <ZoomControls
+          onPan={pan}
+          onReset={reset}
           onZoomIn={zoomIn}
           onZoomOut={zoomOut}
-          onReset={reset}
-          onPan={pan}
           panStep={panStep}
         />
       )}
       <div
-        ref={containerRef}
+        aria-label={ariaLabel}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: ignore this
         dangerouslySetInnerHTML={{ __html: svg }}
         data-component-part="mermaid-diagram"
-        style={style}
+        ref={containerRef}
         role="img"
-        aria-label={ariaLabel}
+        style={style}
       />
     </div>
   );
-}
+};
+
+export { Mermaid };
+export type { MermaidProps };

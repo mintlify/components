@@ -1,6 +1,6 @@
-import react from "@vitejs/plugin-react";
+import { resolve } from "node:path";
 import tailwindcss from "@tailwindcss/vite";
-import { resolve } from "path";
+import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
@@ -10,7 +10,11 @@ export default defineConfig({
     tailwindcss(),
     dts({
       include: ["src/**/*"],
-      exclude: ["src/**/*.stories.tsx", "src/**/*.test.ts", "src/**/*.test.tsx"],
+      exclude: [
+        "src/**/*.stories.tsx",
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+      ],
       outDir: "dist",
       rollupTypes: true,
     }),

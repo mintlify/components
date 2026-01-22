@@ -1,31 +1,42 @@
-import { Children, useRef, useCallback, isValidElement, useState, useEffect, useId, ReactElement, ReactNode, RefObject, KeyboardEvent } from 'react';
+import {
+  Children,
+  isValidElement,
+  type KeyboardEvent,
+  type ReactElement,
+  type ReactNode,
+  type RefObject,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
+import {
+  CHILD_HEADING_IDS_ATTRIBUTE,
+  CHILD_TAB_IDS_ATTRIBUTE,
+  slugify,
+} from "@/common";
+import { Icon } from "@/components/icon";
+import { Classes } from "@/lib/local/selectors";
+import type { IconLibrary, IconType } from "@/models";
+import { cn } from "@/utils/cn";
 
-import { Icon } from '@/components/icon';
-import { Classes } from '@/lib/local/selectors';
-import { IconLibrary, IconType } from '@/models';
-import { cn } from '@/utils/cn';
-import { CHILD_HEADING_IDS_ATTRIBUTE, CHILD_TAB_IDS_ATTRIBUTE, slugify } from '@/common';
+const DEFAULT_TAB_TITLE = "Tab Title";
 
-const DEFAULT_TAB_TITLE = 'Tab Title';
-
-export type TabsItemProps = {
-  // injected by remarkComponentIds plugin based on title
+type TabsItemProps = {
   id?: string;
   title: string;
   icon?: string;
   iconType?: IconType;
-  // pass in from DocsConfigContext if specified in docs.json
   iconLibrary?: IconLibrary;
   children?: ReactNode;
-  // injected by remarkComponentIds plugin - JSON array of nested tab IDs for URL hash navigation
   [CHILD_TAB_IDS_ATTRIBUTE]?: string;
-  // injected by remarkComponentIds plugin - JSON array of heading IDs within this tab for URL hash navigation
   [CHILD_HEADING_IDS_ATTRIBUTE]?: string;
 };
 
-function TabsItem({ children }: TabsItemProps) {
+const TabsItem = ({ children }: TabsItemProps) => {
   return <>{children}</>;
-}
+};
 
 /**
  * Mint app integration:
@@ -36,19 +47,17 @@ function TabsItem({ children }: TabsItemProps) {
  * - The component renders role="tabpanel" and aria-controls attributes that useTabState's
  *   findAndActivateTabContainingElement() uses for DOM-based navigation
  */
-export type TabsProps = {
+type TabsProps = {
   children: ReactElement<TabsItemProps> | ReactElement<TabsItemProps>[];
   defaultTabIndex?: number;
-  // connect to useTabState.setActiveIndex in mint app for URL hash, tab sync, and localStorage
   onTabChange?: (tabIndex: number) => void;
   className?: string;
   borderBottom?: boolean;
   ariaLabel?: string;
-  // pass a ref to use with useTabState's findInPanels callback for URL hash navigation to elements inside panels
   panelsRef?: RefObject<HTMLDivElement>;
 };
 
-function TabsRoot({
+const TabsRoot = ({
   children,
   defaultTabIndex = 0,
   onTabChange,
@@ -56,7 +65,7 @@ function TabsRoot({
   borderBottom,
   ariaLabel,
   panelsRef,
-}: TabsProps) {
+}: TabsProps) => {
   const tabRefs = useRef<(HTMLLIElement | null)[]>([]);
   const uniqueId = useId();
 
@@ -65,7 +74,10 @@ function TabsRoot({
   );
 
   const tabIds = arrayChildren.map((child, index) => {
-    if (child.props.id) return child.props.id;
+    if (child.props.id) {
+      return child.props.id;
+    }
+
     const tabId = child.props.title ?? DEFAULT_TAB_TITLE;
     return `${uniqueId}-${slugify(tabId)}-${index}`;
   });
@@ -85,7 +97,9 @@ function TabsRoot({
 
   const handleTabClick = useCallback(
     (index: number) => {
-      if (index === activeTabIndex) return;
+      if (index === activeTabIndex) {
+        return;
+      }
       setActiveTabIndex(index);
       onTabChange?.(index);
     },
@@ -95,28 +109,30 @@ function TabsRoot({
   const handleKeyDown = useCallback(
     (e: KeyboardEvent, currentIndex: number) => {
       const tabCount = arrayChildren.length;
-      if (tabCount === 0) return;
+      if (tabCount === 0) {
+        return;
+      }
 
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
         e.preventDefault();
         const newIndex =
-          e.key === 'ArrowLeft'
+          e.key === "ArrowLeft"
             ? (currentIndex - 1 + tabCount) % tabCount
             : (currentIndex + 1) % tabCount;
         handleTabClick(newIndex);
         setTimeout(() => {
           tabRefs.current[newIndex]?.focus();
         }, 0);
-      } else if (e.key === 'Enter' || e.key === ' ') {
+      } else if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         handleTabClick(currentIndex);
-      } else if (e.key === 'Home') {
+      } else if (e.key === "Home") {
         e.preventDefault();
         handleTabClick(0);
         setTimeout(() => {
           tabRefs.current[0]?.focus();
         }, 0);
-      } else if (e.key === 'End') {
+      } else if (e.key === "End") {
         e.preventDefault();
         const lastIndex = tabCount - 1;
         handleTabClick(lastIndex);
@@ -132,16 +148,17 @@ function TabsRoot({
     <div
       className={cn(
         Classes.Tabs,
-        'tabs tab-container',
-        borderBottom && 'border-b border-gray-200 dark:border-gray-700 pb-6',
+        "tabs tab-container",
+        borderBottom && "border-gray-200 border-b pb-6 dark:border-gray-700",
         className
       )}
     >
       <ul
-        role="tablist"
-        aria-label={ariaLabel ?? 'Tabs'}
-        className="not-prose mb-6 pb-px flex-none min-w-full overflow-auto border-b border-gray-200 gap-x-6 flex dark:border-gray-700"
+        aria-label={ariaLabel ?? "Tabs"}
+        className="not-prose mb-6 flex min-w-full flex-none gap-x-6 overflow-auto border-gray-200 border-b pb-px dark:border-gray-700"
         data-component-part="tabs-list"
+        // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole: TODO
+        role="tablist"
       >
         {arrayChildren.map((child: ReactElement<TabsItemProps>, i: number) => {
           const title = child.props.title ?? DEFAULT_TAB_TITLE;
@@ -152,46 +169,49 @@ function TabsRoot({
 
           return (
             <li
-              ref={(el) => {
-                tabRefs.current[i] = el;
-              }}
+              aria-controls={`panel-${tabIds[i]}`}
+              aria-selected={isActive}
+              className="cursor-pointer"
+              data-child-heading-ids={child.props[CHILD_HEADING_IDS_ATTRIBUTE]}
+              data-child-tab-ids={child.props[CHILD_TAB_IDS_ATTRIBUTE]}
+              data-component-part="tab"
               id={tabIds[i]}
               key={tabIds[i]}
-              role="tab"
-              aria-selected={isActive}
-              aria-controls={`panel-${tabIds[i]}`}
-              tabIndex={isActive ? 0 : -1}
-              className="cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 handleTabClick(i);
               }}
               onKeyDown={(e) => handleKeyDown(e, i)}
-              data-component-part="tab"
-              data-child-tab-ids={child.props[CHILD_TAB_IDS_ATTRIBUTE]}
-              data-child-heading-ids={child.props[CHILD_HEADING_IDS_ATTRIBUTE]}
+              ref={(el) => {
+                tabRefs.current[i] = el;
+              }}
+              // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole: TODO
+              role="tab"
+              tabIndex={isActive ? 0 : -1}
             >
               <div
                 className={cn(
-                  'flex text-sm items-center gap-1.5 leading-6 font-semibold whitespace-nowrap pt-3 pb-2.5 -mb-px max-w-max border-b',
+                  "-mb-px flex max-w-max items-center gap-1.5 whitespace-nowrap border-b pt-3 pb-2.5 font-semibold text-sm leading-6",
                   isActive
-                    ? 'text-primary dark:text-primary-light border-current'
-                    : 'text-gray-900 border-transparent hover:border-gray-300 dark:text-gray-200 dark:hover:border-gray-700'
+                    ? "border-current text-primary dark:text-primary-light"
+                    : "border-transparent text-gray-900 hover:border-gray-300 dark:text-gray-200 dark:hover:border-gray-700"
                 )}
-                data-component-part="tab-button"
                 data-active={isActive}
+                data-component-part="tab-button"
                 data-testid={`tab-${title}`}
               >
                 {icon && (
                   <Icon
-                    icon={icon}
-                    iconType={iconType}
-                    iconLibrary={iconLibrary}
                     className={cn(
-                      'h-4 w-4 shrink-0',
-                      isActive ? 'bg-primary dark:bg-primary-light' : 'bg-gray-900 dark:bg-gray-200',
+                      "h-4 w-4 shrink-0",
+                      isActive
+                        ? "bg-primary dark:bg-primary-light"
+                        : "bg-gray-900 dark:bg-gray-200",
                       Classes.TabIcon
                     )}
+                    icon={icon}
+                    iconLibrary={iconLibrary}
+                    iconType={iconType}
                     overrideColor
                   />
                 )}
@@ -201,22 +221,22 @@ function TabsRoot({
           );
         })}
       </ul>
-      <div ref={panelsRef} data-component-part="tabs-panels">
+      <div data-component-part="tabs-panels" ref={panelsRef}>
         {arrayChildren.map((child: ReactElement<TabsItemProps>, i: number) => {
           const isActive = i === activeTabIndex;
           return (
             <div
-              key={tabIds[i]}
-              id={`panel-${tabIds[i]}`}
-              role="tabpanel"
-              aria-labelledby={tabIds[i]}
               aria-hidden={!isActive}
-              tabIndex={isActive ? 0 : -1}
+              aria-labelledby={tabIds[i]}
               className={cn(
-                'prose dark:prose-invert overflow-x-auto',
-                !isActive && 'hidden'
+                "prose dark:prose-invert overflow-x-auto",
+                !isActive && "hidden"
               )}
               data-component-part="tab-content"
+              id={`panel-${tabIds[i]}`}
+              key={tabIds[i]}
+              role="tabpanel"
+              tabIndex={isActive ? 0 : -1}
             >
               {child.props.children}
             </div>
@@ -225,9 +245,10 @@ function TabsRoot({
       </div>
     </div>
   );
-}
+};
 
 export const Tabs = Object.assign(TabsRoot, {
   Item: TabsItem,
 });
 
+export type { TabsProps, TabsItemProps };

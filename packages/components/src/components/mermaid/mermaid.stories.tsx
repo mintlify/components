@@ -199,7 +199,7 @@ export const WithCustomClassName: Story = {
 
 export const LargeDiagram: Story = {
   render: () => (
-    <div className="w-[800px] h-[600px]">
+    <div className="h-[600px] w-[800px]">
       <Mermaid
         chart={`graph TD
     A[Christmas] -->|Get money| B(Go shopping)
@@ -226,19 +226,19 @@ export const AllDiagramTypes: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
       <div>
-        <h3 className="text-lg font-semibold mb-2">Flowchart</h3>
+        <h3 className="mb-2 font-semibold text-lg">Flowchart</h3>
         <Mermaid chart={flowchartExample} />
       </div>
       <div>
-        <h3 className="text-lg font-semibold mb-2">Sequence Diagram</h3>
+        <h3 className="mb-2 font-semibold text-lg">Sequence Diagram</h3>
         <Mermaid chart={sequenceDiagramExample} />
       </div>
       <div>
-        <h3 className="text-lg font-semibold mb-2">State Diagram</h3>
+        <h3 className="mb-2 font-semibold text-lg">State Diagram</h3>
         <Mermaid chart={stateDiagramExample} />
       </div>
       <div>
-        <h3 className="text-lg font-semibold mb-2">Pie Chart</h3>
+        <h3 className="mb-2 font-semibold text-lg">Pie Chart</h3>
         <Mermaid chart={pieChartExample} />
       </div>
     </div>

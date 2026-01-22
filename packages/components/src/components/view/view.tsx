@@ -1,25 +1,27 @@
-import { ComponentPropsWithoutRef, forwardRef, useMemo } from "react"
+import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
 
-import { Classes } from "@/lib/local/selectors"
-import { MultiViewItemType } from "@/models"
-import { cn } from "@/utils/cn"
+import { Classes } from "@/lib/local/selectors";
+import type { MultiViewItemType } from "@/models";
+import { cn } from "@/utils/cn";
 
 type ViewPropsBase = {
-  title: string
+  title: string;
   /** @internal Pass multiViewItems from useMDXContent() */
-  items: MultiViewItemType[]
-}
+  items: MultiViewItemType[];
+};
 
-export type ViewProps = ViewPropsBase &
-  Omit<ComponentPropsWithoutRef<"div">, keyof ViewPropsBase>
+type ViewProps = ViewPropsBase &
+  Omit<ComponentPropsWithoutRef<"div">, keyof ViewPropsBase>;
 
-export const View = forwardRef<HTMLDivElement, ViewProps>(
+const View = forwardRef<HTMLDivElement, ViewProps>(
   ({ children, title, items, className, ...props }, ref) => {
     const isVisible = useMemo(() => {
-      return items.find((item) => item.title === title)?.active
-    }, [items, title])
+      return items.find((item) => item.title === title)?.active;
+    }, [items, title]);
 
-    if (!isVisible) return null
+    if (!isVisible) {
+      return null;
+    }
 
     return (
       <div
@@ -33,8 +35,11 @@ export const View = forwardRef<HTMLDivElement, ViewProps>(
       >
         {children}
       </div>
-    )
+    );
   }
-)
+);
 
-View.displayName = "View"
+View.displayName = "View";
+
+export { View };
+export type { ViewProps };

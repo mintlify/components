@@ -46,7 +46,8 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc && vite build",
-    "lint": "eslint .",
+    "lint:check": "biome check .",
+    "lint:fix": "biome check --write .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -69,7 +70,6 @@
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.15.0",
     "@shikijs/types": "^3.18.0",
     "@storybook/addon-docs": "^10.1.10",
     "@storybook/react-vite": "^10.1.10",
@@ -85,11 +85,6 @@
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.15.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.14",
-    "eslint-plugin-storybook": "^10.1.10",
     "globals": "^15.11.0",
     "mini-svg-data-uri": "^1.4.4",
     "next-themes": "^0.4.6",
@@ -99,6 +94,7 @@
     "storybook": "^10.1.10",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.7.2",
+    "ultracite": "7.0.12",
     "vite": "^6.0.1",
     "vite-plugin-dts": "^4.3.0"
   }

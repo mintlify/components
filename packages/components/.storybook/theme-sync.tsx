@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
 import { useTheme } from "next-themes";
+import type React from "react";
+import { useEffect } from "react";
 
 type Theme = "light" | "dark" | "system";
 
-export function ThemeSync({
-  theme,
-  children,
-}: {
+type ThemeSyncProps = {
   theme: Theme;
   children: React.ReactNode;
-}) {
+};
+
+const ThemeSync = ({ theme, children }: ThemeSyncProps) => {
   const { setTheme } = useTheme();
 
   useEffect(() => {
@@ -17,4 +17,7 @@ export function ThemeSync({
   }, [theme, setTheme]);
 
   return <>{children}</>;
-}
+};
+
+export { ThemeSync };
+export type { Theme as StorybookThemeType };
