@@ -46,8 +46,8 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc && vite build",
-    "check": "biome check .",
-    "fix": "biome check --write .",
+    "lint:check": "biome check .",
+    "lint:fix": "biome check --write .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
