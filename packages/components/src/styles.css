@@ -103,3 +103,18 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
+
+@utility border-standard {
+  border-width: 1px;
+  border-color: rgb(229 231 235 / 70%);
+
+  &:is(.dark *) {
+    border-color: rgb(255 255 255 / 10%);
+  }
+}
+
+@utility overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
