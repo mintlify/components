@@ -51,7 +51,10 @@ export const CustomToggleText: Story = {
     closedText: "Expand",
     children: (
       <div className="py-4">
-        <p>Custom toggle text: "Expand section" when closed, "Collapse section" when open.</p>
+        <p>
+          Custom toggle text: "Expand section" when closed, "Collapse section"
+          when open.
+        </p>
       </div>
     ),
   },
@@ -75,7 +78,10 @@ export const LazyLoading: Story = {
     lazy: true,
     children: (
       <div className="py-4">
-        <p>With lazy=true, children are not rendered until the expandable is first opened.</p>
+        <p>
+          With lazy=true, children are not rendered until the expandable is
+          first opened.
+        </p>
       </div>
     ),
   },
@@ -90,7 +96,10 @@ export const WithCallbacks: Story = {
     onMount: () => console.log("onMount"),
     children: (
       <div className="py-4">
-        <p>Toggle this expandable and check the browser console to see the callbacks firing.</p>
+        <p>
+          Toggle this expandable and check the browser console to see the
+          callbacks firing.
+        </p>
       </div>
     ),
   },
@@ -101,21 +110,33 @@ export const WithRichContent: Story = {
     title: "API response fields",
     defaultOpen: true,
     children: (
-      <div className="py-4 space-y-3">
+      <div className="space-y-3 py-4">
         <div>
-          <code className="text-sm font-mono text-pink-600 dark:text-pink-400">id</code>
-          <span className="text-gray-500 text-sm ml-2">string</span>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Unique identifier for the resource.</p>
+          <code className="font-mono text-pink-600 text-sm dark:text-pink-400">
+            id
+          </code>
+          <span className="ml-2 text-gray-500 text-sm">string</span>
+          <p className="mt-1 text-gray-600 text-sm dark:text-gray-400">
+            Unique identifier for the resource.
+          </p>
         </div>
         <div>
-          <code className="text-sm font-mono text-pink-600 dark:text-pink-400">name</code>
-          <span className="text-gray-500 text-sm ml-2">string</span>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Display name of the resource.</p>
+          <code className="font-mono text-pink-600 text-sm dark:text-pink-400">
+            name
+          </code>
+          <span className="ml-2 text-gray-500 text-sm">string</span>
+          <p className="mt-1 text-gray-600 text-sm dark:text-gray-400">
+            Display name of the resource.
+          </p>
         </div>
         <div>
-          <code className="text-sm font-mono text-pink-600 dark:text-pink-400">createdAt</code>
-          <span className="text-gray-500 text-sm ml-2">datetime</span>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Timestamp when the resource was created.</p>
+          <code className="font-mono text-pink-600 text-sm dark:text-pink-400">
+            createdAt
+          </code>
+          <span className="ml-2 text-gray-500 text-sm">datetime</span>
+          <p className="mt-1 text-gray-600 text-sm dark:text-gray-400">
+            Timestamp when the resource was created.
+          </p>
         </div>
       </div>
     ),

@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 import { Icon } from "@/components/icon";
-import { useExpandableMemory } from "@/hooks/useExpandableMemory";
+import { useExpandableMemory } from "@/hooks/use-expandable-memory";
 import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
 
