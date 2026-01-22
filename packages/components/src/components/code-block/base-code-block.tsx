@@ -122,7 +122,7 @@ const BaseCodeBlock = ({
       <div
         className={cn(
           // prevent code blocks from growing beyond their container, setting width to 0 to recalculate the width
-          "children:!my-0 children:!shadow-none children:!bg-transparent relative h-full w-0 min-w-full max-w-full px-4 py-3.5 text-sm leading-6 dark:bg-codeblock",
+          "children:!my-0 children:!shadow-none children:!bg-transparent relative h-full w-0 min-w-full max-w-full rounded-[14px] px-4 py-3.5 text-sm leading-6 dark:bg-codeblock",
           "code-block-background overflow-x-auto transition-[height] duration-300 ease-in-out",
           "**:outline-0 **:ring-0 **:focus:outline-0 **:focus:ring-0",
           props.filename ? "rounded-xt" : "rounded-2xl",
