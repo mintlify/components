@@ -5,7 +5,7 @@ import {
 } from "@/utils/shiki/constants";
 import type { CodeStyling } from "@/validation";
 
-export const codeStylingToThemeOrThemes = (
+const codeStylingToThemeOrThemes = (
   codeStylingFromConfig: CodeStyling
 ): { themes: { light: ShikiThemeType; dark: ShikiThemeType } } => {
   if (
@@ -44,3 +44,5 @@ export const codeStylingToThemeOrThemes = (
     },
   };
 };
+
+export { codeStylingToThemeOrThemes };

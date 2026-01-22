@@ -1,4 +1,4 @@
-export const SHIKI_THEMES = [
+const SHIKI_THEMES = [
   "andromeeda",
   "aurora-x",
   "ayu-dark",
@@ -62,3 +62,5 @@ export const SHIKI_THEMES = [
 
   "css-variables", // for users who want to use custom CSS to style their code blocks
 ] as const;
+
+export { SHIKI_THEMES };

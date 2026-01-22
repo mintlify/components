@@ -37,7 +37,7 @@ function findShikiClassName(children: unknown): boolean {
   return false;
 }
 
-export function getCodeString(
+function getCodeString(
   children: ReactNode,
   className?: string,
   forceExtract = false
@@ -53,7 +53,7 @@ export function getCodeString(
   return codeString;
 }
 
-export function calculateCodeLinesFromHtml(html: string | undefined): number {
+function calculateCodeLinesFromHtml(html: string | undefined): number {
   if (!html || typeof html !== "string") {
     return 0;
   }
@@ -64,7 +64,7 @@ export function calculateCodeLinesFromHtml(html: string | undefined): number {
   return htmlLineCount;
 }
 
-export function useCalculateCodeLines(
+function useCalculateCodeLines(
   html: string | undefined,
   existingNumberOfLines?: number
 ): number | undefined {
@@ -75,3 +75,5 @@ export function useCalculateCodeLines(
     return html ? calculateCodeLinesFromHtml(html) : undefined;
   }, [html, existingNumberOfLines]);
 }
+
+export { getCodeString, calculateCodeLinesFromHtml, useCalculateCodeLines };

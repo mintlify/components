@@ -1,4 +1,4 @@
-export type CodeStyling =
+type CodeStyling =
   | "dark"
   | "system"
   | {
@@ -198,3 +198,5 @@ export type CodeStyling =
         | undefined;
     }
   | undefined;
+
+export type { CodeStyling };

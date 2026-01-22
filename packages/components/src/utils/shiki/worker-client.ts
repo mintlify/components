@@ -11,7 +11,7 @@ type ShikiWorkerInstance =
 
 let instance: ShikiWorkerInstance;
 
-export function getShikiWorker(): ShikiWorkerInstance {
+function getShikiWorker(): ShikiWorkerInstance {
   if (typeof Worker === "undefined") {
     return undefined;
   }
@@ -24,3 +24,5 @@ export function getShikiWorker(): ShikiWorkerInstance {
   instance = wrap(worker);
   return instance;
 }
+
+export { getShikiWorker };

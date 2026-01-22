@@ -1,4 +1,4 @@
-export type SnippetPreset = {
+type SnippetPreset = {
   /** Canonical identifier (e.g., 'python', 'bash') */
   key: string;
   /** Alternative names that map to this preset (e.g., ['py'] for python) */
@@ -20,7 +20,7 @@ export type SnippetPreset = {
  * Central config for API playground language options.
  * Each preset defines: display info, icon, syntax highlighting, and code generation.
  */
-export const SNIPPET_PRESETS: SnippetPreset[] = [
+const SNIPPET_PRESETS: SnippetPreset[] = [
   {
     key: "bash",
     aliases: ["curl", "sh", "shell"],
@@ -155,16 +155,25 @@ for (const preset of SNIPPET_PRESETS) {
   }
 }
 
-export const getPreset = (lang: string): SnippetPreset | undefined =>
+const getPreset = (lang: string): SnippetPreset | undefined =>
   presetLookup.get(lang.toLowerCase());
 
-export const getDisplayName = (lang: string): string =>
+const getDisplayName = (lang: string): string =>
   getPreset(lang)?.displayName ?? lang;
 
-export const getIconKey = (lang: string): string | undefined => {
+const getIconKey = (lang: string): string | undefined => {
   const preset = getPreset(lang);
   return preset ? (preset.iconKey ?? preset.key) : undefined;
 };
 
-export const getShikiLanguageFromPreset = (lang: string): string =>
+const getShikiLanguageFromPreset = (lang: string): string =>
   getPreset(lang)?.shikiLanguage ?? lang;
+
+export {
+  type SnippetPreset,
+  SNIPPET_PRESETS,
+  getPreset,
+  getDisplayName,
+  getIconKey,
+  getShikiLanguageFromPreset,
+};

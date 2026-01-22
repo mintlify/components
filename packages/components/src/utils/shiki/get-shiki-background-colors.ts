@@ -1,6 +1,6 @@
 import { DEFAULT_DARK_BG, DEFAULT_LIGHT_BG } from "@/utils/shiki/constants";
 
-export const getShikiBackgroundColors = (
+const getShikiBackgroundColors = (
   codeBlockTheme: "system" | "dark",
   html: string | undefined,
   children: unknown
@@ -21,7 +21,7 @@ export const getShikiBackgroundColors = (
 const isTransparentOrUndefined = (color: string | undefined) =>
   color === "transparent" || color === undefined;
 
-export const getBackgroundColorsFromHtml = (
+const getBackgroundColorsFromHtml = (
   html: string,
   defaultBgColors: { light: string; dark: string }
 ): { light: string | undefined; dark: string | undefined } => {
@@ -45,7 +45,7 @@ export const getBackgroundColorsFromHtml = (
   };
 };
 
-export const getBackgroundColorsFromChildren = (
+const getBackgroundColorsFromChildren = (
   children: unknown,
   defaultBgColors: { light: string; dark: string }
 ): { light: string | undefined; dark: string | undefined } => {
@@ -74,4 +74,10 @@ export const getBackgroundColorsFromChildren = (
     };
   }
   return defaultBgColors;
+};
+
+export {
+  getShikiBackgroundColors,
+  getBackgroundColorsFromHtml,
+  getBackgroundColorsFromChildren,
 };

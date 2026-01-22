@@ -6,9 +6,9 @@ import {
   type ShikiHighlightedHtmlArgs,
 } from "@/utils/shiki";
 
-export function useGetShikiHighlightedHtml(
+const useGetShikiHighlightedHtml = (
   props: ShikiHighlightedHtmlArgs
-): string | undefined {
+): string | undefined => {
   const htmlOrPromise = getShikiHighlightedHtml(props);
 
   const [html, setHtml] = useState<string | undefined>(
@@ -51,4 +51,6 @@ export function useGetShikiHighlightedHtml(
   }, [props, htmlOrPromise]);
 
   return html;
-}
+};
+
+export { useGetShikiHighlightedHtml };

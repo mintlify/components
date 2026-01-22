@@ -1,5 +1,5 @@
 // Gets the text from a component as if you selected it with a mouse and copied it.
-export const getNodeText = (node: unknown): string => {
+const getNodeText = (node: unknown): string => {
   if (typeof node === "string" || typeof node === "number") {
     // Convert number into string
     return node.toString();
@@ -22,3 +22,5 @@ export const getNodeText = (node: unknown): string => {
 
   return "";
 };
+
+export { getNodeText };

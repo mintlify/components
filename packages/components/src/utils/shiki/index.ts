@@ -35,7 +35,7 @@ const matchAlgorithm = {
   matchAlgorithm: "v3",
 } as const;
 
-export const SHIKI_TRANSFORMERS: ShikiTransformer[] = [
+const SHIKI_TRANSFORMERS: ShikiTransformer[] = [
   transformerMetaHighlight({
     className: LINE_HIGHLIGHT_CLASS_NAME,
   }),
@@ -62,7 +62,7 @@ const jsEngine = createJavaScriptRegexEngine({
 let highlighter: HighlighterGeneric<BundledLanguage, BundledTheme> | undefined;
 let highlighterError: Error | undefined;
 let highlighterResolved = false;
-export const highlighterPromise = createHighlighter({
+const highlighterPromise = createHighlighter({
   themes: [],
   langs: LANGS,
   engine: jsEngine,
@@ -79,7 +79,7 @@ export const highlighterPromise = createHighlighter({
     highlighterResolved = true;
   });
 
-export function getShikiLanguage(lang: string | undefined): ShikiLanguage {
+function getShikiLanguage(lang: string | undefined): ShikiLanguage {
   const text = "text" as ShikiLanguage;
   if (lang === undefined) {
     return text;
@@ -105,7 +105,7 @@ export function getShikiLanguage(lang: string | undefined): ShikiLanguage {
   return SHIKI_LANG_MAP[presetLang] ?? SHIKI_LANG_MAP[lower] ?? text;
 }
 
-export function getLanguageFromClassName(
+function getLanguageFromClassName(
   className: string | undefined,
   fallback?: string
 ): string {
@@ -139,7 +139,7 @@ function areThemesLoaded(codeblocks?: CodeStyling): boolean {
   return needed.every((t) => t === "css-variables" || loaded.includes(t));
 }
 
-export async function loadShikiThemes(codeblocks?: CodeStyling) {
+async function loadShikiThemes(codeblocks?: CodeStyling) {
   await highlighterPromise;
   if (!highlighter) {
     return;
@@ -155,7 +155,7 @@ export async function loadShikiThemes(codeblocks?: CodeStyling) {
   }
 }
 
-export type ShikiHighlightedHtmlArgs = {
+type ShikiHighlightedHtmlArgs = {
   codeString: string;
   codeBlockTheme: CodeStyling;
   opts?: Partial<CodeToHastOptions> & {
@@ -173,18 +173,18 @@ export type ShikiHighlightedHtmlArgs = {
     }
 );
 
-export function getShikiHighlightedHtml(
+function getShikiHighlightedHtml(
   props: ShikiHighlightedHtmlArgs & {
     opts: ShikiHighlightedHtmlArgs["opts"] & { noAsync: true };
   }
 ): string | undefined;
 
-export function getShikiHighlightedHtml(
+function getShikiHighlightedHtml(
   props: ShikiHighlightedHtmlArgs
 ): string | undefined | Promise<string | undefined>;
 
 // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: TODO
-export function getShikiHighlightedHtml(
+function getShikiHighlightedHtml(
   props: ShikiHighlightedHtmlArgs
 ): string | undefined | Promise<string | undefined> {
   if (!props.codeString || highlighterError !== undefined) {
@@ -305,3 +305,13 @@ export function getShikiHighlightedHtml(
 
   return hastToHtml(html);
 }
+
+export {
+  SHIKI_TRANSFORMERS,
+  highlighterPromise,
+  getShikiLanguage,
+  getLanguageFromClassName,
+  loadShikiThemes,
+  type ShikiHighlightedHtmlArgs,
+  getShikiHighlightedHtml,
+};

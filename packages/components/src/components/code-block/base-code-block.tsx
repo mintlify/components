@@ -1,7 +1,8 @@
-import { EllipsisIcon } from "lucide-react";
 import type React from "react";
 
 import {
+  DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT,
+  SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT,
   SMALL_EXPANDABLE_NUMBER_OF_LINES,
   useExpandable,
 } from "@/hooks/use-expandable";
@@ -11,9 +12,7 @@ import { getShikiBackgroundColors } from "@/utils/shiki/get-shiki-background-col
 import { getCodeString, useCalculateCodeLines } from "@/utils/shiki/lib";
 
 import type { CodeBlockProps } from "./code-block";
-
-const SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT = 45;
-const DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT = 190;
+import { CodeFooter } from "./code-footer";
 
 interface BaseCodeBlockProps extends CodeBlockProps {
   isParentCodeGroup?: boolean;
@@ -209,42 +208,4 @@ const BaseCodeBlock = ({
   );
 };
 
-export function CodeFooter({
-  numberOfLines,
-  isExpanded,
-  toggleExpanded,
-}: {
-  numberOfLines: number | undefined;
-  isExpanded: boolean;
-  toggleExpanded: () => void;
-}) {
-  if (!numberOfLines) {
-    return null;
-  }
-
-  return (
-    <div
-      className="flex items-center px-3 py-1 font-medium text-gray-500 text-xs hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300"
-      data-component-part="code-block-footer"
-    >
-      <button
-        className="flex flex-1 items-center gap-1.5 py-1.5"
-        data-component-part="code-block-footer-button"
-        onClick={toggleExpanded}
-        type="button"
-      >
-        <EllipsisIcon className="h-3.5 w-3.5 shrink-0 text-gray-500 dark:text-gray-400" />
-        {isExpanded
-          ? "Collapse"
-          : `See all ${numberOfLines} line${numberOfLines === 1 ? "" : "s"}`}
-      </button>
-    </div>
-  );
-}
-
-export {
-  SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT,
-  DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT,
-  type BaseCodeBlockProps,
-  BaseCodeBlock,
-};
+export { type BaseCodeBlockProps, BaseCodeBlock };

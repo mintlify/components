@@ -1,4 +1,4 @@
-export const mediumCode = `class HelloWorld {
+const mediumCode = `class HelloWorld {
     private String message;
     
     public HelloWorld(String message) {
@@ -16,7 +16,7 @@ export const mediumCode = `class HelloWorld {
     }
 }`;
 
-export const longExpandableCode = `from datetime import datetime, timedelta
+const longExpandableCode = `from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 from dataclasses import dataclass
 
@@ -77,13 +77,13 @@ class Library:
 
         return late_fee`;
 
-export const longSingleLineCode =
+const longSingleLineCode =
   "To denote a `word` or `phrase` as code, enclose it in backticks (`). The backtick ` is a typographical mark used mainly in computing. It is also known as backquote, grave, or grave accent. This line is intentionally very long to test wrapping behavior and horizontal scrolling.";
 
-export const singleLineCode =
+const singleLineCode =
   "To denote a `word` or `phrase` as code, enclose it in backticks (`)";
 
-export const diffCodeWithRemove = `function calculateTotal(items) {
+const diffCodeWithRemove = `function calculateTotal(items) {
   let total = 0;
   for (let i = 0; i < items.length; i++) { // [!code --]
     total += items[i].price; // [!code --]
@@ -102,12 +102,12 @@ function processOrder(order) {
   return order;
 }`;
 
-export const simpleDiffCode = `console.log("Hello World");
+const simpleDiffCode = `console.log("Hello World");
 console.log("Old message"); // [!code --]
 console.log("New message"); // [!code ++]
 console.log("End");`;
 
-export const complexDiffCode = `import React from 'react';
+const complexDiffCode = `import React from 'react';
 import { useState } from 'react'; // [!code --]
 import { useState, useEffect } from 'react'; // [!code ++]
 
@@ -131,3 +131,13 @@ function MyComponent() {
     </div>
   );
 }`;
+
+export {
+  mediumCode,
+  longExpandableCode,
+  longSingleLineCode,
+  singleLineCode,
+  diffCodeWithRemove,
+  simpleDiffCode,
+  complexDiffCode,
+};

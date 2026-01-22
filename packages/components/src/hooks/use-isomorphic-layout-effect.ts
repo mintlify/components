@@ -1,4 +1,6 @@
 import { useEffect, useLayoutEffect } from "react";
 
-export const useIsomorphicLayoutEffect =
+const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+export { useIsomorphicLayoutEffect };

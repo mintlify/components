@@ -1,14 +1,14 @@
 import type { BuiltinTheme } from "shiki/types";
 import { SHIKI_THEMES } from "@/mdx";
 
-export const DEFAULT_DARK_THEME = "dark-plus";
-export const DEFAULT_LIGHT_THEME = "github-light-default";
-export type ShikiThemeType = (typeof SHIKI_THEMES)[number];
+const DEFAULT_DARK_THEME = "dark-plus";
+const DEFAULT_LIGHT_THEME = "github-light-default";
+type ShikiThemeType = (typeof SHIKI_THEMES)[number];
 
-export const LINE_HIGHLIGHT_CLASS_NAME = "line-highlight";
-export const LINE_FOCUS_CLASS_NAME = "line-focus";
-export const LINE_DIFF_ADD_CLASS_NAME = "line-diff line-add";
-export const LINE_DIFF_REMOVE_CLASS_NAME = "line-diff line-remove";
+const LINE_HIGHLIGHT_CLASS_NAME = "line-highlight";
+const LINE_FOCUS_CLASS_NAME = "line-focus";
+const LINE_DIFF_ADD_CLASS_NAME = "line-diff line-add";
+const LINE_DIFF_REMOVE_CLASS_NAME = "line-diff line-remove";
 
 const SHIKI_THEMES_EXCLUDING_CSS_VARIABLES_AND_DEFAULTS = SHIKI_THEMES.filter(
   (theme) =>
@@ -17,16 +17,16 @@ const SHIKI_THEMES_EXCLUDING_CSS_VARIABLES_AND_DEFAULTS = SHIKI_THEMES.filter(
     theme !== DEFAULT_LIGHT_THEME
 );
 
-export const DEFAULT_DARK_BG = "#0B0C0E";
-export const DEFAULT_LIGHT_BG = "#FFFFFF";
+const DEFAULT_DARK_BG = "#0B0C0E";
+const DEFAULT_LIGHT_BG = "#FFFFFF";
 
-export const THEMES: [BuiltinTheme, BuiltinTheme, ...BuiltinTheme[]] = [
+const THEMES: [BuiltinTheme, BuiltinTheme, ...BuiltinTheme[]] = [
   DEFAULT_DARK_THEME,
   DEFAULT_LIGHT_THEME,
   ...SHIKI_THEMES_EXCLUDING_CSS_VARIABLES_AND_DEFAULTS,
 ] as const;
 
-export const LANGS = [
+const LANGS = [
   "bash" as const,
   "c" as const,
   "c++" as const,
@@ -47,10 +47,10 @@ export const LANGS = [
   "yaml" as const,
 ];
 
-export type ShikiTheme = BuiltinTheme;
-export type ShikiLanguage = (typeof LANGS)[number];
+type ShikiTheme = BuiltinTheme;
+type ShikiLanguage = (typeof LANGS)[number];
 
-export const SHIKI_COLOR_REPLACEMENTS: Record<
+const SHIKI_COLOR_REPLACEMENTS: Record<
   string,
   string | Record<string, string>
 > = {
@@ -59,12 +59,12 @@ export const SHIKI_COLOR_REPLACEMENTS: Record<
   },
 };
 
-export const SHIKI_THEME_MAP: Record<"dark" | "light", ShikiTheme> = {
+const SHIKI_THEME_MAP: Record<"dark" | "light", ShikiTheme> = {
   dark: THEMES[0],
   light: THEMES[1],
 } as const;
 
-export const SHIKI_LANG_MAP: Record<string, ShikiLanguage> = {
+const SHIKI_LANG_MAP: Record<string, ShikiLanguage> = {
   curl: "bash",
   bash: "bash",
   sh: "bash",
@@ -125,7 +125,7 @@ export const SHIKI_LANG_MAP: Record<string, ShikiLanguage> = {
   toml: "yaml",
 } as const;
 
-export const SHIKI_DISPLAY_LANG_MAP: Record<string, string> = {
+const SHIKI_DISPLAY_LANG_MAP: Record<string, string> = {
   bash: "cURL",
   c: "C",
   "c++": "C++",
@@ -148,4 +148,26 @@ export const SHIKI_DISPLAY_LANG_MAP: Record<string, string> = {
   yaml: "YAML",
 } as const;
 
-export const SHIKI_CLASSNAME = "shiki shiki-themes";
+const SHIKI_CLASSNAME = "shiki shiki-themes";
+
+export {
+  SHIKI_CLASSNAME,
+  SHIKI_COLOR_REPLACEMENTS,
+  SHIKI_DISPLAY_LANG_MAP,
+  SHIKI_LANG_MAP,
+  SHIKI_THEME_MAP,
+  type ShikiTheme,
+  type ShikiLanguage,
+  THEMES,
+  LANGS,
+  DEFAULT_DARK_BG,
+  DEFAULT_LIGHT_BG,
+  LINE_HIGHLIGHT_CLASS_NAME,
+  LINE_FOCUS_CLASS_NAME,
+  LINE_DIFF_ADD_CLASS_NAME,
+  LINE_DIFF_REMOVE_CLASS_NAME,
+  SHIKI_THEMES_EXCLUDING_CSS_VARIABLES_AND_DEFAULTS,
+  DEFAULT_DARK_THEME,
+  DEFAULT_LIGHT_THEME,
+  type ShikiThemeType,
+};
