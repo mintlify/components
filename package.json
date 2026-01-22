@@ -22,11 +22,12 @@
   "scripts": {
     "dev": "pnpm --filter @mintlify/components dev",
     "build": "pnpm --filter @mintlify/components build",
-    "lint": "pnpm -r lint",
+    "lint": "pnpm -r lint:check",
     "storybook": "pnpm --filter @mintlify/components storybook",
     "build-storybook": "pnpm --filter @mintlify/components build-storybook"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.11",
     "typescript": "^5.7.2"
   },
   "packageManager": "pnpm@10.0.0"

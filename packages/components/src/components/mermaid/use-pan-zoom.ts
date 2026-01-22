@@ -1,4 +1,4 @@
-import { CSSProperties, useCallback, useMemo, useState } from 'react';
+import { type CSSProperties, useCallback, useMemo, useState } from "react";
 
 const MIN_SCALE = 0.25;
 const MAX_SCALE = 4;
@@ -11,7 +11,7 @@ type Transform = {
   y: number;
 };
 
-export type UsePanZoomReturn = {
+type UsePanZoomReturn = {
   style: CSSProperties;
   zoomIn: () => void;
   zoomOut: () => void;
@@ -22,7 +22,7 @@ export type UsePanZoomReturn = {
 
 const DEFAULT_TRANSFORM: Transform = { scale: 1, x: 0, y: 0 };
 
-export const usePanZoom = (): UsePanZoomReturn => {
+const usePanZoom = (): UsePanZoomReturn => {
   const [transform, setTransform] = useState<Transform>(DEFAULT_TRANSFORM);
 
   const zoomIn = useCallback(() => {
@@ -54,8 +54,8 @@ export const usePanZoom = (): UsePanZoomReturn => {
   const style = useMemo<CSSProperties>(
     () => ({
       transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`,
-      transformOrigin: 'center center',
-      transition: 'transform 0.15s ease-out',
+      transformOrigin: "center center",
+      transition: "transform 0.15s ease-out",
     }),
     [transform.scale, transform.x, transform.y]
   );
@@ -69,3 +69,6 @@ export const usePanZoom = (): UsePanZoomReturn => {
     panStep: PAN_STEP,
   };
 };
+
+export { usePanZoom };
+export type { UsePanZoomReturn };

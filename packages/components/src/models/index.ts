@@ -1,34 +1,37 @@
 // @mintlify/models
 
-export const iconTypes = [
-  'brands',
-  'duotone',
-  'light',
-  'regular',
-  'sharp-duotone-solid',
-  'sharp-light',
-  'sharp-regular',
-  'sharp-solid',
-  'sharp-thin',
-  'solid',
-  'thin',
+const ICON_TYPES = [
+  "brands",
+  "duotone",
+  "light",
+  "regular",
+  "sharp-duotone-solid",
+  "sharp-light",
+  "sharp-regular",
+  "sharp-solid",
+  "sharp-thin",
+  "solid",
+  "thin",
 ] as const;
 
-export type IconType = (typeof iconTypes)[number];
+type IconType = (typeof ICON_TYPES)[number];
 
-export const iconLibraries = ['fontawesome', 'lucide'] as const;
+const ICON_LIBRARIES = ["fontawesome", "lucide"] as const;
 
-export type IconLibrary = (typeof iconLibraries)[number];
+type IconLibrary = (typeof ICON_LIBRARIES)[number];
 
-export type PageType = 'default' | 'pdf' | 'minimal';
+type PageType = "default" | "pdf" | "minimal";
 
-export type BaseMultiViewItemType = {
+type BaseMultiViewItemType = {
   title: string;
   content: string;
   icon?: string;
   iconType?: IconType;
 };
 
-export type MultiViewItemType = BaseMultiViewItemType & {
+type MultiViewItemType = BaseMultiViewItemType & {
   active?: boolean;
 };
+
+export { ICON_TYPES };
+export type { IconLibrary, IconType, MultiViewItemType, PageType };

@@ -1,20 +1,53 @@
-import { IconLibrary, IconType } from '@/models';
-import { ArrowUpRight } from 'lucide-react';
-import React, {
+/** biome-ignore-all lint/complexity/noExcessiveCognitiveComplexity: TODO */
+import { ArrowUpRight } from "lucide-react";
+import type React from "react";
+import type {
   ComponentPropsWithoutRef,
   ElementType,
   JSX,
   ReactNode,
   Ref,
-} from 'react';
+} from "react";
+import { Icon as ComponentIcon } from "@/components/icon";
+import { ArrowRightIcon } from "@/icons";
+import { Classes } from "@/lib/local/selectors";
+import type { IconLibrary, IconType } from "@/models";
+import { cn } from "@/utils/cn";
+import { isRemoteUrl } from "@/utils/is-remote-url";
 
-import { Classes } from '@/lib/local/selectors';
-import { Icon as ComponentIcon } from '@/components/icon';
-import { ArrowRightIcon } from '@/icons';
-import { cn } from '@/utils/cn';
-import { isRemoteUrl } from '@/utils/isRemoteUrl';
+interface CardPropsBase<T> {
+  title?: string;
+  icon?: ReactNode;
+  img?: string;
+  horizontal?: boolean;
+  as?: T;
+  href?: string;
+  mRef?: Ref<T | undefined>;
+  cta?: string;
+  arrow?: boolean;
+  disabled?: boolean;
+}
 
-export function Card({
+type CardProps<T extends ElementType> = CardPropsBase<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof CardPropsBase<T>>;
+
+interface CardIconProps {
+  iconType?: IconType;
+  iconLibrary?: IconLibrary;
+  color?: string;
+}
+
+type CardComponentProps = Pick<
+  CardPropsBase<ElementType>,
+  "title" | "horizontal" | "href" | "img" | "disabled" | "cta" | "arrow" | "as"
+> &
+  CardIconProps & {
+    icon?: ReactNode | string;
+    children?: React.ReactNode;
+    className?: string;
+  };
+
+const Card = ({
   title,
   icon,
   iconType,
@@ -29,107 +62,46 @@ export function Card({
   arrow,
   as,
   className,
-}: {
-  title?: string;
-  icon?: ReactNode | string;
-  iconType?: IconType;
-  iconLibrary?: IconLibrary;
-  color?: string;
-  horizontal?: boolean;
-  href?: string;
-  img?: string;
-  children?: React.ReactNode;
-  disabled?: boolean;
-  cta?: string;
-  arrow?: boolean;
-  as?: ElementType;
-  className?: string;
-}) {
+}: CardComponentProps) => {
   const Icon =
-    typeof icon === 'string' ? (
+    typeof icon === "string" ? (
       <ComponentIcon
-        icon={icon}
-        iconType={iconType}
-        iconLibrary={iconLibrary}
+        className="m-0! h-6 w-6 shrink-0"
         color={color}
-        className="h-6 w-6 m-0! shrink-0"
+        icon={icon}
+        iconLibrary={iconLibrary}
+        iconType={iconType}
         overrideColor={!!color}
       />
     ) : (
       icon
     );
 
-  if (disabled) href = undefined;
+  const resolvedHref = disabled ? undefined : href;
 
   return (
     <GenericCard
+      arrow={arrow}
       as={as}
-      className={cn(href && 'hover:border-primary! dark:hover:border-primary-light!', className)}
-      title={title}
+      className={cn(
+        resolvedHref &&
+          "hover:border-primary! dark:hover:border-primary-light!",
+        className
+      )}
+      cta={cta}
+      disabled={disabled}
+      horizontal={horizontal}
+      href={resolvedHref}
       icon={Icon}
       img={img}
-      horizontal={horizontal}
-      href={href}
-      cta={cta}
-      arrow={arrow}
-      disabled={disabled}
+      title={title}
     >
       {children}
     </GenericCard>
   );
-}
+};
 
-export interface CardPropsBase<T> {
-  /**
-   * Large title above children.
-   */
-  title?: string;
-  /**
-   * Icon to the top-left of the title. Must be a ReactNode (not a string).
-   */
-  icon?: ReactNode;
-  /**
-   * If provided, will render an image to the top of the card.
-   */
-  img?: string;
-  /**
-   * If provided, will render the card in a horizontal configuration.
-   */
-  horizontal?: boolean;
-  /**
-   * Type of element to be rendered.
-   */
-  as?: T;
-  /**
-   * If provided, will render as an anchor element.
-   */
-  href?: string;
-  /**
-   * Ref of the element to be rendered.
-   */
-  mRef?: Ref<T | undefined>;
-  /**
-   * Label for the action button.
-   */
-  cta?: string;
-  /**
-   * Enable the link arrow icon
-   */
-  arrow?: boolean;
-  /**
-   * Whether the card is disabled
-   */
-  disabled?: boolean;
-}
-
-/**
- * Props for the `Card` component
- * @typeParam T - Type of the Element rendered by the card.
- */
-export type CardProps<T extends ElementType> = CardPropsBase<T> &
-  Omit<ComponentPropsWithoutRef<T>, keyof CardPropsBase<T>>;
-
-export function GenericCard<T extends ElementType = 'div'>({
+const GenericCard = <T extends ElementType = "div">({
   title,
   icon,
   img,
@@ -142,41 +114,37 @@ export function GenericCard<T extends ElementType = 'div'>({
   cta,
   disabled,
   ...props
-}: CardProps<T>) {
-  /**
-   * If provided, use `as` or an `a` tag if linking to things with href.
-   * Defaults to `div`. When disabled, always use `div` to prevent custom
-   * link components from receiving undefined href.
-   */
-  const Component = disabled ? 'div' : (as || (props.href != undefined ? 'a' : 'div'));
+}: CardProps<T>) => {
+  const Component = disabled
+    ? "div"
+    : as || (props.href !== undefined ? "a" : "div");
 
-  const isExternalLink = isRemoteUrl(props.href ?? '');
-  const newTabProps = isExternalLink ? { target: '_blank', rel: 'noreferrer' } : {};
+  const isExternalLink = isRemoteUrl(props.href ?? "");
+  const newTabProps = isExternalLink
+    ? { target: "_blank", rel: "noreferrer" }
+    : {};
   const shouldShowArrowIcon = arrow ?? isExternalLink;
 
-  const isImageSrc: boolean = typeof icon === 'string';
+  const isImageSrc: boolean = typeof icon === "string";
 
-  /**
-   * Extract the image alt text from the image source.
-   * Example:
-   * - img = "https://raw.githubusercontent.com/mintlify/themes/main/quill/`images/setting-up.svg"
-   * - imageAlt = "setting-up"
-   */
-  const imageAlt = img ? img.match(/\/([^/]+)\.[^.]+$/)?.[1] ?? '' : '';
+  // biome-ignore lint/performance/useTopLevelRegex: TODO
+  const imageAlt = img ? (img.match(/\/([^/]+)\.[^.]+$/)?.[1] ?? "") : "";
 
   const renderIcon: JSX.Element = (
     <>
       {icon ? (
+        // biome-ignore lint/style/noNestedTernary: TODO
         isImageSrc ? (
+          // biome-ignore lint/correctness/useImageSize: TODO
           <img
-            src={icon as string}
             alt={title}
             className="h-6 w-6 object-cover object-center"
             data-component-part="card-icon"
+            src={icon as string}
           />
         ) : (
           <div
-            className="h-6 w-6 fill-gray-800 dark:fill-gray-100 text-gray-800 dark:text-gray-100"
+            className="h-6 w-6 fill-gray-800 text-gray-800 dark:fill-gray-100 dark:text-gray-100"
             data-component-part="card-icon"
           >
             {icon}
@@ -190,9 +158,10 @@ export function GenericCard<T extends ElementType = 'div'>({
     <Component
       className={cn(
         Classes.Card,
-        'block font-normal group relative my-2 ring-2 ring-transparent rounded-2xl bg-white dark:bg-background-dark border border-gray-950/10 dark:border-white/10 overflow-hidden w-full',
-        props.href && 'cursor-pointer',
-        props.href && 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-primary-light',
+        "group relative my-2 block w-full overflow-hidden rounded-2xl border border-gray-950/10 bg-white font-normal ring-2 ring-transparent dark:border-white/10 dark:bg-background-dark",
+        props.href && "cursor-pointer",
+        props.href &&
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-primary-light",
         className
       )}
       {...newTabProps}
@@ -200,27 +169,31 @@ export function GenericCard<T extends ElementType = 'div'>({
       ref={mRef as Ref<never>}
     >
       {img && (
+        // biome-ignore lint/correctness/useImageSize: TODO
         <img
-          src={img}
           alt={imageAlt}
-          className="w-full object-cover object-center not-prose"
+          className="not-prose w-full object-cover object-center"
           data-component-part="card-image"
+          src={img}
         />
       )}
       <div
-        className={cn('px-6 py-5 relative', horizontal && 'flex items-center gap-x-4')}
+        className={cn(
+          "relative px-6 py-5",
+          horizontal && "flex items-center gap-x-4"
+        )}
         data-component-part="card-content-container"
       >
         {props.href && (
           <div
-            className={cn(
-              'absolute text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary-light top-5 right-5',
-              !shouldShowArrowIcon && 'hidden'
-            )}
             aria-hidden="true"
+            className={cn(
+              "absolute top-5 right-5 text-gray-400 group-hover:text-primary dark:text-gray-500 dark:group-hover:text-primary-light",
+              !shouldShowArrowIcon && "hidden"
+            )}
             data-component-part="card-arrow"
           >
-            <ArrowUpRight className="w-4 h-4" />
+            <ArrowUpRight className="h-4 w-4" />
           </div>
         )}
         {renderIcon}
@@ -228,8 +201,8 @@ export function GenericCard<T extends ElementType = 'div'>({
           {title && (
             <h2
               className={cn(
-                'not-prose font-semibold text-base text-gray-800 dark:text-white break-words',
-                icon !== null && icon !== undefined && !horizontal && 'mt-4'
+                "not-prose wrap-break-word font-semibold text-base text-gray-800 dark:text-white",
+                icon !== null && icon !== undefined && !horizontal && "mt-4"
               )}
               contentEditable={false}
               data-component-part="card-title"
@@ -239,9 +212,11 @@ export function GenericCard<T extends ElementType = 'div'>({
           )}
           <div
             className={cn(
-              'prose mt-1 font-normal text-base leading-6 break-words',
-              title ? 'text-gray-600 dark:text-gray-400' : 'text-gray-700 dark:text-gray-300',
-              horizontal && 'leading-6 mt-0'
+              "prose wrap-break-word mt-1 font-normal text-base leading-6",
+              title
+                ? "text-gray-600 dark:text-gray-400"
+                : "text-gray-700 dark:text-gray-300",
+              horizontal && "mt-0 leading-6"
             )}
             data-component-part="card-content"
           >
@@ -251,10 +226,10 @@ export function GenericCard<T extends ElementType = 'div'>({
             <div className="mt-8" data-component-part="card-cta">
               <span
                 className={cn(
-                  'text-left text-gray-600 gap-2 dark:text-gray-400 text-sm font-medium flex flex-row items-center',
+                  "flex flex-row items-center gap-2 text-left font-medium text-gray-600 text-sm dark:text-gray-400",
                   !disabled &&
-                    'group-hover:text-primary group-hover:dark:text-primary-light',
-                  disabled && 'opacity-50'
+                    "group-hover:text-primary group-hover:dark:text-primary-light",
+                  disabled && "opacity-50"
                 )}
               >
                 {cta}
@@ -266,4 +241,7 @@ export function GenericCard<T extends ElementType = 'div'>({
       </div>
     </Component>
   );
-}
+};
+
+export { Card, GenericCard };
+export type { CardProps, CardPropsBase, CardComponentProps, CardIconProps };

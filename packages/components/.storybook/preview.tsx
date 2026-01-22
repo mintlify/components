@@ -1,8 +1,9 @@
 import type { Preview } from "@storybook/react-vite";
 import "./tailwind.css";
-import React from "react";
 import { ThemeProvider } from "next-themes";
-import { ThemeSync } from "./ThemeSync";
+// biome-ignore lint/correctness/noUnusedImports: ignore
+import React from "react";
+import { type StorybookThemeType, ThemeSync } from "./theme-sync";
 
 const inter = {
   style: { fontFamily: "Inter, system-ui, sans-serif" },
@@ -12,8 +13,6 @@ const jetbrainsMono = {
   style: { fontFamily: '"JetBrains Mono", monospace' },
   variable: "--font-jetbrains-mono",
 };
-
-type Theme = "light" | "dark" | "system";
 
 const preview: Preview = {
   parameters: {
@@ -29,21 +28,24 @@ const preview: Preview = {
   },
   decorators: [
     (Story, context) => {
-      const theme = context.globals.theme as Theme;
-      const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const theme = context.globals.theme as StorybookThemeType;
+      const isDark =
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
 
       return (
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
           disableTransitionOnChange
+          enableSystem
         >
           <ThemeSync theme={theme}>
             <div className={isDark ? "dark" : ""}>
               <link
-                rel="stylesheet"
                 href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+                rel="stylesheet"
               />
               <style>
                 {`
@@ -63,7 +65,7 @@ const preview: Preview = {
                 `}
               </style>
               <div
-                className={`relative antialiased text-gray-500 dark:text-gray-400 dark:bg-zinc-950 p-8 ${inter.variable} ${jetbrainsMono.variable}`}
+                className={`relative p-8 text-gray-500 antialiased dark:bg-zinc-950 dark:text-gray-400 ${inter.variable} ${jetbrainsMono.variable}`}
               >
                 <Story />
               </div>

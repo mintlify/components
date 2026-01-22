@@ -1,12 +1,12 @@
+/** biome-ignore-all lint/performance/noBarrelFile: TODO */
 export * from "./accordion";
 export * from "./badge";
-export * from "./banner";
 export * from "./callout";
 export * from "./card";
-export * from "./codeGroup";
-export * from "./expandable";
+export * from "./code-group";
 export * from "./color";
 export * from "./columns";
+export * from "./expandable";
 export * from "./frame";
 export * from "./icon";
 export * from "./mermaid";

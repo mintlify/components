@@ -37,9 +37,9 @@ export const Default: Story = {
 export const WithDefaultOpen: Story = {
   render: (args) => (
     <Tree {...args}>
-      <Tree.Folder name="src" defaultOpen>
+      <Tree.Folder defaultOpen name="src">
         <Tree.File name="index.ts" />
-        <Tree.Folder name="components" defaultOpen>
+        <Tree.Folder defaultOpen name="components">
           <Tree.File name="Button.tsx" />
           <Tree.File name="Card.tsx" />
         </Tree.Folder>
@@ -54,11 +54,11 @@ export const WithDefaultOpen: Story = {
 export const DeeplyNested: Story = {
   render: (args) => (
     <Tree {...args}>
-      <Tree.Folder name="packages" defaultOpen>
-        <Tree.Folder name="components" defaultOpen>
-          <Tree.Folder name="src" defaultOpen>
-            <Tree.Folder name="components" defaultOpen>
-              <Tree.Folder name="tree" defaultOpen>
+      <Tree.Folder defaultOpen name="packages">
+        <Tree.Folder defaultOpen name="components">
+          <Tree.Folder defaultOpen name="src">
+            <Tree.Folder defaultOpen name="components">
+              <Tree.Folder defaultOpen name="tree">
                 <Tree.File name="tree.tsx" />
                 <Tree.File name="tree.stories.tsx" />
                 <Tree.File name="index.ts" />
@@ -98,12 +98,12 @@ export const EmptyFolder: Story = {
 export const ProjectStructure: Story = {
   render: (args) => (
     <Tree {...args}>
-      <Tree.Folder name="my-project" defaultOpen>
+      <Tree.Folder defaultOpen name="my-project">
         <Tree.File name=".gitignore" />
         <Tree.File name="package.json" />
         <Tree.File name="tsconfig.json" />
         <Tree.File name="README.md" />
-        <Tree.Folder name="src" defaultOpen>
+        <Tree.Folder defaultOpen name="src">
           <Tree.File name="index.ts" />
           <Tree.File name="App.tsx" />
           <Tree.Folder name="components">
@@ -148,8 +148,8 @@ export const ProjectStructure: Story = {
 
 export const WithCustomClassName: Story = {
   render: (args) => (
-    <Tree {...args} className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg w-64">
-      <Tree.Folder name="src" defaultOpen>
+    <Tree {...args} className="w-64 rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
+      <Tree.Folder defaultOpen name="src">
         <Tree.File name="index.ts" />
         <Tree.File name="app.tsx" />
       </Tree.Folder>
@@ -162,8 +162,8 @@ export const LongFileNames: Story = {
   render: (args) => (
     <Tree {...args} className="w-64">
       <Tree.Folder
-        name="this-is-a-really-long-folder-name-that-should-truncate"
         defaultOpen
+        name="this-is-a-really-long-folder-name-that-should-truncate"
       >
         <Tree.File name="this-is-a-really-long-file-name-that-should-also-truncate.tsx" />
         <Tree.File name="another-very-long-file-name.config.ts" />
@@ -176,14 +176,14 @@ export const LongFileNames: Story = {
 export const AllExpanded: Story = {
   render: (args) => (
     <Tree {...args}>
-      <Tree.Folder name="level-1" defaultOpen>
-        <Tree.Folder name="level-2a" defaultOpen>
-          <Tree.Folder name="level-3a" defaultOpen>
+      <Tree.Folder defaultOpen name="level-1">
+        <Tree.Folder defaultOpen name="level-2a">
+          <Tree.Folder defaultOpen name="level-3a">
             <Tree.File name="deep-file.ts" />
           </Tree.Folder>
           <Tree.File name="file-2a.ts" />
         </Tree.Folder>
-        <Tree.Folder name="level-2b" defaultOpen>
+        <Tree.Folder defaultOpen name="level-2b">
           <Tree.File name="file-2b.ts" />
         </Tree.Folder>
         <Tree.File name="file-1.ts" />

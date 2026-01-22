@@ -134,8 +134,10 @@ const _classes = {
   Tree: "tree",
   TreeFolder: "tree-folder",
   TreeFile: "tree-file",
-} as const
+} as const;
 
-export const Classes = Object.fromEntries(
+const Classes = Object.fromEntries(
   Object.entries(_classes).map(([key, value]) => [key, `${value}`])
-) as { readonly [K in keyof typeof _classes]: `${(typeof _classes)[K]}` }
+) as { readonly [K in keyof typeof _classes]: `${(typeof _classes)[K]}` };
+
+export { Classes };

@@ -1,13 +1,16 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-export type TreeLevelContextValue = {
-    level: number;
-    parentId: string | null;
+type TreeLevelContextValue = {
+  level: number;
+  parentId: string | null;
 };
 
 const DEFAULT_VALUE: TreeLevelContextValue = {
-    level: 1,
-    parentId: null,
+  level: 1,
+  parentId: null,
 };
 
-export const TreeLevelContext = createContext<TreeLevelContextValue>(DEFAULT_VALUE);
+const TreeLevelContext = createContext<TreeLevelContextValue>(DEFAULT_VALUE);
+
+export { TreeLevelContext };
+export type { TreeLevelContextValue };

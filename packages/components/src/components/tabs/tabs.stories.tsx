@@ -1,25 +1,26 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Tabs } from './tabs';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Tabs } from "./tabs";
 
 const meta: Meta<typeof Tabs> = {
-  title: 'Components/Tabs',
+  title: "Components/Tabs",
   component: Tabs,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     defaultTabIndex: {
-      control: { type: 'number', min: 0 },
-      description: 'Index of the initially active tab (0-based)',
+      control: { type: "number", min: 0 },
+      description: "Index of the initially active tab (0-based)",
     },
     borderBottom: {
-      control: 'boolean',
-      description: 'Whether to show a border at the bottom of the tabs container',
+      control: "boolean",
+      description:
+        "Whether to show a border at the bottom of the tabs container",
     },
     onTabChange: {
-      action: 'tabChanged',
-      description: 'Callback fired when a tab is clicked',
+      action: "tabChanged",
+      description: "Callback fired when a tab is clicked",
     },
   },
 };
@@ -31,13 +32,21 @@ export const Default: Story = {
   render: (args) => (
     <Tabs {...args}>
       <Tabs.Item title="First Tab">
-        <p>This is the content of the first tab. You can put any content here.</p>
+        <p>
+          This is the content of the first tab. You can put any content here.
+        </p>
       </Tabs.Item>
       <Tabs.Item title="Second Tab">
-        <p>This is the content of the second tab. It can contain different information.</p>
+        <p>
+          This is the content of the second tab. It can contain different
+          information.
+        </p>
       </Tabs.Item>
       <Tabs.Item title="Third Tab">
-        <p>This is the content of the third tab. Tabs are great for organizing content.</p>
+        <p>
+          This is the content of the third tab. Tabs are great for organizing
+          content.
+        </p>
       </Tabs.Item>
     </Tabs>
   ),
@@ -62,16 +71,16 @@ export const WithDefaultTab: Story = {
 export const WithIcons: Story = {
   render: () => (
     <Tabs>
-      <Tabs.Item title="Home" icon="home">
+      <Tabs.Item icon="home" title="Home">
         <p>Welcome to the home tab with a home icon.</p>
       </Tabs.Item>
-      <Tabs.Item title="Settings" icon="gear">
+      <Tabs.Item icon="gear" title="Settings">
         <p>Configure your settings in this tab.</p>
       </Tabs.Item>
-      <Tabs.Item title="User" icon="user">
+      <Tabs.Item icon="user" title="User">
         <p>View user profile information here.</p>
       </Tabs.Item>
-      <Tabs.Item title="Messages" icon="envelope">
+      <Tabs.Item icon="envelope" title="Messages">
         <p>Check your messages in this tab.</p>
       </Tabs.Item>
     </Tabs>
@@ -94,10 +103,10 @@ export const WithBorderBottom: Story = {
 export const WithCustomIds: Story = {
   render: () => (
     <Tabs>
-      <Tabs.Item title="Custom ID Tab" id="custom-tab-1">
+      <Tabs.Item id="custom-tab-1" title="Custom ID Tab">
         <p>This tab has a custom ID: custom-tab-1</p>
       </Tabs.Item>
-      <Tabs.Item title="Another Custom" id="custom-tab-2">
+      <Tabs.Item id="custom-tab-2" title="Another Custom">
         <p>This tab has a custom ID: custom-tab-2</p>
       </Tabs.Item>
     </Tabs>
@@ -127,14 +136,21 @@ function App() {
         </ul>
       </Tabs.Item>
       <Tabs.Item title="Mixed Content">
-        <h3 className="text-lg font-semibold mb-2">Section Title</h3>
+        <h3 className="mb-2 font-semibold text-lg">Section Title</h3>
         <p className="mb-4">
-          This tab demonstrates mixed content with headings, paragraphs, and other elements.
+          This tab demonstrates mixed content with headings, paragraphs, and
+          other elements.
         </p>
         <div className="flex gap-2">
-          <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900 rounded text-sm">Tag 1</span>
-          <span className="px-2 py-1 bg-green-100 dark:bg-green-900 rounded text-sm">Tag 2</span>
-          <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900 rounded text-sm">Tag 3</span>
+          <span className="rounded bg-blue-100 px-2 py-1 text-sm dark:bg-blue-900">
+            Tag 1
+          </span>
+          <span className="rounded bg-green-100 px-2 py-1 text-sm dark:bg-green-900">
+            Tag 2
+          </span>
+          <span className="rounded bg-purple-100 px-2 py-1 text-sm dark:bg-purple-900">
+            Tag 3
+          </span>
         </div>
       </Tabs.Item>
     </Tabs>
@@ -174,7 +190,9 @@ export const LongTabTitles: Story = {
 
 export const WithCallback: Story = {
   render: () => (
-    <Tabs onTabChange={(index) => console.log(`Tab changed to index: ${index}`)}>
+    <Tabs
+      onTabChange={(index) => console.log(`Tab changed to index: ${index}`)}
+    >
       <Tabs.Item title="First">
         <p>Click different tabs and check the console for callback output.</p>
       </Tabs.Item>
@@ -190,12 +208,15 @@ export const WithCallback: Story = {
 
 export const CustomClassName: Story = {
   render: () => (
-    <Tabs className="border-b border-2 p-2 border-[#FF00FF] rounded-md">
+    <Tabs className="rounded-md border-2 border-[#FF00FF] border-b p-2">
       <Tabs.Item title="Styled Tab List">
         <p>The tab list has custom styling applied via className.</p>
       </Tabs.Item>
       <Tabs.Item title="Another Tab">
-        <p>The className prop allows for custom styling of the tab list container.</p>
+        <p>
+          The className prop allows for custom styling of the tab list
+          container.
+        </p>
       </Tabs.Item>
     </Tabs>
   ),
@@ -204,7 +225,7 @@ export const CustomClassName: Story = {
 export const SingularTabComponent: Story = {
   render: () => (
     <Tabs>
-    <Tabs.Item title="Active Tab">
+      <Tabs.Item title="Active Tab">
         <div>Hi I'm a tab</div>
       </Tabs.Item>
     </Tabs>

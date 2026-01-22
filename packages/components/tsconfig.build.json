@@ -6,9 +6,9 @@
     "declarationMap": true,
     "emitDeclarationOnly": true,
     "outDir": "./dist",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "strictNullChecks": true
   },
   "include": ["src"],
   "exclude": ["**/*.stories.tsx", "**/*.test.tsx", "**/*.test.ts"]
 }
-

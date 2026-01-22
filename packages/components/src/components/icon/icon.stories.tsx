@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import React from "react";
-import { Icon } from "./icon";
+import type React from "react";
 import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
+import { Icon } from "./icon";
 
 const meta: Meta<typeof Icon> = {
   title: "Components/Icon",
@@ -13,7 +13,15 @@ const meta: Meta<typeof Icon> = {
   argTypes: {
     iconType: {
       control: "select",
-      options: ["brands", "duotone", "light", "regular", "sharp-solid", "solid", "thin"],
+      options: [
+        "brands",
+        "duotone",
+        "light",
+        "regular",
+        "sharp-solid",
+        "solid",
+        "thin",
+      ],
     },
     iconLibrary: {
       control: "select",
@@ -138,6 +146,7 @@ export const NoColor: Story = {
 export const WithOverrideColor: Story = {
   render: () => (
     <div
+      className="[&_svg]:bg-(--color-text)"
       style={
         {
           backgroundColor: "#e3eafd",
@@ -147,13 +156,8 @@ export const WithOverrideColor: Story = {
           "--color-text": "#133a9a",
         } as React.CSSProperties
       }
-      className="[&_svg]:bg-(--color-text)"
     >
-      <Icon
-        icon="cat"
-        size={32}
-        overrideColor={true}
-      />
+      <Icon icon="cat" overrideColor={true} size={32} />
     </div>
   ),
 };
@@ -185,7 +189,8 @@ export const RelativePath: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Icons loaded from relative paths render as `<img>` elements and do not support dynamic color changes in light/dark mode.",
+        story:
+          "Icons loaded from relative paths render as `<img>` elements and do not support dynamic color changes in light/dark mode.",
       },
     },
   },
@@ -208,7 +213,8 @@ export const PDFMode: Story = {
   parameters: {
     docs: {
       description: {
-        story: "PDF mode renders icons as `<img>` elements for PDF compatibility. Dynamic coloring via SVG masks is not available in this mode.",
+        story:
+          "PDF mode renders icons as `<img>` elements for PDF compatibility. Dynamic coloring via SVG masks is not available in this mode.",
       },
     },
   },
@@ -225,7 +231,8 @@ export const PDFModeWithColor: Story = {
   parameters: {
     docs: {
       description: {
-        story: "PDF mode with color props. Note: Renders as `<img>` element, so colorLight/colorDark props won't affect the display in PDF mode.",
+        story:
+          "PDF mode with color props. Note: Renders as `<img>` element, so colorLight/colorDark props won't affect the display in PDF mode.",
       },
     },
   },
@@ -244,11 +251,16 @@ export const WithClassName: Story = {
 export const MultipleIcons: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-      <Icon icon="cat" size={24} colorLight="#fbbf24" colorDark="#fde047" />
-      <Icon icon="heart" size={24} colorLight="#ef4444" colorDark="#fca5a5" />
-      <Icon icon="circle-check" size={24} colorLight="#22c55e" colorDark="#86efac" />
-      <Icon icon="bolt" size={24} colorLight="#3b82f6" colorDark="#93c5fd" />
-      <Icon icon="fire" size={24} colorLight="#f97316" colorDark="#fdba74" />
+      <Icon colorDark="#fde047" colorLight="#fbbf24" icon="cat" size={24} />
+      <Icon colorDark="#fca5a5" colorLight="#ef4444" icon="heart" size={24} />
+      <Icon
+        colorDark="#86efac"
+        colorLight="#22c55e"
+        icon="circle-check"
+        size={24}
+      />
+      <Icon colorDark="#93c5fd" colorLight="#3b82f6" icon="bolt" size={24} />
+      <Icon colorDark="#fdba74" colorLight="#f97316" icon="fire" size={24} />
     </div>
   ),
 };
