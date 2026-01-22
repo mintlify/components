@@ -228,7 +228,7 @@ export function GenericCard<T extends ElementType = 'div'>({
           {title && (
             <h2
               className={cn(
-                'not-prose font-semibold text-base text-gray-800 dark:text-white wrap-break-word',
+                'not-prose font-semibold text-base text-gray-800 dark:text-white break-words',
                 icon !== null && icon !== undefined && !horizontal && 'mt-4'
               )}
               contentEditable={false}
@@ -239,7 +239,7 @@ export function GenericCard<T extends ElementType = 'div'>({
           )}
           <div
             className={cn(
-              'prose mt-1 font-normal text-base leading-6 wrap-break-word',
+              'prose mt-1 font-normal text-base leading-6 break-words',
               title ? 'text-gray-600 dark:text-gray-400' : 'text-gray-700 dark:text-gray-300',
               horizontal && 'leading-6 mt-0'
             )}
