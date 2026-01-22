@@ -10,14 +10,12 @@ import type { CodeStyling } from "@/validation";
 import { BaseCodeBlock } from "./base-code-block";
 import { CopyToClipboardButton } from "./copy-button";
 
-/**
- * User-defined properties
- */
-export type CodeBlockPropsBase = {
+type CodeBlockProps = {
   language?: string;
   filename?: string;
   icon?: string;
   lang?: string;
+  className?: string;
   /**
    * Whether to show line numbers.
    */
@@ -46,33 +44,45 @@ export type CodeBlockPropsBase = {
    */
   numberOfLines?: number;
   /**
-   * Internal prop to show ask ai button
+   * Prop to hide the ask ai button
    */
   hideAskAiButton?: boolean;
   /**
-   * Internal prop to set the small text size
+   * Prop to set the small text size
    */
   isSmallText?: boolean;
+  /**
+   * Pass in from CodeSnippetFeedbackProvider
+   */
   feedbackModalOpen?: boolean;
+  /**
+   * Pass in from CodeSnippetFeedbackProvider
+   */
   anchorRef?: RefObject<HTMLDivElement>;
+  /**
+   * Prop to set the code block theme (code block UI theme)
+   */
   codeBlockTheme?: "dark" | "system";
+  /**
+   * Prop to set the code block theme object (syntax highlighting theme)
+   */
   codeBlockThemeObject?: CodeStyling;
+  /**
+   * Pass in AskAiCodeBlockButton component
+   */
   askAiButton?: ReactNode;
+  /**
+   * Pass in CodeSnippetFeedbackButton component
+   */
   feedbackButton?: ReactNode;
-  className?: string;
-};
-
-export interface CodeBlockInternalPropsBase extends CodeBlockPropsBase {
   /**
    * The callback function when a user clicks on the copied to clipboard button
    */
   onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
-}
+  children?: ReactNode;
+};
 
-export type CodeBlockProps = CodeBlockInternalPropsBase &
-  Omit<ComponentPropsWithoutRef<"div">, keyof CodeBlockInternalPropsBase>;
-
-export const CodeBlock = function CodeBlock(params: CodeBlockProps) {
+const CodeBlock = function CodeBlock(params: CodeBlockProps) {
   const {
     filename,
     onCopied,
@@ -152,6 +162,13 @@ export const CodeBlock = function CodeBlock(params: CodeBlockProps) {
   );
 };
 
+type CodeHeaderProps = {
+  filename?: string;
+  icon?: string;
+  codeBlockTheme?: "dark" | "system";
+  children?: ReactNode;
+};
+
 /**
  * Different from CodeGroup because we cannot use Headless UI's Tab component outside a Tab.Group
  * Styling should look the same though.
@@ -161,12 +178,7 @@ function CodeHeader({
   icon,
   codeBlockTheme = "system",
   children,
-}: {
-  filename?: string;
-  icon?: string;
-  codeBlockTheme?: "dark" | "system";
-  children?: ReactNode;
-}) {
+}: CodeHeaderProps) {
   return (
     <div
       className="flex rounded-t-[14px] py-1 pr-2.5 pl-4 font-medium text-gray-400 text-xs leading-6"
@@ -198,3 +210,5 @@ function CodeHeader({
     </div>
   );
 }
+
+export { type CodeBlockProps, CodeBlock };

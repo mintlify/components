@@ -1,2 +1,3 @@
 // biome-ignore lint/performance/noBarrelFile: TODO
-export { CodeBlock } from "./code-block";
+export { BaseCodeBlock, type BaseCodeBlockProps } from "./base-code-block";
+export { CodeBlock, type CodeBlockProps } from "./code-block";

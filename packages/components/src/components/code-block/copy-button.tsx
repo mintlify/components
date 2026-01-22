@@ -10,45 +10,6 @@ const DEFAULT_COPY_BUTTON_ARIA_LABEL = "Copy the contents from the code block";
 const DEFAULT_TOOLTIP_COPY_TEXT = "Copy";
 const DEFAULT_TOOLTIP_COPIED_TEXT = "Copied!";
 
-type CodeGroupCopyButtonProps = {
-  code: string;
-  // pass in useAnalyticsContext('docs.code_group.copy')
-  onCopy?: (result: CopyToClipboardResult, textToCopy?: string) => void;
-  codeBlockTheme?: "system" | "dark";
-  // pass in ariaLabel from useSelectedLocale['aria.copyCodeBlock']
-  copyButtonAriaLabel?: string;
-  // pass in tooltipCopyText from useSelectedLocale['tooltip.copy']
-  tooltipCopyText?: string;
-  // pass in tooltipCopiedText from useSelectedLocale['tooltip.copied']
-  tooltipCopiedText?: string;
-};
-
-export const CodeGroupCopyButton = ({
-  code,
-  onCopy,
-  codeBlockTheme = "system",
-  copyButtonAriaLabel = DEFAULT_COPY_BUTTON_ARIA_LABEL,
-  tooltipCopyText = DEFAULT_TOOLTIP_COPY_TEXT,
-  tooltipCopiedText = DEFAULT_TOOLTIP_COPIED_TEXT,
-}: CodeGroupCopyButtonProps) => {
-  return (
-    <div data-testid="code-group-select-copy-button">
-      <CopyToClipboardButton
-        codeBlockTheme={codeBlockTheme}
-        copyButtonAriaLabel={copyButtonAriaLabel}
-        onCopied={
-          onCopy
-            ? (result, textToCopy) => onCopy(result, textToCopy)
-            : undefined
-        }
-        textToCopy={code}
-        tooltipCopiedText={tooltipCopiedText}
-        tooltipCopyText={tooltipCopyText}
-      />
-    </div>
-  );
-};
-
 type CopyToClipboardButtonProps = {
   textToCopy: string;
   onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
@@ -60,7 +21,7 @@ type CopyToClipboardButtonProps = {
   tooltipCopiedText?: string;
 };
 
-export function CopyToClipboardButton({
+const CopyToClipboardButton = ({
   textToCopy,
   onCopied,
   className,
@@ -69,7 +30,7 @@ export function CopyToClipboardButton({
   copyButtonAriaLabel = DEFAULT_COPY_BUTTON_ARIA_LABEL,
   tooltipCopyText = DEFAULT_TOOLTIP_COPY_TEXT,
   tooltipCopiedText = DEFAULT_TOOLTIP_COPIED_TEXT,
-}: CopyToClipboardButtonProps & ComponentPropsWithoutRef<"button">) {
+}: CopyToClipboardButtonProps & ComponentPropsWithoutRef<"button">) => {
   const trimmedTextToCopy = textToCopy.trim();
   const [isCopiedActive, setIsCopiedActive] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
@@ -105,41 +66,6 @@ export function CopyToClipboardButton({
   };
 
   return (
-    <CopyIconButton
-      className={className}
-      codeBlockTheme={codeBlockTheme}
-      copyButtonAriaLabel={copyButtonAriaLabel}
-      isCopiedActive={isCopiedActive}
-      onClick={onCopy}
-      showTooltip={showTooltip}
-      tooltipCopiedText={tooltipCopiedText}
-      tooltipCopyText={tooltipCopyText}
-    />
-  );
-}
-
-type CopyIconButtonProps = {
-  onClick: () => void;
-  isCopiedActive: boolean;
-  showTooltip?: boolean;
-  className?: string;
-  codeBlockTheme?: "system" | "dark";
-  copyButtonAriaLabel?: string;
-  tooltipCopyText?: string;
-  tooltipCopiedText?: string;
-};
-
-export function CopyIconButton({
-  onClick,
-  isCopiedActive,
-  showTooltip = true,
-  className,
-  codeBlockTheme,
-  copyButtonAriaLabel = DEFAULT_COPY_BUTTON_ARIA_LABEL,
-  tooltipCopyText = DEFAULT_TOOLTIP_COPY_TEXT,
-  tooltipCopiedText = DEFAULT_TOOLTIP_COPIED_TEXT,
-}: CopyIconButtonProps) {
-  return (
     <div className={cn("relative z-10 select-none", className)}>
       <button
         aria-label={copyButtonAriaLabel}
@@ -147,7 +73,7 @@ export function CopyIconButton({
           "peer group/copy-button flex h-[26px] w-[26px] items-center justify-center rounded-md backdrop-blur"
         }
         data-testid="copy-code-button"
-        onClick={onClick}
+        onClick={onCopy}
         type="button"
       >
         {isCopiedActive ? (
@@ -157,21 +83,15 @@ export function CopyIconButton({
         )}
       </button>
       {showTooltip && (
-        <CodeBlockTooltip
-          text={isCopiedActive ? tooltipCopiedText : tooltipCopyText}
-        />
+        <div
+          aria-hidden
+          className="absolute top-11 left-1/2 -translate-x-1/2 -translate-y-1/2 transform whitespace-nowrap rounded-lg bg-primary-dark px-1.5 py-0.5 text-tooltip-foreground text-xs opacity-0 peer-hover:opacity-100"
+        >
+          {isCopiedActive ? tooltipCopiedText : tooltipCopyText}
+        </div>
       )}
     </div>
   );
-}
+};
 
-export function CodeBlockTooltip({ text }: { text: string }) {
-  return (
-    <div
-      aria-hidden
-      className="absolute top-11 left-1/2 -translate-x-1/2 -translate-y-1/2 transform whitespace-nowrap rounded-lg bg-primary-dark px-1.5 py-0.5 text-tooltip-foreground text-xs opacity-0 peer-hover:opacity-100"
-    >
-      {text}
-    </div>
-  );
-}
+export { type CopyToClipboardButtonProps, CopyToClipboardButton };

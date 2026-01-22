@@ -9,25 +9,20 @@ import { useGetShikiHighlightedHtml } from "@/hooks/use-get-shiki-highlighted-ht
 import { cn } from "@/utils/cn";
 import { getShikiBackgroundColors } from "@/utils/shiki/get-shiki-background-colors";
 import { getCodeString, useCalculateCodeLines } from "@/utils/shiki/lib";
-import type { CodeStyling } from "@/validation";
 
 import type { CodeBlockProps } from "./code-block";
 
-export const SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT = 45;
-export const DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT = 190;
+const SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT = 45;
+const DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT = 190;
 
 interface BaseCodeBlockProps extends CodeBlockProps {
   isParentCodeGroup?: boolean;
-  isSmallText?: boolean;
   shouldHighlight?: boolean;
-  numberOfLines?: number;
   // pass isLivePreview to forceExtract to force code string theme changes
   forceExtract?: boolean;
-  codeBlockTheme?: "system" | "dark";
-  codeBlockThemeObject?: CodeStyling;
 }
 
-export const BaseCodeBlock = ({
+const BaseCodeBlock = ({
   expandable = false,
   shouldHighlight = true,
   children,
@@ -246,3 +241,10 @@ export function CodeFooter({
     </div>
   );
 }
+
+export {
+  SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT,
+  DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT,
+  type BaseCodeBlockProps,
+  BaseCodeBlock,
+};
