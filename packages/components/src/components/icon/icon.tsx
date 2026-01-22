@@ -11,7 +11,7 @@ import {
   type PageType,
 } from "@/models";
 import { cn } from "@/utils/cn";
-import { getIconUrl } from "@/utils/iconUtils";
+import { getIconUrl } from "@/utils/icon-utils";
 
 type IconProps = {
   icon: string;

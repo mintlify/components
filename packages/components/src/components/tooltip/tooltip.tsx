@@ -3,10 +3,10 @@ import * as RadixTooltip from "@radix-ui/react-tooltip";
 import { ChevronRightIcon } from "lucide-react";
 import { isValidElement, type ReactNode, useState } from "react";
 
-import { useHasHover } from "@/hooks/useHasHover";
+import { useHasHover } from "@/hooks/use-has-hover";
 import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
-import { isRemoteUrl } from "@/utils/isRemoteUrl";
+import { isRemoteUrl } from "@/utils/is-remote-url";
 
 type TooltipProps = {
   description?: string;

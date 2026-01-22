@@ -14,8 +14,8 @@ import { Classes } from "@/lib/local/selectors";
 import type { IconType } from "@/models";
 import { cn } from "@/utils/cn";
 
-import { AccordionCover } from "./accordionCover";
-import { CONNECTING_CHARACTER } from "./accordionUrlUtils";
+import { AccordionCover } from "./accordion-cover";
+import { CONNECTING_CHARACTER } from "./accordion-url-utils";
 
 type AccordionProps = {
   title: string;

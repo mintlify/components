@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 
 import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
-import { enhanceVideoProps } from "@/utils/enhanceVideoProps";
+import { enhanceVideoProps } from "@/utils/enhance-video-props";
 
 type FrameProps = {
   as: "div";

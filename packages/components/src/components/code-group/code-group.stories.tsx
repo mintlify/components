@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { CodeGroup } from "./codeGroup";
+import { CodeGroup } from "./code-group";
 
 const meta: Meta<typeof CodeGroup> = {
   title: "Components/CodeGroup",

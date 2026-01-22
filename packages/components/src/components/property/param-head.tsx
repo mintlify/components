@@ -2,7 +2,7 @@ import slugify from "@sindresorhus/slugify";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LinkIcon } from "@/icons";
 import { cn } from "@/utils/cn";
-import { copyToClipboard } from "@/utils/copyToClipboard";
+import { copyToClipboard } from "@/utils/copy-to-clipboard";
 import { DeprecatedPill, InfoPill, RequiredPill } from "./pills";
 import type { PropertyProps } from "./property";
 

@@ -1,5 +1,5 @@
 import { Accordion as AccordionBase } from "./accordion";
-import { AccordionGroup } from "./accordionGroup";
+import { AccordionGroup } from "./accordion-group";
 
 export const Accordion = Object.assign(AccordionBase, {
   Group: AccordionGroup,
@@ -9,4 +9,4 @@ export const Accordion = Object.assign(AccordionBase, {
 export {
   getInitialOpenState,
   updateAndCopyUrl,
-} from "./accordionUrlUtils";
+} from "./accordion-url-utils";

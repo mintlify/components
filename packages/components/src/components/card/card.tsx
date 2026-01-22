@@ -13,7 +13,7 @@ import { ArrowRightIcon } from "@/icons";
 import { Classes } from "@/lib/local/selectors";
 import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
-import { isRemoteUrl } from "@/utils/isRemoteUrl";
+import { isRemoteUrl } from "@/utils/is-remote-url";
 
 interface CardPropsBase<T> {
   title?: string;

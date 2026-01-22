@@ -1,10 +1,10 @@
 import mermaid, { type MermaidConfig } from "mermaid";
 import { useEffect, useId, useRef, useState } from "react";
-import { useIsDarkTheme } from "@/hooks/useIsDarkTheme";
+import { useIsDarkTheme } from "@/hooks/use-is-dark-theme";
 import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
-import { usePanZoom } from "./usePanZoom";
-import { ZoomControls } from "./ZoomControls";
+import { usePanZoom } from "./use-pan-zoom";
+import { ZoomControls } from "./zoom-controls";
 
 const MIN_HEIGHT_FOR_CONTROLS = 120;
 

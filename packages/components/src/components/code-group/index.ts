@@ -1,2 +1,2 @@
 // biome-ignore lint/performance/noBarrelFile: TODO
-export { CodeGroup } from "./codeGroup";
+export { CodeGroup } from "./code-group";

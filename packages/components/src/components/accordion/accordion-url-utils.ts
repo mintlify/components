@@ -1,5 +1,5 @@
 import isEqual from "lodash/isEqual";
-import { copyToClipboard } from "@/utils/copyToClipboard";
+import { copyToClipboard } from "@/utils/copy-to-clipboard";
 
 const CONNECTING_CHARACTER = ":";
 
