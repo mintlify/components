@@ -56,15 +56,13 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
     const tagsArray = tags?.map((tag) => tag.trim()).filter(Boolean);
 
     const copyAnchorLink = useCallback(() => {
-      copyToClipboard(
-        `https://${window.location.host}${window.location.pathname}#${id}`
-      );
+      copyToClipboard(`${window.location.href.split("#")[0]}#${id}`);
       window.location.hash = id;
       onCopyAnchorLink?.(id);
     }, [id, onCopyAnchorLink]);
 
     useEffect(() => {
-      if (!hasContext) {
+      if (!(hasContext && isVisible)) {
         return;
       }
 
@@ -75,7 +73,14 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
       return () => {
         onUnregisterHeading?.(id);
       };
-    }, [rect, id, hasContext, onRegisterHeading, onUnregisterHeading]);
+    }, [
+      rect,
+      id,
+      hasContext,
+      isVisible,
+      onRegisterHeading,
+      onUnregisterHeading,
+    ]);
 
     if (!isVisible) {
       return null;
