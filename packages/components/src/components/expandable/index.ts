@@ -1,1 +1,1 @@
-export { Expandable } from "./expandable";
+export { Expandable, type ExpandableProps } from "./expandable";
