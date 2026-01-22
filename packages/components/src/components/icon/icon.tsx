@@ -1,15 +1,19 @@
-import { CSSProperties } from 'react';
+/** biome-ignore-all lint/complexity/noExcessiveCognitiveComplexity: TODO */
+import type { CSSProperties } from "react";
 
-import { isAbsoluteUrl } from '@/common';
-import { MINTLIFY_ICONS_CDN_URL } from '@/constants';
+import { isAbsoluteUrl } from "@/common";
+import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
+import { Classes } from "@/lib/local/selectors";
+import {
+  ICON_TYPES,
+  type IconLibrary,
+  type IconType,
+  type PageType,
+} from "@/models";
+import { cn } from "@/utils/cn";
+import { getIconUrl } from "@/utils/iconUtils";
 
-import { IconLibrary, IconType, ICON_TYPES, PageType } from '@/models';
-
-import { Classes } from '@/lib/local/selectors';
-import { cn } from '@/utils/cn';
-import { getIconUrl } from '@/utils/iconUtils';
-
-export type IconProps = {
+type IconProps = {
   icon: string;
   iconType?: IconType;
   className?: string;
@@ -19,15 +23,12 @@ export type IconProps = {
   overrideColor?: boolean;
   size?: number;
   overrideSize?: boolean;
-  // pass in from DocsConfigContext if specified in docs.json
   iconLibrary?: IconLibrary;
-  // pass in from env.NEXT_PUBLIC.BASE_PATH
   basePath?: string;
-  // pass in from PageContext, needed for different PDF icon styling
   pageType?: PageType;
-}
+};
 
-export function Icon({
+const Icon = ({
   icon,
   iconType,
   color,
@@ -40,30 +41,31 @@ export function Icon({
   pageType,
   overrideColor,
   overrideSize,
-}: IconProps) {
+}: IconProps) => {
   const style: CSSProperties = {
     ...(!overrideSize && { width: size || 16, height: size || 16 }),
-    display: 'inline-block',
-    verticalAlign: 'middle',
-  }
+    display: "inline-block",
+    verticalAlign: "middle",
+  };
 
   const hasLightDarkColors = colorLight && colorDark;
   const styleWithColors: CSSProperties = hasLightDarkColors
     ? ({
         ...style,
-        '--color-light': colorLight,
-        '--color-dark': colorDark,
+        "--color-light": colorLight,
+        "--color-dark": colorDark,
       } as CSSProperties)
     : style;
 
   const classNames = cn(
     Classes.Icon,
-    'inline',
-    !color && !hasLightDarkColors && !overrideColor && 'bg-primary dark:bg-primary-light',
-    hasLightDarkColors && 'bg-(--color-light) dark:bg-(--color-dark)',
+    "inline",
+    !(color || hasLightDarkColors || overrideColor) &&
+      "bg-primary dark:bg-primary-light",
+    hasLightDarkColors && "bg-(--color-light) dark:bg-(--color-dark)",
     className
-  )
-  const isPdf = pageType === 'pdf';
+  );
+  const isPdf = pageType === "pdf";
   const url = getIconUrl(icon.toLowerCase(), iconType, iconLibrary);
 
   if (iconType && !ICON_TYPES.includes(iconType)) {
@@ -73,39 +75,46 @@ export function Icon({
     return null;
   }
 
-  if (typeof icon === 'string' && (isAbsoluteUrl(icon) || icon.startsWith('/'))) {
-    if (icon.startsWith(MINTLIFY_ICONS_CDN_URL) || icon.startsWith('https://mintlify.b-cdn.net')) {
+  if (
+    typeof icon === "string" &&
+    (isAbsoluteUrl(icon) || icon.startsWith("/"))
+  ) {
+    if (
+      icon.startsWith(MINTLIFY_ICONS_CDN_URL) ||
+      icon.startsWith("https://mintlify.b-cdn.net")
+    ) {
       return (
         <svg
           className={classNames}
           data-component-part="icon-svg"
           style={{
             WebkitMaskImage: `url(${icon})`,
-            WebkitMaskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'center',
+            WebkitMaskRepeat: "no-repeat",
+            WebkitMaskPosition: "center",
             maskImage: `url(${icon})`,
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center',
-            maskSize: '100%',
-            ...(!hasLightDarkColors && { backgroundColor: 'currentColor' }),
+            maskRepeat: "no-repeat",
+            maskPosition: "center",
+            maskSize: "100%",
+            ...(!hasLightDarkColors && { backgroundColor: "currentColor" }),
             ...styleWithColors,
           }}
-        ></svg>
+        />
       );
     }
 
     let iconUrl = icon;
-    if (icon.startsWith('/') && basePath) {
+    if (icon.startsWith("/") && basePath) {
       iconUrl = `${basePath}${icon}`;
     }
 
     // because s3 urls are missing CORS headers, we will default it to an img tag
     return (
+      // biome-ignore lint/correctness/useImageSize: TODO
       <img
-        src={iconUrl}
         alt={icon}
-        className={cn(classNames, 'bg-transparent dark:bg-transparent')}
+        className={cn(classNames, "bg-transparent dark:bg-transparent")}
         data-component-part="icon-image"
+        src={iconUrl}
         style={styleWithColors}
       />
     );
@@ -113,34 +122,46 @@ export function Icon({
 
   if (isPdf) {
     return (
+      // biome-ignore lint/correctness/useImageSize: TODO
       <img
-        src={url}
-        className={cn(classNames, !color && !overrideColor && !hasLightDarkColors && 'bg-gray-800 dark:bg-gray-100')}
+        alt={icon}
+        className={cn(
+          classNames,
+          !(color || overrideColor || hasLightDarkColors) &&
+            "bg-gray-800 dark:bg-gray-100"
+        )}
         data-component-part="icon-image"
+        src={url}
         style={{
-          backgroundColor: 'transparent',
+          backgroundColor: "transparent",
           ...styleWithColors,
         }}
-        alt={icon}
       />
     );
   }
 
   return (
     <svg
-      className={cn(classNames, !color && !overrideColor && !hasLightDarkColors && 'bg-gray-800 dark:bg-gray-100')}
+      className={cn(
+        classNames,
+        !(color || overrideColor || hasLightDarkColors) &&
+          "bg-gray-800 dark:bg-gray-100"
+      )}
       data-component-part="icon-svg"
       style={{
         WebkitMaskImage: `url(${url})`,
-        WebkitMaskRepeat: 'no-repeat',
-        WebkitMaskPosition: 'center',
+        WebkitMaskRepeat: "no-repeat",
+        WebkitMaskPosition: "center",
         maskImage: `url(${url})`,
-        maskRepeat: 'no-repeat',
-        maskPosition: 'center',
-        maskSize: iconLibrary == 'lucide' ? '100%' : undefined,
+        maskRepeat: "no-repeat",
+        maskPosition: "center",
+        maskSize: iconLibrary === "lucide" ? "100%" : undefined,
         backgroundColor: color,
         ...styleWithColors,
       }}
-    ></svg>
+    />
   );
-}
+};
+
+export { Icon };
+export type { IconProps };

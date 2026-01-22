@@ -33,4 +33,5 @@ type MultiViewItemType = BaseMultiViewItemType & {
   active?: boolean;
 };
 
+export { ICON_TYPES };
 export type { IconLibrary, IconType, MultiViewItemType, PageType };
