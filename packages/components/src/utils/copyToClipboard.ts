@@ -1,15 +1,21 @@
-export type CopyToClipboardResult = 'success' | 'error';
+type CopyToClipboardResult = "success" | "error";
 
-export async function copyToClipboard(text: string): Promise<CopyToClipboardResult> {
-    if (!text) {
-        console.warn('Called copyToClipboard() with empty text');
-        return 'error';
-    }
-    try {
-        await navigator.clipboard.writeText(text);
-        return 'success';
-    } catch (err) {
-        console.error('Failed to copy: ', err);
-        return 'error';
-    }
-}
+const copyToClipboard = async (
+  text: string
+): Promise<CopyToClipboardResult> => {
+  if (!text) {
+    console.warn("Called copyToClipboard() with empty text");
+    return "error";
+  }
+
+  try {
+    await navigator.clipboard.writeText(text);
+    return "success";
+  } catch (err) {
+    console.error("Failed to copy: ", err);
+    return "error";
+  }
+};
+
+export { copyToClipboard };
+export type { CopyToClipboardResult };

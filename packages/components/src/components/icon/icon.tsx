@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 import { isAbsoluteUrl } from '@/common';
 import { MINTLIFY_ICONS_CDN_URL } from '@/constants';
 
-import { IconLibrary, IconType, iconTypes, PageType } from '@/models';
+import { IconLibrary, IconType, ICON_TYPES, PageType } from '@/models';
 
 import { Classes } from '@/lib/local/selectors';
 import { cn } from '@/utils/cn';
@@ -66,7 +66,7 @@ export function Icon({
   const isPdf = pageType === 'pdf';
   const url = getIconUrl(icon.toLowerCase(), iconType, iconLibrary);
 
-  if (iconType && !iconTypes.includes(iconType)) {
+  if (iconType && !ICON_TYPES.includes(iconType)) {
     console.log(
       `Invalid iconType ${iconType} expected a string equal to one of: brands, duotone, light, regular, sharp-solid, solid, thin`
     );

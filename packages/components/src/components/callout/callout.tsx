@@ -116,7 +116,7 @@ export function Callout({
   } else {
     const config = variantConfig[variant];
     const IconComponent = config.icon;
-    finalIcon = <IconComponent ariaLabel={ariaLabel || config.defaultAriaLabel} />;
+    finalIcon = <IconComponent aria-label={ariaLabel || config.defaultAriaLabel} />;
     variantClassName = config.className;
     childrenClassName = config.childrenClassName;
   }
