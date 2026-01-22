@@ -23,7 +23,7 @@ type UpdatePropsBase = {
   onRegisterHeading?: (id: string, rect: Rect) => void;
   onUnregisterHeading?: (id: string) => void;
   hasContext?: boolean;
-  isVisible?: boolean;
+  isVisible: boolean;
   onCopyAnchorLink?: (id: string) => void;
 };
 
