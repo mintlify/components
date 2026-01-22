@@ -47,18 +47,16 @@ if empty - nothing to change
     - ~~update to `variant="note"` instead of 7 different components. add `variant="custom"`, set it by default~~
 - ~~Cards~~
 - Code groups
-- Color
+- ~~Color~~
     - nits https://mintlify.slack.com/archives/C09QQDHD7PG/p1764635576242229?thread_ts=1763963569.715779&cid=C09QQDHD7PG
-- Columns
+- ~~Columns~~
     - i think we should build something more flexible like `Grid, Grid.Row, Grid.Col`
-- Examples
-    - we can remove this and just use `Panel` + `CodeGroup`
+- ~~Examples~~
+    - ~~we can remove this and just use `Panel` + `CodeGroup`~~
 - Expandables
     - new name: `Collapsible` or `Accordion`?
-- Fields
-    - rename to `Property`
-        - `Property.Param`
-        - `Property.Response`
+- ~~Fields~~
+    - ~~rename to `Property`~~
 - ~~Frames~~
     - ~~`caption` → `description`~~
     - ~~`hint` → `title`~~
