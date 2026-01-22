@@ -132,6 +132,41 @@ function MyComponent() {
   );
 }`;
 
+const getString = (tabIndex?: number, language?: string) => {
+  if (language === "python") {
+    return new Array(tabIndex || 1)
+      .fill(
+        `print("Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}")`
+      )
+      .join("\n");
+  }
+
+  if (language === "java") {
+    return new Array(tabIndex || 1)
+      .fill(
+        `System.out.println("Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}");`
+      )
+      .join("\n");
+  }
+
+  return new Array(tabIndex || 1)
+    .fill(
+      `console.log('Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}');`
+    )
+    .join("\n");
+};
+
+const shortMultiLineCode = `function greet(name) {
+  console.log("Hello, " + name + "!");
+  return true;
+}`;
+
+const shortMultiLineCodeTS =
+  // biome-ignore lint/suspicious/noTemplateCurlyInString: just example code for stories
+  "function greet(name: string): boolean {\n  console.log(`Hello, ${name}!`);\n  return true;\n}";
+
+const shortCode = `def greet(name):\n    print(f"Hello, {name}!")\n    return True`;
+
 export {
   mediumCode,
   longExpandableCode,
@@ -140,4 +175,8 @@ export {
   diffCodeWithRemove,
   simpleDiffCode,
   complexDiffCode,
+  getString,
+  shortMultiLineCode,
+  shortCode,
+  shortMultiLineCodeTS,
 };
