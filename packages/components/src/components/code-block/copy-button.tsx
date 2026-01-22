@@ -30,6 +30,7 @@ const CopyToClipboardButton = ({
   copyButtonAriaLabel = DEFAULT_COPY_BUTTON_ARIA_LABEL,
   tooltipCopyText = DEFAULT_TOOLTIP_COPY_TEXT,
   tooltipCopiedText = DEFAULT_TOOLTIP_COPIED_TEXT,
+  ...buttonProps
 }: CopyToClipboardButtonProps & ComponentPropsWithoutRef<"button">) => {
   const trimmedTextToCopy = textToCopy.trim();
   const [isCopiedActive, setIsCopiedActive] = useState(false);
@@ -68,6 +69,7 @@ const CopyToClipboardButton = ({
   return (
     <div className={cn("relative z-10 select-none", className)}>
       <button
+        {...buttonProps}
         aria-label={copyButtonAriaLabel}
         className={
           "peer group/copy-button flex h-[26px] w-[26px] items-center justify-center rounded-md backdrop-blur"
