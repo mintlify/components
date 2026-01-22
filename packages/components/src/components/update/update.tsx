@@ -3,6 +3,7 @@ import {
   forwardRef,
   useCallback,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 import { type Rect, useRect } from "react-use-rect";
@@ -51,12 +52,15 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
   ) => {
     const [rect, setRect] = useState<Rect | null>(null);
     const [rectRef] = useRect(setRect);
-    const tagsArray = [
-      ...new Set(tags?.map((tag) => tag.trim()).filter(Boolean)),
-    ];
+    const tagsArray = useMemo(
+      () => [...new Set((tags ?? []).map((tag) => tag.trim()).filter(Boolean))],
+      [tags]
+    );
 
     const copyAnchorLink = useCallback(() => {
-      copyToClipboard(`${window.location.href.split("#")[0]}#${id}`);
+      copyToClipboard(
+        `${window.location.href.split("#")[0]}#${encodeURIComponent(id)}`
+      );
       window.location.hash = id;
       onCopyAnchorLink?.(id);
     }, [id, onCopyAnchorLink]);
