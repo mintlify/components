@@ -14,7 +14,7 @@ import { LanguageIcon } from "./language-icon";
 
 type LanguageDropdownProps = {
   selectedLanguage: string;
-  setSelectedLanguage: (language: string) => void;
+  setSelectedLanguage: (language: string, index: number) => void;
   languages: string[];
   codeBlockTheme?: "dark" | "system";
 };
@@ -61,9 +61,10 @@ const LanguageDropdown = ({
       <DropdownMenuContent
         align="end"
         className={cn(
-          "min-w-[170px] overflow-y-auto border p-1 dark:border-white/10 dark:bg-codeblock",
-          codeBlockTheme === "system" && "border-gray-200/70",
-          codeBlockTheme === "dark" && "border-white/10 bg-codeblock"
+          "min-w-[170px] overflow-y-auto border p-1",
+          codeBlockTheme === "system" &&
+            "border-gray-200/70 bg-white dark:border-white/10 dark:bg-[#0F1117]",
+          codeBlockTheme === "dark" && "border-white/10 bg-[#0F1117]"
         )}
         sideOffset={0}
       >
@@ -92,7 +93,7 @@ const LanguageDropdown = ({
               )}
               isSelected={isSelected}
               key={`Language${i}${language}`}
-              onSelect={() => setSelectedLanguage(language)}
+              onSelect={() => setSelectedLanguage(language, i)}
             >
               <LanguageIcon language={language} />
               <div className="flex min-w-0 flex-1 items-center font-medium">

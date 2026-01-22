@@ -47,7 +47,7 @@ const DropdownMenuContent = forwardRef<
     <DropdownContent
       align="start"
       className={cn(
-        "relative z-50 max-h-96 min-w-(--radix-dropdown-menu-trigger-width) max-w-(--radix-dropdown-menu-content-available-width) origin-(--radix-dropdown-menu-content-transform-origin) overflow-y-auto rounded-2xl border-standard bg-background-light p-1 text-gray-950/70 shadow-gray-500/5 shadow-xl dark:bg-background-dark dark:text-white/70 dark:shadow-gray-500/5 dark:shadow-none",
+        "relative z-50 max-h-96 min-w-(--radix-dropdown-menu-trigger-width) max-w-(--radix-dropdown-menu-content-available-width) origin-(--radix-dropdown-menu-content-transform-origin) overflow-y-auto rounded-2xl border-standard p-1 text-gray-950/70 shadow-gray-500/5 shadow-xl dark:text-white/70 dark:shadow-gray-500/5 dark:shadow-none",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=open]:animate-in",
         className
       )}
@@ -69,14 +69,13 @@ const DropdownMenuItem = forwardRef<
 >(({ className, isSelected, ...props }, ref) => (
   <DropdownItem
     className={cn(
-      "group relative flex w-full cursor-pointer select-none items-center justify-between gap-2 rounded-md px-2 py-1 text-sm outline-0 hover:bg-background-dark/3 focus:bg-accent focus:bg-background-dark/5 focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:cursor-default data-disabled:opacity-50 dark:focus:bg-background-light/5 dark:hover:bg-background-light/[0.03]",
+      "group relative flex w-full cursor-pointer select-none items-center justify-between gap-2 rounded-md px-2 py-1 text-sm outline-0 hover:bg-gray-950/[0.03] focus:bg-accent focus:bg-gray-950/5 focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:cursor-default data-disabled:opacity-50 dark:focus:bg-white/5 dark:hover:bg-white/[0.03]",
       isSelected
         ? "font-medium text-primary dark:text-primary-light"
         : "text-gray-950/50 hover:text-gray-950/75 focus:text-gray-950/75 dark:text-white/50 dark:focus:text-white/75 dark:hover:text-white/75",
       className
     )}
     ref={ref}
-    style={{ fontWeight: "normal !important" }}
     {...props}
   >
     {props.children}

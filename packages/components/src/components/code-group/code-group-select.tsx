@@ -60,6 +60,11 @@ const CodeGroupSelect = memo(function CodeGroupSelect({
 
   const handleGroupSelect = (grp: string) => {
     setSelectedGroup(grp);
+    const newGroupSnippets = snippets[grp];
+    const newOptions = newGroupSnippets
+      ? Object.keys(newGroupSnippets)
+      : undefined;
+    setSelectedOption(newOptions?.[0]);
   };
 
   const handleOptionSelect = (opt: string) => {
@@ -145,7 +150,7 @@ const CodeGroupSelect = memo(function CodeGroupSelect({
       <section
         aria-label={codeSnippetAriaLabel}
         className={cn(
-          "not-prose scrollbar-track-transparent scrollbar-thin scrollbar-thumb-rounded max-h-[calc(100%-34px)] w-full min-w-full max-w-0 overflow-x-auto rounded-xt p-5 text-xs leading-[1.35rem] dark:bg-codeblock",
+          "not-prose scrollbar-track-transparent scrollbar-thin scrollbar-thumb-rounded max-h-[calc(100%-34px)] w-full min-w-full max-w-0 overflow-x-auto rounded-[14px] p-5 text-xs leading-[1.35rem] dark:bg-codeblock",
           codeBlockTheme === "system" &&
             "scrollbar-thumb-black/20 dark:scrollbar-thumb-white/10 codeblock-light bg-white text-gray-950 dark:text-gray-50",
           codeBlockTheme === "dark" &&

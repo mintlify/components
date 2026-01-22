@@ -209,15 +209,11 @@ const CodeGroup = function CodeGroup({
         <div className="flex shrink-0 items-center justify-end gap-1.5">
           {dropdown && (
             <LanguageDropdown
+              codeBlockTheme={codeBlockTheme}
               languages={childArr.map((child) => child.props.language || "")}
               selectedLanguage={childArr[selectedIndex]?.props.language || ""}
-              setSelectedLanguage={(language: string) => {
-                const index = childArr.findIndex(
-                  (child) => child.props.language === language
-                );
-                if (index !== -1) {
-                  handleValueChange(String(index));
-                }
+              setSelectedLanguage={(_language: string, index: number) => {
+                handleValueChange(String(index));
               }}
             />
           )}
