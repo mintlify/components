@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite"
-import { Columns } from "./columns"
-import { COL_OPTIONS } from "./constants"
-import React from "react"
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import type React from "react";
+import { Columns } from "./columns";
+import { COL_OPTIONS } from "./constants";
 
 const Box = ({ children }: { children?: React.ReactNode }) => (
-  <div className="h-24 rounded-lg bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-sm text-zinc-500">
+  <div className="flex h-24 items-center justify-center rounded-lg bg-zinc-200 text-sm text-zinc-500 dark:bg-zinc-800">
     {children}
   </div>
-)
+);
 
 const meta: Meta<typeof Columns> = {
   title: "Components/Columns",
@@ -37,32 +37,32 @@ const meta: Meta<typeof Columns> = {
       table: { disable: true },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Columns>
+export default meta;
+type Story = StoryObj<typeof Columns>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const SingleColumn: Story = {
   args: { cols: 1 },
-}
+};
 
 export const TwoColumns: Story = {
   args: { cols: 2 },
-}
+};
 
 export const ThreeColumns: Story = {
   args: { cols: 3 },
-}
+};
 
 export const FourColumns: Story = {
   args: { cols: 4 },
-}
+};
 
 export const WithCustomClassName: Story = {
   args: {
     cols: 2,
     className: "gap-8",
   },
-}
+};
