@@ -20,7 +20,6 @@ type UpdatePropsBase = {
     title?: string;
     description?: string;
   };
-  isLivePreview?: boolean;
   onRegisterHeading?: (id: string, rect: Rect) => void;
   onUnregisterHeading?: (id: string) => void;
   hasContext?: boolean;
@@ -40,7 +39,6 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
       description,
       tags,
       className,
-      isLivePreview,
       "aria-label": ariaLabel = "Navigate to changelog",
       onRegisterHeading,
       onUnregisterHeading,
