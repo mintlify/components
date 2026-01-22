@@ -1,2 +1,3 @@
-export { Tabs } from './tabs';
-export type { TabsProps, TabsItemProps } from './tabs';
+export type { TabsItemProps, TabsProps } from "./tabs";
+// biome-ignore lint/performance/noBarrelFile: TODO
+export { Tabs } from "./tabs";
