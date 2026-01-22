@@ -44,13 +44,11 @@ const LanguageDropdown = ({
             hasOptions &&
               codeBlockTheme === "dark" &&
               "hover:bg-gray-700/70 hover:text-primary-light",
-            isOpen
-              ? "ring-1 dark:ring-gray-800/50" +
-                  (codeBlockTheme === "system"
-                    ? "ring-gray-200/70"
-                    : "ring-gray-800/50") +
-                  "border-gray-600/50 dark:border-gray-400/50"
-              : "border-transparent"
+            isOpen &&
+              "border-gray-600/50 ring-1 dark:border-gray-400/50 dark:ring-gray-800/50",
+            isOpen && codeBlockTheme === "system" && "ring-gray-200/70",
+            isOpen && codeBlockTheme === "dark" && "ring-gray-800/50",
+            !isOpen && "border-transparent"
           )}
         >
           <LanguageIcon language={selectedLanguage} />

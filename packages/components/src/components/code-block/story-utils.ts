@@ -132,27 +132,24 @@ function MyComponent() {
   );
 }`;
 
-const getString = (tabIndex?: number, language?: string) => {
+const getString = (tabIndex = 1, language?: string) => {
+  const lineInfo = tabIndex ? `Here are ${tabIndex} line(s)` : "";
   if (language === "python") {
-    return new Array(tabIndex || 1)
-      .fill(
-        `print("Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}")`
-      )
+    return new Array(tabIndex)
+      .fill(`print("Hello, World!${lineInfo ? ` ${lineInfo}` : ""}")`)
       .join("\n");
   }
 
   if (language === "java") {
-    return new Array(tabIndex || 1)
+    return new Array(tabIndex)
       .fill(
-        `System.out.println("Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}");`
+        `System.out.println("Hello, World!${lineInfo ? ` ${lineInfo}` : ""}");`
       )
       .join("\n");
   }
 
-  return new Array(tabIndex || 1)
-    .fill(
-      `console.log('Hello, World! ${tabIndex && `Here are ${tabIndex} line(s)`}');`
-    )
+  return new Array(tabIndex)
+    .fill(`console.log('Hello, World!${lineInfo ? ` ${lineInfo}` : ""}');`)
     .join("\n");
 };
 

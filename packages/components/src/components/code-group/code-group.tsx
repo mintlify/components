@@ -74,10 +74,11 @@ const CodeGroup = function CodeGroup({
     (value: string) => {
       const index = Number(value);
       const wasFocusOnTab =
+        typeof document !== "undefined" &&
         document.activeElement?.getAttribute("role") === "tab";
 
       // Important to clear hash to avoid collisions with tab groups
-      if (window.location.hash) {
+      if (typeof window !== "undefined" && window.location.hash) {
         window.history.replaceState(
           null,
           "",
@@ -88,7 +89,7 @@ const CodeGroup = function CodeGroup({
       setSelectedTab(index);
       onSelectedTabChange?.(index);
 
-      if (wasFocusOnTab) {
+      if (wasFocusOnTab && typeof requestAnimationFrame !== "undefined") {
         requestAnimationFrame(() => {
           const trigger = triggerRefs.current.get(index);
           if (trigger) {
