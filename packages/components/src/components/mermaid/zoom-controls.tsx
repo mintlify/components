@@ -10,6 +10,7 @@ import {
 import type { ComponentProps } from "react";
 
 import { cn } from "@/utils/cn";
+import type { MermaidPlacement } from "./mermaid";
 
 const Button = ({
   children,
@@ -36,6 +37,7 @@ type ZoomControlsProps = {
   onReset: () => void;
   onPan: (dx: number, dy: number) => void;
   panStep: number;
+  placement?: MermaidPlacement;
 };
 
 const ZoomControls = ({
@@ -44,12 +46,19 @@ const ZoomControls = ({
   onReset,
   onPan,
   panStep,
+  placement,
 }: ZoomControlsProps) => {
   return (
     // biome-ignore lint/a11y/useSemanticElements: TODO
     <div
       aria-label="Diagram zoom and pan controls"
-      className="absolute right-2 bottom-2 z-10 grid grid-cols-3 gap-1"
+      className={cn(
+        "absolute z-10 grid grid-cols-3 gap-1",
+        placement === "top-left" && "top-2 left-2",
+        placement === "top-right" && "top-2 right-2",
+        placement === "bottom-left" && "bottom-2 left-2",
+        placement === "bottom-right" && "right-2 bottom-2"
+      )}
       data-component-part="zoom-controls"
       role="group"
     >
