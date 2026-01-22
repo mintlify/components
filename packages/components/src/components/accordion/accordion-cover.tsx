@@ -21,8 +21,10 @@ const AccordionCover = ({
   topOffset = "-top-18",
 }: AccordionCoverProps) => {
   return (
+    // biome-ignore lint/a11y/useAriaPropsSupportedByRole: TODO
     <summary
       aria-controls={`${id}-accordion-children`}
+      aria-expanded={open}
       className="not-prose relative flex w-full cursor-pointer list-none flex-row content-center items-center space-x-2 rounded-t-xl px-5 py-4 hover:bg-gray-100 hover:dark:bg-gray-800 [&::-webkit-details-marker]:hidden"
       data-component-part="accordion-button"
       id={`${id}-label`}
