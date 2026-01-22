@@ -1,13 +1,21 @@
-import { IconType } from '@/models';
-import slugify from '@sindresorhus/slugify';
-import { ReactNode, createContext, useContext, useEffect, useId, useRef, useState } from 'react';
+import slugify from "@sindresorhus/slugify";
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
+import { Icon as ComponentIcon } from "@/components/icon";
 
-import { Classes } from '@/lib/local/selectors';
-import { Icon as ComponentIcon } from '@/components/icon';
-import { cn } from '@/utils/cn';
+import { Classes } from "@/lib/local/selectors";
+import type { IconType } from "@/models";
+import { cn } from "@/utils/cn";
 
-import { AccordionCover } from './accordionCover';
-import { CONNECTING_CHARACTER } from './accordionUrlUtils';
+import { AccordionCover } from "./accordionCover";
+import { CONNECTING_CHARACTER } from "./accordionUrlUtils";
 
 type AccordionProps = {
   title: string;
@@ -23,10 +31,14 @@ type AccordionProps = {
   onMount?: () => void;
   topOffset?: string;
   getInitialOpenFromUrl?: (id: string, parentIds: string[]) => boolean;
-  onUrlStateChange?: (isOpen: boolean, id: string | undefined, parentIds: string[]) => void;
-}
+  onUrlStateChange?: (
+    isOpen: boolean,
+    id: string | undefined,
+    parentIds: string[]
+  ) => void;
+};
 
-export function Accordion({
+const Accordion = ({
   title,
   description,
   defaultOpen = false,
@@ -41,7 +53,7 @@ export function Accordion({
   topOffset,
   getInitialOpenFromUrl,
   onUrlStateChange,
-}: AccordionProps) {
+}: AccordionProps) => {
   const onChange = (open: boolean) => {
     if (open) {
       trackOpen?.({ title });
@@ -51,35 +63,53 @@ export function Accordion({
   };
 
   const Icon =
-    typeof icon === 'string' ? (
-      <ComponentIcon icon={icon} iconType={iconType} className="w-4 h-4" />
+    typeof icon === "string" ? (
+      <ComponentIcon className="h-4 w-4" icon={icon} iconType={iconType} />
     ) : (
       icon
     );
   return (
     <GenericAccordion
-      title={title}
-      description={description}
-      defaultOpen={
-        defaultOpen === true || (typeof defaultOpen === 'string' && defaultOpen === 'true')
-      }
-      onChange={onChange}
-      icon={Icon}
-      className={className}
       _disabled={_disabled}
-      onMount={onMount}
-      topOffset={topOffset}
+      className={className}
+      defaultOpen={
+        defaultOpen === true ||
+        (typeof defaultOpen === "string" && defaultOpen === "true")
+      }
+      description={description}
       getInitialOpenFromUrl={getInitialOpenFromUrl}
+      icon={Icon}
+      onChange={onChange}
+      onMount={onMount}
       onUrlStateChange={onUrlStateChange}
+      title={title}
+      topOffset={topOffset}
     >
       {children}
     </GenericAccordion>
   );
-}
+};
 
 const AccordionContext = createContext({ parentIds: [] as string[] });
 
-function GenericAccordion({
+type GenericAccordionProps = {
+  title: string | ReactNode;
+  defaultOpen?: boolean;
+  icon?: ReactNode;
+  onChange?: (open: boolean) => void;
+} & Pick<
+  AccordionProps,
+  | "description"
+  | "children"
+  | "className"
+  | "_disabled"
+  | "onMount"
+  | "topOffset"
+  | "getInitialOpenFromUrl"
+  | "onUrlStateChange"
+>;
+
+const GenericAccordion = ({
   title,
   description,
   defaultOpen = false,
@@ -92,47 +122,13 @@ function GenericAccordion({
   topOffset,
   getInitialOpenFromUrl,
   onUrlStateChange,
-}: {
-  /** The main text of the Accordion shown in bold */
-  title: string | ReactNode;
-
-  /** Text under the title */
-  description?: string;
-
-  /** Whether the Accordion is open initially */
-  defaultOpen?: boolean;
-
-  /** Icon to display to the left */
-  icon?: ReactNode;
-
-  /** Callback when the Accordion is clicked with the new open state */
-  onChange?: (open: boolean) => void;
-
-  /** The Accordion contents */
-  children: ReactNode;
-
-  /** Custom className for the root element */
-  className?: string;
-
-  /** For internal use only (whether to make clicking affect URL state) */
-  _disabled?: boolean;
-
-  /** Callback when the accordion mounts (called on initial render if conditions are met) */
-  onMount?: () => void;
-
-  /** Custom top offset for the anchor element (default: '-top-18') */
-  topOffset?: string;
-
-  /** Get initial open state based on URL/hash. Return true to open, false to use defaultOpen. */
-  getInitialOpenFromUrl?: (id: string, parentIds: string[]) => boolean;
-
-  /** Called when accordion state changes to update URL. Receives open state, accordion id, and parent ids. */
-  onUrlStateChange?: (isOpen: boolean, id: string | undefined, parentIds: string[]) => void;
-}) {
+}: GenericAccordionProps) => {
   const generatedId = useId();
   const id =
-    typeof title === 'string'
-      ? slugify(title.split(CONNECTING_CHARACTER).join('-'), { decamelize: false })
+    typeof title === "string"
+      ? slugify(title.split(CONNECTING_CHARACTER).join("-"), {
+          decamelize: false,
+        })
       : generatedId;
 
   const context = useContext(AccordionContext);
@@ -150,6 +146,7 @@ function GenericAccordion({
   const [open, setOpen] = useState<boolean>(initialOpen);
   const openRef = useRef<boolean>(initialOpen);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: TODO
   useEffect(() => {
     if (getInitialOpenFromUrl && id) {
       const urlResult = getInitialOpenFromUrl(id, context.parentIds);
@@ -160,61 +157,70 @@ function GenericAccordion({
     }
 
     onMount?.();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onClickOpen = (isOpen: boolean) => {
     setOpen(isOpen);
     openRef.current = isOpen;
 
-    // Call the URL state change callback if provided
     if (!_disabled && onUrlStateChange) {
-      onUrlStateChange(isOpen, typeof title === 'string' ? id : undefined, context.parentIds);
+      onUrlStateChange(
+        isOpen,
+        typeof title === "string" ? id : undefined,
+        context.parentIds
+      );
     }
 
-    // Call the onChange callback
-    if (onChange) {
-      onChange(isOpen);
-    }
+    onChange?.(isOpen);
   };
 
   return (
     <AccordionContext.Provider
       value={{
         ...context,
-        parentIds: [...context.parentIds, ...(typeof title === 'string' ? [id] : [])],
+        parentIds: [
+          ...context.parentIds,
+          ...(typeof title === "string" ? [id] : []),
+        ],
       }}
     >
       <details
-        open={open}
+        className={cn(
+          Classes.Accordion,
+          "mb-3 cursor-default overflow-hidden rounded-2xl border border-gray-200/70 bg-white dark:border-white/10 dark:bg-[#0b0c0e]",
+          className
+        )}
+        data-component-part="accordion"
+        key={typeof title === "string" ? title : "accordion"}
         onToggle={(e) => {
           const newState = e.currentTarget.open;
           if (newState !== openRef.current) {
             onClickOpen(newState);
           }
         }}
-        key={typeof title === 'string' ? title : 'accordion'}
-        className={cn(Classes.Accordion, 'border border-gray-200/70 dark:border-white/10 rounded-2xl mb-3 overflow-hidden bg-white dark:bg-[#0b0c0e] cursor-default', className)}
-        data-component-part="accordion"
+        open={open}
       >
         <AccordionCover
-          id={id}
-          title={title}
           description={description}
-          open={open}
           icon={icon}
+          id={id}
+          open={open}
+          title={title}
           topOffset={topOffset}
         />
+        {/** biome-ignore lint/a11y/useSemanticElements: TODO */}
         <div
-          id={id + '-accordion-children'}
-          role="region"
-          aria-labelledby={id + '-label'}
-          className="mt-2 mb-4 mx-6 prose prose-gray dark:prose-invert overflow-x-auto cursor-default"
+          aria-labelledby={`${id}-label`}
+          className="prose prose-gray dark:prose-invert mx-6 mt-2 mb-4 cursor-default overflow-x-auto"
           data-component-part="accordion-content"
+          id={`${id}-accordion-children`}
+          role="region"
         >
           {children}
         </div>
       </details>
     </AccordionContext.Provider>
   );
-}
+};
+
+export { Accordion };
