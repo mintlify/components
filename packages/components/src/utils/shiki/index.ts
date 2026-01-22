@@ -235,7 +235,9 @@ export function getShikiHighlightedHtml(
     const firstChild = html.children[0];
     if (!firstChild) return undefined;
     if (firstChild.type === 'element' && firstChild.tagName === 'pre') {
-        const spanElements = (firstChild.children[0] as Element).children.filter(
+        const codeElement = firstChild.children[0] as Element | undefined;
+        if (!codeElement?.children) return hastToHtml(html);
+        const spanElements = codeElement.children.filter(
             (child) => child.type === 'element' && child.tagName === 'span'
         ) as Element[];
         spanElements.forEach((child, index) => {

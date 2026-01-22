@@ -115,7 +115,9 @@ function highlightSync(opts) {
     if (typeof html !== 'object') return html;
     const pre = html.children[0];
     if (pre?.type === 'element' && pre.tagName === 'pre') {
-        const spanElements = pre.children[0].children.filter(
+        const codeElement = pre.children[0];
+        if (!codeElement?.children) return hastToHtmlFn(html);
+        const spanElements = codeElement.children.filter(
             (child) => child.type === 'element' && child.tagName === 'span'
         );
         spanElements.forEach((c, i) => {

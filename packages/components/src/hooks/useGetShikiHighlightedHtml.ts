@@ -1,10 +1,25 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 import { type ShikiHighlightedHtmlArgs, getShikiHighlightedHtml } from '@/utils/shiki';
 
 export function useGetShikiHighlightedHtml(props: ShikiHighlightedHtmlArgs): string | undefined {
-    const htmlOrPromise = getShikiHighlightedHtml(props);
+    const { codeString, codeBlockTheme, opts } = props;
+    const language = 'language' in props ? props.language : undefined;
+    const className = 'className' in props ? props.className : undefined;
+    const fileName = 'fileName' in props ? props.fileName : undefined;
+
+    const optsKey = useMemo(
+        () => JSON.stringify(opts),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [opts?.highlightedLines, opts?.focusedLines, opts?.noAsync]
+    );
+
+    const htmlOrPromise = useMemo(
+        () => getShikiHighlightedHtml(props),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [codeString, codeBlockTheme, language, className, fileName, optsKey]
+    );
 
     const [html, setHtml] = useState<string | undefined>(
         htmlOrPromise instanceof Promise ? undefined : htmlOrPromise
@@ -42,7 +57,7 @@ export function useGetShikiHighlightedHtml(props: ShikiHighlightedHtmlArgs): str
         return () => {
             cancelled = true;
         };
-    }, [props, htmlOrPromise]);
+    }, [htmlOrPromise]);
 
     return html;
 }
