@@ -45,25 +45,17 @@ export function Expandable({
   hasScrolledToAnchorRef,
   anchor,
 }: ExpandableProps) {
-  // if uniqueParamId is provided, we use session storage to
-  // track if a user manually toggled the param field expandable
   const shouldUseSessionStorage = !!uniqueParamId;
   const { ref: expandableRef, isExpanded, onManualToggle, isInSessionStorage } = useExpandableMemory(
     uniqueParamId || '',
     defaultOpen
   );
 
-  // in case we ever render an expandable that is not a param field,
-  // we can just use regular state to track it
   const [localOpen, setLocalOpen] = useState(defaultOpen);
 
-  // Check if there's an anchor in the URL that matches this expandable
-  // If so, override session storage to ensure the expandable opens for the anchor
   const containsAnchor = Boolean(uniqueParamId && anchor?.includes(uniqueParamId));
   const shouldOverrideForAnchor = containsAnchor && !hasScrolledToAnchorRef?.current;
 
-  // If using session storage, check if we should override for anchor links
-  // Otherwise, respect session storage or defaultOpen (if not yet in session storage)
   const open = shouldUseSessionStorage
     ? shouldOverrideForAnchor
       ? true
@@ -72,11 +64,8 @@ export function Expandable({
         : defaultOpen
     : localOpen;
 
-  // setShouldRenderChildren should only ever be called with true - we never want to unmount stateful components
   const [shouldRenderChildren, setShouldRenderChildren] = useState(open || !lazy);
 
-  // Update shouldRenderChildren when open becomes true (e.g., from session storage)
-  // Use useLayoutEffect to update synchronously before paint, preventing flash of empty expanded state
   useLayoutEffect(() => {
     if (open && !shouldRenderChildren) {
       setShouldRenderChildren(true);
@@ -118,7 +107,7 @@ export function Expandable({
   return (
     <details
       key={title}
-      ref={expandableRef}
+      ref={expandableRef as RefObject<HTMLDetailsElement>}
       open={open}
       onToggle={(e) => {
         const newState = e.currentTarget.open;
