@@ -13,7 +13,7 @@ type ExampleCodeSnippet = {
   language: string;
 };
 
-interface CodeGroupSelectProps {
+type CodeGroupSelectProps {
   snippets: Record<string, Record<string, ExampleCodeSnippet>>;
   setSelectedExampleIndex?: (index: number) => void;
   codeBlockTheme?: "system" | "dark";
