@@ -30,7 +30,7 @@ const AccordionCover = ({
       id={`${id}-label`}
     >
       <div className={cn("absolute", topOffset)} id={id} />
-      <div className="mr-0.5" data-component-part="accordion-caret-right">
+      <div className="mr-2" data-component-part="accordion-caret-right">
         <Icon
           className={cn(
             "bg-gray-700 transition dark:bg-gray-400",
