@@ -250,54 +250,55 @@ const CodeGroup = ({
   );
 };
 
-const TabItem = forwardRef<
-  React.ComponentRef<typeof Tabs.Tab>,
-  {
-    children: ReactNode;
-    value: number;
-    isSelected: boolean;
-    tabsLength: number;
-    codeBlockTheme: "dark" | "system" | undefined;
-  }
->(function TabItem(
-  { children, value, isSelected, tabsLength, codeBlockTheme },
-  ref
-) {
-  return (
-    <Tabs.Tab
-      className={cn(
-        "group relative my-1 mb-1.5 ml-0! flex items-center gap-1.5 whitespace-nowrap font-medium outline-0 first:ml-2.5! focus-visible:outline-2",
-        isSelected &&
-          codeBlockTheme === "system" &&
-          "text-primary dark:text-primary-light",
-        isSelected && codeBlockTheme === "dark" && "text-primary-light",
-        !isSelected &&
-          codeBlockTheme === "system" &&
-          "text-gray-500 dark:text-gray-400",
-        !isSelected && codeBlockTheme === "dark" && "text-gray-400"
-      )}
-      ref={ref}
-      value={value}
-    >
-      <div
-        className={cn(
-          "z-10 flex items-center gap-1.5 rounded-lg px-1.5 focus:outline-none",
-          tabsLength > 1 &&
-            codeBlockTheme === "system" &&
-            "group-hover:bg-gray-200/50 group-hover:text-primary dark:group-hover:bg-gray-700/70 dark:group-hover:text-primary-light",
-          tabsLength > 1 &&
-            codeBlockTheme === "dark" &&
-            "group-hover:bg-gray-700/70 group-hover:text-primary-light"
-        )}
-      >
-        {children}
-      </div>
+type TabItemProps = {
+  children: ReactNode;
+  value: number;
+  isSelected: boolean;
+  tabsLength: number;
+  codeBlockTheme: "dark" | "system";
+};
 
-      {isSelected && (
-        <div className="absolute right-0 -bottom-1.5 left-0 h-0.5 rounded-full bg-primary dark:bg-primary-light" />
-      )}
-    </Tabs.Tab>
-  );
-});
+const TabItem = forwardRef<React.ComponentRef<typeof Tabs.Tab>, TabItemProps>(
+  function TabItem(
+    { children, value, isSelected, tabsLength, codeBlockTheme },
+    ref
+  ) {
+    return (
+      <Tabs.Tab
+        className={cn(
+          "group relative my-1 mb-1.5 ml-0! flex items-center gap-1.5 whitespace-nowrap font-medium outline-0 first:ml-2.5! focus-visible:outline-2",
+          isSelected &&
+            codeBlockTheme === "system" &&
+            "text-primary dark:text-primary-light",
+          isSelected && codeBlockTheme === "dark" && "text-primary-light",
+          !isSelected &&
+            codeBlockTheme === "system" &&
+            "text-gray-500 dark:text-gray-400",
+          !isSelected && codeBlockTheme === "dark" && "text-gray-400"
+        )}
+        ref={ref}
+        value={value}
+      >
+        <div
+          className={cn(
+            "z-10 flex items-center gap-1.5 rounded-lg px-1.5 focus:outline-none",
+            tabsLength > 1 &&
+              codeBlockTheme === "system" &&
+              "group-hover:bg-gray-200/50 group-hover:text-primary dark:group-hover:bg-gray-700/70 dark:group-hover:text-primary-light",
+            tabsLength > 1 &&
+              codeBlockTheme === "dark" &&
+              "group-hover:bg-gray-700/70 group-hover:text-primary-light"
+          )}
+        >
+          {children}
+        </div>
+
+        {isSelected && (
+          <div className="absolute right-0 -bottom-1.5 left-0 h-0.5 rounded-full bg-primary dark:bg-primary-light" />
+        )}
+      </Tabs.Tab>
+    );
+  }
+);
 
 export { CodeGroup, type CodeGroupProps };
