@@ -43,7 +43,7 @@ type CodeBlockChild = Exclude<
   boolean | null | undefined
 >;
 
-const CodeGroup = function CodeGroup({
+const CodeGroup = ({
   children,
   onCopied,
   isSmallText,
@@ -58,7 +58,7 @@ const CodeGroup = function CodeGroup({
   onSelectedTabChange,
   askAiButton,
   feedbackButton,
-}: CodeGroupProps) {
+}: CodeGroupProps) => {
   const childArr = React.Children.toArray(children) as CodeBlockChild[];
   const safeInitialIndex = Math.min(
     Math.max(0, initialSelectedTab),
