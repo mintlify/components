@@ -1,9 +1,9 @@
+import type { CodeStyling } from "@/utils/shiki/code-styling";
 import {
   DEFAULT_DARK_THEME,
   DEFAULT_LIGHT_THEME,
   type ShikiThemeType,
 } from "@/utils/shiki/constants";
-import type { CodeStyling } from "@/validation";
 
 const codeStylingToThemeOrThemes = (
   codeStylingFromConfig: CodeStyling

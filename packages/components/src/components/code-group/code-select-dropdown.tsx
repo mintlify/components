@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@/utils/cn";
-import type { CodeBlockTheme } from "@/validation";
+import type { CodeBlockTheme } from "@/utils/shiki/code-styling";
 
 import {
   DropdownMenu,

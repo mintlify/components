@@ -1,8 +1,8 @@
 import { memo, type ReactNode } from "react";
 
 import { useGetShikiHighlightedHtml } from "@/hooks/use-get-shiki-highlighted-html";
+import type { CodeStyling } from "@/utils/shiki/code-styling";
 import { SHIKI_CLASSNAME } from "@/utils/shiki/constants";
-import type { CodeStyling } from "@/validation";
 
 type CodeSnippetProps = {
   language?: string;

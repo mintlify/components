@@ -5,7 +5,7 @@ import {
   type CopyToClipboardResult,
   copyToClipboard,
 } from "@/utils/copy-to-clipboard";
-import type { CodeBlockTheme } from "@/validation";
+import type { CodeBlockTheme } from "@/utils/shiki/code-styling";
 
 const DEFAULT_COPY_BUTTON_ARIA_LABEL = "Copy the contents from the code block";
 const DEFAULT_TOOLTIP_COPY_TEXT = "Copy";

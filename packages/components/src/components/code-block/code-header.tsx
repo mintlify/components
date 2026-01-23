@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Icon as ComponentIcon } from "@/components/icon";
 import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
-import type { CodeBlockTheme } from "@/validation";
+import type { CodeBlockTheme } from "@/utils/shiki/code-styling";
 
 type CodeHeaderProps = {
   filename?: string;

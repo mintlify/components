@@ -2,8 +2,8 @@ import { ChevronsUpDownIcon } from "lucide-react";
 import { useState } from "react";
 
 import { cn } from "@/utils/cn";
+import type { CodeBlockTheme } from "@/utils/shiki/code-styling";
 import { getDisplayName } from "@/utils/shiki/snippet-presets";
-import type { CodeBlockTheme } from "@/validation";
 
 import {
   DropdownMenu,

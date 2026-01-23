@@ -3,7 +3,7 @@ import type { ReactNode, RefObject } from "react";
 import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 import { getNodeText } from "@/utils/get-node-text";
-import type { CodeBlockTheme, CodeStyling } from "@/validation";
+import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
 
 import { BaseCodeBlock } from "./base-code-block";
 import { CodeHeader } from "./code-header";
