@@ -1,6 +1,7 @@
 import type { SVGProps } from "react";
 
 import { cn } from "@/utils/cn";
+import type { CodeBlockTheme } from "@/validation";
 
 const InfoIcon = ({
   "aria-label": ariaLabel = "Info",
@@ -272,7 +273,7 @@ const LinkIcon = (props: SVGProps<SVGSVGElement>) => {
 const ActiveCopyButtonIcon = ({
   codeBlockTheme = "system",
 }: {
-  codeBlockTheme?: "system" | "dark";
+  codeBlockTheme?: CodeBlockTheme;
 }) => {
   return (
     <svg
@@ -296,7 +297,7 @@ const ActiveCopyButtonIcon = ({
 const CopyButtonIcon = ({
   codeBlockTheme = "system",
 }: {
-  codeBlockTheme?: "system" | "dark";
+  codeBlockTheme?: CodeBlockTheme;
 }) => {
   return (
     <svg

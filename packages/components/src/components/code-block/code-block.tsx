@@ -2,13 +2,15 @@ import type { ReactNode, RefObject } from "react";
 
 import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
-import type { CopyToClipboardResult } from "@/utils/copy-to-clipboard";
 import { getNodeText } from "@/utils/get-node-text";
-import type { CodeStyling } from "@/validation";
+import type { CodeBlockTheme, CodeStyling } from "@/validation";
 
 import { BaseCodeBlock } from "./base-code-block";
 import { CodeHeader } from "./code-header";
-import { CopyToClipboardButton } from "./copy-button";
+import {
+  CopyToClipboardButton,
+  type CopyToClipboardButtonProps,
+} from "./copy-button";
 
 type CodeBlockProps = {
   language?: string;
@@ -62,7 +64,7 @@ type CodeBlockProps = {
   /**
    * Prop to set the code block theme (code block UI theme)
    */
-  codeBlockTheme?: "dark" | "system";
+  codeBlockTheme?: CodeBlockTheme;
   /**
    * Prop to set the code block theme object (syntax highlighting theme)
    */
@@ -75,17 +77,13 @@ type CodeBlockProps = {
    * Pass in CodeSnippetFeedbackButton component
    */
   feedbackButton?: ReactNode;
-  /**
-   * The callback function when a user clicks on the copied to clipboard button
-   */
-  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
   children?: ReactNode;
+  copyButtonProps?: CopyToClipboardButtonProps;
 };
 
 const CodeBlock = function CodeBlock(params: CodeBlockProps) {
   const {
     filename,
-    onCopied,
     children,
     className,
     icon,
@@ -97,6 +95,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
     codeBlockThemeObject,
     askAiButton,
     feedbackButton,
+    copyButtonProps,
   } = params;
 
   const codeString = getNodeText(children);
@@ -126,7 +125,11 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
           icon={icon}
         >
           {feedbackButton && feedbackButton}
-          <CopyToClipboardButton onCopied={onCopied} textToCopy={codeString} />
+          <CopyToClipboardButton
+            codeBlockTheme={codeBlockTheme}
+            textToCopy={codeString}
+            {...copyButtonProps}
+          />
           {askAiButton && askAiButton}
         </CodeHeader>
       ) : (
@@ -135,7 +138,11 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
           data-floating-buttons
         >
           {feedbackButton && feedbackButton}
-          <CopyToClipboardButton onCopied={onCopied} textToCopy={codeString} />
+          <CopyToClipboardButton
+            codeBlockTheme={codeBlockTheme}
+            textToCopy={codeString}
+            {...copyButtonProps}
+          />
           {askAiButton && askAiButton}
         </div>
       )}

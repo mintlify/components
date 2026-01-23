@@ -1,7 +1,8 @@
 import { DEFAULT_DARK_BG, DEFAULT_LIGHT_BG } from "@/utils/shiki/constants";
+import type { CodeBlockTheme } from "@/validation";
 
 const getShikiBackgroundColors = (
-  codeBlockTheme: "system" | "dark",
+  codeBlockTheme: CodeBlockTheme,
   html: string | undefined,
   children: unknown
 ): { light: string | undefined; dark: string | undefined } | undefined => {

@@ -1,6 +1,7 @@
+type CodeBlockTheme = "dark" | "system";
+
 type CodeStyling =
-  | "dark"
-  | "system"
+  | CodeBlockTheme
   | {
       languages?:
         | {
@@ -199,4 +200,4 @@ type CodeStyling =
     }
   | undefined;
 
-export type { CodeStyling };
+export type { CodeStyling, CodeBlockTheme };
