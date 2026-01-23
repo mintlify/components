@@ -147,7 +147,7 @@ const Callout = ({
   const IconElement =
     typeof finalIcon === "string" ? (
       <ComponentIcon
-        className="m-0! h-4 w-4 shrink-0"
+        className="m-0! size-4 shrink-0"
         color={finalColor}
         icon={finalIcon}
         iconLibrary={iconLibrary}

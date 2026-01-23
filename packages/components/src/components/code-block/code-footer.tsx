@@ -26,7 +26,7 @@ const CodeFooter = ({
         onClick={toggleExpanded}
         type="button"
       >
-        <EllipsisIcon className="h-3.5 w-3.5 shrink-0 text-gray-500 dark:text-gray-400" />
+        <EllipsisIcon className="size-3.5 shrink-0 text-gray-500 dark:text-gray-400" />
         {isExpanded
           ? "Collapse"
           : `See all ${numberOfLines} line${numberOfLines === 1 ? "" : "s"}`}

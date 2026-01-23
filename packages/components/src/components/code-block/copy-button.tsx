@@ -73,7 +73,7 @@ const CopyToClipboardButton = ({
         {...buttonProps}
         aria-label={copyButtonAriaLabel}
         className={
-          "peer group/copy-button flex h-[26px] w-[26px] items-center justify-center rounded-md backdrop-blur"
+          "peer group/copy-button flex size-[26px] items-center justify-center rounded-md backdrop-blur"
         }
         data-testid="copy-code-button"
         onClick={onCopy}

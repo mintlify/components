@@ -302,7 +302,7 @@ const CopyButtonIcon = ({
   return (
     <svg
       className={cn(
-        "h-4 w-4",
+        "size-4",
         codeBlockTheme === "system" &&
           "text-gray-400 group-hover/copy-button:text-gray-500 dark:text-white/40 dark:group-hover/copy-button:text-white/60",
         codeBlockTheme === "dark" &&

@@ -143,7 +143,7 @@ const CodeGroup = ({
               typeof childArr[selectedIndex]?.props.icon === "string" && (
                 <ComponentIcon
                   className={cn(
-                    "h-3.5 w-3.5 bg-gray-500 dark:bg-gray-400",
+                    "size-3.5 bg-gray-500 dark:bg-gray-400",
                     Classes.CodeBlockIcon
                   )}
                   icon={childArr[selectedIndex]?.props.icon}

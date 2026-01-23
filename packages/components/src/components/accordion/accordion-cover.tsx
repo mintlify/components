@@ -30,7 +30,7 @@ const AccordionCover = ({
       id={`${id}-label`}
     >
       <div className={cn("absolute", topOffset)} id={id} />
-      <div className="mr-0.5" data-component-part="accordion-caret-right">
+      <div className="mr-2" data-component-part="accordion-caret-right">
         <Icon
           className={cn(
             "bg-gray-700 transition dark:bg-gray-400",
@@ -44,7 +44,7 @@ const AccordionCover = ({
       </div>
       {!!icon && (
         <div
-          className="flex h-4 w-4 items-center justify-center fill-gray-800 text-gray-800 dark:fill-gray-100 dark:text-gray-100"
+          className="flex size-4 items-center justify-center fill-gray-800 text-gray-800 dark:fill-gray-100 dark:text-gray-100"
           data-component-part="accordion-icon"
         >
           {icon}

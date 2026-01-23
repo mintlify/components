@@ -66,7 +66,7 @@ const Card = ({
   const Icon =
     typeof icon === "string" ? (
       <ComponentIcon
-        className="m-0! h-6 w-6 shrink-0"
+        className="m-0! size-6 shrink-0"
         color={color}
         icon={icon}
         iconLibrary={iconLibrary}
@@ -138,13 +138,13 @@ const GenericCard = <T extends ElementType = "div">({
           // biome-ignore lint/correctness/useImageSize: TODO
           <img
             alt={title}
-            className="h-6 w-6 object-cover object-center"
+            className="size-6 object-cover object-center"
             data-component-part="card-icon"
             src={icon as string}
           />
         ) : (
           <div
-            className="h-6 w-6 fill-gray-800 text-gray-800 dark:fill-gray-100 dark:text-gray-100"
+            className="size-6 fill-gray-800 text-gray-800 dark:fill-gray-100 dark:text-gray-100"
             data-component-part="card-icon"
           >
             {icon}
@@ -193,7 +193,7 @@ const GenericCard = <T extends ElementType = "div">({
             )}
             data-component-part="card-arrow"
           >
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight className="size-4" />
           </div>
         )}
         {renderIcon}

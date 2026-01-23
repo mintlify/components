@@ -65,7 +65,7 @@ export const OnIcon: Story = {
     <Tooltip description="Information">
       <svg
         aria-hidden="true"
-        className="h-6 w-6"
+        className="size-6"
         fill="none"
         stroke="currentColor"
         strokeWidth={1.5}
