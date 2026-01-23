@@ -20,17 +20,16 @@ We use three labels to categorize issues:
 
 ### Reporting Bugs
 
-Before submitting a bug report:
-
 - Check the [existing issues](https://github.com/mintlify/components/issues) to avoid duplicates
-- Create an issue and add the `bug` label
+- [Open a bug report](https://github.com/mintlify/components/issues/new?template=bug_report.md) using the template
 - Include reproduction steps, expected behavior, and actual behavior
 - Add screenshots or code snippets if helpful
 
 ### Requesting Features or Improvements
 
 - Check existing issues first to avoid duplicates
-- Create an issue with the `feature request` or `improvement` label
+- [Open a feature request](https://github.com/mintlify/components/issues/new?template=feature_request.md) using the template
+- For improvements to existing components, add the `improvement` label
 - Describe the use case and why it would be valuable
 
 ### Submitting Changes
@@ -44,10 +43,11 @@ Before submitting a bug report:
 
 ### Pull Request Guidelines
 
+When you open a PR, you'll see a template with sections for Summary and Test Plan. Please fill these out.
+
 - Keep PRs focused on a single change
 - Write clear commit messages
 - Update documentation if needed
-- Add a changeset for user-facing changes
 - Ensure all CI checks pass
 
 ## Code Style
