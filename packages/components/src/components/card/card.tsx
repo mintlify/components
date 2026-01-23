@@ -9,8 +9,8 @@ import type {
   Ref,
 } from "react";
 import { Icon as ComponentIcon } from "@/components/icon";
+import { Classes } from "@/constants/selectors";
 import { ArrowRightIcon } from "@/icons";
-import { Classes } from "@/lib/local/selectors";
 import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
 import { isRemoteUrl } from "@/utils/is-remote-url";

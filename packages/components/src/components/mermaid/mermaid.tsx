@@ -1,7 +1,7 @@
 import mermaid, { type MermaidConfig } from "mermaid";
 import { useEffect, useId, useRef, useState } from "react";
+import { Classes } from "@/constants/selectors";
 import { useIsDarkTheme } from "@/hooks/use-is-dark-theme";
-import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
 import { usePanZoom } from "./use-pan-zoom";
 import { ZoomControls } from "./zoom-controls";

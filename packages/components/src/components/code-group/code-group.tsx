@@ -16,7 +16,7 @@ import {
   type CopyToClipboardButtonProps,
 } from "@/components/code-block/copy-button";
 import { Icon as ComponentIcon } from "@/components/icon";
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 import { getNodeText } from "@/utils/get-node-text";
 import type { CodeBlockTheme, CodeStyling } from "@/validation";

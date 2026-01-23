@@ -2,7 +2,7 @@
 import type { CSSProperties } from "react";
 
 import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import {
   ICON_TYPES,
   type IconLibrary,

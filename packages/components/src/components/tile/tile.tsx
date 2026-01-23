@@ -1,4 +1,4 @@
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 import { isRemoteUrl } from "@/utils/is-remote-url";
 

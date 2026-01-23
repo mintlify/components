@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
+import { Classes } from "@/constants/selectors";
 import { FileIcon } from "@/icons";
-import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
 
 import { useTreeLevel } from "./use-tree-level";

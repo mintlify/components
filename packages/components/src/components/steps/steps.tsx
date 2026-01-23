@@ -1,7 +1,7 @@
 import type React from "react";
 import type { ReactNode } from "react";
 import { Icon } from "@/components/icon";
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
 import { STEP_TITLE_SIZES, type StepTitleSize } from "./constants";

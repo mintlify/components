@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 import { enhanceVideoProps } from "@/utils/enhance-video-props";
 

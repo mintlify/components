@@ -1,6 +1,6 @@
 import type { ReactNode, RefObject } from "react";
 
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 import { getNodeText } from "@/utils/get-node-text";
 import type { CodeBlockTheme, CodeStyling } from "@/validation";

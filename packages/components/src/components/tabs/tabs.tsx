@@ -16,7 +16,7 @@ import {
   CHILD_HEADING_IDS_ATTRIBUTE,
   CHILD_TAB_IDS_ATTRIBUTE,
 } from "@/constants";
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
 import { slugify } from "@/utils/slugify";

@@ -10,7 +10,7 @@ import {
 } from "react";
 import { Icon as ComponentIcon } from "@/components/icon";
 
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import type { IconType } from "@/models";
 import { cn } from "@/utils/cn";
 

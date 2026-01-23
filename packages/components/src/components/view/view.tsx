@@ -1,6 +1,6 @@
 import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
 
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import type { MultiViewItemType } from "@/models";
 import { cn } from "@/utils/cn";
 
