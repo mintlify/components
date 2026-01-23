@@ -61,7 +61,7 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
       copyToClipboard(
         `${window.location.href.split("#")[0]}#${encodeURIComponent(id)}`
       );
-      window.location.hash = id;
+      window.location.hash = encodeURIComponent(id);
       onCopyAnchorLink?.(id);
     }, [id, onCopyAnchorLink]);
 
