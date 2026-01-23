@@ -21,12 +21,12 @@ export const Basic: Story = {
   },
 };
 
-export const WithCaption: Story = {
+export const WithDescription: Story = {
   args: {
     style: { width: "400px", height: "200px" },
     className: "w-full",
-    description: "This is a frame caption",
-    children: <div className="p-4">Frame with caption</div>,
+    description: "This is a frame description",
+    children: <div className="p-4">Frame with description</div>,
   },
 };
 
