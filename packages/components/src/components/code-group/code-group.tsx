@@ -11,11 +11,13 @@ import React, {
 
 import { BaseCodeBlock } from "@/components/code-block/base-code-block";
 import type { CodeBlockProps } from "@/components/code-block/code-block";
-import { CopyToClipboardButton } from "@/components/code-block/copy-button";
+import {
+  CopyToClipboardButton,
+  type CopyToClipboardButtonProps,
+} from "@/components/code-block/copy-button";
 import { Icon as ComponentIcon } from "@/components/icon";
 import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
-import type { CopyToClipboardResult } from "@/utils/copy-to-clipboard";
 import { getNodeText } from "@/utils/get-node-text";
 import type { CodeBlockTheme, CodeStyling } from "@/validation";
 
@@ -23,7 +25,6 @@ import { LanguageDropdown } from "./language-dropdown";
 
 type CodeGroupProps = {
   dropdown?: boolean;
-  onCopied?: (result: CopyToClipboardResult, textToCopy?: string) => void;
   isSmallText?: boolean;
   children?: ReactElement<CodeBlockProps>[] | ReactElement<CodeBlockProps>;
   noMargins?: boolean;
@@ -36,6 +37,7 @@ type CodeGroupProps = {
   askAiButton?: ReactNode;
   feedbackButton?: ReactNode;
   className?: string;
+  copyButtonProps?: CopyToClipboardButtonProps;
 };
 
 type CodeBlockChild = Exclude<
@@ -45,7 +47,6 @@ type CodeBlockChild = Exclude<
 
 const CodeGroup = ({
   children,
-  onCopied,
   isSmallText,
   className,
   noMargins,
@@ -58,6 +59,7 @@ const CodeGroup = ({
   onSelectedTabChange,
   askAiButton,
   feedbackButton,
+  copyButtonProps,
 }: CodeGroupProps) => {
   const childArr = React.Children.toArray(children) as CodeBlockChild[];
   const safeInitialIndex = Math.min(
@@ -217,8 +219,9 @@ const CodeGroup = ({
           )}
           {feedbackButton && feedbackButton}
           <CopyToClipboardButton
-            onCopied={onCopied}
+            codeBlockTheme={codeBlockTheme}
             textToCopy={getNodeText(childArr[selectedIndex]?.props?.children)}
+            {...copyButtonProps}
           />
           {askAiButton && askAiButton}
         </div>
