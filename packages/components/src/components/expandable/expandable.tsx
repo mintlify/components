@@ -150,7 +150,7 @@ const Expandable = ({
       >
         <Icon
           className={cn(
-            "h-2.5 w-2.5 bg-zinc-400 transition-transform",
+            "size-2.5 bg-zinc-400 transition-transform",
             open && "rotate-90"
           )}
           data-component-part="expandable-icon"

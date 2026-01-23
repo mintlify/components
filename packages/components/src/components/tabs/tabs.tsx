@@ -203,7 +203,7 @@ const TabsRoot = ({
                 {icon && (
                   <Icon
                     className={cn(
-                      "h-4 w-4 shrink-0",
+                      "size-4 shrink-0",
                       isActive
                         ? "bg-primary dark:bg-primary-light"
                         : "bg-gray-900 dark:bg-gray-200",

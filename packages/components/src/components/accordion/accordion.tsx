@@ -64,7 +64,7 @@ const Accordion = ({
 
   const Icon =
     typeof icon === "string" ? (
-      <ComponentIcon className="h-4 w-4" icon={icon} iconType={iconType} />
+      <ComponentIcon className="size-4" icon={icon} iconType={iconType} />
     ) : (
       icon
     );

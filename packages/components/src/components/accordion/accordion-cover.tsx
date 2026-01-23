@@ -44,7 +44,7 @@ const AccordionCover = ({
       </div>
       {!!icon && (
         <div
-          className="flex h-4 w-4 items-center justify-center fill-gray-800 text-gray-800 dark:fill-gray-100 dark:text-gray-100"
+          className="flex size-4 items-center justify-center fill-gray-800 text-gray-800 dark:fill-gray-100 dark:text-gray-100"
           data-component-part="accordion-icon"
         >
           {icon}
