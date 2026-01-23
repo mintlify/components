@@ -1,9 +1,4 @@
-import {
-  Content as TabsContent,
-  List as TabsList,
-  Root as TabsRoot,
-  Trigger as TabsTrigger,
-} from "@radix-ui/react-tabs";
+import { Tabs } from "@base-ui/react/tabs";
 import React, {
   forwardRef,
   type ReactElement,
@@ -72,7 +67,7 @@ const CodeGroup = function CodeGroup({
     Math.max(0, childArr.length - 1)
   );
   const [selectedTab, setSelectedTab] = useState(safeInitialIndex);
-  const triggerRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
+  const triggerRefs = useRef<Map<number, HTMLElement>>(new Map());
 
   const handleValueChange = useCallback(
     (value: string) => {
@@ -119,8 +114,7 @@ const CodeGroup = function CodeGroup({
   const selectedIndex = Number(selectedTab);
 
   return (
-    <TabsRoot
-      asChild={false}
+    <Tabs.Root
       className={cn(
         Classes.CodeGroup,
         "not-prose relative mt-5 mb-8 flex flex-col overflow-hidden rounded-2xl border border-gray-950/10 p-0.5 dark:border-white/10",
@@ -132,9 +126,9 @@ const CodeGroup = function CodeGroup({
         feedbackModalOpen && "border border-primary dark:border-primary-light",
         className
       )}
-      onValueChange={handleValueChange}
+      onValueChange={(value) => handleValueChange(String(value))}
       ref={anchorRef as React.Ref<HTMLDivElement>}
-      value={String(selectedTab)}
+      value={selectedTab}
     >
       <div
         className={cn(
@@ -169,7 +163,7 @@ const CodeGroup = function CodeGroup({
             </span>
           </div>
         ) : (
-          <TabsList
+          <Tabs.List
             className={cn(
               "flex w-0 flex-1 gap-1 overflow-x-auto overflow-y-hidden rounded-tl-xl text-xs leading-6",
               codeBlockTheme === "system"
@@ -188,7 +182,7 @@ const CodeGroup = function CodeGroup({
                   }
                 }}
                 tabsLength={childArr.length}
-                value={String(index)}
+                value={index}
               >
                 {child.props.icon && typeof child.props.icon === "string" && (
                   <ComponentIcon
@@ -208,7 +202,7 @@ const CodeGroup = function CodeGroup({
                 {child.props.filename}
               </TabItem>
             ))}
-          </TabsList>
+          </Tabs.List>
         )}
         <div className="flex shrink-0 items-center justify-end gap-1.5">
           {dropdown && (
@@ -232,11 +226,11 @@ const CodeGroup = function CodeGroup({
       <div className="flex flex-1 overflow-hidden">
         {childArr.map((child, index) => {
           return (
-            <TabsContent
+            <Tabs.Panel
               className="relative h-full max-h-full w-full min-w-full max-w-full"
               key={`${child.props.filename}Content${index}`}
               tabIndex={-1}
-              value={String(index)}
+              value={index}
             >
               <BaseCodeBlock
                 {...child.props}
@@ -248,19 +242,19 @@ const CodeGroup = function CodeGroup({
                 isSmallText={isSmallText}
                 shouldHighlight={index === selectedIndex}
               />
-            </TabsContent>
+            </Tabs.Panel>
           );
         })}
       </div>
-    </TabsRoot>
+    </Tabs.Root>
   );
 };
 
 const TabItem = forwardRef<
-  React.ElementRef<typeof TabsTrigger>,
+  React.ComponentRef<typeof Tabs.Tab>,
   {
     children: ReactNode;
-    value: string;
+    value: number;
     isSelected: boolean;
     tabsLength: number;
     codeBlockTheme: "dark" | "system" | undefined;
@@ -270,7 +264,7 @@ const TabItem = forwardRef<
   ref
 ) {
   return (
-    <TabsTrigger
+    <Tabs.Tab
       className={cn(
         "group relative my-1 mb-1.5 ml-0! flex items-center gap-1.5 whitespace-nowrap font-medium outline-0 first:ml-2.5! focus-visible:outline-2",
         isSelected &&
@@ -302,7 +296,7 @@ const TabItem = forwardRef<
       {isSelected && (
         <div className="absolute right-0 -bottom-1.5 left-0 h-0.5 rounded-full bg-primary dark:bg-primary-light" />
       )}
-    </TabsTrigger>
+    </Tabs.Tab>
   );
 });
 
