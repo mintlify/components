@@ -47,6 +47,9 @@ importers:
       mermaid:
         specifier: ^11.12.2
         version: 11.12.2
+      react-use-rect:
+        specifier: ^2.0.6
+        version: 2.0.6(react@18.3.1)
       shiki:
         specifier: ^3.17.0
         version: 3.21.0
@@ -2617,6 +2620,11 @@ packages:
   react-refresh@0.17.0:
     resolution: {integrity: sha512-z6F7K9bV85EfseRCp2bzrpyQ0Gkw1uLoCel9XBVWPg/TjRj94SkJzUTGfOa4bs7iJvBWtQG0Wq7wnI0syw3EBQ==}
     engines: {node: '>=0.10.0'}
+
+  react-use-rect@2.0.6:
+    resolution: {integrity: sha512-as/VEIPY9SrS4E7T/rXQ59aqQ+XKvl/5E6fI5ODmrQv6WJup2CFNA9ja3BMq13ge1dhgBFOHicZC1ZKXLUQtTA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.2 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -5565,6 +5573,10 @@ snapshots:
   react-is@17.0.2: {}
 
   react-refresh@0.17.0: {}
+
+  react-use-rect@2.0.6(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   react@18.3.1:
     dependencies:
