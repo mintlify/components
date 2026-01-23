@@ -69,7 +69,8 @@ const CodeGroupSelect = memo(function CodeGroupSelect({
 
   const handleOptionSelect = (opt: string) => {
     setSelectedOption(opt);
-    setSelectedExampleIndex?.(options?.indexOf(opt) ?? 0);
+    const index = options?.indexOf(opt) ?? -1;
+    setSelectedExampleIndex?.(index >= 0 ? index : 0);
     if (opt !== syncedLabel) {
       setSelectedLabel?.(opt);
     }

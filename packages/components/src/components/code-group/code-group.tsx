@@ -177,6 +177,8 @@ const CodeGroup = function CodeGroup({
                 ref={(el) => {
                   if (el) {
                     triggerRefs.current.set(index, el);
+                  } else {
+                    triggerRefs.current.delete(index);
                   }
                 }}
                 tabsLength={childArr.length}
