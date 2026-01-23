@@ -3,11 +3,12 @@ import type { ReactNode } from "react";
 import { Icon as ComponentIcon } from "@/components/icon";
 import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
+import type { CodeBlockTheme } from "@/validation";
 
 type CodeHeaderProps = {
   filename?: string;
   icon?: string;
-  codeBlockTheme?: "dark" | "system";
+  codeBlockTheme?: CodeBlockTheme;
   children?: ReactNode;
 };
 

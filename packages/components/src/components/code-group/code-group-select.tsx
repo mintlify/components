@@ -4,6 +4,8 @@ import { memo, useEffect, useState } from "react";
 import { CopyToClipboardButton } from "@/components/code-block/copy-button";
 import { cn } from "@/utils/cn";
 import type { CopyToClipboardResult } from "@/utils/copy-to-clipboard";
+import type { CodeBlockTheme } from "@/validation";
+
 import { CodeSelectDropdown } from "./code-select-dropdown";
 import { CodeSnippet } from "./code-snippet";
 
@@ -16,7 +18,7 @@ type ExampleCodeSnippet = {
 type CodeGroupSelectProps = {
   snippets: Record<string, Record<string, ExampleCodeSnippet>>;
   setSelectedExampleIndex?: (index: number) => void;
-  codeBlockTheme?: "system" | "dark";
+  codeBlockTheme?: CodeBlockTheme;
   syncedLabel?: string;
   setSelectedLabel?: (label: string | undefined) => void;
   codeSnippetAriaLabel?: string;

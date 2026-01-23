@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { cn } from "@/utils/cn";
 import { getDisplayName } from "@/utils/shiki/snippet-presets";
+import type { CodeBlockTheme } from "@/validation";
 
 import {
   DropdownMenu,
@@ -16,7 +17,7 @@ type LanguageDropdownProps = {
   selectedLanguage: string;
   setSelectedLanguage: (language: string, index: number) => void;
   languages: string[];
-  codeBlockTheme?: "dark" | "system";
+  codeBlockTheme?: CodeBlockTheme;
 };
 
 const LanguageDropdown = ({

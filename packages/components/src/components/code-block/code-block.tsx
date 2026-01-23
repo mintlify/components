@@ -4,7 +4,7 @@ import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
 import type { CopyToClipboardResult } from "@/utils/copy-to-clipboard";
 import { getNodeText } from "@/utils/get-node-text";
-import type { CodeStyling } from "@/validation";
+import type { CodeBlockTheme, CodeStyling } from "@/validation";
 
 import { BaseCodeBlock } from "./base-code-block";
 import { CodeHeader } from "./code-header";
@@ -62,7 +62,7 @@ type CodeBlockProps = {
   /**
    * Prop to set the code block theme (code block UI theme)
    */
-  codeBlockTheme?: "dark" | "system";
+  codeBlockTheme?: CodeBlockTheme;
   /**
    * Prop to set the code block theme object (syntax highlighting theme)
    */

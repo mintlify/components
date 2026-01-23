@@ -17,7 +17,7 @@ import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
 import type { CopyToClipboardResult } from "@/utils/copy-to-clipboard";
 import { getNodeText } from "@/utils/get-node-text";
-import type { CodeStyling } from "@/validation";
+import type { CodeBlockTheme, CodeStyling } from "@/validation";
 
 import { LanguageDropdown } from "./language-dropdown";
 
@@ -29,7 +29,7 @@ type CodeGroupProps = {
   noMargins?: boolean;
   feedbackModalOpen?: boolean;
   anchorRef?: RefObject<HTMLDivElement>;
-  codeBlockTheme?: "dark" | "system";
+  codeBlockTheme?: CodeBlockTheme;
   codeBlockThemeObject?: CodeStyling;
   initialSelectedTab?: number;
   onSelectedTabChange?: (index: number) => void;
@@ -255,7 +255,7 @@ type TabItemProps = {
   value: number;
   isSelected: boolean;
   tabsLength: number;
-  codeBlockTheme: "dark" | "system";
+  codeBlockTheme: CodeBlockTheme;
 };
 
 const TabItem = forwardRef<React.ComponentRef<typeof Tabs.Tab>, TabItemProps>(

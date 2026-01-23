@@ -1,6 +1,7 @@
 import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@/utils/cn";
+import type { CodeBlockTheme } from "@/validation";
 
 import {
   DropdownMenu,
@@ -13,7 +14,7 @@ type CodeSelectDropdownProps = {
   selectedOption?: string;
   setSelectedOption: (option: string) => void;
   options: string[];
-  codeBlockTheme?: "system" | "dark";
+  codeBlockTheme?: CodeBlockTheme;
 };
 
 const CodeSelectDropdown = ({
