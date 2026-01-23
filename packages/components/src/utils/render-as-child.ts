@@ -7,13 +7,7 @@ const renderAsChild = (child: ReactNode) => {
   }
 
   return (props: React.HTMLAttributes<HTMLElement>) =>
-    cloneElement(
-      child,
-      mergeProps(props, {
-        className: child.props?.className,
-        children: child.props?.children,
-      })
-    );
+    cloneElement(child, mergeProps(props, child.props));
 };
 
 export { renderAsChild };

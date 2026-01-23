@@ -36,6 +36,19 @@ const Tooltip = ({
         setOpen((prev) => !prev);
       };
 
+  const handleOpenChange = (
+    nextOpen: boolean,
+    eventDetails: { reason: string }
+  ) => {
+    const { reason } = eventDetails;
+
+    if (hasHover) {
+      setOpen(nextOpen);
+    } else if (reason === "escape-key" || reason === "outside-press") {
+      setOpen(nextOpen);
+    }
+  };
+
   const ariaLabel = useMemo(() => {
     if (isInteractive) {
       return undefined;
@@ -54,7 +67,7 @@ const Tooltip = ({
 
   return (
     <TooltipBaseUI.Provider delay={0}>
-      <TooltipBaseUI.Root onOpenChange={setOpen} open={open}>
+      <TooltipBaseUI.Root onOpenChange={handleOpenChange} open={open}>
         <TooltipBaseUI.Trigger
           aria-label={ariaLabel}
           className={cn(
