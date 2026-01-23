@@ -1,13 +1,12 @@
 import { cn } from "@/utils/cn";
 import { getLanguageIconUrl } from "@/utils/icon-utils";
 
-const LanguageIcon = ({
-  language,
-  className,
-}: {
+type LanguageIconProps = {
   language: string;
   className?: string;
-}) => {
+};
+
+const LanguageIcon = ({ language, className }: LanguageIconProps) => {
   const url = getLanguageIconUrl(language);
 
   if (!url) {
