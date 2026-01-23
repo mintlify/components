@@ -44,8 +44,13 @@ const Tooltip = ({
 
     if (hasHover) {
       setOpen(nextOpen);
+      return;
+    }
+
+    if (nextOpen) {
+      setOpen(true);
     } else if (reason === "escape-key" || reason === "outside-press") {
-      setOpen(nextOpen);
+      setOpen(false);
     }
   };
 
