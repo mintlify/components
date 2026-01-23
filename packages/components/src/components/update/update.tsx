@@ -123,7 +123,7 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
           >
             {label}
           </div>
-          {!!tagsArray?.length && (
+          {tagsArray.length > 0 && (
             <div
               className="mt-3 flex flex-wrap gap-2 px-1 text-secondary text-sm dark:text-secondary-light"
               data-component-part="update-tag-list"
