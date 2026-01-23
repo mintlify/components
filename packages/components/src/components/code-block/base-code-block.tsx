@@ -17,7 +17,6 @@ import { CodeFooter } from "./code-footer";
 interface BaseCodeBlockProps extends CodeBlockProps {
   isParentCodeGroup?: boolean;
   shouldHighlight?: boolean;
-  // pass isLivePreview to forceExtract to force code string theme changes
   forceExtract?: boolean;
 }
 

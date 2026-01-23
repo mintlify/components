@@ -27,12 +27,10 @@ type CodeGroupProps = {
   isSmallText?: boolean;
   children?: ReactElement<CodeBlockProps>[] | ReactElement<CodeBlockProps>;
   noMargins?: boolean;
-  // pass in from CodeSnippetFeedbackProvider
   feedbackModalOpen?: boolean;
   anchorRef?: RefObject<HTMLDivElement>;
   codeBlockTheme?: "dark" | "system";
   codeBlockThemeObject?: CodeStyling;
-  // pass in from useTabState
   initialSelectedTab?: number;
   onSelectedTabChange?: (index: number) => void;
   askAiButton?: ReactNode;
