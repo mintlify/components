@@ -66,9 +66,13 @@ const CodeGroup = function CodeGroup({
   askAiButton,
   feedbackButton,
 }: CodeGroupProps) {
-  const [selectedTab, setSelectedTab] = useState(initialSelectedTab);
-  const triggerRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
   const childArr = React.Children.toArray(children) as CodeBlockChild[];
+  const safeInitialIndex = Math.min(
+    Math.max(0, initialSelectedTab),
+    Math.max(0, childArr.length - 1)
+  );
+  const [selectedTab, setSelectedTab] = useState(safeInitialIndex);
+  const triggerRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
 
   const handleValueChange = useCallback(
     (value: string) => {
@@ -135,7 +139,7 @@ const CodeGroup = function CodeGroup({
       <div
         className={cn(
           "relative flex items-center justify-between gap-2",
-          dropdown ? "px-2.5" : "pr-2.5 *:first:*:ml-2.5"
+          dropdown ? "px-2.5" : "pr-2.5"
         )}
         data-component-part="code-group-tab-bar"
       >
