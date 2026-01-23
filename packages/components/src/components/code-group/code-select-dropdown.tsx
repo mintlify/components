@@ -34,7 +34,7 @@ const CodeSelectDropdown = ({
         )}
         disabled={!hasOptions}
       >
-        <div className="flex min-w-16 items-center gap-1.5 rounded-lg px-2 py-1 group-hover:hover:bg-primary-light/10">
+        <div className="flex min-w-16 items-center gap-1.5 rounded-lg px-2 py-1 group-hover:bg-primary-light/10">
           <p className="truncate">{selectedOption}</p>
           {hasOptions && <ChevronDownIcon className="min-w-3" size={12} />}
         </div>

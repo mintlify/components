@@ -127,7 +127,7 @@ const CodeGroupSelect = memo(function CodeGroupSelect({
           )}
           <div
             className="flex items-center gap-1.5 pr-2.5"
-            data-testid="code-group-select-copy-button"
+            data-testid="code-group-select-actions"
           >
             <div data-testid="code-group-select-copy-button">
               <CopyToClipboardButton
