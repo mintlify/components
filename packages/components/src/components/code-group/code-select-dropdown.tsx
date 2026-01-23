@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "./dropdown";
 
-interface CodeSelectDropdownProps {
+type CodeSelectDropdownProps = {
   selectedOption?: string;
   setSelectedOption: (option: string) => void;
   options: string[];
