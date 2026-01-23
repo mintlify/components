@@ -24,8 +24,8 @@ importers:
         specifier: 3.21.0
         version: 3.21.0
       '@sindresorhus/slugify':
-        specifier: ^2.1.1
-        version: 2.1.1
+        specifier: 2.2.1
+        version: 2.2.1
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -970,8 +970,8 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@sindresorhus/slugify@2.1.1':
-    resolution: {integrity: sha512-XokPHZ+q6FtQGEi1hnfvARVJJVPEhwHQTPHPPuNHaN6zcHjzYNynhhHMopa1wNPqLAFOwpsbintunEqWecXJMg==}
+  '@sindresorhus/slugify@2.2.1':
+    resolution: {integrity: sha512-MkngSCRZ8JdSOCHRaYd+D01XhvU3Hjy6MGl06zhOk614hp9EOAp5gIkBeQg7wtmxpitU6eAL4kdiRMcJa2dlrw==}
     engines: {node: '>=12'}
 
   '@sindresorhus/transliterate@1.6.0':
@@ -3800,7 +3800,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@sindresorhus/slugify@2.1.1':
+  '@sindresorhus/slugify@2.2.1':
     dependencies:
       '@sindresorhus/transliterate': 1.6.0
       escape-string-regexp: 5.0.0
