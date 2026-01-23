@@ -11,12 +11,14 @@ type FrameProps = {
   children: ReactNode;
   title?: string;
   description?: string;
+  renderDescription?: (description: string) => ReactNode;
 };
 
 const Frame = ({
   as: Component = "div",
   title,
   description,
+  renderDescription = (text) => <p>{text}</p>,
   style,
   className,
   children,
@@ -68,7 +70,7 @@ const Frame = ({
             contentEditable={false}
             data-component-part="frame-description"
           >
-            <p>{description}</p>
+            {renderDescription(description)}
           </div>
         )}
         <div
