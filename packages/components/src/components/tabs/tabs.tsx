@@ -11,15 +11,15 @@ import {
   useRef,
   useState,
 } from "react";
+import { Icon } from "@/components/icon";
 import {
   CHILD_HEADING_IDS_ATTRIBUTE,
   CHILD_TAB_IDS_ATTRIBUTE,
-  slugify,
-} from "@/common";
-import { Icon } from "@/components/icon";
+} from "@/constants";
 import { Classes } from "@/lib/local/selectors";
 import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
+import { slugify } from "@/utils/slugify";
 
 const DEFAULT_TAB_TITLE = "Tab Title";
 

@@ -35,7 +35,7 @@ const ready = (async () => {
     import("shiki/engine/javascript"),
     import("@shikijs/transformers"),
     import("./constants.ts"),
-    import("@/common/get-code-styling"),
+    import("@/utils/shiki/get-code-styling"),
     import("@/utils/shiki/snippet-presets"),
   ]);
 
