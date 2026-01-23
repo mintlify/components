@@ -11,8 +11,8 @@ import {
 import { Icon as ComponentIcon } from "@/components/icon";
 
 import { Classes } from "@/constants/selectors";
-import type { IconType } from "@/models";
 import { cn } from "@/utils/cn";
+import type { IconType } from "@/utils/icon-utils";
 
 import { AccordionCover } from "./accordion-cover";
 import { CONNECTING_CHARACTER } from "./accordion-url-utils";

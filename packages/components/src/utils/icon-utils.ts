@@ -1,6 +1,5 @@
 import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
-import { FONT_AWESOME_BRANDS } from "@/constants/icons/font-awesome/v7.1.0/brands";
-import type { IconLibrary, IconType } from "@/models";
+import { FONT_AWESOME_BRANDS } from "@/constants/brands";
 import { getIconKey } from "@/utils/shiki/snippet-presets";
 
 const getIconUrl = (
@@ -42,4 +41,46 @@ const getLanguageIconUrl = (language: string): string | null => {
   return `${MINTLIFY_ICONS_CDN_URL}/devicon/${iconKey}.svg`;
 };
 
-export { getIconUrl, isBrandsIcon, getLanguageIconUrl };
+const ICON_TYPES = [
+  "brands",
+  "duotone",
+  "light",
+  "regular",
+  "sharp-duotone-solid",
+  "sharp-light",
+  "sharp-regular",
+  "sharp-solid",
+  "sharp-thin",
+  "solid",
+  "thin",
+] as const;
+
+type IconType = (typeof ICON_TYPES)[number];
+
+const ICON_LIBRARIES = ["fontawesome", "lucide"] as const;
+
+type IconLibrary = (typeof ICON_LIBRARIES)[number];
+
+type PageType = "default" | "pdf" | "minimal";
+
+type BaseMultiViewItemType = {
+  title: string;
+  content: string;
+  icon?: string;
+  iconType?: IconType;
+};
+
+type MultiViewItemType = BaseMultiViewItemType & {
+  active?: boolean;
+};
+
+export {
+  getIconUrl,
+  isBrandsIcon,
+  getLanguageIconUrl,
+  ICON_TYPES,
+  type IconType,
+  type IconLibrary,
+  type MultiViewItemType,
+  type PageType,
+};

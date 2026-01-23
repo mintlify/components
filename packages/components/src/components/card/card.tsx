@@ -11,8 +11,8 @@ import type {
 import { Icon as ComponentIcon } from "@/components/icon";
 import { Classes } from "@/constants/selectors";
 import { ArrowRightIcon } from "@/icons";
-import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
+import type { IconLibrary, IconType } from "@/utils/icon-utils";
 import { isRemoteUrl } from "@/utils/is-remote-url";
 
 interface CardPropsBase<T> {

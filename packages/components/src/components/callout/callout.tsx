@@ -10,8 +10,8 @@ import {
   TipIcon,
   WarningIcon,
 } from "@/icons";
-import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
+import type { IconLibrary, IconType } from "@/utils/icon-utils";
 
 type CalloutVariant =
   | "info"

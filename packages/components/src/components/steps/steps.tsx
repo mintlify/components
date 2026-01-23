@@ -2,8 +2,8 @@ import type React from "react";
 import type { ReactNode } from "react";
 import { Icon } from "@/components/icon";
 import { Classes } from "@/constants/selectors";
-import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
+import type { IconLibrary, IconType } from "@/utils/icon-utils";
 import { STEP_TITLE_SIZES, type StepTitleSize } from "./constants";
 
 type Numberish = number | `${number}`;

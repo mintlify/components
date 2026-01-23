@@ -3,14 +3,14 @@ import type { CSSProperties } from "react";
 
 import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
 import { Classes } from "@/constants/selectors";
+import { cn } from "@/utils/cn";
 import {
+  getIconUrl,
   ICON_TYPES,
   type IconLibrary,
   type IconType,
   type PageType,
-} from "@/models";
-import { cn } from "@/utils/cn";
-import { getIconUrl } from "@/utils/icon-utils";
+} from "@/utils/icon-utils";
 import { isAbsoluteUrl } from "@/utils/is-absolute-url";
 
 type IconProps = {

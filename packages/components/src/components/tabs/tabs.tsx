@@ -17,8 +17,8 @@ import {
   CHILD_TAB_IDS_ATTRIBUTE,
 } from "@/constants";
 import { Classes } from "@/constants/selectors";
-import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
+import type { IconLibrary, IconType } from "@/utils/icon-utils";
 import { slugify } from "@/utils/slugify";
 
 const DEFAULT_TAB_TITLE = "Tab Title";
