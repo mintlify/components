@@ -13,7 +13,7 @@ type ExampleCodeSnippet = {
   language: string;
 };
 
-type CodeGroupSelectProps {
+type CodeGroupSelectProps = {
   snippets: Record<string, Record<string, ExampleCodeSnippet>>;
   setSelectedExampleIndex?: (index: number) => void;
   codeBlockTheme?: "system" | "dark";
@@ -25,7 +25,7 @@ type CodeGroupSelectProps {
   copyButtonAriaLabel?: string;
   tooltipCopyText?: string;
   tooltipCopiedText?: string;
-}
+};
 
 const CodeGroupSelect = memo(function CodeGroupSelect({
   snippets,

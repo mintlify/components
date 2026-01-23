@@ -14,7 +14,7 @@ type CodeSelectDropdownProps = {
   setSelectedOption: (option: string) => void;
   options: string[];
   codeBlockTheme?: "system" | "dark";
-}
+};
 
 const CodeSelectDropdown = ({
   selectedOption,
