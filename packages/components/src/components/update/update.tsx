@@ -57,12 +57,19 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
       [tags]
     );
 
-    const copyAnchorLink = useCallback(() => {
-      copyToClipboard(
+    const copyAnchorLink = useCallback(async () => {
+      if (typeof window === "undefined") {
+        return;
+      }
+
+      const result = await copyToClipboard(
         `${window.location.href.split("#")[0]}#${encodeURIComponent(id)}`
       );
-      window.location.hash = encodeURIComponent(id);
-      onCopyAnchorLink?.(id);
+
+      if (result === "success") {
+        window.location.hash = encodeURIComponent(id);
+        onCopyAnchorLink?.(id);
+      }
     }, [id, onCopyAnchorLink]);
 
     useEffect(() => {
