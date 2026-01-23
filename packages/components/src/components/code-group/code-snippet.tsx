@@ -13,11 +13,11 @@ type CodeSnippetProps = {
   codeBlockThemeObject?: CodeStyling;
 };
 
-const CodeSnippet = memo(function CodeSnippet({
+const CodeSnippet = memo(({
   language,
   children,
   codeBlockThemeObject,
-}: CodeSnippetProps) {
+}: CodeSnippetProps) => {
   const codeString = typeof children === "string" ? children : "";
   language = language ?? "text";
   const html = useGetShikiHighlightedHtml({
