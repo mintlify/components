@@ -24,7 +24,7 @@ importers:
         specifier: 3.21.0
         version: 3.21.0
       '@sindresorhus/slugify':
-        specifier: 2.1.1
+        specifier: ^2.1.1
         version: 2.1.1
       clsx:
         specifier: 2.1.1
