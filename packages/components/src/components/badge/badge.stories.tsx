@@ -13,7 +13,7 @@ const meta: Meta<typeof Badge> = {
     color: {
       control: "select",
       options: [
-        "stone",
+        "gray",
         "blue",
         "green",
         "orange",
