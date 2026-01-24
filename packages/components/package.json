@@ -65,7 +65,7 @@
     "color": "4.2.3",
     "comlink": "4.4.2",
     "hast": "1.0.0",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "lucide-react": "0.453.0",
     "mermaid": "11.12.2",
     "react-use-rect": "2.0.6",
