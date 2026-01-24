@@ -5,6 +5,9 @@ export const Accordion = Object.assign(AccordionBase, {
   Group: AccordionGroup,
 });
 
+export type { AccordionProps } from "./accordion";
+export type { AccordionGroupProps } from "./accordion-group";
+
 export {
   getInitialOpenState,
   updateAndCopyUrl,
