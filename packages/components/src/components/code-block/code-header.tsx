@@ -41,7 +41,9 @@ const CodeHeader = ({
             overrideColor
           />
         )}
-        <span className="mr-2 min-w-0 truncate">{filename}</span>
+        {!!filename && (
+          <span className="mr-2 min-w-0 truncate">{filename}</span>
+        )}
       </div>
       <div className="flex flex-1 items-center justify-end gap-1.5">
         {children}
