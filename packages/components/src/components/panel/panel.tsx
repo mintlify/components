@@ -12,3 +12,4 @@ const Panel = ({ children, className, ...props }: PanelProps) => {
 };
 
 export { Panel };
+export type { PanelProps };

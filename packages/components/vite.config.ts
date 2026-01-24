@@ -16,7 +16,7 @@ export default defineConfig({
         "src/**/*.test.tsx",
       ],
       outDir: "dist",
-      rollupTypes: true,
+      rollupTypes: false,
     }),
   ],
   resolve: {

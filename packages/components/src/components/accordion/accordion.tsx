@@ -224,3 +224,4 @@ const GenericAccordion = ({
 };
 
 export { Accordion };
+export type { AccordionProps };
