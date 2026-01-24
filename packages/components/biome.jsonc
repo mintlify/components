@@ -10,6 +10,9 @@
     "rules": {
       "style": {
         "useConsistentTypeDefinitions": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off"
       }
     }
   }

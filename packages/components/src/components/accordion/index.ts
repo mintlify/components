@@ -5,7 +5,6 @@ export const Accordion = Object.assign(AccordionBase, {
   Group: AccordionGroup,
 });
 
-// biome-ignore lint/performance/noBarrelFile: TODO
 export {
   getInitialOpenState,
   updateAndCopyUrl,
