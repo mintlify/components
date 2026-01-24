@@ -41,8 +41,8 @@ type TileProps = {
 const Tile = ({ href, children, title, description, className }: TileProps) => {
   const DEFAULT_BG_PATTERN_CLASSES = cn(
     "pointer-events-none size-full select-none bg-center bg-repeat-round [grid-area:1/1]",
-    "after:absolute after:left-0 after:h-full after:w-[7px] after:bg-neutral-50 after:content-[''] dark:after:bg-neutral-900",
-    "before:absolute before:right-0 before:h-full before:w-[7px] before:bg-neutral-50 before:content-[''] dark:before:bg-neutral-900"
+    "after:absolute after:left-0 after:h-full after:w-[7px] after:bg-stone-50 after:content-[''] dark:after:bg-stone-900",
+    "before:absolute before:right-0 before:h-full before:w-[7px] before:bg-stone-50 before:content-[''] dark:before:bg-stone-900"
   );
 
   return (
@@ -56,7 +56,7 @@ const Tile = ({ href, children, title, description, className }: TileProps) => {
       )}
     >
       <div
-        className="relative grid h-[170px] w-full place-items-center overflow-hidden rounded-2xl bg-neutral-50 py-1 dark:bg-neutral-900"
+        className="relative grid h-[170px] w-full place-items-center overflow-hidden rounded-2xl bg-stone-50 py-1 dark:bg-stone-900"
         data-component-part="tile-children-container"
       >
         <div
@@ -91,7 +91,7 @@ const Tile = ({ href, children, title, description, className }: TileProps) => {
         >
           {!!title && (
             <p
-              className="m-0 max-w-full truncate font-medium text-base text-neutral-900 tracking-[-0.2px] dark:text-neutral-200"
+              className="m-0 max-w-full truncate font-medium text-base text-stone-900 tracking-[-0.2px] dark:text-stone-200"
               data-component-part="tile-title"
               title={title}
             >
@@ -100,7 +100,7 @@ const Tile = ({ href, children, title, description, className }: TileProps) => {
           )}
           {!!description && (
             <p
-              className="m-0 max-w-full truncate font-normal text-neutral-600 text-sm tracking-[-0.1px] dark:text-neutral-400"
+              className="m-0 max-w-full truncate font-normal text-sm text-stone-600 tracking-[-0.1px] dark:text-stone-400"
               data-component-part="tile-description"
               title={description}
             >

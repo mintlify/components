@@ -12,7 +12,7 @@ const InfoIcon = ({
     <svg
       aria-label={ariaLabel}
       className={cn(
-        "size-5 flex-none text-neutral-800 dark:text-neutral-300",
+        "size-5 flex-none text-stone-800 dark:text-stone-300",
         className
       )}
       fill="currentColor"
@@ -304,7 +304,7 @@ const CopyButtonIcon = ({
       className={cn(
         "size-4",
         codeBlockTheme === "system" &&
-          "text-gray-400 group-hover/copy-button:text-gray-500 dark:text-white/40 dark:group-hover/copy-button:text-white/60",
+          "text-stone-400 group-hover/copy-button:text-stone-500 dark:text-white/40 dark:group-hover/copy-button:text-white/60",
         codeBlockTheme === "dark" &&
           "text-white/40 group-hover/copy-button:text-white/60"
       )}

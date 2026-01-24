@@ -37,18 +37,18 @@ const LanguageDropdown = ({
       >
         <div
           className={cn(
-            "flex items-center gap-1 rounded-[10px] border py-[5px] pr-1.5 pl-2.5 text-gray-500 dark:text-gray-400",
+            "flex items-center gap-1 rounded-[10px] border py-[5px] pr-1.5 pl-2.5 text-stone-500 dark:text-stone-400",
             hasOptions ? "cursor-pointer" : "cursor-default",
             hasOptions &&
               codeBlockTheme === "system" &&
-              "hover:bg-gray-200/50 hover:text-primary dark:hover:bg-gray-700/70 dark:hover:text-primary-light",
+              "hover:bg-stone-200/50 hover:text-primary dark:hover:bg-stone-700/70 dark:hover:text-primary-light",
             hasOptions &&
               codeBlockTheme === "dark" &&
-              "hover:bg-gray-700/70 hover:text-primary-light",
+              "hover:bg-stone-700/70 hover:text-primary-light",
             isOpen &&
-              "border-gray-600/50 ring-1 dark:border-gray-400/50 dark:ring-gray-800/50",
-            isOpen && codeBlockTheme === "system" && "ring-gray-200/70",
-            isOpen && codeBlockTheme === "dark" && "ring-gray-800/50",
+              "border-stone-600/50 ring-1 dark:border-stone-400/50 dark:ring-stone-800/50",
+            isOpen && codeBlockTheme === "system" && "ring-stone-200/70",
+            isOpen && codeBlockTheme === "dark" && "ring-stone-800/50",
             !isOpen && "border-transparent"
           )}
         >
@@ -64,7 +64,7 @@ const LanguageDropdown = ({
         className={cn(
           "min-w-[170px] overflow-y-auto border p-1",
           codeBlockTheme === "system" &&
-            "border-gray-200/70 bg-white dark:border-white/10 dark:bg-[#0F1117]",
+            "border-stone-200/70 bg-white dark:border-white/10 dark:bg-[#0F1117]",
           codeBlockTheme === "dark" && "border-white/10 bg-[#0F1117]"
         )}
         sideOffset={0}
@@ -87,7 +87,7 @@ const LanguageDropdown = ({
                   "font-medium text-primary-light dark:text-primary-light",
                 language !== selectedLanguage &&
                   codeBlockTheme === "system" &&
-                  "text-gray-500 dark:text-white/50",
+                  "text-stone-500 dark:text-white/50",
                 language !== selectedLanguage &&
                   codeBlockTheme === "dark" &&
                   "text-white/50"

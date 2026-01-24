@@ -20,7 +20,7 @@ const Button = ({
   return (
     <button
       className={cn(
-        "flex size-7 cursor-pointer touch-manipulation items-center justify-center rounded-md border border-gray-200 bg-white text-gray-900 transition-[transform] duration-100 hover:bg-gray-50 motion-safe:active:scale-95 dark:border-white/10 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 [&_svg]:size-4",
+        "flex size-7 cursor-pointer touch-manipulation items-center justify-center rounded-md border border-stone-200 bg-white text-stone-900 transition-[transform] duration-100 hover:bg-stone-50 motion-safe:active:scale-95 dark:border-white/10 dark:bg-stone-900 dark:text-white dark:hover:bg-stone-800 [&_svg]:size-4",
         className
       )}
       type="button"

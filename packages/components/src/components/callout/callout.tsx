@@ -38,8 +38,8 @@ const variantConfig = {
     icon: InfoIcon,
     defaultAriaLabel: "Info",
     className:
-      "border border-neutral-200 bg-neutral-50 dark:border-neutral-700 dark:bg-white/10",
-    childrenClassName: "text-neutral-800 dark:text-neutral-300",
+      "border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-white/10",
+    childrenClassName: "text-stone-800 dark:text-stone-300",
   },
   warning: {
     icon: WarningIcon,
@@ -126,13 +126,13 @@ const Callout = ({
       } catch {
         finalColor = undefined;
         variantClassName =
-          "border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10";
-        childrenClassName = "text-zinc-900 dark:text-zinc-200";
+          "border border-stone-500/20 bg-stone-50/50 dark:border-stone-500/30 dark:bg-stone-500/10";
+        childrenClassName = "text-stone-900 dark:text-stone-200";
       }
     } else {
       variantClassName =
-        "border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10";
-      childrenClassName = "text-zinc-900 dark:text-zinc-200";
+        "border border-stone-500/20 bg-stone-50/50 dark:border-stone-500/30 dark:bg-stone-500/10";
+      childrenClassName = "text-stone-900 dark:text-stone-200";
     }
   } else {
     const config = variantConfig[variant];
@@ -180,7 +180,7 @@ const Callout = ({
       )}
       <div
         className={cn(
-          "prose dark:prose-invert w-full min-w-0 text-sm [&_a]:border-current [&_a]:text-current! [&_code]:text-current! [&_kbd]:bg-zinc-100 [&_kbd]:text-current! dark:[&_kbd]:bg-zinc-800",
+          "prose dark:prose-invert w-full min-w-0 text-sm [&_a]:border-current [&_a]:text-current! [&_code]:text-current! [&_kbd]:bg-stone-100 [&_kbd]:text-current! dark:[&_kbd]:bg-stone-800",
           childrenClassName
         )}
         data-component-part="callout-content"

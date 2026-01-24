@@ -148,7 +148,10 @@ export const ProjectStructure: Story = {
 
 export const WithCustomClassName: Story = {
   render: (args) => (
-    <Tree {...args} className="w-64 rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
+    <Tree
+      {...args}
+      className="w-64 rounded-lg bg-stone-50 p-4 dark:bg-stone-900"
+    >
       <Tree.Folder defaultOpen name="src">
         <Tree.File name="index.ts" />
         <Tree.File name="app.tsx" />

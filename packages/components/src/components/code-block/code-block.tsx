@@ -107,9 +107,9 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
         Classes.CodeBlock,
         "not-prose group relative mt-5 mb-8 rounded-2xl",
         codeBlockTheme === "system" &&
-          "codeblock-light dark:twoslash-dark border border-gray-950/10 bg-gray-50 text-gray-950 dark:border-white/10 dark:bg-white/5 dark:text-gray-50",
+          "codeblock-light dark:twoslash-dark border border-stone-950/10 bg-stone-50 text-stone-950 dark:border-white/10 dark:bg-white/5 dark:text-stone-50",
         codeBlockTheme === "dark" &&
-          "codeblock-dark twoslash-dark dark:twoslash-dark bg-codeblock text-gray-50 ring-1 ring-transparent dark:bg-white/5 dark:ring-white/[0.14]",
+          "codeblock-dark twoslash-dark dark:twoslash-dark bg-codeblock text-stone-50 ring-1 ring-transparent dark:bg-white/5 dark:ring-white/[0.14]",
         hasGrayBackgroundContainer
           ? "p-0.5"
           : "bg-transparent dark:bg-transparent",

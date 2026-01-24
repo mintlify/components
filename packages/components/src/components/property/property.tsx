@@ -84,7 +84,7 @@ const Property = ({
     <div
       className={cn(
         Classes.Field,
-        "my-2.5 border-gray-50 border-b pt-2.5 pb-5 dark:border-gray-800/50",
+        "my-2.5 border-stone-50 border-b pt-2.5 pb-5 dark:border-stone-800/50",
         className
       )}
     >
@@ -106,7 +106,7 @@ const Property = ({
       />
       {children && (
         <div
-          className="prose-sm prose-gray dark:prose-invert mt-4 [&_.prose>p:first-child]:mt-0 [&_.prose>p:last-child]:mb-0"
+          className="prose-sm prose-stone dark:prose-invert mt-4 [&_.prose>p:first-child]:mt-0 [&_.prose>p:last-child]:mb-0"
           data-component-part="field-content"
         >
           {children}

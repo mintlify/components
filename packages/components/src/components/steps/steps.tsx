@@ -36,7 +36,7 @@ const StepsItem = ({
   const transformedIconOrNumber =
     typeof icon === "string" ? (
       <Icon
-        className="size-3 bg-gray-900 dark:bg-gray-50"
+        className="size-3 bg-stone-900 dark:bg-stone-50"
         icon={icon}
         iconLibrary={iconLibrary}
         iconType={iconType}
@@ -65,8 +65,8 @@ const StepsItem = ({
         className={cn(
           "absolute top-11 h-[calc(100%-2.75rem)] w-px",
           isLast
-            ? 'bg-linear-to-b from-gray-200 via-80% via-gray-200 to-transparent group-has-[[data-component-part="step-content"]:empty]/step:hidden dark:from-white/10 dark:via-white/10'
-            : "bg-gray-200/70 dark:bg-white/10"
+            ? 'bg-linear-to-b from-stone-200 via-80% via-stone-200 to-transparent group-has-[[data-component-part="step-content"]:empty]/step:hidden dark:from-white/10 dark:via-white/10'
+            : "bg-stone-200/70 dark:bg-white/10"
         )}
         contentEditable={false}
         data-component-part="step-line"
@@ -76,14 +76,14 @@ const StepsItem = ({
         contentEditable={false}
         data-component-part="step-number"
       >
-        <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-gray-50 font-semibold text-gray-900 text-xs dark:bg-white/10 dark:text-gray-50">
+        <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-stone-50 font-semibold text-stone-900 text-xs dark:bg-white/10 dark:text-stone-50">
           {transformedIconOrNumber}
         </div>
       </div>
       <div className="w-full overflow-hidden pr-px pl-8">
         {!!title &&
           (() => {
-            const titleClasses = "mt-2 text-gray-900 dark:text-gray-200";
+            const titleClasses = "mt-2 text-stone-900 dark:text-stone-200";
             const titleProps = {
               contentEditable: false,
               "data-component-part": "step-title",
