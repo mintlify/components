@@ -7,8 +7,8 @@ import {
   useState,
 } from "react";
 import { type Rect, useRect } from "react-use-rect";
+import { Classes } from "@/constants/selectors";
 import { LinkIcon } from "@/icons";
-import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
 import { copyToClipboard } from "@/utils/copy-to-clipboard";
 

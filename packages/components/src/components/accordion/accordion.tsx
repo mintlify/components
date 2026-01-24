@@ -10,9 +10,9 @@ import {
 } from "react";
 import { Icon as ComponentIcon } from "@/components/icon";
 
-import { Classes } from "@/lib/local/selectors";
-import type { IconType } from "@/models";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
+import type { IconType } from "@/utils/icon-utils";
 
 import { AccordionCover } from "./accordion-cover";
 import { CONNECTING_CHARACTER } from "./accordion-url-utils";

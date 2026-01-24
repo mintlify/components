@@ -14,10 +14,10 @@ import type {
   CodeToHastOptions,
   HighlighterGeneric,
 } from "shiki/types";
-import { codeStylingToThemeOrThemes } from "@/common/get-code-styling";
 import { MAX_PREVIEW_BYTES } from "@/constants";
+import type { CodeStyling } from "@/utils/shiki/code-styling";
+import { codeStylingToThemeOrThemes } from "@/utils/shiki/get-code-styling";
 import { getShikiLanguageFromPreset } from "@/utils/shiki/snippet-presets";
-import type { CodeStyling } from "@/validation";
 
 import {
   LANGS,

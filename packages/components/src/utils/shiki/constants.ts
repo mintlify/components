@@ -1,5 +1,5 @@
 import type { BuiltinTheme } from "shiki/types";
-import { SHIKI_THEMES } from "@/mdx";
+import { SHIKI_THEMES } from "@/utils/shiki/shiki-themes";
 
 const DEFAULT_DARK_THEME = "dark-plus";
 const DEFAULT_LIGHT_THEME = "github-light-default";

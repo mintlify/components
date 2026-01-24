@@ -1,5 +1,5 @@
 import type React from "react";
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 import type { ColCount } from "./constants";
 

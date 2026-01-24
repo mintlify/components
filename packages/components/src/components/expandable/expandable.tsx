@@ -7,8 +7,8 @@ import {
   useState,
 } from "react";
 import { Icon } from "@/components/icon";
+import { Classes } from "@/constants/selectors";
 import { useExpandableMemory } from "@/hooks/use-expandable-memory";
-import { Classes } from "@/lib/local/selectors";
 import { cn } from "@/utils/cn";
 
 const EXPANDABLE_CONTENT_CLASS = "expandable-content";

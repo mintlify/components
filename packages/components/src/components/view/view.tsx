@@ -1,8 +1,8 @@
 import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
 
-import { Classes } from "@/lib/local/selectors";
-import type { MultiViewItemType } from "@/models";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
+import type { MultiViewItemType } from "@/utils/icon-utils";
 
 type ViewPropsBase = {
   title: string;

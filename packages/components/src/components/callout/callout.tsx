@@ -1,6 +1,7 @@
 import Color from "color";
 import type { ReactNode } from "react";
 import { Icon as ComponentIcon } from "@/components/icon";
+import { Classes } from "@/constants/selectors";
 import {
   CheckIcon,
   DangerIcon,
@@ -9,9 +10,8 @@ import {
   TipIcon,
   WarningIcon,
 } from "@/icons";
-import { Classes } from "@/lib/local/selectors";
-import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
+import type { IconLibrary, IconType } from "@/utils/icon-utils";
 
 type CalloutVariant =
   | "info"

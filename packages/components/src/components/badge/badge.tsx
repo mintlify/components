@@ -1,7 +1,7 @@
 import type React from "react";
 import { Icon } from "@/components/icon";
-import type { IconLibrary, IconType } from "@/models";
 import { cn } from "@/utils/cn";
+import type { IconLibrary, IconType } from "@/utils/icon-utils";
 
 type BadgeSize = "xs" | "sm" | "md" | "lg";
 type BadgeShape = "rounded" | "pill";

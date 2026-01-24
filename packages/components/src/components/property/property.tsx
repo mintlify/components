@@ -1,6 +1,6 @@
 import { type ReactNode, useMemo } from "react";
 import { MAX_DEFAULT_VALUE_LENGTH } from "@/constants";
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 import { ParamHead } from "./param-head";
 

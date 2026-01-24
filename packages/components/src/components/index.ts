@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/performance/noBarrelFile: TODO */
 export * from "./accordion";
 export * from "./badge";
 export * from "./callout";

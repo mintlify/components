@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 
 import { cn } from "@/utils/cn";
-import type { CodeBlockTheme } from "@/validation";
+import type { CodeBlockTheme } from "@/utils/shiki/code-styling";
 
 const InfoIcon = ({
   "aria-label": ariaLabel = "Info",

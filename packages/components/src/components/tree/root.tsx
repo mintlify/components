@@ -8,7 +8,7 @@ import {
   useRef,
 } from "react";
 
-import { Classes } from "@/lib/local/selectors";
+import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 
 import { TreeLevelProvider } from "./context";
