@@ -28,3 +28,4 @@ const Columns = ({ children, className, cols = 2 }: ColumnsProps) => {
 };
 
 export { Columns };
+export type { ColumnsProps };

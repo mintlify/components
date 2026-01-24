@@ -24,3 +24,4 @@ const AccordionGroup = ({ children, className }: AccordionGroupProps) => {
 };
 
 export { AccordionGroup };
+export type { AccordionGroupProps };
