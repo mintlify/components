@@ -164,8 +164,9 @@ html:not(.dark) .codeblock-light {
 }
 
 /* Lines of code outside code blocks. Generated when you use single ticks: `example` */
+/* biome-ignore lint/style/noDescendingSpecificity: TODO */
 :not(pre) > code {
-  @apply break-words rounded-md px-2 py-0.5 text-gray-600 dark:text-gray-200 dark:border-gray-800 bg-gray-100/50 dark:bg-white/5;
+  @apply wrap-break-word rounded-md px-2 py-0.5 text-stone-600 dark:text-stone-200 dark:border-stone-800 bg-stone-100/50 dark:bg-white/5;
 }
 
 :not(pre) > code:before,
@@ -208,6 +209,7 @@ html:not(.dark) .codeblock-light {
 
 /* line highlighting (without line numbers) */
 [data-component-part="code-block-root"]:not(.has-line-numbers) {
+  /* biome-ignore lint/style/noDescendingSpecificity: TODO */
   .line-highlight {
     background: color-mix(
       in srgb,
@@ -325,15 +327,18 @@ html:not(.dark) .codeblock-light {
 }
 
 /* line numbers + highlighting */
+/* biome-ignore lint/style/noDescendingSpecificity: TODO */
 .has-line-numbers .line-highlight {
   width: 100%;
   display: inline-block;
   position: relative;
 
+  /* biome-ignore lint/style/noDescendingSpecificity: TODO */
   &::before {
     display: none;
   }
 
+  /* biome-ignore lint/style/noDescendingSpecificity: TODO */
   &::after {
     content: "";
     position: absolute;
@@ -351,6 +356,7 @@ html:not(.dark) .codeblock-light {
   }
 }
 
+/* biome-ignore lint/style/noDescendingSpecificity: TODO */
 .has-line-numbers .line-diff {
   width: 100%;
   display: inline-block;

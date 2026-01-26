@@ -44,7 +44,7 @@ const CodeSelectDropdown = ({
         className={cn(
           "overflow-y-auto",
           codeBlockTheme === "system" &&
-            "border border-gray-200/70 bg-gray-50 dark:border-gray-800/50 dark:bg-[#0F1117]",
+            "border border-stone-200/70 bg-stone-50 dark:border-stone-800/50 dark:bg-[#0F1117]",
           codeBlockTheme === "dark" && "border-none bg-[#0F1117]"
         )}
       >
@@ -64,7 +64,7 @@ const CodeSelectDropdown = ({
                 "font-medium text-primary-light dark:text-primary-light",
               option !== selectedOption &&
                 codeBlockTheme === "system" &&
-                "text-gray-500 dark:text-white/50",
+                "text-stone-500 dark:text-white/50",
               option !== selectedOption &&
                 codeBlockTheme === "dark" &&
                 "text-white/50"

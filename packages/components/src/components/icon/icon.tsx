@@ -128,7 +128,7 @@ const Icon = ({
         className={cn(
           classNames,
           !(color || overrideColor || hasLightDarkColors) &&
-            "bg-gray-800 dark:bg-gray-100"
+            "bg-stone-800 dark:bg-stone-100"
         )}
         data-component-part="icon-image"
         src={url}
@@ -145,7 +145,7 @@ const Icon = ({
       className={cn(
         classNames,
         !(color || overrideColor || hasLightDarkColors) &&
-          "bg-gray-800 dark:bg-gray-100"
+          "bg-stone-800 dark:bg-stone-100"
       )}
       data-component-part="icon-svg"
       style={{

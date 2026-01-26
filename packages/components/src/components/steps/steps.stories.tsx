@@ -168,7 +168,7 @@ export const StepsWithMixedContent: Story = {
       <Steps.Item title="Installation">
         <div className="space-y-2">
           <p>Install the required dependencies:</p>
-          <code className="block rounded bg-gray-100 p-2 dark:bg-gray-800">
+          <code className="block rounded bg-stone-100 p-2 dark:bg-stone-800">
             npm install
           </code>
         </div>
@@ -186,7 +186,7 @@ export const StepsWithMixedContent: Story = {
       <Steps.Item title="Deployment">
         <div className="space-y-2">
           <p>Deploy your application:</p>
-          <code className="block rounded bg-gray-100 p-2 dark:bg-gray-800">
+          <code className="block rounded bg-stone-100 p-2 dark:bg-stone-800">
             npm run deploy
           </code>
         </div>
@@ -213,7 +213,7 @@ export const StepsWithLargeTitles: Story = {
 
 export const StepsWithCustomClassName: Story = {
   render: () => (
-    <Steps className="rounded-md border-2 border-gray-200 p-4">
+    <Steps className="rounded-md border-2 border-stone-200 p-4">
       <Steps.Item className="bg-blue-500" title="Important First Step">
         This step should have a custom class name.
       </Steps.Item>

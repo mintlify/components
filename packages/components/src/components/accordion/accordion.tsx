@@ -187,7 +187,7 @@ const GenericAccordion = ({
       <details
         className={cn(
           Classes.Accordion,
-          "mb-3 cursor-default overflow-hidden rounded-2xl border border-gray-200/70 bg-white dark:border-white/10 dark:bg-[#0b0c0e]",
+          "mb-3 cursor-default overflow-hidden rounded-2xl border border-stone-200/70 bg-white dark:border-white/10 dark:bg-[#0b0c0e]",
           className
         )}
         data-component-part="accordion"
@@ -211,7 +211,7 @@ const GenericAccordion = ({
         {/** biome-ignore lint/a11y/useSemanticElements: TODO */}
         <div
           aria-labelledby={`${id}-label`}
-          className="prose prose-gray dark:prose-invert mx-6 mt-2 mb-4 cursor-default overflow-x-auto"
+          className="prose prose-stone dark:prose-invert mx-6 mt-2 mb-4 cursor-default overflow-x-auto"
           data-component-part="accordion-content"
           id={`${id}-accordion-children`}
           role="region"

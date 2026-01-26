@@ -149,13 +149,13 @@ const TabsRoot = ({
       className={cn(
         Classes.Tabs,
         "tabs tab-container",
-        borderBottom && "border-gray-200 border-b pb-6 dark:border-gray-700",
+        borderBottom && "border-stone-200 border-b pb-6 dark:border-stone-700",
         className
       )}
     >
       <ul
         aria-label={ariaLabel ?? "Tabs"}
-        className="not-prose mb-6 flex min-w-full flex-none gap-x-6 overflow-auto border-gray-200 border-b pb-px dark:border-gray-700"
+        className="not-prose mb-6 flex min-w-full flex-none gap-x-6 overflow-auto border-stone-200 border-b pb-px dark:border-stone-700"
         data-component-part="tabs-list"
         // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole: TODO
         role="tablist"
@@ -194,7 +194,7 @@ const TabsRoot = ({
                   "-mb-px flex max-w-max items-center gap-1.5 whitespace-nowrap border-b pt-3 pb-2.5 font-semibold text-sm leading-6",
                   isActive
                     ? "border-current text-primary dark:text-primary-light"
-                    : "border-transparent text-gray-900 hover:border-gray-300 dark:text-gray-200 dark:hover:border-gray-700"
+                    : "border-transparent text-stone-900 hover:border-stone-300 dark:text-stone-200 dark:hover:border-stone-700"
                 )}
                 data-active={isActive}
                 data-component-part="tab-button"
@@ -206,7 +206,7 @@ const TabsRoot = ({
                       "size-4 shrink-0",
                       isActive
                         ? "bg-primary dark:bg-primary-light"
-                        : "bg-gray-900 dark:bg-gray-200",
+                        : "bg-stone-900 dark:bg-stone-200",
                       Classes.TabIcon
                     )}
                     icon={icon}

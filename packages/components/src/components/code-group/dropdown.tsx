@@ -26,7 +26,7 @@ const DropdownMenuTrigger = ({
   <Menu.Trigger
     className={cn(
       "group group overflow-hidden rounded-lg disabled:pointer-events-none [&>span]:line-clamp-1",
-      "flex items-center gap-1 py-0.5 text-gray-950/50 text-sm group-hover:text-gray-950/70 dark:text-white/50 dark:group-hover:text-white/70",
+      "flex items-center gap-1 py-0.5 text-sm text-stone-950/50 group-hover:text-stone-950/70 dark:text-white/50 dark:group-hover:text-white/70",
       className
     )}
     {...props}
@@ -56,7 +56,7 @@ const DropdownMenuContent = ({
     >
       <Menu.Popup
         className={cn(
-          "relative max-h-96 min-w-[var(--anchor-width)] overflow-y-auto rounded-2xl border-standard bg-white p-1 text-gray-950/70 shadow-gray-500/5 shadow-xl dark:bg-gray-950 dark:text-white/70 dark:shadow-gray-500/5 dark:shadow-none",
+          "relative max-h-96 min-w-[var(--anchor-width)] overflow-y-auto rounded-2xl border-standard bg-white p-1 text-stone-950/70 shadow-stone-500/5 shadow-xl dark:bg-stone-950 dark:text-white/70 dark:shadow-none dark:shadow-stone-500/5",
           "data-[ending-style]:fade-out-0 data-[starting-style]:fade-in-0 data-[ending-style]:zoom-out-95 data-[starting-style]:zoom-in-95",
           className
         )}
@@ -83,10 +83,10 @@ const DropdownMenuItem = ({
 }: DropdownMenuItemProps) => (
   <Menu.Item
     className={cn(
-      "group relative flex w-full cursor-pointer select-none items-center justify-between gap-2 rounded-md px-2 py-1 text-sm outline-0 hover:bg-gray-950/[0.03] focus:bg-gray-950/5 data-[disabled]:pointer-events-none data-[disabled]:cursor-default data-[disabled]:opacity-50 dark:focus:bg-white/5 dark:hover:bg-white/[0.03]",
+      "group relative flex w-full cursor-pointer select-none items-center justify-between gap-2 rounded-md px-2 py-1 text-sm outline-0 hover:bg-stone-950/[0.03] focus:bg-stone-950/5 data-[disabled]:pointer-events-none data-[disabled]:cursor-default data-[disabled]:opacity-50 dark:focus:bg-white/5 dark:hover:bg-white/[0.03]",
       isSelected
         ? "font-medium text-primary dark:text-primary-light"
-        : "text-gray-950/50 hover:text-gray-950/75 focus:text-gray-950/75 dark:text-white/50 dark:focus:text-white/75 dark:hover:text-white/75",
+        : "text-stone-950/50 hover:text-stone-950/75 focus:text-stone-950/75 dark:text-white/50 dark:focus:text-white/75 dark:hover:text-white/75",
       className
     )}
     onClick={(e) => {

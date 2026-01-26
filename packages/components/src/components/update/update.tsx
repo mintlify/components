@@ -114,7 +114,7 @@ const Update = forwardRef<HTMLDivElement, UpdateProps>(
               href={`#${encodeURIComponent(id)}`}
             >
               &#8203;
-              <div className="flex size-6 items-center justify-center rounded-md bg-white text-gray-400 shadow-sm ring-1 ring-gray-400/30 hover:ring-gray-400/60 group-focus/link:border-2 group-focus/link:border-primary dark:bg-background-dark dark:text-white/50 dark:ring-1 dark:ring-gray-700/25 dark:brightness-[1.35] dark:group-focus/link:border-primary-light dark:hover:ring-white/20 dark:hover:brightness-150">
+              <div className="flex size-6 items-center justify-center rounded-md bg-white text-stone-400 shadow-sm ring-1 ring-stone-400/30 hover:ring-stone-400/60 group-focus/link:border-2 group-focus/link:border-primary dark:bg-background-dark dark:text-white/50 dark:ring-1 dark:ring-stone-700/25 dark:brightness-[1.35] dark:group-focus/link:border-primary-light dark:hover:ring-white/20 dark:hover:brightness-150">
                 <LinkIcon />
               </div>
             </a>

@@ -142,7 +142,7 @@ const Expandable = ({
         aria-expanded={open}
         className={cn(
           "not-prose flex w-full cursor-pointer flex-row content-center items-center text-sm",
-          "rounded-t-xl px-3.5 py-3 text-gray-600 hover:bg-gray-50/50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-200",
+          "rounded-t-xl px-3.5 py-3 text-stone-600 hover:bg-stone-50/50 hover:text-stone-900 dark:text-stone-300 dark:hover:bg-white/5 dark:hover:text-stone-200",
           "list-none [&::-webkit-details-marker]:hidden",
           !open && "rounded-b-xl"
         )}
@@ -150,7 +150,7 @@ const Expandable = ({
       >
         <Icon
           className={cn(
-            "size-2.5 bg-zinc-400 transition-transform",
+            "size-2.5 bg-stone-400 transition-transform",
             open && "rotate-90"
           )}
           data-component-part="expandable-icon"
@@ -165,7 +165,7 @@ const Expandable = ({
       <div
         className={cn(
           EXPANDABLE_CONTENT_CLASS,
-          "mx-3 border-gray-100 border-t px-2 dark:border-white/10"
+          "mx-3 border-stone-100 border-t px-2 dark:border-white/10"
         )}
         data-component-part={EXPANDABLE_CONTENT_CLASS}
         id={contentId}

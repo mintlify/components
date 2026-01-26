@@ -115,8 +115,8 @@ export const WithRichContent: Story = {
           <code className="font-mono text-pink-600 text-sm dark:text-pink-400">
             id
           </code>
-          <span className="ml-2 text-gray-500 text-sm">string</span>
-          <p className="mt-1 text-gray-600 text-sm dark:text-gray-400">
+          <span className="ml-2 text-sm text-stone-500">string</span>
+          <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
             Unique identifier for the resource.
           </p>
         </div>
@@ -124,8 +124,8 @@ export const WithRichContent: Story = {
           <code className="font-mono text-pink-600 text-sm dark:text-pink-400">
             name
           </code>
-          <span className="ml-2 text-gray-500 text-sm">string</span>
-          <p className="mt-1 text-gray-600 text-sm dark:text-gray-400">
+          <span className="ml-2 text-sm text-stone-500">string</span>
+          <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
             Display name of the resource.
           </p>
         </div>
@@ -133,8 +133,8 @@ export const WithRichContent: Story = {
           <code className="font-mono text-pink-600 text-sm dark:text-pink-400">
             createdAt
           </code>
-          <span className="ml-2 text-gray-500 text-sm">datetime</span>
-          <p className="mt-1 text-gray-600 text-sm dark:text-gray-400">
+          <span className="ml-2 text-sm text-stone-500">datetime</span>
+          <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
             Timestamp when the resource was created.
           </p>
         </div>
