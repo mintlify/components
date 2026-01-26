@@ -25,7 +25,7 @@ const CodeHeader = ({
     >
       <div
         className={cn(
-          "flex flex-none items-center gap-1.5 text-gray-700 dark:text-gray-300",
+          "flex min-w-0 grow-0 items-center gap-1.5 text-gray-700 dark:text-gray-300",
           codeBlockTheme === "dark" && "text-gray-300"
         )}
         data-component-part="code-block-header-filename"
@@ -33,7 +33,7 @@ const CodeHeader = ({
         {icon && (
           <ComponentIcon
             className={cn(
-              "size-3.5 bg-gray-500 dark:bg-gray-400",
+              "size-3.5 shrink-0 bg-gray-500 dark:bg-gray-400",
               Classes.CodeBlockIcon
             )}
             icon={icon}
@@ -41,7 +41,9 @@ const CodeHeader = ({
             overrideColor
           />
         )}
-        {filename}
+        {!!filename && (
+          <span className="mr-2 min-w-0 truncate">{filename}</span>
+        )}
       </div>
       <div className="flex flex-1 items-center justify-end gap-1.5">
         {children}
