@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2025-01-26
+
+### Fixed
+
+- Fixed CSS bundling by adding `@tailwindcss/cli` dependency (#174)
+- Fixed code block header truncation (#173)
+- Fixed type exports and disabled default `rollupTypes` (#176)
+
+### Changed
+
+- Updated README with style override instructions (#175)
+- Updated `lodash` from 4.17.21 to 4.17.23 (#171)
+
 ## [1.0.0] - 2025-01-23
 
 ### Initialized components library
