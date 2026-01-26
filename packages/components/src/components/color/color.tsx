@@ -189,3 +189,4 @@ Color.Row = ColorRow;
 Color.Item = ColorItem;
 
 export { Color };
+export type { ColorItemProps, ColorProps, ColorRowProps };

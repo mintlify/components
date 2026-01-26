@@ -114,3 +114,4 @@ const Tile = ({ href, children, title, description, className }: TileProps) => {
 };
 
 export { Tile };
+export type { TileProps };

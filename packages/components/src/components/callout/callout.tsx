@@ -220,3 +220,4 @@ const Danger = (props: BackwardCompatibleCalloutProps) => {
 };
 
 export { Callout, Info, Warning, Note, Tip, Check, Danger };
+export type { CalloutProps, CalloutVariant };
