@@ -17,7 +17,7 @@ const CodeFooter = ({
 
   return (
     <div
-      className="flex items-center px-3 py-1 font-medium text-gray-500 text-xs hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300"
+      className="flex items-center px-3 py-1 font-medium text-stone-500 text-xs hover:text-stone-600 dark:text-stone-400 dark:hover:text-stone-300"
       data-component-part="code-block-footer"
     >
       <button
@@ -26,7 +26,7 @@ const CodeFooter = ({
         onClick={toggleExpanded}
         type="button"
       >
-        <EllipsisIcon className="size-3.5 shrink-0 text-gray-500 dark:text-gray-400" />
+        <EllipsisIcon className="size-3.5 shrink-0 text-stone-500 dark:text-stone-400" />
         {isExpanded
           ? "Collapse"
           : `See all ${numberOfLines} line${numberOfLines === 1 ? "" : "s"}`}

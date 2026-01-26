@@ -207,7 +207,7 @@ export const ComplexFlowchart: Story = {
 export const WithCustomClassName: Story = {
   args: {
     chart: flowchartExample,
-    className: "border rounded-lg p-4 bg-gray-50 dark:bg-gray-800",
+    className: "border rounded-lg p-4 bg-stone-50 dark:bg-stone-800",
   },
 };
 

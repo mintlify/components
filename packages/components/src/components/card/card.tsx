@@ -144,7 +144,7 @@ const GenericCard = <T extends ElementType = "div">({
           />
         ) : (
           <div
-            className="size-6 fill-gray-800 text-gray-800 dark:fill-gray-100 dark:text-gray-100"
+            className="size-6 fill-stone-800 text-stone-800 dark:fill-stone-100 dark:text-stone-100"
             data-component-part="card-icon"
           >
             {icon}
@@ -158,7 +158,7 @@ const GenericCard = <T extends ElementType = "div">({
     <Component
       className={cn(
         Classes.Card,
-        "group relative my-2 block w-full overflow-hidden rounded-2xl border border-gray-950/10 bg-white font-normal ring-2 ring-transparent dark:border-white/10 dark:bg-background-dark",
+        "group relative my-2 block w-full overflow-hidden rounded-2xl border border-stone-950/10 bg-white font-normal ring-2 ring-transparent dark:border-white/10 dark:bg-background-dark",
         props.href && "cursor-pointer",
         props.href &&
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-primary-light",
@@ -188,7 +188,7 @@ const GenericCard = <T extends ElementType = "div">({
           <div
             aria-hidden="true"
             className={cn(
-              "absolute top-5 right-5 text-gray-400 group-hover:text-primary dark:text-gray-500 dark:group-hover:text-primary-light",
+              "absolute top-5 right-5 text-stone-400 group-hover:text-primary dark:text-stone-500 dark:group-hover:text-primary-light",
               !shouldShowArrowIcon && "hidden"
             )}
             data-component-part="card-arrow"
@@ -201,7 +201,7 @@ const GenericCard = <T extends ElementType = "div">({
           {title && (
             <h2
               className={cn(
-                "not-prose wrap-break-word font-semibold text-base text-gray-800 dark:text-white",
+                "not-prose wrap-break-word font-semibold text-base text-stone-800 dark:text-white",
                 icon !== null && icon !== undefined && !horizontal && "mt-4"
               )}
               contentEditable={false}
@@ -214,8 +214,8 @@ const GenericCard = <T extends ElementType = "div">({
             className={cn(
               "prose wrap-break-word mt-1 font-normal text-base leading-6",
               title
-                ? "text-gray-600 dark:text-gray-400"
-                : "text-gray-700 dark:text-gray-300",
+                ? "text-stone-600 dark:text-stone-400"
+                : "text-stone-700 dark:text-stone-300",
               horizontal && "mt-0 leading-6"
             )}
             data-component-part="card-content"
@@ -226,7 +226,7 @@ const GenericCard = <T extends ElementType = "div">({
             <div className="mt-8" data-component-part="card-cta">
               <span
                 className={cn(
-                  "flex flex-row items-center gap-2 text-left font-medium text-gray-600 text-sm dark:text-gray-400",
+                  "flex flex-row items-center gap-2 text-left font-medium text-sm text-stone-600 dark:text-stone-400",
                   !disabled &&
                     "group-hover:text-primary group-hover:dark:text-primary-light",
                   disabled && "opacity-50"

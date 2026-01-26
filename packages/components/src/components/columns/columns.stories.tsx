@@ -4,7 +4,7 @@ import { Columns } from "./columns";
 import { COL_OPTIONS } from "./constants";
 
 const Box = ({ children }: { children?: React.ReactNode }) => (
-  <div className="flex h-24 items-center justify-center rounded-lg bg-zinc-200 text-sm text-zinc-500 dark:bg-zinc-800">
+  <div className="flex h-24 items-center justify-center rounded-lg bg-stone-200 text-sm text-stone-500 dark:bg-stone-800">
     {children}
   </div>
 );

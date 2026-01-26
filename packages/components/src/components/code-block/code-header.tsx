@@ -20,20 +20,20 @@ const CodeHeader = ({
 }: CodeHeaderProps) => {
   return (
     <div
-      className="flex rounded-t-[14px] py-1 pr-2.5 pl-4 font-medium text-gray-400 text-xs leading-6"
+      className="flex rounded-t-[14px] py-1 pr-2.5 pl-4 font-medium text-stone-400 text-xs leading-6"
       data-component-part="code-block-header"
     >
       <div
         className={cn(
-          "flex min-w-0 grow-0 items-center gap-1.5 text-gray-700 dark:text-gray-300",
-          codeBlockTheme === "dark" && "text-gray-300"
+          "flex min-w-0 grow-0 items-center gap-1.5 text-stone-700 dark:text-stone-300",
+          codeBlockTheme === "dark" && "text-stone-300"
         )}
         data-component-part="code-block-header-filename"
       >
         {icon && (
           <ComponentIcon
             className={cn(
-              "size-3.5 shrink-0 bg-gray-500 dark:bg-gray-400",
+              "size-3.5 shrink-0 bg-stone-500 dark:bg-stone-400",
               Classes.CodeBlockIcon
             )}
             icon={icon}

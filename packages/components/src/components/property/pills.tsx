@@ -11,13 +11,13 @@ const InfoPill = ({ children, prefix, className }: InfoPillProps) => {
   return (
     <div
       className={cn(
-        "flex items-center gap-1 break-all rounded-md bg-gray-100/50 px-2 py-0.5 font-medium text-gray-600 dark:bg-white/5 dark:text-gray-200",
+        "flex items-center gap-1 break-all rounded-md bg-stone-100/50 px-2 py-0.5 font-medium text-stone-600 dark:bg-white/5 dark:text-stone-200",
         className
       )}
       data-component-part="field-info-pill"
     >
       {prefix && (
-        <span className="text-gray-400 dark:text-gray-500">{prefix}</span>
+        <span className="text-stone-400 dark:text-stone-500">{prefix}</span>
       )}
       <span>{children}</span>
     </div>

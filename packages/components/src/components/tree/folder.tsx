@@ -44,7 +44,7 @@ const TreeFolder = ({
         aria-owns={openable && open ? groupId : undefined}
         aria-selected={false}
         className={cn(
-          "flex items-center gap-1.5 rounded-lg py-1 pr-1.5 pl-[calc(var(--padding-left)*1px)] text-gray-700 -outline-offset-1 hover:bg-neutral-100 dark:text-gray-400 dark:hover:bg-neutral-900",
+          "flex items-center gap-1.5 rounded-lg py-1 pr-1.5 pl-[calc(var(--padding-left)*1px)] text-stone-700 -outline-offset-1 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-900",
           openable ? "cursor-pointer" : "cursor-default",
           Classes.TreeFolder
         )}
@@ -80,7 +80,7 @@ const TreeFolder = ({
         >
           <div
             aria-hidden="true"
-            className="absolute left-[calc((var(--padding-left)+8)*1px)] z-10 h-full w-px select-none bg-neutral-200 dark:bg-neutral-800"
+            className="absolute left-[calc((var(--padding-left)+8)*1px)] z-10 h-full w-px select-none bg-stone-200 dark:bg-stone-800"
             data-component-part="tree-folder-children-line"
           />
           <TreeLevelProvider level={level + 1} parentId={nodeId}>

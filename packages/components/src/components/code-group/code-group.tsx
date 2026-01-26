@@ -117,12 +117,12 @@ const CodeGroup = ({
     <Tabs.Root
       className={cn(
         Classes.CodeGroup,
-        "not-prose relative mt-5 mb-8 flex flex-col overflow-hidden rounded-2xl border border-gray-950/10 p-0.5 dark:border-white/10",
+        "not-prose relative mt-5 mb-8 flex flex-col overflow-hidden rounded-2xl border border-stone-950/10 p-0.5 dark:border-white/10",
         noMargins && "my-0",
         codeBlockTheme === "system" &&
-          "dark:codeblock-dark codeblock-light bg-gray-50 text-gray-950 dark:bg-white/5 dark:text-gray-50",
+          "dark:codeblock-dark codeblock-light bg-stone-50 text-stone-950 dark:bg-white/5 dark:text-stone-50",
         codeBlockTheme === "dark" &&
-          "codeblock-dark border-transparent bg-codeblock text-gray-50 dark:bg-white/5",
+          "codeblock-dark border-transparent bg-codeblock text-stone-50 dark:bg-white/5",
         feedbackModalOpen && "border border-primary dark:border-primary-light",
         className
       )}
@@ -143,7 +143,7 @@ const CodeGroup = ({
               typeof childArr[selectedIndex]?.props.icon === "string" && (
                 <ComponentIcon
                   className={cn(
-                    "size-3.5 bg-gray-500 dark:bg-gray-400",
+                    "size-3.5 bg-stone-500 dark:bg-stone-400",
                     Classes.CodeBlockIcon
                   )}
                   icon={childArr[selectedIndex]?.props.icon}
@@ -155,8 +155,8 @@ const CodeGroup = ({
               className={cn(
                 "truncate",
                 codeBlockTheme === "system" &&
-                  "text-gray-950 dark:text-gray-50",
-                codeBlockTheme === "dark" && "text-gray-50"
+                  "text-stone-950 dark:text-stone-50",
+                codeBlockTheme === "dark" && "text-stone-50"
               )}
             >
               {childArr[selectedIndex]?.props.filename}
@@ -189,10 +189,10 @@ const CodeGroup = ({
                 {child.props.icon && typeof child.props.icon === "string" && (
                   <ComponentIcon
                     className={cn(
-                      "h-3.5 w-3.5 bg-gray-500 dark:bg-gray-400",
+                      "h-3.5 w-3.5 bg-stone-500 dark:bg-stone-400",
                       codeBlockTheme === "system"
                         ? "group-hover:bg-primary dark:group-hover:bg-primary-light"
-                        : "group-hover:bg-gray-700/70 group-hover:text-primary-light",
+                        : "group-hover:bg-stone-700/70 group-hover:text-primary-light",
                       Classes.CodeBlockIcon
                     )}
                     color={selectedIndex === index ? "currentColor" : undefined}
@@ -276,8 +276,8 @@ const TabItem = forwardRef<React.ComponentRef<typeof Tabs.Tab>, TabItemProps>(
           isSelected && codeBlockTheme === "dark" && "text-primary-light",
           !isSelected &&
             codeBlockTheme === "system" &&
-            "text-gray-500 dark:text-gray-400",
-          !isSelected && codeBlockTheme === "dark" && "text-gray-400"
+            "text-stone-500 dark:text-stone-400",
+          !isSelected && codeBlockTheme === "dark" && "text-stone-400"
         )}
         ref={ref}
         value={value}
@@ -287,10 +287,10 @@ const TabItem = forwardRef<React.ComponentRef<typeof Tabs.Tab>, TabItemProps>(
             "z-10 flex items-center gap-1.5 rounded-lg px-1.5 focus:outline-none",
             tabsLength > 1 &&
               codeBlockTheme === "system" &&
-              "group-hover:bg-gray-200/50 group-hover:text-primary dark:group-hover:bg-gray-700/70 dark:group-hover:text-primary-light",
+              "group-hover:bg-stone-200/50 group-hover:text-primary dark:group-hover:bg-stone-700/70 dark:group-hover:text-primary-light",
             tabsLength > 1 &&
               codeBlockTheme === "dark" &&
-              "group-hover:bg-gray-700/70 group-hover:text-primary-light"
+              "group-hover:bg-stone-700/70 group-hover:text-primary-light"
           )}
         >
           {children}

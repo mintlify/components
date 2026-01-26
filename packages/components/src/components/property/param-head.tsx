@@ -84,7 +84,7 @@ const ParamHead = ({
                 onClick={copyAnchorLink}
               >
                 &#8203;
-                <div className="flex size-6 items-center justify-center rounded-md bg-white text-gray-400 shadow-sm ring-1 ring-gray-400/30 hover:ring-gray-400/60 group-focus/link:border-2 group-focus/link:border-primary dark:bg-background-dark dark:text-white/50 dark:ring-1 dark:ring-gray-700/25 dark:brightness-[1.35] dark:group-focus/link:border-primary-light dark:hover:ring-white/20 dark:hover:brightness-150">
+                <div className="flex size-6 items-center justify-center rounded-md bg-white text-stone-400 shadow-sm ring-1 ring-stone-400/30 hover:ring-stone-400/60 group-focus/link:border-2 group-focus/link:border-primary dark:bg-background-dark dark:text-white/50 dark:ring-1 dark:ring-stone-700/25 dark:brightness-[1.35] dark:group-focus/link:border-primary-light dark:hover:ring-white/20 dark:hover:brightness-150">
                   <LinkIcon />
                 </div>
               </a>
@@ -92,7 +92,7 @@ const ParamHead = ({
           )}
           {pre?.map((item, i) => (
             <div
-              className="rounded-md bg-gray-100/50 px-2 py-0.5 text-gray-600 dark:bg-white/5 dark:text-gray-200"
+              className="rounded-md bg-stone-100/50 px-2 py-0.5 text-stone-600 dark:bg-white/5 dark:text-stone-200"
               data-component-part="field-meta-pre"
               // biome-ignore lint/suspicious/noArrayIndexKey: TODO
               key={i}
@@ -134,7 +134,7 @@ const ParamHead = ({
             {deprecated && <DeprecatedPill label={deprecatedLabel} />}
             {post?.map((item, i) => (
               <div
-                className="rounded-md bg-gray-100/50 px-2 py-0.5 text-gray-600 dark:bg-white/5 dark:text-gray-200"
+                className="rounded-md bg-stone-100/50 px-2 py-0.5 text-stone-600 dark:bg-white/5 dark:text-stone-200"
                 data-component-part="field-meta-post"
                 // biome-ignore lint/suspicious/noArrayIndexKey: TODO
                 key={i}

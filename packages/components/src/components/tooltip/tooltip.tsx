@@ -87,12 +87,12 @@ const Tooltip = ({
         <TooltipBaseUI.Portal>
           <TooltipBaseUI.Positioner collisionPadding={8} sideOffset={4}>
             <TooltipBaseUI.Popup
-              className="z-50 flex max-w-[16rem] flex-col gap-1 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-[0_10px_16px_-3px_rgb(10_10_10/0.05),0_3px_10px_-2px_rgb(10_10_10/0.02)] dark:border-gray-900 dark:bg-gray-950"
+              className="z-50 flex max-w-[16rem] flex-col gap-1 rounded-xl border border-stone-200 bg-white px-4 py-3 shadow-[0_10px_16px_-3px_rgb(10_10_10/0.05),0_3px_10px_-2px_rgb(10_10_10/0.02)] dark:border-stone-900 dark:bg-stone-950"
               data-component-part="tooltip-content"
             >
               {!!title && (
                 <p
-                  className="font-medium text-gray-900 text-xs leading-4 dark:text-gray-200"
+                  className="font-medium text-stone-900 text-xs leading-4 dark:text-stone-200"
                   data-component-part="tooltip-title"
                 >
                   {title}
@@ -100,7 +100,7 @@ const Tooltip = ({
               )}
               {!!description && (
                 <p
-                  className="text-gray-600 text-xs leading-4 dark:text-gray-400"
+                  className="text-stone-600 text-xs leading-4 dark:text-stone-400"
                   data-component-part="tooltip-description"
                 >
                   {description}
@@ -112,7 +112,7 @@ const Tooltip = ({
                   {...(isRemoteUrl(href)
                     ? { target: "_blank", rel: "noreferrer" }
                     : {})}
-                  className="mt-2! flex items-center gap-0.5 rounded-sm font-medium text-gray-600 text-xs leading-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:text-primary-light"
+                  className="mt-2! flex items-center gap-0.5 rounded-sm font-medium text-stone-600 text-xs leading-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-stone-400 dark:hover:text-primary-light"
                   data-component-part="tooltip-cta"
                 >
                   {cta}
@@ -162,7 +162,7 @@ const underlineWhenTextOnly = (children: ReactNode) => {
     <span
       className={cn(
         Classes.Tooltip,
-        "underline decoration-2 decoration-gray-400 decoration-dotted underline-offset-4 dark:decoration-gray-500"
+        "underline decoration-2 decoration-stone-400 decoration-dotted underline-offset-4 dark:decoration-stone-500"
       )}
     >
       {children}

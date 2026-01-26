@@ -94,7 +94,7 @@ export const Variants: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Solid (Default)
         </h3>
       </div>
@@ -105,7 +105,7 @@ export const Variants: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Outline
         </h3>
       </div>
@@ -137,7 +137,7 @@ export const WithIcon: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Lead Icons
         </h3>
       </div>
@@ -152,7 +152,7 @@ export const WithIcon: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Tail Icons
         </h3>
       </div>
@@ -167,7 +167,7 @@ export const WithIcon: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Both Lead and Tail Icons
         </h3>
       </div>
@@ -181,7 +181,7 @@ export const WithIcon: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Inline SVG Icons
         </h3>
       </div>
@@ -226,7 +226,7 @@ export const WithIcon: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Icon Types (Font Awesome Styles)
         </h3>
       </div>
@@ -246,7 +246,7 @@ export const WithIcon: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Lucide Icon Library
         </h3>
       </div>
@@ -266,7 +266,7 @@ export const WithIcon: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Icons with Different Sizes
         </h3>
       </div>
@@ -290,7 +290,7 @@ export const WithIcon: Story = {
 
 export const SurfaceVariants: Story = {
   render: () => (
-    <div className="flex gap-2 rounded-lg bg-gray-100 p-4 dark:bg-gray-800">
+    <div className="flex gap-2 rounded-lg bg-stone-100 p-4 dark:bg-stone-800">
       <Badge color="white">White</Badge>
       <Badge color="surface">Surface</Badge>
       <Badge color="white-destructive">White Destructive</Badge>
@@ -303,7 +303,7 @@ export const IconCombinations: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Icons with Outline Variant
         </h3>
       </div>
@@ -320,7 +320,7 @@ export const IconCombinations: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Icons with Disabled State
         </h3>
       </div>
@@ -337,7 +337,7 @@ export const IconCombinations: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Icons with Pill Shape
         </h3>
       </div>
@@ -354,7 +354,7 @@ export const IconCombinations: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Inline SVG Icons with States
         </h3>
       </div>
@@ -422,7 +422,7 @@ export const IconCombinations: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           All States Combined
         </h3>
       </div>
@@ -454,7 +454,7 @@ export const CustomStyling: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Using className prop for custom styling
         </h3>
       </div>
@@ -496,7 +496,7 @@ export const Interactive: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Clickable Badges (onClick)
         </h3>
       </div>
@@ -519,7 +519,7 @@ export const Interactive: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Link Badges (href)
         </h3>
       </div>
@@ -541,7 +541,7 @@ export const Interactive: Story = {
       </div>
 
       <div className="flex gap-2">
-        <h3 className="w-full font-medium text-gray-700 text-sm dark:text-gray-300">
+        <h3 className="w-full font-medium text-sm text-stone-700 dark:text-stone-300">
           Disabled Interactive Badges
         </h3>
       </div>

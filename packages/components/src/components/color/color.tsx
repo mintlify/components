@@ -54,7 +54,7 @@ const ColorRow = ({ children, title }: ColorRowProps) => {
           data-component-part="color-row-title-container"
         >
           <p
-            className="m-0 truncate font-medium text-gray-900 text-sm tracking-[-0.1px] dark:text-gray-200"
+            className="m-0 truncate font-medium text-sm text-stone-900 tracking-[-0.1px] dark:text-stone-200"
             data-component-part="color-row-title"
             title={title}
           >
@@ -128,7 +128,7 @@ const ColorItem = ({ name, value }: ColorItemProps) => {
       aria-pressed={state === "copied"}
       aria-roledescription={state === "copied" ? "Copied" : "Copy"}
       className={cn(
-        "relative flex cursor-copy items-center justify-center rounded-lg border border-neutral-200 dark:border-neutral-800",
+        "relative flex cursor-copy items-center justify-center rounded-lg border border-stone-200 dark:border-stone-800",
         variant === "compact" && "aspect-square max-h-[104px]",
         variant === "table" && "aspect-square w-full md:h-10"
       )}
@@ -165,7 +165,7 @@ const ColorItem = ({ name, value }: ColorItemProps) => {
         <div className="flex w-[104px] min-w-0 flex-col gap-0.5">
           {name && (
             <p
-              className="m-0 truncate text-center font-medium text-gray-900 text-sm dark:text-gray-200"
+              className="m-0 truncate text-center font-medium text-sm text-stone-900 dark:text-stone-200"
               data-component-part="color-item-name"
               title={name}
             >
@@ -173,7 +173,7 @@ const ColorItem = ({ name, value }: ColorItemProps) => {
             </p>
           )}
           <p
-            className="m-0 truncate text-center font-mono text-gray-600 text-xs dark:text-gray-400"
+            className="m-0 truncate text-center font-mono text-stone-600 text-xs dark:text-stone-400"
             data-component-part="color-item-value"
             title={currentColor}
           >

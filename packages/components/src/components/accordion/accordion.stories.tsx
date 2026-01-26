@@ -60,7 +60,7 @@ export const WithDescription: Story = {
         title="Installation"
       >
         <p>Run the following command to install Mintlify:</p>
-        <pre className="rounded bg-gray-800 p-3">npm install -g mintlify</pre>
+        <pre className="rounded bg-stone-800 p-3">npm install -g mintlify</pre>
       </Accordion>
       <Accordion
         defaultOpen={false}
@@ -71,7 +71,7 @@ export const WithDescription: Story = {
           Create a mint.json file in your project root with the following
           structure:
         </p>
-        <pre className="rounded bg-gray-800 p-3">
+        <pre className="rounded bg-stone-800 p-3">
           {`{
   "name": "My Documentation",
   "navigation": []
@@ -259,20 +259,20 @@ export const WithURLManagement: Story = {
 
     return (
       <div className="max-w-2xl space-y-3">
-        <div className="mb-4 rounded-lg bg-gray-100 p-3 dark:bg-gray-800">
-          <p className="mb-2 text-gray-500 text-xs dark:text-gray-400">
+        <div className="mb-4 rounded-lg bg-stone-100 p-3 dark:bg-stone-800">
+          <p className="mb-2 text-stone-500 text-xs dark:text-stone-400">
             Current URL (Storybook iframe):
           </p>
-          <code className="break-all text-gray-700 text-xs dark:text-gray-300">
+          <code className="break-all text-stone-700 text-xs dark:text-stone-300">
             {currentUrl}
           </code>
         </div>
-        <p className="mb-4 text-gray-600 text-sm dark:text-gray-400">
+        <p className="mb-4 text-sm text-stone-600 dark:text-stone-400">
           These accordions sync with the URL hash. Open an accordion and watch
           the URL update above. The URL is also copied to your clipboard
           automatically!
         </p>
-        <p className="mb-4 text-gray-500 text-xs dark:text-gray-400">
+        <p className="mb-4 text-stone-500 text-xs dark:text-stone-400">
           <strong>Note:</strong> In Storybook's iframe environment, URL changes
           aren't visible in the browser's address bar, but the feature works in
           production. The simulated URL display above shows what's happening.
@@ -320,7 +320,7 @@ export const WithURLManagement: Story = {
 export const WithCallbacks: Story = {
   render: () => (
     <div className="max-w-2xl space-y-3">
-      <p className="mb-4 text-gray-600 text-sm dark:text-gray-400">
+      <p className="mb-4 text-sm text-stone-600 dark:text-stone-400">
         Open the browser console to see the callback logs.
       </p>
       <Accordion
@@ -370,7 +370,7 @@ export const AllFeaturesCombined: Story = {
               <li>Open/close tracking callbacks</li>
               <li>Mount lifecycle callback</li>
             </ul>
-            <p className="mt-3 text-gray-600 text-sm dark:text-gray-400">
+            <p className="mt-3 text-sm text-stone-600 dark:text-stone-400">
               Check the browser console to see callback logs, and notice how the
               URL updates when you toggle this accordion!
             </p>
@@ -392,7 +392,7 @@ export const RichContent: Story = {
       >
         <div>
           <p className="mb-3">Here's how to use the Accordion component:</p>
-          <pre className="overflow-x-auto rounded bg-gray-800 p-4 text-sm">
+          <pre className="overflow-x-auto rounded bg-stone-800 p-4 text-sm">
             {`<Accordion
   title="My Accordion"
   defaultOpen={false}
@@ -412,24 +412,24 @@ export const RichContent: Story = {
           <h4 className="mb-2 font-semibold">Available Props:</h4>
           <table className="min-w-full text-sm">
             <thead>
-              <tr className="border-b dark:border-gray-700">
+              <tr className="border-b dark:border-stone-700">
                 <th className="py-2 pr-4 text-left">Prop</th>
                 <th className="py-2 pr-4 text-left">Type</th>
                 <th className="py-2 text-left">Required</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b dark:border-gray-700">
+              <tr className="border-b dark:border-stone-700">
                 <td className="py-2 pr-4">title</td>
                 <td className="py-2 pr-4">string</td>
                 <td className="py-2">Yes</td>
               </tr>
-              <tr className="border-b dark:border-gray-700">
+              <tr className="border-b dark:border-stone-700">
                 <td className="py-2 pr-4">defaultOpen</td>
                 <td className="py-2 pr-4">boolean</td>
                 <td className="py-2">Yes</td>
               </tr>
-              <tr className="border-b dark:border-gray-700">
+              <tr className="border-b dark:border-stone-700">
                 <td className="py-2 pr-4">description</td>
                 <td className="py-2 pr-4">string</td>
                 <td className="py-2">No</td>
@@ -448,8 +448,8 @@ export const RichContent: Story = {
           <p className="mb-3">
             Accordions can contain any type of content, including images:
           </p>
-          <div className="flex h-32 items-center justify-center rounded bg-gray-200 dark:bg-gray-700">
-            <span className="text-gray-500 dark:text-gray-400">
+          <div className="flex h-32 items-center justify-center rounded bg-stone-200 dark:bg-stone-700">
+            <span className="text-stone-500 dark:text-stone-400">
               Image placeholder
             </span>
           </div>
@@ -574,7 +574,7 @@ export const AccordionGroupWithRichContent: Story = {
           <p className="mb-3">
             Install the package using your preferred package manager:
           </p>
-          <pre className="overflow-x-auto rounded bg-gray-800 p-3 text-sm">
+          <pre className="overflow-x-auto rounded bg-stone-800 p-3 text-sm">
             npm install @mintlify/components
           </pre>
         </Accordion>
@@ -585,7 +585,7 @@ export const AccordionGroupWithRichContent: Story = {
           title="Configuration"
         >
           <p className="mb-3">Create a configuration file:</p>
-          <pre className="overflow-x-auto rounded bg-gray-800 p-3 text-sm">
+          <pre className="overflow-x-auto rounded bg-stone-800 p-3 text-sm">
             {`{
   "theme": "light",
   "components": ["accordion", "badge"]
@@ -599,7 +599,7 @@ export const AccordionGroupWithRichContent: Story = {
           title="Usage"
         >
           <p className="mb-3">Import and use the components:</p>
-          <pre className="overflow-x-auto rounded bg-gray-800 p-3 text-sm">
+          <pre className="overflow-x-auto rounded bg-stone-800 p-3 text-sm">
             {`import { Accordion } from '@mintlify/components';
 
 <Accordion title="Hello">
@@ -634,7 +634,7 @@ export const MultipleAccordionGroups: Story = {
   render: () => (
     <div className="max-w-2xl space-y-4">
       <div>
-        <h3 className="mb-2 font-semibold text-gray-900 text-lg dark:text-gray-100">
+        <h3 className="mb-2 font-semibold text-lg text-stone-900 dark:text-stone-100">
           Documentation
         </h3>
         <Accordion.Group>
@@ -666,7 +666,7 @@ export const MultipleAccordionGroups: Story = {
       </div>
 
       <div>
-        <h3 className="mb-2 font-semibold text-gray-900 text-lg dark:text-gray-100">
+        <h3 className="mb-2 font-semibold text-lg text-stone-900 dark:text-stone-100">
           Support
         </h3>
         <Accordion.Group>

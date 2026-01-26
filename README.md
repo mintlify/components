@@ -19,23 +19,52 @@ yarn add @mintlify/components
 
 - Node.js >= 20.0.0
 - React ^18.0.0 or ^19.0.0
+- Tailwind CSS v3 or v4
+
+## Setup
+
+### Tailwind v4
+
+Import the styles at the **top** of your main CSS file, **before** `@import "tailwindcss"`:
+
+```css
+@import "@mintlify/components/styles.css";
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #your-color;
+}
+```
+
+### Tailwind v3
+
+Import the styles at the **top** of your main CSS file:
+
+```css
+@import "@mintlify/components/styles.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Override theme values in `tailwind.config.js`.
+
+> **Note:** Importing styles before Tailwind ensures your custom theme values take precedence over the component defaults.
 
 ## Usage
 
-Import components and styles in your project:
+Import components in your React files:
 
 ```tsx
 import { Accordion, Callout, CodeBlock, Tabs } from '@mintlify/components';
-import '@mintlify/components/styles.css';
 ```
 
 ### Example
 
 ```tsx
 import { Callout } from '@mintlify/components';
-import '@mintlify/components/styles.css';
 
-function App() {
+const App = () => {
   return (
     <Callout type="info" title="Note">
       This is an informational callout.
