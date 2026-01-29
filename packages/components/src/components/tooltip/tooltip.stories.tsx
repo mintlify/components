@@ -5,6 +5,9 @@ const meta: Meta<typeof Tooltip> = {
   title: "Components/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+  },
 };
 
 export default meta;
@@ -43,6 +46,22 @@ export const WithTitleAndCta: Story = {
   },
 };
 
+export const WithDifferentAlignments: Story = {
+  render: () => (
+    <div className="flex gap-6">
+      <Tooltip align="start" description="This is a tooltip">
+        Tooltip popup aligned to start
+      </Tooltip>
+      <Tooltip align="center" description="This is a tooltip">
+        Tooltip popup aligned to center
+      </Tooltip>
+      <Tooltip align="end" description="This is a tooltip">
+        Tooltip popup aligned to end
+      </Tooltip>
+    </div>
+  ),
+};
+
 export const OnButton: Story = {
   render: () => (
     <Tooltip description="Click this button">
@@ -79,6 +98,25 @@ export const OnIcon: Story = {
         />
       </svg>
     </Tooltip>
+  ),
+};
+
+export const OnDifferentSides: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <Tooltip description="This is a tooltip on the top" side="top">
+        <span>Top</span>
+      </Tooltip>
+      <Tooltip description="This is a tooltip on the right" side="right">
+        <span>Right</span>
+      </Tooltip>
+      <Tooltip description="This is a tooltip on the left" side="left">
+        <span>Left</span>
+      </Tooltip>
+      <Tooltip description="This is a tooltip on the bottom" side="bottom">
+        <span>Bottom</span>
+      </Tooltip>
+    </div>
   ),
 };
 
