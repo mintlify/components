@@ -1,3 +1,4 @@
+import type { TooltipPositionerProps } from "@base-ui/react/tooltip";
 import { Tooltip as TooltipBaseUI } from "@base-ui/react/tooltip";
 import { ChevronRightIcon } from "lucide-react";
 import { isValidElement, type ReactNode, useMemo, useState } from "react";
@@ -7,15 +8,6 @@ import { cn } from "@/utils/cn";
 import { isRemoteUrl } from "@/utils/is-remote-url";
 import { renderAsChild } from "@/utils/render-as-child";
 
-type TooltipSide =
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inline-end"
-  | "inline-start";
-type TooltipAlign = "start" | "center" | "end";
-
 type TooltipProps = {
   description?: string;
   children: ReactNode;
@@ -23,9 +15,7 @@ type TooltipProps = {
   cta?: string;
   href?: string;
   className?: string;
-  side?: TooltipSide;
-  align?: TooltipAlign;
-};
+} & Pick<TooltipPositionerProps, "side" | "align">;
 
 const Tooltip = ({
   description,
@@ -189,4 +179,4 @@ const underlineWhenTextOnly = (children: ReactNode) => {
 };
 
 export { Tooltip };
-export type { TooltipProps, TooltipSide, TooltipAlign };
+export type { TooltipProps };
