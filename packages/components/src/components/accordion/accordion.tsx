@@ -18,7 +18,11 @@ import { AccordionCover } from "./accordion-cover";
 import { CONNECTING_CHARACTER } from "./accordion-url-utils";
 
 type AccordionProps = {
-  title: string;
+  /**
+   * @remarks Prefer using a string value for better compatibility with URL state synchronization and tracking callbacks.
+   * ReactNode is supported for internal use only.
+   */
+  title: ReactNode;
   description?: string;
   defaultOpen: boolean;
   icon?: ReactNode | string;
@@ -36,6 +40,11 @@ type AccordionProps = {
     id: string | undefined,
     parentIds: string[]
   ) => void;
+  /**
+   * Custom keyboard event handler for the accordion.
+   * @remarks For internal use.
+   */
+  _onKeyDownCapture?: (e: React.KeyboardEvent<HTMLDetailsElement>) => void;
 };
 
 const Accordion = ({
@@ -53,12 +62,15 @@ const Accordion = ({
   topOffset,
   getInitialOpenFromUrl,
   onUrlStateChange,
+  _onKeyDownCapture,
 }: AccordionProps) => {
+  const titleStr = typeof title === "string" ? title : "";
+
   const onChange = (open: boolean) => {
     if (open) {
-      trackOpen?.({ title });
+      trackOpen?.({ title: titleStr });
     } else {
-      trackClose?.({ title });
+      trackClose?.({ title: titleStr });
     }
   };
 
@@ -71,6 +83,7 @@ const Accordion = ({
   return (
     <GenericAccordion
       _disabled={_disabled}
+      _onKeyDownCapture={_onKeyDownCapture}
       className={className}
       defaultOpen={
         defaultOpen === true ||
@@ -107,6 +120,7 @@ type GenericAccordionProps = {
   | "topOffset"
   | "getInitialOpenFromUrl"
   | "onUrlStateChange"
+  | "_onKeyDownCapture"
 >;
 
 const GenericAccordion = ({
@@ -122,6 +136,7 @@ const GenericAccordion = ({
   topOffset,
   getInitialOpenFromUrl,
   onUrlStateChange,
+  _onKeyDownCapture,
 }: GenericAccordionProps) => {
   const generatedId = useId();
   const id =
@@ -192,6 +207,7 @@ const GenericAccordion = ({
         )}
         data-component-part="accordion"
         key={typeof title === "string" ? title : "accordion"}
+        {...(_onKeyDownCapture && { onKeyDownCapture: _onKeyDownCapture })}
         onToggle={(e) => {
           const newState = e.currentTarget.open;
           if (newState !== openRef.current) {
