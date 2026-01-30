@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Added `side` and `align` props to Tooltip component for positioning control (#181)
+- Added `side` and `align` props to Tooltip component for positioning control (#181 by @shadabiiitnr20)
 
 ### Fixed
 
@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Updated internal props for Accordion and Card components (#185)
+- Prefer canonical Tailwind classes (#178 by @0xa3k5)
 
 ## [1.0.1] - 2025-01-26
 
