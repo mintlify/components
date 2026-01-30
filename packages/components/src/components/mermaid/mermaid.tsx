@@ -3,10 +3,12 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Classes } from "@/constants/selectors";
 import { useIsDarkTheme } from "@/hooks/use-is-dark-theme";
 import { cn } from "@/utils/cn";
+import { makeMarkerIdsUnique } from "@/utils/make-marker-ids-unique";
 import { usePanZoom } from "./use-pan-zoom";
 import { ZoomControls } from "./zoom-controls";
 
 const MIN_HEIGHT_FOR_CONTROLS = 120;
+const GANTT_DEFAULT_WIDTH = 800;
 
 type MermaidPlacement =
   | "top-left"
@@ -53,6 +55,9 @@ const Mermaid = ({
         startOnLoad: false,
         fontFamily: "inherit",
         theme: isDarkTheme ? "dark" : "default",
+        gantt: {
+          useWidth: GANTT_DEFAULT_WIDTH,
+        },
       };
 
       // create a temporary container for mermaid to render into
@@ -70,7 +75,8 @@ const Mermaid = ({
         const { svg } = await mermaid.render(uniqueId, chart, tempContainer);
 
         if (!cancelled) {
-          setSvg(svg);
+          const uniqueSvg = makeMarkerIdsUnique(svg, uniqueId);
+          setSvg(uniqueSvg);
           setError(null);
         }
       } catch (err) {
