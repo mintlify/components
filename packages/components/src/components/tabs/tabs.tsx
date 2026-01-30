@@ -10,6 +10,7 @@ import {
   useId,
   useRef,
   useState,
+  useMemo
 } from "react";
 import { Icon } from "@/components/icon";
 import {
@@ -69,18 +70,18 @@ const TabsRoot = ({
   const tabRefs = useRef<(HTMLLIElement | null)[]>([]);
   const uniqueId = useId();
 
-  const arrayChildren = Children.toArray(children).filter(
+  const arrayChildren = useMemo(() => Children.toArray(children).filter(
     (child): child is ReactElement<TabsItemProps> => isValidElement(child)
-  );
+  ), [children]);
 
-  const tabIds = arrayChildren.map((child, index) => {
+  const tabIds = useMemo(() => arrayChildren.map((child, index) => {
     if (child.props.id) {
       return child.props.id;
     }
 
     const tabId = child.props.title ?? DEFAULT_TAB_TITLE;
     return `${uniqueId}-${slugify(tabId)}-${index}`;
-  });
+  }), [arrayChildren, uniqueId]);
 
   const validDefaultTabIndex =
     arrayChildren.length > 0
