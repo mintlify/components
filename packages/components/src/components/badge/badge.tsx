@@ -127,10 +127,10 @@ const Badge = ({
     "data-variant": variant,
     "data-disabled": disabled || undefined,
     className: cn(
-      'relative inline-flex w-fit items-center font-medium data-disabled:cursor-not-allowed',
+      "relative inline-flex w-fit items-center font-medium data-disabled:cursor-not-allowed",
       "data-[shape='pill']:rounded-full",
       "data-[variant='outline']:outline-1 data-[variant='outline']:outline-[rgba(11,12,14,0.08)] data-[variant='outline']:outline-solid data-[variant='outline']:-outline-offset-1 dark:data-[variant='outline']:outline-[rgba(255,255,255,0.14)]",
-      'bg-(--color-bg) text-(--color-text) data-disabled:bg-(--color-bg-disabled) data-disabled:text-(--color-text-disabled)',
+      "bg-(--color-bg) text-(--color-text) data-disabled:bg-(--color-bg-disabled) data-disabled:text-(--color-text-disabled)",
       '[&_[data-component-part$="-icon"][data-icon-type="string"]_svg]:bg-(--color-text) data-disabled:[&_[data-component-part$="-icon"][data-icon-type="string"]_svg]:bg-(--color-text-disabled)',
       '[&_[data-component-part$="-icon"][data-icon-type="inline"]_svg]:fill-current',
       sizeVariants[size],
