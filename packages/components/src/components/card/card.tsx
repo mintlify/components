@@ -16,7 +16,11 @@ import type { IconLibrary, IconType } from "@/utils/icon-utils";
 import { isRemoteUrl } from "@/utils/is-remote-url";
 
 interface CardPropsBase<T> {
-  title?: string;
+  /**
+   * @remarks Prefer using a string value for better compatibility with accessibility and semantic HTML.
+   * ReactNode is supported for internal use only.
+   */
+  title?: ReactNode;
   icon?: ReactNode;
   img?: string;
   horizontal?: boolean;
@@ -137,7 +141,7 @@ const GenericCard = <T extends ElementType = "div">({
         isImageSrc ? (
           // biome-ignore lint/correctness/useImageSize: TODO
           <img
-            alt={title}
+            alt={typeof title === "string" ? title : ""}
             className="size-6 object-cover object-center"
             data-component-part="card-icon"
             src={icon as string}

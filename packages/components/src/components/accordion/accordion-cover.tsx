@@ -51,7 +51,7 @@ const AccordionCover = ({
         </div>
       )}
       <div
-        className="text-left leading-tight"
+        className="w-full text-left leading-tight"
         contentEditable={false}
         data-component-part="accordion-title-container"
       >
