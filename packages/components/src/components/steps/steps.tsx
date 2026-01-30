@@ -88,10 +88,14 @@ const StepsItem = ({
       return;
     }
 
-    const hash = decodeURIComponent(window.location.hash.substring(1));
+    try {
+      const hash = decodeURIComponent(window.location.hash.substring(1));
 
-    if (hash === id) {
-      scrollElementIntoView?.(id);
+      if (hash === id) {
+        scrollElementIntoView?.(id);
+      }
+    } catch {
+      // silently fail if the hash is invalid
     }
   }, []);
 
@@ -167,7 +171,7 @@ const StepsItem = ({
           <div className={cn(isTitleHovered && "opacity-0")}>
             {transformedIconOrNumber}
           </div>
-          {!noAnchor && id && (
+          {isAnchorEnabled && !noAnchor && id && (
             <div
               className="absolute"
               data-component-part="step-number-anchor-link"
@@ -178,7 +182,7 @@ const StepsItem = ({
                   "flex items-center border-0 opacity-0",
                   isTitleHovered && "opacity-100"
                 )}
-                href={`#${id}`}
+                href={`#${encodeURIComponent(id as string)}`}
                 onClick={(e) => {
                   e.preventDefault();
                   copyAnchorLink();
