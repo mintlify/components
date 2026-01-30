@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-01-30
+
+### Added
+
+- Added `side` and `align` props to Tooltip component for positioning control (#181)
+
+### Fixed
+
+- Fixed `isMounted` check for View component (#186)
+- Fixed Mermaid duplicated IDs and gantt chart default sizing (#183)
+
+### Changed
+
+- Updated internal props for Accordion and Card components (#185)
+
 ## [1.0.1] - 2025-01-26
 
 ### Fixed
