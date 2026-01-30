@@ -8,6 +8,7 @@ import { usePanZoom } from "./use-pan-zoom";
 import { ZoomControls } from "./zoom-controls";
 
 const MIN_HEIGHT_FOR_CONTROLS = 120;
+const GANTT_DEFAULT_WIDTH = 800;
 
 type MermaidPlacement =
   | "top-left"
@@ -54,6 +55,9 @@ const Mermaid = ({
         startOnLoad: false,
         fontFamily: "inherit",
         theme: isDarkTheme ? "dark" : "default",
+        gantt: {
+          useWidth: GANTT_DEFAULT_WIDTH,
+        },
       };
 
       // create a temporary container for mermaid to render into
