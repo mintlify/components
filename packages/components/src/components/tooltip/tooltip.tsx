@@ -1,3 +1,4 @@
+import type { TooltipPositionerProps } from "@base-ui/react/tooltip";
 import { Tooltip as TooltipBaseUI } from "@base-ui/react/tooltip";
 import { ChevronRightIcon } from "lucide-react";
 import { isValidElement, type ReactNode, useMemo, useState } from "react";
@@ -14,7 +15,7 @@ type TooltipProps = {
   cta?: string;
   href?: string;
   className?: string;
-};
+} & Pick<TooltipPositionerProps, "side" | "align">;
 
 const Tooltip = ({
   description,
@@ -23,6 +24,8 @@ const Tooltip = ({
   cta,
   href,
   className,
+  side = "top",
+  align = "center",
 }: TooltipProps) => {
   const [open, setOpen] = useState(false);
   const hasHover = useHasHover();
@@ -85,7 +88,12 @@ const Tooltip = ({
           {isInteractive ? null : underlineWhenTextOnly(children)}
         </TooltipBaseUI.Trigger>
         <TooltipBaseUI.Portal>
-          <TooltipBaseUI.Positioner collisionPadding={8} sideOffset={4}>
+          <TooltipBaseUI.Positioner
+            align={align}
+            collisionPadding={8}
+            side={side}
+            sideOffset={4}
+          >
             <TooltipBaseUI.Popup
               className="z-50 flex max-w-[16rem] flex-col gap-1 rounded-xl border border-stone-200 bg-white px-4 py-3 shadow-[0_10px_16px_-3px_rgb(10_10_10/0.05),0_3px_10px_-2px_rgb(10_10_10/0.02)] dark:border-stone-900 dark:bg-stone-950"
               data-component-part="tooltip-content"
