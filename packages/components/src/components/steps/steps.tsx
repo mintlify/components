@@ -56,7 +56,7 @@ const StepsItem = ({
   const isAnchorEnabled = ["h2", "h3"].includes(titleTag);
 
   const copyAnchorLink = useCallback(async () => {
-    if (noAnchor || !id || typeof window === "undefined") {
+    if (!isAnchorEnabled || noAnchor || !id || typeof window === "undefined") {
       return;
     }
 
@@ -68,7 +68,7 @@ const StepsItem = ({
       window.location.hash = encodeURIComponent(id);
       onCopyAnchorLink?.(id);
     }
-  }, [id, noAnchor, onCopyAnchorLink]);
+  }, [isAnchorEnabled, id, noAnchor, onCopyAnchorLink]);
 
   useEffect(() => {
     if (!(_hasContext && id && rect)) {
@@ -88,7 +88,7 @@ const StepsItem = ({
       return;
     }
 
-    const hash = window.location.hash.substring(1);
+    const hash = decodeURIComponent(window.location.hash.substring(1));
 
     if (hash === id) {
       scrollElementIntoView?.(id);
