@@ -83,7 +83,7 @@ const DropdownMenuItem = ({
 }: DropdownMenuItemProps) => (
   <Menu.Item
     className={cn(
-      "group relative flex w-full cursor-pointer select-none items-center justify-between gap-2 rounded-md px-2 py-1 text-sm outline-0 hover:bg-stone-950/[0.03] focus:bg-stone-950/5 data-disabled:pointer-events-none data-disabled:cursor-default data-disabled:opacity-50 dark:focus:bg-white/5 dark:hover:bg-white/[0.03]",
+      "group relative flex w-full cursor-pointer select-none items-center justify-between gap-2 rounded-md px-2 py-1 text-sm outline-0 hover:bg-stone-950/3 focus:bg-stone-950/5 data-disabled:pointer-events-none data-disabled:cursor-default data-disabled:opacity-50 dark:focus:bg-white/5 dark:hover:bg-white/3",
       isSelected
         ? "font-medium text-primary dark:text-primary-light"
         : "text-stone-950/50 hover:text-stone-950/75 focus:text-stone-950/75 dark:text-white/50 dark:focus:text-white/75 dark:hover:text-white/75",
