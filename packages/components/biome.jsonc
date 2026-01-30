@@ -9,7 +9,8 @@
   "linter": {
     "rules": {
       "style": {
-        "useConsistentTypeDefinitions": "off"
+        "useConsistentTypeDefinitions": "off",
+        "noDescendingSpecificity": "off"
       },
       "performance": {
         "noBarrelFile": "off"
