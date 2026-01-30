@@ -56,7 +56,7 @@ const DropdownMenuContent = ({
     >
       <Menu.Popup
         className={cn(
-          "relative max-h-96 min-w-[var(--anchor-width)] overflow-y-auto rounded-2xl border-standard bg-white p-1 text-stone-950/70 shadow-stone-500/5 shadow-xl dark:bg-stone-950 dark:text-white/70 dark:shadow-none dark:shadow-stone-500/5",
+          "relative max-h-96 min-w-(--anchor-width) overflow-y-auto rounded-2xl border-standard bg-white p-1 text-stone-950/70 shadow-stone-500/5 shadow-xl dark:bg-stone-950 dark:text-white/70 dark:shadow-none dark:shadow-stone-500/5",
           "data-[ending-style]:fade-out-0 data-[starting-style]:fade-in-0 data-[ending-style]:zoom-out-95 data-[starting-style]:zoom-in-95",
           className
         )}
