@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Tabs } from "@/components/tabs";
 import { Mermaid } from "./mermaid";
 
 const meta: Meta<typeof Mermaid> = {
@@ -317,5 +318,42 @@ export const InvalidSyntax: Story = {
   args: {
     chart: `graph TD
     A[Start --> B{Invalid syntax here`,
+  },
+};
+
+const orderProcessingDiagram1 = `sequenceDiagram
+    participant Customer
+    participant Frontend as Web Frontend
+    participant API as Order API
+    participant Payment as Payment Gateway
+    participant Warehouse as Warehouse System
+    
+    Customer->>Frontend: Submit order request
+    Frontend->>API: Create order
+    API->>Payment: Process payment
+    Payment-->>API: Payment confirmed
+    API->>Warehouse: Reserve inventory
+    Warehouse-->>API: Inventory reserved
+    API-->>Frontend: Order confirmed
+    Frontend-->>Customer: Order confirmation email`;
+
+export const DuplicateDiagrams: Story = {
+  render: () => (
+    <Tabs>
+      <Tabs.Item title="Diagram 1">
+        <Mermaid ariaLabel="diagram 1" chart={orderProcessingDiagram1} />
+      </Tabs.Item>
+      <Tabs.Item title="Diagram 2">
+        <Mermaid ariaLabel="diagram 2" chart={orderProcessingDiagram1} />
+      </Tabs.Item>
+    </Tabs>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Two similar sequence diagrams rendered in tabs. This tests that marker IDs are made unique across multiple diagrams to prevent SVG marker conflicts when switching between tabs.",
+      },
+    },
   },
 };
