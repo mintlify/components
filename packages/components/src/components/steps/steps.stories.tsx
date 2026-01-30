@@ -226,3 +226,20 @@ export const StepsWithCustomClassName: Story = {
     </Steps>
   ),
 };
+
+export const WithAnchorLinks: Story = {
+  render: () => (
+    <Steps titleSize="h2">
+      <Steps.Item id="installation" title="Installation">
+        Hover over the step number or title to see the link icon. Click to copy
+        the anchor URL.
+      </Steps.Item>
+      <Steps.Item id="configuration" title="Configuration">
+        Each step can have a unique ID for deep linking.
+      </Steps.Item>
+      <Steps.Item id="deployment" noAnchor title="Deployment (noAnchor)">
+        This step has anchor disabled via noAnchor prop.
+      </Steps.Item>
+    </Steps>
+  ),
+};
