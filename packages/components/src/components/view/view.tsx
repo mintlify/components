@@ -1,4 +1,9 @@
-import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  forwardRef,
+  useLayoutEffect,
+  useState,
+} from "react";
 
 import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
@@ -15,11 +20,15 @@ type ViewProps = ViewPropsBase &
 
 const View = forwardRef<HTMLDivElement, ViewProps>(
   ({ children, title, items, className, ...props }, ref) => {
-    const isVisible = useMemo(() => {
-      return items.find((item) => item.title === title)?.active;
-    }, [items, title]);
+    const [mounted, setMounted] = useState(false);
 
-    if (!isVisible) {
+    useLayoutEffect(() => {
+      setMounted(true);
+    }, []);
+
+    const isVisible = items.find((item) => item.title === title)?.active;
+
+    if (!(mounted && isVisible)) {
       return null;
     }
 
