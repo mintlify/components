@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-01-30
+
+### Added
+
+- Added anchor link support to Steps component with `id` and `noAnchor` props (#187)
+- Added `side` and `align` props to Tooltip component for positioning control (#181 by @shadabiiitnr20)
+
+### Fixed
+
+- Fixed `isMounted` check for View component (#186)
+- Fixed Mermaid duplicated IDs and gantt chart default sizing (#183)
+
+### Changed
+
+- Updated internal props for Accordion and Card components (#185)
+- Prefer canonical Tailwind classes (#178 by @0xa3k5)
+
 ## [1.0.1] - 2025-01-26
 
 ### Fixed
