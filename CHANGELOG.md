@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- Added anchor link support to Steps component with `id` and `noAnchor` props (#187)
 - Added `side` and `align` props to Tooltip component for positioning control (#181 by @shadabiiitnr20)
 
 ### Fixed
