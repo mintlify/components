@@ -5,6 +5,7 @@ import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({
+  base: "",
   plugins: [
     react(),
     tailwindcss(),
@@ -26,6 +27,13 @@ export default defineConfig({
   },
   worker: {
     format: "es",
+    rollupOptions: {
+      external: [],
+      output: {
+        entryFileNames: "utils/shiki/worker.js",
+        inlineDynamicImports: true,
+      },
+    },
   },
   build: {
     lib: {

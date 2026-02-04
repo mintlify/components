@@ -18,11 +18,19 @@ function getShikiWorker(): ShikiWorkerInstance {
   if (instance) {
     return instance;
   }
-  const worker = new Worker(new URL("./worker.js", import.meta.url), {
-    type: "module",
-  });
-  instance = wrap(worker);
-  return instance;
+  try {
+    const worker = new Worker(new URL("./worker.js", import.meta.url), {
+      type: "module",
+    });
+    instance = wrap(worker);
+    return instance;
+  } catch (error) {
+    console.warn(
+      "@mintlify/components: Shiki worker unavailable, using synchronous highlighting",
+      error
+    );
+    return undefined;
+  }
 }
 
 export { getShikiWorker };
