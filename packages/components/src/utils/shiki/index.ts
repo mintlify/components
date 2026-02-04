@@ -222,22 +222,22 @@ function getShikiHighlightedHtml(
     lang = getLanguageFromClassName(props.className, props.fileName);
   }
 
+  // Skip highlighting for extremely large code (> 5x limit)
   if (props.codeString.length > MAX_PREVIEW_BYTES * 5) {
     return undefined;
   }
 
-  if (props.codeString.length > MAX_PREVIEW_BYTES) {
-    if (props.opts?.noAsync === true) {
-      return undefined;
-    }
-
+  // For large code, use worker unless noAsync is true
+  if (props.codeString.length > MAX_PREVIEW_BYTES && !props.opts?.noAsync) {
     try {
       const worker = getShikiWorker();
       return worker === undefined ? undefined : worker.highlight(props);
     } catch {
-      return undefined;
+      // Fall through to synchronous highlighting
     }
   }
+
+  // Synchronous highlighting (used for small code or when noAsync is true)
 
   let html: string | Root | undefined;
   if (lang) {

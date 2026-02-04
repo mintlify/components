@@ -34,9 +34,9 @@ const ready = (async () => {
     import("shiki"),
     import("shiki/engine/javascript"),
     import("@shikijs/transformers"),
-    import("./constants.ts"),
-    import("@/utils/shiki/get-code-styling"),
-    import("@/utils/shiki/snippet-presets"),
+    import("./constants.js"),
+    import("./get-code-styling.js"),
+    import("./snippet-presets.js"),
   ]);
 
   replacements = SHIKI_COLOR_REPLACEMENTS;
