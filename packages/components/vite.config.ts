@@ -1,27 +1,11 @@
 import { resolve } from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
-function relativeWorkerPlugin(): Plugin {
-  return {
-    name: "relative-worker-path",
-    enforce: "post",
-    generateBundle(_options, bundle) {
-      for (const [fileName, chunk] of Object.entries(bundle)) {
-        if (chunk.type === "chunk" && fileName.includes("worker-client")) {
-          chunk.code = chunk.code.replace(
-            /\/utils\/shiki\/worker\.js/g,
-            "./worker.js"
-          );
-        }
-      }
-    },
-  };
-}
-
 export default defineConfig({
+  base: "",
   plugins: [
     react(),
     tailwindcss(),
@@ -35,7 +19,6 @@ export default defineConfig({
       outDir: "dist",
       rollupTypes: false,
     }),
-    relativeWorkerPlugin(),
   ],
   resolve: {
     alias: {
@@ -47,7 +30,7 @@ export default defineConfig({
     rollupOptions: {
       external: [],
       output: {
-        entryFileNames: "utils/shiki/[name].js",
+        entryFileNames: "utils/shiki/worker.js",
         inlineDynamicImports: true,
       },
     },
