@@ -116,10 +116,10 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     // biome-ignore lint/style/noNonNullAssertion: Ref is guaranteed to exist when accessed
     useImperativeHandle(ref, () => inputRef.current!);
 
-    // Clear query when modal closes
     useEffect(() => {
       if (!isOpen) {
         setQuery("");
+        setIsContentScrolled(false);
       }
     }, [isOpen]);
 

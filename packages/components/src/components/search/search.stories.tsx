@@ -146,6 +146,7 @@ function MyComponent() {
   const handleSearch = (query: string) => {
     if (!query) {
       setResults([]);
+      setIsLoading(false);
       return;
     }
 
@@ -266,6 +267,7 @@ export const Custom: Story = {
     const handleSearch = (query: string) => {
       if (!query) {
         setResults([]);
+        setIsLoading(false);
         return;
       }
 
@@ -337,6 +339,7 @@ export const WithProvider: Story = {
     const handleSearch = (query: string) => {
       if (!query) {
         setResults([]);
+        setIsLoading(false);
         return;
       }
 
