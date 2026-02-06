@@ -46,6 +46,7 @@ export interface SearchProps {
   className?: string;
   emptyState?: ReactNode;
   loadingState?: ReactNode;
+  position?: "top" | "center";
 }
 
 function SearchHit({
@@ -70,7 +71,7 @@ function SearchHit({
         <div className="flex items-center gap-1 truncate text-gray-500 text-xs dark:text-gray-400">
           {metadata.breadcrumbs.map((crumb, idx) => (
             <Fragment key={crumb}>
-              {idx > 0 && <span className="text-gray-400">/</span>}
+              {idx > 0 && <span className="text-gray-400"> &gt; </span>}
               <span className="truncate">{crumb}</span>
             </Fragment>
           ))}
@@ -102,6 +103,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       className,
       emptyState,
       loadingState,
+      position = "top",
     },
     ref
   ) => {
@@ -344,7 +346,10 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           {/* biome-ignore lint/a11y/noStaticElementInteractions: Backdrop click is standard modal pattern */}
           {/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: Backdrop click is standard modal pattern */}
           <div
-            className="fixed inset-0 z-10 flex items-start justify-center p-4 pt-16"
+            className={cn(
+              "fixed inset-0 z-10 flex justify-center p-4",
+              position === "top" ? "items-start pt-16" : "items-center"
+            )}
             onClick={onClose}
           >
             <TransitionChild

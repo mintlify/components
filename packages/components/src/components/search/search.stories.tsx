@@ -35,6 +35,11 @@ const meta: Meta<typeof Search> = {
       control: "text",
       description: "Input placeholder text",
     },
+    position: {
+      control: "select",
+      options: ["top", "center"],
+      description: "Modal position",
+    },
     isLoading: {
       control: false,
       description: "Show loading state",
@@ -118,12 +123,17 @@ const mockResults = [
 export const Default: Story = {
   args: {
     placeholder: "Search...",
+    position: "top",
   },
   parameters: {
     docs: {
       source: {
-        transform: () => {
-          const placeholder = "Search...";
+        transform: (
+          _code: string,
+          storyContext: { args: { placeholder?: string; position?: string } }
+        ) => {
+          const placeholder = storyContext.args.placeholder || "Search...";
+          const position = storyContext.args.position || "top";
           return `import { useState } from 'react';
 import { Search, SearchButton, SearchResult } from '@mintlify/components';
 
@@ -163,6 +173,7 @@ function MyComponent() {
         results={results}
         isLoading={isLoading}
         placeholder="${placeholder}"
+        position="${position}"
         onSelectResult={handleSelectResult}
       />
     </>
@@ -212,6 +223,7 @@ function MyComponent() {
           onSearch={handleSearch}
           onSelectResult={handleSelectResult}
           placeholder={args.placeholder}
+          position={args.position}
           results={results}
         />
       </div>
@@ -222,6 +234,7 @@ function MyComponent() {
 export const Custom: Story = {
   args: {
     placeholder: "Search with custom states...",
+    position: "top",
   },
   render: (args) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -283,6 +296,7 @@ export const Custom: Story = {
           onClose={() => setIsOpen(false)}
           onSearch={handleSearch}
           placeholder={args.placeholder}
+          position={args.position}
           results={results}
         />
       </div>
