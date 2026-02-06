@@ -14,6 +14,7 @@ import {
   forwardRef,
   type ReactNode,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -70,7 +71,8 @@ function SearchHit({
       {metadata?.breadcrumbs && metadata.breadcrumbs.length > 0 && (
         <div className="flex items-center gap-1 truncate text-gray-500 text-xs dark:text-gray-400">
           {metadata.breadcrumbs.map((crumb, idx) => (
-            <Fragment key={crumb}>
+            // biome-ignore lint/suspicious/noArrayIndexKey: Breadcrumbs are positional and may contain duplicates
+            <Fragment key={idx}>
               {idx > 0 && <span className="text-gray-400"> &gt; </span>}
               <span className="truncate">{crumb}</span>
             </Fragment>
@@ -113,6 +115,13 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
 
     // biome-ignore lint/style/noNonNullAssertion: Ref is guaranteed to exist when accessed
     useImperativeHandle(ref, () => inputRef.current!);
+
+    // Clear query when modal closes
+    useEffect(() => {
+      if (!isOpen) {
+        setQuery("");
+      }
+    }, [isOpen]);
 
     const handleQueryChange = useCallback(
       (value: string) => {
@@ -179,8 +188,8 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
     );
 
     const showResults = useMemo(
-      () => query && results.length > 0,
-      [query, results.length]
+      () => query && results.length > 0 && !isLoading,
+      [query, results.length, isLoading]
     );
 
     const showEmptyState = useMemo(
@@ -342,15 +351,11 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           </TransitionChild>
 
           {/* Modal */}
-          {/* biome-ignore lint/a11y/useKeyWithClickEvents: Backdrop click is intentional, Escape handled by input */}
-          {/* biome-ignore lint/a11y/noStaticElementInteractions: Backdrop click is standard modal pattern */}
-          {/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: Backdrop click is standard modal pattern */}
           <div
             className={cn(
               "fixed inset-0 z-10 flex justify-center p-4",
               position === "top" ? "items-start pt-16" : "items-center"
             )}
-            onClick={onClose}
           >
             <TransitionChild
               as={Fragment}
@@ -361,10 +366,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <DialogPanel
-                className="flex w-full max-w-[640px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl dark:border-white/10 dark:bg-gray-900"
-                onClick={(e) => e.stopPropagation()}
-              >
+              <DialogPanel className="flex w-full max-w-[640px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl dark:border-white/10 dark:bg-gray-900">
                 {searchContent}
               </DialogPanel>
             </TransitionChild>

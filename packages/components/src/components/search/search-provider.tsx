@@ -47,6 +47,19 @@ export function SearchProvider({
         : e.key.toLowerCase() === shortcutKey.toLowerCase();
 
       if (shouldTrigger) {
+        // Skip if user is typing in an editable element and no modifier is pressed
+        if (!modifierPressed) {
+          const target = e.target as HTMLElement;
+          const isEditable =
+            target.tagName === "INPUT" ||
+            target.tagName === "TEXTAREA" ||
+            target.isContentEditable;
+
+          if (isEditable) {
+            return;
+          }
+        }
+
         e.preventDefault();
         toggle();
       }
