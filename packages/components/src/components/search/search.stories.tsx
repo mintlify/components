@@ -28,7 +28,7 @@ const meta: Meta<typeof Search> = {
       description: "Called when user types in search",
     },
     results: {
-      control: "object",
+      control: false,
       description: "Array of search results",
     },
     placeholder: {
@@ -141,6 +141,7 @@ function MyComponent() {
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [recentSearches, setRecentSearches] = useState<SearchResult[]>([]);
 
   const handleSearch = (query: string) => {
     if (!query) {
@@ -159,6 +160,12 @@ function MyComponent() {
 
   const handleSelectResult = (result: SearchResult, query: string) => {
     console.log('Selected:', result);
+
+    // Add to recent searches (avoid duplicates and limit to 5)
+    setRecentSearches(prev => {
+      const filtered = prev.filter(item => item.id !== result.id);
+      return [result, ...filtered].slice(0, 5);
+    });
   };
 
   return (
@@ -168,13 +175,17 @@ function MyComponent() {
       </SearchButton>
       <Search
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={() => {
+          setIsOpen(false);
+          setResults([]);
+        }}
         onSearch={handleSearch}
         results={results}
         isLoading={isLoading}
         placeholder="${placeholder}"
         position="${position}"
         onSelectResult={handleSelectResult}
+        recentSearches={recentSearches}
       />
     </>
   );
@@ -187,6 +198,7 @@ function MyComponent() {
     const [isOpen, setIsOpen] = useState(false);
     const [results, setResults] = useState<SearchResult[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [recentSearches, setRecentSearches] = useState<SearchResult[]>([]);
 
     const handleSearch = (query: string) => {
       if (!query) {
@@ -209,6 +221,12 @@ function MyComponent() {
 
     const handleSelectResult = (result: SearchResult, query: string) => {
       console.log("Selected:", result, "Query:", query);
+
+      // Add to recent searches (avoid duplicates and limit to 5)
+      setRecentSearches((prev) => {
+        const filtered = prev.filter((item) => item.id !== result.id);
+        return [result, ...filtered].slice(0, 5);
+      });
     };
 
     return (
@@ -219,11 +237,15 @@ function MyComponent() {
         <Search
           isLoading={isLoading}
           isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
+          onClose={() => {
+            setIsOpen(false);
+            setResults([]);
+          }}
           onSearch={handleSearch}
           onSelectResult={handleSelectResult}
           placeholder={args.placeholder}
           position={args.position}
+          recentSearches={recentSearches}
           results={results}
         />
       </div>
