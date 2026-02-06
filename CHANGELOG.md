@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2026-02-05
+
+## Fixed
+
+- Fixed bundling Shiki worker (#190 by @lindsayzhng)
+
 ## [1.0.2] - 2026-01-30
 
 ### Added
