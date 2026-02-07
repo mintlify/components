@@ -146,6 +146,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
         // Handle Escape key
         if (e.key === "Escape") {
+          e.preventDefault();
           onClose();
           return;
         }
@@ -167,7 +168,9 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
         if (
           e.key === "Enter" &&
           (e.metaKey || e.ctrlKey) &&
-          results.length > 0
+          query &&
+          results.length > 0 &&
+          !isLoading
         ) {
           const firstResult = results[0];
           if (firstResult) {
@@ -175,7 +178,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           }
         }
       },
-      [results, recentSearches, handleSelectOption, onClose]
+      [results, recentSearches, handleSelectOption, onClose, query, isLoading]
     );
 
     const handleScroll = useCallback((e: React.UIEvent<HTMLElement>) => {
@@ -224,6 +227,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
             ref={inputRef}
+            type="search"
             value={query}
           />
           <SearchIcon
