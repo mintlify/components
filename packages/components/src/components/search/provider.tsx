@@ -8,31 +8,28 @@ import {
 } from "react";
 import { Search, type SearchProps } from "./search";
 
-export interface SearchContextValue {
+type SearchContextValue = {
   isOpen: boolean;
   open: () => void;
   close: () => void;
   toggle: () => void;
-}
+};
 
 const SearchContext = createContext<SearchContextValue | null>(null);
 
-export interface SearchProviderProps {
+type SearchProviderProps = {
   children: ReactNode;
-  /** Keyboard shortcut key (default: 'k') */
   shortcutKey?: string;
-  /** Require Cmd/Ctrl modifier (default: true) */
   requireModifier?: boolean;
-  /** Search component props */
   searchProps: Omit<SearchProps, "isOpen" | "onClose">;
-}
+};
 
-export function SearchProvider({
+const SearchProvider = ({
   children,
   shortcutKey = "k",
   requireModifier = true,
   searchProps,
-}: SearchProviderProps) {
+}: SearchProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const open = useCallback(() => setIsOpen(true), []);
@@ -75,8 +72,11 @@ export function SearchProvider({
       <Search {...searchProps} isOpen={isOpen} onClose={close} />
     </SearchContext.Provider>
   );
-}
+};
 
-export function useSearch() {
+const useSearch = () => {
   return useContext(SearchContext);
-}
+};
+
+export type { SearchContextValue, SearchProviderProps };
+export { SearchProvider, useSearch };

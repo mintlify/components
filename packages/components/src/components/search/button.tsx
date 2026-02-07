@@ -1,17 +1,14 @@
 import { SearchIcon } from "lucide-react";
 import { type ButtonHTMLAttributes, forwardRef } from "react";
 import { cn } from "../../utils/cn";
-import { useSearch } from "./search-provider";
+import { useSearch } from "./provider";
 
-export interface SearchButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Show keyboard shortcut hint (default: true) */
+type SearchButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   showShortcut?: boolean;
-  /** Custom shortcut text (default: '⌘K') */
   shortcutText?: string;
-}
+};
 
-export const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
+const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
   (
     {
       showShortcut = true,
@@ -34,11 +31,11 @@ export const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
       <button
         className={cn(
           "flex w-full items-center gap-2 px-3 py-2 text-left text-sm",
-          "bg-white dark:bg-gray-900",
-          "border border-gray-200 dark:border-gray-700",
+          "bg-white dark:bg-stone-900",
+          "border border-stone-200 dark:border-stone-700",
           "rounded-xl",
-          "hover:bg-gray-50 dark:hover:bg-gray-800",
-          "focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600",
+          "hover:bg-stone-50 dark:hover:bg-stone-800",
+          "focus:outline-none focus:ring-2 focus:ring-stone-400 dark:focus:ring-stone-600",
           "transition-colors",
           className
         )}
@@ -48,14 +45,14 @@ export const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
         {...props}
       >
         <SearchIcon
-          className="shrink-0 text-gray-400 dark:text-gray-500"
+          className="shrink-0 text-stone-400 dark:text-stone-500"
           size={16}
         />
-        <span className="flex-1 text-gray-500 dark:text-gray-400">
+        <span className="flex-1 text-stone-500 dark:text-stone-400">
           {children || "Search..."}
         </span>
         {showShortcut && (
-          <kbd className="hidden items-center gap-0.5 rounded border border-gray-200 bg-gray-100 px-1.5 py-0.5 font-medium text-gray-500 text-xs sm:inline-flex dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+          <kbd className="hidden items-center gap-0.5 rounded border border-stone-200 bg-stone-100 px-1.5 py-0.5 font-medium font-sans text-stone-500 text-xs sm:inline-flex dark:border-stone-700 dark:bg-stone-800 dark:text-stone-400">
             {shortcutText}
           </kbd>
         )}
@@ -65,3 +62,6 @@ export const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
 );
 
 SearchButton.displayName = "SearchButton";
+
+export type { SearchButtonProps };
+export { SearchButton };

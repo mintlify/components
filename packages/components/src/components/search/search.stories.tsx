@@ -293,10 +293,10 @@ export const Custom: Story = {
             <div className="flex flex-col items-center justify-center gap-3 px-2.5 py-12">
               <div className="text-4xl">🔍</div>
               <div className="text-center">
-                <p className="font-semibold text-gray-900 text-sm dark:text-white">
+                <p className="font-semibold text-sm text-stone-900 dark:text-white">
                   No matches found
                 </p>
-                <p className="mt-1 text-gray-500 text-xs dark:text-gray-400">
+                <p className="mt-1 text-stone-500 text-xs dark:text-stone-400">
                   Try different keywords or check your spelling
                 </p>
               </div>
@@ -311,7 +311,7 @@ export const Custom: Story = {
                 <p className="font-semibold text-blue-600 text-sm">
                   Searching...
                 </p>
-                <p className="mt-1 text-gray-500 text-xs dark:text-gray-400">
+                <p className="mt-1 text-stone-500 text-xs dark:text-stone-400">
                   Finding the best results for you
                 </p>
               </div>
@@ -375,14 +375,14 @@ export const WithProvider: Story = {
           <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20">
             <p className="text-blue-900 text-sm dark:text-blue-100">
               Press{" "}
-              <kbd className="rounded border border-blue-300 bg-white px-2 py-1 font-mono text-xs dark:border-blue-700 dark:bg-blue-950">
+              <kbd className="rounded border border-blue-300 bg-white px-2 py-1 font-sans text-xs dark:border-blue-700 dark:bg-blue-950">
                 {shortcutText}
               </kbd>
               {requireModifier && (
                 <>
                   {" "}
                   or{" "}
-                  <kbd className="rounded border border-blue-300 bg-white px-2 py-1 font-mono text-xs dark:border-blue-700 dark:bg-blue-950">
+                  <kbd className="rounded border border-blue-300 bg-white px-2 py-1 font-sans text-xs dark:border-blue-700 dark:bg-blue-950">
                     Ctrl+{shortcutKey.toUpperCase()}
                   </kbd>
                 </>
