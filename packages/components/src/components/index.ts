@@ -12,6 +12,7 @@ export * from "./icon";
 export * from "./mermaid";
 export * from "./panel";
 export * from "./property";
+export * from "./search";
 export * from "./steps";
 export * from "./tabs";
 export * from "./tile";
