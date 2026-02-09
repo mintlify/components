@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2026-02-09
+
+### Added
+
+- Added Search component with search modal, recent searches, and keyboard navigation (#194 by @lindsayzhng)
+
 ## [1.0.3] - 2026-02-05
 
 ## Fixed
