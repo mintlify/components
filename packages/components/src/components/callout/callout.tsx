@@ -180,7 +180,7 @@ const Callout = ({
       )}
       <div
         className={cn(
-          "prose dark:prose-invert w-full min-w-0 text-sm [&_a]:border-current [&_a]:text-current! [&_code]:text-current! [&_kbd]:bg-stone-100 [&_kbd]:text-current! dark:[&_kbd]:bg-stone-800",
+          "prose dark:prose-invert w-full min-w-0 text-sm [&_a]:border-current [&_a]:text-current! [&_code]:text-current! [&_kbd]:bg-stone-100 [&_kbd]:text-current! dark:[&_kbd]:bg-stone-800 [&_strong]:text-current!",
           childrenClassName
         )}
         data-component-part="callout-content"
