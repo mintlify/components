@@ -8,7 +8,12 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
-import { Loader2Icon, SearchIcon, SearchXIcon } from "lucide-react";
+import {
+  ChevronRightIcon,
+  Loader2Icon,
+  SearchIcon,
+  SearchXIcon,
+} from "lucide-react";
 import {
   Fragment,
   forwardRef,
@@ -27,6 +32,7 @@ type SearchResult = {
   header: string;
   content: string;
   link: string;
+  icon?: ReactNode;
   metadata?: {
     breadcrumbs?: string[];
     [key: string]: unknown;
@@ -46,46 +52,65 @@ type SearchProps = {
   emptyState?: ReactNode;
   loadingState?: ReactNode;
   position?: "top" | "center";
+  paddingTop?: string;
+  panelClassName?: string;
+  inputClassName?: string;
+  resultClassName?: string;
 };
 
 type SearchHitProps = {
   isActive: boolean;
   header: string;
   description: string;
+  icon?: ReactNode;
   metadata?: SearchResult["metadata"];
+  className?: string;
 };
 
 const SearchHit = ({
   isActive,
   header,
   description,
+  icon,
   metadata,
+  className,
 }: SearchHitProps) => {
   return (
     <div
       className={cn(
-        "flex w-full cursor-pointer flex-col gap-1 rounded-md px-2.5 py-2 transition-colors",
-        isActive && "bg-stone-100 dark:bg-white/5"
+        "flex w-full cursor-pointer items-start gap-2 rounded-xl border border-transparent bg-transparent px-3 py-2 text-stone-500 transition-colors focus:ring-0 focus:ring-offset-0",
+        isActive && "bg-stone-100 dark:bg-white/5",
+        className
       )}
     >
-      {metadata?.breadcrumbs && metadata.breadcrumbs.length > 0 && (
-        <div className="flex items-center gap-1 truncate text-stone-500 text-xs dark:text-stone-400">
-          {metadata.breadcrumbs.map((crumb, idx) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: Breadcrumbs are positional and may contain duplicates
-            <Fragment key={idx}>
-              {idx > 0 && <span className="text-stone-400"> &gt; </span>}
-              <span className="truncate">{crumb}</span>
-            </Fragment>
-          ))}
+      {icon && (
+        <div className="shrink-0 self-center text-stone-700 dark:text-stone-300">
+          {icon}
         </div>
       )}
-      <div className="truncate font-medium text-sm text-stone-900 dark:text-white">
-        {header}
-      </div>
-      {description && (
-        <div className="line-clamp-2 text-sm text-stone-600 dark:text-stone-400">
-          {description}
+      <div className="flex flex-1 flex-col gap-1">
+        {metadata?.breadcrumbs && metadata.breadcrumbs.length > 0 && (
+          <div className="flex items-center gap-1 truncate text-stone-500 text-xs dark:text-stone-400">
+            {metadata.breadcrumbs.map((crumb, idx) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: Breadcrumbs are positional and may contain duplicates
+              <Fragment key={idx}>
+                {idx > 0 && <span className="text-stone-400"> &gt; </span>}
+                <span className="truncate">{crumb}</span>
+              </Fragment>
+            ))}
+          </div>
+        )}
+        <div className="truncate font-medium text-sm text-stone-900 dark:text-white">
+          {header}
         </div>
+        {description && (
+          <div className="line-clamp-2 text-sm text-stone-600 dark:text-stone-400">
+            {description}
+          </div>
+        )}
+      </div>
+      {isActive && (
+        <ChevronRightIcon className="size-5 shrink-0 self-center text-stone-400 dark:text-stone-500" />
       )}
     </div>
   );
@@ -106,6 +131,10 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
       emptyState,
       loadingState,
       position = "top",
+      paddingTop = "64px",
+      panelClassName,
+      inputClassName,
+      resultClassName,
     },
     ref
   ) => {
@@ -219,9 +248,10 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
             autoComplete="off"
             autoFocus
             className={cn(
-              "peer h-full w-full rounded-md bg-white pr-14 pl-11 text-stone-950 tracking-tight shadow-sm outline-none ring ring-black/5 transition placeholder:text-stone-400 focus:ring-black/90 dark:bg-stone-900 dark:text-white dark:focus:ring-white placeholder:dark:text-white/50",
+              "peer h-full w-full rounded-xl bg-white pr-14 pl-11 text-stone-950 tracking-tight shadow-sm outline-none ring ring-black/5 transition placeholder:text-stone-400 focus:ring-black/90 dark:bg-stone-900 dark:text-white dark:focus:ring-white placeholder:dark:text-white/50",
               "[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none",
-              !isContentScrolled && query && "shadow-lg"
+              !isContentScrolled && query && "shadow-lg",
+              inputClassName
             )}
             onChange={(e) => handleQueryChange(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -255,14 +285,16 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
               </div>
               {recentSearches.map((result) => (
                 <ComboboxOption
-                  className="last:mb-1.5"
+                  className="last:mb-2"
                   key={result.id}
                   value={result}
                 >
                   {({ focus }) => (
                     <SearchHit
+                      className={resultClassName}
                       description={result.content}
                       header={result.header}
+                      icon={result.icon}
                       isActive={focus}
                       metadata={result.metadata}
                     />
@@ -275,14 +307,16 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
           {showResults &&
             results.map((result) => (
               <ComboboxOption
-                className="last:mb-1.5"
+                className="last:mb-2"
                 key={result.id}
                 value={result}
               >
                 {({ focus }) => (
                   <SearchHit
+                    className={resultClassName}
                     description={result.content}
                     header={result.header}
+                    icon={result.icon}
                     isActive={focus}
                     metadata={result.metadata}
                   />
@@ -351,8 +385,9 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
           <div
             className={cn(
               "fixed inset-0 z-10 flex justify-center p-4",
-              position === "top" ? "items-start pt-16" : "items-center"
+              position === "top" ? "items-start" : "items-center"
             )}
+            style={position === "top" ? { paddingTop } : undefined}
           >
             <TransitionChild
               as={Fragment}
@@ -363,7 +398,12 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <DialogPanel className="flex w-full max-w-[640px] flex-col overflow-hidden rounded-xl border border-stone-200 bg-white shadow-2xl dark:border-white/10 dark:bg-stone-900">
+              <DialogPanel
+                className={cn(
+                  "flex w-full max-w-[640px] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl dark:border-white/10 dark:bg-stone-900",
+                  panelClassName
+                )}
+              >
                 {searchContent}
               </DialogPanel>
             </TransitionChild>

@@ -31,11 +31,12 @@ const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
       <button
         className={cn(
           "flex w-full items-center gap-2 px-3 py-2 text-left text-sm",
-          "bg-white dark:bg-stone-900",
-          "border border-stone-200 dark:border-stone-700",
+          "bg-transparent",
+          "border border-stone-200 dark:border-white/10",
           "rounded-xl",
-          "hover:bg-stone-50 dark:hover:bg-stone-800",
-          "focus:outline-none focus:ring-2 focus:ring-stone-400 dark:focus:ring-stone-600",
+          "text-stone-500",
+          "hover:border-stone-300 dark:hover:border-white/20",
+          "focus:outline-none focus:ring-0 focus:ring-offset-0",
           "transition-colors",
           className
         )}
@@ -45,14 +46,14 @@ const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
         {...props}
       >
         <SearchIcon
-          className="shrink-0 text-stone-400 dark:text-stone-500"
+          className="shrink-0 text-stone-800 dark:text-stone-500"
           size={16}
         />
         <span className="flex-1 text-stone-500 dark:text-stone-400">
           {children || "Search..."}
         </span>
         {showShortcut && (
-          <kbd className="hidden items-center gap-0.5 rounded border border-stone-200 bg-stone-100 px-1.5 py-0.5 font-medium font-sans text-stone-500 text-xs sm:inline-flex dark:border-stone-700 dark:bg-stone-800 dark:text-stone-400">
+          <kbd className="hidden items-center gap-0.5 rounded px-1.5 py-0.5 font-medium font-sans text-stone-500 text-xs sm:inline-flex dark:border-white/10 dark:bg-white/5 dark:text-stone-400">
             {shortcutText}
           </kbd>
         )}
