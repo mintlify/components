@@ -53,7 +53,7 @@ const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
           {children || "Search..."}
         </span>
         {showShortcut && (
-          <kbd className="hidden items-center gap-0.5 rounded px-1.5 py-0.5 font-medium font-sans text-stone-500 text-xs sm:inline-flex dark:border-white/10 dark:bg-white/5 dark:text-stone-400">
+          <kbd className="hidden items-center gap-0.5 rounded px-1.5 py-0.5 font-medium font-sans text-stone-500 text-xs sm:inline-flex dark:text-stone-400">
             {shortcutText}
           </kbd>
         )}
