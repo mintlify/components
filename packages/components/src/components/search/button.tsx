@@ -38,6 +38,7 @@ const SearchButton = forwardRef<HTMLButtonElement, SearchButtonProps>(
           "hover:border-stone-300 dark:hover:border-white/20",
           "focus:outline-none focus:ring-0 focus:ring-offset-0",
           "transition-colors",
+          "cursor-pointer",
           className
         )}
         onClick={handleClick}
