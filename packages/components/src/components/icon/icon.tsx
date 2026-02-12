@@ -9,6 +9,7 @@ import {
   ICON_TYPES,
   type IconLibrary,
   type IconType,
+  isBrandsIcon,
   type PageType,
 } from "@/utils/icon-utils";
 import { isAbsoluteUrl } from "@/utils/is-absolute-url";
@@ -155,7 +156,8 @@ const Icon = ({
         maskImage: `url(${url})`,
         maskRepeat: "no-repeat",
         maskPosition: "center",
-        maskSize: iconLibrary === "lucide" ? "100%" : undefined,
+        maskSize:
+          iconLibrary === "lucide" && !isBrandsIcon(icon) ? "100%" : undefined,
         backgroundColor: color,
         ...styleWithColors,
       }}
