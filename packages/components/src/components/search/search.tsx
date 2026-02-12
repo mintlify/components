@@ -53,9 +53,6 @@ type SearchProps = {
   loadingState?: ReactNode;
   position?: "top" | "center";
   paddingTop?: string;
-  panelClassName?: string;
-  inputClassName?: string;
-  resultClassName?: string;
 };
 
 type SearchHitProps = {
@@ -132,9 +129,6 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
       loadingState,
       position = "top",
       paddingTop = "64px",
-      panelClassName,
-      inputClassName,
-      resultClassName,
     },
     ref
   ) => {
@@ -250,8 +244,7 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
             className={cn(
               "peer h-full w-full rounded-xl bg-white pr-14 pl-11 text-stone-950 tracking-tight shadow-sm outline-none ring ring-black/5 transition placeholder:text-stone-400 focus:ring-black/90 dark:bg-stone-900 dark:text-white dark:focus:ring-white placeholder:dark:text-white/50",
               "[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none",
-              !isContentScrolled && query && "shadow-lg",
-              inputClassName
+              !isContentScrolled && query && "shadow-lg"
             )}
             onChange={(e) => handleQueryChange(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -291,7 +284,6 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
                 >
                   {({ focus }) => (
                     <SearchHit
-                      className={resultClassName}
                       description={result.content}
                       header={result.header}
                       icon={result.icon}
@@ -313,7 +305,6 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
               >
                 {({ focus }) => (
                   <SearchHit
-                    className={resultClassName}
                     description={result.content}
                     header={result.header}
                     icon={result.icon}
@@ -398,12 +389,7 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <DialogPanel
-                className={cn(
-                  "flex w-full max-w-[640px] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl dark:border-white/10 dark:bg-stone-900",
-                  panelClassName
-                )}
-              >
+              <DialogPanel className="flex w-full max-w-[640px] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl dark:border-white/10 dark:bg-stone-900">
                 {searchContent}
               </DialogPanel>
             </TransitionChild>

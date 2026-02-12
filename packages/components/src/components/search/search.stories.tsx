@@ -61,18 +61,6 @@ const meta: Meta<typeof Search> = {
       control: "text",
       description: "Distance from top of viewport when position is 'top'",
     },
-    panelClassName: {
-      control: "text",
-      description: "Custom className for the modal panel",
-    },
-    inputClassName: {
-      control: "text",
-      description: "Custom className for the search input",
-    },
-    resultClassName: {
-      control: "text",
-      description: "Custom className for each search result item",
-    },
     emptyState: {
       control: false,
       description: "Custom empty state component",
@@ -148,9 +136,6 @@ export const Default: Story = {
     position: "top",
     className: "",
     paddingTop: "64px",
-    panelClassName: "",
-    inputClassName: "",
-    resultClassName: "",
   },
   parameters: {
     docs: {
@@ -163,9 +148,6 @@ export const Default: Story = {
               position?: string;
               className?: string;
               paddingTop?: string;
-              panelClassName?: string;
-              inputClassName?: string;
-              resultClassName?: string;
             };
           }
         ) => {
@@ -173,16 +155,10 @@ export const Default: Story = {
           const position = storyContext.args.position || "top";
           const className = storyContext.args.className || "";
           const paddingTop = storyContext.args.paddingTop || "64px";
-          const panelClassName = storyContext.args.panelClassName || "";
-          const inputClassName = storyContext.args.inputClassName || "";
-          const resultClassName = storyContext.args.resultClassName || "";
 
           const classNameProps = [
             className && `        className="${className}"`,
             paddingTop !== "64px" && `        paddingTop="${paddingTop}"`,
-            panelClassName && `        panelClassName="${panelClassName}"`,
-            inputClassName && `        inputClassName="${inputClassName}"`,
-            resultClassName && `        resultClassName="${resultClassName}"`,
           ]
             .filter(Boolean)
             .join("\n");
@@ -290,7 +266,6 @@ function MyComponent() {
         </SearchButton>
         <Search
           className={args.className}
-          inputClassName={args.inputClassName}
           isLoading={isLoading}
           isOpen={isOpen}
           onClose={() => {
@@ -300,11 +275,9 @@ function MyComponent() {
           onSearch={handleSearch}
           onSelectResult={handleSelectResult}
           paddingTop={args.paddingTop}
-          panelClassName={args.panelClassName}
           placeholder={args.placeholder}
           position={args.position}
           recentSearches={recentSearches}
-          resultClassName={args.resultClassName}
           results={results}
         />
       </div>
