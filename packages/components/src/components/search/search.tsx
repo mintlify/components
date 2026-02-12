@@ -61,7 +61,6 @@ type SearchHitProps = {
   description: string;
   icon?: ReactNode;
   metadata?: SearchResult["metadata"];
-  className?: string;
 };
 
 const SearchHit = ({
@@ -70,14 +69,12 @@ const SearchHit = ({
   description,
   icon,
   metadata,
-  className,
 }: SearchHitProps) => {
   return (
     <div
       className={cn(
         "flex w-full cursor-pointer items-start gap-2 rounded-xl border border-transparent bg-transparent px-3 py-2 text-stone-500 transition-colors focus:ring-0 focus:ring-offset-0",
-        isActive && "bg-stone-100 dark:bg-white/5",
-        className
+        isActive && "bg-stone-100 dark:bg-white/5"
       )}
     >
       {icon && (
