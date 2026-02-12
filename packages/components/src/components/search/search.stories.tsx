@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
+import { Icon } from "../icon";
 import {
   Search,
   SearchButton,
@@ -56,6 +57,10 @@ const meta: Meta<typeof Search> = {
       control: "text",
       description: "Additional CSS classes",
     },
+    paddingTop: {
+      control: "text",
+      description: "Distance from top of viewport when position is 'top'",
+    },
     emptyState: {
       control: false,
       description: "Custom empty state component",
@@ -81,6 +86,7 @@ const mockResults = [
     metadata: {
       breadcrumbs: ["Documentation", "Introduction"],
     },
+    icon: <Icon color="gray" icon="hash" iconLibrary="lucide" size={18} />,
   },
   {
     id: "2",
@@ -90,6 +96,7 @@ const mockResults = [
     metadata: {
       breadcrumbs: ["Documentation", "Setup"],
     },
+    icon: <Icon color="gray" icon="hash" iconLibrary="lucide" size={18} />,
   },
   {
     id: "3",
@@ -99,6 +106,7 @@ const mockResults = [
     metadata: {
       breadcrumbs: ["Components", "Search"],
     },
+    icon: <Icon color="gray" icon="hash" iconLibrary="lucide" size={18} />,
   },
   {
     id: "4",
@@ -108,6 +116,7 @@ const mockResults = [
     metadata: {
       breadcrumbs: ["Documentation", "Customization"],
     },
+    icon: <Icon color="gray" icon="hash" iconLibrary="lucide" size={18} />,
   },
   {
     id: "5",
@@ -117,6 +126,7 @@ const mockResults = [
     metadata: {
       breadcrumbs: ["Documentation", "Customization"],
     },
+    icon: <Icon color="gray" icon="hash" iconLibrary="lucide" size={18} />,
   },
 ];
 
@@ -124,16 +134,35 @@ export const Default: Story = {
   args: {
     placeholder: "Search...",
     position: "top",
+    className: "",
+    paddingTop: "64px",
   },
   parameters: {
     docs: {
       source: {
         transform: (
           _code: string,
-          storyContext: { args: { placeholder?: string; position?: string } }
+          storyContext: {
+            args: {
+              placeholder?: string;
+              position?: string;
+              className?: string;
+              paddingTop?: string;
+            };
+          }
         ) => {
           const placeholder = storyContext.args.placeholder || "Search...";
           const position = storyContext.args.position || "top";
+          const className = storyContext.args.className || "";
+          const paddingTop = storyContext.args.paddingTop || "64px";
+
+          const classNameProps = [
+            className && `        className="${className}"`,
+            paddingTop !== "64px" && `        paddingTop="${paddingTop}"`,
+          ]
+            .filter(Boolean)
+            .join("\n");
+
           return `import { useState } from 'react';
 import { Search, SearchButton, SearchResult } from '@mintlify/components';
 
@@ -186,7 +215,7 @@ function MyComponent() {
         placeholder="${placeholder}"
         position="${position}"
         onSelectResult={handleSelectResult}
-        recentSearches={recentSearches}
+        recentSearches={recentSearches}${classNameProps ? `\n${classNameProps}` : ""}
       />
     </>
   );
@@ -232,10 +261,11 @@ function MyComponent() {
 
     return (
       <div className="w-[400px] p-6">
-        <SearchButton onClick={() => setIsOpen(true)} showShortcut={false}>
+        <SearchButton onClick={() => setIsOpen(true)} showShortcut={true}>
           {args.placeholder}
         </SearchButton>
         <Search
+          className={args.className}
           isLoading={isLoading}
           isOpen={isOpen}
           onClose={() => {
@@ -244,6 +274,7 @@ function MyComponent() {
           }}
           onSearch={handleSearch}
           onSelectResult={handleSelectResult}
+          paddingTop={args.paddingTop}
           placeholder={args.placeholder}
           position={args.position}
           recentSearches={recentSearches}
