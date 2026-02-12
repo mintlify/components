@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.5] - 2026-02-12
+
+### Fixed
+
+- Fixed mask-size for brand icons (#197)
+- Fixed callout bold styles (#196)
+
+### Changed
+
+- Refined search bar and made more customizable (#198)
+
 ## [1.0.4] - 2026-02-09
 
 ### Added
