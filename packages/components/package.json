@@ -1,6 +1,6 @@
 {
   "name": "@mintlify/components",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Mintlify open-source UI components",
   "type": "module",
   "main": "./dist/index.cjs",

@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.6] - 2026-03-05
+
+### Added
+
+- Exported ParamHead component (#202)
+
+### Changed
+
+- Bumped storybook from 10.1.11 to 10.2.10 (#201)
+- Bumped ajv from 6.12.6 to 6.14.0 (#200)
+
 ## [1.0.5] - 2026-02-12
 
 ### Fixed
