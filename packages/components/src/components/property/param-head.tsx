@@ -149,4 +149,4 @@ const ParamHead = ({
   );
 };
 
-export { ParamHead };
+export { ParamHead, type ParamHeadProps };
