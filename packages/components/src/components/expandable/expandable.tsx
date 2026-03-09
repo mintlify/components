@@ -155,6 +155,8 @@ const Expandable = ({
           )}
           data-component-part="expandable-icon"
           icon="angle-right"
+          overrideColor
+          overrideSize
         />
         <div className="ml-3 text-left leading-tight">
           <p className="m-0" contentEditable={false}>
