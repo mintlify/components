@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] - 2026-03-09
+
+### Fixed
+
+- Fixed Expandable chevron icon size and color (#203)
+
 ## [1.0.6] - 2026-03-05
 
 ### Added
