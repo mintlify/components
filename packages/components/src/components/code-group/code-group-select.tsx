@@ -92,8 +92,10 @@ const CodeGroupSelect = ({
       options?.includes(syncedLabel)
     ) {
       setSelectedOption(syncedLabel);
+      const index = options?.indexOf(syncedLabel) ?? -1;
+      setSelectedExampleIndex?.(index === -1 ? 0 : index);
     }
-  }, [syncedLabel, options, safeSelectedOption]);
+  }, [syncedLabel, options, safeSelectedOption, setSelectedExampleIndex]);
 
   return (
     <div
