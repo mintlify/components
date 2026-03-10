@@ -101,6 +101,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
     isParentCodeGroup,
     shouldHighlight,
     numberOfLines,
+    expandable,
   } = params;
 
   const codeString = getNodeText(children);
@@ -159,6 +160,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
         isSmallText={isSmallText}
         numberOfLines={numberOfLines}
         shouldHighlight={shouldHighlight}
+        expandable={expandable}
         {...params}
       />
     </div>
