@@ -120,6 +120,29 @@ export const DarkTheme: Story = {
   ),
 };
 
+export const WithShikiTheme: Story = {
+  render: () => (
+    <CodeGroupSelect
+      codeBlockTheme="system"
+      codeBlockThemeObject={{ theme: "andromeeda" }}
+      snippets={snippets}
+    />
+  ),
+};
+
+export const WithLightDarkShikiThemes: Story = {
+  render: (_, { globals }) => (
+    <CodeGroupSelect
+      codeBlockTheme={globals.theme === "dark" ? "dark" : "system"}
+      codeBlockThemeObject={{
+        theme: { light: "everforest-light", dark: "dracula" },
+      }}
+      snippets={snippets}
+    />
+  ),
+};
+
+
 export const SingleGroup: Story = {
   render: (_, { globals }) => (
     <CodeGroupSelect
@@ -167,28 +190,6 @@ export const WithAudioUrl: Story = {
           },
         },
       }}
-    />
-  ),
-};
-
-export const WithShikiTheme: Story = {
-  render: () => (
-    <CodeGroupSelect
-      codeBlockTheme="system"
-      codeBlockThemeObject={{ theme: "andromeeda" }}
-      snippets={snippets}
-    />
-  ),
-};
-
-export const WithLightDarkShikiThemes: Story = {
-  render: (_, { globals }) => (
-    <CodeGroupSelect
-      codeBlockTheme={globals.theme === "dark" ? "dark" : "system"}
-      codeBlockThemeObject={{
-        theme: { light: "everforest-light", dark: "dracula" },
-      }}
-      snippets={snippets}
     />
   ),
 };
