@@ -116,7 +116,7 @@ export const Default: Story = {
 
 export const DarkTheme: Story = {
   render: () => (
-    <CodeGroupSelect codeBlockThemeObject="dark" snippets={snippets} />
+    <CodeGroupSelect codeBlockTheme="dark" snippets={snippets} />
   ),
 };
 
