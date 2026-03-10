@@ -96,7 +96,7 @@ const CodeGroupSelect = ({
     >
       <div className="flex w-full justify-between rounded-t-2xl text-xs leading-6">
         <CodeSelectDropdown
-          data-testid="code-group-select-group"
+          codeBlockTheme={codeBlockTheme}
           options={groups}
           selectedOption={selectedGroup}
           setSelectedOption={handleGroupSelect}
@@ -104,7 +104,7 @@ const CodeGroupSelect = ({
         <div className="flex overflow-hidden">
           {options && (
             <CodeSelectDropdown
-              data-testid="code-group-select-option"
+              codeBlockTheme={codeBlockTheme}
               options={options}
               selectedOption={safeSelectedOption}
               setSelectedOption={handleOptionSelect}
@@ -138,7 +138,7 @@ const CodeGroupSelect = ({
           ) : (
             <BaseCodeBlock
               codeBlockTheme={codeBlockTheme}
-              codeBlockThemeObject={codeBlockThemeObject}
+              codeBlockThemeObject={codeBlockThemeObject ?? codeBlockTheme}
               isParentCodeGroup={true}
               isSmallText
               language={snippet?.language}
