@@ -92,7 +92,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
     hideAskAiButton,
     feedbackModalOpen,
     anchorRef,
-    codeBlockTheme,
+    codeBlockTheme = "system",
     askAiButton,
     feedbackButton,
     copyButtonProps,
