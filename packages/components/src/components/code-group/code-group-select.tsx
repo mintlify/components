@@ -45,8 +45,11 @@ const CodeGroupSelect = ({
   const groups = Object.keys(snippets);
   const [selectedGroup, setSelectedGroup] = useState(groups[0]);
 
+  const safeSelectedGroup =
+    selectedGroup && groups.includes(selectedGroup) ? selectedGroup : groups[0];
+
   const groupSnippets =
-    selectedGroup !== undefined ? snippets[selectedGroup] : undefined;
+    safeSelectedGroup !== undefined ? snippets[safeSelectedGroup] : undefined;
   const options = useMemo(
     () => (groupSnippets ? Object.keys(groupSnippets) : undefined),
     [groupSnippets]
@@ -113,7 +116,7 @@ const CodeGroupSelect = ({
         <CodeSelectDropdown
           codeBlockTheme={codeBlockTheme}
           options={groups}
-          selectedOption={selectedGroup}
+          selectedOption={safeSelectedGroup}
           setSelectedOption={handleGroupSelect}
         />
         <div className="flex overflow-hidden">
