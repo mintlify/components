@@ -85,16 +85,17 @@ type CodeBlockProps = {
 
 const CodeBlock = function CodeBlock(params: CodeBlockProps) {
   const {
-    children,
     filename,
-    icon,
-    codeBlockTheme,
-    feedbackModalOpen,
+    children,
     className,
+    icon,
+    hideAskAiButton,
+    feedbackModalOpen,
     anchorRef,
+    codeBlockTheme,
+    askAiButton,
     feedbackButton,
     copyButtonProps,
-    askAiButton,
   } = params;
 
   const codeString = getNodeText(children);
@@ -129,7 +130,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
             textToCopy={codeString}
             {...copyButtonProps}
           />
-          {askAiButton && askAiButton}
+          {askAiButton && !hideAskAiButton ? askAiButton : null}
         </CodeHeader>
       ) : (
         <div
@@ -142,7 +143,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
             textToCopy={codeString}
             {...copyButtonProps}
           />
-          {askAiButton && askAiButton}
+          {askAiButton && !hideAskAiButton ? askAiButton : null}
         </div>
       )}
       <BaseCodeBlock {...params} />
