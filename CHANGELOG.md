@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.8] - 2026-03-10
+
+### Added
+
+- Exported CodeSnippet component (#206)
+
 ## [1.0.7] - 2026-03-09
 
 ### Fixed
