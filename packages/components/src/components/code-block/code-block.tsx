@@ -79,6 +79,8 @@ type CodeBlockProps = {
   feedbackButton?: ReactNode;
   children?: ReactNode;
   copyButtonProps?: CopyToClipboardButtonProps;
+  isParentCodeGroup?: boolean;
+  shouldHighlight?: boolean;
 };
 
 const CodeBlock = function CodeBlock(params: CodeBlockProps) {
@@ -96,6 +98,9 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
     askAiButton,
     feedbackButton,
     copyButtonProps,
+    isParentCodeGroup,
+    shouldHighlight,
+    numberOfLines,
   } = params;
 
   const codeString = getNodeText(children);
@@ -150,7 +155,10 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
         codeBlockTheme={codeBlockTheme}
         codeBlockThemeObject={codeBlockThemeObject}
         hideAskAiButton={hideAskAiButton}
+        isParentCodeGroup={isParentCodeGroup}
         isSmallText={isSmallText}
+        numberOfLines={numberOfLines}
+        shouldHighlight={shouldHighlight}
         {...params}
       />
     </div>
