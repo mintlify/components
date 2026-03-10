@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { cn } from "@/utils/cn";
 import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
 import { BaseCodeBlock } from "../code-block/base-code-block";
@@ -47,7 +47,10 @@ const CodeGroupSelect = ({
 
   const groupSnippets =
     selectedGroup !== undefined ? snippets[selectedGroup] : undefined;
-  const options = groupSnippets ? Object.keys(groupSnippets) : undefined;
+  const options = useMemo(
+    () => (groupSnippets ? Object.keys(groupSnippets) : undefined),
+    [groupSnippets]
+  );
   const [selectedOption, setSelectedOption] = useState(options?.[0]);
 
   const safeSelectedOption =
@@ -62,11 +65,21 @@ const CodeGroupSelect = ({
 
   const handleGroupSelect = (grp: string) => {
     setSelectedGroup(grp);
+    const newOptions = snippets[grp] ? Object.keys(snippets[grp]) : [];
+    const firstOption = newOptions[0];
+    if (firstOption !== undefined) {
+      setSelectedOption(firstOption);
+      setSelectedExampleIndex?.(0);
+      if (firstOption !== syncedLabel) {
+        setSyncedLabel?.(firstOption);
+      }
+    }
   };
 
   const handleOptionSelect = (opt: string) => {
     setSelectedOption(opt);
-    setSelectedExampleIndex?.(options?.indexOf(opt) ?? 0);
+    const index = options?.indexOf(opt) ?? -1;
+    setSelectedExampleIndex?.(index === -1 ? 0 : index);
     if (opt !== syncedLabel) {
       setSyncedLabel?.(opt);
     }
