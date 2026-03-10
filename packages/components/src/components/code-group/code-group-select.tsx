@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
-import type { CodeBlockTheme } from "@/utils/shiki/code-styling";
+import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
 import { BaseCodeBlock } from "../code-block/base-code-block";
 import {
   CopyToClipboardButton,
@@ -25,6 +25,7 @@ interface CodeGroupSelectProps {
   setSelectedExampleIndex?: (index: number) => void;
   askAiButton?: ReactNode;
   codeBlockTheme?: CodeBlockTheme;
+  codeBlockThemeObject?: CodeStyling;
   codeSnippetAriaLabel?: string;
   copyButtonProps?: CopyToClipboardButtonProps;
 }
@@ -36,6 +37,7 @@ const CodeGroupSelect = ({
   setSelectedExampleIndex,
   askAiButton,
   codeBlockTheme = "system",
+  codeBlockThemeObject,
   codeSnippetAriaLabel = DEFAULT_CODE_SNIPPET_ARIA_LABEL,
   copyButtonProps,
   className,
@@ -135,6 +137,8 @@ const CodeGroupSelect = ({
             </div>
           ) : (
             <BaseCodeBlock
+              codeBlockTheme={codeBlockTheme}
+              codeBlockThemeObject={codeBlockThemeObject}
               isParentCodeGroup={true}
               isSmallText
               language={snippet?.language}
@@ -148,4 +152,4 @@ const CodeGroupSelect = ({
   );
 };
 
-export { type CodeGroupSelectProps, CodeGroupSelect };
+export { type ExampleCodeSnippet, type CodeGroupSelectProps, CodeGroupSelect };
