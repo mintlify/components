@@ -85,23 +85,16 @@ type CodeBlockProps = {
 
 const CodeBlock = function CodeBlock(params: CodeBlockProps) {
   const {
-    filename,
     children,
-    className,
+    filename,
     icon,
-    isSmallText,
-    hideAskAiButton,
+    codeBlockTheme,
     feedbackModalOpen,
+    className,
     anchorRef,
-    codeBlockTheme = "system",
-    codeBlockThemeObject,
-    askAiButton,
     feedbackButton,
     copyButtonProps,
-    isParentCodeGroup,
-    shouldHighlight,
-    numberOfLines,
-    expandable,
+    askAiButton,
   } = params;
 
   const codeString = getNodeText(children);
@@ -152,17 +145,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
           {askAiButton && askAiButton}
         </div>
       )}
-      <BaseCodeBlock
-        codeBlockTheme={codeBlockTheme}
-        codeBlockThemeObject={codeBlockThemeObject}
-        hideAskAiButton={hideAskAiButton}
-        isParentCodeGroup={isParentCodeGroup}
-        isSmallText={isSmallText}
-        numberOfLines={numberOfLines}
-        shouldHighlight={shouldHighlight}
-        expandable={expandable}
-        {...params}
-      />
+      <BaseCodeBlock {...params} />
     </div>
   );
 };
