@@ -115,9 +115,7 @@ export const Default: Story = {
 };
 
 export const DarkTheme: Story = {
-  render: () => (
-    <CodeGroupSelect codeBlockTheme="dark" snippets={snippets} />
-  ),
+  render: () => <CodeGroupSelect codeBlockTheme="dark" snippets={snippets} />,
 };
 
 export const WithShikiTheme: Story = {
@@ -141,7 +139,6 @@ export const WithLightDarkShikiThemes: Story = {
     />
   ),
 };
-
 
 export const SingleGroup: Story = {
   render: (_, { globals }) => (
