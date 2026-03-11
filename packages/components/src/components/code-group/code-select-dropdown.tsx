@@ -29,7 +29,7 @@ const CodeSelectDropdown = ({
     <DropdownMenu>
       <DropdownMenuTrigger
         className={cn(
-          "min-w-16 flex-1 select-none bg-transparent px-2 py-[5px] font-medium text-xs dark:bg-transparent",
+          "min-w-16 select-none bg-transparent px-2 py-[5px] font-medium text-xs dark:bg-transparent",
           codeBlockTheme === "system" && "text-primary dark:text-primary-light",
           codeBlockTheme === "dark" && "text-primary-light"
         )}
