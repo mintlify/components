@@ -24,6 +24,10 @@ const InfoPill = ({ children, prefix, className }: InfoPillProps) => {
   );
 };
 
+type RequiredPillProps = {
+  label?: string;
+};
+
 const RequiredPill = ({ label }: { label?: string }) => {
   if (!label) {
     return null;
@@ -37,6 +41,10 @@ const RequiredPill = ({ label }: { label?: string }) => {
       {label}
     </div>
   );
+};
+
+type DeprecatedPillProps = {
+  label?: string;
 };
 
 const DeprecatedPill = ({ label }: { label?: string }) => {
@@ -55,3 +63,5 @@ const DeprecatedPill = ({ label }: { label?: string }) => {
 };
 
 export { InfoPill, RequiredPill, DeprecatedPill };
+
+export type { InfoPillProps, RequiredPillProps, DeprecatedPillProps };
