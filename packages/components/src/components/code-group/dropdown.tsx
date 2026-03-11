@@ -112,4 +112,8 @@ export {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  type DropdownMenuProps,
+  type DropdownMenuContentProps,
+  type DropdownMenuItemProps,
+  type DropdownMenuTriggerProps,
 };
