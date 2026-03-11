@@ -28,7 +28,7 @@ type RequiredPillProps = {
   label?: string;
 };
 
-const RequiredPill = ({ label }: { label?: string }) => {
+const RequiredPill = ({ label }: RequiredPillProps) => {
   if (!label) {
     return null;
   }
@@ -47,7 +47,7 @@ type DeprecatedPillProps = {
   label?: string;
 };
 
-const DeprecatedPill = ({ label }: { label?: string }) => {
+const DeprecatedPill = ({ label }: DeprecatedPillProps) => {
   if (!label) {
     return null;
   }
