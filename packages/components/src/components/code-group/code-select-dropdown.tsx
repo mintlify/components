@@ -51,7 +51,7 @@ const CodeSelectDropdown = ({
         {options.map((option, i) => (
           <DropdownMenuItem
             className={cn(
-              "py-1.5 text-xs",
+              "rounded-xl py-1.5 text-xs",
               codeBlockTheme === "system" &&
                 "hover:bg-primary/10 hover:text-primary dark:hover:bg-primary-light/10 dark:hover:text-primary-light",
               codeBlockTheme === "dark" &&
