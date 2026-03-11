@@ -104,17 +104,13 @@ const CodeGroupSelect = ({
     <div
       className={cn(
         "not-prose relative flex min-w-full max-w-full flex-col overflow-hidden rounded-2xl p-0.5 text-xs leading-6",
-        codeBlockTheme === "system" &&
-          "border border-gray-950/10 bg-gray-50 dark:border-white/10 dark:bg-white/5",
-        codeBlockTheme === "dark" &&
-          "bg-codeblock ring-1 ring-transparent dark:bg-white/5 dark:ring-white/[0.14]",
+        "border border-gray-950/10 bg-gray-50 dark:border-white/10 dark:bg-white/5",
         className
       )}
       data-testid="code-group-select"
     >
       <div className="flex w-full justify-between rounded-t-2xl text-xs leading-6">
         <CodeSelectDropdown
-          codeBlockTheme={codeBlockTheme}
           options={groups}
           selectedOption={safeSelectedGroup}
           setSelectedOption={handleGroupSelect}
@@ -122,7 +118,6 @@ const CodeGroupSelect = ({
         <div className="flex overflow-hidden">
           {options && (
             <CodeSelectDropdown
-              codeBlockTheme={codeBlockTheme}
               options={options}
               selectedOption={safeSelectedOption}
               setSelectedOption={handleOptionSelect}
