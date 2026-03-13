@@ -1,14 +1,12 @@
-const INDENT_REGEX = /^[ \t]*/;
+const INDENT_REGEX = /^[ ]*/;
 
 export function dedent(code: string): string {
   const lines = code.split("\n");
 
-  // remove empty lines at the start
   while (lines.length && lines[0].trim() === "") {
     lines.shift();
   }
 
-  // remove empty lines at the end
   while (lines.length && lines.at(-1)?.trim() === "") {
     lines.pop();
   }
