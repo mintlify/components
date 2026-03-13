@@ -97,7 +97,6 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
     askAiButton,
     feedbackButton,
     copyButtonProps,
-    ...rest
   } = params;
 
   let codeString = getNodeText(children);
@@ -155,11 +154,11 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
       )}
 
       <BaseCodeBlock
-        {...rest}
         codeBlockTheme={codeBlockTheme}
         codeBlockThemeObject={codeBlockThemeObject}
         hideAskAiButton={hideAskAiButton}
         isSmallText={isSmallText}
+        {...params}
       >
         {codeString}
       </BaseCodeBlock>
