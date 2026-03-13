@@ -147,6 +147,8 @@ const BaseCodeBlock = ({
             "--shiki-dark-bg": shikiBackgroundColors?.dark,
           } as React.CSSProperties
         }
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable code blocks must be keyboard-focusable (axe: scrollable-region-focusable)
+        tabIndex={0}
       >
         {html ? (
           <div
