@@ -464,3 +464,52 @@ export const WithCustomClassName: Story = {
     </CodeBlock>
   ),
 };
+export const TemplateLiteralSimple: Story = {
+  render: () => (
+    <CodeBlock language="bash" lines>
+      {`
+        echo hello
+        echo world
+        echo storybook
+      `}
+    </CodeBlock>
+  ),
+};
+export const TemplateLiteralYaml: Story = {
+  render: () => (
+    <CodeBlock language="yaml" lines>
+      {`
+        applications:
+          myapp:
+            source:
+              root: "/"
+      `}
+    </CodeBlock>
+  ),
+};
+export const TemplateLiteralJavascript: Story = {
+  render: () => (
+    <CodeBlock language="javascript" lines>
+      {`
+        function greet(name) {
+          console.log("Hello " + name);
+        }
+
+        greet("Mintlify");
+      `}
+    </CodeBlock>
+  ),
+};
+export const TemplateLiteralWithEmptyLines: Story = {
+  render: () => (
+    <CodeBlock language="bash" lines>
+      {`
+
+        npm install
+
+        npm run build
+
+      `}
+    </CodeBlock>
+  ),
+};
