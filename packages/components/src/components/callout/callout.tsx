@@ -24,6 +24,7 @@ type CalloutVariant =
 
 type CalloutProps = {
   children: ReactNode;
+  title?: ReactNode;
   variant?: CalloutVariant;
   icon?: ReactNode | string;
   iconType?: IconType;
@@ -80,6 +81,7 @@ const variantConfig = {
 
 const Callout = ({
   children,
+  title,
   variant = "custom",
   icon,
   iconType,
@@ -186,6 +188,14 @@ const Callout = ({
         data-component-part="callout-content"
         style={customTextStyle}
       >
+        {title && (
+          <div
+            className="mb-1 font-semibold"
+            data-component-part="callout-title"
+          >
+            {title}
+          </div>
+        )}
         {children}
       </div>
     </div>
