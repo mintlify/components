@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.11] - 2026-03-12
+
+### Fixed
+
+- Added tabIndex on base code block (#214)
+
 ## [1.0.10] - 2026-03-11
 
 ### Added
