@@ -2,6 +2,7 @@ import type { ReactNode, RefObject } from "react";
 
 import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
+import { dedent } from "@/utils/dedent";
 import { getNodeText } from "@/utils/get-node-text";
 import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
 
@@ -98,7 +99,12 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
     copyButtonProps,
   } = params;
 
-  const codeString = getNodeText(children);
+  let codeString = getNodeText(children);
+
+  if (typeof codeString === "string") {
+    codeString = dedent(codeString);
+  }
+
   const hasGrayBackgroundContainer = !!filename || !!icon;
 
   return (
@@ -146,13 +152,16 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
           {askAiButton && askAiButton}
         </div>
       )}
+
       <BaseCodeBlock
         codeBlockTheme={codeBlockTheme}
         codeBlockThemeObject={codeBlockThemeObject}
         hideAskAiButton={hideAskAiButton}
         isSmallText={isSmallText}
         {...params}
-      />
+      >
+        {codeString}
+      </BaseCodeBlock>
     </div>
   );
 };
