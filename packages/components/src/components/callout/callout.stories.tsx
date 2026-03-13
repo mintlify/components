@@ -14,6 +14,10 @@ const meta: Meta<typeof Callout> = {
       options: ["info", "warning", "note", "tip", "check", "danger", "custom"],
       description: "Predefined callout variant",
     },
+    title: {
+      control: "text",
+      description: "Optional title displayed above the callout content",
+    },
     icon: {
       control: "text",
       description: "Icon name or custom React node (for custom variant)",
@@ -311,4 +315,12 @@ export const BackwardCompatibilityAllTypes: Story = {
       </Danger>
     </div>
   ),
+};
+
+export const WithTitle: Story = {
+  args: {
+    variant: "note",
+    title: "Authentication",
+    children: <p>You must provide an API key.</p>,
+  },
 };
