@@ -4,20 +4,9 @@ import { Columns } from "./columns";
 import { COL_OPTIONS } from "./constants";
 
 const Box = ({ children }: { children?: React.ReactNode }) => (
-  <div className="flex h-24 items-center justify-center rounded-lg bg-stone-200 font-medium text-sm text-stone-500 dark:bg-stone-800">
+  <div className="flex h-24 items-center justify-center rounded-lg bg-stone-200 text-sm text-stone-500 dark:bg-stone-800">
     {children}
   </div>
-);
-
-const sixItems = (
-  <>
-    <Box>1</Box>
-    <Box>2</Box>
-    <Box>3</Box>
-    <Box>4</Box>
-    <Box>5</Box>
-    <Box>6</Box>
-  </>
 );
 
 const meta: Meta<typeof Columns> = {
@@ -28,7 +17,16 @@ const meta: Meta<typeof Columns> = {
   },
   tags: ["autodocs"],
   args: {
-    children: sixItems,
+    children: (
+      <>
+        <Box>1</Box>
+        <Box>2</Box>
+        <Box>3</Box>
+        <Box>4</Box>
+        <Box>5</Box>
+        <Box>6</Box>
+      </>
+    ),
   },
   argTypes: {
     cols: {
@@ -65,11 +63,17 @@ export const FourColumns: Story = {
 /**
  * When placed inside a container query context, columns respond to the
  * container width instead of the viewport width.
+ *
+ * Resize the container below to see the columns respond to the container width.
  */
 export const InsideContainer: StoryObj = {
   render: () => (
-    <div style={{ containerType: "inline-size" }}>
-      <Columns cols={3}>{sixItems}</Columns>
+    <div className="@container resize overflow-hidden border p-8">
+      <Columns cols={3}>
+        <Box>1</Box>
+        <Box>2</Box>
+        <Box>3</Box>
+      </Columns>
     </div>
   ),
 };
