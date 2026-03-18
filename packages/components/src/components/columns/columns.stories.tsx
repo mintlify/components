@@ -12,6 +12,13 @@ const Box = ({ children }: { children?: React.ReactNode }) => (
 const meta: Meta<typeof Columns> = {
   title: "Components/Columns",
   component: Columns,
+  decorators: [
+    (Story) => (
+      <div style={{ containerType: "inline-size" }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     layout: "padded",
   },
@@ -88,7 +95,7 @@ export const LayoutModes: StoryObj = {
               <code>layout="{layout}"</code> → {description}
             </p>
             <Columns
-              className="[--col-min-w:100px]"
+              className="[--col-min-w:min(100px,100%)]"
               cols={4}
               layout={layout as "fit" | "fill"}
             >
