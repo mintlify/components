@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type React from "react";
 import { Columns } from "./columns";
-import { COL_OPTIONS } from "./constants";
+import { type AUTO_MODES, COL_OPTIONS } from "./constants";
 
 const Box = ({ children }: { children?: React.ReactNode }) => (
-  <div className="flex h-24 items-center justify-center rounded-lg bg-stone-200 text-sm text-stone-500 dark:bg-stone-800">
+  <div className="flex h-24 items-center justify-center rounded-lg bg-stone-200 font-medium text-sm text-stone-500 dark:bg-stone-800">
     {children}
   </div>
 );
@@ -64,12 +64,43 @@ export const FourColumns: Story = {
   args: { cols: 4 },
 };
 
-export const AutoFit: Story = {
-  args: { cols: 3, layout: "fit" },
-};
-
-export const AutoFill: Story = {
-  args: { cols: 3, layout: "fill" },
+/**
+ * Side-by-side comparison showing the difference between `layout`.
+ *
+ * With 3 items in a 4-column grid:
+ * - `static` (default): no dynamic wrapping, 1 column on small screens
+ * - `fit`: items stretch to fill all available space
+ * - `fill`: items keep their column width, leaving empty tracks visible
+ *
+ * Resize the browser window to see columns wrap responsively in both cases.
+ */
+export const LayoutModes: StoryObj = {
+  render: () => (
+    <div className="@container flex flex-col gap-8">
+      {Object.entries({
+        static: "items fall back to default behavior",
+        fit: "items stretch to fill row",
+        fill: "empty columns preserve space",
+      } satisfies Record<keyof typeof AUTO_MODES, string>).map(
+        ([layout, description]) => (
+          <div key={layout}>
+            <p className="mb-2 font-medium text-sm text-stone-600 dark:text-stone-400">
+              <code>layout="{layout}"</code> → {description}
+            </p>
+            <Columns
+              className="[--col-min-w:100px]"
+              cols={4}
+              layout={layout as "fit" | "fill"}
+            >
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Columns>
+          </div>
+        )
+      )}
+    </div>
+  ),
 };
 
 export const WithCustomClassName: Story = {
