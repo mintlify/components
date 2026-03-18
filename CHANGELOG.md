@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.12] - 2026-03-17
+
+### Changed
+
+- Columns component now uses a `--cols` CSS variable for column count and supports container query breakpoints (`@[0px]`, `@sm`) alongside media query breakpoints (`sm`), enabling container-responsive column wrapping when placed inside a container query context
+
+### Added
+
+- `InsideContainer` storybook story demonstrating container query behavior with a resizable wrapper
+
 ## [1.0.11] - 2026-03-12
 
 ### Fixed
