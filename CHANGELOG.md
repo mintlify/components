@@ -2,15 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.12] - 2026-03-17
+## [1.0.12] - 2026-03-18
 
 ### Changed
 
-- Columns component now supports container query breakpoints alongside media query breakpoints, enabling container-responsive column wrapping when placed inside a container query context
+- Added support for container query responsiveness in `Columns` (#221)
 
 ### Added
 
-- `InsideContainer` storybook story demonstrating container query behavior with a resizable wrapper
+- `InsideContainer` storybook story demonstrating container query behavior with a resizable wrapper (#220)
 
 ## [1.0.11] - 2026-03-12
 
