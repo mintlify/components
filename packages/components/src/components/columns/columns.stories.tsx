@@ -35,7 +35,7 @@ const meta: Meta<typeof Columns> = {
     },
     layout: {
       control: "select",
-      options: ["static", "fill", "fit"],
+      options: ["none", "fill", "fit"],
     },
     children: {
       table: { disable: true },
@@ -68,7 +68,7 @@ export const FourColumns: Story = {
  * Side-by-side comparison showing the difference between `layout`.
  *
  * With 3 items in a 4-column grid:
- * - `static` (default): no dynamic wrapping, 1 column on small screens
+ * - `none` (default): no dynamic wrapping, 1 column on small screens
  * - `fit`: items stretch to fill all available space
  * - `fill`: items keep their column width, leaving empty tracks visible
  *
@@ -78,7 +78,7 @@ export const LayoutModes: StoryObj = {
   render: () => (
     <div className="@container flex flex-col gap-8">
       {Object.entries({
-        static: "items fall back to default behavior",
+        none: "items fall back to default behavior",
         fit: "items stretch to fill row",
         fill: "empty columns preserve space",
       } satisfies Record<keyof typeof AUTO_MODES, string>).map(

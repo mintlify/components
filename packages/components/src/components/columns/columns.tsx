@@ -13,7 +13,7 @@ import {
 type ColumnsProps = {
   children: React.ReactNode;
   cols?: ColCount | `${ColCount}`;
-  layout?: "static" | "fill" | "fit";
+  layout?: "none" | "fill" | "fit";
   className?: string;
 };
 

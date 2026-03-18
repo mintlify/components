@@ -3,17 +3,17 @@ type ColCount = (typeof COL_OPTIONS)[number];
 
 const DEFAULT_COLS = 2;
 const DEFAULT_MIN_COL_WIDTH = "200px";
-const DEFAULT_AUTO_MODE = "static";
+const DEFAULT_AUTO_MODE = "none";
 
 const COL_CLASSES: Record<number, string> = {
-  1: "sm:grid-cols-1 @[0px]:grid-cols-1",
+  1: "",
   2: "sm:grid-cols-2 @[0px]:grid-cols-1 @sm:grid-cols-2",
   3: "sm:grid-cols-3 @[0px]:grid-cols-1 @sm:grid-cols-3",
   4: "sm:grid-cols-4 @[0px]:grid-cols-1 @sm:grid-cols-4",
 };
 
 const AUTO_MODES = {
-  static: undefined,
+  none: undefined,
   fill: "auto-fill",
   fit: "auto-fit",
 } as const;
