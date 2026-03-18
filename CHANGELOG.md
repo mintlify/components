@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.12] - 2026-03-18
+
+### Changed
+
+- Added support for container query responsiveness in `Columns` (#221)
+
+### Added
+
+- `InsideContainer` storybook story demonstrating container query behavior with a resizable wrapper (#220)
+
 ## [1.0.11] - 2026-03-12
 
 ### Fixed
