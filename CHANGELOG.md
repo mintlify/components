@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- Columns component now uses a `--cols` CSS variable for column count and supports container query breakpoints (`@[0px]`, `@sm`) alongside media query breakpoints (`sm`), enabling container-responsive column wrapping when placed inside a container query context
+- Columns component now supports container query breakpoints alongside media query breakpoints, enabling container-responsive column wrapping when placed inside a container query context
 
 ### Added
 
