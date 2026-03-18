@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type React from "react";
 import { Columns } from "./columns";
-import { type AUTO_MODES, COL_OPTIONS } from "./constants";
+import { COL_OPTIONS } from "./constants";
 
 const Box = ({ children }: { children?: React.ReactNode }) => (
   <div className="flex h-24 items-center justify-center rounded-lg bg-stone-200 font-medium text-sm text-stone-500 dark:bg-stone-800">
@@ -9,40 +9,31 @@ const Box = ({ children }: { children?: React.ReactNode }) => (
   </div>
 );
 
+const sixItems = (
+  <>
+    <Box>1</Box>
+    <Box>2</Box>
+    <Box>3</Box>
+    <Box>4</Box>
+    <Box>5</Box>
+    <Box>6</Box>
+  </>
+);
+
 const meta: Meta<typeof Columns> = {
   title: "Components/Columns",
   component: Columns,
-  decorators: [
-    (Story) => (
-      <div style={{ containerType: "inline-size" }}>
-        <Story />
-      </div>
-    ),
-  ],
   parameters: {
     layout: "padded",
   },
   tags: ["autodocs"],
   args: {
-    children: (
-      <>
-        <Box>1</Box>
-        <Box>2</Box>
-        <Box>3</Box>
-        <Box>4</Box>
-        <Box>5</Box>
-        <Box>6</Box>
-      </>
-    ),
+    children: sixItems,
   },
   argTypes: {
     cols: {
       control: "select",
       options: [...COL_OPTIONS],
-    },
-    layout: {
-      control: "select",
-      options: ["none", "fill", "fit"],
     },
     children: {
       table: { disable: true },
@@ -72,40 +63,13 @@ export const FourColumns: Story = {
 };
 
 /**
- * Side-by-side comparison showing the difference between `layout`.
- *
- * With 3 items in a 4-column grid:
- * - `none` (default): no dynamic wrapping, 1 column on small screens
- * - `fit`: items stretch to fill all available space
- * - `fill`: items keep their column width, leaving empty tracks visible
- *
- * Resize the browser window to see columns wrap responsively in both cases.
+ * When placed inside a container query context, columns respond to the
+ * container width instead of the viewport width.
  */
-export const LayoutModes: StoryObj = {
+export const InsideContainer: StoryObj = {
   render: () => (
-    <div className="@container flex flex-col gap-8">
-      {Object.entries({
-        none: "items fall back to default behavior",
-        fit: "items stretch to fill row",
-        fill: "empty columns preserve space",
-      } satisfies Record<keyof typeof AUTO_MODES, string>).map(
-        ([layout, description]) => (
-          <div key={layout}>
-            <p className="mb-2 font-medium text-sm text-stone-600 dark:text-stone-400">
-              <code>layout="{layout}"</code> → {description}
-            </p>
-            <Columns
-              className="[--col-min-w:min(100px,100%)]"
-              cols={4}
-              layout={layout as "fit" | "fill"}
-            >
-              <Box>1</Box>
-              <Box>2</Box>
-              <Box>3</Box>
-            </Columns>
-          </div>
-        )
-      )}
+    <div style={{ containerType: "inline-size" }}>
+      <Columns cols={3}>{sixItems}</Columns>
     </div>
   ),
 };
