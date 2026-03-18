@@ -36,7 +36,7 @@ const Columns = ({
     <div
       className={cn(
         Classes.Columns,
-        "prose dark:prose-invert grid gap-4",
+        "prose dark:prose-invert grid max-w-none gap-4",
         !autoMode && (COL_CLASSES[numCols] ?? ""),
         className
       )}
