@@ -12,13 +12,6 @@ const Box = ({ children }: { children?: React.ReactNode }) => (
 const meta: Meta<typeof Columns> = {
   title: "Components/Columns",
   component: Columns,
-  decorators: [
-    (Story) => (
-      <div style={{ containerType: "inline-size" }}>
-        <Story />
-      </div>
-    ),
-  ],
   parameters: {
     layout: "padded",
   },
