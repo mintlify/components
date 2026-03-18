@@ -2,7 +2,13 @@ import type React from "react";
 import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
 import type { ColCount } from "./constants";
-import { AUTO_MODES, COL_CLASSES, DEFAULT_AUTO_MODE, DEFAULT_COLS, DEFAULT_MIN_COL_WIDTH } from "./constants";
+import {
+  AUTO_MODES,
+  COL_CLASSES,
+  DEFAULT_AUTO_MODE,
+  DEFAULT_COLS,
+  DEFAULT_MIN_COL_WIDTH,
+} from "./constants";
 
 type ColumnsProps = {
   children: React.ReactNode;
