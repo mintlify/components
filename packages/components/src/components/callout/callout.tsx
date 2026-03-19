@@ -190,10 +190,7 @@ const Callout = ({
         style={customTextStyle}
       >
         {title && (
-          <div
-            className="font-semibold"
-            data-component-part="callout-title"
-          >
+          <div className="font-semibold" data-component-part="callout-title">
             {title}
           </div>
         )}
