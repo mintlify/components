@@ -24,7 +24,7 @@ type CalloutVariant =
 
 type CalloutProps = {
   children: ReactNode;
-  title?: ReactNode;
+  title?: string;
   variant?: CalloutVariant;
   icon?: ReactNode | string;
   iconType?: IconType;
