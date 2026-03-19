@@ -68,7 +68,7 @@ export const FourColumns: Story = {
  */
 export const InsideContainer: StoryObj = {
   render: () => (
-    <div className="@container resize overflow-hidden border p-8">
+    <div className="@container/columns-container resize overflow-hidden border p-8">
       <Columns cols={3}>
         <Box>1</Box>
         <Box>2</Box>
