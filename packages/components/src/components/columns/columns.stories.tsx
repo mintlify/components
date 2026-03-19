@@ -60,6 +60,24 @@ export const FourColumns: Story = {
   args: { cols: 4 },
 };
 
+/**
+ * When placed inside a container query context, columns respond to the
+ * container width instead of the viewport width.
+ *
+ * Resize the container below to see the columns respond to the container width.
+ */
+export const InsideContainer: StoryObj = {
+  render: () => (
+    <div className="@container resize overflow-hidden border p-8">
+      <Columns cols={3}>
+        <Box>1</Box>
+        <Box>2</Box>
+        <Box>3</Box>
+      </Columns>
+    </div>
+  ),
+};
+
 export const WithCustomClassName: Story = {
   args: {
     cols: 2,
