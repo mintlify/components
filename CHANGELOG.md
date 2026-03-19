@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.13] - 2026-03-19
+
+### Changed
+
+- Changed `Columns` to use named container query (`columns-container`) (#222)
+
 ## [1.0.12] - 2026-03-18
 
 ### Changed
