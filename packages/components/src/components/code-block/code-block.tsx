@@ -152,7 +152,6 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
           {askAiButton && askAiButton}
         </div>
       )}
-
       <BaseCodeBlock
         codeBlockTheme={codeBlockTheme}
         codeBlockThemeObject={codeBlockThemeObject}
