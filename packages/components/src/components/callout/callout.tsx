@@ -190,7 +190,7 @@ const Callout = ({
       >
         {title && (
           <div
-            className="mb-1 font-semibold"
+            className="font-semibold"
             data-component-part="callout-title"
           >
             {title}
