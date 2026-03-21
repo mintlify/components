@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.14] - 2026-03-20
+
+### Added
+
+- Added `title` prop to Callout component (#216 by @x0rgus)
+
+### Changed
+
+- Bumped flatted from 3.3.3 to 3.4.2 (#223)
+
 ## [1.0.13] - 2026-03-19
 
 ### Changed
