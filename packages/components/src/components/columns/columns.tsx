@@ -23,7 +23,7 @@ const Columns = ({
         Classes.Columns,
         "prose dark:prose-invert grid max-w-none gap-4",
         "sm:grid-cols-[repeat(var(--cols),minmax(0,1fr))]",
-        "@[0px]/columns-container:grid-cols-1 @sm/columns-container:grid-cols-[repeat(var(--cols),minmax(0,1fr))]",
+        "@2xl/columns-container:grid-cols-[repeat(var(--cols),minmax(0,1fr))] @[0px]/columns-container:grid-cols-1",
         className
       )}
       style={{ "--cols": numCols } as React.CSSProperties}
