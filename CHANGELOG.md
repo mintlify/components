@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.16] - 2026-04-17
+
+### Changed
+
+- Bumped brace-expansion from 1.1.12 to 1.1.14 (#233)
+- Bumped lodash from 4.17.23 to 4.18.1 (#233)
+- Bumped vite from 6.4.1 to 6.4.2 (#233)
+
+## [1.0.15] - 2026-04-03
+
+### Changed
+
+- Adjusted Columns multi-column breakpoint (#229)
+
 ## [1.0.14] - 2026-03-20
 
 ### Added
