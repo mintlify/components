@@ -1,5 +1,4 @@
 import isEqual from "lodash/isEqual";
-import { copyToClipboard } from "@/utils/copy-to-clipboard";
 
 const CONNECTING_CHARACTER = ":";
 
@@ -41,8 +40,6 @@ const updateAndCopyUrl = () => {
 
     const idsString = ids.join(CONNECTING_CHARACTER);
     const newUrl = buildHistoryUrl(idsString);
-
-    copyToClipboard(newUrl);
 
     window.history.replaceState(
       { ...window.history.state, as: newUrl, url: newUrl },
