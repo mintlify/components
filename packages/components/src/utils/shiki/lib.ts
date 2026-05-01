@@ -4,6 +4,12 @@ import { getNodeText } from "@/utils/get-node-text";
 import { SHIKI_CLASSNAME } from "@/utils/shiki/constants";
 
 const lineIndentRegex = /^( *)/;
+const closingStructureRegex = /^([}\])]|<\/)/;
+
+function getIndent(line: string): number {
+  const match = line.match(lineIndentRegex);
+  return match ? match[1].length : 0;
+}
 
 function findShikiClassName(children: unknown): boolean {
   if (!children || typeof children !== "object") {
@@ -45,26 +51,41 @@ function dedentCode(code: string): string {
     return code;
   }
 
-  const relevantLines = lines.slice(1).filter((line) => line.trim() !== "");
+  const relevantLines = lines.filter((line) => line.trim() !== "");
   if (relevantLines.length === 0) {
     return code;
   }
 
-  const minIndent = Math.min(
-    ...relevantLines.map((line) => {
-      const match = line.match(lineIndentRegex);
-      return match ? match[1].length : 0;
-    })
-  );
+  const firstLine = relevantLines[0];
+  const lastLine = relevantLines.at(-1) ?? firstLine;
+  const firstIndent = getIndent(firstLine);
+  const lastIndent = getIndent(lastLine);
+  const isTemplatePolluted =
+    firstIndent < lastIndent && closingStructureRegex.test(lastLine.trim());
 
+  if (isTemplatePolluted) {
+    const firstNonEmptyIndex = lines.findIndex((line) => line.trim() !== "");
+    const tail = relevantLines.slice(1);
+    if (tail.length === 0) {
+      return code;
+    }
+    const minIndent = Math.min(...tail.map(getIndent));
+    if (minIndent === 0) {
+      return code;
+    }
+    return lines
+      .map((line, i) =>
+        i <= firstNonEmptyIndex ? line : line.slice(minIndent)
+      )
+      .join("\n");
+  }
+
+  const minIndent = Math.min(...relevantLines.map(getIndent));
   if (minIndent === 0) {
     return code;
   }
 
-  return [
-    lines[0],
-    ...lines.slice(1).map((line) => line.slice(minIndent)),
-  ].join("\n");
+  return lines.map((line) => line.slice(minIndent)).join("\n");
 }
 
 function getCodeString(

@@ -2,8 +2,8 @@ import type { ReactNode, RefObject } from "react";
 
 import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
-import { getNodeText } from "@/utils/get-node-text";
 import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
+import { getCodeString } from "@/utils/shiki/lib";
 
 import { BaseCodeBlock } from "./base-code-block";
 import { CodeHeader } from "./code-header";
@@ -98,7 +98,7 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
     copyButtonProps,
   } = params;
 
-  const codeString = getNodeText(children);
+  const codeString = getCodeString(children, className, true);
   const hasGrayBackgroundContainer = !!filename || !!icon;
 
   return (
