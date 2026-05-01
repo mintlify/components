@@ -10,7 +10,7 @@ type SnippetPreset = {
   /** Shiki language for syntax highlighting */
   shikiLanguage: string;
   /** httpsnippet config for code generation */
-  httpSnippet: {
+  httpSnippet?: {
     target: string;
     client?: string;
   };
@@ -144,6 +144,11 @@ const SNIPPET_PRESETS: SnippetPreset[] = [
     displayName: "Dart",
     shikiLanguage: "dart",
     httpSnippet: { target: "dart" },
+  },
+  {
+    key: "toml",
+    displayName: "TOML",
+    shikiLanguage: "yaml",
   },
 ];
 
