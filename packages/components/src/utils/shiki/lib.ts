@@ -3,6 +3,8 @@ import { type ReactNode, useMemo } from "react";
 import { getNodeText } from "@/utils/get-node-text";
 import { SHIKI_CLASSNAME } from "@/utils/shiki/constants";
 
+const lineIndentRegex = /^( *)/;
+
 function findShikiClassName(children: unknown): boolean {
   if (!children || typeof children !== "object") {
     return false;
@@ -37,6 +39,34 @@ function findShikiClassName(children: unknown): boolean {
   return false;
 }
 
+function dedentCode(code: string): string {
+  const lines = code.split("\n");
+  if (lines.length <= 1) {
+    return code;
+  }
+
+  const relevantLines = lines.slice(1).filter((line) => line.trim() !== "");
+  if (relevantLines.length === 0) {
+    return code;
+  }
+
+  const minIndent = Math.min(
+    ...relevantLines.map((line) => {
+      const match = line.match(lineIndentRegex);
+      return match ? match[1].length : 0;
+    })
+  );
+
+  if (minIndent === 0) {
+    return code;
+  }
+
+  return [
+    lines[0],
+    ...lines.slice(1).map((line) => line.slice(minIndent)),
+  ].join("\n");
+}
+
 function getCodeString(
   children: ReactNode,
   className?: string,
@@ -50,7 +80,7 @@ function getCodeString(
 
   const codeString = getNodeText(children);
 
-  return codeString;
+  return dedentCode(codeString);
 }
 
 function calculateCodeLinesFromHtml(html: string | undefined): number {
