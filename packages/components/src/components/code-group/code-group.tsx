@@ -18,8 +18,8 @@ import {
 import { Icon as ComponentIcon } from "@/components/icon";
 import { Classes } from "@/constants/selectors";
 import { cn } from "@/utils/cn";
-import { getNodeText } from "@/utils/get-node-text";
 import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
+import { getCodeString } from "@/utils/shiki/lib";
 
 import { LanguageDropdown } from "./language-dropdown";
 
@@ -220,7 +220,11 @@ const CodeGroup = ({
           {feedbackButton && feedbackButton}
           <CopyToClipboardButton
             codeBlockTheme={codeBlockTheme}
-            textToCopy={getNodeText(childArr[selectedIndex]?.props?.children)}
+            textToCopy={getCodeString(
+              childArr[selectedIndex]?.props?.children,
+              childArr[selectedIndex]?.props?.className,
+              true
+            )}
             {...copyButtonProps}
           />
           {askAiButton && askAiButton}

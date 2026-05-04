@@ -464,3 +464,43 @@ export const WithCustomClassName: Story = {
     </CodeBlock>
   ),
 };
+
+export const MDXIndents: Story = {
+  render: () => (
+    <CodeBlock filename="example.ts" language="ts">
+      {`import {
+        a,
+        b,
+      } from 'pkg';
+
+      async function main() {
+        console.log('hello');
+      }`}
+    </CodeBlock>
+  ),
+};
+
+export const MDXIndentsDeeplyNested: Story = {
+  render: () => (
+    <CodeBlock filename="nested.ts" language="ts">
+      {`function outer() {
+        function middle() {
+          function inner() {
+            function deepest() {
+              if (true) {
+                for (let i = 0; i < 10; i++) {
+                  while (i > 0) {
+                    return 42;
+                  }
+                }
+              }
+            }
+            return deepest();
+          }
+          return inner();
+        }
+        return middle();
+      }`}
+    </CodeBlock>
+  ),
+};

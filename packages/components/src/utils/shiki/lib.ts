@@ -3,6 +3,14 @@ import { type ReactNode, useMemo } from "react";
 import { getNodeText } from "@/utils/get-node-text";
 import { SHIKI_CLASSNAME } from "@/utils/shiki/constants";
 
+const lineIndentRegex = /^( *)/;
+const closingStructureRegex = /^([}\])]|<\/)/;
+
+function getIndent(line: string): number {
+  const match = line.match(lineIndentRegex);
+  return match ? match[1].length : 0;
+}
+
 function findShikiClassName(children: unknown): boolean {
   if (!children || typeof children !== "object") {
     return false;
@@ -37,6 +45,49 @@ function findShikiClassName(children: unknown): boolean {
   return false;
 }
 
+function dedentCode(code: string): string {
+  const lines = code.split("\n");
+  if (lines.length <= 1) {
+    return code;
+  }
+
+  const relevantLines = lines.filter((line) => line.trim() !== "");
+  if (relevantLines.length === 0) {
+    return code;
+  }
+
+  const firstLine = relevantLines[0];
+  const lastLine = relevantLines.at(-1) ?? firstLine;
+  const firstIndent = getIndent(firstLine);
+  const lastIndent = getIndent(lastLine);
+  const isTemplatePolluted =
+    firstIndent < lastIndent && closingStructureRegex.test(lastLine.trim());
+
+  if (isTemplatePolluted) {
+    const firstNonEmptyIndex = lines.findIndex((line) => line.trim() !== "");
+    const tail = relevantLines.slice(1);
+    if (tail.length === 0) {
+      return code;
+    }
+    const minIndent = Math.min(...tail.map(getIndent));
+    if (minIndent === 0) {
+      return code;
+    }
+    return lines
+      .map((line, i) =>
+        i <= firstNonEmptyIndex ? line : line.slice(minIndent)
+      )
+      .join("\n");
+  }
+
+  const minIndent = Math.min(...relevantLines.map(getIndent));
+  if (minIndent === 0) {
+    return code;
+  }
+
+  return lines.map((line) => line.slice(minIndent)).join("\n");
+}
+
 function getCodeString(
   children: ReactNode,
   className?: string,
@@ -50,7 +101,7 @@ function getCodeString(
 
   const codeString = getNodeText(children);
 
-  return codeString;
+  return dedentCode(codeString);
 }
 
 function calculateCodeLinesFromHtml(html: string | undefined): number {
