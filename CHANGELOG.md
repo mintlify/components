@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.17] - 2026-05-01
+
+### Fixed
+
+- Added TOML language preset to CodeGroup to fix missing icon (#235 by @20syldev)
+- Removed unintended clipboard copy on Accordion open (#234 by @20syldev)
+
 ## [1.0.16] - 2026-04-17
 
 ### Changed
