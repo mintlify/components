@@ -3,21 +3,27 @@ import { Icon } from "@/components/icon";
 import { cn } from "@/utils/cn";
 import type { IconLibrary, IconType } from "@/utils/icon-utils";
 
-type BadgeSize = "xs" | "sm" | "md" | "lg";
-type BadgeShape = "rounded" | "pill";
-type BadgeVariant = "solid" | "outline";
-type BadgeColor =
-  | "gray"
-  | "blue"
-  | "green"
-  | "orange"
-  | "yellow"
-  | "red"
-  | "purple"
-  | "white"
-  | "surface"
-  | "white-destructive"
-  | "surface-destructive";
+const BADGE_COLORS = [
+  "gray",
+  "blue",
+  "green",
+  "orange",
+  "yellow",
+  "red",
+  "purple",
+  "white",
+  "surface",
+  "white-destructive",
+  "surface-destructive",
+] as const;
+const BADGE_SHAPES = ["rounded", "pill"] as const;
+const BADGE_SIZES = ["xs", "sm", "md", "lg"] as const;
+const BADGE_VARIANTS = ["solid", "outline"] as const;
+
+type BadgeSize = (typeof BADGE_SIZES)[number];
+type BadgeShape = (typeof BADGE_SHAPES)[number];
+type BadgeVariant = (typeof BADGE_VARIANTS)[number];
+type BadgeColor = (typeof BADGE_COLORS)[number];
 
 const sizeVariants: Record<BadgeSize, string> = {
   lg: 'gap-1 py-1 pl-2.5 pr-2.5 [&_svg]:size-3.5 text-sm tracking-[-0.1px] data-[shape="rounded"]:rounded-[8px]',
@@ -170,5 +176,13 @@ const Badge = ({
   return <span {...commonProps}>{content}</span>;
 };
 
-export { Badge };
+export {
+  Badge,
+  BADGE_COLORS,
+  BADGE_SHAPES,
+  BADGE_SIZES,
+  BADGE_VARIANTS,
+  colorVariants,
+  sizeVariants,
+};
 export type { BadgeSize, BadgeProps, BadgeShape, BadgeVariant, BadgeColor };
