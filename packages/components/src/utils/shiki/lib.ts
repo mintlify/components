@@ -1,5 +1,6 @@
 import { type ReactNode, useMemo } from "react";
 
+import { dedent } from "@/utils/dedent";
 import { getNodeText } from "@/utils/get-node-text";
 import { SHIKI_CLASSNAME } from "@/utils/shiki/constants";
 
@@ -50,7 +51,7 @@ function getCodeString(
 
   const codeString = getNodeText(children);
 
-  return codeString;
+  return dedent(codeString);
 }
 
 function calculateCodeLinesFromHtml(html: string | undefined): number {
