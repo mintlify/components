@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.18] - 2026-07-01
+
+### Added
+
+- Exported Badge config constants (`BADGE_COLORS`, `BADGE_SHAPES`, `BADGE_SIZES`, `BADGE_VARIANTS`) and the `BadgeVariant` type (#241)
+
+### Fixed
+
+- Fixed CodeBlock mis-indenting string children (#245)
+
+### Changed
+
+- Bumped postcss from 8.5.6 to 8.5.10 (#238)
+- Bumped mermaid from 11.12.2 to 11.15.0 (#239)
+- Bumped js-yaml from 4.1.1 to 4.3.0 (#242)
+- Bumped vite from 6.4.2 to 6.4.3 (#244)
+
 ## [1.0.17] - 2026-05-01
 
 ### Fixed
