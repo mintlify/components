@@ -218,27 +218,82 @@ export const ColorsWithUser: Story = {
 export const Sizes: Story = {
   name: "Sizes",
   render: () => (
-    <div className="flex flex-col gap-3 text-stone-700">
-      <p className="text-xs">
-        Extra small — refer to <Mention path="/docs">Documentation</Mention> or
-        ask <Mention user="alex">Alex Chen</Mention>
-      </p>
-      <p className="text-sm">
-        Small — refer to <Mention path="/docs">Documentation</Mention> or ask{" "}
-        <Mention user="alex">Alex Chen</Mention>
-      </p>
-      <p className="text-base">
-        Base — refer to <Mention path="/docs">Documentation</Mention> or ask{" "}
-        <Mention user="alex">Alex Chen</Mention>
-      </p>
-      <p className="text-lg">
-        Large — refer to <Mention path="/docs">Documentation</Mention> or ask{" "}
-        <Mention user="alex">Alex Chen</Mention>
-      </p>
-      <p className="text-xl">
-        Extra large — refer to <Mention path="/docs">Documentation</Mention> or
-        ask <Mention user="alex">Alex Chen</Mention>
-      </p>
+    <div className="flex flex-col gap-4 text-stone-700">
+      <div className="flex flex-col gap-1 rounded-lg bg-gray-50 p-1">
+        <div className="py-px pl-0.5 text-right">
+          extra small <code className="bg-none p-0 font-bold">text-xs</code>
+        </div>
+        <p className="rounded-lg bg-white p-3 text-xs">
+          refer to{" "}
+          <Mention color="success" path="/docs">
+            Documentation
+          </Mention>{" "}
+          or ask{" "}
+          <Mention color="success" user="alex">
+            Alex Chen
+          </Mention>
+        </p>
+      </div>
+      <div className="flex flex-col gap-1 rounded-lg bg-gray-50 p-1">
+        <div className="py-px pl-0.5 text-right">
+          small <code className="bg-none p-0 font-bold">text-sm</code>
+        </div>
+        <p className="rounded-lg bg-white p-3 text-sm">
+          refer to{" "}
+          <Mention color="success" path="/docs">
+            Documentation
+          </Mention>{" "}
+          or ask{" "}
+          <Mention color="success" user="alex">
+            Alex Chen
+          </Mention>
+        </p>
+      </div>
+      <div className="flex flex-col gap-1 rounded-lg bg-gray-50 p-1">
+        <div className="py-px pl-0.5 text-right">
+          base <code className="bg-none p-0 font-bold">text-base</code>
+        </div>
+        <p className="rounded-lg bg-white p-3 text-base">
+          refer to{" "}
+          <Mention color="success" path="/docs">
+            Documentation
+          </Mention>{" "}
+          or ask{" "}
+          <Mention color="success" user="alex">
+            Alex Chen
+          </Mention>
+        </p>
+      </div>
+      <div className="flex flex-col gap-1 rounded-lg bg-gray-50 p-1">
+        <div className="py-px pl-0.5 text-right">
+          large <code className="bg-none p-0 font-bold">text-lg</code>
+        </div>
+        <p className="rounded-lg bg-white p-3 text-lg">
+          refer to{" "}
+          <Mention color="success" path="/docs">
+            Documentation
+          </Mention>{" "}
+          or ask{" "}
+          <Mention color="success" user="alex">
+            Alex Chen
+          </Mention>
+        </p>
+      </div>
+      <div className="flex flex-col gap-1 rounded-lg bg-gray-50 p-1">
+        <div className="py-px pl-0.5 text-right">
+          extra large <code className="bg-none p-0 font-bold">text-xl</code>
+        </div>
+        <p className="rounded-lg bg-white p-3 text-xl">
+          refer to{" "}
+          <Mention color="success" path="/docs">
+            Documentation
+          </Mention>{" "}
+          or ask{" "}
+          <Mention color="success" user="alex">
+            Alex Chen
+          </Mention>
+        </p>
+      </div>
     </div>
   ),
 };
