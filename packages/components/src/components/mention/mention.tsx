@@ -80,10 +80,17 @@ const Mention = ({
 }: MentionProps) => {
   const isUser = !!user;
   const defaultIconName = isUser ? DEFAULT_USER_ICON : DEFAULT_PAGE_ICON;
-  // Treat an empty string the same as omitted — fall back to the default icon.
-  const resolvedIcon = (icon === "" ? undefined : icon) ?? defaultIconName;
+  // null → explicitly hide the icon. "" → treat as omitted, fall back to default.
+  const hideIcon = icon === null;
+  const resolvedIcon = hideIcon
+    ? null
+    : ((icon === "" ? undefined : icon) ?? defaultIconName);
 
   const renderIcon = () => {
+    if (resolvedIcon === null) {
+      return null;
+    }
+
     if (typeof resolvedIcon !== "string") {
       return (
         <span aria-hidden="true" className="flex shrink-0 items-center">
@@ -128,9 +135,17 @@ const Mention = ({
 
   const isLink = !!path && !user;
 
+  // When an icon is present the left padding is tightened to match the vertical
+  // gap so the icon appears equally inset on all three sides (left, top, bottom).
+  // The right padding stays wider to give the label text room to breathe.
+  // When there is no icon both sides use the wider right padding value.
   const sharedClassName = cn(
     "mention",
-    "inline-flex items-center gap-1 rounded-md px-1.5 py-0.5",
+    "inline-flex items-center gap-1 rounded-md py-0.5",
+    // Icon present: tight left padding so the icon is equally inset on all
+    // three sides (matches the 4px vertical gap). Right side stays wider.
+    // No icon: symmetric padding matching the right-side value.
+    resolvedIcon !== null ? "pr-2 pl-1" : "px-2",
     "font-medium text-xs",
     "bg-(--mention-bg) text-(--mention-text)",
     '[&_[data-component-part="icon-svg"]]:bg-(--mention-text)',
