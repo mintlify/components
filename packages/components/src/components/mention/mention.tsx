@@ -130,8 +130,8 @@ const Mention = ({
 
   const sharedClassName = cn(
     "mention",
-    "inline-flex items-center gap-1 rounded-md px-1.5 py-0.5",
-    "whitespace-nowrap font-medium text-xs leading-none",
+    "inline-flex items-center gap-1 rounded-md px-2 py-1",
+    "font-medium text-xs leading-none",
     "bg-(--mention-bg) text-(--mention-text)",
     '[&_[data-component-part="icon-svg"]]:bg-(--mention-text)',
     '[&_[data-component-part="icon-svg"]]:size-3',

@@ -273,6 +273,59 @@ export const LucideIcons: Story = {
   ),
 };
 
+// ─── Wrapping ───────────────────────────────────────────────────────────────
+
+export const LongLabelWrapping: Story = {
+  name: "Long label (wrapping)",
+  render: () => (
+    <div className="flex flex-col gap-6">
+      <div>
+        <p className="mb-3 text-stone-400 text-xs uppercase tracking-wide">
+          Natural wrap inside a narrow container
+        </p>
+        <div className="w-36">
+          <Mention color="info" icon="bed" path="/accommodation">
+            Accommodation &amp; Meals Planning Guide
+          </Mention>
+        </div>
+      </div>
+
+      <div>
+        <p className="mb-3 text-stone-400 text-xs uppercase tracking-wide">
+          Forced line break via &lt;br /&gt;
+        </p>
+        <div className="flex flex-col gap-2">
+          <Mention color="feature" path="/page">
+            Q4 Product Roadmap
+            <br />
+            Planning &amp; Review
+          </Mention>
+          <Mention color="success" icon="leaf" path="/sustainability">
+            Sustainability
+            <br />
+            Guidelines
+          </Mention>
+        </div>
+      </div>
+
+      <div>
+        <p className="mb-3 text-stone-400 text-xs uppercase tracking-wide">
+          Inline in prose with wrapping label
+        </p>
+        <p className="max-w-xs text-sm text-stone-700">
+          Please review the{" "}
+          <Mention color="info" icon="file-lines" path="/compliance">
+            Compliance &amp; Legal
+            <br />
+            Documentation
+          </Mention>{" "}
+          before proceeding.
+        </p>
+      </div>
+    </div>
+  ),
+};
+
 // ─── All badge variants (design reference) ──────────────────────────────────
 
 export const DesignReference: Story = {
