@@ -7,6 +7,15 @@ const meta: Meta<typeof Mention> = {
   parameters: {
     layout: "centered",
   },
+  // Wrap all stories in text-xs so existing story appearances are preserved now
+  // that the component inherits font-size from context rather than hardcoding it.
+  decorators: [
+    (Story) => (
+      <div className="text-xs">
+        <Story />
+      </div>
+    ),
+  ],
   tags: ["autodocs"],
   argTypes: {
     children: {
@@ -198,6 +207,38 @@ export const ColorsWithUser: Story = {
       <Mention color="error" user="person">
         Error
       </Mention>
+    </div>
+  ),
+};
+
+// ─── Sizes ──────────────────────────────────────────────────────────────────
+// Because every dimension (icon, padding, gap, radius) is expressed in em,
+// the component scales proportionally with whatever font-size surrounds it.
+
+export const Sizes: Story = {
+  name: "Sizes",
+  render: () => (
+    <div className="flex flex-col gap-3 text-stone-700">
+      <p className="text-xs">
+        Extra small — refer to <Mention path="/docs">Documentation</Mention> or
+        ask <Mention user="alex">Alex Chen</Mention>
+      </p>
+      <p className="text-sm">
+        Small — refer to <Mention path="/docs">Documentation</Mention> or ask{" "}
+        <Mention user="alex">Alex Chen</Mention>
+      </p>
+      <p className="text-base">
+        Base — refer to <Mention path="/docs">Documentation</Mention> or ask{" "}
+        <Mention user="alex">Alex Chen</Mention>
+      </p>
+      <p className="text-lg">
+        Large — refer to <Mention path="/docs">Documentation</Mention> or ask{" "}
+        <Mention user="alex">Alex Chen</Mention>
+      </p>
+      <p className="text-xl">
+        Extra large — refer to <Mention path="/docs">Documentation</Mention> or
+        ask <Mention user="alex">Alex Chen</Mention>
+      </p>
     </div>
   ),
 };

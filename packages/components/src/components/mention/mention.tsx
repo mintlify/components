@@ -104,7 +104,7 @@ const Mention = ({
         <img
           alt=""
           aria-hidden="true"
-          className="size-3 shrink-0 rounded-full object-cover"
+          className="size-[1em] shrink-0 rounded-full object-cover"
           height={12}
           src={resolvedIcon}
           width={12}
@@ -141,15 +141,21 @@ const Mention = ({
   // When there is no icon both sides use the wider right padding value.
   const sharedClassName = cn(
     "mention",
-    "inline-flex items-center gap-1 rounded-md py-0.5",
-    // Icon present: tight left padding so the icon is equally inset on all
-    // three sides (matches the 4px vertical gap). Right side stays wider.
-    // No icon: symmetric padding matching the right-side value.
-    resolvedIcon !== null ? "pr-2 pl-1" : "px-2",
-    "font-medium text-xs",
+    // leading-none keeps line-height = 1em so all em-based dimensions
+    // scale proportionally with any font-size applied by the consumer.
+    "inline-flex items-center leading-none",
+    // Spacing and radius all in em so every dimension scales with font-size.
+    // py = 1/3em  →  pill height = 1em (text) + 2*(1/3em) = 5/3em ≈ 1.667×
+    // pl = 1/3em  →  icon is equidistant from left, top, and bottom edges
+    // pr = 2/3em  →  right side has double the icon-gap for label breathing room
+    // no-icon: symmetric at 2/3em on both sides
+    "gap-[0.333em] rounded-[0.5em] py-[0.333em]",
+    resolvedIcon !== null ? "pr-[0.667em] pl-[0.333em]" : "px-[0.667em]",
+    "font-medium",
     "bg-(--mention-bg) text-(--mention-text)",
     '[&_[data-component-part="icon-svg"]]:bg-(--mention-text)',
-    '[&_[data-component-part="icon-svg"]]:size-3',
+    // Icon sized to 1em so it always matches the current font-size exactly.
+    '[&_[data-component-part="icon-svg"]]:size-[1em]',
     colorVariants[color],
     isLink && "cursor-pointer no-underline transition-opacity hover:opacity-80",
     className
