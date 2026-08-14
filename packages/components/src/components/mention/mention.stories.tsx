@@ -1,0 +1,300 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Mention } from "./mention";
+
+const meta: Meta<typeof Mention> = {
+  title: "Components/Mention",
+  component: Mention,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    color: {
+      control: "select",
+      options: ["neutral", "info", "success", "warning", "feature", "error"],
+    },
+    iconType: {
+      control: "select",
+      options: [
+        "regular",
+        "solid",
+        "light",
+        "duotone",
+        "thin",
+        "brands",
+        "sharp-solid",
+      ],
+    },
+    iconLibrary: {
+      control: "select",
+      options: ["fontawesome", "lucide"],
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Mention>;
+
+export const Default: Story = {
+  args: {
+    children: "Getting Started",
+    path: "/getting-started",
+    color: "neutral",
+  },
+};
+
+// ─── Page mentions ─────────────────────────────────────────────────────────
+
+export const PageMention: Story = {
+  name: "Page mention (default icon)",
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Mention path="/getting-started">Getting Started</Mention>
+      <Mention path="/api-reference">API Reference</Mention>
+      <Mention path="/changelog">Changelog</Mention>
+    </div>
+  ),
+};
+
+export const PageMentionCustomIcon: Story = {
+  name: "Page mention (custom icon)",
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Mention color="info" icon="plane" path="/travel">
+        Travel
+      </Mention>
+      <Mention color="info" icon="bed" path="/accommodation">
+        Accommodation &amp; Meals
+      </Mention>
+      <Mention color="success" icon="leaf" path="/sustainability">
+        Sustainability
+      </Mention>
+      <Mention color="warning" icon="triangle-exclamation" path="/warnings">
+        Warnings
+      </Mention>
+    </div>
+  ),
+};
+
+// ─── User mentions ──────────────────────────────────────────────────────────
+
+export const UserMention: Story = {
+  name: "User mention (default icon)",
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Mention color="info" user="james-baduor">
+        James Baduor
+      </Mention>
+      <Mention user="alex-chen">Alex Chen</Mention>
+      <Mention color="feature" user="sara-kim">
+        Sara Kim
+      </Mention>
+    </div>
+  ),
+};
+
+export const UserMentionWithAvatar: Story = {
+  name: "User mention (avatar URL)",
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Mention
+        color="info"
+        icon="https://api.dicebear.com/7.x/avataaars/svg?seed=james"
+        user="james-baduor"
+      >
+        James Baduor
+      </Mention>
+      <Mention
+        color="neutral"
+        icon="https://api.dicebear.com/7.x/avataaars/svg?seed=alex"
+        user="alex-chen"
+      >
+        Alex Chen
+      </Mention>
+    </div>
+  ),
+};
+
+// ─── Color variants ─────────────────────────────────────────────────────────
+
+export const Colors: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Mention color="neutral" path="/page">
+        Neutral
+      </Mention>
+      <Mention color="info" path="/page">
+        Info
+      </Mention>
+      <Mention color="success" path="/page">
+        Success
+      </Mention>
+      <Mention color="warning" path="/page">
+        Warning
+      </Mention>
+      <Mention color="feature" path="/page">
+        Feature
+      </Mention>
+      <Mention color="error" path="/page">
+        Error
+      </Mention>
+    </div>
+  ),
+};
+
+export const ColorsWithUser: Story = {
+  name: "Colors (user mentions)",
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Mention color="neutral" user="person">
+        Neutral
+      </Mention>
+      <Mention color="info" user="person">
+        Info
+      </Mention>
+      <Mention color="success" user="person">
+        Success
+      </Mention>
+      <Mention color="warning" user="person">
+        Warning
+      </Mention>
+      <Mention color="feature" user="person">
+        Feature
+      </Mention>
+      <Mention color="error" user="person">
+        Error
+      </Mention>
+    </div>
+  ),
+};
+
+// ─── In-context usage ───────────────────────────────────────────────────────
+
+export const InlineInProse: Story = {
+  name: "Inline in prose (checklist context)",
+  render: () => (
+    <div className="max-w-md space-y-3 font-sans text-sm text-stone-800">
+      <label className="flex items-start gap-2">
+        <input
+          checked
+          className="mt-0.5 accent-green-600"
+          readOnly
+          type="checkbox"
+        />
+        <span>
+          Help us plan the activities in{" "}
+          <Mention color="info" icon="plane" path="/travel">
+            Travel
+          </Mention>{" "}
+          and party for the team
+        </span>
+      </label>
+      <label className="flex items-start gap-2">
+        <input
+          checked
+          className="mt-0.5 accent-green-600"
+          readOnly
+          type="checkbox"
+        />
+        <span>Book your trip and reserve a rental car</span>
+      </label>
+      <label className="flex items-start gap-2">
+        <input className="mt-0.5" readOnly type="checkbox" />
+        <span>
+          Fill the surveys on meals &rarr;{" "}
+          <Mention color="info" icon="bed" path="/accommodation">
+            Accommodation &amp; Meals
+          </Mention>
+        </span>
+      </label>
+      <label className="flex items-start gap-2">
+        <input className="mt-0.5" readOnly type="checkbox" />
+        <span>
+          Enter report details for further assessment &rarr;{" "}
+          <Mention color="info" user="james-baduor">
+            James Baduor
+          </Mention>
+        </span>
+      </label>
+    </div>
+  ),
+};
+
+// ─── Icon library ───────────────────────────────────────────────────────────
+
+export const LucideIcons: Story = {
+  name: "Lucide icon library",
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Mention color="info" icon="map" iconLibrary="lucide" path="/travel">
+        Travel
+      </Mention>
+      <Mention color="success" icon="leaf" iconLibrary="lucide" path="/eco">
+        Eco
+      </Mention>
+      <Mention color="feature" icon="sparkles" iconLibrary="lucide" path="/new">
+        New
+      </Mention>
+    </div>
+  ),
+};
+
+// ─── All badge variants (design reference) ──────────────────────────────────
+
+export const DesignReference: Story = {
+  name: "Design reference — all variants",
+  render: () => (
+    <div className="space-y-4">
+      <div>
+        <p className="mb-2 text-stone-400 text-xs uppercase tracking-wide">
+          Page mentions
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <Mention color="info" path="/page">
+            Page
+          </Mention>
+          <Mention color="success" path="/page">
+            Page
+          </Mention>
+          <Mention color="warning" path="/page">
+            Page
+          </Mention>
+          <Mention color="feature" path="/page">
+            Page
+          </Mention>
+          <Mention color="error" path="/page">
+            Page
+          </Mention>
+          <Mention color="neutral" path="/page">
+            Page
+          </Mention>
+        </div>
+      </div>
+      <div>
+        <p className="mb-2 text-stone-400 text-xs uppercase tracking-wide">
+          Person mentions
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <Mention color="info" user="person">
+            Person
+          </Mention>
+          <Mention color="success" user="person">
+            Person
+          </Mention>
+          <Mention color="warning" user="person">
+            Person
+          </Mention>
+          <Mention color="feature" user="person">
+            Person
+          </Mention>
+          <Mention color="error" user="person">
+            Person
+          </Mention>
+          <Mention color="neutral" user="person">
+            Person
+          </Mention>
+        </div>
+      </div>
+    </div>
+  ),
+};

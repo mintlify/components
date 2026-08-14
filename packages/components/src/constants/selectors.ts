@@ -11,6 +11,7 @@ const _classes = {
   Field: "field",
   Frame: "frame",
   Icon: "icon",
+  Mention: "mention",
   Mermaid: "mermaid",
   Step: "step",
   Steps: "steps",

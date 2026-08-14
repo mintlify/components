@@ -9,6 +9,7 @@ export * from "./columns";
 export * from "./expandable";
 export * from "./frame";
 export * from "./icon";
+export * from "./mention";
 export * from "./mermaid";
 export * from "./panel";
 export * from "./property";
