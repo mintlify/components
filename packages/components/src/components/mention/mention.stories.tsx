@@ -9,9 +9,29 @@ const meta: Meta<typeof Mention> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    children: {
+      control: "text",
+      description: "The display label shown inside the mention pill.",
+    },
+    path: {
+      control: "text",
+      description:
+        "Page path for a **page mention**. When set, the component renders as an `<a>` link and shows the page icon by default. Use either `path` or `user`, not both.",
+    },
+    user: {
+      control: "text",
+      description:
+        "Username or identifier for a **user mention**. When set, the component shows the person icon by default. Use either `path` or `user`, not both.",
+    },
+    icon: {
+      control: "text",
+      description:
+        "Optional icon override. Accepts a **FontAwesome or Lucide icon name** (e.g. `plane`, `bed`, `circle-check`), an **image URL** rendered as a circular avatar, or any **React node** for fully custom icon content. Omit to use the default page or person icon.",
+    },
     color: {
       control: "select",
       options: ["neutral", "info", "success", "warning", "feature", "error"],
+      description: "Color variant. Defaults to `neutral`.",
     },
     iconType: {
       control: "select",
@@ -23,17 +43,31 @@ const meta: Meta<typeof Mention> = {
         "thin",
         "brands",
         "sharp-solid",
+        "sharp-light",
+        "sharp-regular",
+        "sharp-thin",
+        "sharp-duotone-solid",
       ],
+      description:
+        "FontAwesome icon style. Only applies when `icon` is a string icon name and `iconLibrary` is `fontawesome`. Defaults to `regular`.",
     },
     iconLibrary: {
       control: "select",
       options: ["fontawesome", "lucide"],
+      description:
+        "Icon library used to resolve the `icon` string. Defaults to `fontawesome`. Pass a React node to `icon` to bypass this entirely.",
     },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Mention>;
+
+// ─── Interactive playground ─────────────────────────────────────────────────
+// Use the Controls panel (below) to experiment with every prop.
+// • Set `path` for a page mention, `user` for a user mention (not both).
+// • `icon` accepts a FontAwesome name (e.g. "plane"), a Lucide name with
+//   iconLibrary="lucide", or a full image URL for an avatar.
 
 export const Default: Story = {
   args: {

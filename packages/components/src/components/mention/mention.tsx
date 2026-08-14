@@ -80,7 +80,8 @@ const Mention = ({
 }: MentionProps) => {
   const isUser = !!user;
   const defaultIconName = isUser ? DEFAULT_USER_ICON : DEFAULT_PAGE_ICON;
-  const resolvedIcon = icon ?? defaultIconName;
+  // Treat an empty string the same as omitted — fall back to the default icon.
+  const resolvedIcon = (icon === "" ? undefined : icon) ?? defaultIconName;
 
   const renderIcon = () => {
     if (typeof resolvedIcon !== "string") {
