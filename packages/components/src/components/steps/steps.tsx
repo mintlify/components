@@ -150,7 +150,7 @@ const StepsItem = ({
         className={cn(
           "absolute top-11 h-[calc(100%-2.75rem)] w-px",
           isLast
-            ? 'bg-linear-to-b from-stone-200 via-80% via-stone-200 to-transparent group-has-[[data-component-part="step-content"]:empty]/step:hidden dark:from-white/10 dark:via-white/10'
+            ? "bg-linear-to-b from-stone-200 via-80% via-stone-200 to-transparent dark:from-white/10 dark:via-white/10 [[role=listitem]:has([data-component-part=step-content]:empty)_&]:hidden"
             : "bg-stone-200/70 dark:bg-white/10"
         )}
         contentEditable={false}
