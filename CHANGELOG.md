@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.19] - 2026-08-20
+
+### Fixed
+
+- Anchored the universal-subject `:has()` selectors in Steps and code.css to their owning elements, eliminating whole-document style invalidation in consumers (#255)
+
 ## [1.0.18] - 2026-07-01
 
 ### Added
