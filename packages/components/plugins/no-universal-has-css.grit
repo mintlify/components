@@ -1,0 +1,6 @@
+language css
+
+`$sel { $decls }` where {
+  $sel <: r"(?s)(?:.*,)?\s*:has\(.*",
+  register_diagnostic(span=$sel, message="universal-subject :has selector is banned; anchor :has to a specific element")
+}

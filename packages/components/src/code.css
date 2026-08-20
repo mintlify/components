@@ -83,17 +83,14 @@ html.dark [data-fade-overlay] {
   );
 }
 
-:has([data-floating-buttons])
+[data-has-floating-buttons]
   > [data-component-part="code-block-root"]
   pre
   > code {
   padding-right: var(--code-padding-right, 0px) !important;
 }
 
-:has([data-component-part="code-block-header"])
-  > [data-component-part="code-block-root"]
-  pre
-  > code {
+[data-has-header] > [data-component-part="code-block-root"] pre > code {
   padding-right: var(--code-padding-right, 48px) !important;
 }
 

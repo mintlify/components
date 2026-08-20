@@ -1,0 +1,11 @@
+language js
+
+// group-has-* compiles to a :has() selector with a universal subject, which
+// forces whole-document style recalc on every dom mutation in consumers.
+// anchor the variant to a stable ancestor instead, e.g.
+// [[role=listitem]:has([data-component-part=step-content]:empty)_&]:hidden
+`$s` where {
+  $s <: string(),
+  $s <: includes "group-has-",
+  register_diagnostic(span=$s, message="universal-subject :has variant (group-has-*) is banned; anchor :has to a stable ancestor")
+}

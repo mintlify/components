@@ -117,6 +117,9 @@ const CodeBlock = function CodeBlock(params: CodeBlockProps) {
         className
       )}
       ref={anchorRef}
+      {...(hasGrayBackgroundContainer
+        ? { "data-has-header": "" }
+        : { "data-has-floating-buttons": "" })}
     >
       {hasGrayBackgroundContainer ? (
         <CodeHeader
