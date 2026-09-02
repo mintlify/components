@@ -63,7 +63,7 @@
     "@headlessui/react": "2.2.0",
     "@shikijs/transformers": "3.21.0",
     "@sindresorhus/slugify": "2.2.1",
-    "clsx": "2.1.1",
+    "cn": "^0.2.4",
     "color": "4.2.3",
     "comlink": "4.4.2",
     "hast": "1.0.0",
@@ -71,8 +71,7 @@
     "lucide-react": "0.453.0",
     "mermaid": "11.16.1",
     "react-use-rect": "2.0.6",
-    "shiki": "3.21.0",
-    "tailwind-merge": "2.6.0"
+    "shiki": "3.21.0"
   },
   "devDependencies": {
     "@shikijs/types": "3.21.0",
