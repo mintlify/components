@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -8,8 +9,6 @@ import {
   ZoomOutIcon,
 } from "lucide-react";
 import type { ComponentProps } from "react";
-
-import { cn } from "@/utils/cn";
 import type { MermaidPlacement } from "./mermaid";
 
 const Button = ({

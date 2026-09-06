@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import {
   type ReactNode,
   type RefObject,
@@ -9,7 +10,6 @@ import {
 import { Icon } from "@/components/icon";
 import { Classes } from "@/constants/selectors";
 import { useExpandableMemory } from "@/hooks/use-expandable-memory";
-import { cn } from "@/utils/cn";
 
 const EXPANDABLE_CONTENT_CLASS = "expandable-content";
 const DEFAULT_OPENED_TEXT = "Hide";

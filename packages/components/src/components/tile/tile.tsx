@@ -1,5 +1,5 @@
+import { cn } from "cn";
 import { Classes } from "@/constants/selectors";
-import { cn } from "@/utils/cn";
 import { isRemoteUrl } from "@/utils/is-remote-url";
 
 const SIZE = 24;

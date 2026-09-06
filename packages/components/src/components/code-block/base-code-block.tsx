@@ -1,5 +1,5 @@
+import { cn } from "cn";
 import type React from "react";
-
 import {
   DEFAULT_EXPANDABLE_CODE_BLOCK_HEIGHT,
   SMALL_EXPANDABLE_CODE_BLOCK_HEIGHT,
@@ -7,7 +7,6 @@ import {
   useExpandable,
 } from "@/hooks/use-expandable";
 import { useGetShikiHighlightedHtml } from "@/hooks/use-get-shiki-highlighted-html";
-import { cn } from "@/utils/cn";
 import { getShikiBackgroundColors } from "@/utils/shiki/get-shiki-background-colors";
 import { getCodeString, useCalculateCodeLines } from "@/utils/shiki/lib";
 

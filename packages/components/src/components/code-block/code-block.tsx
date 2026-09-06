@@ -1,7 +1,6 @@
+import { cn } from "cn";
 import type { ReactNode, RefObject } from "react";
-
 import { Classes } from "@/constants/selectors";
-import { cn } from "@/utils/cn";
 import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
 import { getCodeString } from "@/utils/shiki/lib";
 

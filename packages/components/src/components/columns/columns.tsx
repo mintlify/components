@@ -1,6 +1,6 @@
+import { cn } from "cn";
 import type React from "react";
 import { Classes } from "@/constants/selectors";
-import { cn } from "@/utils/cn";
 import type { ColCount } from "./constants";
 import { DEFAULT_COLS } from "./constants";
 

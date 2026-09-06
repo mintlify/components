@@ -1,6 +1,6 @@
+import { cn } from "cn";
 import { type ComponentPropsWithoutRef, useEffect, useState } from "react";
 import { ActiveCopyButtonIcon, CopyButtonIcon } from "@/icons";
-import { cn } from "@/utils/cn";
 import {
   type CopyToClipboardResult,
   copyToClipboard,

@@ -1,6 +1,5 @@
+import { cn } from "cn";
 import type { SVGProps } from "react";
-
-import { cn } from "@/utils/cn";
 import type { CodeBlockTheme } from "@/utils/shiki/code-styling";
 
 const InfoIcon = ({

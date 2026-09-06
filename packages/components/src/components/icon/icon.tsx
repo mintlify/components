@@ -1,9 +1,9 @@
 /** biome-ignore-all lint/complexity/noExcessiveCognitiveComplexity: TODO */
-import type { CSSProperties } from "react";
 
+import { cn } from "cn";
+import type { CSSProperties } from "react";
 import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
 import { Classes } from "@/constants/selectors";
-import { cn } from "@/utils/cn";
 import {
   getIconUrl,
   ICON_TYPES,

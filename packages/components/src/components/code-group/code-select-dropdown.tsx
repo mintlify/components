@@ -1,6 +1,5 @@
+import { cn } from "cn";
 import { ChevronDownIcon } from "lucide-react";
-
-import { cn } from "@/utils/cn";
 
 import {
   DropdownMenu,

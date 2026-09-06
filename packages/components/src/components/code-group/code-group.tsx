@@ -1,4 +1,5 @@
 import { Tabs } from "@base-ui/react/tabs";
+import { cn } from "cn";
 import React, {
   forwardRef,
   type ReactElement,
@@ -8,7 +9,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-
 import { BaseCodeBlock } from "@/components/code-block/base-code-block";
 import type { CodeBlockProps } from "@/components/code-block/code-block";
 import {
@@ -17,7 +17,6 @@ import {
 } from "@/components/code-block/copy-button";
 import { Icon as ComponentIcon } from "@/components/icon";
 import { Classes } from "@/constants/selectors";
-import { cn } from "@/utils/cn";
 import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
 import { getCodeString } from "@/utils/shiki/lib";
 

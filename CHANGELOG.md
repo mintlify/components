@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- Replaced `clsx` and `tailwind-merge` with the `cn` package
+
 ## [1.0.19] - 2026-08-20
 
 ### Fixed

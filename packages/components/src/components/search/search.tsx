@@ -8,6 +8,7 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
+import { cn } from "cn";
 import {
   ChevronRightIcon,
   Loader2Icon,
@@ -25,7 +26,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { cn } from "../../utils/cn";
 
 type SearchResult = {
   id: string;

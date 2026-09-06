@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from "cn";
 import { getLanguageIconUrl } from "@/utils/icon-utils";
 
 type LanguageIconProps = {

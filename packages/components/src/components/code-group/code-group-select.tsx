@@ -1,5 +1,5 @@
+import { cn } from "cn";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
-import { cn } from "@/utils/cn";
 import type { CodeBlockTheme, CodeStyling } from "@/utils/shiki/code-styling";
 import { BaseCodeBlock } from "../code-block/base-code-block";
 import {

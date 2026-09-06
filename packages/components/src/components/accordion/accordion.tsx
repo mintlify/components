@@ -1,4 +1,5 @@
 import slugify from "@sindresorhus/slugify";
+import { cn } from "cn";
 import {
   createContext,
   type ReactNode,
@@ -9,9 +10,7 @@ import {
   useState,
 } from "react";
 import { Icon as ComponentIcon } from "@/components/icon";
-
 import { Classes } from "@/constants/selectors";
-import { cn } from "@/utils/cn";
 import type { IconType } from "@/utils/icon-utils";
 
 import { AccordionCover } from "./accordion-cover";

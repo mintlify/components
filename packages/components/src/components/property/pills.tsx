@@ -1,5 +1,5 @@
+import { cn } from "cn";
 import type React from "react";
-import { cn } from "@/utils/cn";
 
 type InfoPillProps = {
   children: React.ReactNode;
