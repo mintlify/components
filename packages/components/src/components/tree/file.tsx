@@ -1,7 +1,7 @@
+import { cn } from "cn";
 import type { CSSProperties } from "react";
 import { Classes } from "@/constants/selectors";
 import { FileIcon } from "@/icons";
-import { cn } from "@/utils/cn";
 
 import { useTreeLevel } from "./use-tree-level";
 import { calculatePaddingLeft } from "./utils";

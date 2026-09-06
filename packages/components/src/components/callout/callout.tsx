@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import Color from "color";
 import type { ReactNode } from "react";
 import { Icon as ComponentIcon } from "@/components/icon";
@@ -10,7 +11,6 @@ import {
   TipIcon,
   WarningIcon,
 } from "@/icons";
-import { cn } from "@/utils/cn";
 import type { IconLibrary, IconType } from "@/utils/icon-utils";
 
 type CalloutVariant =

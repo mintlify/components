@@ -1,5 +1,5 @@
+import { cn } from "cn";
 import type { ComponentProps } from "react";
-import { cn } from "@/utils/cn";
 
 type PanelProps = ComponentProps<"div">;
 

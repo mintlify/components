@@ -1,6 +1,6 @@
+import { cn } from "cn";
 import type React from "react";
 import { Icon } from "@/components/icon";
-import { cn } from "@/utils/cn";
 import type { IconLibrary, IconType } from "@/utils/icon-utils";
 
 const BADGE_COLORS = [

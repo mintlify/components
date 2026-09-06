@@ -1,10 +1,10 @@
 import type { TooltipPositionerProps } from "@base-ui/react/tooltip";
 import { Tooltip as TooltipBaseUI } from "@base-ui/react/tooltip";
+import { cn } from "cn";
 import { ChevronRightIcon } from "lucide-react";
 import { isValidElement, type ReactNode, useMemo, useState } from "react";
 import { Classes } from "@/constants/selectors";
 import { useHasHover } from "@/hooks/use-has-hover";
-import { cn } from "@/utils/cn";
 import { isRemoteUrl } from "@/utils/is-remote-url";
 import { renderAsChild } from "@/utils/render-as-child";
 

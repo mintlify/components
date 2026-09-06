@@ -1,7 +1,6 @@
+import { cn } from "cn";
 import type { ReactNode } from "react";
-
 import { Classes } from "@/constants/selectors";
-import { cn } from "@/utils/cn";
 
 type AccordionGroupProps = {
   children: ReactNode;

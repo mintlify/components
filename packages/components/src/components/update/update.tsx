@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import {
   type ComponentPropsWithoutRef,
   forwardRef,
@@ -9,7 +10,6 @@ import {
 import { type Rect, useRect } from "react-use-rect";
 import { Classes } from "@/constants/selectors";
 import { LinkIcon } from "@/icons";
-import { cn } from "@/utils/cn";
 import { copyToClipboard } from "@/utils/copy-to-clipboard";
 
 type UpdatePropsBase = {

@@ -1,8 +1,7 @@
+import { cn } from "cn";
 import { type ComponentPropsWithoutRef, forwardRef, useState } from "react";
-
 import { Classes } from "@/constants/selectors";
 import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
-import { cn } from "@/utils/cn";
 import type { MultiViewItemType } from "@/utils/icon-utils";
 
 type ViewPropsBase = {

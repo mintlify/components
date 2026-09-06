@@ -1,7 +1,6 @@
+import { cn } from "cn";
 import type { ReactNode } from "react";
-
 import { Icon } from "@/components/icon";
-import { cn } from "@/utils/cn";
 
 type AccordionCoverProps = {
   id: string;

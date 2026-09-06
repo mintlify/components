@@ -1,9 +1,9 @@
+import { cn } from "cn";
 import type React from "react";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Classes } from "@/constants/selectors";
 import { useIsDarkTheme } from "@/hooks/use-is-dark-theme";
 import { CheckIcon } from "@/icons";
-import { cn } from "@/utils/cn";
 import { copyToClipboard } from "@/utils/copy-to-clipboard";
 import { Tooltip } from "../tooltip";
 import type { ColorVariant } from "./constants";

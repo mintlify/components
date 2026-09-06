@@ -1,4 +1,6 @@
 /** biome-ignore-all lint/complexity/noExcessiveCognitiveComplexity: TODO */
+
+import { cn } from "cn";
 import {
   type FocusEvent,
   type KeyboardEvent,
@@ -7,9 +9,7 @@ import {
   useEffect,
   useRef,
 } from "react";
-
 import { Classes } from "@/constants/selectors";
-import { cn } from "@/utils/cn";
 
 import { TreeLevelProvider } from "./context";
 import {

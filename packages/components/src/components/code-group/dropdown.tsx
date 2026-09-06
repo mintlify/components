@@ -1,7 +1,7 @@
 import { Menu } from "@base-ui/react/menu";
+import { cn } from "cn";
 import { CheckIcon } from "lucide-react";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import { cn } from "@/utils/cn";
 
 type DropdownMenuProps = {
   children: ReactNode;

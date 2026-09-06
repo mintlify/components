@@ -1,7 +1,7 @@
+import { cn } from "cn";
 import { type CSSProperties, type ReactNode, useId, useState } from "react";
 import { Classes } from "@/constants/selectors";
 import { Folder2Icon, Folder2OpenIcon } from "@/icons";
-import { cn } from "@/utils/cn";
 
 import { TreeLevelProvider } from "./context";
 import { useTreeLevel } from "./use-tree-level";

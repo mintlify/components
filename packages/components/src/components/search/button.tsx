@@ -1,6 +1,6 @@
+import { cn } from "cn";
 import { SearchIcon } from "lucide-react";
 import { type ButtonHTMLAttributes, forwardRef } from "react";
-import { cn } from "../../utils/cn";
 import { useSearch } from "./provider";
 
 type SearchButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
