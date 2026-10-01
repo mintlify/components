@@ -4,9 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.20] - 2026-09-30
+
 ### Changed
 
-- Replaced `clsx` and `tailwind-merge` with the `cn` package
+- Replaced `clsx` and `tailwind-merge` with the `cn` package (#258)
+- Bumped `mermaid` to 11.16.1
 
 ## [1.0.19] - 2026-08-20
 
