@@ -63,7 +63,7 @@
     "@headlessui/react": "2.2.0",
     "@shikijs/transformers": "3.21.0",
     "@sindresorhus/slugify": "2.2.1",
-    "cn": "^0.2.4",
+    "cn": "0.2.5",
     "color": "4.2.3",
     "comlink": "4.4.2",
     "hast": "1.0.0",

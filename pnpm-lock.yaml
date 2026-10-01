@@ -30,8 +30,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       cn:
-        specifier: ^0.2.4
-        version: 0.2.4
+        specifier: 0.2.5
+        version: 0.2.5
       color:
         specifier: 4.2.3
         version: 4.2.3
@@ -1785,8 +1785,8 @@ packages:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
 
-  cn@0.2.4:
-    resolution: {integrity: sha512-SzQvoh5FwizWtQg9+JueKdjWhlfCZMdu5DqNHm9q1wUlRVmKb9WXlepR9bTTbPwzEOyX1ujJ6lcCppmn3bNUCg==}
+  cn@0.2.5:
+    resolution: {integrity: sha512-OCjZtMeQfXbI4Es1+EIjkd77gvWzaE689gD8KhfexlqjClC06qR1MQBR+Z35ZMSPNEBWyHiItW1Soy0UvwNv9w==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -4886,7 +4886,7 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  cn@0.2.4: {}
+  cn@0.2.5: {}
 
   color-convert@2.0.1:
     dependencies:
