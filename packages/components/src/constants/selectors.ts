@@ -18,6 +18,7 @@ const _classes = {
   Tabs: "tabs",
   TabIcon: "tab-icon",
   Update: "update",
+  Toast: "toast",
   Tooltip: "tooltip",
   Panel: "panel",
   APISection: "api-section",

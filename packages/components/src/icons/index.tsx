@@ -332,6 +332,46 @@ const CopyButtonIcon = ({
   );
 };
 
+const WarningFilledIcon = ({
+  className,
+  ...props
+}: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-hidden="true"
+      className={cn("size-4 flex-none", className)}
+      fill="currentColor"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        clipRule="evenodd"
+        d="M6.7 2.25a1.5 1.5 0 0 1 2.6 0l5.48 9.5A1.5 1.5 0 0 1 13.48 14H2.52a1.5 1.5 0 0 1-1.3-2.25l5.48-9.5ZM8 5.25a.75.75 0 0 0-.75.75v3a.75.75 0 0 0 1.5 0V6A.75.75 0 0 0 8 5.25Zm0 7a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  );
+};
+
+const XIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-hidden="true"
+      className={cn("size-2.5 flex-none", className)}
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeWidth="1.5"
+      viewBox="0 0 10 10"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M1 1l8 8M9 1L1 9" />
+    </svg>
+  );
+};
+
 export {
   ActiveCopyButtonIcon,
   CopyButtonIcon,
@@ -346,4 +386,6 @@ export {
   TipIcon,
   DangerIcon,
   WarningIcon,
+  WarningFilledIcon,
+  XIcon,
 };
