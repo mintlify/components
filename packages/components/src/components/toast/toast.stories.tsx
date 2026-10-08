@@ -11,7 +11,7 @@ const meta: Meta<typeof Toast> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["info", "warning", "note", "tip", "check", "danger"],
+      options: ["info", "check", "warning", "danger"],
       description: "Predefined toast variant",
     },
     action: {
@@ -54,13 +54,11 @@ export const Warning: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-col gap-3">
-      {(["info", "warning", "note", "tip", "check", "danger"] as const).map(
-        (variant) => (
-          <Toast action={action} key={variant} variant={variant}>
-            A toast with the {variant} variant.
-          </Toast>
-        )
-      )}
+      {(["info", "check", "warning", "danger"] as const).map((variant) => (
+        <Toast action={action} key={variant} variant={variant}>
+          A toast with the {variant} variant.
+        </Toast>
+      ))}
     </div>
   ),
 };
