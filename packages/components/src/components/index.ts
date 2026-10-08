@@ -16,6 +16,7 @@ export * from "./search";
 export * from "./steps";
 export * from "./tabs";
 export * from "./tile";
+export * from "./toast";
 export * from "./tooltip";
 export * from "./tree";
 export * from "./update";
