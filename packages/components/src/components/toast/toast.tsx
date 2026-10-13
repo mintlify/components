@@ -1,14 +1,17 @@
 import { cn } from "cn";
-import { type ReactNode, useState } from "react";
+import { type ComponentProps, type ReactNode, useState } from "react";
 import { Classes } from "@/constants/selectors";
 import {
-  CircleCheckFilledIcon,
-  CircleWarningFilledIcon,
-  TriangleWarningFilledIcon,
+  CheckIcon,
+  DangerIcon,
+  InfoIcon,
+  NoteIcon,
+  TipIcon,
+  WarningIcon,
   XIcon,
 } from "@/icons";
 
-type ToastVariant = "info" | "check" | "warning" | "danger";
+type ToastVariant = "info" | "warning" | "note" | "tip" | "check" | "danger";
 
 type ToastAction = {
   label: string;
@@ -26,41 +29,22 @@ type ToastProps = {
 };
 
 const variantConfig = {
-  info: {
-    icon: CircleWarningFilledIcon,
-    className: "bg-blue-600/20",
-    iconClassName: "text-blue-700 dark:text-blue-300",
-  },
-  check: {
-    icon: CircleCheckFilledIcon,
-    className: "bg-green-600/20",
-    iconClassName: "text-green-700 dark:text-green-300",
-  },
-  warning: {
-    icon: TriangleWarningFilledIcon,
-    className: "bg-orange-600/20",
-    iconClassName: "text-orange-700 dark:text-orange-300",
-  },
-  danger: {
-    icon: CircleWarningFilledIcon,
-    className: "bg-red-600/20",
-    iconClassName: "text-red-700 dark:text-red-300",
-  },
+  info: { icon: InfoIcon, className: "bg-stone-600/20" },
+  warning: { icon: WarningIcon, className: "bg-yellow-600/20" },
+  note: { icon: NoteIcon, className: "bg-blue-600/20" },
+  tip: { icon: TipIcon, className: "bg-green-600/20" },
+  check: { icon: CheckIcon, className: "bg-green-600/20" },
+  danger: { icon: DangerIcon, className: "bg-red-600/20" },
 };
 
 const FOCUS_RING_CLASSNAME =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-primary-light";
 
-const LineCenter = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: ReactNode;
-}) => (
-  <div className={cn("flex h-[1lh] shrink-0 items-center", className)}>
-    {children}
-  </div>
+const LineCenter = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("flex h-[1lh] shrink-0 items-center", className)}
+    {...props}
+  />
 );
 
 const Toast = ({
@@ -92,11 +76,11 @@ const Toast = ({
       data-toast-type={variant}
       role={variant === "warning" || variant === "danger" ? "alert" : "status"}
     >
-      <LineCenter className="my-0.5">
-        <IconComponent
-          className={config.iconClassName}
-          data-component-part="toast-icon"
-        />
+      <LineCenter
+        className="my-0.5 w-4 justify-center"
+        data-component-part="toast-icon"
+      >
+        <IconComponent />
       </LineCenter>
       <div className="flex min-w-0 flex-1 flex-wrap items-start justify-end gap-x-2 gap-y-1">
         <div
