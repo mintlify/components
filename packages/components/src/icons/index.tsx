@@ -332,6 +332,145 @@ const CopyButtonIcon = ({
   );
 };
 
+const CircleInfoFilledIcon = ({
+  "aria-label": ariaLabel = "Info",
+  className,
+  ...props
+}: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-label={ariaLabel}
+      className={cn("size-4 flex-none", className)}
+      fill="currentColor"
+      role="img"
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M9 1C4.5889 1 1 4.5889 1 9C1 13.4111 4.5889 17 9 17C13.4111 17 17 13.4111 17 9C17 4.5889 13.4111 1 9 1ZM9.75 12.75C9.75 13.1641 9.4141 13.5 9 13.5C8.5859 13.5 8.25 13.1641 8.25 12.75V9.5H7.75C7.3359 9.5 7 9.1641 7 8.75C7 8.3359 7.3359 8 7.75 8H8.5C9.1895 8 9.75 8.5605 9.75 9.25V12.75ZM9 6.75C8.448 6.75 8 6.301 8 5.75C8 5.199 8.448 4.75 9 4.75C9.552 4.75 10 5.199 10 5.75C10 6.301 9.552 6.75 9 6.75Z" />
+    </svg>
+  );
+};
+
+const TriangleWarningFilledIcon = ({
+  "aria-label": ariaLabel = "Warning",
+  className,
+  ...props
+}: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-label={ariaLabel}
+      className={cn("size-4 flex-none", className)}
+      fill="currentColor"
+      role="img"
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M16.4366 12.5151L11.0103 3.11316C10.5904 2.39096 9.83896 1.96045 9.00006 1.96045C8.16116 1.96045 7.40976 2.39106 6.98976 3.11316L6.98876 3.11523L1.56296 12.5156C1.14356 13.2436 1.14356 14.1128 1.56396 14.8398C1.98386 15.5664 2.73586 16 3.57516 16H14.4247C15.2641 16 16.016 15.5664 16.4359 14.8398C16.8563 14.1127 16.8565 13.2436 16.4366 12.5151ZM8.25016 6.75C8.25016 6.3359 8.58606 6 9.00016 6C9.41426 6 9.75016 6.3359 9.75016 6.75V9.75C9.75016 10.1641 9.41426 10.5 9.00016 10.5C8.58606 10.5 8.25016 10.1641 8.25016 9.75V6.75ZM9.00016 13.5C8.44816 13.5 8.00016 13.0498 8.00016 12.5C8.00016 11.9502 8.44816 11.5 9.00016 11.5C9.55216 11.5 10.0002 11.9502 10.0002 12.5C10.0002 13.0498 9.55216 13.5 9.00016 13.5Z" />
+    </svg>
+  );
+};
+
+const NoteFilledIcon = ({
+  "aria-label": ariaLabel = "Note",
+  className,
+  ...props
+}: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-label={ariaLabel}
+      className={cn("size-4 flex-none", className)}
+      fill="currentColor"
+      role="img"
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M14.25 2H3.75C2.233 2 1 3.233 1 4.75V13.25C1 14.767 2.233 16 3.75 16H14.25C15.767 16 17 14.767 17 13.25V4.75C17 3.233 15.767 2 14.25 2ZM9.25 12.5H5C4.586 12.5 4.25 12.164 4.25 11.75C4.25 11.336 4.586 11 5 11H9.25C9.664 11 10 11.336 10 11.75C10 12.164 9.664 12.5 9.25 12.5ZM13 9.75H5C4.586 9.75 4.25 9.414 4.25 9C4.25 8.586 4.586 8.25 5 8.25H13C13.414 8.25 13.75 8.586 13.75 9C13.75 9.414 13.414 9.75 13 9.75ZM13 7H5C4.586 7 4.25 6.664 4.25 6.25C4.25 5.836 4.586 5.5 5 5.5H13C13.414 5.5 13.75 5.836 13.75 6.25C13.75 6.664 13.414 7 13 7Z" />
+    </svg>
+  );
+};
+
+const LightbulbFilledIcon = ({
+  "aria-label": ariaLabel = "Tip",
+  className,
+  ...props
+}: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-label={ariaLabel}
+      className={cn("size-4 flex-none", className)}
+      fill="currentColor"
+      role="img"
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M12.6248 2.28602C11.2738 1.18802 9.50378 0.767019 7.76878 1.12802C5.54178 1.59302 3.76678 3.41402 3.35178 5.65902C2.90778 8.05802 3.96378 10.409 6.00078 11.651V14.25C6.00078 15.767 7.23478 17 8.75078 17H9.25078C10.7678 17 12.0008 15.767 12.0008 14.25V11.651C13.7088 10.609 14.7508 8.77102 14.7508 6.75002C14.7508 5.01102 13.9758 3.38402 12.6258 2.28602H12.6248ZM9.24978 15.5H8.74978C8.06078 15.5 7.49978 14.939 7.49978 14.25V13H10.4998V14.25C10.4998 14.939 9.93878 15.5 9.24978 15.5Z" />
+    </svg>
+  );
+};
+
+const CircleCheckFilledIcon = ({
+  "aria-label": ariaLabel = "Check",
+  className,
+  ...props
+}: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-label={ariaLabel}
+      className={cn("size-4 flex-none", className)}
+      fill="currentColor"
+      role="img"
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M9 1C4.589 1 1 4.589 1 9C1 13.411 4.589 17 9 17C13.411 17 17 13.411 17 9C17 4.589 13.411 1 9 1ZM12.843 6.708L8.593 12.208C8.457 12.384 8.25 12.491 8.028 12.499C8.018 12.499 8.009 12.499 8 12.499C7.788 12.499 7.585 12.409 7.442 12.251L5.192 9.751C4.915 9.443 4.94 8.969 5.248 8.691C5.557 8.415 6.029 8.439 6.308 8.747L7.956 10.579L11.657 5.79C11.91 5.462 12.382 5.402 12.709 5.655C13.037 5.908 13.097 6.379 12.844 6.707L12.843 6.708Z" />
+    </svg>
+  );
+};
+
+const CircleWarningFilledIcon = ({
+  "aria-label": ariaLabel = "Danger",
+  className,
+  ...props
+}: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-label={ariaLabel}
+      className={cn("size-4 flex-none", className)}
+      fill="currentColor"
+      role="img"
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M9 1C4.589 1 1 4.5889 1 9C1 13.4111 4.589 17 9 17C13.411 17 17 13.4111 17 9C17 4.5889 13.411 1 9 1ZM8.25 5.4312C8.25 5.0171 8.5859 4.6812 9 4.6812C9.4141 4.6812 9.75 5.0171 9.75 5.4312V9.5C9.75 9.9141 9.4141 10.25 9 10.25C8.5859 10.25 8.25 9.9141 8.25 9.5V5.4312ZM9 13.417C8.448 13.417 8 12.968 8 12.417C8 11.866 8.448 11.417 9 11.417C9.552 11.417 10 11.866 10 12.417C10 12.968 9.552 13.417 9 13.417Z" />
+    </svg>
+  );
+};
+
+const XIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-hidden="true"
+      className={cn("size-[8.72px] flex-none", className)}
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+      viewBox="0 0 8.72222 8.72222"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M7.97222 0.75L0.75 7.97222M0.75 0.75L7.97222 7.97222" />
+    </svg>
+  );
+};
+
 export {
   ActiveCopyButtonIcon,
   CopyButtonIcon,
@@ -346,4 +485,11 @@ export {
   TipIcon,
   DangerIcon,
   WarningIcon,
+  CircleCheckFilledIcon,
+  CircleInfoFilledIcon,
+  CircleWarningFilledIcon,
+  LightbulbFilledIcon,
+  NoteFilledIcon,
+  TriangleWarningFilledIcon,
+  XIcon,
 };
