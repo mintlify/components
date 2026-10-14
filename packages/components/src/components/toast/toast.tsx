@@ -2,12 +2,12 @@ import { cn } from "cn";
 import { type ComponentProps, type ReactNode, useState } from "react";
 import { Classes } from "@/constants/selectors";
 import {
-  CheckIcon,
-  DangerIcon,
-  InfoIcon,
-  NoteIcon,
-  TipIcon,
-  WarningIcon,
+  CircleCheckFilledIcon,
+  CircleInfoFilledIcon,
+  CircleWarningFilledIcon,
+  LightbulbFilledIcon,
+  NoteFilledIcon,
+  TriangleWarningFilledIcon,
   XIcon,
 } from "@/icons";
 
@@ -29,12 +29,36 @@ type ToastProps = {
 };
 
 const variantConfig = {
-  info: { icon: InfoIcon, className: "bg-stone-600/20" },
-  warning: { icon: WarningIcon, className: "bg-yellow-600/20" },
-  note: { icon: NoteIcon, className: "bg-blue-600/20" },
-  tip: { icon: TipIcon, className: "bg-green-600/20" },
-  check: { icon: CheckIcon, className: "bg-green-600/20" },
-  danger: { icon: DangerIcon, className: "bg-red-600/20" },
+  info: {
+    icon: CircleInfoFilledIcon,
+    className: "bg-stone-600/20",
+    iconClassName: "text-stone-800 dark:text-stone-300",
+  },
+  warning: {
+    icon: TriangleWarningFilledIcon,
+    className: "bg-yellow-600/20",
+    iconClassName: "text-yellow-800 dark:text-yellow-300",
+  },
+  note: {
+    icon: NoteFilledIcon,
+    className: "bg-blue-600/20",
+    iconClassName: "text-blue-800 dark:text-blue-300",
+  },
+  tip: {
+    icon: LightbulbFilledIcon,
+    className: "bg-green-600/20",
+    iconClassName: "text-green-800 dark:text-green-300",
+  },
+  check: {
+    icon: CircleCheckFilledIcon,
+    className: "bg-green-600/20",
+    iconClassName: "text-green-800 dark:text-green-300",
+  },
+  danger: {
+    icon: CircleWarningFilledIcon,
+    className: "bg-red-600/20",
+    iconClassName: "text-red-800 dark:text-red-300",
+  },
 };
 
 const FOCUS_RING_CLASSNAME =
@@ -76,11 +100,8 @@ const Toast = ({
       data-toast-type={variant}
       role={variant === "warning" || variant === "danger" ? "alert" : "status"}
     >
-      <LineCenter
-        className="my-0.5 w-4 justify-center"
-        data-component-part="toast-icon"
-      >
-        <IconComponent />
+      <LineCenter className="my-0.5" data-component-part="toast-icon">
+        <IconComponent className={config.iconClassName} />
       </LineCenter>
       <div className="flex min-w-0 flex-1 flex-wrap items-start justify-end gap-x-2 gap-y-1">
         <div
