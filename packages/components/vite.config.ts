@@ -42,7 +42,13 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime", "cn"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "cn",
+        /^@base-ui\/react(\/|$)/,
+      ],
       output: {
         preserveModules: true,
         preserveModulesRoot: "src",
