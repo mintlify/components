@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-20
+
+### Changed
+
+- `@base-ui/react` is now a peer dependency (`^1.1.0`) and is no longer bundled; install it if your package manager doesn't install peers automatically (#265)
+
 ## [1.0.20] - 2026-09-30
 
 ### Changed
