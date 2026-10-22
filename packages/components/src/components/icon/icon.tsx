@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/complexity/noExcessiveCognitiveComplexity: TODO */
 
 import { cn } from "cn";
-import type { CSSProperties } from "react";
+import { type CSSProperties, useContext } from "react";
 import { MINTLIFY_ICONS_CDN_URL } from "@/constants";
 import { Classes } from "@/constants/selectors";
 import {
@@ -13,6 +13,7 @@ import {
   type PageType,
 } from "@/utils/icon-utils";
 import { isAbsoluteUrl } from "@/utils/is-absolute-url";
+import { IconUrlContext } from "./icon-url-context";
 
 type IconProps = {
   icon: string;
@@ -43,6 +44,7 @@ const Icon = ({
   overrideColor,
   overrideSize,
 }: IconProps) => {
+  const resolveUrl = useContext(IconUrlContext);
   const style: CSSProperties = {
     ...(!overrideSize && { width: size || 16, height: size || 16 }),
     display: "inline-block",
@@ -67,7 +69,7 @@ const Icon = ({
     className
   );
   const isPdf = pageType === "pdf";
-  const url = getIconUrl(icon.toLowerCase(), iconType, iconLibrary);
+  const url = resolveUrl(getIconUrl(icon.toLowerCase(), iconType, iconLibrary));
 
   if (iconType && !ICON_TYPES.includes(iconType)) {
     console.log(
@@ -84,15 +86,16 @@ const Icon = ({
       icon.startsWith(MINTLIFY_ICONS_CDN_URL) ||
       icon.startsWith("https://mintlify.b-cdn.net")
     ) {
+      const iconUrl = resolveUrl(icon);
       return (
         <svg
           className={classNames}
           data-component-part="icon-svg"
           style={{
-            WebkitMaskImage: `url(${icon})`,
+            WebkitMaskImage: `url(${iconUrl})`,
             WebkitMaskRepeat: "no-repeat",
             WebkitMaskPosition: "center",
-            maskImage: `url(${icon})`,
+            maskImage: `url(${iconUrl})`,
             maskRepeat: "no-repeat",
             maskPosition: "center",
             maskSize: "100%",

@@ -1,4 +1,6 @@
 import { cn } from "cn";
+import { useContext } from "react";
+import { IconUrlContext } from "@/components/icon/icon-url-context";
 import { getLanguageIconUrl } from "@/utils/icon-utils";
 
 type LanguageIconProps = {
@@ -7,11 +9,14 @@ type LanguageIconProps = {
 };
 
 const LanguageIcon = ({ language, className }: LanguageIconProps) => {
-  const url = getLanguageIconUrl(language);
+  const resolveUrl = useContext(IconUrlContext);
+  const languageIconUrl = getLanguageIconUrl(language);
 
-  if (!url) {
+  if (!languageIconUrl) {
     return null;
   }
+
+  const url = resolveUrl(languageIconUrl);
 
   return (
     <svg
