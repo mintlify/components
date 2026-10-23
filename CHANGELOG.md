@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-22
+
+### Added
+
+- `IconUrlContext` lets consumers rewrite the URLs `Icon` and code group language icons load from (#267)
+
 ## [1.1.0] - 2026-10-20
 
 ### Changed
