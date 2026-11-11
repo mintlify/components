@@ -51,7 +51,11 @@ function getCodeString(
 
   const codeString = getNodeText(children);
 
-  return dedent(codeString);
+  // Only raw string children pick up indentation from the surrounding JSX/MDX.
+  // Highlighted children already hold the code exactly as it is shown, so
+  // dedenting them would strip real indentation from the copied text (e.g. the
+  // body of a lone Python function or a single top-level YAML key).
+  return isShiki ? codeString : dedent(codeString);
 }
 
 function calculateCodeLinesFromHtml(html: string | undefined): number {
